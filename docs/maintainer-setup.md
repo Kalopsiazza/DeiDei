@@ -2,9 +2,38 @@
 
 ## 当前交付状态
 
-协作文件、PR 模板、Issue 表单与 CI 放在仓库内。**本次准备无法通过当前连接修改 GitHub 管理设置，分支保护尚未由本次操作启用。** 不应把建议设置当作已经生效。首次执行后请在独立 PR 更新本段，并附实际回读结果。
+2026-09-08 已使用现有 GitHub CLI 登录完成管理设置，并通过 GitHub API 回读及脚本 `verify()` 验证。执行账号为仓库所有者 `Kalopsiazza`，仓库 API 返回 `permissions.admin=true`。协作文件已通过 [PR #2](https://github.com/Kalopsiazza/DeiDei/pull/2) 合入。
 
-普通同学只需 fork 和提 PR，无需执行本页命令。未启用保护期间，继续由 Teddy 手动检查 CI 并合入，不给临时贡献者主仓库写入权。本次没有增删任何现有协作者权限。
+执行前 main 为 `c42c07221f1b813b83feeba3036e4b6cfaab4134`，`protected=false`，包含父级的 ruleset 查询返回 `[]`，没有覆盖已有规则。该提交的 [core-tests](https://github.com/Kalopsiazza/DeiDei/actions/runs/34236600505/job/102095799568) 已完成且为 `success`，来源为 GitHub Actions（App ID `15368`）。
+
+实际回读结果：
+
+| 设置 | 已验证的值 |
+| --- | --- |
+| 合入方式 | squash 开启；merge commit、rebase 关闭 |
+| 自动合入 / 合入后删除功能分支 | 关闭 / 开启 |
+| main 更新方式 | 必须通过 PR；批准人数为 0 |
+| 必需检查 | `core-tests`，绑定 GitHub Actions App `15368` |
+| 分支必须跟上最新 main | `strict=true` |
+| 管理员也受规则约束 | `enforce_admins.enabled=true` |
+| 线性历史 / 处理审核对话 | 均开启 |
+| 强制推送 / 删除 main | 均禁止 |
+| 过期批准失效 | 开启 |
+| Code Owner / 最后一次推送另人批准 | 均不要求 |
+
+执行记录：
+
+1. `gh auth status`：已有登录可用；未索取或公开令牌。
+2. `python3 scripts/configure_github.py`：退出 0，仅预览，无写入。
+3. `python3 scripts/configure_github.py --apply`：退出 1。仓库合入设置 PATCH 成功，分支保护 PUT 返回 HTTP 422；错误指向同时包含 `contexts: []` 与 `checks` 的 `required_status_checks`。此时回读 main 仍未保护，ruleset 仍为空。
+4. 补救操作没有修改仓库脚本：通过临时 Python 命令复用脚本的 API 和 payload 函数，再次核对 main SHA、无已有保护/有效 ruleset 及最新检查成功，仅从请求中移除空 `contexts`，保留 `strict` 和带 App ID 的 `checks`，重新 PUT 成功。[GitHub API 文档](https://docs.github.com/en/rest/branches/branch-protection#update-branch-protection) 建议使用 `checks` 进行更细粒度控制。
+5. 重新 GET 仓库设置及 main 保护，调用 `verify(repo, protection, 15368)` 通过；上表来自实际回读，不是预期配置。main SHA 未因管理设置操作改变。
+
+文档提交前运行 `python3 scripts/check.py`：9 个 Python 文件语法检查通过，32 项测试中 31 项通过、1 项为既有 #1 的预期失败；`git diff --check` 通过。
+
+管理目标均已完成。原脚本的首次配置请求兼容性问题仍未修改；此文档 PR 不夹带脚本修复。当前 main 已有保护，再运行原脚本会在预检停止，应保留规则并回读核查，不应移除保护来重跑。
+
+普通同学仍通过 fork 和 PR 贡献，由 Teddy 检查并合入。本次未增删协作者、修改许可证或游戏/模型/依赖，也未验证 GUI、模型推理和联机（不属于管理设置任务）。本记录通过独立文档 PR 提交，合入由维护者处理。未调用 Kimi。
 
 ## 已准备好的配置
 
