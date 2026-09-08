@@ -1,0 +1,37 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+build/
+dist/
+*.egg-info/
+
+# Local configuration and private data
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.log
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Training outputs (keep only the two original tracked artifacts by default)
+runs/
+logs/
+wandb/
+rl_checkpoints/*
+!rl_checkpoints/latest.zip
+!rl_checkpoints/opponent_pool.pkl
+
+# Optional future frontend dependencies
+node_modules/
+.next/

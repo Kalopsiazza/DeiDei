@@ -1,0 +1,31 @@
+name: 问题反馈
+description: 告诉大家怎样遇到这个问题。
+title: 'bug: '
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: 发生了什么
+      description: 也可以附截图或报错，不用先分析原因。
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: 怎样重现
+      description: 游戏问题请写双方资源、当前招式和前面的相关动作。
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: 你原本期待什么
+    validations:
+      required: false
+  - type: input
+    id: environment
+    attributes:
+      label: 系统、Python 版本与游戏版本
+      placeholder: '例如 macOS / Python 3.11 / 提交编号'
+    validations:
+      required: false

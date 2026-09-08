@@ -1,0 +1,23 @@
+name: 想法或小功能
+description: 可选的讨论入口，不需要填完表才能开发。
+title: 'idea: '
+body:
+  - type: textarea
+    id: idea
+    attributes:
+      label: 你想做什么
+      description: 写玩家能得到什么体验即可，无需技术方案。
+    validations:
+      required: true
+  - type: textarea
+    id: first-version
+    attributes:
+      label: 最小版本可以是什么样
+    validations:
+      required: false
+  - type: textarea
+    id: notes
+    attributes:
+      label: 参考、草稿或需要讨论的地方
+    validations:
+      required: false
