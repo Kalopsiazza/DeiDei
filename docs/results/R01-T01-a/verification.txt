@@ -1,0 +1,11 @@
+Input SHA: aeabaf681197eb110da919e310ad1f4833433bba
+observe.py exit_code=0
+Repeat stdout exactly equals observations.json: PASS
+31 unique moves and full GUI correspondence: PASS
+Unique case IDs: PASS
+Observed cases: 93
+python3 scripts/check.py exit_code=0
+32 tests: 31 passed, 1 expectedFailure, 0 unexpected failures/errors
+Tracked baseline diff empty: PASS
+All new files within task allowlist: PASS
+GUI/model/network/Windows: NOT_RUN (outside task scope)

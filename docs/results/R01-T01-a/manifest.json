@@ -1,0 +1,137 @@
+{
+  "task_id": "R01-T01-a",
+  "status": "PARTIAL",
+  "status_reason": "Local evidence complete; remote push/PR awaits explicit user authorization.",
+  "input_ref": "plan/r01-v1",
+  "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "prd_version": "PRD-R01 1.0",
+  "architecture_version": "ARC-R01 1.0",
+  "tested_code_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "branch": "work/r01-t01-a-rules",
+  "pr_base": "docs/design-discussion-20260911",
+  "pr_url": null,
+  "platforms": [
+    {
+      "os": "macOS",
+      "version": "27.0",
+      "cpu": "arm64",
+      "python": "3.13.7",
+      "git": "git version 2.54.0 (Apple Git-157)"
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3 scripts/check.py",
+      "exit_code": 0,
+      "evidence": "docs/results/R01-T01-a/check.txt",
+      "tests_run": 32,
+      "passed": 31,
+      "expected_failures": 1,
+      "unexpected_failures": 0,
+      "syntax_files": 10
+    },
+    {
+      "command": "python3 experiments/r01-t01-a/observe.py",
+      "exit_code": 0,
+      "evidence": "docs/results/R01-T01-a/observations.json",
+      "cases": 93
+    },
+    {
+      "command": "python3 standard-library subprocess rerun and byte-for-byte stdout comparison; unique IDs and allowlist assertions",
+      "exit_code": 0,
+      "evidence": "docs/results/R01-T01-a/verification.txt"
+    },
+    {
+      "command": "git diff --cached --check",
+      "exit_code": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/results/R01-T01-a/CASES.md",
+      "sha256": "10dff664843f720ac4531895453dbde6635a462be4c57edabc4fcd3b4e2db812",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/MOVE-INVENTORY.md",
+      "sha256": "f2bc0c12de189c7798b4587978d9cac3feaa67b803ec284d4e84f83bba77812d",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/PR-BODY.md",
+      "sha256": "8afe9e782418dbd03b61fb34e9005b99f962107d0c0fa0ee83bf7500d0099d2e",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/QUESTIONS.md",
+      "sha256": "679ec81d6374f5ef2e8799b7341540006d1474d121769bc044f9191ddaa4da5d",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/REPORT.md",
+      "sha256": "4a47fe60c595540b9d12af57fe646ec8a066604aaf9cd59514f13f891783c592",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/check.txt",
+      "sha256": "068e60fd71354fec2bfd3c54c9f7f6117b4958586747553526b5c971f957a7cc",
+      "kind": "txt"
+    },
+    {
+      "path": "docs/results/R01-T01-a/observations.json",
+      "sha256": "0750da9713cd9a9e68153dd01ce0715b9028cb08f1c6a2dc171a23469d477166",
+      "kind": "json"
+    },
+    {
+      "path": "docs/results/R01-T01-a/source-hashes.json",
+      "sha256": "881ff74da2aa28173c1b126c68208f03749ac4a191302e55b3044ac9b0f871a2",
+      "kind": "json"
+    },
+    {
+      "path": "docs/results/R01-T01-a/verification.txt",
+      "sha256": "a078374856d923696c77ad6cafc3e7d21fc9d425db4bac4c8f112ae68ee44c58",
+      "kind": "txt"
+    },
+    {
+      "path": "experiments/r01-t01-a/README.md",
+      "sha256": "6fbeb41f3eea7ef69026c0db2c21ba2871ae626823be08493db84153694a472b",
+      "kind": "md"
+    },
+    {
+      "path": "experiments/r01-t01-a/observe.py",
+      "sha256": "bbd84e7e325f4747c05d07a9755d2a6aca8599da3af94caaffc6a428ae2b1314",
+      "kind": "py"
+    }
+  ],
+  "hash_note": "Artifact hashes exclude manifest itself. source-hashes.json hashes pinned original tracked files, including models.",
+  "not_run": [
+    "GUI",
+    "model inference/training",
+    "Windows",
+    "multiplayer",
+    "installer/offline validation",
+    "push/PR creation"
+  ],
+  "open_questions": {
+    "path": "docs/results/R01-T01-a/QUESTIONS.md",
+    "first_batch": [
+      "Q01",
+      "Q02",
+      "Q03",
+      "Q04",
+      "Q05",
+      "Q06",
+      "Q07",
+      "Q08",
+      "Q09",
+      "Q10",
+      "Q11",
+      "Q12"
+    ],
+    "waiting_for": [
+      "Teddy: original rule answers and explicit remote write authorization",
+      "ChatGPT: evidence acceptance and formal rule synthesis"
+    ]
+  },
+  "kimi_called": false
+}
