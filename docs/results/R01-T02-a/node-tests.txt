@@ -1,0 +1,14 @@
+
+> deidei-r01-tech@0.1.0 test
+> node --test test-main.cjs
+
+✔ worker failure, timeout, protocol fault, shutdown and restart (359.473709ms)
+✔ profile atomic replacement, validation and preservation on errors (6.696834ms)
+ℹ tests 2
+ℹ suites 0
+ℹ pass 2
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 436.985791

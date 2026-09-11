@@ -1,0 +1,34 @@
+{
+  "checkpoint_sha256": "9b2dc0d0eaf09c38d0ec448f52b145d2a5455a53b22771ff919867d57689f97c",
+  "device": "cpu",
+  "fallback": false,
+  "load_ms": 1978.5689170239493,
+  "model_class": "sb3_contrib.ppo_mask.ppo_mask.MaskablePPO",
+  "actual_device": "cpu",
+  "status": "PASS_CPU_LOAD_AND_RAW_PREDICT_ONLY",
+  "samples": [
+    {
+      "cpu_dd": 0,
+      "move": "Cloud",
+      "predict_ms": 11.501749977469444
+    },
+    {
+      "cpu_dd": 6,
+      "move": "Cloud",
+      "predict_ms": 0.24870800552889705
+    },
+    {
+      "cpu_dd": 18,
+      "move": "Three",
+      "predict_ms": 0.16554194735363126
+    },
+    {
+      "cpu_dd": 60,
+      "move": "Suicide",
+      "predict_ms": 0.15199999324977398
+    }
+  ],
+  "gui_imported": true,
+  "tkinter_imported": true,
+  "peak_rss_bytes": 314867712
+}
