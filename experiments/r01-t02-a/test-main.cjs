@@ -34,5 +34,10 @@ test('profile atomic replacement, validation and preservation on errors', async 
     await assert.rejects(writeProfile(blocked,p));
     assert.equal(await fs.readFile(blocked,'utf8'),'file');
     assert.deepEqual((await fs.readdir(dir)).sort(),['blocked','profile.json']);
+    if (process.platform !== 'win32') {
+      const denied = path.join(dir, 'denied'); await fs.mkdir(denied); await fs.chmod(denied,0o500);
+      try { await assert.rejects(writeProfile(denied,p), /EACCES/); }
+      finally { await fs.chmod(denied,0o700); }
+    }
   } finally { await fs.rm(dir,{recursive:true,force:true}); }
 });
