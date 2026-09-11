@@ -45,7 +45,7 @@ const path = require('node:path');
       assert.deepEqual(prefs,{sandbox:true,contextIsolation:true,nodeIntegration:false,webSecurity:true});
       if(n===1){
         await page.getByRole('button',{name:'请求简单 AI',exact:true}).click();await page.getByRole('status').filter({hasText:'Easy heuristic'}).waitFor();
-        await page.screenshot({path:path.join(output,'macos-packaged-window.png')});
+        await page.screenshot({path:path.join(output,`${process.platform}-packaged-window.png`)});
       }
       results.push({iteration:n,launchMs,healthMs,times,measurements,workerPid,security:prefs});
     } finally { await instance.close(); }
@@ -54,7 +54,7 @@ const path = require('node:path');
       for(let i=0;i<20;i++){try{process.kill(workerPid,0);await new Promise(r=>setTimeout(r,100));}catch{alive=false;break;}}
       assert.equal(alive,false,'Worker must exit with window');
     }
-    results.at(-1).workerReaped=true;
+    results.at(-1).workerReaped=workerPid ? true : null;
     console.log(`cycle ${n}: PASS`);
   }
   await fs.writeFile(path.join(output,'desktop-smoke.json'),JSON.stringify({platform:process.platform,arch:process.arch,mode:'native window automation, network connected, restricted PATH',results},null,2)+'\n');

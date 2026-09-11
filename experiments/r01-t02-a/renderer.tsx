@@ -41,7 +41,7 @@ function Panel() {
     <button onClick={()=>run('档案写入', save)}>写入档案</button><button onClick={()=>run('档案读取', read)}>读取档案</button></div>
     <div>{[['charge_charge','双方攒'],['bi_charge','Bi 对攒'],['bi_def','Bi 对防御'],['reflect_bi','反弹对 Bi']].map(([id,label])=><button key={id} onClick={()=>run(label,()=>window.experiment.runCase(id))}>{label}</button>)}</div>
     <label>Easy 随机种子 <input type="number" min="0" max="4294967295" value={seed} onChange={e=>setSeed(e.target.value)}/></label>
-    <button onClick={()=>run('Easy heuristic', ()=>window.experiment.chooseEasy(Number(seed)))}>请求简单 AI</button></fieldset>
+    <button onClick={()=>run('Easy heuristic', ()=>window.experiment.chooseEasy(seed.trim() ? Number(seed) : NaN))}>请求简单 AI</button></fieldset>
     <h2>调用结果 {busy ? '· 等待中（最多 10 秒）' : ''}</h2><pre role="status">{log}</pre>
     <footer>结果记录旧程序行为；不代表正式玩法确认。专家模型不在此包中。</footer>
   </main>;
