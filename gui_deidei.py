@@ -182,6 +182,75 @@ MOVE_DETAILS_CN = {
 }
 
 
+# 配色表：名为“类型”而非“招式”，因为分色传达的是招式的博弈角色，
+# 玩家扫一眼颜色就能判断这招是攒资源、打人、还是防守。
+UI_COLORS = {
+    "bg":        "#FAFAF8",
+    "card":      "#FFFFFF",
+    "line":      "#E3E1DA",
+    "text":      "#2C2C2A",
+    "text_dim":  "#5F5E5A",
+    "text_hint": "#8A8880",
+    "player":    "#185FA5",
+    "player_bg": "#E6F1FB",
+    "player_solid": "#378ADD",
+    "cpu":       "#A32D2D",
+    "cpu_bg":    "#FCEBEB",
+    "cpu_solid": "#E24B4A",
+    "accent_bg": "#EAF3DE",
+    "accent":    "#3B6D11",
+    "accent_solid": "#97C459",
+}
+
+# 招式分色：按博弈角色而非威力分档，同一类的招用同一色系，
+# 让按钮网格在视觉上自然形成“资源 / 进攻 / 防守 / 反制 / 特殊”五个区。
+MOVE_KIND_STYLE = {
+    # 蓄力类
+    Move.Charge: ("蓄力", "#EAF3DE", "#97C459", "#173404", "#3B6D11"),
+    # 进攻类
+    Move.Bi: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.Pragon: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.Three: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.Volvo: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.BigBi: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.Xiao: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.XiaoBei: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.Shell: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.NieXiang: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.RotateThree: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.FlipVolvo: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.BombPragon: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.BombVolvo: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    Move.BombFlipVolvo: ("进攻", "#FCEBEB", "#F09595", "#501313", "#A32D2D"),
+    # 防守类
+    Move.Def: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.ThreeDef: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.PragonDef: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.VolvoDef: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.NieXiangDef: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.JuYan: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    Move.TianLiJun: ("防守", "#E6F1FB", "#85B7EB", "#042C53", "#185FA5"),
+    # 反制类
+    Move.Reflect: ("反制", "#FAEEDA", "#EF9F27", "#412402", "#854F0B"),
+    Move.Absorb: ("反制", "#FAEEDA", "#EF9F27", "#412402", "#854F0B"),
+    Move.Cloud: ("反制", "#FAEEDA", "#EF9F27", "#412402", "#854F0B"),
+    Move.Suicide: ("反制", "#FAEEDA", "#EF9F27", "#412402", "#854F0B"),
+    Move.LiQiang: ("反制", "#FAEEDA", "#EF9F27", "#412402", "#854F0B"),
+    # 特殊 / 资源类
+    Move.Bomb: ("特殊", "#EEEDFE", "#AFA9EC", "#26215C", "#534AB7"),
+    Move.FreeThree: ("特殊", "#EEEDFE", "#AFA9EC", "#26215C", "#534AB7"),
+    Move.FreeRotateThree: ("特殊", "#EEEDFE", "#AFA9EC", "#26215C", "#534AB7"),
+    Move.ZhangXinWei: ("特殊", "#EEEDFE", "#AFA9EC", "#26215C", "#534AB7"),
+}
+
+MOVE_KIND_FALLBACK = ("招式", "#F1EFE8", "#B4B2A9", "#2C2C2A", "#5F5E5A")
+
+
+def move_kind_style(m: Move):
+    """返回 (类型名, 底色, 描边色, 标题色, 副标题色)。未知招式走中性灰兜底。"""
+    return MOVE_KIND_STYLE.get(m, MOVE_KIND_FALLBACK)
+
+
 def _format_move_details(m: Move) -> str:
     t = MOVE_DETAILS_CN.get(m)
     if t is None:
@@ -503,15 +572,31 @@ class DeideiGUI:
         else:
             self.rl_cpu_mode_var = None
 
-        ttk.Button(top, text="开始新对局", command=self.start_new_game).grid(column=4, row=0, padx=6, rowspan=3)
-        ttk.Button(top, text="完整规则手册", command=self.show_rules).grid(column=5, row=0, padx=6, rowspan=3)
+        # 主操作按钮用实心强调色，与次要的「规则手册」在视觉上区分优先级
+        start_btn = tk.Button(top, text="开始新对局", command=self.start_new_game,
+                              font=("Segoe UI", 10, "bold"),
+                              bg=UI_COLORS["player_solid"], fg="#FFFFFF",
+                              activebackground=UI_COLORS["player"],
+                              activeforeground="#FFFFFF",
+                              relief='flat', padx=14, pady=4, cursor="hand2",
+                              borderwidth=0)
+        start_btn.grid(column=4, row=0, padx=6, rowspan=3, sticky='ns')
+        tk.Button(top, text="完整规则手册", command=self.show_rules,
+                  font=("Segoe UI", 9), bg=UI_COLORS["card"], fg=UI_COLORS["text"],
+                  activebackground=UI_COLORS["line"],
+                  relief='solid', bd=1, padx=10, pady=4, cursor="hand2"
+                  ).grid(column=5, row=0, padx=6, rowspan=3, sticky='ns')
 
-        # status header
-        self.status_frm = ttk.LabelFrame(parent, text="当前盘面", padding=8)
+        # 当前盘面：用两块对阵卡片代替原来的一行等宽文字。
+        # 原来的 _state_line 仍然保留给日志和结算使用，这里只是另建一套可视化渲染。
+        self.status_frm = tk.Frame(parent, bg=UI_COLORS["bg"])
         self.status_frm.pack(fill='x', pady=6)
-        self.status_lbl = ttk.Label(self.status_frm, text="（尚未开始对局）",
-                                     font=("Segoe UI", 10, "bold"), justify='left')
+        self.status_lbl = tk.Label(self.status_frm, text="（尚未开始对局）",
+                                   font=("Segoe UI", 10, "bold"), justify='left',
+                                   bg=UI_COLORS["bg"], fg=UI_COLORS["text"])
         self.status_lbl.pack(anchor='w')
+        self.board_frm = tk.Frame(self.status_frm, bg=UI_COLORS["bg"])
+        self.board_frm.pack(fill='x', pady=(6, 0))
 
         # player move buttons + history
         body = ttk.Frame(parent)
@@ -520,7 +605,7 @@ class DeideiGUI:
         left = ttk.LabelFrame(body, text="你要出什么（左键出招 / 鼠标右键=这招说明）", padding=8)
         left.pack(side='left', fill='both', expand=True, padx=(0, 4))
 
-        self.move_btns_frame = ttk.Frame(left)
+        self.move_btns_frame = tk.Frame(left, bg=UI_COLORS["bg"])
         self.move_btns_frame.pack(fill='both', expand=True)
 
         gbuts = ttk.Frame(left)
@@ -532,8 +617,19 @@ class DeideiGUI:
 
         right = ttk.LabelFrame(body, text="对局记录 / 新手提示", padding=8)
         right.pack(side='left', fill='both', expand=True, padx=(4, 0))
-        self.log = scrolledtext.ScrolledText(right, width=68, height=26, wrap='word')
+        self.log = scrolledtext.ScrolledText(right, width=68, height=26, wrap='word',
+                                             font=("Consolas", 10), bg=UI_COLORS["card"],
+                                             fg=UI_COLORS["text"], relief='flat',
+                                             highlightthickness=1,
+                                             highlightbackground=UI_COLORS["line"])
         self.log.pack(fill='both', expand=True)
+        # 为不同语义的日志行注册配色，让「你出招 / 电脑出招 / 结果」一眼可辨
+        self.log.tag_config("player", foreground=UI_COLORS["player"])
+        self.log.tag_config("cpu", foreground=UI_COLORS["cpu"])
+        self.log.tag_config("win", foreground="#173404", background=UI_COLORS["accent_bg"])
+        self.log.tag_config("lose", foreground="#501313", background=UI_COLORS["cpu_bg"])
+        self.log.tag_config("draw", foreground="#412402", background="#FAEEDA")
+        self.log.tag_config("round", foreground=UI_COLORS["text_hint"])
         self._log("【欢迎】DeiDei 叠叠对战\n")
         self._log("   新手 30 秒上手：\n")
         self._log("   ① 先在上方选 AI 难度（默认简单AI=新手友好）\n")
@@ -655,11 +751,10 @@ class DeideiGUI:
 
     def _on_diff_changed(self):
         k = self.diff_var.get()
-        # 把下拉框里显示也换成中文友好形式？（内部值还是 Easy/Hard/RL Hard 不改，只用 log + 下方 hint）
-        try:
-            self.status_lbl.config(text=DIFFICULTY_HINT_SHORT.get(k, ""))
-        except Exception:
-            pass
+        # 难度说明写到日志区，不再占用盘面标题——标题现在用于显示回合数。
+        hint = DIFFICULTY_HINT_SHORT.get(k, "")
+        if hint:
+            self._log(f"[难度] {hint}\n")
 
     def _on_prec_changed(self):
         k = self.prec_var.get()
@@ -694,34 +789,158 @@ class DeideiGUI:
                     f"云次数={s.cloudUses}  田立军次数={s.tianUses}{extra}")
         return line("你", p) + "\n" + line("电脑", c)
 
+    def _make_pips(self, parent, filled, total, color_on, color_off, square=True):
+        """画一排状态方块/圆点，用于雷电、炸药层、聂湘充能这类可数资源的可视化。
+        只读展示，不接收点击，因此用 Label 而不是 Canvas——避免为每种资源写绘制逻辑。"""
+        row = tk.Frame(parent, bg=parent.cget("bg"))
+        for i in range(total):
+            on = i < filled
+            bg = color_on if on else color_off
+            if square:
+                cell = tk.Frame(row, bg=bg, width=13, height=11)
+            else:
+                cell = tk.Frame(row, bg=bg, width=11, height=11)
+            cell.pack(side='left', padx=1.5)
+            cell.pack_propagate(False)
+        return row
+
+    def _render_player_card(self, parent, title, s: PlayerState, is_player: bool, col: int):
+        """渲染一方玩家的状态卡。字段与原 _state_line 一一对应，只是改成可视形式。
+        由调用方用 grid 指定列号，保证双方卡片等宽。"""
+        bg = UI_COLORS["player_bg"] if is_player else UI_COLORS["cpu_bg"]
+        fg = UI_COLORS["player"] if is_player else UI_COLORS["cpu"]
+        fg_strong = "#042C53" if is_player else "#501313"
+        solid = UI_COLORS["player_solid"] if is_player else UI_COLORS["cpu_solid"]
+
+        card = tk.Frame(parent, bg=bg, padx=10, pady=8)
+        card.grid(row=0, column=col, sticky='nsew', padx=2)
+
+        tk.Label(card, text=title, font=("Segoe UI", 10, "bold"),
+                 bg=bg, fg=fg, anchor='w').pack(anchor='w')
+
+        # DD 是核心资源，单独放大显示；其余资源在其右侧，并允许换行，
+        # 防止窗口较窄时卡片内容溢出到可视区之外。
+        dd_box = tk.Frame(card, bg=bg)
+        dd_box.pack(anchor='w', pady=(4, 0))
+        tk.Label(dd_box, text="DD", font=("Segoe UI", 8), bg=bg, fg=fg).pack(side='left')
+        tk.Label(dd_box, text=format_dd_units(s.dd), font=("Segoe UI", 17, "bold"),
+                 bg=bg, fg=fg_strong).pack(side='left', padx=(6, 0))
+
+        metrics = tk.Frame(card, bg=bg)
+        metrics.pack(anchor='w', pady=(4, 0))
+
+        lit_box = tk.Frame(metrics, bg=bg)
+        lit_box.pack(side='left', padx=(0, 12))
+        tk.Label(lit_box, text="雷电", font=("Segoe UI", 8), bg=bg, fg=fg).pack(anchor='w')
+        self._make_pips(lit_box, s.lightning, 6, solid,
+                        UI_COLORS["line"], square=True).pack(anchor='w', pady=(4, 0))
+
+        bomb_box = tk.Frame(metrics, bg=bg)
+        bomb_box.pack(side='left', padx=(0, 12))
+        tk.Label(bomb_box, text=f"炸药层 {s.bombLayers}", font=("Segoe UI", 8),
+                 bg=bg, fg=fg).pack(anchor='w')
+        self._make_pips(bomb_box, s.bombLayers, 4, "#EF9F27",
+                        UI_COLORS["line"], square=True).pack(anchor='w', pady=(4, 0))
+
+        nx_box = tk.Frame(metrics, bg=bg)
+        nx_box.pack(side='left')
+        tk.Label(nx_box, text=f"聂湘 {s.nxCharge}", font=("Segoe UI", 8),
+                 bg=bg, fg=fg).pack(anchor='w')
+        self._make_pips(nx_box, s.nxCharge, 4, "#7F77DD",
+                        UI_COLORS["line"], square=False).pack(anchor='w', pady=(6, 0))
+
+        # 计数类字段保持文字，但归到一行次要信息里；允许换行以适配窄窗口
+        bp = ",".join(str(x) for x in s.bombPending)
+        info = f"云 {s.cloudUses} · 田立军 {s.tianUses} · 炸药延迟 [{bp}]"
+        tk.Label(card, text=info, font=("Segoe UI", 8), bg=bg, fg=fg,
+                 wraplength=250, justify='left').pack(anchor='w', pady=(6, 0))
+
+        extras = []
+        if s.juyanBuff: extras.append("距喦buff")
+        if s.hasHighAttackRecord:
+            extras.append(f"可复制:{MOVE_NAMES_CN.get(s.lastHighAttack, s.lastHighAttack.name)}")
+        if s.zhangUsed: extras.append("张新伟已用")
+        if s.liqUsed: extras.append("历强已用")
+        if extras:
+            tk.Label(card, text=" · ".join(extras), font=("Segoe UI", 8),
+                     bg=bg, fg=fg, wraplength=250, justify='left').pack(anchor='w', pady=(3, 0))
+        return card
+
+    def _render_board(self):
+        """重建当前盘面的对阵卡片。游戏未开始时只显示提示文字。"""
+        for w in self.board_frm.winfo_children():
+            w.destroy()
+        if not self.game_active and self.round_no == 1:
+            return
+        holder = tk.Frame(self.board_frm, bg=UI_COLORS["bg"])
+        holder.pack(fill='x')
+        # 用 grid 等分两列，保证双方卡片严格各占一半宽度，
+        # 避免 pack + expand 在内容不等宽时把其中一张挤出可视区。
+        holder.columnconfigure(0, weight=1, uniform="board")
+        holder.columnconfigure(1, weight=1, uniform="board")
+        self._render_player_card(holder, "你", self.player, True, 0)
+        self._render_player_card(holder, "电脑", self.cpu, False, 1)
+
     def _update_status_and_moves(self):
-        self.status_lbl.config(
-            text=f"回合 {self.round_no}\n" + self._state_line(self.player, self.cpu))
+        status = "对局进行中" if self.game_active else "对局已结束"
+        self.status_lbl.config(text=f"第 {self.round_no} 回合 · {status}")
+        self._render_board()
         self._refresh_move_buttons()
+
+    def _make_move_card(self, parent, m: Move) -> tk.Frame:
+        """构建一张招式卡片。左键出招、右键/中键查说明的绑定与原按钮一致，
+        这里用 Frame + Label 组合代替 ttk.Button，因为需要按招式类型分色。"""
+        kind, bg, border, fg_title, fg_sub = move_kind_style(m)
+        cost = dd_cost_units_for_move(self.player, m)
+
+        # 外层容器负责 1px 描边效果：外框用描边色，内层用底色，形成细边框。
+        card = tk.Frame(parent, bg=border, padx=1, pady=1)
+        inner = tk.Frame(card, bg=bg, padx=6, pady=6, cursor="hand2")
+        inner.pack(fill='both', expand=True)
+
+        name_txt = MOVE_NAMES_CN.get(m, m.name)
+        title_lbl = tk.Label(inner, text=name_txt, font=("Segoe UI", 10, "bold"),
+                             bg=bg, fg=fg_title, cursor="hand2")
+        title_lbl.pack()
+
+        # 副标题同时给出招式类型与 DD 消耗，替代原来只有 DD 的信息量
+        sub = f"{kind} · {format_dd_units(cost)} DD"
+        sub_lbl = tk.Label(inner, text=sub, font=("Segoe UI", 8),
+                           bg=bg, fg=fg_sub, cursor="hand2")
+        sub_lbl.pack()
+
+        # 张新伟与距喦削有额外状态，沿用 move_label 的补充说明逻辑
+        extra = move_label(m, self.player)
+        if "\n" in extra:
+            note = extra.split("\n", 1)[1]
+            tk.Label(inner, text=note, font=("Segoe UI", 8),
+                     bg=bg, fg=fg_sub, cursor="hand2").pack()
+
+        # 把点击事件绑到卡片及其所有子控件上，否则点在文字上不会触发
+        for w in (card, inner, title_lbl, sub_lbl):
+            w.bind("<Button-1>", lambda e, mv=m: self.play_move(mv))
+            w.bind("<Button-3>", lambda e, mv=m: self.show_move_single_info(mv))
+            w.bind("<Button-2>", lambda e, mv=m: self.show_move_single_info(mv))
+        return card
 
     def _refresh_move_buttons(self):
         for w in self.move_btns_frame.winfo_children():
             w.destroy()
         if not self.game_active:
-            ttk.Label(self.move_btns_frame,
-                      text="（请先点“开始新对局”）").pack()
+            tk.Label(self.move_btns_frame, text="（请先点“开始新对局”）",
+                     bg=UI_COLORS["bg"], fg=UI_COLORS["text_hint"]).pack()
             return
         legal = list_legal_moves(self.player, self.cpu)
         if not legal:
-            ttk.Label(self.move_btns_frame, text="（你当前无合法招式？）").pack()
+            tk.Label(self.move_btns_frame, text="（你当前无合法招式？）",
+                     bg=UI_COLORS["bg"], fg=UI_COLORS["text_hint"]).pack()
             return
         cols = 3
         for idx, m in enumerate(legal):
             r = idx // cols
             co = idx % cols
-            cost = dd_cost_units_for_move(self.player, m)
-            label = move_label(m, self.player)
-            btn = ttk.Button(self.move_btns_frame,
-                             text=f"{label}\nDD={format_dd_units(cost)}",
-                             command=lambda mv=m: self.play_move(mv))
-            btn.grid(row=r, column=co, sticky='nsew', padx=2, pady=2)
-            btn.bind("<Button-3>", lambda e, mv=m: self.show_move_single_info(mv))
-            btn.bind("<Button-2>", lambda e, mv=m: self.show_move_single_info(mv))
+            card = self._make_move_card(self.move_btns_frame, m)
+            card.grid(row=r, column=co, sticky='nsew', padx=2, pady=2)
         for c in range(cols):
             self.move_btns_frame.columnconfigure(c, weight=1)
 
@@ -743,15 +962,15 @@ class DeideiGUI:
         if cmove not in cpu_legal:
             cmove = self.rng.choice(cpu_legal) if cpu_legal else Move.Charge
 
-        self._log(f"—— 回合 {self.round_no} ——\n")
+        self._log_tagged(f"—— 回合 {self.round_no} ——\n", "round")
         pdesc = MOVE_NAMES_CN.get(pmove, pmove.name)
         if pmove == Move.ZhangXinWei and self.player.hasHighAttackRecord:
             pdesc += f"(→{MOVE_NAMES_CN.get(self.player.lastHighAttack, self.player.lastHighAttack.name)})"
         cdesc = MOVE_NAMES_CN.get(cmove, cmove.name)
         if cmove == Move.ZhangXinWei and self.cpu.hasHighAttackRecord:
             cdesc += f"(→{MOVE_NAMES_CN.get(self.cpu.lastHighAttack, self.cpu.lastHighAttack.name)})"
-        self._log(f"你出：{pdesc}  [DD={format_dd_units(dd_cost_units_for_move(self.player, pmove))}]\n")
-        self._log(f"电脑出：{cdesc}  [DD={format_dd_units(dd_cost_units_for_move(self.cpu, cmove))}]\n")
+        self._log_tagged(f"你出：{pdesc}  [DD={format_dd_units(dd_cost_units_for_move(self.player, pmove))}]\n", "player")
+        self._log_tagged(f"电脑出：{cdesc}  [DD={format_dd_units(dd_cost_units_for_move(self.cpu, cmove))}]\n", "cpu")
 
         tr = simulate_turn(self.player, self.cpu, pmove, cmove)
         self.player = tr.nextP
@@ -763,16 +982,15 @@ class DeideiGUI:
             self._update_status_and_moves()
             return
         if tr.outcome == Outcome.PlayerWin:
-            self._log("🏆 结果：你赢了！\n")
+            self._log_tagged("结果：你赢了！\n", "win")
         elif tr.outcome == Outcome.CpuWin:
-            self._log("🤖 结果：电脑赢了。\n")
+            self._log_tagged("结果：电脑赢了。\n", "lose")
         else:
-            self._log("🤝 结果：平局（双方同时自杀）。\n")
+            self._log_tagged("结果：平局（双方同时自杀）。\n", "draw")
         self._log(f"最终：\n{self._state_line(self.player, self.cpu)}\n\n")
         self.game_active = False
         self._update_status_and_moves()
-        self.status_lbl.config(text="对局已结束，请点“开始新对局”再来一局。\n"
-                                    + self.status_lbl.cget("text"))
+        self.status_lbl.config(text="对局已结束 · 点「开始新对局」再来一局")
 
     # ============================================================
     # GTO 助手
@@ -1168,6 +1386,12 @@ class DeideiGUI:
     # ============================================================
     def _log(self, s: str):
         self.log.insert('end', s)
+        self.log.see('end')
+
+    def _log_tagged(self, s: str, tag: str):
+        """写入带颜色的日志片段。Text 控件需要预先配置好 tag 才能着色，
+        因此这里在建控件时统一注册，调用方只传语义标签名。"""
+        self.log.insert('end', s, tag)
         self.log.see('end')
 
     def _busy(self, flag: bool):
