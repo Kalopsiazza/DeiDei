@@ -1,6 +1,6 @@
-const { app, BrowserWindow, ipcMain, protocol, net } = require('electron');
+const { app, BrowserWindow, ipcMain, protocol } = require('electron');
 const path = require('node:path');
-const { pathToFileURL } = require('node:url');
+const fs = require('node:fs/promises');
 const { WorkerBridge } = require('./bridge.cjs');
 const { readProfile, writeProfile } = require('./profile.cjs');
 protocol.registerSchemesAsPrivileged([{ scheme: 'app', privileges: { standard: true, secure: true, supportFetchAPI: true } }]);
@@ -11,10 +11,12 @@ app.whenReady().then(async () => {
   const resource = app.isPackaged ? process.resourcesPath : path.join(__dirname, 'dist');
   bridge = new WorkerBridge(path.join(resource, 'worker', process.platform === 'win32' ? 'worker.exe' : 'worker'));
   const files = new Set(['index.html', 'renderer.js', 'style.css', 'card.svg']);
-  protocol.handle('app', request => {
+  protocol.handle('app', async request => {
     const u = new URL(request.url); const name = u.pathname.slice(1);
     if (u.host !== 'experiment' || !files.has(name) || request.method !== 'GET') return new Response('', { status: 403 });
-    return net.fetch(pathToFileURL(path.join(__dirname, 'build', 'ui', name)).href);
+    const types = { 'index.html': 'text/html; charset=utf-8', 'renderer.js': 'text/javascript', 'style.css': 'text/css', 'card.svg': 'image/svg+xml' };
+    try { return new Response(await fs.readFile(path.join(__dirname, 'build', 'ui', name)), { headers: { 'Content-Type': types[name] } }); }
+    catch { return new Response('Local asset unavailable', { status: 404 }); }
   });
   window = new BrowserWindow({ width: 1050, height: 850, title: 'DeiDei R01 — 技术验证（非游戏）',
     webPreferences: { preload: path.join(__dirname, 'preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true } });

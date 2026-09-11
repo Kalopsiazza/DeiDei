@@ -13,7 +13,7 @@ const path = require('node:path');
     const instance=await _electron.launch({executablePath, env:{...process.env,PATH:process.platform==='win32'?process.env.SystemRoot:' /usr/bin:/bin'.trim()}});
     let workerPid;
     try {
-      const page=await instance.firstWindow(); await page.getByRole('heading',{name:'桌面技术验证',exact:true}).waitFor();
+      const page=await instance.firstWindow(); page.setDefaultTimeout(15000); await page.getByRole('heading',{name:'桌面技术验证',exact:true}).waitFor();
       const launchMs=performance.now()-start;
       const healthStart=performance.now();
       await page.getByRole('button',{name:'Health / 重试',exact:true}).click();
