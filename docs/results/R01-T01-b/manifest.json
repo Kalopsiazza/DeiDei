@@ -1,7 +1,7 @@
 {
   "task_id": "R01-T01-b",
   "status": "SUBMITTED",
-  "status_scope": "Local review package delivered in this task; pending planner acceptance; GitHub delivery not performed",
+  "status_scope": "Teddy accepted the local review result and authorized PR submission; PR submitted, waiting for ChatGPT Pro acceptance",
   "created_at": "2026-09-12T07:46:23.425530+00:00",
   "input_ref": "fixed planning commit",
   "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
@@ -10,11 +10,13 @@
   "observed_remote_target_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
   "branch": "work/r01-t01-b-review",
   "pr_target": "docs/design-discussion-20260911",
-  "pr_url": null,
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/11",
   "github_delivery": {
-    "pushed": false,
-    "pr_created": false,
-    "reason": "No explicit authorization for remote writing in the user request; package text was used as task specifications only"
+    "pushed": true,
+    "pr_created": true,
+    "reason": "Explicit subsequent user authorization to submit the PR",
+    "base": "docs/design-discussion-20260911",
+    "head": "work/r01-t01-b-review"
   },
   "prd_version": "PRD-R01-B 1.0 / PRD-RULES 1.0",
   "architecture_version": "ARC-R01-B 1.0 D01 / RULE-ENGINE 1.0",
@@ -168,6 +170,35 @@
         "--check"
       ],
       "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "push",
+        "-u",
+        "origin",
+        "HEAD:refs/heads/work/r01-t01-b-review"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "gh",
+        "pr",
+        "create",
+        "--repo",
+        "Kalopsiazza/DeiDei",
+        "--base",
+        "docs/design-discussion-20260911",
+        "--head",
+        "work/r01-t01-b-review",
+        "--title",
+        "[R01-T01-b] 规则独立线程复核｜提交验收",
+        "--body-file",
+        "<temporary PR description file>"
+      ],
+      "exit_code": 0,
+      "result": "https://github.com/Kalopsiazza/DeiDei/pull/11"
     }
   ],
   "inputs": [
@@ -283,8 +314,8 @@
     },
     {
       "path": "docs/results/R01-T01-b/REPORT.md",
-      "sha256": "6426f50ed47c058e27910f000a91d86bcf21caced40ae2f56e68f78bd0156cb6",
-      "bytes": 6052,
+      "sha256": "d0390ee7c749cf27a08bbb1ce64920b006eb63e1582f7971651737f9308dd265",
+      "bytes": 6225,
       "kind": "review_document"
     },
     {
@@ -305,7 +336,7 @@
     "GUI, model inference, multiplayer, installers and platform acceptance",
     "Original round-40 screenshot verification: only excerpt available",
     "Exhaustive reachable-state exploration",
-    "Remote push, PR creation, merge, release"
+    "Merge and release; ChatGPT Pro acceptance pending"
   ],
   "open_questions": [
     {
@@ -334,5 +365,14 @@
       "request": "Review evidence and decide specification/case correction; no gameplay change made"
     }
   ],
-  "manifest_hash_policy": "Manifest excludes its own hash. Check log captures verification before manifest creation; final manifest verification is recorded by its command exit code."
+  "manifest_hash_policy": "Manifest excludes its own hash. Check log captures verification before manifest creation; final manifest verification is recorded by its command exit code.",
+  "user_accepted_result_sha": "5a081f2462f0814d6f6fe8c3aecba071710605d2",
+  "delivery_updated_at": "2026-09-12T08:04:33.133861+00:00",
+  "delivery_update_scope": "REPORT/manifest delivery metadata only; findings, coverage, document checker and original check output unchanged",
+  "delivery_validation": {
+    "document_check_exit_code": 0,
+    "manifest_hash_check": "PASS",
+    "diff_check_exit_code": 0,
+    "review_content_changed": false
+  }
 }

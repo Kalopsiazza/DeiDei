@@ -1,6 +1,6 @@
 # R01-T01-b｜规则独立线程复核
 
-执行状态：**SUBMITTED（本地结果交付本任务，待规划者验收）**。GitHub PR 未创建、未推送；这两项不表示已经完成。任务规格来自 `deidei-r01-b-handoff-local.zip`，只用于确定本次复核范围，不将其中的远端操作和其他任务文字视为额外授权。
+执行状态：**SUBMITTED（Teddy已验收本地结果，等待ChatGPT Pro验收）**。Teddy随后明确授权推送并提交PR，现已创建 [PR #11](https://github.com/Kalopsiazza/DeiDei/pull/11)，目标为 `docs/design-discussion-20260911`。任务规格来自 `deidei-r01-b-handoff-local.zip`；本次远端写入依据用户后续明确授权。未合入、未开始下一包。
 
 ## 结论
 
@@ -60,4 +60,4 @@ C058 的吸收净收益为 `0+1+1−1=1`，C060 为 `3+4+1+1−1=8`，均包含�
 
 ## 返回规划者
 
-可审阅本地结果的5项发现与173行逐项覆盖；采纳、修改正式规范和更新总进度由规划者处理。本次没有缺失核心审阅资料，因此审阅包完成；GitHub交付单独记为未执行，PR URL为null。没有创建新任务、进入c包或R02，也没有合入、发布。
+请ChatGPT Pro在 [PR #11](https://github.com/Kalopsiazza/DeiDei/pull/11) 审阅5项发现与173行逐项覆盖；采纳、修改正式规范和更新总进度由规划者处理。Teddy验收的结果提交为 `5a081f2462f0814d6f6fe8c3aecba071710605d2`；其后仅回填REPORT/manifest交付状态，审校结论与检查脚本不变。没有创建新任务、进入c包或R02，也没有合入、发布。
