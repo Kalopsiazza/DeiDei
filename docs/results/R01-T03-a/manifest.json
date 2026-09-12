@@ -1,6 +1,6 @@
 {
   "task_id": "R01-T03-a",
-  "status": "PARTIAL",
+  "status": "SUBMITTED",
   "input_ref": "plan/r01-v1",
   "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
   "prd_version": "1.0",
@@ -8,7 +8,7 @@
   "ui_version": "1.0",
   "tested_code_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
   "branch": "work/r01-t03-a-ui",
-  "pr_url": null,
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/9",
   "platforms": [
     {
       "os": "Darwin",
@@ -225,7 +225,7 @@
     },
     {
       "path": "REPORT.md",
-      "sha256": "3b007dd576edecbee55ec87d908cc5c853592b8d67d63c53a12c678a916de29e",
+      "sha256": "68387480e1ae57c7fe1619fb5037372b966ac7261407cb7def27150855cd8d94",
       "kind": "evidence"
     },
     {
@@ -281,5 +281,6 @@
     "reference": "P04-concept-v1.png",
     "postprocessing": "none"
   },
-  "submission_authorized": true
+  "submission_authorized": true,
+  "artifact_commit_sha": "adbe5740acd5d6d91a7026f33480f73b9138005f"
 }

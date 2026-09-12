@@ -1,10 +1,10 @@
 # R01-T03-a｜基础页面布局确认
 
-状态：提交准备完成；2026-09-12 Teddy 布局验收通过，等待 ChatGPT Pro 工作包验收。已知生图细节缺陷保留。
+状态：SUBMITTED；2026-09-12 Teddy 布局验收通过，等待 ChatGPT Pro 工作包验收。已知生图细节缺陷保留。
 
 输入：`plan/r01-v1` → `aeabaf681197eb110da919e310ad1f4833433bba`；PRD-R01 / ARC-R01 / UI-R01 均为 1.0。交接包四份任务相关文档与快照逐字相同。只读核对上游 main 为 `c42c07221f1b813b83feeba3036e4b6cfaab4134`。
 
-分支：`work/r01-t03-a-ui`。PR 目标：`docs/design-discussion-20260911`。2026-09-12 用户已明确授权提交、推送及创建结果 PR；最终远端状态以结果 PR 为准。游戏代码 tested_code_sha 为输入 SHA；本包只新增结果和静态排布生成脚本。
+分支：`work/r01-t03-a-ui`。PR 目标：`docs/design-discussion-20260911`。2026-09-12 用户已明确授权提交、推送及创建结果 PR；结果 PR：https://github.com/Kalopsiazza/DeiDei/pull/9 。游戏代码 tested_code_sha 为输入 SHA；本包只新增结果和静态排布生成脚本。
 
 ## 完成与验收
 
