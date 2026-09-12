@@ -1,0 +1,172 @@
+{
+  "task_id": "R02-T01-a",
+  "status": "PARTIAL",
+  "local_implementation": "COMPLETE",
+  "remote_submission": "NOT_RUN_NO_EXPLICIT_AUTHORIZATION",
+  "input_ref": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "input_code_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "tested_code_sha": "002e3882b91e64f0204f90e24a3e6ee0f783ef23",
+  "branch": "codex/r02-t01-a-core",
+  "intended_pr_base": "docs/design-discussion-20260911",
+  "pr_url": null,
+  "prd_version": "PRD-R02 1.0",
+  "architecture_version": "ARC-R02 1.0",
+  "contract_version": "CONTRACT-R02 1.0",
+  "rules_version": "classic-1.0.1",
+  "engine_design_version": "RULE-ENGINE-v1.0",
+  "plan_id": "R02-v1",
+  "archive_sha256": "f5e97fe4395f6f3d5552c30b1fe0052563e75c7d7e5d07c97bb78b960fa554b1",
+  "planning_hashes": "verification.json",
+  "environment": {
+    "os": "Darwin",
+    "os_version": "27.0",
+    "cpu": "arm64",
+    "python": "3.11.15",
+    "python_resolution": "uv python find --offline 3.11",
+    "git": "git version 2.54.0 (Apple Git-157)",
+    "uv": "uv 0.11.13 (Homebrew 2026-05-11 aarch64-apple-darwin)",
+    "agent": "Codex",
+    "tools": [
+      "functions.exec",
+      "exec_command",
+      "apply_patch"
+    ],
+    "subagents": false,
+    "kimi_called": false
+  },
+  "core_tests": {
+    "run": 174,
+    "passed": 174,
+    "skipped": 0,
+    "expected_failures": 0
+  },
+  "legacy_tests": {
+    "run": 32,
+    "passed": 31,
+    "expected_failures": 1
+  },
+  "checks": [
+    {
+      "command": "PYTHONPATH=game/core python3.11 -m unittest discover -s game/core/tests -v",
+      "exit_code": 0,
+      "evidence": "core-tests.txt"
+    },
+    {
+      "command": "python3.11 scripts/check.py",
+      "exit_code": 0,
+      "evidence": "legacy-check.txt"
+    },
+    {
+      "command": "PYTHONPATH=game/core python3.11 - < README example",
+      "exit_code": 0,
+      "evidence": "readme-example.txt"
+    },
+    {
+      "command": "git diff --check 3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "exit_code": 0,
+      "evidence": "scope-check.txt"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/results/R02-T01-a/PR-BODY.md",
+      "bytes": 2338,
+      "sha256": "049d4aa8474cfce8c8a3b9de8820a8541f41df7919d399a881426aaca5aaeec0"
+    },
+    {
+      "path": "docs/results/R02-T01-a/REPORT.md",
+      "bytes": 10221,
+      "sha256": "e9bcfb85636dbf2bc666abf54b2447b0d42bf52d1596b5dc69ca39dc3aee35eb"
+    },
+    {
+      "path": "docs/results/R02-T01-a/core-tests.txt",
+      "bytes": 15204,
+      "sha256": "baa7a421d71c8671e6f4ec426424e0d7179bc4dfce9451b6183fb0283376f11f"
+    },
+    {
+      "path": "docs/results/R02-T01-a/legacy-check.txt",
+      "bytes": 3991,
+      "sha256": "0ed60a420d5ff7b2a91f1386c300c52ed069e2ca98f698f0070438a6eaa861ec"
+    },
+    {
+      "path": "docs/results/R02-T01-a/readme-example.txt",
+      "bytes": 178,
+      "sha256": "e4655f0184a92aadbd5e40d170e06ba3d16603609ab89292e3ff61d6760b37f7"
+    },
+    {
+      "path": "docs/results/R02-T01-a/scope-check.txt",
+      "bytes": 874,
+      "sha256": "32e762514f86e5281b3ade91501d5c316a88f81b4fe4bc8a8e16979da3a5cfa3"
+    },
+    {
+      "path": "docs/results/R02-T01-a/verification.json",
+      "bytes": 9113,
+      "sha256": "fb714968d46b43d276fc61209f389d8c5b9dec465fbd85b502a0aa75ccc38343"
+    },
+    {
+      "path": "game/core/README.md",
+      "bytes": 4283,
+      "sha256": "52368946678765a193ce98efb1cec16401993fcc9dc8e93d618c85b7156916eb"
+    },
+    {
+      "path": "game/core/deidei_core/__init__.py",
+      "bytes": 81,
+      "sha256": "4de766565b2189aeda70810daf68619f590963c3c4c70ec1ac5175c9abf4ae88"
+    },
+    {
+      "path": "game/core/deidei_core/api.py",
+      "bytes": 4756,
+      "sha256": "190a6741f91c7cbfa775ea40edc0604997425cebbd888dbb91f2237fc10b3691"
+    },
+    {
+      "path": "game/core/deidei_core/engine.py",
+      "bytes": 17979,
+      "sha256": "1d63b6a07350a1c047ac0a3fa6662fefaea265e7272e4eeb34fe345be9b26fd2"
+    },
+    {
+      "path": "game/core/deidei_core/entries.py",
+      "bytes": 3905,
+      "sha256": "478f1dd6e38746ff2241eccb7729653635f171c16206511ec3e9537099e51295"
+    },
+    {
+      "path": "game/core/deidei_core/wire.py",
+      "bytes": 8121,
+      "sha256": "e2b29078ddf198144ba0332ca977a4ea4af59df8ae12fd2fb73a4e750a212959"
+    },
+    {
+      "path": "game/core/pyproject.toml",
+      "bytes": 161,
+      "sha256": "0bcbb07e07f0ac9cfb29dfbe473a1fbc88328e353365d721c10174c21b329995"
+    },
+    {
+      "path": "game/core/tests/test_contract.py",
+      "bytes": 29621,
+      "sha256": "d637d9b1fb0d6987eca560ee8d290eaf5cae6862d05ae6fba33b387a24d07bf1"
+    },
+    {
+      "path": "game/core/tests/test_rules.py",
+      "bytes": 26226,
+      "sha256": "2907c6e464d957bd45160fcf2d274b766e5eda1d8b3adf17857beceaea7c6d4e"
+    }
+  ],
+  "artifact_hash_note": "Manifest excludes its own hash; delivery archive hash is reported beside the archive.",
+  "not_run": [
+    "T02 independent acceptance",
+    "C081 runtime request cache and apply-once",
+    "C074 room absence metadata",
+    "Worker/AI/desktop integration",
+    "Windows/Linux hardware",
+    "packaging and physical-offline validation",
+    "external review; Kimi paused",
+    "remote push / PR creation"
+  ],
+  "waiting_for": [
+    "User authorization for remote submission",
+    "Planner review and fixed-SHA T02 test run"
+  ],
+  "outside_allowed_paths_changed": false,
+  "merged": false,
+  "released": false,
+  "deployed": false
+}

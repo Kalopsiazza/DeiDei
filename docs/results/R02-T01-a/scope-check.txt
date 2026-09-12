@@ -1,0 +1,23 @@
+input_code_sha: 3a81daf0f42416ccb73a5a69748655145e6f2f0c
+tested_code_sha: 002e3882b91e64f0204f90e24a3e6ee0f783ef23
+Allowed paths: game/core/**; docs/results/R02-T01-a/**
+Code unchanged since tested_code_sha: PASS
+git diff --check 3a81daf0f42416ccb73a5a69748655145e6f2f0c: exit 0
+Changed/delivered paths:
+docs/results/R02-T01-a/PR-BODY.md
+docs/results/R02-T01-a/REPORT.md
+docs/results/R02-T01-a/core-tests.txt
+docs/results/R02-T01-a/legacy-check.txt
+docs/results/R02-T01-a/manifest.json
+docs/results/R02-T01-a/readme-example.txt
+docs/results/R02-T01-a/scope-check.txt
+docs/results/R02-T01-a/verification.json
+game/core/README.md
+game/core/deidei_core/__init__.py
+game/core/deidei_core/api.py
+game/core/deidei_core/engine.py
+game/core/deidei_core/entries.py
+game/core/deidei_core/wire.py
+game/core/pyproject.toml
+game/core/tests/test_contract.py
+game/core/tests/test_rules.py
