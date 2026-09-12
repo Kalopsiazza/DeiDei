@@ -1,11 +1,11 @@
 {
   "task_id": "R02-T02-a",
-  "status": "PARTIAL",
+  "status": "SUBMITTED",
   "local_package": "COMPLETE",
-  "remote_submission": "NOT_PUSHED",
+  "remote_submission": "PR_CREATED",
   "branch": "codex/r02-t02-a-tests",
   "result_pr_base": "docs/design-discussion-20260911",
-  "pr_url": null,
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/14",
   "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
   "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c",
   "tested_code_kind": "independent fixtures and harness, not game core",
@@ -71,7 +71,6 @@
     "AI/model inference"
   ],
   "waiting_for": [
-    "User authorization to push the prepared branch and create the review PR",
     "Planner review of independent expectations and harness",
     "Later integration package with a fixed accepted core SHA and session API"
   ],
@@ -89,13 +88,13 @@
   "artifacts": [
     {
       "path": "docs/results/R02-T02-a/PR-BODY.md",
-      "bytes": 2516,
-      "sha256": "d4dca9b4f626a165bb601005bdff4813bbf74bb2d063f6a1c6bae7ea54789888"
+      "bytes": 2496,
+      "sha256": "216a53487e8c2a981148ac10825407c642288c5e8c15e55d885658f96ac56829"
     },
     {
       "path": "docs/results/R02-T02-a/REPORT.md",
-      "bytes": 5464,
-      "sha256": "b4600895d77a69b22878b1b5c9122c8e4c9553f1d0291acaef999aae17955e45"
+      "bytes": 5511,
+      "sha256": "8b14716214f626501c8d0762c26b0d4ddd10b0b4097eb37d7cda46b1ace7e673"
     },
     {
       "path": "docs/results/R02-T02-a/base-check.txt",
@@ -151,6 +150,11 @@
       "path": "docs/results/R02-T02-a/session-preflight.txt",
       "bytes": 246,
       "sha256": "ec60ef87fb216d4a5d37873f2b9f9fd9558f466c22b43740031971a524d39f9e"
+    },
+    {
+      "path": "docs/results/R02-T02-a/submission.json",
+      "bytes": 683,
+      "sha256": "e4b83aba15ee4f31ce90cdb8c16f3b9610acbfb80d66e6b86bfd7217c93d2b7d"
     },
     {
       "path": "tests/rules_v1_001/README.md",
