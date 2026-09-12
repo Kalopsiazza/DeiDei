@@ -1,0 +1,9 @@
+DOCUMENT_CHECK_PASS
+UTF-8/line endings/Markdown table columns: 10 Markdown files
+Normative anchors R01-R28: 28; editorial entries E01-E33: 33 in rulebook and player guide
+Source mapping G01-G60: 60; expected case groups C001-C080: 80
+Substantive case entry coverage, excluding generic coverage row: 33/33
+Local/baseline links and explicit anchors: 327
+Exact sixth-unit numeric representation: 14 finite values checked; infinity remains a separate tag
+All new case groups: DESIGNED_NOT_RUN
+No game engine, model, GUI, multiplayer or installer tests were executed by this document check.
