@@ -1,0 +1,15 @@
+{
+  "command": [
+    "python3.11",
+    "tests/rules_v1_001/validate_fixtures.py",
+    "--fixtures",
+    "<temporary corrupted fixture copy>"
+  ],
+  "mutation": "Remove C001/both_charge expected.post_turn_players.A.cloud_uses from a temporary copy only",
+  "exit_code": 1,
+  "output": {
+    "status": "INVALID_FIXTURES",
+    "error": "INCOMPLETE_EXPECTATION C001/both_charge/round-1.expected.post_turn_players.A: missing ['cloud_uses']"
+  },
+  "tracked_fixtures_changed": false
+}

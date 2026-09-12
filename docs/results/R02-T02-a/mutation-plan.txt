@@ -1,0 +1,7 @@
+COMMAND: python3.11 tests/rules_v1_001/mutation_check.py
+EXIT_CODE: 2
+
+STDOUT
+{"status": "ENGINE_NOT_AVAILABLE", "mutations_killed": 0, "mutations": [{"id": "skip_dead_actor", "scope": "core", "cases": ["C004", "C026", "C043", "C050", "C060"], "change": "Skip later effects once the actor has a lethal record; dead reflectors/clearers/attackers must still act.", "status": "NOT_RUN", "binding": null}, {"id": "restore_collision_in_p3", "scope": "core", "cases": ["C024", "C026", "C053", "C075"], "change": "Use primary collision defense for returns instead of the defined P3 defense.", "status": "NOT_RUN", "binding": null}, {"id": "copy_charged_twice", "scope": "core", "cases": ["C037", "C038", "C039", "C065", "C075"], "change": "Add the copied move ordinary DD/charge/resource fee to the Zhang source spend plan.", "status": "NOT_RUN", "binding": null}, {"id": "recovery_is_repeat", "scope": "core", "cases": ["C066", "C067"], "change": "Remove the recovery exemption while comparing complete previous and current moves.", "status": "NOT_RUN", "binding": null}, {"id": "reward_replay_reapplies", "scope": "session", "cases": ["C081/session_request_replay"], "change": "Reapply an old due-turn result after the reward was spent; live state must remain spent.", "status": "NOT_RUN", "binding": null}, {"id": "drop_joint_killer", "scope": "core", "cases": ["C004", "C031", "C032", "C047", "C074/core_full_reset"], "change": "Record only the first killer of a target; every effective killer needs the same target.", "status": "NOT_RUN", "binding": null}]}
+
+STDERR

@@ -1,0 +1,75 @@
+[
+  {
+    "command": [
+      "python3.11",
+      "tests/rules_v1_001/validate_fixtures.py"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "evidence": "fixture-validation.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  },
+  {
+    "command": [
+      "python3.11",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "tests/rules_v1_001",
+      "-p",
+      "test_*.py",
+      "-v"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "evidence": "harness-self-check.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  },
+  {
+    "command": [
+      "python3.11",
+      "scripts/check.py"
+    ],
+    "exit_code": 0,
+    "expected_exit_code": 0,
+    "evidence": "base-check.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  },
+  {
+    "command": [
+      "python3.11",
+      "tests/rules_v1_001/run_acceptance.py",
+      "--core",
+      "game/core"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "evidence": "engine-preflight.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  },
+  {
+    "command": [
+      "python3.11",
+      "tests/rules_v1_001/run_acceptance.py",
+      "--core",
+      "game/core",
+      "--case",
+      "C081/session_request_replay"
+    ],
+    "exit_code": 3,
+    "expected_exit_code": 3,
+    "evidence": "session-preflight.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  },
+  {
+    "command": [
+      "python3.11",
+      "tests/rules_v1_001/mutation_check.py"
+    ],
+    "exit_code": 2,
+    "expected_exit_code": 2,
+    "evidence": "mutation-plan.txt",
+    "tested_code_sha": "380ca1fef0cbaac3359c1dc7177bb6d5eea7202c"
+  }
+]
