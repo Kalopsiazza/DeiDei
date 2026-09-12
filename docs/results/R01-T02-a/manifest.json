@@ -1,0 +1,291 @@
+{
+  "task_id": "R01-T02-a",
+  "status": "PARTIAL",
+  "input_ref": "plan/r01-v1",
+  "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "prd_version": "1.0",
+  "architecture_version": "1.0",
+  "tested_code_sha": "6187c2366f3be282db0d6bad73dd025c27224a87",
+  "branch": "work/r01-t02-a-tech",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/7",
+  "created_at_utc": "2026-09-11T04:46:02.531042+00:00",
+  "platforms": {
+    "macOS": {
+      "os": "27.0",
+      "build": "PASS",
+      "cpu": "Apple M2",
+      "arch": "arm64",
+      "memory_gb": 16,
+      "launch": "PASS_NATIVE_AUTOMATION_AND_CUA",
+      "physical_offline": "NOT_RUN",
+      "human_acceptance": "NOT_RUN",
+      "cycles": 10,
+      "os_build": "26A5425a"
+    },
+    "Windows": {
+      "os": null,
+      "cpu": null,
+      "build": "NOT_RUN",
+      "launch": "NOT_RUN",
+      "offline": "NOT_RUN",
+      "manual": "NOT_RUN"
+    }
+  },
+  "commands": [
+    {
+      "command": "python3 scripts/check.py",
+      "cwd": "repo root",
+      "exit_code": 0,
+      "evidence": "original-check.txt"
+    },
+    {
+      "command": ".venv/bin/python test-worker.py",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "worker-source.json"
+    },
+    {
+      "command": ".venv/bin/python test-worker.py dist/worker/worker",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "worker-packaged.json"
+    },
+    {
+      "command": "npm test",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "node-tests.txt"
+    },
+    {
+      "command": "npm run package",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "package-log.txt"
+    },
+    {
+      "command": "node smoke.cjs 'out/DeiDei R01 Tech-darwin-arm64/DeiDei R01 Tech.app/Contents/MacOS/DeiDei R01 Tech' ../../docs/results/R01-T02-a",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "desktop-smoke.json"
+    },
+    {
+      "command": ".model-venv/bin/python model-probe.py",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "model-probe.txt"
+    },
+    {
+      "command": "npm audit --json",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 1,
+      "evidence": "npm-audit.json"
+    },
+    {
+      "command": "npm audit --omit=dev --json",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "npm-audit-runtime.json"
+    },
+    {
+      "command": "100 sequential WorkerBridge choose_easy requests, seeds 0..99; see RUNBOOK IPC snippet",
+      "cwd": "experiments/r01-t02-a",
+      "exit_code": 0,
+      "evidence": "worker-performance.json"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "experiments/r01-t02-a/build/deliverables/DeiDei-R01-T02-a-macOS-arm64.zip",
+      "sha256": "77cafbb8fee263a3844fcf0fc14720d979a2646573f2aca834c651e8f2da264d",
+      "bytes": 136881083,
+      "kind": "local_macOS_arm64_zip",
+      "availability": "local_only; not uploaded",
+      "retention": "until local cleanup; no hosted retention promise"
+    },
+    {
+      "path": "experiments/r01-t02-a/build/deliverables/DeiDei-R01-T02-a-source.zip",
+      "sha256": "1b449204dddb6d7e392b2ddbec66411f22fbf99a47ceda5dc1072d089879e059",
+      "bytes": 2431534,
+      "kind": "local_source_zip",
+      "availability": "local_only; not uploaded",
+      "retention": "until local cleanup; no hosted retention promise"
+    },
+    {
+      "path": "PR-DRAFT.md",
+      "sha256": "a4a11d7198989153f3d2ce0c246bbe97c3571b893a9b68f9b87ddb884f78a680",
+      "bytes": 2099,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "f8e44b1a56af3fd5b1bfdbf1e7cd338b122d86f4ba40af89fe7b46af33be54aa",
+      "bytes": 6765,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "9b68b3751ea5ce609409fe5e3cf6f36edfe491cf123e9933fccdb77d27b810ed",
+      "bytes": 6644,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "build-summary.json",
+      "sha256": "d5658fb1ed257d31f60858a6dcf9d315451b264c0a6372b658397bda923ab87b",
+      "bytes": 1380,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "darwin-packaged-window.png",
+      "sha256": "d1375d5570fda36d89f4586660055dd4170737be0c82138470f92a1d3a0bee3d",
+      "bytes": 164883,
+      "kind": "screenshot",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "desktop-smoke.json",
+      "sha256": "547ac2de52a85a4b2344c4c4408926dc0001a45c4945f0d0b9917bb3a9dda976",
+      "bytes": 26233,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "initial-failure.json",
+      "sha256": "ad8109a686009dcfd58ef218902e0da70b90c88f10a21096f70150cc5854d5e1",
+      "bytes": 480,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "macos-chinese-path-error.png",
+      "sha256": "fa16ee09f237b11a7b670b184862c932c1d2fa3b5c590034c63dd12a3f9cb38e",
+      "bytes": 83934,
+      "kind": "screenshot",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "macos-final-error.png",
+      "sha256": "eaff710868667b272b2b6c614ca3fd5feec6755345d99c177c6e3155dbb33ffa",
+      "bytes": 84810,
+      "kind": "screenshot",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "macos-packaged-window.png",
+      "sha256": "d1375d5570fda36d89f4586660055dd4170737be0c82138470f92a1d3a0bee3d",
+      "bytes": 164883,
+      "kind": "screenshot",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "manual-observations.json",
+      "sha256": "6fac1cb1ad9b61eae4c35908dcce9dfa80da2e27d524e5383cefa88fc435a3a8",
+      "bytes": 692,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "model-probe.txt",
+      "sha256": "013e0ec76a5821eb193d558146fbe0200115f5289e4c8d0d33f95725da960e33",
+      "bytes": 790,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "node-tests.txt",
+      "sha256": "126f6f939d4184e9151ad5860544c28a640a5340ee39fcf8644f117c0bcdba80",
+      "bytes": 338,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "npm-audit-runtime.json",
+      "sha256": "0e144ddf942b0486313d0fd9eb308e86f10cb010e50815cbb316877d0d674cd5",
+      "bytes": 363,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "npm-audit.json",
+      "sha256": "1f8df2299a0f091af0d41122954f18fcefe8633022c78c25781351725e7819db",
+      "bytes": 19741,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "original-check.txt",
+      "sha256": "f7b715b9a85e19f4bf2f9778cfcab4244cdc1a83e42e8f865c57fa6c150bffd5",
+      "bytes": 3882,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "package-log.txt",
+      "sha256": "828bda078ff869725740c6347807e1378125d8b52f74ab3ab1f8320c7b10f86c",
+      "bytes": 854,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "source-manifest.json",
+      "sha256": "b74b4f1cc431c1a3256a8a5f0a600c705950abbec34378bbc1060b14b6ceaa17",
+      "bytes": 112,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "worker-packaged.json",
+      "sha256": "05434b9a7b686f115ec7eb585de85995b95b231d7da16ad60906632d4cddfe29",
+      "bytes": 6992,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "worker-performance.json",
+      "sha256": "20a5b6eef8848fc0dd35012b1adccd46e12858af9ca7d212be9b06ba6ff241cd",
+      "bytes": 2663,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    },
+    {
+      "path": "worker-source.json",
+      "sha256": "05434b9a7b686f115ec7eb585de85995b95b231d7da16ad60906632d4cddfe29",
+      "bytes": 6992,
+      "kind": "report_or_log",
+      "retention": "git history after local result commit"
+    }
+  ],
+  "open_questions": [
+    "Windows native build/launch/offline/manual evidence required",
+    "Physical disconnected cold launch and no system runtimes test required",
+    "Teddy manual acceptance missing",
+    "Developer ID signing/notarization and Windows signing untested",
+    "Forge development dependency audit remediation for subsequent package",
+    "Full expert strategy and model distribution untested"
+  ],
+  "artifact_code_overrides": {
+    "macos-packaged-window.png": "c703ffa (earlier successful iteration)",
+    "macos-chinese-path-error.png": "c703ffa (earlier successful iteration)"
+  },
+  "source_unchanged": [
+    "deidei_env.py",
+    "gui_deidei.py",
+    "rl_ai.py",
+    "deidei_gym_env.py",
+    "rl_checkpoints/",
+    "tests/",
+    ".github/workflows/",
+    "requirements_rl.txt"
+  ],
+  "evidence_path_base": "docs/results/R01-T02-a; binary artifact paths are repository-relative",
+  "submission": {
+    "date": "2026-09-12",
+    "status": "submitted_for_review_with_PARTIAL_execution",
+    "target_branch": "docs/design-discussion-20260911",
+    "merged": false,
+    "code_changed_since_test": false
+  }
+}
