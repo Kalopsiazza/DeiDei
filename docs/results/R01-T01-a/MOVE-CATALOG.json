@@ -1,0 +1,6348 @@
+{
+  "schema_version": 1,
+  "framework_version": "0.38",
+  "discussion_round": 40,
+  "status": "DISCUSSION_DATA_NOT_EXECUTABLE",
+  "units": {
+    "combat": "规则攻击/防御数值；分数用有理数字符串，无穷用POSITIVE_INFINITY",
+    "dd": "独立资源，旧内部1DD=6单位；未改引擎单位",
+    "note": "伤害/防御数值不得直接推算成本或吸收收益"
+  },
+  "fact_statuses": {
+    "CONFIRMED": "用户明确确认",
+    "DERIVED": "从确认通则或采用阶段划分推导",
+    "CODE_CANDIDATE": "仅来自旧代码，供逐表确认",
+    "PROPOSED": "助手提出、尚未采纳",
+    "OPEN": "没有足够依据，必须保留待定"
+  },
+  "phases": {
+    "PREPARE": "P1准备",
+    "PRIMARY": "P2原始作用",
+    "RETURN": "P3反弹回击",
+    "COMMIT": "P4统一汇总"
+  },
+  "categories": {
+    "attack": "普通攻击",
+    "special_attack": "带特殊资源或匹配的攻击",
+    "defense": "防御与附加状态",
+    "counter": "反制与吸收",
+    "conditional": "条件成功招式",
+    "selector": "选择分支的完整招式",
+    "resource": "资源与延迟资源",
+    "source_entry": "来源入口与张新伟替身",
+    "multi_turn": "跨回合招式"
+  },
+  "common_commit": {
+    "id": "COMMON-COMMIT",
+    "phase": "COMMIT",
+    "rules": [
+      "费用/使用次数每次施放只应用一次，不按目标重复扣费",
+      "本轮死亡是结果而非招式属性；汇总全部作用后淘汰，不按中途alive取消作用；淘汰只影响后续回合参与",
+      "更新上一轮实际招式；仅当本轮强度≥2且不在G50禁用范围时，更新最近可复制高阶完整原招；其它招不覆盖。曾义按G49清空且不得回查恢复，赠送到账不等于实际出招历史",
+      "推进既有炸药队列；新放置按T+1末成熟、T+2初可用",
+      "来源入口委托原招效果，但不重复执行入口/原招两份费用或历史",
+      "田利军对攒者的清空在P4覆盖该目标最终DD；不撤销其它吸收者独立收益，不以事件遍历顺序决定",
+      "P4先产出完整本轮结算记录，再按G57/G58推进对局：继续本局、重置存活者开始新局、唯一存活者获胜结束或全员淘汰无人获胜；不得在逐人判定中途重置状态。原局作用日志可保留但不能作为新局规则历史读取"
+    ]
+  },
+  "moves": [
+    {
+      "id": "Charge",
+      "legacy_index": 0,
+      "legacy_enum": 2,
+      "name": "攒",
+      "category": "resource",
+      "roles": [
+        "资源增长"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Charge；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Charge",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "正常非负DD状态可用",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:140,198-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:140",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R29",
+          "G48"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "0表示无防御",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "无有效匹配",
+            "status": "DERIVED",
+            "evidence": [
+              "G22"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "charge_gain",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "正常攒＋1DD；吸收/云取消本次增长，本取消效果不扣旧余额；多个吸收/云只取消一次。田利军另依G34清空最终DD；本轮受致命作用不撤销已成立资源作用",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G27",
+              "G29",
+              "G34",
+              "TEDDY:R28"
+            ]
+          }
+        },
+        {
+          "id": "tian_clear_reference",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "本轮遇田利军清空时，P4最终DD=0，含旧余额和本次增长；本条引用田利军的清空作用，不再另生成一份清空事件",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28",
+              "G34"
+            ]
+          }
+        },
+        {
+          "id": "xiaobei_code_kill_reference",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "本轮出攒对小贝的特殊代码杀由XiaoBei条目登记，本条仅引用，不再生成第二次。攒的普通攻击值仍为0；小贝对该攒者攻击不生效，但其他人的攻击和资源作用照常处理",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R29",
+              "G02",
+              "G37"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R29",
+        "G37",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Bi",
+      "legacy_index": 1,
+      "legacy_enum": 3,
+      "name": "bi",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Bi；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Bi",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少1DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "1DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按攻击强度派生：bi1或削1/3均小于2，不属于高阶",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G40"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "1",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "按本条目标/特别交互；原值不等于DD消耗",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "1",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G40",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Def",
+      "legacy_index": 2,
+      "legacy_enum": 4,
+      "name": "普通防御",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "充能"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Def；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Def",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "攻击0<2，不属于高阶，不更新复制记录",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R36",
+          "G48",
+          "G51",
+          "G52"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "1",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "通常防御≤1，普通削按G04；大bi按G42特例允许；强化削按G53明确禁止，即使1/3≤1也挡不住",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2先匹配明确例外：强化削禁止、大bi允许、普通削按G04；其余依≤1及匹配判断。P3范围仍待U06",
+            "status": "DERIVED",
+            "evidence": [
+              "G04",
+              "G42",
+              "G52",
+              "G53",
+              "TEDDY:R36",
+              "U06"
+            ]
+          }
+        },
+        {
+          "id": "base_nx_charge",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每次合法普通防御基础＋1聂湘充能，只按施放一次计算",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28"
+            ]
+          }
+        },
+        {
+          "id": "bonus_nx_charge",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2每独立挡住一次符合条件的bi、普通削或大bi，再＋1聂湘充能；同一来袭不重复计算；P4与施放基础＋1相加。挡一次大bi合计2，挡两次大bi合计3；本轮因其它来袭淘汰也不撤销已成立充能",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28",
+              "TEDDY:R32",
+              "G02",
+              "G10",
+              "G33"
+            ]
+          }
+        },
+        {
+          "id": "bigbi_block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2明确防住大bi，不用普通防御常规阈值把此项筛掉；只扩充本次大bi匹配，不自动使普通防御能够挡三雷、Pragon或沃尔沃；“针对bi的防”仅指本Def，不扩展到炸药、距喦等其它能挡bi的招式",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G42"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R28",
+        "G33",
+        "TEDDY:R31",
+        "G41",
+        "G42",
+        "TEDDY:R32",
+        "G33",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R36",
+        "G53",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Three",
+      "legacy_index": 3,
+      "legacy_enum": 5,
+      "name": "三雷",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Three；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Three",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少3DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "3DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按已确认攻击强度≥2派生：属于高阶；本项不是额外资格开关",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G40"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "按本条目标/特别交互；原值不等于DD消耗",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G40",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "ThreeDef",
+      "legacy_index": 4,
+      "legacy_enum": 6,
+      "name": "三雷防",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "专属匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=ThreeDef；来源=普通施放",
+        "inherits": [],
+        "actual_move": "ThreeDef",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "攻击0<2，不属于高阶，不更新复制记录",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R36",
+          "G48",
+          "G51",
+          "G52"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "通常匹配三雷；普通削统一按G04；四专属均不能挡bi",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "=",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2依据防御数值和三雷匹配；普通削例外保持；P3是否有效待U06",
+            "status": "DERIVED",
+            "evidence": [
+              "G04",
+              "G06",
+              "U06"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "BigBi",
+      "legacy_index": 5,
+      "legacy_enum": 7,
+      "name": "大bi",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=BigBi；来源=普通施放",
+        "inherits": [],
+        "actual_move": "BigBi",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少5DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "5DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "大bi攻击强度5≥2，属于高阶；赠送来源也可在实际使用后成为张新伟复制依据",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G18"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "5",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "强度5；反弹不可防/不可反弹；普通防御依特例可挡，吸收/云可挡，田利军依≤9可挡；高数值持续防御按G46处理，不把实际身份改成Bi",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "5",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "counter_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "反弹无法防御或回击大bi，反弹者受本次强度5攻击淘汰，不新增代码杀；普通防御依特例可挡、吸收/云可挡，田利军≤9亦可挡；吸收得5DD、净＋4；云不获攻击DD，仍每次＋1雷电",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "TEDDY:R33",
+              "G41",
+              "G42",
+              "G46"
+            ]
+          }
+        },
+        {
+          "id": "high_defense_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": null,
+          "rule": {
+            "value": "大bi不具备穿透所有高数值防御的全局属性；由防御数值化及既有持续保护推导，成功自bi、成功历强、曾义的∞/9999能挡住5；普通防特例与反弹禁止保持",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R33",
+              "G07",
+              "G20",
+              "G43",
+              "G46"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G40",
+        "TEDDY:R31",
+        "G41",
+        "G42",
+        "TEDDY:R33",
+        "G46",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Reflect",
+      "legacy_index": 6,
+      "legacy_enum": 8,
+      "name": "反弹",
+      "category": "counter",
+      "roles": [
+        "防御",
+        "逐次回击"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Reflect；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Reflect",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有≥1DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:146",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "1DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:146",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "不可复制；这是明确复制禁用，不因成功攻击10000或反弹回击达到2而放开；不覆盖先前有效复制记录",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G50",
+          "G51"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "returned_attack",
+          "kind": "attack",
+          "when": "该次反弹条件成立",
+          "value": {
+            "value": "对应原来袭攻击值",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R24"
+            ]
+          },
+          "match": "目标仅原攻击者；不复制原招全部属性",
+          "generated_in": "PRIMARY",
+          "active_in": {
+            "PRIMARY": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "100",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R22"
+            ]
+          },
+          "match": "超限该次防御与反弹均失效；上限内仍按特别匹配；扇贝、小贝、大bi明确不可防/不可反弹",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R22"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "register_return",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": null,
+          "rule": {
+            "value": "P2逐攻击者判断反弹条件，成立则登记原值回击；无效果或超限不生成；聂湘可反弹，值为3.5；同轮受到致命作用不取消其它回击",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G24",
+              "G25",
+              "G28",
+              "G32",
+              "TEDDY:R28"
+            ]
+          }
+        },
+        {
+          "id": "resolve_return",
+          "evaluate_in": "RETURN",
+          "resolve_in": "RETURN",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P3回击原攻击者，按此阶段适用防御判定；有效击杀归反弹者",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G25",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "shell_counter_exclusions",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "反弹不能防住扇贝/小贝，亦不能为它们登记回击；属于类别例外，即使攻击数值不超100也不允许",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G35"
+            ]
+          }
+        },
+        {
+          "id": "ordinary_returns",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "普通削、强化削与bi可防，并分别登记1/3、1/3、1的原值回击，P3只回原攻击者；大bi被明确排除，不能登记5回击",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G25",
+              "G28",
+              "G41",
+              "G42"
+            ]
+          }
+        },
+        {
+          "id": "bigbi_exclusion",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "即使5≤100，反弹仍无法防住大bi，也不产生该次回击；大bi对本反弹者的普通攻击生效。本轮被大bi击杀不取消对其它合规来袭的回击",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R31",
+              "G02",
+              "G24",
+              "G42"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G31：对田利军的代码杀只由TianLiJun条目登记，不重复生成",
+        "TEDDY:R28",
+        "G32",
+        "TEDDY:R29",
+        "G35",
+        "TEDDY:R31",
+        "G41",
+        "G42",
+        "G48",
+        "G50",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Suicide",
+      "legacy_index": 7,
+      "legacy_enum": 9,
+      "name": "自 bi",
+      "category": "conditional",
+      "roles": [
+        "条件攻击",
+        "持续保护",
+        "失败自身淘汰"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Suicide；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Suicide",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:147",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:147",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "不可复制；这是明确复制禁用，不因成功攻击10000或反弹回击达到2而放开；不覆盖先前有效复制记录",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G50",
+          "G51"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack_success",
+          "kind": "attack",
+          "when": "至少一名符合条件的其他玩家",
+          "value": {
+            "value": "10000",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          },
+          "match": "仅针对反弹/吸收/云等已确认成功对象",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense_success",
+          "kind": "defense",
+          "when": "成功",
+          "value": {
+            "value": "POSITIVE_INFINITY",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          },
+          "match": "持续保护跨P2/P3，不因进入回击阶段消失",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          }
+        },
+        {
+          "id": "defense_failure",
+          "kind": "defense",
+          "when": "未成功",
+          "value": {
+            "value": "0",
+            "status": "DERIVED",
+            "evidence": [
+              "G12",
+              "G22"
+            ]
+          },
+          "match": "自身淘汰不是可用防御抵消的普通攻击",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "无防御",
+            "status": "DERIVED",
+            "evidence": [
+              "G12",
+              "G22"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "self_bi_success",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "P1读取全场招式；至少对一人符合条件则成功；成功不以最终击杀为前提，生成10000和无穷保护",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G12",
+              "G23"
+            ]
+          }
+        },
+        {
+          "id": "self_bi_damage",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "成功时P2只攻击符合条件目标；其它玩家不会因此受到全场10000攻击",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G23"
+            ]
+          }
+        },
+        {
+          "id": "self_bi_failure",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "未成功必定自身淘汰；P2登记、P4汇总，两名纯自bi且无成功对象时均淘汰",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G12"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06",
+        "U08"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G42",
+        "U05",
+        "TEDDY:R33",
+        "G46",
+        "G48",
+        "G50",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Cloud",
+      "legacy_index": 8,
+      "legacy_enum": 10,
+      "name": "云",
+      "category": "counter",
+      "roles": [
+        "防御",
+        "雷电资源",
+        "阻止攒"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Cloud；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Cloud",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "首次0DD可用；以后持有≥1DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:148",
+            "TEDDY:R32",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "首次0DD，以后1DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:148",
+            "TEDDY:R32",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "100",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27"
+            ]
+          },
+          "match": "与吸收共用防御匹配；普通削、强化削、bi、大bi、Pragon、三雷、普通/炸药沃尔沃及已确认炸药攻击可防；聂湘及两贝不可防；超100不防",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "cloud_block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "沿用吸收的防御上限与特别匹配，包括普通削、强化削、bi、大bi及同来源沃尔沃分支，不获被防住攻击的DD；自bi分支按自bi规则；该次超限不取消其它独立作用",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27",
+              "TEDDY:R30",
+              "TEDDY:R31",
+              "G38",
+              "G39",
+              "G41",
+              "G42"
+            ]
+          }
+        },
+        {
+          "id": "cloud_deny_charge",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对每个出攒者分别取消本次增长，不扣旧DD；被多个云或吸收影响也只取消一次增长；本效果不产生对攒者的攻击或淘汰",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27"
+            ]
+          }
+        },
+        {
+          "id": "cloud_resource",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每次合法施放固定增加1雷电，与对手人数、来袭次数及是否挡住攻击无关；P4一次写回；使用次数用于已确认首次免费、后续1DD的费用规则",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27",
+              "TEDDY:R37",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R27",
+        "G29",
+        "G31：对田利军的代码杀只由TianLiJun条目登记，不重复生成",
+        "TEDDY:R28",
+        "G32",
+        "TEDDY:R29",
+        "G35",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "TEDDY:R31",
+        "G41",
+        "G42",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Bomb",
+      "legacy_index": 9,
+      "legacy_enum": 11,
+      "name": "炸药",
+      "category": "resource",
+      "roles": [
+        "延迟资源",
+        "成长防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Bomb；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Bomb",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有≥1DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:149",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "1DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:149",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "按回合开始已有放置次数计算本次档位",
+          "value": {
+            "value": "第1/2/3/4及以后次：1/3、1、2、3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R01,R04"
+            ]
+          },
+          "match": "每次来袭独立比较；强化削按G53明确禁止，任何已确认防御档位都不能挡强化削；其它特殊匹配保持",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R04"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "bomb_block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2按本次档位逐来袭防御，不相加、不耗减；强化削明确不能防住，即使本次档位≥1/3仍失败",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G53",
+              "G09",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "place_bomb",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "T放置，T+1末成熟，T+2初可用；P4登记本次放置及次数，不能当轮兑换刚放置的层",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R01,R04"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G42",
+        "U05",
+        "G48",
+        "TEDDY:R36",
+        "G53",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Xiao",
+      "legacy_index": 10,
+      "legacy_enum": 12,
+      "name": "削",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御",
+        "条件强化"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Xiao；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Xiao",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "普通削须持有≥1/3DD；强化削须有buff且持有≥1/3DD，虽然实际费用为0也保留此门槛",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01",
+            "TEDDY:R37",
+            "G05",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "普通削扣1/3DD；强化削实际扣0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按攻击强度派生：bi1或削1/3均小于2，不属于高阶",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G40"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "1/3；普通与强化相同",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "普通削适用G04；强化削不适用普通削通则，普通防与放炸药明确挡不住，不能仅凭攻击1/3推导可防",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "1/3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "xiao_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "普通削被本阶段有效且数值>0的防御挡住；强化削按明确匹配：普通防/放炸药不能挡，反弹可挡并回击1/3，田利军可挡，吸收/云可挡但无攻击DD收益，距喦按≤1/3可挡。其它攻防按既有通则及专属匹配",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G53",
+              "G04",
+              "G30",
+              "G41",
+              "G46",
+              "TEDDY:R40",
+              "G60"
+            ]
+          }
+        },
+        {
+          "id": "consume_buff",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "buff保留至下一次声明削；合法出招时P1确定强化并登记消耗，P4清除；不可用牌置灰不能提交；异常无效请求在P1拒收，不消耗buff；曾义另按G44清空强化削buff，不需先声明削",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R01",
+              "G01",
+              "U07",
+              "TEDDY:R33",
+              "G44",
+              "TEDDY:R38",
+              "G56"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G40",
+        "G48",
+        "TEDDY:R36",
+        "G53",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Pragon",
+      "legacy_index": 11,
+      "legacy_enum": 13,
+      "name": "Pragon",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Pragon；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Pragon",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少2DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "2DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按已确认攻击强度≥2派生：属于高阶；本项不是额外资格开关",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G40"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "按本条目标/特别交互；原值不等于DD消耗",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G40",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "PragonDef",
+      "legacy_index": 12,
+      "legacy_enum": 14,
+      "name": "Pragon防",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "专属匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=PragonDef；来源=普通施放",
+        "inherits": [],
+        "actual_move": "PragonDef",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R20"
+            ]
+          },
+          "match": "通常匹配Pragon；普通削统一按G04；四专属均不能挡bi",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "=",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R20"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2依据防御数值和Pragon匹配；普通削例外保持；P3是否有效待U06",
+            "status": "DERIVED",
+            "evidence": [
+              "G04",
+              "G06",
+              "U06"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Volvo",
+      "legacy_index": 13,
+      "legacy_enum": 15,
+      "name": "沃尔沃",
+      "category": "attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Volvo；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Volvo",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少4DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "4DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按已确认攻击强度≥2派生：属于高阶；本项不是额外资格开关",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G40"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "4",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "按本条目标/特别交互；原值不等于DD消耗",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "4",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          },
+          "match": "P2普通对撞先处理明确特别匹配，再比较数值；不作为P3回弹防御；普通防御对大bi的允许不扩成所有能挡bi的招式",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G40"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "counter_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "普通沃尔沃与炸药沃尔沃均可被吸收/云防住；普通来源吸收收益为沃尔沃攻击对应DD，不按实际支付量；炸药来源收益0。云均不取得攻击DD；数值上限仍依G24/G29",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R30",
+              "G38"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "TEDDY:R31",
+        "G40",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "VolvoDef",
+      "legacy_index": 14,
+      "legacy_enum": 16,
+      "name": "沃尔沃防",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "专属匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=VolvoDef；来源=普通施放",
+        "inherits": [],
+        "actual_move": "VolvoDef",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "攻击0<2，不属于高阶，不更新复制记录",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R36",
+          "G48",
+          "G51",
+          "G52"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "4",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "攻击强度=4且攻击类别为沃尔沃；普通/炸药/张新伟来源不影响匹配；翻转沃尔沃选中沃尔沃分支时沿用。普通削按G04；不挡bi或强化削",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "=",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2比较=4并匹配沃尔沃攻击类别，炸药版本同样可防；依据完整原招与分支规则，翻转取沃尔沃时沿用匹配。普通削例外保持；P3范围仍待U06",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R36",
+              "G03",
+              "G04",
+              "G06",
+              "G39",
+              "G52",
+              "U06"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "RotateThree",
+      "legacy_index": 15,
+      "legacy_enum": 17,
+      "name": "旋转三雷",
+      "category": "selector",
+      "roles": [
+        "唯一分支",
+        "限定范围择优"
+      ],
+      "resolution": {
+        "kind": "selector",
+        "phase": "PREPARE",
+        "description": "实际招式=RotateThree；分支=Three/Suicide；来源=普通",
+        "inherits": [
+          "Three：仅效果/攻防",
+          "Suicide：仅效果/攻防"
+        ],
+        "actual_move": "RotateThree",
+        "origin": "normal",
+        "branch_candidates": [
+          "Three",
+          "Suicide"
+        ]
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "普通来源持有≥6DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:155-157",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "6DD；选择分支不改按分支收费",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:155-157",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮选定分支生成的攻击强度≥2判断；记录完整旋转三雷/翻转沃尔沃，不将自bi分支当作实际Suicide复制目标",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G13",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "selected_attack",
+          "kind": "attack",
+          "when": "锁定一个分支",
+          "value": {
+            "value": "引用选定Three或Suicide分支攻击属性",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G17",
+              "G18"
+            ]
+          },
+          "match": "保留完整原招身份；不使用旧原招power当分支强度",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "选定Three分支",
+          "value": {
+            "value": "引用Three已确认对撞防御3",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G39",
+              "G40",
+              "TEDDY:R31"
+            ]
+          },
+          "match": "仅P2对撞",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "DERIVED",
+            "evidence": [
+              "G40",
+              "TEDDY:R31"
+            ]
+          }
+        },
+        {
+          "id": "conditional_defense",
+          "kind": "defense",
+          "when": "选定Suicide分支",
+          "value": {
+            "value": "自bi成功≤无穷，失败0",
+            "status": "DERIVED",
+            "evidence": [
+              "G12",
+              "G13"
+            ]
+          },
+          "match": "继承该分支条件与持续保护",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "依分支",
+            "status": "DERIVED",
+            "evidence": [
+              "G13"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "select_branch",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "各自在自己＋固定招式玩家中完整试算P2/P3/P4，排除其它选择者全部影响；自保存活优先，再有效击杀，平手随机；锁定后全场重算不重选",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G13",
+              "G14",
+              "G15",
+              "G17",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "branch_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2执行选定Three或Suicide的原始效果，持续保护按属性覆盖P3；不继承分支门槛、费用、历史身份",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G18"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "XiaoBei",
+      "legacy_index": 16,
+      "legacy_enum": 18,
+      "name": "小贝",
+      "category": "special_attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御",
+        "特殊匹配",
+        "遇攒代码杀"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=XiaoBei；来源=普通施放",
+        "inherits": [],
+        "actual_move": "XiaoBei",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少7DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "7DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "攻击7≥2，属于可复制高阶；资格按统一强度门槛派生",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R36",
+          "G48",
+          "G50",
+          "G52"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "7",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "对扇贝/小贝目标的攻击按G36互相抵消；反弹/吸收/云按G35不可防；其它目标独立处理；对本轮按攒生效的目标，本次攻击不生效（由保留小贝败局推导，见G37），不取消对其它人的攻击",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "7",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "特殊招抵消另列，不作为P3回弹防御",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "pair_neutrality",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "当双方分别为扇贝或小贝时，只取消该对双方之间的原始攻击，不改变整招攻击属性、不取消对第三人的作用，也不判全场平局",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G36"
+            ]
+          }
+        },
+        {
+          "id": "counter_exclusions",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "反弹、吸收、云均不能防住本攻击，不能产生对应反弹或吸收DD收益；属于攻击类别例外，不由≤100自动覆盖",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G35"
+            ]
+          }
+        },
+        {
+          "id": "shield_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按已确认数值与特别匹配逐对判断：普通低数值防御不足以挡两贝，田利军对两贝明确禁用；成功自bi/历强/曾义持续保护按∞/9999比较。旧代码的全体普通格挡排除不能扩成穿透一切高防御",
+            "status": "DERIVED",
+            "evidence": [
+              "G22",
+              "G35",
+              "G36",
+              "G46",
+              "G52",
+              "TEDDY:R36"
+            ]
+          }
+        },
+        {
+          "id": "charge_code_loss",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对每个出攒者匹配特殊代码杀，小贝被直接登记淘汰，不填伤害值、不经防御或反制比较。保留小贝方输的完整交互意味着小贝对该攒者攻击不生效；此匹配排除不因死亡触发，也不影响其它目标。P1确定条件、P2登记、P4淘汰；作用者为对应攒者，多个攒者各自归因，目标只淘汰一次",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G02",
+              "G16",
+              "G28",
+              "G37"
+            ]
+          },
+          "kind": "DIRECT_ELIMINATION"
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R29",
+        "G35",
+        "G36",
+        "G37",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "FlipVolvo",
+      "legacy_index": 17,
+      "legacy_enum": 19,
+      "name": "翻转沃尔沃",
+      "category": "selector",
+      "roles": [
+        "唯一分支",
+        "限定范围择优"
+      ],
+      "resolution": {
+        "kind": "selector",
+        "phase": "PREPARE",
+        "description": "实际招式=FlipVolvo；分支=Volvo/Suicide；来源=普通",
+        "inherits": [
+          "Volvo：仅效果/攻防",
+          "Suicide：仅效果/攻防"
+        ],
+        "actual_move": "FlipVolvo",
+        "origin": "normal",
+        "branch_candidates": [
+          "Volvo",
+          "Suicide"
+        ]
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "普通来源持有≥8DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:155-157",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "8DD；选择分支不改按分支收费",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:155-157",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮选定分支生成的攻击强度≥2判断；记录完整旋转三雷/翻转沃尔沃，不将自bi分支当作实际Suicide复制目标",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G13",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "selected_attack",
+          "kind": "attack",
+          "when": "锁定一个分支",
+          "value": {
+            "value": "引用选定Volvo或Suicide分支攻击属性",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G17",
+              "G18"
+            ]
+          },
+          "match": "保留完整FlipVolvo身份；分支强度及吸收对应DD按所选效果，不使用旧原招power或8DD费用代替",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "选定Volvo分支",
+          "value": {
+            "value": "引用Volvo已确认对撞防御4",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G39",
+              "G40",
+              "TEDDY:R31"
+            ]
+          },
+          "match": "仅P2对撞",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "DERIVED",
+            "evidence": [
+              "G40",
+              "TEDDY:R31"
+            ]
+          }
+        },
+        {
+          "id": "conditional_defense",
+          "kind": "defense",
+          "when": "选定Suicide分支",
+          "value": {
+            "value": "自bi成功≤无穷，失败0",
+            "status": "DERIVED",
+            "evidence": [
+              "G12",
+              "G13"
+            ]
+          },
+          "match": "继承该分支条件与持续保护",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "依分支",
+            "status": "DERIVED",
+            "evidence": [
+              "G13"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "select_branch",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "各自在自己＋固定招式玩家中完整试算P2/P3/P4，排除其它选择者全部影响；自保存活优先，再有效击杀，平手随机；锁定后全场重算不重选",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G13",
+              "G14",
+              "G15",
+              "G17",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "branch_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2执行选定Volvo或Suicide的原始效果，持续保护按属性覆盖P3；沃尔沃分支沿用同来源沃尔沃的防御匹配和吸收收益，自bi分支按自bi成功状态/10000结算；保留完整FlipVolvo身份及入口费用，不继承分支门槛、费用或历史身份",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R30",
+              "G39",
+              "G13",
+              "G18"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Shell",
+      "legacy_index": 18,
+      "legacy_enum": 20,
+      "name": "扇贝",
+      "category": "special_attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御",
+        "特殊匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Shell；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Shell",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有至少10DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "10DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171,247",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "攻击10≥2，属于可复制高阶；资格按统一强度门槛派生",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R36",
+          "G48",
+          "G50",
+          "G52"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "10",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "对扇贝/小贝目标的攻击按G36互相抵消；反弹/吸收/云按G35不可防；其它目标独立处理",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "10",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "特殊招抵消另列，不作为P3回弹防御",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "pair_neutrality",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "当双方分别为扇贝或小贝时，只取消该对双方之间的原始攻击，不改变整招攻击属性、不取消对第三人的作用，也不判全场平局",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G36"
+            ]
+          }
+        },
+        {
+          "id": "counter_exclusions",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "反弹、吸收、云均不能防住本攻击，不能产生对应反弹或吸收DD收益；属于攻击类别例外，不由≤100自动覆盖",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R29",
+              "G35"
+            ]
+          }
+        },
+        {
+          "id": "shield_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按已确认数值与特别匹配逐对判断：普通低数值防御不足以挡两贝，田利军对两贝明确禁用；成功自bi/历强/曾义持续保护按∞/9999比较。旧代码的全体普通格挡排除不能扩成穿透一切高防御",
+            "status": "DERIVED",
+            "evidence": [
+              "G22",
+              "G35",
+              "G36",
+              "G46",
+              "G52",
+              "TEDDY:R36"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R29",
+        "G35",
+        "G36",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "Absorb",
+      "legacy_index": 19,
+      "legacy_enum": 21,
+      "name": "吸收",
+      "category": "counter",
+      "roles": [
+        "防御",
+        "攻击资源吸收",
+        "阻止攒"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=Absorb；来源=普通施放",
+        "inherits": [],
+        "actual_move": "Absorb",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "持有≥1DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01,R23"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "1DD，一次施放只扣一次",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01,R23,R24"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "100",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R22"
+            ]
+          },
+          "match": "上限内仍需匹配；普通削、强化削、bi、大bi、Pragon、三雷、普通/炸药沃尔沃及已确认炸药攻击可防；聂湘及两贝不可防；10000超限不可防",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R22"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "absorb_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每次合规攻击独立防御并取得攻击对应DD，收益求和、费用一次：普通削1/3、bi1、Pragon2、三雷3、沃尔沃4、大bi5；雷电/张新伟来源不按实际付款减少收益。选中普通攻击分支时按该分支计；强化削及炸药攻击收益0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G05",
+              "G11",
+              "G24",
+              "G26",
+              "G38",
+              "G39",
+              "G40",
+              "G41",
+              "TEDDY:R31"
+            ]
+          }
+        },
+        {
+          "id": "absorb_charge",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每个攒者使本吸收者获得1DD，并阻止对方本次攒；多人各得对应份数，本吸收效果不扣攒方旧余额。田利军清空该攒者DD不撤销本吸收者独立收益",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G27",
+              "G34",
+              "TEDDY:R28"
+            ]
+          }
+        },
+        {
+          "id": "ordinary_absorb_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "普通削、bi、大bi均可防并获得各自对应DD；强化削可防但收益0。普通/炸药沃尔沃沿用G38；聂湘及两贝不可防。大bi不可反弹不影响吸收生效",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R31",
+              "G32",
+              "G35",
+              "G38",
+              "G41",
+              "G42"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G31：对田利军的代码杀只由TianLiJun条目登记，不重复生成",
+        "TEDDY:R28",
+        "G32",
+        "TEDDY:R29",
+        "G35",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "TEDDY:R31",
+        "G41",
+        "G42",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "NieXiang",
+      "legacy_index": 20,
+      "legacy_enum": 22,
+      "name": "聂湘",
+      "category": "special_attack",
+      "roles": [
+        "原始攻击",
+        "对撞防御",
+        "特殊匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=NieXiang；来源=普通施放",
+        "inherits": [],
+        "actual_move": "NieXiang",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "普通来源须持有≥4聂湘充能，0DD可用；张新伟来源不检查此充能门槛，改用张新伟资格",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R28",
+            "TEDDY:R37",
+            "G55"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "普通来源扣4聂湘充能、0DD，余量保留；张新伟来源扣0充能、0DD，消耗张新伟一次资格",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R28",
+            "TEDDY:R37",
+            "G55"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按已确认攻击强度≥2派生：属于高阶；本项不是额外资格开关",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G32"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "7/2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28"
+            ]
+          },
+          "match": "强度3.5；可被反弹；吸收与云不能防住，也无吸收收益；聂湘防按=3.5且聂湘类别匹配",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "clash_defense",
+          "kind": "defense",
+          "when": "普通攻击对撞适用时",
+          "value": {
+            "value": "7/2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          },
+          "match": "特殊招抵消另列，不作为P3回弹防御",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R36",
+              "G52"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "original_attack",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "对其他在场玩家逐一产生本条攻击；通过各自匹配/防御后才记录致命作用",
+            "status": "DERIVED",
+            "evidence": [
+              "G01",
+              "G02",
+              "G10"
+            ]
+          }
+        },
+        {
+          "id": "spend_charge",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "此项引用本轮已解析来源的同一笔费用，不另收费：普通来源P1检查已有充能≥4，P4扣4并保留余量；张新伟来源不检查或扣聂湘充能，P4只登记张新伟资格已用。本轮未来收益不提前供普通施放使用",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R28",
+              "TEDDY:R37",
+              "G05",
+              "G28",
+              "G54",
+              "G55"
+            ]
+          }
+        },
+        {
+          "id": "counter_matching",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "聂湘可被反弹；吸收与云的防御对聂湘不生效且不获取DD，不是能防但收益0。反弹按G25/G28登记3.5原值回击，在P3执行",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28",
+              "G25",
+              "G28"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R28",
+        "G32",
+        "G48",
+        "TEDDY:R36",
+        "G52",
+        "TEDDY:R37",
+        "G54",
+        "G55"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "NieXiangDef",
+      "legacy_index": 21,
+      "legacy_enum": 23,
+      "name": "聂湘防",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "专属匹配"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=NieXiangDef；来源=普通施放",
+        "inherits": [],
+        "actual_move": "NieXiangDef",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:139-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:139-171",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "7/2",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28"
+            ]
+          },
+          "match": "来袭强度=3.5且攻击类别为聂湘；不是≤3.5。普通削按G04例外可防，bi不可防",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "=",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2按强度=3.5且聂湘类别匹配；普通削按G04可防，bi不能防；P3范围仍待U06",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28",
+              "G04",
+              "G06",
+              "U06"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R28",
+        "G32",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "JuYan",
+      "legacy_index": 22,
+      "legacy_enum": 24,
+      "name": "距喦",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "强化buff"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=JuYan；来源=普通施放；第40轮已收口防御≤1/3与最多一份强化削资格",
+        "inherits": [],
+        "actual_move": "JuYan",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "无DD门槛（正常非负状态）",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:162,198-201",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:162",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "1/3",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R40补充：采用防御≤1/3",
+              "G60"
+            ]
+          },
+          "match": "可挡普通削与强化削；bi1、Pragon2、大bi5等超过1/3，不能挡；强化削的允许匹配不扩张到其它防御",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R40补充",
+              "G60"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "juyan_block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "防御≤1/3，挡普通削和强化削；P2独立比较每次来袭，不能挡bi1及超过阈值的攻击。第40轮同学反馈及用户数值确认覆盖旧暂行≤1/可挡bi说法",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R40转交同学反馈",
+              "TEDDY:R40补充：采用防御≤1/3",
+              "G30",
+              "G60"
+            ]
+          }
+        },
+        {
+          "id": "grant_buff",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "产生强化削buff并在同局保留至下一次合法声明削；P4写入，供后续P1读取；曾义清空和新开一局全状态重置是已确认的终止条件",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R01",
+              "TEDDY:R33",
+              "G44",
+              "TEDDY:R38",
+              "G58"
+            ]
+          }
+        },
+        {
+          "id": "repeat_buff",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "最多持有一份强化削资格；已有buff时再次使用距喦不叠加可用次数。不存在两次距喦就能连续免费强化削两次的库存",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R40转交同学回复：确实只有一次强化削资格",
+              "G60"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R27",
+        "G30",
+        "JUYAN-REVIEW.md",
+        "TEDDY:R31",
+        "G42",
+        "U05",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59",
+        "TEDDY:R40",
+        "G60"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "TianLiJun",
+      "legacy_index": 23,
+      "legacy_enum": 25,
+      "name": "田利军",
+      "category": "defense",
+      "roles": [
+        "防御",
+        "清空攒者DD",
+        "遇反制代码杀"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=TianLiJun；来源=普通施放",
+        "inherits": [],
+        "actual_move": "TianLiJun",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "首次0DD可用；之后持有≥1/2DD",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:163",
+            "TEDDY:R32",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "首次0DD，此后1/2DD、无总次数硬上限",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:163,542-543",
+            "TEDDY:R32",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R39",
+          "G48",
+          "G59"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "恒定",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R39",
+              "G59"
+            ]
+          },
+          "match": "无原始攻击，不生成攻击作用",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "恒定",
+          "value": {
+            "value": "9",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R33"
+            ]
+          },
+          "match": "可挡大bi5、强化削等范围内攻击；扇贝/小贝仍按明确例外不可防；对反弹/吸收/云的代码杀不经防御数值比较",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": null,
+              "status": "OPEN",
+              "evidence": [
+                "U06"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R33"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "tian_block",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2按≤9及明确特别匹配逐来袭防御；大bi5可挡，强化削可挡，扇贝/小贝不可挡；反制代码杀仍成立。P3适用范围另待U06",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R01",
+              "TEDDY:R33",
+              "G31",
+              "G46"
+            ]
+          }
+        },
+        {
+          "id": "tian_counter_code_loss",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "本轮实际招式为田利军时，对每个实际招式为反弹/吸收/云的其他玩家匹配代码杀：直接登记田利军淘汰，不填写伤害值，不经防御/反弹/吸收判定；不是P3原值回击，也不直接宣告全场胜负。P1确定匹配，P2登记，P4统一淘汰；G02保留同轮其它作用，G16推导各匹配对手的独立击杀归因",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R27",
+              "G02",
+              "G16",
+              "G28",
+              "deidei_env.py:375-377"
+            ]
+          },
+          "kind": "DIRECT_ELIMINATION"
+        },
+        {
+          "id": "clear_charger_dd",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2对每个出攒者独立登记清空；P4使各目标本轮最终DD=0，覆盖旧余额及本轮DD增长。田利军本轮被代码杀或受致命作用不撤销清空；不撤销其它吸收者从攒者独立获得的1DD；清空不产生额外伤害",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R28",
+              "G02",
+              "G27",
+              "G34"
+            ]
+          }
+        },
+        {
+          "id": "tian_use_count",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每次合法施放在P4记录一次使用次数，用于首次0DD、后续每次1/2DD；本轮死亡不取消已成立施放计数",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R32",
+              "TEDDY:R37",
+              "G02",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R27",
+        "G31",
+        "TEDDY:R28",
+        "G34",
+        "TEDDY:R31",
+        "G42",
+        "U05",
+        "TEDDY:R32",
+        "TEDDY:R33",
+        "G46",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "TEDDY:R39",
+        "G59"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "ZhangXinWei",
+      "legacy_index": 24,
+      "legacy_enum": 26,
+      "name": "张新伟",
+      "category": "source_entry",
+      "roles": [
+        "替身入口",
+        "一次资格"
+      ],
+      "resolution": {
+        "kind": "substitute",
+        "phase": "PREPARE",
+        "description": "张新伟是特殊入口；实际招式=自己的有效最近可复制高阶完整原招；来源=张新伟；禁用招不覆盖记录，曾义已清空的旧记录不可回查恢复",
+        "inherits": [
+          "动态最近可复制高阶原招的阶段属性与非费用效果；本轮重选分支/判状态，不带历史分支/成功状态/历史来源。门槛和费用使用张新伟入口，复制聂湘不要求或扣4充能；自bi/历强/反弹禁用且不覆盖复制记录"
+        ],
+        "actual_move": "$own_latest_high_move",
+        "origin": "zhang",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "本人有未被曾义清空的最近可复制高阶原招且本局未用张新伟；0DD可用，不要求上一回合发生。自bi、历强、反弹不覆盖旧复制记录，也不可作为复制目标；无有效记录不可出；复制聂湘时0充能也可用，不另检查原招4充能门槛",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01,R16",
+            "TEDDY:R35",
+            "G49",
+            "G50",
+            "G51",
+            "TEDDY:R37",
+            "G55"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "本身0DD且不支付复制招费用；复制聂湘扣0充能，只消耗本局张新伟一次资格",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R01,R16",
+            "TEDDY:R37",
+            "G55"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "copy_original",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "读取自己最近可复制高阶完整原招；来源仅本次张新伟；不复制历史分支，复合招重新选分支，条件状态重新判断，不自动继承历史炸药来源。自bi/历强/反弹不覆盖旧记录；曾义清空后不可回查旧历史恢复资格",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "TEDDY:R35",
+              "G49",
+              "G50",
+              "G51"
+            ]
+          }
+        },
+        {
+          "id": "copied_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "沿被复制完整原招的阶段攻防属性、匹配与非费用效果执行；费用类效果引用张新伟入口已确定的支出，不再执行原招普通费用。复制聂湘保留3.5攻击等属性，不检查/扣4充能；张新伟不是第二个战斗招",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G18",
+              "G28",
+              "TEDDY:R37",
+              "G55"
+            ]
+          }
+        },
+        {
+          "id": "zhang_use",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4登记本局使用张新伟一次；所有复制目标共用一次计数",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G18"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54",
+        "G55"
+      ],
+      "use_limit": {
+        "value": "每局一次",
+        "status": "CONFIRMED",
+        "evidence": [
+          "G18"
+        ]
+      }
+    },
+    {
+      "id": "LiQiang",
+      "legacy_index": 25,
+      "legacy_enum": 27,
+      "name": "历强",
+      "category": "conditional",
+      "roles": [
+        "重复判定",
+        "条件攻击",
+        "持续保护",
+        "失败攒"
+      ],
+      "resolution": {
+        "kind": "actual_move",
+        "phase": "PREPARE",
+        "description": "实际招式=LiQiang；来源=普通施放",
+        "inherits": [],
+        "actual_move": "LiQiang",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "本局尚未使用历强；无DD门槛",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:184-185",
+            "TEDDY:R34",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:165",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "不可复制；这是明确复制禁用，不因成功攻击10000或反弹回击达到2而放开；不覆盖先前有效复制记录",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G50",
+          "G51"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack_success",
+          "kind": "attack",
+          "when": "至少一人重复实际招式",
+          "value": {
+            "value": "10000",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          },
+          "match": "只攻击合规重复者，排除曾义强制休整/续招",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense_success",
+          "kind": "defense",
+          "when": "成功",
+          "value": {
+            "value": "9999",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          },
+          "match": "持续成功防御跨P2/P3",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "CONFIRMED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R21"
+            ]
+          }
+        },
+        {
+          "id": "attack_failure",
+          "kind": "attack",
+          "when": "未成功",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R19"
+            ]
+          },
+          "match": "无攻击；DD=0时采用攒效果，DD>0不攒",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense_failure",
+          "kind": "defense",
+          "when": "未成功",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R19"
+            ]
+          },
+          "match": "0不能挡普通削",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28：第26轮四阶段确认"
+              ]
+            }
+          },
+          "comparison": {
+            "value": "无防御",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R19"
+            ]
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "detect_repeat",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "P1逐对比较连续两轮实际身份，通常忽略来源与分支；曾义的强制暂停/续招回合不进入重复触发集合。其它玩家重复仍正常计入；至少一名合规重复者即成功，只攻击合规重复者，不等目标死亡才触发",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G19",
+              "G20",
+              "G47",
+              "TEDDY:R33"
+            ]
+          }
+        },
+        {
+          "id": "liq_damage",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P2向各合规重复者产生10000，排除曾义强制休整；多人历强不取消对第三人的攻击，成功自bi可挡",
+            "status": "CONFIRMED",
+            "evidence": [
+              "G20",
+              "TEDDY:R22",
+              "TEDDY:R33",
+              "G47"
+            ]
+          }
+        },
+        {
+          "id": "liq_failure",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "未成功且回合开始DD=0时按攒效果处理，包括已确认资源交互和对小贝的特殊匹配；实际原招身份仍为历强。DD>0攻防0且不按攒；成功历强不进入此分支。完整效果委托及读取时点按G21/G28推导，不因同轮收益反切换",
+            "status": "DERIVED",
+            "evidence": [
+              "G21",
+              "G28",
+              "G37",
+              "TEDDY:R29"
+            ]
+          }
+        },
+        {
+          "id": "liq_use",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每局只可合法使用一次；P4登记已用。按使用次数而非成功次数推导，成功或失败均消耗本局资格；异常无效请求在P1拒收，不计使用次数；多人新一局按G58恢复未使用资格",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R34",
+              "G28",
+              "deidei_env.py:528-529",
+              "U07",
+              "TEDDY:R38",
+              "G56",
+              "G58"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R31",
+        "G42",
+        "U05",
+        "TEDDY:R33",
+        "G46",
+        "TEDDY:R34",
+        "G48",
+        "G50",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "每局一次",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R34"
+        ]
+      }
+    },
+    {
+      "id": "BombPragon",
+      "legacy_index": 26,
+      "legacy_enum": 28,
+      "name": "炸药·Pragon",
+      "category": "source_entry",
+      "roles": [
+        "资源兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入=BombPragon；实际招式=Pragon；来源=炸药",
+        "inherits": [
+          "Pragon：完整原招的阶段属性/效果"
+        ],
+        "actual_move": "Pragon",
+        "origin": "bomb",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "成熟炸药层≥1",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:188-197",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "1炸药层，0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:242-246",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为完整Pragon，来源=炸药；继承其阶段属性/效果，原招费用与资格由本入口覆盖；只记一次实际招式",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "deidei_env.py:226-246"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按Pragon已定义阶段执行；若有分支，P1仍按G17选择；P3是否有保护依所选分支，不能统一关闭",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G17",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "source_cost",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4一次扣1炸药层，0DD；此项与cost是同一笔支出",
+            "status": "DERIVED",
+            "evidence": [
+              "deidei_env.py:514-521",
+              "TEDDY:R37",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "BombVolvo",
+      "legacy_index": 27,
+      "legacy_enum": 29,
+      "name": "炸药·沃尔沃",
+      "category": "source_entry",
+      "roles": [
+        "资源兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入=BombVolvo；实际招式=Volvo；来源=炸药",
+        "inherits": [
+          "Volvo：完整原招的阶段属性/效果"
+        ],
+        "actual_move": "Volvo",
+        "origin": "bomb",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "成熟炸药层≥2",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:188-197",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "2炸药层，0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:242-246",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为完整Volvo，来源=炸药；继承其阶段属性/效果，原招费用与资格由本入口覆盖；只记一次实际招式",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "deidei_env.py:226-246"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按Volvo已定义阶段执行；吸收/云可防沃尔沃攻击，但炸药来源的吸收收益为0；入口只支付自己的来源成本",
+            "status": "DERIVED",
+            "evidence": [
+              "G28",
+              "G38",
+              "TEDDY:R30"
+            ]
+          }
+        },
+        {
+          "id": "source_cost",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4一次扣2炸药层，0DD；此项与cost是同一笔支出",
+            "status": "DERIVED",
+            "evidence": [
+              "deidei_env.py:514-521",
+              "TEDDY:R37",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "BombFlipVolvo",
+      "legacy_index": 28,
+      "legacy_enum": 30,
+      "name": "炸药·翻转沃尔沃",
+      "category": "source_entry",
+      "roles": [
+        "资源兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入=BombFlipVolvo；实际招式=FlipVolvo；来源=炸药",
+        "inherits": [
+          "FlipVolvo：完整原招的阶段属性/效果"
+        ],
+        "actual_move": "FlipVolvo",
+        "origin": "bomb",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "成熟炸药层≥4",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:188-197",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "4炸药层，0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:242-246",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为完整FlipVolvo，来源=炸药；继承其阶段属性/效果，原招费用与资格由本入口覆盖；只记一次实际招式",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "deidei_env.py:226-246"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P1按G17选择并锁定一个分支；沃尔沃分支可被吸收/云防住，炸药来源吸收收益0；自bi分支按其成功/10000及持续保护处理，不能因炸药来源便认为可被吸收/云防住",
+            "status": "DERIVED",
+            "evidence": [
+              "G17",
+              "G28",
+              "G38",
+              "G39",
+              "TEDDY:R30"
+            ]
+          }
+        },
+        {
+          "id": "source_cost",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4一次扣4炸药层，0DD；此项与cost是同一笔支出",
+            "status": "DERIVED",
+            "evidence": [
+              "deidei_env.py:514-521",
+              "TEDDY:R37",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "TEDDY:R30",
+        "G38",
+        "G39",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "FreeThree",
+      "legacy_index": 29,
+      "legacy_enum": 31,
+      "name": "雷电·三雷",
+      "category": "source_entry",
+      "roles": [
+        "资源兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入=FreeThree；实际招式=Three；来源=雷电",
+        "inherits": [
+          "Three：完整原招的阶段属性/效果"
+        ],
+        "actual_move": "Three",
+        "origin": "lightning",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "雷电≥3",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:188-197",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "3雷电，0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:242-246",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为完整Three，来源=雷电；继承其阶段属性/效果，原招费用与资格由本入口覆盖；只记一次实际招式",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "deidei_env.py:226-246"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按Three已定义阶段执行；若有分支，P1仍按G17选择；P3是否有保护依所选分支，不能统一关闭",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G17",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "source_cost",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4一次扣3雷电，0DD；此项与cost是同一笔支出",
+            "status": "DERIVED",
+            "evidence": [
+              "deidei_env.py:514-521",
+              "TEDDY:R37",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    },
+    {
+      "id": "FreeRotateThree",
+      "legacy_index": 30,
+      "legacy_enum": 32,
+      "name": "雷电·旋转三雷",
+      "category": "source_entry",
+      "roles": [
+        "资源兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入=FreeRotateThree；实际招式=RotateThree；来源=雷电",
+        "inherits": [
+          "RotateThree：完整原招的阶段属性/效果"
+        ],
+        "actual_move": "RotateThree",
+        "origin": "lightning",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "雷电≥6",
+          "status": "DERIVED",
+          "evidence": [
+            "deidei_env.py:188-197",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "6雷电，0DD",
+          "status": "CONFIRMED",
+          "evidence": [
+            "deidei_env.py:242-246",
+            "TEDDY:R37",
+            "G54"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "按本轮实际原招的强度≥2及G50复制禁用派生；记录完整实际原招，不记录入口身份",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R35",
+          "G03",
+          "G18",
+          "G48",
+          "G50"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为完整RotateThree，来源=雷电；继承其阶段属性/效果，原招费用与资格由本入口覆盖；只记一次实际招式",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G18",
+              "deidei_env.py:226-246"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "按RotateThree已定义阶段执行；若有分支，P1仍按G17选择；P3是否有保护依所选分支，不能统一关闭",
+            "status": "DERIVED",
+            "evidence": [
+              "G13",
+              "G17",
+              "G28"
+            ]
+          }
+        },
+        {
+          "id": "source_cost",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4一次扣6雷电，0DD；此项与cost是同一笔支出",
+            "status": "DERIVED",
+            "evidence": [
+              "deidei_env.py:514-521",
+              "TEDDY:R37",
+              "G28",
+              "G54"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U05",
+        "U06"
+      ],
+      "evidence": [
+        "deidei_env.py:139-248",
+        "MOVE-INVENTORY.md",
+        "G28",
+        "G48",
+        "TEDDY:R37",
+        "G54"
+      ],
+      "use_limit": {
+        "value": "无额外每局总次数上限，仍受各自资源与资格限制",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R37",
+          "G54"
+        ]
+      }
+    }
+  ],
+  "new_entries": [
+    {
+      "id": "ZengYi",
+      "legacy_index": null,
+      "legacy_enum": null,
+      "name": "曾义",
+      "category": "multi_turn",
+      "roles": [
+        "连续两轮",
+        "持续防御",
+        "清空有利积攒",
+        "延迟赠送大bi"
+      ],
+      "resolution": {
+        "kind": "multi_turn",
+        "phase": "PREPARE",
+        "description": "实际招式=ZengYi；每局一次主动发动＋下一轮强制休整，自动续招保留攻0防∞；续招不触发历强，内部不用NoMove",
+        "inherits": [],
+        "actual_move": "ZengYi",
+        "origin": "normal",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "本局尚未主动发动曾义时可用；0DD可发动，无须持有正数DD；下一回合为同次发动的强制休整",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R33",
+            "TEDDY:R34",
+            "G43",
+            "TEDDY:R37"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "额外固定DD费用为0；仍按G44清空规定的有利积攒，并消耗本局唯一主动发动资格。清空余额与固定施放费分开记录",
+          "status": "CONFIRMED",
+          "evidence": [
+            "TEDDY:R34",
+            "G43",
+            "G44",
+            "TEDDY:R37"
+          ]
+        }
+      },
+      "high_record": {
+        "value": false,
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48"
+        ]
+      },
+      "use_limit": {
+        "value": "每局仅能主动发动1次，与张新伟一样；下一回合休整属于同次发动，不再扣一次资格",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R33"
+        ]
+      },
+      "attributes": [
+        {
+          "id": "attack",
+          "kind": "attack",
+          "when": "曾义第1及第2轮",
+          "value": {
+            "value": "0",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R32"
+            ]
+          },
+          "match": "无原始攻击；两轮后的赠送大bi是库存，不能当轮自动向全场攻击",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G01",
+                "TEDDY:R32"
+              ]
+            },
+            "RETURN": {
+              "value": false,
+              "status": "DERIVED",
+              "evidence": [
+                "G28",
+                "TEDDY:R32"
+              ]
+            }
+          }
+        },
+        {
+          "id": "defense",
+          "kind": "defense",
+          "when": "曾义第1及第2轮",
+          "value": {
+            "value": "POSITIVE_INFINITY",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R32"
+            ]
+          },
+          "comparison": {
+            "value": "≤",
+            "status": "DERIVED",
+            "evidence": [
+              "G22",
+              "TEDDY:R32"
+            ]
+          },
+          "match": "两轮期间持续保护；等待奖励期间不自动延续，之后由当轮招式决定；数值防御不自动取消没有伤害值的代码杀匹配",
+          "generated_in": "PREPARE",
+          "active_in": {
+            "PRIMARY": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28",
+                "TEDDY:R32"
+              ]
+            },
+            "RETURN": {
+              "value": true,
+              "status": "DERIVED",
+              "evidence": [
+                "G28",
+                "TEDDY:R32"
+              ]
+            }
+          }
+        }
+      ],
+      "effects": [
+        {
+          "id": "two_round_sequence",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "每局主动发动一次，下一回合强制暂停选牌并自动续招；两轮保留攻0防∞及清空。内部实际ZengYi并标记强制续招，界面显示曾义·休整；不算第二次主动发动，不使用NoMove，续招不触发历强",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R32",
+              "TEDDY:R33",
+              "G43",
+              "G47"
+            ]
+          }
+        },
+        {
+          "id": "clear_known_benefits",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "发动和休整两轮清空有利积攒：DD、雷电、聂湘充能、成熟/未成熟炸药、炸药防御进度、强化削buff；限制性使用记录保留。P4在当轮普通资源写回后清空；第二轮清空后才登记本次未来奖励；第35轮补充：清空最近高阶复制资格，张新伟不可回查清空之前的旧记录作为替代；完整对局历史保留",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R32",
+              "TEDDY:R33",
+              "G28",
+              "G44",
+              "TEDDY:R35",
+              "G49"
+            ]
+          }
+        },
+        {
+          "id": "benefit_reset_scope",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "除最初DD/雷电/聂湘外，炸药（含未成熟）、炸药防御进度、强化削buff清空；免费大bi明确不在清空范围。用户基于一次使用限制要求不考虑旧免费大bi/奖励被再次清空，不新增奖励清除流程；第35轮补充：清空最近高阶复制资格，张新伟不可回查清空之前的旧记录作为替代；完整对局历史保留",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R33",
+              "G44",
+              "TEDDY:R35",
+              "G49"
+            ]
+          }
+        },
+        {
+          "id": "preserve_usage_records",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "云次数、田利军次数、张新伟使用记录及同类历强已用限制保留；曾义自身每局已用资格亦保留，不被清空重置。曾义进度不是可重置的有利资源",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R32",
+              "TEDDY:R33",
+              "G18",
+              "G43",
+              "G44"
+            ]
+          }
+        },
+        {
+          "id": "schedule_bigbi_reward",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "T发动、T+1休整完成，经过之后3轮，在T+4末发1次免费大bi，T+5初可用。每局只登记和发放一次，不需要多份奖励列表；发放后离开等待状态避免重复到账",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R33",
+              "G43",
+              "G45"
+            ]
+          }
+        },
+        {
+          "id": "retain_bigbi_reward",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "奖励可保留以后使用，不自动施放、不兑换5DD；免费大bi不在曾义清空范围，不实现旧奖励清除流程",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R32",
+              "TEDDY:R33",
+              "G45"
+            ]
+          }
+        },
+        {
+          "id": "liq_repeat_interaction",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "曾义之后的强制休整/自动续招不触发历强，不是历强先成功再被∞防住。只排除该续招者作为触发/攻击目标，不取消历强对其它合规重复者的判断",
+            "status": "CONFIRMED",
+            "evidence": [
+              "TEDDY:R33",
+              "G19",
+              "G20",
+              "G47"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [],
+      "evidence": [
+        "TEDDY:R32",
+        "TEDDY:R01：曾义未来例外",
+        "G43",
+        "G44",
+        "G45",
+        "TEDDY:R33",
+        "G47",
+        "TEDDY:R34",
+        "G48",
+        "TEDDY:R35",
+        "G49"
+      ]
+    },
+    {
+      "id": "ZengRewardBigBi",
+      "legacy_index": null,
+      "legacy_enum": null,
+      "name": "曾义赠送·大bi（来源入口）",
+      "category": "source_entry",
+      "roles": [
+        "库存兑换入口"
+      ],
+      "resolution": {
+        "kind": "source_entry",
+        "phase": "PREPARE",
+        "description": "输入为免费大bi库存的使用意图；实际招式=BigBi；来源=zeng_reward；这是同一大bi的来源，不是第二种实际攻击",
+        "inherits": [
+          "BigBi：完整攻击/对撞/特别防御匹配"
+        ],
+        "actual_move": "BigBi",
+        "origin": "zeng_reward",
+        "branch_candidates": []
+      },
+      "availability": {
+        "evaluate_in": "PREPARE",
+        "rule": {
+          "value": "曾义进度为ready，即奖励已发放且尚未使用；休整期间不可自由出此入口",
+          "status": "DERIVED",
+          "evidence": [
+            "TEDDY:R33",
+            "G43",
+            "G45"
+          ]
+        }
+      },
+      "cost": {
+        "computed_in": "PREPARE",
+        "commit_in": "COMMIT",
+        "rule": {
+          "value": "使用唯一的免费大bi资格，付0DD，进度由ready转spent；不兑换5DD",
+          "status": "DERIVED",
+          "evidence": [
+            "TEDDY:R32",
+            "TEDDY:R33",
+            "G45"
+          ]
+        }
+      },
+      "high_record": {
+        "value": "大bi攻击强度5≥2，属于高阶；赠送来源也可在实际使用后成为张新伟复制依据",
+        "status": "CONFIRMED",
+        "evidence": [
+          "TEDDY:R35",
+          "G48",
+          "G18"
+        ]
+      },
+      "use_limit": {
+        "value": "每局曾义只产生1次免费大bi；可保留至以后使用，用后不可再次使用，不需要多份叠加规则",
+        "status": "DERIVED",
+        "evidence": [
+          "TEDDY:R33",
+          "G43",
+          "G45"
+        ]
+      },
+      "attributes": [],
+      "effects": [
+        {
+          "id": "resolve_source",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "PREPARE",
+          "commit_in": null,
+          "rule": {
+            "value": "解析为BigBi，origin=zeng_reward；来源成本覆盖普通5DD成本，不同时扣DD和库存",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R32",
+              "G03",
+              "G45"
+            ]
+          }
+        },
+        {
+          "id": "delegated_effects",
+          "evaluate_in": "PRIMARY",
+          "resolve_in": "PRIMARY",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "继承BigBi强度5、P2对撞防御5与特别匹配：不可反弹，普通防/吸收/云及田利军可挡，吸收仍得5DD。曾义不触发历强的例外仅指曾义强制休整，不转移到奖励来源；免费大bi与普通大bi连续使用仍按实际BigBi判重复",
+            "status": "DERIVED",
+            "evidence": [
+              "G03",
+              "G19",
+              "G40",
+              "G42",
+              "G46",
+              "G47",
+              "TEDDY:R33"
+            ]
+          }
+        },
+        {
+          "id": "spend_inventory",
+          "evaluate_in": "PREPARE",
+          "resolve_in": "COMMIT",
+          "commit_in": "COMMIT",
+          "rule": {
+            "value": "P4将曾义进度ready改为spent，表示唯一免费大bi已使用；DD不增不扣，不同时支付普通大bi费用",
+            "status": "DERIVED",
+            "evidence": [
+              "TEDDY:R33",
+              "G45"
+            ]
+          }
+        }
+      ],
+      "common_commit": "COMMON-COMMIT",
+      "open_questions": [
+        "U06"
+      ],
+      "evidence": [
+        "TEDDY:R32",
+        "G03",
+        "G40",
+        "G42",
+        "G45",
+        "TEDDY:R33",
+        "G46",
+        "G47",
+        "G48"
+      ]
+    }
+  ],
+  "high_record_rule": {
+    "value": "高阶定义为攻击强度≥2；复制还须排除G50的自bi、历强、反弹。统一强度门槛配少量明确禁用，不维护完整高阶名单；完整实际原招身份不被来源或分支替换",
+    "status": "CONFIRMED",
+    "evidence": [
+      "TEDDY:R35",
+      "G18",
+      "G48"
+    ]
+  },
+  "copy_exclusions": {
+    "value": [
+      "Suicide",
+      "LiQiang",
+      "Reflect"
+    ],
+    "status": "CONFIRMED",
+    "evidence": [
+      "TEDDY:R35补充：成功自bi、成功历强、反弹均不能复制",
+      "G50"
+    ]
+  },
+  "copy_record_update_on_excluded": {
+    "value": "不可复制招不覆盖最近可复制高阶原招；已有三雷记录时成功自bi的记录更新仍保留三雷。只有新的可复制高阶出招更新记录，曾义按明确清空规则置空；若本轮淘汰后新开一局，G58仍清空记录，不能在下一局复制旧三雷。前述保留只说明本轮记录更新，不是跨新局保留",
+    "status": "CONFIRMED",
+    "evidence": [
+      "TEDDY:R35补充：仍复制三雷",
+      "G49",
+      "G51",
+      "TEDDY:R38",
+      "G58"
+    ]
+  },
+  "selection_ui": {
+    "value": "选牌区先排列合法卡牌，再排列灰色不可用卡牌，两组均从左到右；缩小卡牌以容纳更多牌；支持键盘1、2、3、4、5、6、7、8、9、0共10个数字快捷键，并显示键位提示。灰牌不能出；具体尺寸和超过10牌的键位方案见主文档提案",
+    "status": "CONFIRMED",
+    "evidence": [
+      "TEDDY:R38",
+      "G56"
+    ]
+  },
+  "submission_policy": {
+    "value": "界面不允许选择/提交不合法牌；鼠标和键盘共用资格检查。规则入口按当前状态再次校验，拒收异常或过期的无效请求，不进入本轮动作集合、不扣资源/buff/次数、不推进回合；这是边界校验，不新增非法出招判负机制",
+    "status": "DERIVED",
+    "evidence": [
+      "TEDDY:R38",
+      "G56",
+      "G01",
+      "G28"
+    ]
+  },
+  "match_progression": {
+    "value": "先完整结算本回合P1-P4。若无人淘汰则同一局继续；若有人淘汰且剩至少2人，由存活者开新一局，全部玩法状态恢复初始值。若仍有1名存活者，该玩家获胜并结束本场；若全员淘汰，则无人获胜，本场结束，获胜者为空。每局次数、DD、充能、buff、招式历史、炸药进度/库存、曾义休整/奖励/库存均随新局重置；已淘汰者不再入场",
+    "status": "CONFIRMED",
+    "evidence": [
+      "TEDDY:R38及同轮补充：全部重置；全员都死时无人获胜",
+      "G57",
+      "G58"
+    ]
+  }
+}

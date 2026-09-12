@@ -1,7 +1,7 @@
 {
   "task_id": "R01-T01-a",
   "status": "PARTIAL",
-  "status_reason": "Local evidence complete; remote push/PR awaits explicit user authorization.",
+  "status_reason": "Round 40 / v0.38 local handoff. Peer confirms one JuYan buff and cannot block Bi; user explicitly selects defense<=1/3. JuYan review closed. User clarifies temporary old AI is allowed early; dedicated AI rewrite/evaluation and possible training are later, not all AI gameplay. Three-layer rules and program architecture to be planned by ChatGPT Pro; Codex implements and tests. Formal plans, game, AI and models unchanged; not submitted.",
   "input_ref": "plan/r01-v1",
   "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
   "prd_version": "PRD-R01 1.0",
@@ -48,6 +48,11 @@
   ],
   "artifacts": [
     {
+      "path": "docs/results/R01-T01-a/ANSWERS.md",
+      "sha256": "d1baefb03542914ec6cd7d69eded67ce73673573c64f2eb3b8769d344d8ca4bc",
+      "kind": "md"
+    },
+    {
       "path": "docs/results/R01-T01-a/CASES.md",
       "sha256": "10dff664843f720ac4531895453dbde6635a462be4c57edabc4fcd3b4e2db812",
       "kind": "md"
@@ -59,17 +64,22 @@
     },
     {
       "path": "docs/results/R01-T01-a/PR-BODY.md",
-      "sha256": "8afe9e782418dbd03b61fb34e9005b99f962107d0c0fa0ee83bf7500d0099d2e",
+      "sha256": "49a78b6852ceca911906b93d4b17a10158b3e333d63d091ec60545d9d6df2b2e",
       "kind": "md"
     },
     {
       "path": "docs/results/R01-T01-a/QUESTIONS.md",
-      "sha256": "679ec81d6374f5ef2e8799b7341540006d1474d121769bc044f9191ddaa4da5d",
+      "sha256": "9a5ec35cf960c47f1d69c7744faf16b23745c28a9c1a8f60ead30c8c198ab51c",
       "kind": "md"
     },
     {
       "path": "docs/results/R01-T01-a/REPORT.md",
-      "sha256": "4a47fe60c595540b9d12af57fe646ec8a066604aaf9cd59514f13f891783c592",
+      "sha256": "9e11be5d72bf37fdd235ffb43bdab546b5708a0e48528124d260094c7064bc6c",
+      "kind": "md"
+    },
+    {
+      "path": "docs/results/R01-T01-a/RULE-FRAMEWORK.md",
+      "sha256": "16e48036001c30ba3f799e2fc24f4217fb3af832dd99d34ea4af8a84584e80f3",
       "kind": "md"
     },
     {
@@ -94,13 +104,53 @@
     },
     {
       "path": "experiments/r01-t01-a/README.md",
-      "sha256": "6fbeb41f3eea7ef69026c0db2c21ba2871ae626823be08493db84153694a472b",
+      "sha256": "1dc72d896b40b9b7c7d015d54c76c0f04e5dcf641ab9b186149f7292a75b7151",
       "kind": "md"
     },
     {
       "path": "experiments/r01-t01-a/observe.py",
       "sha256": "bbd84e7e325f4747c05d07a9755d2a6aca8599da3af94caaffc6a428ae2b1314",
       "kind": "py"
+    },
+    {
+      "path": "docs/results/R01-T01-a/BRANCH-CASES.md",
+      "kind": "md",
+      "sha256": "e33bd0265a032b10ad5b820c3d0cefd212ab84e091baae776b6594e2fc4f697f"
+    },
+    {
+      "path": "docs/results/R01-T01-a/branch-case-checks.json",
+      "kind": "json",
+      "sha256": "27bb1b0a8f0b66a3c445bbef0d874c4f4e6646294697aa8305679700499d367e"
+    },
+    {
+      "path": "experiments/r01-t01-a/check_branch_tables.py",
+      "kind": "py",
+      "sha256": "78bd304a4a00adf44513e5d02d6f78d98397eb38bf86c9e2ec821c317be1ab2f"
+    },
+    {
+      "path": "docs/results/R01-T01-a/MOVE-CATALOG.json",
+      "kind": "json",
+      "sha256": "a363bbb7e8df7ad3f32149b68a8c8c6e2c342a0d8f7e140337123e4d4de27f79"
+    },
+    {
+      "path": "docs/results/R01-T01-a/RULE-DISCUSSION-ARCHIVE.md",
+      "kind": "md",
+      "sha256": "5832d3cfa5490f7e7f774020cfb6ab8867000dc0bf290b61f21540fc69479ccc"
+    },
+    {
+      "path": "docs/results/R01-T01-a/rule-catalog-check.txt",
+      "kind": "txt",
+      "sha256": "8b14ac45d38da7a634badf350cae46abfeda4f6806ef3513cb1d82f876a7ff2e"
+    },
+    {
+      "path": "experiments/r01-t01-a/check_rule_catalog.py",
+      "kind": "py",
+      "sha256": "4e082a4ce5acd974102ac58d8ad49f7a15b1009670e7c99c6f4e46666d5a533b"
+    },
+    {
+      "path": "docs/results/R01-T01-a/JUYAN-REVIEW.md",
+      "kind": "md",
+      "sha256": "18afafff0df187d41cf281c447a337f7ee7905ffa6ad54a2d28f6d9e75aca180"
     }
   ],
   "hash_note": "Artifact hashes exclude manifest itself. source-hashes.json hashes pinned original tracked files, including models.",
@@ -129,9 +179,154 @@
       "Q12"
     ],
     "waiting_for": [
-      "Teddy: original rule answers and explicit remote write authorization",
-      "ChatGPT: evidence acceptance and formal rule synthesis"
+      "ChatGPT Pro: three-layer rule specification, program architecture and implementation package using current evidence",
+      "Later UI implementation: sizing/order/hotkey proposals; P3 extensions only when relevant"
+    ],
+    "answers_path": "docs/results/R01-T01-a/ANSWERS.md",
+    "first_batch_note": "Initial Q01-Q12 and old A questions are historical in RULE-DISCUSSION-ARCHIVE.md. U04 resource rules resolved in round 28; current QUESTIONS.md lists U05-U08.",
+    "answer_rounds": 40,
+    "resolved_in_discussion": [
+      "Both LiQiang do not end the game as a draw; round 22 clarifies their attacks on qualifying third parties remain (L04).",
+      "Successful self-bi grants defense across the field",
+      "TEDDY-M01 and TEDDY-M02 outcomes recorded; eliminated reflector still reflects this round",
+      "Ordinary Xiao is blocked by any defense; applies as an explicit exception to exclusive defense matching",
+      "Pragon exclusive defense matches normal, bomb and Zhang sources; origin changes properties only when explicitly specified",
+      "First Bomb blocks ordinary Xiao with defense <= 1/3 DD; subsequent ceilings remain 1, 2, 3 DD",
+      "M03: second Bomb independently blocks two Bi attacks; no ordinary defense depletion",
+      "M04: two absorbers each receive 3 DD from one Three attack; each nets +2 DD",
+      "User approved the staged foundation: generate global turn properties, evaluate pairwise interactions, aggregate results",
+      "Pure self-bi has success or unsuccessful states; at least one qualifying other player is sufficient",
+      "Unsuccessful pure self-bi always self-eliminates; two pure self-bi players without success targets both eliminate",
+      "Selectable moves such as RotateThree use exactly one branch for the whole round; Three and self-bi effects cannot coexist",
+      "Branch selection prioritizes own survival, then the count of distinct valid kill targets; M07 and M08 record provided comparisons",
+      "Absorption defense still affects actual eliminations; its DD reward is excluded from branch utility",
+      "Equal-effect candidates are selected randomly; the same rule applies to future comparable branch-selection decisions",
+      "When all candidates imply own elimination, prefer more valid kills; ties still use random selection",
+      "M11: A and C both validly kill B; each actor counts one kill, while B is eliminated once",
+      "Round 15 replaces the full-profile filter: each selector evaluates only self plus fixed-action players, locks one branch, then participates in full-field resolution; no reselection and no guarantee of full-field survival optimality",
+      "Round 16: Zhang copies the original actual move, including its full branch choices; it is a source and special input mechanism, not an additional combat move; one use per game across all copy targets",
+      "Round 16: LiQiang compares consecutive actual move identities, ignoring selected-branch differences and ordinary source differences; Zhang requires no separate repeat exception",
+      "Round 17: LiQiang has conditional success/failure states, not freely selectable branches; its then-infinite defense was superseded by <=9999 in round 21",
+      "Round 19: unsuccessful LiQiang charges only at DD=0; at DD>0 attack/defense are zero with no Charge gain; L02 confirms elimination by ordinary Xiao",
+      "Round 19: all actual moves have a defense value; zero means no defense, without a separate defense-presence flag; existing comparison, exclusive matching and explicit exceptions still apply",
+      "Round 20: Pragon defense requires strength = 2; Bi at strength 1 fails that comparison before exclusive matching, which further filters other attacks of the same strength. Ordinary Xiao remains governed by its explicit general rule.",
+      "Round 21: LiQiang succeeds when at least one other actor repeats the actual move, deals 10000 only to repeaters, and has defense <=9999; this replaces its prior infinite defense",
+      "Round 21: successful self-bi deals 10000 to qualifying targets and keeps defense <=infinity; L03 survives LiQiang 10000. Trigger success does not require a final kill",
+      "Round 22: L04 confirmed, two first-use LiQiang actors retain independent attacks on the repeating third actor; that target dies and both attackers each receive one valid kill.",
+      "Round 22: Reflect and Absorb have defense <=100; above 100, the incoming attack is neither defended nor reflected/absorbed. Combining G02/G10, failure is per incoming attack, not a whole-turn disable. L05/L06 cannot counter LiQiang 10000.",
+      "Round 23: R04 confirmed, reflection targets only the original attacker; its valid kill belongs to the reflector. Original attacks remain effective in the same round.",
+      "Round 23: M12 confirmed, one absorber facing Three plus Pragon receives 3+2 DD and pays the cast cost once, net +4 DD. Sum distinct eligible incoming attack gains; do not infer Charge/Cloud rules.",
+      "Round 24: reflection is evaluated independently for each attacker; the returned attack value equals that incoming attack value, targeting only its original attacker when the reflection condition holds. Fixed 10000 return proposal was not adopted.",
+      "Round 24: M13 confirmed, two Charge actors retain prior DD but gain no new DD; two Absorb actors each independently gain 1 DD from each charger, total 2 DD minus one cast cost, net +1 DD each. No repeated deduction from chargers.",
+      "Round 26: user accepted four-phase resolution and defense phase distinction. Current master was rewritten and all 31 legacy entries cataloged with explicit phase fields and evidence statuses; this does not approve all code-candidate numbers or unresolved matchups.",
+      "Round 27: Cloud shares Absorb defense <=100 and special matching without gaining opponent DD; every charger loses only this round gain, and each legal Cloud cast gains exactly one lightning. In M14 B/C die to D Three, not to Cloud charge denial.",
+      "Round 27: JuYan <=1, ordinary Xiao/Bi defense and explicit enhanced-Xiao matching are approved as working rules pending peer review. JUYAN-REVIEW.md records source differences, stages and review items.",
+      "Round 27: TianLiJun loses to Reflect/Absorb/Cloud by direct elimination, with no attack damage value or defense comparison. P1 matching/P2 registration/P4 elimination follows accepted phases; same-round effects and per-source kill attribution follow G02/G16.",
+      "Round 28: NieXiang requires >=4 charge, spends 4 charge and 0 DD with remainder retained, and attacks at 3.5. NieXiangDef matches strength =3.5 and NieXiang identity; Reflect can return it, while Absorb/Cloud cannot block it or gain DD.",
+      "Round 28: normal Def gains one base charge per cast plus one for each independently blocked eligible Bi or ordinary Xiao; M15 with two Bi incoming yields three charge.",
+      "Round 28: TianLiJun clears every charger final DD including old balance and round gains, without retracting other absorbers independent gains. T03 confirmed: TianLiJun dies by counter code kill but still clears the charger, while the absorber gains one DD and pays its cast cost.",
+      "Round 28: death is a round result rather than a move attribute; it does not cancel valid same-round actions. Elimination committed in P4 affects participation in subsequent rounds. U04 resource questions are resolved.",
+      "Round 29: Reflect/Absorb/Cloud cannot defend Shell/XiaoBei or derive returns/absorption rewards from them, even within numerical defense cap.",
+      "Round 29: any Shell/XiaoBei pair cancels only the attacks between that pair, preserving each attack on third parties and not ending the round as a game draw.",
+      "Round 29: XiaoBei loses against Charge through direct elimination while Charge ordinary attack remains zero. Preserving the accepted loss outcome implies XiaoBei attack on that charger is inactive by target matching, not by death; other targets remain affected.",
+      "Round 29: S01-S04 derive complete multi-player outcomes; G21 unsuccessful zero-DD LiQiang follows Charge effects without changing its actual move identity. Source-specific costs and general candidate numbers are not approved by these matchup confirmations.",
+      "Round 30: ordinary and bomb Volvo can both be defended by Absorb/Cloud. Normal Volvo yields its corresponding attack DD to Absorb; bomb Volvo yields zero. This overrides the old ordinary-Volvo exclusion without introducing a source-specific defense difference.",
+      "Round 30: FlipVolvo selected Volvo branch inherits same-origin Volvo matching and rewards; selected Self-bi follows Self-bi conditions and damage. Actual identity remains FlipVolvo. Old scalar 4 and entry fees 4/8 DD or 2/4 mature bombs remain code candidates, not approved by matchup confirmation.",
+      "Round 31: Xiao/enhanced Xiao power 1/3, Bi 1, Pragon 2, Three 3, Volvo 4 and BigBi 5; their PRIMARY clash defense equals actual power with <= comparison and explicit matching first, invalid in RETURN. P01 confirms simultaneous effects and independent kill credit.",
+      "Round 31: ordinary Xiao/Bi/BigBi Absorb rewards are 1/3, 1 and 5 DD; Cloud blocks without attack DD. Xiao/enhanced Xiao/Bi can be reflected at original values. BigBi cannot be blocked or returned by Reflect; Def/Absorb/Cloud can block it. Follow-up clarifies bi-targeted defense means Def only, a specific exception; it is not granted to all moves able to block Bi. Intersection with TianLiJun/continuing protection and Def bonus charge remains U05.",
+      "Round 32: Def blocking BigBi receives one bonus NX charge per incoming attack, plus one base per cast; one BigBi yields two charge, two yield three.",
+      "Round 32: ZengYi requires two consecutive rounds with attack zero and infinite defense, clears beneficial accumulations including DD/lightning/NX, and preserves Zhang/Cloud/Tian usage records. Three rounds after the second use grants one storable free BigBi, not five DD. Exact grant boundary, reset categories, limits and original ZengYi repeat exception remain unresolved; TianLiJun <=4 is only a proposal.",
+      "Round 33: TianLiJun has defense <=9 and blocks BigBi5; previous Shell/XiaoBei exclusions and counter direct elimination remain. ZengYi timing is T cast, T+1 recovery, reward at T+4 end usable T+5.",
+      "Round 33: bomb stock/pending bombs/defense progress and enhanced-Xiao buff are cleared along with DD/lightning/NX, while restrictive usage records are preserved. Free BigBi is explicitly excluded and repeat-clearing workflows are unnecessary.",
+      "Round 33: ZengYi recovery does not trigger LiQiang, rather than triggering and being blocked. Other repeating targets still count; the exemption does not transfer to reward BigBi. Follow-up confirms ZengYi once per game, like Zhang. The minimal design uses zeng_state plus bigbi_reward_due_round; continuation is not a second activation and cleanup cannot restore unused state.",
+      "Round 34: ZengYi is legal at 0 DD without an additional fixed DD fee; clearing specified benefits and consuming its once-per-game activation still apply. Remaining-rule audit and its proposals are not approvals. Cloud/Tian first use free and Xiao power 1/3 labels refreshed from earlier explicit user evidence.",
+      "Round 34 follow-up: LiQiang once per game is explicitly confirmed. A legal use consuming the limit whether successful or unsuccessful is derived from a usage limit, not a success limit; zero-DD cost and invalid submissions remain separately classified.",
+      "Round 35: high qualification uses attack strength >=2 instead of a separately maintained move list. ZengYi at 0 is not high; reward BigBi at 5 is high and copyable. ZengYi clears prior high-copy eligibility; no historical backfill. Grant arrival versus actual-use history is derived from the existing own-move copy rule. Conditional-state/return power basis and LiQiang copied-use limit await clarification.",
+      "Round 35 follow-up: successful self-bi, successful LiQiang, and Reflect cannot be copied. Numeric high rank and copy permission are separate; no copied-LiQiang repeat-use design is required. Complete compound move identity remains distinct from a Self branch. Whether excluded moves replace previous copy records is the remaining new question.",
+      "Round 35 final follow-up: Three followed by successful self-bi still copies Three. Only copyable moves meeting strength >=2 replace the latest copy record; excluded or low-strength moves do not. ZengYi explicitly clears it. G51/H05 close the pending record-update question.",
+      "Round 36: numeric table approved: Def attack0/defense<=1 with BigBi exception; ThreeDef attack0/defense=3 plus Three matching; VolvoDef attack0/defense=4 plus Volvo matching, including bomb origin; XiaoBei attack7/clash<=7, Shell attack10/clash<=10, NieXiang clash<=3.5. Def and Bomb placement cannot block enhanced Xiao at any current tier. Costs/gates are not implicitly approved. G52/G53 and D01-D03 record the changes.",
+      "Round 37: full previous cost table and no additional per-game limits are approved; ZengYi explicitly remains 0 DD. Zhang may copy NieXiang with zero charge, without checking/spending four charge; ordinary NieXiang retains that gate/cost. Source-qualified cost effects reference a single planned spend. JuYan cost0 and no extra use limit confirmed; buff stacking remains for peer review. G54/G55 and F01/F02 recorded.",
+      "Round 38: legal cards precede gray unplayable cards, smaller cards and 1-0 hotkeys are requested; stable within-group order and first-ten mapping remain proposals. Derived input validation rejects invalid requests without cost/buff/use/history/turn changes. Complete P1-P4 before match progression: no eliminations continue the game; eliminations with at least two survivors reset all survivor gameplay state for a new game; one living survivor wins; all eliminated means no winner and the match ends, as clarified by the user. New-game reset includes every resource, history, usage limit, first-free entitlement, bomb state and Zeng recovery/pending/free reward; it differs from Zeng skill clearing. G56-G58, E01-E05 and UI01 recorded; U08 closed.",
+      "Round 39: user approves original attack0 for Cloud, Bomb, PragonDef, NieXiangDef, Absorb, JuYan and TianLiJun, and defense0 for Charge; independent resources, direct eliminations and returned attacks are preserved. G59 closes leftover numeric candidates; high-copy qualification follows strength. Audit derived from R38 reset: H05 preserves Three only before progression, not across a fresh game; pure self-bi cannot naturally repeat in one game, L03 is an attribute comparison and L07 a reachable RotateThree comparison. E06/E07 cover reset history. JuYan repeated buff is explicitly CODE_CANDIDATE for peers. The current Gym source increments its turn after core rejection; no runtime/AI validation is claimed. Integrated report and local PR description are prepared, not submitted.",
+      "After round 39, user explicitly says to await JuYan replies while continuing progress. No gameplay changes: core discussion can close and the current report can be handed off; peer review remains non-blocking, not approved by silence.",
+      "Development-direction follow-up after R39: user allows rebuilding the entire game from scratch, defers AI integration and notes that separate training may be needed. No move values change. Legacy mappings remain evidence only, not new runtime constraints. Retraining is not yet decided or started; R02 early AI acceptance needs formal plan revision.",
+      "Round 40: peer screenshot confirms a single non-stacking JuYan buff and no Bi block; user then confirms defense<=1/3. G30/G60 and J01-J03 updated, previous <=1/blocks-Bi working rule superseded. Temporary old AI may be used early; dedicated AI redevelopment and possible training are deferred, not all AI matches. User specifies player-facing concise rules, comprehensive rules and program/data/algorithm layers; ChatGPT Pro plans and Codex implements/tests. No Pro task, AI integration or engine implementation has been run."
+    ],
+    "framework_path": "docs/results/R01-T01-a/RULE-FRAMEWORK.md",
+    "framework_status": "DISCUSSION_DRAFT",
+    "framework_version": "0.38",
+    "branch_cases_path": "docs/results/R01-T01-a/BRANCH-CASES.md",
+    "branch_selection_current": "Adopted in round 15: scoped evaluation, lock all branches, regenerate full-field properties and resolve once. Round 16 confirms that Zhang copies a complete compound move and follows its selection rules; history stores actual identity, not selected branch.",
+    "branch_cases_status": "ARCHIVED_ALTERNATIVE: round-13 profile analysis, not a current implementation requirement",
+    "liqiang_failure_rule": "Confirmed round 19: when unsuccessful, DD=0 acts as Charge; DD>0 has zero attack/defense and no Charge gain, and cannot block ordinary Xiao (L02). Zero-DD restriction is recorded in the prior failure context, not silently extended to successful LiQiang. Turn-start DD is the timing design; L01 success/target scope was confirmed in round 21.",
+    "current_unresolved_ids": [
+      "U07"
+    ],
+    "derived_from_confirmed_rules": "Zhang copies the original actual move with the current Zhang origin, without automatically inheriting historical Bomb origin; no source-history chain is introduced absent an explicit rule.",
+    "historical_questions_path": "docs/results/R01-T01-a/RULE-DISCUSSION-ARCHIVE.md",
+    "catalog_path": "docs/results/R01-T01-a/MOVE-CATALOG.json",
+    "phase_resolution": {
+      "status": "CONFIRMED_ROUND_26",
+      "phases": [
+        "PREPARE",
+        "PRIMARY",
+        "RETURN",
+        "COMMIT"
+      ],
+      "rule": "Clash defense applies in PRIMARY only; established continuing protection remains active across PRIMARY/RETURN. Complete each stage for all actors and aggregate eliminations last. Other independent defense RETURN applicability is explicitly OPEN, not silently disabled.",
+      "rule_id": "G28"
+    },
+    "juyan_review_path": "docs/results/R01-T01-a/JUYAN-REVIEW.md",
+    "juyan_review_status": "RESOLVED_ROUND_40",
+    "deferred_extension_ids": [
+      "U05",
+      "U06"
     ]
   },
-  "kimi_called": false
+  "kimi_called": false,
+  "discussion_checks": {
+    "scope": "Historical round-13 full-profile score-table arithmetic and repository checks; not multiplayer implementation or validation of the adopted scoped-evaluation rule",
+    "score_table_command": "python3 experiments/r01-t01-a/check_branch_tables.py",
+    "score_tables_passed": 13,
+    "incomplete_or_unknown_tables_rejected": 2,
+    "score_profiles_checked": 47,
+    "repeat_stdout_identical": true,
+    "repository_command": "python3 scripts/check.py",
+    "syntax_files": 11,
+    "tests_run": 32,
+    "passed": 31,
+    "expected_failures": 1,
+    "game_sources_and_existing_tests_changed": false
+  },
+  "catalog_checks": {
+    "command": "python3 experiments/r01-t01-a/check_rule_catalog.py",
+    "exit_code": 0,
+    "legacy_moves": 31,
+    "sourced_facts": 431,
+    "markdown_matches_json": true,
+    "baseline_command": "python3 scripts/check.py",
+    "syntax_files": 12,
+    "tests_run": 32,
+    "passed": 31,
+    "expected_failures": 1,
+    "unexpected_failures": 0,
+    "original_snapshot_files_unchanged": 46,
+    "gameplay_phase_engine_implemented": false,
+    "evidence": "docs/results/R01-T01-a/rule-catalog-check.txt",
+    "discussion_round": 40,
+    "new_discussion_entries": 2
+  },
+  "development_direction": {
+    "status": "USER_CONFIRMED",
+    "product": "Greenfield game development based on the current confirmed rule design",
+    "legacy_compatibility": "Not a prerequisite; preserve existing files and legacy catalog mappings as evidence only",
+    "ai": "Early temporary old-AI integration is permitted without blocking development; dedicated AI redevelopment, evaluation and possible retraining are deferred. No training decision or execution yet.",
+    "plan_impact": "Retain early offline 1v1 with a verified temporary opponent if feasible; separate final AI engineering/quality acceptance. Prior all-AI-postponed interpretation superseded. Formal plan files unchanged.",
+    "rule_layers": [
+      "Concise player-facing rules and later art",
+      "Comprehensive normative rules",
+      "Program specification: data, attributes, algorithms, code and tests"
+    ],
+    "roles": "ChatGPT Pro plans rules and judgment architecture; Codex writes code and tests from the specification. No task was created or sent."
+  }
 }
