@@ -1,0 +1,91 @@
+name: R02 planner cross-check
+
+on:
+  pull_request:
+    branches: [docs/design-discussion-20260911]
+    paths:
+      - .github/workflows/r02-review-crosscheck.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: r02-review-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  fixed-core-against-independent-fixtures:
+    if: github.head_ref == 'review/r02-crosscheck-20260913'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    steps:
+      - name: Read pinned core candidate
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: Kalopsiazza/DeiDei
+          ref: 529d9b5369d03998355df079095f8b1a317be0ee
+          path: core-candidate
+          persist-credentials: false
+      - name: Read pinned independent test candidate
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: Kalopsiazza/DeiDei
+          ref: 3817472f5b199151128a6631bd64cee1d2ed0649
+          path: test-candidate
+          persist-credentials: false
+      - name: Read pinned desktop source and existing evidence only
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: Kalopsiazza/DeiDei
+          ref: b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1
+          path: desktop-candidate
+          persist-credentials: false
+      - name: Use Python 3.11
+        uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - name: Execute without editing either candidate
+        shell: bash
+        run: |
+          mkdir -p review-evidence
+          python - <<'PY'
+          import json, os, pathlib, subprocess, sys
+          root = pathlib.Path.cwd()
+          out = root / 'review-evidence'
+          core = root / 'core-candidate'
+          tests = root / 'test-candidate'
+          desktop = root / 'desktop-candidate'
+          checks = [
+              ('core-self-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'game/core/tests', '-v'], core, {'PYTHONPATH': str(core/'game/core')}),
+              ('fixture-validation', [sys.executable, 'tests/rules_v1_001/validate_fixtures.py'], tests, {}),
+              ('harness-self-tests', [sys.executable, '-m', 'unittest', 'discover', '-s', 'tests/rules_v1_001', '-p', 'test_*.py', '-v'], tests, {}),
+              ('independent-acceptance', [sys.executable, 'tests/rules_v1_001/run_acceptance.py', '--core', str(core/'game/core')], tests, {}),
+          ]
+          records = []
+          for label, command, cwd, extra in checks:
+              try:
+                  completed = subprocess.run(command, cwd=cwd, env={**os.environ, **extra}, text=True, stdout=subprocess.PIPE, stderr=subprocess.STDOUT, timeout=240)
+                  code, text = completed.returncode, completed.stdout
+              except subprocess.TimeoutExpired as exc:
+                  code, text = 124, str(exc)
+              (out/(label+'.txt')).write_text(text, encoding='utf-8')
+              records.append({'check': label, 'command': command, 'exit_code': code})
+              print(f'=== {label}: exit={code} ===\n{text}', flush=True)
+          metadata = {'python': sys.version, 'platform': sys.platform, 'core_sha': subprocess.check_output(['git','rev-parse','HEAD'], cwd=core, text=True).strip(), 'tests_sha': subprocess.check_output(['git','rev-parse','HEAD'], cwd=tests, text=True).strip(), 'desktop_source_sha': subprocess.check_output(['git','rev-parse','HEAD'], cwd=desktop, text=True).strip(), 'checks': records, 'scope': 'Linux rule code-level checks only. Desktop copied for source/image review, not executed. No model, Windows/macOS, session or installer acceptance.'}
+          (out/'summary.json').write_text(json.dumps(metadata, ensure_ascii=False, indent=2)+'\n', encoding='utf-8')
+          for cwd in (core, tests, desktop):
+              subprocess.run(['git','diff','--exit-code'], cwd=cwd, check=True)
+          sys.exit(1 if any(r['exit_code'] for r in records) else 0)
+          PY
+      - name: Retain logs and exact candidate sources for review
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r02-review-pinned-candidates
+          retention-days: 7
+          path: |
+            review-evidence/
+            core-candidate/game/core/
+            test-candidate/tests/rules_v1_001/
+            desktop-candidate/game/desktop/
+            desktop-candidate/docs/results/R02-T03-a/
