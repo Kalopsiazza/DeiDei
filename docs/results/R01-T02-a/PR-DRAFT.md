@@ -1,6 +1,6 @@
 # [R01-T02-a] 技术框架实机验证｜部分完成待条件
 
-目标：`docs/design-discussion-20260911`。本文件只是草稿，未创建远程 PR。
+目标：`docs/design-discussion-20260911`。已于 2026-09-12 创建 [PR #7](https://github.com/Kalopsiazza/DeiDei/pull/7)，此文件保留为提交说明底稿。
 
 ## 这次想解决什么
 

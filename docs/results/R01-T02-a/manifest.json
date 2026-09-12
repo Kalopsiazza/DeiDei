@@ -7,7 +7,7 @@
   "architecture_version": "1.0",
   "tested_code_sha": "6187c2366f3be282db0d6bad73dd025c27224a87",
   "branch": "work/r01-t02-a-tech",
-  "pr_url": null,
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/7",
   "created_at_utc": "2026-09-11T04:46:02.531042+00:00",
   "platforms": {
     "macOS": {
@@ -112,15 +112,15 @@
     },
     {
       "path": "PR-DRAFT.md",
-      "sha256": "747a60ec8b73f74b917281e18e17d16943a5015d6b927922c3c2277118ca98f4",
-      "bytes": 2024,
+      "sha256": "a4a11d7198989153f3d2ce0c246bbe97c3571b893a9b68f9b87ddb884f78a680",
+      "bytes": 2099,
       "kind": "report_or_log",
       "retention": "git history after local result commit"
     },
     {
       "path": "REPORT.md",
-      "sha256": "8b6294cc7053485f75113ed4595186c5e7e4b17d1c311ccdda1e258aff68fbff",
-      "bytes": 6625,
+      "sha256": "f8e44b1a56af3fd5b1bfdbf1e7cd338b122d86f4ba40af89fe7b46af33be54aa",
+      "bytes": 6765,
       "kind": "report_or_log",
       "retention": "git history after local result commit"
     },
@@ -280,5 +280,12 @@
     ".github/workflows/",
     "requirements_rl.txt"
   ],
-  "evidence_path_base": "docs/results/R01-T02-a; binary artifact paths are repository-relative"
+  "evidence_path_base": "docs/results/R01-T02-a; binary artifact paths are repository-relative",
+  "submission": {
+    "date": "2026-09-12",
+    "status": "submitted_for_review_with_PARTIAL_execution",
+    "target_branch": "docs/design-discussion-20260911",
+    "merged": false,
+    "code_changed_since_test": false
+  }
 }
