@@ -1,0 +1,34 @@
+{
+  "purpose": "Unmerged integration workspace, exact source trees; not a playable release",
+  "base_sha": "b1f6f660b3a50225f2d4fa67c96c45a2cf3173b7",
+  "rule_version": "classic-1.0.1",
+  "sources": [
+    {
+      "path": "game/core",
+      "commit": "529d9b5369d03998355df079095f8b1a317be0ee",
+      "tree": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+      "review": "ACCEPTED_CORE"
+    },
+    {
+      "path": "tests/rules_v1_001",
+      "commit": "3817472f5b199151128a6631bd64cee1d2ed0649",
+      "tree": "237a573d53b6182c6d15da2411e0aca33fa9ca85",
+      "review": "ACCEPTED_TEST_SUITE_SESSION_NOT_RUN"
+    },
+    {
+      "path": "game/desktop",
+      "commit": "b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1",
+      "tree": "2dae52d4905cc054402dba7c6ec650ed47aac082",
+      "review": "PARTIAL_FIXES_REQUIRED"
+    }
+  ],
+  "original_plan_archive_sha256": "f5e97fe4395f6f3d5552c30b1fe0052563e75c7d7e5d07c97bb78b960fa554b1",
+  "crosscheck_runs": [
+    34709718426,
+    34709853840
+  ],
+  "core_fixtures_passed": 192,
+  "session_fixtures_not_run": 2,
+  "original_prs_merged": false,
+  "new_implementation_started": false
+}

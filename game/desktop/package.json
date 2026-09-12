@@ -1,0 +1,29 @@
+{
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "7.11.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "electron": "44.3.0",
+    "esbuild": "0.28.2",
+    "playwright-core": "1.63.0",
+    "typescript": "7.0.2"
+  },
+  "name": "deidei-r02-desktop",
+  "productName": "DeiDei R02",
+  "version": "0.1.0",
+  "private": true,
+  "description": "R02-T03-a clickable fixture prototype",
+  "author": "DeiDei contributors",
+  "main": "main.cjs",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && node build.cjs",
+    "start": "npm run build && electron .",
+    "test": "npm run build && node --test test.cjs",
+    "smoke": "node smoke.cjs"
+  }
+}
