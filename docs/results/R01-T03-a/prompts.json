@@ -1,0 +1,59 @@
+[
+  {
+    "id": "P02",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P02 主菜单。Title DeiDei at center upper, current nickname 玩家01 and a small original portrait top corner, '版本示例'. Two prominent centered main buttons '单人' and '联机'. Secondary '规则', '设置', '退出'. Discreet bottom connection notice '离线时仍可单人游戏'. No participant table.",
+    "file": "P02-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "text description from inspected reference"
+  },
+  {
+    "id": "P04",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P04 创建 / 加入房间。Two clearly distinct columns. Left '创建房间', fields '房名（可选）', '参战位 2—6', '密码（可选）', '创建'. Right '加入房间', '房间号' blank without digits, conditional '密码（需要时）', mode '参战 / 观战', '加入'. Top '返回'. Small bottom reference state band labeled '错误状态示例：连接失败 / 房间不存在 / 密码错误 / 参战已满 / 观众已满 / 版本不兼容'. Do not show public room list. Use attached reference only for watercolor medium. Much quieter plain paper background, no scenery or decorative slogans.",
+    "file": "P04-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  },
+  {
+    "id": "P05",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P05 房间等候。Top '房间号' with '复制', '房主：玩家01', '经典模式'. Main left area EXACTLY SIX seat panels in 3 columns x 2 rows labeled 席位01 through 席位06. First three occupied distinct temporary human avatars 玩家01 房主, 玩家02 已准备, 玩家03 未准备; remaining three labeled 空位 with no people. Separate narrow right spectator panel '观众区', '人数 / 容量待定', '等待下一局参战'. Bottom '准备', '开始（房主）', '离开'. Note '至少两位真人才可开始'. Small clearly labeled alternate-state note '房主离开确认：离开将结束房间'. Do not expose password or add AI. Use attached reference only for watercolor medium. Quiet plain paper background, no scenery or decorative slogans.",
+    "file": "P05-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  },
+  {
+    "id": "P06",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P06 双人牌桌。EXACTLY TWO participant portraits total: 玩家02 centered at top with 'DD 示例', '等待提交'; 玩家01 自己 bottom left with 'DD 示例'. No central character duplicates. Central 40 percent is open arena public effects area '等待共同揭晓', no hidden enemy move. Bottom 25 percent personal abstract placeholder cards, resource beside cards, timer directly above cards '剩余时间：示例'. '提交（示意）','牌说明','菜单','快捷发言'. Small state samples '资源不足 / 等待对方 / 托管 / 断线提示'. Use attached reference only for watercolor medium. Quiet paper arena, no decorative slogans.",
+    "file": "P06-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  },
+  {
+    "id": "P07",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P07 六人牌桌。EXACTLY SIX participant portraits total, each shown ONCE: 玩家01 自己 bottom left beside own resource 'DD 示例' and cards; 玩家02 and 玩家03 across top; 玩家04 upper left side, 玩家05 lower left side, 玩家06 middle right side. All five opponents readable nickname DD 示例 and state. 玩家05 gray '已淘汰', others '存活' with either 已提交 or 思考中. No seventh person and NO additional characters in central arena. Central approximately 40 percent open watercolor arena '等待共同揭晓', no hidden current actions. Bottom 25—30 percent own placeholder cards with abstract icons '招式占位', '说明待确认', no costs. Timer immediately ABOVE bottom cards '剩余时间：示例'. Buttons '提交（示意）', '牌说明'; header '菜单 / 快捷发言', '回合示例'. Small state note '多人超时默认攒', '资源不足 / 断线提示'. No target selection. Use attached reference for medium only. Only DD resource, NO leaves/water/stars resource currencies. NO scenery or decorative slogan panels. Clearly six unique identities.",
+    "file": "P07-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  },
+  {
+    "id": "P08",
+    "prompt": "Use case: ui-mockup. Create ONE standalone landscape desktop game page concept, reference proportion 1440x900. DeiDei soft hand-drawn watercolor and colored pencil, warm ivory paper, muted sage and blue, restrained handmade outlines, quiet background. Match the viewed approved-style-02 reference's medium and warmth ONLY, no cats, no cat logo, no slogan, no copied characters. Original distinct temporary human portrait placeholders where needed. Clear readable Chinese interface labels, spacious hierarchy. No pixel art, gestures, clapping, shops, levels, unlocks, health hearts, random draw deck, phones, AI count selector, public matchmaking, advertisements. Footer page ID and 'concept v1 · 示意，非实机'. Numeric resources/time are examples, not game rules. Cards use abstract icons and '招式占位 / 说明待确认', no invented costs. P08 观战 / 本人淘汰 page. EXACTLY SIX participant portraits ONCE each, labels 玩家01 through 玩家06 with public DD 示例 and state, arranged as six seats around open central public arena: two top, two left, one right, one bottom-left ABOVE footer. Player05 gray 已淘汰. Observer has NO avatar and NO participant seat. Top badge '观战中', '回合示例', '菜单'. Central '公开战况 / 等待共同揭晓', no unrevealed moves. Bottom quarter spectator information and '已揭晓记录（占位）', '留房等待下一局', buttons '留房', '退出'. No actionable hand cards or submit button or personal resource/timer. Small alternative-state note '本人淘汰：你已淘汰，可观战或退出；本局不复活'. Use attached reference for medium only. Quiet paper background. Only DD resource, NO invented currencies.",
+    "file": "P08-concept-v1.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  },
+  {
+    "id": "P06",
+    "version": 2,
+    "prompt": "Edit this existing P06 concept only to correct compliance. Preserve exactly TWO people and overall watercolor layout. REMOVE the invented leaf/drop/star resource panel at bottom-left; replace with plain text '本人 DD：示例'. Add clear '回合：示例' header. Replace the right heading '对局状态' with '状态示例（按情况显示）' because states are alternatives. Keep timer progress bar above personal cards and existing buttons. Footer 'P06 · concept v2 · 示意，非实机'. No other new features, symbols or people.",
+    "file": "P06-concept-v2.png",
+    "tool": "image_gen.imagegen",
+    "model": "unknown",
+    "reference_mode": "local reference image supplied"
+  }
+]
