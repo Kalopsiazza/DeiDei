@@ -1,0 +1,8 @@
+node_modules/
+.venv/
+.model-venv/
+build/
+dist/
+out/
+*.spec
+__pycache__/

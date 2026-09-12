@@ -1,0 +1,31 @@
+{
+  "dependencies": {
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@electron-forge/cli": "7.11.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "electron": "44.3.0",
+    "esbuild": "0.28.2",
+    "playwright-core": "1.63.0",
+    "typescript": "7.0.2"
+  },
+  "name": "deidei-r01-tech-b",
+  "productName": "DeiDei R01 Tech B",
+  "version": "0.1.0",
+  "private": true,
+  "description": "R01-T02-b generation repair validation",
+  "author": "DeiDei contributors",
+  "main": "main.cjs",
+  "scripts": {
+    "build": "tsc --noEmit && node build.cjs",
+    "package": "npm run build && electron-forge package",
+    "start": "npm run build && electron .",
+    "test": "node --test test-main.cjs test-generation.cjs"
+  },
+  "config": {
+    "forge": "./forge.config.cjs"
+  }
+}
