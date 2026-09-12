@@ -1,0 +1,7 @@
+COMMAND: python3.11 tests/rules_v1_001/run_acceptance.py --core game/core
+EXIT_CODE: 2
+
+STDOUT
+{"status": "ENGINE_NOT_AVAILABLE", "engine_run": "NOT_RUN", "engine_passed": 0, "reason": "Expected --core <directory>/deidei_core/api.py; no fallback engine is used", "session_not_run": ["C074/room_state_preserved", "C081/session_request_replay"]}
+
+STDERR

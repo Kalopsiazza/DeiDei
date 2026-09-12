@@ -1,0 +1,7 @@
+COMMAND: python3.11 tests/rules_v1_001/run_acceptance.py --core game/core --case C081/session_request_replay
+EXIT_CODE: 3
+
+STDOUT
+{"status": "SESSION_NOT_AVAILABLE", "session_not_run": ["C081/session_request_replay"], "engine_passed": 0}
+
+STDERR

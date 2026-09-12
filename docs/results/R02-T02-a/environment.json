@@ -1,0 +1,21 @@
+{
+  "recorded_at_utc": "2026-09-12T17:31:53.745277+00:00",
+  "os": "Darwin",
+  "os_version": "27.0",
+  "cpu_arch": "arm64",
+  "python_version": "3.11.15",
+  "python_build": [
+    "main",
+    "May 10 2026 19:23:07"
+  ],
+  "python_install_source": "existing uv-managed CPython 3.11.15",
+  "git": "git version 2.54.0 (Apple Git-157)",
+  "tools": [
+    "Codex",
+    "exec_command",
+    "apply_patch"
+  ],
+  "agents": 1,
+  "kimi_called": false,
+  "external_review": "not invoked"
+}

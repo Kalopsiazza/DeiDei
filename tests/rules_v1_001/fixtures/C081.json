@@ -1,0 +1,408 @@
+[
+  {
+    "case_id": "C081",
+    "variant": "pure_due_retry",
+    "rules_version": "classic-1.0.1",
+    "scope": "property",
+    "input": {
+      "state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "fixture:g1",
+        "game_index": "1",
+        "turn_index": "5",
+        "roster": [
+          "A",
+          "B"
+        ],
+        "active_ids": [
+          "A",
+          "B"
+        ],
+        "status": "playing",
+        "winner_id": null,
+        "players": {
+          "A": {
+            "dd6": "12",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "Charge",
+            "latest_copyable_move": null,
+            "zeng_state": "waiting",
+            "reward_due_turn": "5"
+          },
+          "B": {
+            "dd6": "24",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "Charge",
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "submissions": {
+        "A": "Charge",
+        "B": "Charge"
+      },
+      "choice_tokens": {}
+    },
+    "expected": {
+      "ok": true,
+      "eliminated_ids": [],
+      "kills": {
+        "A": [],
+        "B": []
+      },
+      "transition": {
+        "kind": "continue_game",
+        "from_game_id": "fixture:g1",
+        "to_game_id": "fixture:g1",
+        "winner_id": null
+      },
+      "actions": {
+        "A": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "branch": null,
+          "condition": null,
+          "is_recovery": false,
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le"
+          },
+          "defense_return": null,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          }
+        },
+        "B": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "branch": null,
+          "condition": null,
+          "is_recovery": false,
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le"
+          },
+          "defense_return": null,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          }
+        }
+      },
+      "post_turn_players": {
+        "A": {
+          "dd6": "18",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "pending_bombs": [],
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "ready",
+          "reward_due_turn": null
+        },
+        "B": {
+          "dd6": "30",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "pending_bombs": [],
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      },
+      "next_state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "fixture:g1",
+        "game_index": "1",
+        "turn_index": "6",
+        "roster": [
+          "A",
+          "B"
+        ],
+        "active_ids": [
+          "A",
+          "B"
+        ],
+        "status": "playing",
+        "winner_id": null,
+        "players": {
+          "A": {
+            "dd6": "18",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "Charge",
+            "latest_copyable_move": null,
+            "zeng_state": "ready",
+            "reward_due_turn": null
+          },
+          "B": {
+            "dd6": "30",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "Charge",
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "required_events": [
+        {
+          "match": {
+            "kind": "reward_granted",
+            "phase": "P4"
+          },
+          "count": 1
+        }
+      ],
+      "forbidden_events": [],
+      "options": {
+        "A": {
+          "Charge": {
+            "available": true,
+            "reason_code": null,
+            "forced": false,
+            "required": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            },
+            "spend": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            }
+          },
+          "ZengRewardBigBi": {
+            "available": false,
+            "reason_code": "NO_REWARD",
+            "forced": false,
+            "required": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "1"
+            },
+            "spend": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "1"
+            }
+          }
+        },
+        "B": {
+          "Charge": {
+            "available": true,
+            "reason_code": null,
+            "forced": false,
+            "required": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            },
+            "spend": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            }
+          }
+        }
+      },
+      "properties": [
+        "repeat",
+        "permutation",
+        "json_roundtrip",
+        "no_aliases"
+      ]
+    },
+    "rule_ids": [
+      "R02",
+      "R25",
+      "R26"
+    ],
+    "source_notes": "Exact C065 r5 start: A DD=12 sixths, B DD=24 sixths, due=5. Pure computation only."
+  },
+  {
+    "case_id": "C081",
+    "variant": "session_request_replay",
+    "rules_version": "classic-1.0.1",
+    "scope": "session",
+    "input": {
+      "initial": {
+        "state": {
+          "schema_version": 1,
+          "rules_version": "classic-1.0.1",
+          "match_id": "fixture",
+          "game_id": "fixture:g1",
+          "game_index": "1",
+          "turn_index": "5",
+          "roster": [
+            "A",
+            "B"
+          ],
+          "active_ids": [
+            "A",
+            "B"
+          ],
+          "status": "playing",
+          "winner_id": null,
+          "players": {
+            "A": {
+              "dd6": "12",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "waiting",
+              "reward_due_turn": "5"
+            },
+            "B": {
+              "dd6": "24",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          }
+        },
+        "submissions": {
+          "A": "Charge",
+          "B": "Charge"
+        },
+        "choice_tokens": {}
+      },
+      "operations": [
+        "Apply C081/pure_due_retry as request_id due-5; save its response and the live state.",
+        "Retry identical due-5; return cached response, do not apply again.",
+        "Apply C065 r6 reward spend; A is spent with DD=18 sixths.",
+        "Replay due-5 with cache retained; response may be the old response, live state must stay spent at turn 7.",
+        "Replay due-5 after response eviction; return STALE_TURN, live state unchanged.",
+        "Reuse due-5 with changed payload; return REQUEST_CONFLICT, live state unchanged."
+      ]
+    },
+    "expected": {
+      "status": "NOT_RUN",
+      "assertions": {
+        "after_due": {
+          "dd6": "18",
+          "zeng_state": "ready",
+          "reward_due_turn": null,
+          "grant_count": 1
+        },
+        "after_spend_and_old_request": {
+          "dd6": "18",
+          "zeng_state": "spent",
+          "reward_due_turn": null,
+          "turn_index": "7"
+        },
+        "uncached_error": "STALE_TURN",
+        "conflicting_error": "REQUEST_CONFLICT"
+      }
+    },
+    "rule_ids": [
+      "R02",
+      "R25",
+      "R26"
+    ],
+    "source_notes": "CONTRACT-R02/ARC-R02 D05 defines behavior, but no session callable is issued; integration must bind a real adapter."
+  }
+]
