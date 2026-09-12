@@ -1,15 +1,15 @@
 {
   "task_id": "R02-T01-a",
-  "status": "PARTIAL",
+  "status": "SUBMITTED",
   "local_implementation": "COMPLETE",
-  "remote_submission": "NOT_RUN_NO_EXPLICIT_AUTHORIZATION",
+  "remote_submission": "SUBMITTED",
   "input_ref": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
   "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
   "input_code_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
   "tested_code_sha": "002e3882b91e64f0204f90e24a3e6ee0f783ef23",
   "branch": "codex/r02-t01-a-core",
   "intended_pr_base": "docs/design-discussion-20260911",
-  "pr_url": null,
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/13",
   "prd_version": "PRD-R02 1.0",
   "architecture_version": "ARC-R02 1.0",
   "contract_version": "CONTRACT-R02 1.0",
@@ -76,8 +76,8 @@
     },
     {
       "path": "docs/results/R02-T01-a/REPORT.md",
-      "bytes": 10221,
-      "sha256": "e9bcfb85636dbf2bc666abf54b2447b0d42bf52d1596b5dc69ca39dc3aee35eb"
+      "bytes": 10293,
+      "sha256": "d0e994daf15815de7020b2d854d1c062cdb25796a0039748d3d953a56b571e54"
     },
     {
       "path": "docs/results/R02-T01-a/core-tests.txt",
@@ -158,15 +158,21 @@
     "Worker/AI/desktop integration",
     "Windows/Linux hardware",
     "packaging and physical-offline validation",
-    "external review; Kimi paused",
-    "remote push / PR creation"
+    "external review; Kimi paused"
   ],
   "waiting_for": [
-    "User authorization for remote submission",
     "Planner review and fixed-SHA T02 test run"
   ],
   "outside_allowed_paths_changed": false,
   "merged": false,
   "released": false,
-  "deployed": false
+  "deployed": false,
+  "remote_creation_verification": {
+    "verified_at": "2026-09-12T17:50:22.982972+00:00",
+    "base": "docs/design-discussion-20260911",
+    "head": "codex/r02-t01-a-core",
+    "initial_head_sha": "7bf39de81e01c8734c8e9835c7120aa4053ff15f",
+    "state": "OPEN",
+    "note": "This readback preceded the documentation-only submission-status commit."
+  }
 }

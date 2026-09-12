@@ -1,8 +1,8 @@
 # R02-T01-a｜新版规则核心实现
 
-状态：**PARTIAL（本地源码、自测和交付材料完成；远端 PR 尚未提交）**。没有未实现的本包招式；尚未进行 T02 独立验收，不自批 ACCEPTED。
+状态：**SUBMITTED（用户授权后已推送并创建 PR #13，等待验收）**。没有未实现的本包招式；尚未进行 T02 独立验收，不自批 ACCEPTED。
 
-- 分支：`codex/r02-t01-a-core`；结果 PR：未创建，未执行 push。用户本次要求完成任务 01；附件中的远端写入步骤未作为额外发布授权执行。
+- 分支：`codex/r02-t01-a-core`；结果 PR：[#13](https://github.com/Kalopsiazza/DeiDei/pull/13)，目标 `docs/design-discussion-20260911`。用户在本地交付后明确授权推送，已完成分支推送、PR 创建和 base/head/SHA 回读；本次仅更新交付状态，受测源码未变。
 - input_code_sha / input_sha：`3a81daf0f42416ccb73a5a69748655145e6f2f0c`。
 - tested_code_sha：`002e3882b91e64f0204f90e24a3e6ee0f783ef23`。此后的交付记录提交不改源码或测试。
 - 规划：R02-v1；PRD-R02 1.0；ARC-R02 1.0；CONTRACT-R02 1.0；classic-1.0.1；RULE-ENGINE-v1.0。
@@ -110,8 +110,8 @@
 
 独立导入测试用 `-B -S` 在空目录启动解释器，禁止网络、子进程及除 Python 模块加载外的文件 IO，随后执行三个公开函数；未加载 Torch/Tkinter/Gym/NumPy 或旧规则。此证明针对库自身副作用，不将解释器读取模块文件谎称为零磁盘读取。
 
-规划中的 `R02-START.md` 一句 fork 段落写 `integration/r02`，与同文件主段、任务包和 manifest 不一致；后者明确指向现存 `docs/design-discussion-20260911`。准备的 PR 目标采用这一一致值；未创建或改动任何远端分支。
+规划中的 `R02-START.md` 一句 fork 段落写 `integration/r02`，与同文件主段、任务包和 manifest 不一致；后者明确指向现存 `docs/design-discussion-20260911`。PR 采用这一一致值；仅推送本任务独立分支，没有直接修改目标分支或 main。
 
 NOT_RUN：T02 独立测试、会话重复请求/旧请求应用拦截、C074 房间缺席记录、真实 AI、桌面/截图、Windows/Linux 实机、安装分发/断网、外部审阅。它们不在本包授权实现范围；没有用自测取代这些结果。Kimi 按工作流暂停，未调用。
 
-下一步仅为审阅本地结果并按用户授权推送独立分支、创建目标为 `docs/design-discussion-20260911` 的 PR；PR 文案已在 [PR-BODY.md](PR-BODY.md)。随后由规划者指定受检提交运行 T02。未自行进入 b 包、集成、合入、发布或部署。
+下一步由规划者审阅 [PR #13](https://github.com/Kalopsiazza/DeiDei/pull/13)，指定受检提交运行 T02；PR 文案保存在 [PR-BODY.md](PR-BODY.md)。未自行进入 b 包、集成、合入、发布或部署。
