@@ -2,6 +2,14 @@
 
 本文件适用于整个仓库。用户的具体任务和本仓库约定一起决定本次工作；遇到玩法含糊或来源不明的内容，报告疑问，不自行猜定。
 
+## 本次具名计划优先入口（2026-09-11）
+
+Teddy 委托的安装版开发采用 [WORK_START_HERE.md](WORK_START_HERE.md) 和 [协作流程](docs/production/WORKFLOW.md)。讨论文档仅供参考，不可直接据此写新游戏代码。详细 PRD、架构设计、页面信息、工作包及验收由 ChatGPT 完成；Codex 只做编号包所授权的工作。
+
+正式产品代码等相应正式 PRD 与架构写完再做。第一轮只发规则取证、独立技术实验和布局出图；允许路径、输入版本、停止条件和 PR 目标以具体工作包为准。没有包不自行添加功能，不自行进入 b/c 包，不修改规划者文件或总进度。
+
+本次快照为 `plan/r01-v1`，结果 PR 目标为 `docs/design-discussion-20260911`。普通贡献的 main 流程不用于覆盖具名工作包。无论哪类任务，禁止自动合入、强推或隐瞒未运行测试。
+
 ## 开始前
 
 阅读 `README.md`、`CONTRIBUTING.md`、`docs/development.md`，涉及规则时再读 `docs/game-rules.md` 和 `docs/known-issues.md`，涉及模型时读 `docs/model-card.md`。先检查 git 状态、当前分支和上游最新 main；保留已有未提交工作，不执行会丢失其他人内容的命令。
