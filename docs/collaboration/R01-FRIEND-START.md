@@ -25,7 +25,7 @@ DeepSeek、Codex 或其他模型都遵守相同要求：按实际可用工具工
 
 - 任务文件快照：`plan/r01-friend-v1`。开始时读取实际完整 SHA，记录为 `plan_sha`；这是只读快照，不往里面推送。
 - 任务04的受测运行代码：`135b938fcfe0486895adfeea37fab73ee5f881dd`。包、源码复测和记录都写明这个 SHA，不追随“最新代码”。
-- 任务05从规划快照建立自己的分支，仅写指定工具与结果目录。
+- 两个任务的结果分支都从代码基线 `3a81daf0f42416ccb73a5a69748655145e6f2f0c` 建立；任务材料从上述快照只读查看，不复制进结果分支。这样任务材料尚未合入时，也不会把五份规划文档带进同学的结果PR。
 - 每个结果 PR 的目标：`Kalopsiazza/DeiDei:docs/design-discussion-20260911`，不直接提交 main，不自行合入。
 
 ## 从自己的 fork 提交
@@ -45,8 +45,10 @@ git clone "https://github.com/$Login/DeiDei.git" DeiDei-friend
 Set-Location DeiDei-friend
 git remote add upstream https://github.com/Kalopsiazza/DeiDei.git
 git fetch upstream plan/r01-friend-v1
-git switch -c $Branch FETCH_HEAD
-git rev-parse HEAD
+git rev-parse FETCH_HEAD             # 记录文档plan_sha，按此SHA阅读任务资料
+git fetch upstream 3a81daf0f42416ccb73a5a69748655145e6f2f0c
+git switch -c $Branch 3a81daf0f42416ccb73a5a69748655145e6f2f0c
+git rev-parse HEAD                  # 代码/结果起点，和plan_sha分别记录
 ```
 
 任何命令失败先停止检查，不能在错误目录继续。不自动 rebase、不 force push、不删除原工作。第二项另建分支与工作目录，不把两个任务的改动混在同一 PR。

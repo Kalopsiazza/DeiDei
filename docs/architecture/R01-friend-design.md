@@ -4,7 +4,7 @@
 
 ## D04｜Windows 验证安排
 
-规划工作目录和受测代码目录分别放置。提交PR的分支从 `plan/r01-friend-v1` 开始；程序来自固定运行包或独立只读worktree，不能把技术线程的53个变更文件全部带入同学PR。
+规划工作目录和受测代码目录分别放置。提交PR的分支从代码基线 `3a81daf0f42416ccb73a5a69748655145e6f2f0c` 开始，任务材料在 `plan/r01-friend-v1` 只读查看；程序来自固定运行包或独立只读worktree，不能把技术线程的53个变更文件全部带入同学PR。
 
 先尝试下载既有包，不要求同学预先装Python/Node。Git/GitHub CLI只是协作工具。若需要安装开发环境，先保存当前运行包实测结果，再在明确同意后做源码复测；同学电脑原来已有这些运行时，就将W07保留NOT_RUN，不能卸掉私人环境以凑通过。
 
@@ -37,7 +37,7 @@ python tools/asset-preflight/cli.py --root <素材目录> --manifest <清单JSON
 }
 ```
 
-字段严格检查；未知字段报清单错误。id为非空ASCII `[a-z0-9][a-z0-9_-]{0,63}`，区分资产ID与文件名；清单内id唯一。path为使用 `/` 的相对路径，可含中文空格，禁止绝对路径、盘符、URL、空段、`.`、`..`和反斜线。width/height为1—8192的整数，不接受bool。alpha_policy只有`required`或`any`。
+字段严格检查；未知字段报清单错误。id为非空ASCII `[a-z0-9][a-z0-9_-]{0,63}`，区分资产ID与文件名；清单内id唯一。path为使用 `/` 的相对路径，可含中文空格，禁止绝对路径、盘符、URL、空段、`.`、`..`、反斜线、冒号、NUL和控制字符；不允许Windows设备名和备用数据流写法。width/height为1—8192的整数，不接受bool。alpha_policy只有`required`或`any`。
 
 最多500条，清单最大1MiB，每个文件最大20MiB。它们是本工具工作预算，与游戏资源或正式美术规格无关。输入不提供时不能自行默认尺寸或透明政策。
 
@@ -78,7 +78,5 @@ python -m unittest discover -s tools/asset-preflight/tests -v
 ```
 
 平台不能创建链接或没有相应权限就显式标NOT_RUN，不伪造平台通过。至少覆盖PRD中A01—A08，每项能找到测试名或手动证据；仅Windows通过不能宣称Mac也通过。工具后续是否接入开发流水线，由ChatGPT另行决定，本次不加CI gate。
-
-完整规则实现和这些测试尚未执行。
 
 参考：W3C [PNG第三版](https://www.w3.org/TR/png-3/)（IHDR、PLTE、tRNS与块校验），2026-09-12核对。透明声明与像素内容的区别在本工具中保留。
