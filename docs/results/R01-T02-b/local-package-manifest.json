@@ -1,0 +1,13 @@
+{
+  "task_id": "R01-T02-b",
+  "code_sha": "d6bcd3e848445e32dbc7908c664610fdde1dd1fb",
+  "platform": "macOS-27.0-arm64-arm-64bit",
+  "machine": "arm64",
+  "python": "3.11.15",
+  "file": "DeiDei-R01-T02-b-macOS-arm64.zip",
+  "bytes": 136885971,
+  "sha256": "1e6d0381e40f7ff214896a48f11d45ef603f4f8e7b89ecaffc7f2d73795ad34a",
+  "build_only": true,
+  "physical_offline": "NOT_RUN",
+  "human_acceptance": "NOT_RUN"
+}

@@ -1,0 +1,1057 @@
+{
+  "platform": "darwin",
+  "arch": "arm64",
+  "mode": "native window automation, network connected, restricted PATH",
+  "results": [
+    {
+      "iteration": 1,
+      "launchMs": 4228.42375,
+      "healthMs": 279.33449999999993,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 158.49683399999958
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 166.316417
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 65.47891700000037
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.184792000000016
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 66.47637500000019
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60803,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 241664,
+              "peakWorkingSetSize": 245872
+            }
+          },
+          {
+            "pid": 60827,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 79824,
+              "peakWorkingSetSize": 82928
+            }
+          },
+          {
+            "pid": 60828,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 44528,
+              "peakWorkingSetSize": 49040
+            }
+          },
+          {
+            "pid": 60829,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 130480,
+              "peakWorkingSetSize": 130480
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25120
+      },
+      "workerPid": 60839,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 2,
+      "launchMs": 1041.5282909999996,
+      "healthMs": 127.61924999999974,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 72.04179099999965
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 95.6234999999997
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 59.907249999999294
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 66.25358400000005
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 66.58608400000048
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60845,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 246720,
+              "peakWorkingSetSize": 246720
+            }
+          },
+          {
+            "pid": 60846,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 94240,
+              "peakWorkingSetSize": 94240
+            }
+          },
+          {
+            "pid": 60847,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48704,
+              "peakWorkingSetSize": 48752
+            }
+          },
+          {
+            "pid": 60848,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131504,
+              "peakWorkingSetSize": 131504
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25264
+      },
+      "workerPid": 60852,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 3,
+      "launchMs": 1011.7126670000007,
+      "healthMs": 122.1362079999999,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 67.62850000000071
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 66.61704199999986
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 66.1911250000012
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 67.60704199999964
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 67.67625000000044
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60856,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 245984,
+              "peakWorkingSetSize": 245984
+            }
+          },
+          {
+            "pid": 60859,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 92160,
+              "peakWorkingSetSize": 92160
+            }
+          },
+          {
+            "pid": 60860,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48752,
+              "peakWorkingSetSize": 48800
+            }
+          },
+          {
+            "pid": 60861,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131744,
+              "peakWorkingSetSize": 131744
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25296
+      },
+      "workerPid": 60864,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 4,
+      "launchMs": 1098.1379579999993,
+      "healthMs": 136.93283399999927,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 44.24554200000057
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 49.225249999999505
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 49.18674999999894
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.487999999999374
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 50.12683300000026
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60870,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 235888,
+              "peakWorkingSetSize": 235888
+            }
+          },
+          {
+            "pid": 60871,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 89456,
+              "peakWorkingSetSize": 89456
+            }
+          },
+          {
+            "pid": 60872,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48704,
+              "peakWorkingSetSize": 48752
+            }
+          },
+          {
+            "pid": 60873,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131344,
+              "peakWorkingSetSize": 131344
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25472
+      },
+      "workerPid": 60879,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 5,
+      "launchMs": 1043.2686250000006,
+      "healthMs": 127.0052080000005,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 48.66112500000054
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 49.22008300000016
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 49.856792000000496
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.47566699999879
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 49.292625000000044
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60886,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 238288,
+              "peakWorkingSetSize": 238288
+            }
+          },
+          {
+            "pid": 60887,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 92016,
+              "peakWorkingSetSize": 92016
+            }
+          },
+          {
+            "pid": 60888,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48688,
+              "peakWorkingSetSize": 48736
+            }
+          },
+          {
+            "pid": 60889,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131760,
+              "peakWorkingSetSize": 131760
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 24960
+      },
+      "workerPid": 60895,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 6,
+      "launchMs": 1043.615667,
+      "healthMs": 126.82225000000108,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 42.024459000000206
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 51.22429200000079
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 66.1547499999997
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 48.73454200000015
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 50.92854199999965
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60901,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 238784,
+              "peakWorkingSetSize": 238784
+            }
+          },
+          {
+            "pid": 60905,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 92400,
+              "peakWorkingSetSize": 92400
+            }
+          },
+          {
+            "pid": 60906,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48720,
+              "peakWorkingSetSize": 48768
+            }
+          },
+          {
+            "pid": 60907,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131456,
+              "peakWorkingSetSize": 131456
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25360
+      },
+      "workerPid": 60911,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 7,
+      "launchMs": 996.3273750000008,
+      "healthMs": 113.56979200000023,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 48.18779200000063
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 66.73579099999915
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 65.21804199999679
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 51.352584000000206
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 66.609375
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60914,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 237968,
+              "peakWorkingSetSize": 237968
+            }
+          },
+          {
+            "pid": 60915,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 93088,
+              "peakWorkingSetSize": 93088
+            }
+          },
+          {
+            "pid": 60916,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48720,
+              "peakWorkingSetSize": 48720
+            }
+          },
+          {
+            "pid": 60917,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131296,
+              "peakWorkingSetSize": 131296
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25312
+      },
+      "workerPid": 60920,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 8,
+      "launchMs": 1027.0322500000002,
+      "healthMs": 109.53183300000092,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 48.05424999999741
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 49.19791599999735
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 50.26945899999919
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.45308300000033
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 50.22466700000223
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60923,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 239072,
+              "peakWorkingSetSize": 239072
+            }
+          },
+          {
+            "pid": 60924,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 92368,
+              "peakWorkingSetSize": 92368
+            }
+          },
+          {
+            "pid": 60925,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48672,
+              "peakWorkingSetSize": 48720
+            }
+          },
+          {
+            "pid": 60926,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131312,
+              "peakWorkingSetSize": 131312
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25584
+      },
+      "workerPid": 60929,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 9,
+      "launchMs": 1013.3979160000017,
+      "healthMs": 116.41908399999738,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 49.93995899999936
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 48.690167000000656
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 50.91783299999952
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.763458000001265
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 48.65333399999872
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60932,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 238480,
+              "peakWorkingSetSize": 238480
+            }
+          },
+          {
+            "pid": 60935,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 92096,
+              "peakWorkingSetSize": 92096
+            }
+          },
+          {
+            "pid": 60936,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48576,
+              "peakWorkingSetSize": 48624
+            }
+          },
+          {
+            "pid": 60937,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131376,
+              "peakWorkingSetSize": 131376
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25232
+      },
+      "workerPid": 60940,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    },
+    {
+      "iteration": 10,
+      "launchMs": 1041.893415999999,
+      "healthMs": 128.27604200000133,
+      "times": [
+        {
+          "name": "双方攒",
+          "ms": 33.379250000001775
+        },
+        {
+          "name": "Bi 对攒",
+          "ms": 50.44183400000111
+        },
+        {
+          "name": "Bi 对防御",
+          "ms": 50.34112499999901
+        },
+        {
+          "name": "反弹对 Bi",
+          "ms": 50.45137500000055
+        },
+        {
+          "name": "请求简单 AI",
+          "ms": 49.93433399999776
+        }
+      ],
+      "measurements": {
+        "metrics": [
+          {
+            "pid": 60946,
+            "type": "Browser",
+            "memory": {
+              "workingSetSize": 238816,
+              "peakWorkingSetSize": 238816
+            }
+          },
+          {
+            "pid": 60947,
+            "type": "GPU",
+            "memory": {
+              "workingSetSize": 91552,
+              "peakWorkingSetSize": 91552
+            }
+          },
+          {
+            "pid": 60948,
+            "type": "Utility",
+            "memory": {
+              "workingSetSize": 48656,
+              "peakWorkingSetSize": 48656
+            }
+          },
+          {
+            "pid": 60949,
+            "type": "Tab",
+            "memory": {
+              "workingSetSize": 131536,
+              "peakWorkingSetSize": 131536
+            }
+          }
+        ],
+        "version": {
+          "node": "24.20.0",
+          "acorn": "8.18.0",
+          "ada": "4.0.0",
+          "amaro": "1.1.11",
+          "ares": "1.34.8",
+          "brotli": "1.2.0",
+          "cldr": "48.0",
+          "icu": "78.2",
+          "llhttp": "9.4.3",
+          "merve": "1.2.2",
+          "modules": "149",
+          "napi": "10",
+          "nbytes": "0.1.4",
+          "ncrypto": "0.0.1",
+          "nghttp2": "1.70.0",
+          "nghttp3": "",
+          "ngtcp2": "",
+          "openssl": "0.0.0",
+          "simdjson": "4.6.6",
+          "simdutf": "7.7.0",
+          "sqlite": "3.53.4",
+          "tz": "2025c",
+          "undici": "7.29.0",
+          "unicode": "17.0",
+          "uv": "1.52.1",
+          "uvwasi": "0.0.23",
+          "v8": "15.2.124.19-electron.0",
+          "zlib": "1.3.2.1-motley",
+          "zstd": "1.6.0",
+          "electron": "44.3.0",
+          "chrome": "152.0.7977.78"
+        },
+        "workerRssKiB": 25280
+      },
+      "workerPid": 60953,
+      "security": {
+        "sandbox": true,
+        "contextIsolation": true,
+        "nodeIntegration": false,
+        "webSecurity": true
+      },
+      "workerReaped": true
+    }
+  ]
+}

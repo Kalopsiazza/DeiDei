@@ -1,0 +1,311 @@
+{
+  "checks": [
+    "four fixed cases",
+    "seed repeatability",
+    "invalid JSON",
+    "oversized frame recovery",
+    "incomplete EOF",
+    "bad types",
+    "injection rejection",
+    "health",
+    "shutdown"
+  ],
+  "responses": [
+    {
+      "v": 1,
+      "id": null,
+      "ok": false,
+      "error": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid protocol frame or payload"
+      }
+    },
+    {
+      "v": 1,
+      "id": null,
+      "ok": false,
+      "error": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid protocol frame or payload"
+      }
+    },
+    {
+      "v": 1,
+      "id": "charge_charge",
+      "ok": true,
+      "data": {
+        "case_id": "charge_charge",
+        "source": "original deidei_env.py",
+        "result": {
+          "outcome": "Continue",
+          "nextP": {
+            "dd": 6,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Charge"
+          },
+          "nextC": {
+            "dd": 6,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Charge"
+          },
+          "ddGainP": 0,
+          "ddGainC": 0
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "bi_charge",
+      "ok": true,
+      "data": {
+        "case_id": "bi_charge",
+        "source": "original deidei_env.py",
+        "result": {
+          "outcome": "PlayerWin",
+          "nextP": {
+            "dd": 0,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Bi"
+          },
+          "nextC": {
+            "dd": 6,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Charge"
+          },
+          "ddGainP": 0,
+          "ddGainC": 0
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "bi_def",
+      "ok": true,
+      "data": {
+        "case_id": "bi_def",
+        "source": "original deidei_env.py",
+        "result": {
+          "outcome": "Continue",
+          "nextP": {
+            "dd": 0,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Bi"
+          },
+          "nextC": {
+            "dd": 0,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 2,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Def"
+          },
+          "ddGainP": 0,
+          "ddGainC": 0
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "reflect_bi",
+      "ok": true,
+      "data": {
+        "case_id": "reflect_bi",
+        "source": "original deidei_env.py",
+        "result": {
+          "outcome": "PlayerWin",
+          "nextP": {
+            "dd": 0,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Reflect"
+          },
+          "nextC": {
+            "dd": 0,
+            "lightning": 0,
+            "cloudUses": 0,
+            "bombUses": 0,
+            "bombLayers": 0,
+            "bombPending": [
+              0,
+              0,
+              0
+            ],
+            "tianUses": 0,
+            "juyanBuff": false,
+            "nxCharge": 0,
+            "zhangUsed": false,
+            "liqUsed": false,
+            "hasHighAttackRecord": false,
+            "lastHighAttack": "Charge",
+            "lastMove": "Bi"
+          },
+          "ddGainP": 0,
+          "ddGainC": 0
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "easy-0",
+      "ok": true,
+      "data": {
+        "ai": "Easy heuristic",
+        "seed": 42,
+        "move": "LiQiang",
+        "public_state": {
+          "cpu_dd": 6,
+          "player_dd": 6
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "easy-1",
+      "ok": true,
+      "data": {
+        "ai": "Easy heuristic",
+        "seed": 42,
+        "move": "LiQiang",
+        "public_state": {
+          "cpu_dd": 6,
+          "player_dd": 6
+        }
+      }
+    },
+    {
+      "v": 1,
+      "id": "bad",
+      "ok": false,
+      "error": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid protocol frame or payload"
+      }
+    },
+    {
+      "v": 1,
+      "id": "inject",
+      "ok": false,
+      "error": {
+        "code": "BAD_REQUEST",
+        "message": "Invalid protocol frame or payload"
+      }
+    },
+    {
+      "v": 1,
+      "id": "health",
+      "ok": true,
+      "data": {
+        "worker": "ready"
+      }
+    },
+    {
+      "v": 1,
+      "id": "stop",
+      "ok": true,
+      "data": {
+        "worker": "stopping"
+      }
+    }
+  ]
+}

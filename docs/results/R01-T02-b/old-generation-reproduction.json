@@ -1,0 +1,14 @@
+{
+  "scope": "isolated fake-child event sequence, exact source",
+  "node": "v24.12.0",
+  "platform": "darwin",
+  "reviewed_blob": "3baf3bf1ca2eb5c846dbf39f53b59db1ee5da57f",
+  "source_commit": "5421e905834eef3a84c74199998b14f72807fef9",
+  "result": "REPRODUCED",
+  "finding": "Old child exit incorrectly rejected the new child pending request",
+  "second_request": {
+    "ok": false,
+    "error": "WORKER_EXITED"
+  },
+  "new_child_still_current": true
+}
