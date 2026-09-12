@@ -1,0 +1,11 @@
+{
+  "midgame_unavailable": {
+    "XiaoBei": "INSUFFICIENT_DD",
+    "FlipVolvo": "INSUFFICIENT_DD",
+    "Shell": "INSUFFICIENT_DD",
+    "BombFlipVolvo": "INSUFFICIENT_BOMBS",
+    "FreeRotateThree": "INSUFFICIENT_LIGHTNING",
+    "LiQiang": "ALREADY_USED",
+    "ZengYi": "ALREADY_USED"
+  }
+}
