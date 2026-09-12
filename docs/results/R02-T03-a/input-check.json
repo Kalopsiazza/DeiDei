@@ -1,0 +1,258 @@
+{
+  "archive_sha256": "f5e97fe4395f6f3d5552c30b1fe0052563e75c7d7e5d07c97bb78b960fa554b1",
+  "plan_manifest_sha256": "783e81127b2eacc8ea1355ee04df7f4ccef572289a629068748eb008644a6fc8",
+  "artifacts": [
+    {
+      "path": "DELIVERY-STATUS.md",
+      "bytes": 966,
+      "sha256": "8d68c8f79dd2e24d949600eabc9ff67876f5aab56332729ef655d2d4b9187cac",
+      "actual_sha256": "8d68c8f79dd2e24d949600eabc9ff67876f5aab56332729ef655d2d4b9187cac",
+      "status": "PASS"
+    },
+    {
+      "path": "START-CODEX.txt",
+      "bytes": 4970,
+      "sha256": "05b5e01c0c56ec2da46031e984ca6144228b353ecc6275fbc1bee021e8bac012",
+      "actual_sha256": "05b5e01c0c56ec2da46031e984ca6144228b353ecc6275fbc1bee021e8bac012",
+      "status": "PASS"
+    },
+    {
+      "path": "WORK_START_HERE.md",
+      "bytes": 894,
+      "sha256": "52edb5f235b915940e5bfd10e8179d3e0bd9e02b31b4954f9a571d0c966f98c6",
+      "actual_sha256": "52edb5f235b915940e5bfd10e8179d3e0bd9e02b31b4954f9a571d0c966f98c6",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/architecture/R02-ARCHITECTURE.md",
+      "bytes": 6754,
+      "sha256": "5f6f9b1ee5831ea4c612697876d3bd86abc14d07602c00ca3cc2f5c1a1611040",
+      "actual_sha256": "5f6f9b1ee5831ea4c612697876d3bd86abc14d07602c00ca3cc2f5c1a1611040",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/architecture/RULE-ENGINE-v1.0.md",
+      "bytes": 15801,
+      "sha256": "07a1947061d54c75306347c5d727fc291752a9124bab3fd9e56e75f2df2ffc4d",
+      "actual_sha256": "07a1947061d54c75306347c5d727fc291752a9124bab3fd9e56e75f2df2ffc4d",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/contracts/R02-CONTRACT.md",
+      "bytes": 9723,
+      "sha256": "e950606b95c623a3674010edefffc2bb59c35034f0641568717d401bbcb28fc1",
+      "actual_sha256": "e950606b95c623a3674010edefffc2bb59c35034f0641568717d401bbcb28fc1",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/contracts/r02-entry-map.json",
+      "bytes": 5044,
+      "sha256": "326fee0497535b8451b92960705c135a2f50e1f82f277ee9eb13e5ad69ca547c",
+      "actual_sha256": "326fee0497535b8451b92960705c135a2f50e1f82f277ee9eb13e5ad69ca547c",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/design/R02-PAGES.md",
+      "bytes": 4223,
+      "sha256": "e80c50940fc2f37743e3cdae7bdd905c527f6c5f90dced55e99d405b88500355",
+      "actual_sha256": "e80c50940fc2f37743e3cdae7bdd905c527f6c5f90dced55e99d405b88500355",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/design/references/r01-ui-b/INDEX.png",
+      "bytes": 788852,
+      "sha256": "446442aa8b09073b7a316b4eb16cb755a94e8b6ec80ee4890e4f4207481b65cd",
+      "actual_sha256": "446442aa8b09073b7a316b4eb16cb755a94e8b6ec80ee4890e4f4207481b65cd",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/design/references/r01-ui-b/P07-grouped-1366x768-B-v2.png",
+      "bytes": 175882,
+      "sha256": "ba50afeaefce8a7f6909d785e32fca3c3f68814ac082213bfbf8d5eb6a458f1a",
+      "actual_sha256": "ba50afeaefce8a7f6909d785e32fca3c3f68814ac082213bfbf8d5eb6a458f1a",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/design/references/r01-ui-b/P07-grouped-1920x1080-B-v2.png",
+      "bytes": 181126,
+      "sha256": "fa0761389e6e19d67a038ada61b4647bcbc601e2e736565d8918706afdf98792",
+      "actual_sha256": "fa0761389e6e19d67a038ada61b4647bcbc601e2e736565d8918706afdf98792",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/prd/PRD-RULES-v1.0.md",
+      "bytes": 3300,
+      "sha256": "4260e3326236bbcd473efce77aff281e18ecbdf5da534827462d55ad3eb0b99a",
+      "actual_sha256": "4260e3326236bbcd473efce77aff281e18ecbdf5da534827462d55ad3eb0b99a",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/prd/R02-OFFLINE-PRD.md",
+      "bytes": 3886,
+      "sha256": "47d2c53e805f4e9e3cb121b4e8990f21258aeb46d2681c506da8e2044b60f66c",
+      "actual_sha256": "47d2c53e805f4e9e3cb121b4e8990f21258aeb46d2681c506da8e2044b60f66c",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/production/R02-RESULT-TEMPLATE.md",
+      "bytes": 728,
+      "sha256": "c7cfef0120e100f5ac4516ad19028dbf0a0badf517d22e1e62a960b89ad1d071",
+      "actual_sha256": "c7cfef0120e100f5ac4516ad19028dbf0a0badf517d22e1e62a960b89ad1d071",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/production/R02-START.md",
+      "bytes": 2855,
+      "sha256": "c19b0e178a236d10b37b3a80efc64b2002d97e6505fb90ccc559ef4dfd7a0a68",
+      "actual_sha256": "c19b0e178a236d10b37b3a80efc64b2002d97e6505fb90ccc559ef4dfd7a0a68",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/production/STATUS.md",
+      "bytes": 1825,
+      "sha256": "50978dd7bdf5034101e5c5f1528c69ad08f660384b4b93704a6778ce94370e34",
+      "actual_sha256": "50978dd7bdf5034101e5c5f1528c69ad08f660384b4b93704a6778ce94370e34",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/R01-CLOSEOUT.md",
+      "bytes": 4487,
+      "sha256": "4dbd692f6cc392c179f28c61ea8ca3f9c558ef02a0ab043312fd1f16439657aa",
+      "actual_sha256": "4dbd692f6cc392c179f28c61ea8ca3f9c558ef02a0ab043312fd1f16439657aa",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/R01-T01-a.md",
+      "bytes": 6246,
+      "sha256": "8129674247b2ab7ea7a1306c55d3c52f327b02eae1b552a753418600612d0688",
+      "actual_sha256": "8129674247b2ab7ea7a1306c55d3c52f327b02eae1b552a753418600612d0688",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/R01-T01-b.md",
+      "bytes": 1149,
+      "sha256": "b45f8bf0d1109d12fdd37d6eb8864ad91b6c3401d21c8052417bd1cc573b35eb",
+      "actual_sha256": "b45f8bf0d1109d12fdd37d6eb8864ad91b6c3401d21c8052417bd1cc573b35eb",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/R01-T02-b.md",
+      "bytes": 1294,
+      "sha256": "8c3a14c7d3ef3cd938aa15f60e3186d1f1a282ed751302091f8f74a024eb5c69",
+      "actual_sha256": "8c3a14c7d3ef3cd938aa15f60e3186d1f1a282ed751302091f8f74a024eb5c69",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/R01-T03-b.md",
+      "bytes": 1590,
+      "sha256": "633b206929801ae1380569d637af0a590723fb253de4f31e7f4212524202beb1",
+      "actual_sha256": "633b206929801ae1380569d637af0a590723fb253de4f31e7f4212524202beb1",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/README.md",
+      "bytes": 572,
+      "sha256": "28f1719db39f4df8a589056b146bb4ba6c33420e69d1f19eccbcd7ad33ec217a",
+      "actual_sha256": "28f1719db39f4df8a589056b146bb4ba6c33420e69d1f19eccbcd7ad33ec217a",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/check_plan.py",
+      "bytes": 2730,
+      "sha256": "a3dc7661dca3bb5705cf0298686002a96adf5706b2e54da8da975198e41536b1",
+      "actual_sha256": "a3dc7661dca3bb5705cf0298686002a96adf5706b2e54da8da975198e41536b1",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/plan-static-check.txt",
+      "bytes": 397,
+      "sha256": "1fb69294e81611588011d1a81401fbfff3f7c4bbd3084d96ce4c4fdc790fb111",
+      "actual_sha256": "1fb69294e81611588011d1a81401fbfff3f7c4bbd3084d96ce4c4fdc790fb111",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/source-check.json",
+      "bytes": 436,
+      "sha256": "32a17a6f021b1aba3fda82dd00be6a260cada28748b578d5e43dd1b5c74836b4",
+      "actual_sha256": "32a17a6f021b1aba3fda82dd00be6a260cada28748b578d5e43dd1b5c74836b4",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/ui-verify-linux.txt",
+      "bytes": 178,
+      "sha256": "08423adc89c2e55db0c2b62929c4d8ce4ce8eafe648df222cf7d9350ce58a4cf",
+      "actual_sha256": "08423adc89c2e55db0c2b62929c4d8ce4ce8eafe648df222cf7d9350ce58a4cf",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/reviews/evidence/R01-close/worker-regression-linux.txt",
+      "bytes": 1182,
+      "sha256": "7bc59b20adc1cfc034bcf7a037d2686bea3db87350c91ec144fad8db972c6acd",
+      "actual_sha256": "7bc59b20adc1cfc034bcf7a037d2686bea3db87350c91ec144fad8db972c6acd",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/CASES.md",
+      "bytes": 31269,
+      "sha256": "a67c887ea0fe2073ee57789aa2b204d3ee9317dc525331ee0dfd50cf7ad4e5ab",
+      "actual_sha256": "a67c887ea0fe2073ee57789aa2b204d3ee9317dc525331ee0dfd50cf7ad4e5ab",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/CHANGELOG-1.0.1.md",
+      "bytes": 1427,
+      "sha256": "e5621f9c933665f81259413298440135b6cea1b01172e5106d42bf059721fe87",
+      "actual_sha256": "e5621f9c933665f81259413298440135b6cea1b01172e5106d42bf059721fe87",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/PLAYER-GUIDE.md",
+      "bytes": 7479,
+      "sha256": "e6f78728ce93e0b3d909c7ebc7b273b3fc25459c8c49e02529844ab88b86eede",
+      "actual_sha256": "e6f78728ce93e0b3d909c7ebc7b273b3fc25459c8c49e02529844ab88b86eede",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/README.md",
+      "bytes": 1250,
+      "sha256": "54fcc27424fa2bea1618eb85090d8b8001d9229882400950b2351a8ad3e67e7f",
+      "actual_sha256": "54fcc27424fa2bea1618eb85090d8b8001d9229882400950b2351a8ad3e67e7f",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/RULEBOOK.md",
+      "bytes": 26032,
+      "sha256": "fbf345e7cfb13bd2af4a9340a52ddc00d0a9260c62a8f7f41dae5e81867ce884",
+      "actual_sha256": "fbf345e7cfb13bd2af4a9340a52ddc00d0a9260c62a8f7f41dae5e81867ce884",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/rules/v1/TRACEABILITY.md",
+      "bytes": 8540,
+      "sha256": "435a800ca3f27fc89c51ccf83aa4890d16f27db4cc860a13f6559e2b626a25c5",
+      "actual_sha256": "435a800ca3f27fc89c51ccf83aa4890d16f27db4cc860a13f6559e2b626a25c5",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/tasks/R02/R02-T01-a.md",
+      "bytes": 4552,
+      "sha256": "550868830641fbd7a45c76fedb060ec03b9600f2a33322b65ae89bce1a439322",
+      "actual_sha256": "550868830641fbd7a45c76fedb060ec03b9600f2a33322b65ae89bce1a439322",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/tasks/R02/R02-T02-a.md",
+      "bytes": 4809,
+      "sha256": "0a9a39e5dbcd1143c41192c2611b19266988a7cca024adf4f72281d68f6c5fe5",
+      "actual_sha256": "0a9a39e5dbcd1143c41192c2611b19266988a7cca024adf4f72281d68f6c5fe5",
+      "status": "PASS"
+    },
+    {
+      "path": "docs/tasks/R02/R02-T03-a.md",
+      "bytes": 5123,
+      "sha256": "ec5e48838a4375d198b68bf7911ace3a12649edd4811f177ef22c562afe35f23",
+      "actual_sha256": "ec5e48838a4375d198b68bf7911ace3a12649edd4811f177ef22c562afe35f23",
+      "status": "PASS"
+    }
+  ]
+}

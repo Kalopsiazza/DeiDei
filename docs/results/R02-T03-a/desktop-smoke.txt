@@ -1,0 +1,23 @@
+$ npm run smoke
+
+> deidei-r02-desktop@0.1.0 smoke
+> node smoke.cjs
+
+PASS P01 rejects empty nickname, creates local profile and enters P02
+PASS sandbox and preload isolation, unknown fields and oversized IPC rejected
+PASS other renderer sender, unlisted local resources, non-GET and popup denied
+PASS P04/P05 honestly explain unavailable networking
+PASS P10 real permission failure retains input and old file; continue, discard and save work
+PASS P10 window setting enters and leaves actual macOS fullscreen
+PASS P11 search and 28 local rule sections
+PASS P06 keyboard selects before submitting; modal blocks keys; submitting → revealed → P09, two-person roster
+PASS 33 visible cards in three rows at both target viewports, no page overflow, names >=16px costs >=12px
+PASS selection does not reorder cards; grey cards disabled with accessible reason dialog
+PASS script rejection retains selected card and supports retry
+PASS P08 spectator/eliminated/restart hide cards, block shortcuts, preserve eliminated seats
+PASS held number key never submits; leave confirmation supports cancel and leave
+PASS real Electron restart restores profile and settings
+PASS no renderer page errors
+
+exit_code=0
+tested_code_sha=499fb8ad07f92e8ce583741a47b7d5969c140913

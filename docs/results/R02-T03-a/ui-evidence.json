@@ -1,0 +1,836 @@
+{
+  "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913",
+  "uncommitted": true,
+  "platform": "darwin",
+  "arch": "arm64",
+  "checks": [
+    "P01 rejects empty nickname, creates local profile and enters P02",
+    "sandbox and preload isolation, unknown fields and oversized IPC rejected",
+    "other renderer sender, unlisted local resources, non-GET and popup denied",
+    "P04/P05 honestly explain unavailable networking",
+    "P10 real permission failure retains input and old file; continue, discard and save work",
+    "P10 window setting enters and leaves actual macOS fullscreen",
+    "P11 search and 28 local rule sections",
+    "P06 keyboard selects before submitting; modal blocks keys; submitting → revealed → P09, two-person roster",
+    "33 visible cards in three rows at both target viewports, no page overflow, names >=16px costs >=12px",
+    "selection does not reorder cards; grey cards disabled with accessible reason dialog",
+    "script rejection retains selected card and supports retry",
+    "P08 spectator/eliminated/restart hide cards, block shortcuts, preserve eliminated seats",
+    "held number key never submits; leave confirmation supports cancel and leave",
+    "real Electron restart restores profile and settings",
+    "no renderer page errors"
+  ],
+  "screenshots": [
+    {
+      "name": "P01-native",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P02-menu",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P10-save-failure",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P11-manual",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P03-prepare",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-selected",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-submitted",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-revealed",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-solo-winner",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-midgame-1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-midgame-1920x1080",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-initial-1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-submit-error",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-spectator",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-eliminated",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-restart",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-draw",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-six-winner",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    }
+  ],
+  "native": {
+    "contentBounds": {
+      "x": 172,
+      "y": 204,
+      "width": 1366,
+      "height": 768
+    },
+    "displays": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "workArea": {
+          "x": 0,
+          "y": 38,
+          "width": 1710,
+          "height": 1027
+        },
+        "scaleFactor": 2
+      }
+    ],
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    }
+  },
+  "security": {
+    "node": "undefined",
+    "process": "undefined",
+    "keys": [
+      "profile",
+      "settings",
+      "port",
+      "preview",
+      "manual",
+      "quit"
+    ],
+    "extra": {
+      "ok": false,
+      "error": "INVALID_INPUT"
+    },
+    "oversize": {
+      "ok": false,
+      "error": "INVALID_INPUT"
+    },
+    "badSettings": {
+      "ok": false,
+      "error": "INVALID_SETTINGS"
+    },
+    "prefs": {
+      "sandbox": true,
+      "nodeIntegration": false,
+      "contextIsolation": true,
+      "webSecurity": true
+    }
+  },
+  "boundary": {
+    "denied": {
+      "ok": false,
+      "error": "INVALID_SENDER"
+    },
+    "unlistedStatus": 403,
+    "postStatus": 403
+  },
+  "layout_1366": {
+    "viewport": [
+      1366,
+      768
+    ],
+    "body": [
+      1366,
+      768
+    ],
+    "cards": [
+      {
+        "x": 24,
+        "y": 368,
+        "right": 137.46875,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 142.46875,
+        "y": 368,
+        "right": 255.9375,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 260.9375,
+        "y": 368,
+        "right": 374.40625,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 379.40625,
+        "y": 368,
+        "right": 492.875,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 497.875,
+        "y": 368,
+        "right": 611.34375,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 616.34375,
+        "y": 368,
+        "right": 729.8125,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 24,
+        "y": 482,
+        "right": 137.46875,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 142.46875,
+        "y": 482,
+        "right": 255.9375,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 260.9375,
+        "y": 482,
+        "right": 374.40625,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 379.40625,
+        "y": 482,
+        "right": 492.875,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 497.875,
+        "y": 482,
+        "right": 611.34375,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 616.34375,
+        "y": 482,
+        "right": 729.8125,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 24,
+        "y": 596,
+        "right": 137.46875,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 142.46875,
+        "y": 596,
+        "right": 255.9375,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 260.9375,
+        "y": 596,
+        "right": 374.40625,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 379.40625,
+        "y": 596,
+        "right": 492.875,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 497.875,
+        "y": 596,
+        "right": 611.34375,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 616.34375,
+        "y": 596,
+        "right": 729.8125,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 741.8125,
+        "y": 368,
+        "right": 856.1171875,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 861.1171875,
+        "y": 368,
+        "right": 975.421875,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 980.421875,
+        "y": 368,
+        "right": 1094.7265625,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 741.8125,
+        "y": 482,
+        "right": 856.1171875,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 861.1171875,
+        "y": 482,
+        "right": 975.421875,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 980.421875,
+        "y": 482,
+        "right": 1094.7265625,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 741.8125,
+        "y": 596,
+        "right": 856.1171875,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 861.1171875,
+        "y": 596,
+        "right": 975.421875,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 980.421875,
+        "y": 596,
+        "right": 1094.7265625,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1106.7265625,
+        "y": 368,
+        "right": 1221.859375,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1226.859375,
+        "y": 368,
+        "right": 1341.9921875,
+        "bottom": 477,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1106.7265625,
+        "y": 482,
+        "right": 1221.859375,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1226.859375,
+        "y": 482,
+        "right": 1341.9921875,
+        "bottom": 591,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1106.7265625,
+        "y": 596,
+        "right": 1221.859375,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      },
+      {
+        "x": 1226.859375,
+        "y": 596,
+        "right": 1341.9921875,
+        "bottom": 705,
+        "name": "16px",
+        "cost": "12px"
+      }
+    ]
+  },
+  "layout_1920": {
+    "viewport": [
+      1920,
+      1080
+    ],
+    "body": [
+      1920,
+      1080
+    ],
+    "cards": [
+      {
+        "x": 34,
+        "y": 527,
+        "right": 193.5078125,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 201.5078125,
+        "y": 527,
+        "right": 361.0234375,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 369.0234375,
+        "y": 527,
+        "right": 528.5390625,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 536.5390625,
+        "y": 527,
+        "right": 696.0546875,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 704.0546875,
+        "y": 527,
+        "right": 863.5703125,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 871.5703125,
+        "y": 527,
+        "right": 1031.0859375,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 34,
+        "y": 684,
+        "right": 193.5078125,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 201.5078125,
+        "y": 684,
+        "right": 361.0234375,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 369.0234375,
+        "y": 684,
+        "right": 528.5390625,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 536.5390625,
+        "y": 684,
+        "right": 696.0546875,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 704.0546875,
+        "y": 684,
+        "right": 863.5703125,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 871.5703125,
+        "y": 684,
+        "right": 1031.0859375,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 34,
+        "y": 841,
+        "right": 193.5078125,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 201.5078125,
+        "y": 841,
+        "right": 361.0234375,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 369.0234375,
+        "y": 841,
+        "right": 528.5390625,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 536.5390625,
+        "y": 841,
+        "right": 696.0546875,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 704.0546875,
+        "y": 841,
+        "right": 863.5703125,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 871.5703125,
+        "y": 841,
+        "right": 1031.0859375,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1043.0859375,
+        "y": 527,
+        "right": 1203.9296875,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1211.9296875,
+        "y": 527,
+        "right": 1372.78125,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1380.78125,
+        "y": 527,
+        "right": 1541.625,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1043.0859375,
+        "y": 684,
+        "right": 1203.9296875,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1211.9296875,
+        "y": 684,
+        "right": 1372.78125,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1380.78125,
+        "y": 684,
+        "right": 1541.625,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1043.0859375,
+        "y": 841,
+        "right": 1203.9296875,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1211.9296875,
+        "y": 841,
+        "right": 1372.78125,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1380.78125,
+        "y": 841,
+        "right": 1541.625,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1553.6328125,
+        "y": 527,
+        "right": 1715.8125,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1723.8125,
+        "y": 527,
+        "right": 1886,
+        "bottom": 676,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1553.6328125,
+        "y": 684,
+        "right": 1715.8125,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1723.8125,
+        "y": 684,
+        "right": 1886,
+        "bottom": 833,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1553.6328125,
+        "y": 841,
+        "right": 1715.8125,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      },
+      {
+        "x": 1723.8125,
+        "y": 841,
+        "right": 1886,
+        "bottom": 990,
+        "name": "21px",
+        "cost": "14px"
+      }
+    ]
+  },
+  "status": "PASS"
+}

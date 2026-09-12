@@ -1,0 +1,33 @@
+[
+  {
+    "command": [
+      "npm",
+      "test"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "duration_seconds": 0.78,
+    "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+  },
+  {
+    "command": [
+      "npm",
+      "run",
+      "smoke"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "duration_seconds": 13.14,
+    "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+  },
+  {
+    "command": [
+      "python3",
+      "scripts/check.py"
+    ],
+    "cwd": ".",
+    "exit_code": 0,
+    "duration_seconds": 0.21,
+    "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+  }
+]

@@ -1,0 +1,604 @@
+{
+  "task_id": "R02-T03-a",
+  "status": "PARTIAL",
+  "implementation": "PASS",
+  "reason": "Pinned development-tool dependency audit requires planner review",
+  "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913",
+  "code_tree_clean_at_test_record": true,
+  "branch": "codex/r02-t03-a-desktop",
+  "archive_sha256": "f5e97fe4395f6f3d5552c30b1fe0052563e75c7d7e5d07c97bb78b960fa554b1",
+  "plan_manifest_sha256": "783e81127b2eacc8ea1355ee04df7f4ccef572289a629068748eb008644a6fc8",
+  "versions": {
+    "prd": "PRD-R02 1.0",
+    "architecture": "ARC-R02 1.0",
+    "contract": "CONTRACT-R02 1.0",
+    "ui": "UI-R02 1.0",
+    "rules": "classic-1.0.1",
+    "entry_map": "1"
+  },
+  "input_document_hashes": {
+    "DELIVERY-STATUS.md": "8d68c8f79dd2e24d949600eabc9ff67876f5aab56332729ef655d2d4b9187cac",
+    "START-CODEX.txt": "05b5e01c0c56ec2da46031e984ca6144228b353ecc6275fbc1bee021e8bac012",
+    "WORK_START_HERE.md": "52edb5f235b915940e5bfd10e8179d3e0bd9e02b31b4954f9a571d0c966f98c6",
+    "docs/architecture/R02-ARCHITECTURE.md": "5f6f9b1ee5831ea4c612697876d3bd86abc14d07602c00ca3cc2f5c1a1611040",
+    "docs/architecture/RULE-ENGINE-v1.0.md": "07a1947061d54c75306347c5d727fc291752a9124bab3fd9e56e75f2df2ffc4d",
+    "docs/contracts/R02-CONTRACT.md": "e950606b95c623a3674010edefffc2bb59c35034f0641568717d401bbcb28fc1",
+    "docs/contracts/r02-entry-map.json": "326fee0497535b8451b92960705c135a2f50e1f82f277ee9eb13e5ad69ca547c",
+    "docs/design/R02-PAGES.md": "e80c50940fc2f37743e3cdae7bdd905c527f6c5f90dced55e99d405b88500355",
+    "docs/design/references/r01-ui-b/INDEX.png": "446442aa8b09073b7a316b4eb16cb755a94e8b6ec80ee4890e4f4207481b65cd",
+    "docs/design/references/r01-ui-b/P07-grouped-1366x768-B-v2.png": "ba50afeaefce8a7f6909d785e32fca3c3f68814ac082213bfbf8d5eb6a458f1a",
+    "docs/design/references/r01-ui-b/P07-grouped-1920x1080-B-v2.png": "fa0761389e6e19d67a038ada61b4647bcbc601e2e736565d8918706afdf98792",
+    "docs/prd/PRD-RULES-v1.0.md": "4260e3326236bbcd473efce77aff281e18ecbdf5da534827462d55ad3eb0b99a",
+    "docs/prd/R02-OFFLINE-PRD.md": "47d2c53e805f4e9e3cb121b4e8990f21258aeb46d2681c506da8e2044b60f66c",
+    "docs/production/R02-RESULT-TEMPLATE.md": "c7cfef0120e100f5ac4516ad19028dbf0a0badf517d22e1e62a960b89ad1d071",
+    "docs/production/R02-START.md": "c19b0e178a236d10b37b3a80efc64b2002d97e6505fb90ccc559ef4dfd7a0a68",
+    "docs/production/STATUS.md": "50978dd7bdf5034101e5c5f1528c69ad08f660384b4b93704a6778ce94370e34",
+    "docs/reviews/R01-CLOSEOUT.md": "4dbd692f6cc392c179f28c61ea8ca3f9c558ef02a0ab043312fd1f16439657aa",
+    "docs/reviews/R01-T01-a.md": "8129674247b2ab7ea7a1306c55d3c52f327b02eae1b552a753418600612d0688",
+    "docs/reviews/R01-T01-b.md": "b45f8bf0d1109d12fdd37d6eb8864ad91b6c3401d21c8052417bd1cc573b35eb",
+    "docs/reviews/R01-T02-b.md": "8c3a14c7d3ef3cd938aa15f60e3186d1f1a282ed751302091f8f74a024eb5c69",
+    "docs/reviews/R01-T03-b.md": "633b206929801ae1380569d637af0a590723fb253de4f31e7f4212524202beb1",
+    "docs/reviews/evidence/R01-close/README.md": "28f1719db39f4df8a589056b146bb4ba6c33420e69d1f19eccbcd7ad33ec217a",
+    "docs/reviews/evidence/R01-close/check_plan.py": "a3dc7661dca3bb5705cf0298686002a96adf5706b2e54da8da975198e41536b1",
+    "docs/reviews/evidence/R01-close/plan-static-check.txt": "1fb69294e81611588011d1a81401fbfff3f7c4bbd3084d96ce4c4fdc790fb111",
+    "docs/reviews/evidence/R01-close/source-check.json": "32a17a6f021b1aba3fda82dd00be6a260cada28748b578d5e43dd1b5c74836b4",
+    "docs/reviews/evidence/R01-close/ui-verify-linux.txt": "08423adc89c2e55db0c2b62929c4d8ce4ce8eafe648df222cf7d9350ce58a4cf",
+    "docs/reviews/evidence/R01-close/worker-regression-linux.txt": "7bc59b20adc1cfc034bcf7a037d2686bea3db87350c91ec144fad8db972c6acd",
+    "docs/rules/v1/CASES.md": "a67c887ea0fe2073ee57789aa2b204d3ee9317dc525331ee0dfd50cf7ad4e5ab",
+    "docs/rules/v1/CHANGELOG-1.0.1.md": "e5621f9c933665f81259413298440135b6cea1b01172e5106d42bf059721fe87",
+    "docs/rules/v1/PLAYER-GUIDE.md": "e6f78728ce93e0b3d909c7ebc7b273b3fc25459c8c49e02529844ab88b86eede",
+    "docs/rules/v1/README.md": "54fcc27424fa2bea1618eb85090d8b8001d9229882400950b2351a8ad3e67e7f",
+    "docs/rules/v1/RULEBOOK.md": "fbf345e7cfb13bd2af4a9340a52ddc00d0a9260c62a8f7f41dae5e81867ce884",
+    "docs/rules/v1/TRACEABILITY.md": "435a800ca3f27fc89c51ccf83aa4890d16f27db4cc860a13f6559e2b626a25c5",
+    "docs/tasks/R02/R02-T01-a.md": "550868830641fbd7a45c76fedb060ec03b9600f2a33322b65ae89bce1a439322",
+    "docs/tasks/R02/R02-T02-a.md": "0a9a39e5dbcd1143c41192c2611b19266988a7cca024adf4f72281d68f6c5fe5",
+    "docs/tasks/R02/R02-T03-a.md": "ec5e48838a4375d198b68bf7911ace3a12649edd4811f177ef22c562afe35f23"
+  },
+  "environment": {
+    "os": "27.0",
+    "os_build": "26A5425a",
+    "cpu": "arm64",
+    "node": "v24.12.0",
+    "npm": "11.6.2",
+    "python": "3.13.7",
+    "electron": "44.3.0",
+    "typescript": "7.0.2",
+    "esbuild": "0.28.2",
+    "react": "19.3.0",
+    "playwright_core": "1.63.0"
+  },
+  "validation": {
+    "desktop_unit_tests": 9,
+    "ui_check_groups": 15,
+    "legacy_passed": 31,
+    "legacy_known_expected_failure": 1,
+    "commands": [
+      {
+        "command": [
+          "npm",
+          "test"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "duration_seconds": 0.78,
+        "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+      },
+      {
+        "command": [
+          "npm",
+          "run",
+          "smoke"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "duration_seconds": 13.14,
+        "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+      },
+      {
+        "command": [
+          "python3",
+          "scripts/check.py"
+        ],
+        "cwd": ".",
+        "exit_code": 0,
+        "duration_seconds": 0.21,
+        "tested_code_sha": "499fb8ad07f92e8ce583741a47b7d5969c140913"
+      }
+    ],
+    "development_dependency_audit": {
+      "exit_code": 1,
+      "low": 3,
+      "high": 19,
+      "critical": 1
+    },
+    "production_dependency_audit": {
+      "exit_code": 0,
+      "total": 0
+    },
+    "input_manifest_entries_checked": 36,
+    "diff_check": "PASS"
+  },
+  "screenshot_context": {
+    "contentBounds": {
+      "x": 172,
+      "y": 204,
+      "width": 1366,
+      "height": 768
+    },
+    "displays": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "workArea": {
+          "x": 0,
+          "y": 38,
+          "width": 1710,
+          "height": 1027
+        },
+        "scaleFactor": 2
+      }
+    ],
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    }
+  },
+  "screenshots": [
+    {
+      "name": "P01-native",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P02-menu",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P10-save-failure",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P11-manual",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P03-prepare",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-selected",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-submitted",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P06-revealed",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-solo-winner",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-midgame-1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-midgame-1920x1080",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-initial-1366x768",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P07-submit-error",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-spectator",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-eliminated",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P08-restart",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-draw",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    },
+    {
+      "name": "P09-six-winner",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      },
+      "method": "Playwright screenshot of real Electron renderer, CSS-pixel scale; viewport may be emulated"
+    }
+  ],
+  "not_run": [
+    "real rules/AI/WorkerPort integration",
+    "physical network disconnection",
+    "Windows physical device",
+    "Forge packaging/distribution/signing",
+    "human visual acceptance"
+  ],
+  "waiting": [
+    "Planner decision on pinned development-tool vulnerabilities",
+    "Planner acceptance of T03 prototype",
+    "Separate authorization for remote push/PR if desired"
+  ],
+  "remote": {
+    "pushed": false,
+    "pr_created": false,
+    "planned_base": "docs/design-discussion-20260911"
+  },
+  "review": {
+    "self_review": "completed",
+    "kimi_called": false,
+    "subagents_used": false
+  },
+  "artifact_hash_scope": "All tracked desktop source and result files, excluding this manifest to avoid a self-hash cycle; node_modules/build not included",
+  "artifacts": [
+    {
+      "path": "docs/results/R02-T03-a/P01-native.png",
+      "bytes": 49579,
+      "sha256": "b2f583d579bff79bbcdec9055d41e13e7ccbde3e0872e64fce91af00b09bcda8"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P02-menu.png",
+      "bytes": 62715,
+      "sha256": "4e22ddc0260ffb7f4d50337c2d1983b44fc0a8a8635d5fa18e7108ee66f5ec72"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P03-prepare.png",
+      "bytes": 53679,
+      "sha256": "cbbb77de0cd6edb2b6d8c2853dfbbda05f952502c53de6ff73d7b4f52b73f905"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P06-revealed.png",
+      "bytes": 198711,
+      "sha256": "4cee85e684f6b547144c42f6882a38f91df86ff47b3d4e158c66dc29e9cc781c"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P06-selected.png",
+      "bytes": 204658,
+      "sha256": "fe2be7b599b55a890eae59d40b087aa3ab24084e6f015ba6d5fa65674cbb6242"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P06-submitted.png",
+      "bytes": 205496,
+      "sha256": "ed510fc8e4bd90b3577e6c65d34baca08774a45c4867942369679c049e27f6ee"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P07-initial-1366x768.png",
+      "bytes": 213462,
+      "sha256": "d38779779af940a48d890dc0ca6233f9d0f5b8f65c3b6ff2a792766972af9f6f"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P07-midgame-1366x768.png",
+      "bytes": 211795,
+      "sha256": "be2b309c9137190863b30a83aac536fde69e068e3d7953a19a2ebfc45b5b786f"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P07-midgame-1920x1080.png",
+      "bytes": 250473,
+      "sha256": "23c833804bd2ec33304e0b5939a5e48e3426650d08adbaae173106247e6564f2"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P07-submit-error.png",
+      "bytes": 217831,
+      "sha256": "6dd4abf8dbe5818d39c2934a278e54f0a362296da04c0801803ddd244162736e"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P08-eliminated.png",
+      "bytes": 73367,
+      "sha256": "08584c30ff23d7e9c9b3f5be87515498d36efd7f4c689e253b0c4322f41d5f75"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P08-restart.png",
+      "bytes": 77949,
+      "sha256": "b1aeb4ca80da9427555ec5c5f3cc4af3452a0cb3e090406a09f4097d94f0b02e"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P08-spectator.png",
+      "bytes": 63185,
+      "sha256": "76cde1b48f04b4ab518ded88b9218da699b9c025a151f95c4ec7d6018ffb486a"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P09-draw.png",
+      "bytes": 58629,
+      "sha256": "73f4bf97466d4686b0a985c6ef7138dac615d425b66c87bbb0a115aa15376a94"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P09-six-winner.png",
+      "bytes": 59766,
+      "sha256": "4ca38579e5dbe6c99aa49216b7c76016a9efd9b97dc6d1daae49f721c49b6956"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P09-solo-winner.png",
+      "bytes": 51858,
+      "sha256": "e46db3dd45ebc965d7f462318125127fe3232d68787acbddb375b65af11ffef2"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P10-save-failure.png",
+      "bytes": 57699,
+      "sha256": "99326bdaba065c51476419c8e663a5a2f9078168bfe16b1b7ae1481776dbf9ee"
+    },
+    {
+      "path": "docs/results/R02-T03-a/P11-manual.png",
+      "bytes": 105462,
+      "sha256": "9347f9ac344de1b670230c00ada25d2c11cdcdd755c193db35fc9616efe96a70"
+    },
+    {
+      "path": "docs/results/R02-T03-a/PR-BODY.md",
+      "bytes": 2173,
+      "sha256": "a1b0d687ab1f33cdabe62b218895b9465b78c0d434d4acae5caf55b31c090e94"
+    },
+    {
+      "path": "docs/results/R02-T03-a/REPORT.md",
+      "bytes": 7038,
+      "sha256": "f596dc5c2dd94c830b32af7bc6c26391c731eaaba1497885783162c5ba7510b3"
+    },
+    {
+      "path": "docs/results/R02-T03-a/commands.json",
+      "bytes": 629,
+      "sha256": "af2c3cb27523970f1b43a0b3fe9ab200d225d303ebaa2e219fb103b2a06a4cd4"
+    },
+    {
+      "path": "docs/results/R02-T03-a/dependency-audit-production.json",
+      "bytes": 363,
+      "sha256": "0e144ddf942b0486313d0fd9eb308e86f10cb010e50815cbb316877d0d674cd5"
+    },
+    {
+      "path": "docs/results/R02-T03-a/dependency-audit.json",
+      "bytes": 19741,
+      "sha256": "900acf683903b6016a10aa3957486c43de77420417bc07e3e8a81a56bf7785bb"
+    },
+    {
+      "path": "docs/results/R02-T03-a/desktop-smoke.txt",
+      "bytes": 1253,
+      "sha256": "9bd44d71343962e154b41eee623fbf2173fa6a592a82c992d2b5ee2275e0a047"
+    },
+    {
+      "path": "docs/results/R02-T03-a/desktop-tests.txt",
+      "bytes": 1239,
+      "sha256": "26630a2c75dea16a446df4d0050d7c67a8a94c7a534f6bec4b3b5f6709c9eaea"
+    },
+    {
+      "path": "docs/results/R02-T03-a/input-check.json",
+      "bytes": 10395,
+      "sha256": "308c5afe6d7422212c5aaf30b8f1c22e1d6d1450ac9dce6d91cfed6e848ece35"
+    },
+    {
+      "path": "docs/results/R02-T03-a/legacy-check.txt",
+      "bytes": 3979,
+      "sha256": "c2482318059e12292f93c8812afb9e1c5deea9655b679ea6edce9d6479b8e916"
+    },
+    {
+      "path": "docs/results/R02-T03-a/ui-evidence.json",
+      "bytes": 18401,
+      "sha256": "ebb72124c027837eea32ebcbbb35d98beab57ea88e1ce827dc5948f35316f8e9"
+    },
+    {
+      "path": "game/desktop/.gitignore",
+      "bytes": 21,
+      "sha256": "bc5e8c0a684bb997c97fdbfb1fb4e3bf8a967021536ceee76f81d03dbfd8e218"
+    },
+    {
+      "path": "game/desktop/README.md",
+      "bytes": 3222,
+      "sha256": "472f822fd0208b655b005e3774386a4f91bc7f67d3115dc6ed67fa9fe8048ad4"
+    },
+    {
+      "path": "game/desktop/build.cjs",
+      "bytes": 607,
+      "sha256": "8e3b1339526466c0215158127d642c6b6d3ad7500e2a972db459f761ff793dbb"
+    },
+    {
+      "path": "game/desktop/catalog.json",
+      "bytes": 48460,
+      "sha256": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4"
+    },
+    {
+      "path": "game/desktop/fixture-availability.json",
+      "bytes": 289,
+      "sha256": "7e163556edff8365595398e9f7b6e86c38f35c315b7483146be73bdb10b8c680"
+    },
+    {
+      "path": "game/desktop/fixture.ts",
+      "bytes": 8007,
+      "sha256": "46b6da6943dc6fd6d3ebbcacc5e55c73b0aaf1b3dcabb51da9fc16f3892ec098"
+    },
+    {
+      "path": "game/desktop/index.html",
+      "bytes": 490,
+      "sha256": "d674acfc513eb74bc559ae1e4e9e5f272196c05aa6f0b4a31d6f873cb807ce7a"
+    },
+    {
+      "path": "game/desktop/interaction.ts",
+      "bytes": 573,
+      "sha256": "342c173e8927a9ed11c02112872f31914de4bd1a538593e1d92a15bc8cf8dbb7"
+    },
+    {
+      "path": "game/desktop/main.cjs",
+      "bytes": 4762,
+      "sha256": "20567321b7ab2408c6686392f12244ad474e32154578818ac4c57441e49de245"
+    },
+    {
+      "path": "game/desktop/package-lock.json",
+      "bytes": 244486,
+      "sha256": "e566dac76acc0c7c4a065671ddbad10531ac9fd980b5ce9abc028891c7adf39e"
+    },
+    {
+      "path": "game/desktop/package.json",
+      "bytes": 767,
+      "sha256": "694e4cebacf25272230b366e4036df96ce6f8959beb0326d379f8a9477d7e841"
+    },
+    {
+      "path": "game/desktop/preload.cjs",
+      "bytes": 849,
+      "sha256": "e98f6a2b520be5b648b3bfbb50411f40a57e3e5d659d2a439daef773acd3802b"
+    },
+    {
+      "path": "game/desktop/profile.cjs",
+      "bytes": 3928,
+      "sha256": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2"
+    },
+    {
+      "path": "game/desktop/renderer.tsx",
+      "bytes": 22253,
+      "sha256": "3eca692b4cc6be57566a65eea14a9eeba6ca6d33f90a7cffb1edde035cbc0307"
+    },
+    {
+      "path": "game/desktop/smoke.cjs",
+      "bytes": 14969,
+      "sha256": "b94a4e1d66f343a66d83bdf7901d9d352e81b809a23eb115730338cff990b312"
+    },
+    {
+      "path": "game/desktop/style.css",
+      "bytes": 11388,
+      "sha256": "784e8087b7be3f30c9850c984aabde81011260d82bd1189edd3f8ac2371bf372"
+    },
+    {
+      "path": "game/desktop/test.cjs",
+      "bytes": 8027,
+      "sha256": "430a862a6e1e80f4d71f802ea7d7344acf5c2f242268c255bde93b25ca00c12c"
+    },
+    {
+      "path": "game/desktop/tsconfig.json",
+      "bytes": 264,
+      "sha256": "ddc1b365fc4af1df80ba95c3f58af8367c07873d6bb2e7772235ecc1106ff666"
+    },
+    {
+      "path": "game/desktop/types.ts",
+      "bytes": 2440,
+      "sha256": "97178ccb182a58a0e4801e45dfdfb40f3fffe174be4e33f6ecbd4b12a0c8d780"
+    }
+  ]
+}
