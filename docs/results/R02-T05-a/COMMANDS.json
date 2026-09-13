@@ -1,0 +1,621 @@
+{
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "baseline_ledger": "baseline/commands.json",
+  "security_ledger": "security/commands.json",
+  "final_commands": [
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/node-version.txt",
+      "name": "node-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.026
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/npm-version.txt",
+      "name": "npm-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.146
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/uv-version.txt",
+      "name": "uv-version",
+      "command": "[\"uv\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.014
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/python-check.txt",
+      "name": "python-check",
+      "command": "[\"uv\", \"pip\", \"check\", \"--python\", \"<WORKTREE>/game/packaging/.venv/bin/python\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.027
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/npm-audit.txt",
+      "name": "npm-audit",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.504
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/npm-audit-runtime.txt",
+      "name": "npm-audit-runtime",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.376
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/npm-tree.txt",
+      "name": "npm-tree",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"ls\", \"--all\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.307
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/core.txt",
+      "name": "core",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/core/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>/game/core"
+      },
+      "seconds": 1.082
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/runtime.txt",
+      "name": "runtime",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/runtime/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>/game/core:<WORKTREE>/game/runtime"
+      },
+      "seconds": 0.337
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/independent.txt",
+      "name": "independent",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"tests/rules_v1_001/run_acceptance.py\", \"--core\", \"game/core\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.088
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/tools.txt",
+      "name": "tools",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/rules_v1_001\", \"-p\", \"test_*.py\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.132
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/root.txt",
+      "name": "root",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"scripts/check.py\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.038
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/desktop.txt",
+      "name": "desktop",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"test\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {
+        "DEIDEI_PYTHON": "<WORKTREE>/game/packaging/.venv/bin/python"
+      },
+      "seconds": 1.189
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/freeze.txt",
+      "name": "freeze",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen\", \"--workpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/pyinstaller\", \"<WORKTREE>/game/packaging/worker.spec\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYINSTALLER_CONFIG_DIR": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/pyinstaller-cache"
+      },
+      "seconds": 3.303
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/frozen-worker.txt",
+      "name": "frozen-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.088
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/worker-signature-before.txt",
+      "name": "worker-signature-before",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.01
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/worker-identity-before.txt",
+      "name": "worker-identity-before",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.006
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/packager.txt",
+      "name": "packager",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/pack.mjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 8.803
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/copy-app.txt",
+      "name": "copy-app",
+      "command": "[\"ditto\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/packaged/DeiDei R02-darwin-arm64/DeiDei R02.app\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.25
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/signature-verify.txt",
+      "name": "signature-verify",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.284
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/signature-display.txt",
+      "name": "signature-display",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.007
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/gatekeeper.txt",
+      "name": "gatekeeper",
+      "command": "[\"spctl\", \"--assess\", \"--type\", \"execute\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 3,
+      "environment": {},
+      "seconds": 1.069
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/desktop-architecture.txt",
+      "name": "desktop-architecture",
+      "command": "[\"lipo\", \"-archs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app/Contents/MacOS/DeiDeiR02\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.019
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/worker-architecture.txt",
+      "name": "worker-architecture",
+      "command": "[\"lipo\", \"-archs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app/Contents/Resources/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.018
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/archive.txt",
+      "name": "archive",
+      "command": "[\"ditto\", \"-c\", \"-k\", \"--sequesterRsrc\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 14.882
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/unpack-final.txt",
+      "name": "unpack-final",
+      "command": "[\"ditto\", \"-x\", \"-k\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 1.607
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/unpacked-signature.txt",
+      "name": "unpacked-signature",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 2.741
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "evidence": "native-ci/darwin-arm64/evidence/unpacked-worker.txt",
+      "name": "unpacked-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/DeiDei R02.app/Contents/Resources\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.406
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "name": "packaged-automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": "native-ci/darwin-arm64/evidence/packaged-automation.json"
+    },
+    {
+      "platform": "darwin-arm64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "name": "native-build",
+      "command": "<DEDICATED_PYTHON> game/packaging/build.py",
+      "exit_code": 0,
+      "evidence": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/job/103762851697"
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/node-version.txt",
+      "name": "node-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/npm-version.txt",
+      "name": "npm-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.125
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/uv-version.txt",
+      "name": "uv-version",
+      "command": "[\"uv\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/python-check.txt",
+      "name": "python-check",
+      "command": "[\"uv\", \"pip\", \"check\", \"--python\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/npm-audit.txt",
+      "name": "npm-audit",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.735
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/npm-audit-runtime.txt",
+      "name": "npm-audit-runtime",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.704
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/npm-tree.txt",
+      "name": "npm-tree",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"ls\", \"--all\", \"--json\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.61
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/core.txt",
+      "name": "core",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/core/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>\\game\\core"
+      },
+      "seconds": 1.268
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/runtime.txt",
+      "name": "runtime",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/runtime/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>\\game\\core;<WORKTREE>\\game\\runtime"
+      },
+      "seconds": 0.563
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/independent.txt",
+      "name": "independent",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"tests/rules_v1_001/run_acceptance.py\", \"--core\", \"game/core\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.782
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/tools.txt",
+      "name": "tools",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/rules_v1_001\", \"-p\", \"test_*.py\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.783
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/root.txt",
+      "name": "root",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"scripts/check.py\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 2.001
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/desktop.txt",
+      "name": "desktop",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"test\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {
+        "DEIDEI_PYTHON": "<WORKTREE>\\game\\packaging\\.venv\\Scripts\\python.exe"
+      },
+      "seconds": 1.774
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/freeze.txt",
+      "name": "freeze",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\frozen\", \"--workpath\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\pyinstaller\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\worker.spec\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYINSTALLER_CONFIG_DIR": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux\\pyinstaller-cache"
+      },
+      "seconds": 5.456
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/frozen-worker.txt",
+      "name": "frozen-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\frozen\"]",
+      "cwd": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.172
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/packager.txt",
+      "name": "packager",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\pack.mjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 8.577
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "evidence": "native-ci/win32-x64/evidence/unpacked-worker.txt",
+      "name": "unpacked-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\\\\DeiDei R02-win32-x64\\\\resources\"]",
+      "cwd": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.188
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "name": "packaged-automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": "native-ci/win32-x64/evidence/packaged-automation.json"
+    },
+    {
+      "platform": "win32-x64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "name": "native-build",
+      "command": "<DEDICATED_PYTHON> game/packaging/build.py",
+      "exit_code": 0,
+      "evidence": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/job/103762851802"
+    }
+  ],
+  "download_ledger": "download-verification.json",
+  "intermediate_failures": "FAILURES.md",
+  "note": "源码命令退出 0 不代表 GUI/断网/系统信任；spctl 拒绝保留退出 3。",
+  "final_download_mac_ledger": "download-macos-native-verification.json",
+  "download_helper_first_attempt": {
+    "exit_code": 1,
+    "reason": "Python zipfile 将 ditto 中文文件名按 CP437 解码；按归档实际 UTF-8 字节建立名称映射后校验成功，原生 ditto 展开后的中文 README 另做字节核对。",
+    "product_changed": false
+  },
+  "whitespace_ledger": "whitespace-check.json"
+}

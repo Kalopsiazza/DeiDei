@@ -1,0 +1,121 @@
+{
+  "input_sha": "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+  "checks": [
+    {
+      "name": "npm-audit",
+      "args": [
+        "npm",
+        "audit",
+        "--json"
+      ],
+      "cwd": "game/desktop",
+      "environment": {},
+      "exit_code": 1,
+      "seconds": 9.576
+    },
+    {
+      "name": "npm-tree",
+      "args": [
+        "npm",
+        "ls",
+        "--all",
+        "--json"
+      ],
+      "cwd": "game/desktop",
+      "environment": {},
+      "exit_code": 1,
+      "seconds": 1.127
+    },
+    {
+      "name": "core",
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "environment": {
+        "PYTHONPATH": "game/core"
+      },
+      "exit_code": 0,
+      "seconds": 0.707
+    },
+    {
+      "name": "runtime",
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/runtime/tests",
+        "-v"
+      ],
+      "cwd": ".",
+      "environment": {
+        "PYTHONPATH": "game/core:game/runtime"
+      },
+      "exit_code": 0,
+      "seconds": 0.349
+    },
+    {
+      "name": "independent",
+      "args": [
+        "python3",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "game/core"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "exit_code": 0,
+      "seconds": 1.014
+    },
+    {
+      "name": "tools",
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "exit_code": 0,
+      "seconds": 0.975
+    },
+    {
+      "name": "root",
+      "args": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "exit_code": 0,
+      "seconds": 1.095
+    },
+    {
+      "name": "desktop",
+      "args": [
+        "npm",
+        "--prefix",
+        "game/desktop",
+        "test"
+      ],
+      "cwd": ".",
+      "environment": {},
+      "exit_code": 0,
+      "seconds": 0.956
+    }
+  ]
+}

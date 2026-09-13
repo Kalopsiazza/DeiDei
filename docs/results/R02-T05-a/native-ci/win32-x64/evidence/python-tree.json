@@ -1,0 +1,30 @@
+[
+  {
+    "name": "altgraph",
+    "version": "0.17.5"
+  },
+  {
+    "name": "packaging",
+    "version": "26.3"
+  },
+  {
+    "name": "pefile",
+    "version": "2024.8.26"
+  },
+  {
+    "name": "pyinstaller",
+    "version": "6.22.3"
+  },
+  {
+    "name": "pyinstaller-hooks-contrib",
+    "version": "2026.7"
+  },
+  {
+    "name": "pywin32-ctypes",
+    "version": "0.2.3"
+  },
+  {
+    "name": "setuptools",
+    "version": "84.0.0"
+  }
+]

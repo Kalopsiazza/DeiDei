@@ -1,0 +1,38 @@
+[
+  {
+    "code_sha": "016c13a60b6af13d28c325371b3b9578edccaa8c",
+    "environment": "local macOS 27 arm64",
+    "last_recorded_command": {
+      "name": "worker-architecture",
+      "command": "[\"lipo\", \"-archs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/delivery/DeiDei R02.app/Contents/Resources/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.014
+    },
+    "result": "FAIL; see failure notes"
+  },
+  {
+    "code_sha": "28bdccf48cb8c67b9a4cb56dad5c6156b3909ec2",
+    "environment": "local macOS 27 arm64",
+    "last_recorded_command": {
+      "name": "signature-verify",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-ed5w00bk/delivery/DeiDei R02-darwin-arm64\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 1,
+      "seconds": 0.03
+    },
+    "result": "FAIL; see failure notes"
+  },
+  {
+    "code_sha": "21c76006ed9b38c8a2741d5c306c6a9b5c5e727e",
+    "environment": "local macOS 27 arm64",
+    "last_recorded_command": {
+      "name": "frozen-worker",
+      "command": "[\"/usr/local/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg/frozen\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg",
+      "exit_code": 1,
+      "seconds": 1.231
+    },
+    "result": "FAIL; see failure notes"
+  }
+]

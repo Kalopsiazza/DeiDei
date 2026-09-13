@@ -1,0 +1,3 @@
+Using CPython 3.11.16
+Creating virtual environment at: game/packaging/.venv
+Activate with: source game/packaging/.venv/bin/activate

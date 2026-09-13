@@ -1,0 +1,110 @@
+{
+  "tested_code_sha": "21c76006ed9b38c8a2741d5c306c6a9b5c5e727e",
+  "commands": [
+    {
+      "name": "node-version",
+      "command": "[\"/usr/local/bin/node\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.02
+    },
+    {
+      "name": "npm-version",
+      "command": "[\"/usr/local/bin/node\", \"/usr/local/lib/node_modules/npm/bin/npm-cli.js\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.078
+    },
+    {
+      "name": "uv-version",
+      "command": "[\"uv\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "name": "python-check",
+      "command": "[\"uv\", \"pip\", \"check\", \"--python\", \"<WORKTREE>/game/packaging/.venv/bin/python\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.013
+    },
+    {
+      "name": "npm-audit",
+      "command": "[\"/usr/local/bin/node\", \"/usr/local/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "seconds": 2.029
+    },
+    {
+      "name": "npm-audit-runtime",
+      "command": "[\"/usr/local/bin/node\", \"/usr/local/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "seconds": 1.626
+    },
+    {
+      "name": "npm-tree",
+      "command": "[\"/usr/local/bin/node\", \"/usr/local/lib/node_modules/npm/bin/npm-cli.js\", \"ls\", \"--all\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "seconds": 0.205
+    },
+    {
+      "name": "core",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/core/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.595
+    },
+    {
+      "name": "runtime",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/runtime/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.266
+    },
+    {
+      "name": "independent",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"tests/rules_v1_001/run_acceptance.py\", \"--core\", \"game/core\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.856
+    },
+    {
+      "name": "tools",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/rules_v1_001\", \"-p\", \"test_*.py\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.868
+    },
+    {
+      "name": "root",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"scripts/check.py\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 0.971
+    },
+    {
+      "name": "desktop",
+      "command": "[\"/usr/local/bin/node\", \"/usr/local/lib/node_modules/npm/bin/npm-cli.js\", \"test\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "seconds": 0.946
+    },
+    {
+      "name": "freeze",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg/frozen\", \"--workpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg/pyinstaller\", \"<WORKTREE>/game/packaging/worker.spec\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "seconds": 2.935
+    },
+    {
+      "name": "frozen-worker",
+      "command": "[\"/usr/local/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg/frozen\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-kmplmgyg",
+      "exit_code": 1,
+      "seconds": 1.231
+    }
+  ]
+}

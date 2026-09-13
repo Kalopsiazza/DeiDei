@@ -1,0 +1,20 @@
+{
+  "command": "<DEDICATED_PYTHON> <READ_ONLY_PLAN>/verification/check_plan.py",
+  "exit_code": 0,
+  "result": {
+    "status": "PLAN_STATIC_CHECK_PASS",
+    "markdown_files": 8,
+    "relative_links": 18,
+    "prd_requirements": 10,
+    "architecture_sections": 8,
+    "verification_rows": 18,
+    "runtime_tests": "NOT_RUN",
+    "github_bulk_upload": "NOT_COMPLETED",
+    "plan_branch_created": false,
+    "manifest_files_verified": 10
+  },
+  "plan_sha": null,
+  "plan_version": "1.0",
+  "plan_manifest_sha256": "84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc",
+  "input_sha": "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0"
+}
