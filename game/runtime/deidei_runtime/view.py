@@ -2,12 +2,12 @@
 import json
 from decimal import Decimal
 from math import gcd
-from pathlib import Path
 
 from deidei_core.api import list_options
+from .resource_paths import catalog_path
 
 CATALOG = {e["entry_id"]: e for e in json.loads(
-    (Path(__file__).resolve().parents[2] / "desktop/catalog.json").read_text(encoding="utf-8"))["entries"]}
+    catalog_path().read_text(encoding="utf-8"))["entries"]}
 RESOURCE_NAMES = {"dd6": "DD", "lightning": "雷电", "nx_charge": "充能",
                   "mature_bombs": "成熟层", "reward_stock": "奖励"}
 EVENT_RESOURCE_NAMES = {**RESOURCE_NAMES, "pending_bombs": "待成熟炸药",

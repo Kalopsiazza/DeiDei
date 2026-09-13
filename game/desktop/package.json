@@ -4,13 +4,13 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
-    "@electron-forge/cli": "7.11.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
     "electron": "44.3.0",
     "esbuild": "0.28.2",
     "playwright-core": "1.63.0",
-    "typescript": "7.0.2"
+    "typescript": "7.0.2",
+    "@electron/packager": "20.3.0"
   },
   "name": "deidei-r02-desktop",
   "productName": "DeiDei R02",
@@ -23,7 +23,8 @@
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && node build.cjs",
     "start": "npm run build && electron .",
-    "test": "npm run build && node --test test.cjs test-live.cjs test-navigation.cjs",
-    "smoke": "node smoke-live.cjs"
+    "test": "npm run build && node --test test.cjs test-live.cjs test-navigation.cjs test-packaging.cjs",
+    "smoke": "node smoke-live.cjs",
+    "package": "python ../packaging/build.py"
   }
 }

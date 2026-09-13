@@ -9,7 +9,7 @@ class WorkerBridge {
   }
   start() {
     if (this.current) return this.current;
-    const child = this.spawnChild(this.executable, this.args, { shell: false, env: this.env, stdio: ['pipe', 'pipe', 'pipe'] });
+    const child = this.spawnChild(this.executable, this.args, { shell: false, windowsHide: true, env: this.env, stdio: ['pipe', 'pipe', 'pipe'] });
     const g = { child, pending: new Map(), buffer: Buffer.alloc(0), failed: false,
       exited: false, closed: false, retiring: false, timers: [] };
     g.done = new Promise(resolve => { g.resolveClose = resolve; });

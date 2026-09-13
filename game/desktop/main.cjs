@@ -46,7 +46,7 @@ app.whenReady().then(async()=>{
   expose('profile.read',()=>store.read());
   for(const mode of ['create','update','recover']) expose(`profile.${mode}`,p=>store.save(mode,p),true);
   expose('settings.apply',async p=>{const profile=await store.save('settings',p);window.setFullScreen(profile.settings.fullscreen);return profile;},true);
-  expose('port.startSolo',async p=>{fields(p,['profile_id']);const profile=await store.read();if(!profile||p.profile_id!==profile.local_id)throw new Error('INVALID_PROFILE');return replacePort(new WorkerPort(profile),next=>next.startSolo(p.profile_id));},true);
+  expose('port.startSolo',async p=>{fields(p,['profile_id']);const profile=await store.read();if(!profile||p.profile_id!==profile.local_id)throw new Error('INVALID_PROFILE');return replacePort(new WorkerPort(profile,undefined,{isPackaged:app.isPackaged,resourcesPath:process.resourcesPath,platform:process.platform}),next=>next.startSolo(p.profile_id));},true);
   expose('port.submit',p=>{fields(p,['view_id','entry_id']);if(!validString(p.view_id)||!validString(p.entry_id))throw new Error('INVALID_INPUT');return port.submit(p.view_id,p.entry_id);},true);
   expose('port.getView',()=>port.getView()); expose('port.leave',()=>port.leave());
   expose('fixture.preview',p=>{fields(p,['scene']);if(!scenes.includes(p.scene))throw new Error('INVALID_SCENE');return replacePort(new FixturePort(),next=>next.preview(p.scene));},true);

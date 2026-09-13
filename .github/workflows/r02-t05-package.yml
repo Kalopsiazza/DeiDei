@@ -1,0 +1,78 @@
+name: R02-T05 native test packages
+on:
+  pull_request:
+    branches: [integration/r02]
+permissions:
+  contents: read
+jobs:
+  package:
+    if: github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'codex/r02-t05-a-packaging'
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+            platform: darwin-arm64
+          - os: windows-2022
+            arch: x64
+            platform: win32-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 40
+    env:
+      DEIDEI_EXPECTED_SHA: ${{ github.event.pull_request.head.sha }}
+      PYTHONUTF8: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.12.0
+          architecture: ${{ matrix.arch }}
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+        with:
+          version: 0.11.13
+          enable-cache: false
+      - name: Exact native tools and clean dependencies
+        shell: bash
+        env:
+          TARGET_PLATFORM: ${{ matrix.platform }}
+        run: |
+          set -euo pipefail
+          uv python install --no-bin --python-downloads-json-url game/packaging/python-downloads.json 3.11.16
+          uv venv --python 3.11.16 game/packaging/.venv
+          if [[ "$RUNNER_OS" == Windows ]]; then
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging/.venv/Scripts/python.exe"
+          else
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging/.venv/bin/python"
+          fi
+          uv pip sync --python "$TASK_PYTHON" --require-hashes "game/packaging/requirements-$TARGET_PLATFORM.lock"
+          npm --prefix game/desktop ci
+          "$TASK_PYTHON" game/packaging/build.py
+      - name: Final ZIP packaged automation in disposable CI account
+        shell: bash
+        run: |
+          set -euo pipefail
+          node game/packaging/check-package.cjs
+      - name: Candidate and public delivery manifest
+        if: success()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R02-T05-a-${{ matrix.platform }}-${{ github.event.pull_request.head.sha }}
+          path: |
+            game/packaging/build/*/DeiDei-*.zip
+            game/packaging/build/*/delivery-manifest.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Commands, errors and real native evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R02-T05-a-evidence-${{ matrix.platform }}-${{ github.event.pull_request.head.sha }}
+          path: game/packaging/build/*/evidence/
+          if-no-files-found: warn
+          retention-days: 30

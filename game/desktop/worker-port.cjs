@@ -1,14 +1,14 @@
-const path = require('node:path');
 const { WorkerBridge } = require('./worker-bridge.cjs');
+const { workerLaunch } = require('./worker-launch.cjs');
 
-function localBridge() {
-  const root = path.resolve(__dirname, '../..');
-  const env = { ...process.env, PYTHONPATH: [path.join(root, 'game/core'), path.join(root, 'game/runtime')].join(path.delimiter), PYTHONNOUSERSITE: '1' };
-  return new WorkerBridge(process.env.DEIDEI_PYTHON || 'python3', ['-u', '-m', 'deidei_runtime.worker'], 10000, undefined, env);
+function localBridge(context) {
+  const {executable,args,env}=workerLaunch(context);
+  return new WorkerBridge(executable,args,10000,undefined,env);
 }
 
 class WorkerPort {
-  constructor(profile, bridge = localBridge()) {
+  constructor(profile, bridge, launchContext) {
+    if (bridge === undefined) bridge = localBridge(launchContext);
     this.profile = profile; this.bridge = bridge; this.generation = 0;
     this.active = false; this.interrupted = false; this.starting = false;
   }
