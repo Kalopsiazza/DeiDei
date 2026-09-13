@@ -9,6 +9,7 @@ const {createHash}=require('node:crypto');
 const root=path.resolve(__dirname,'../..');
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
+const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===fs.realpathSync(b);
 
 (async()=>{
  assert.equal(process.env.GITHUB_ACTIONS,'true','GUI automation requires the disposable CI OS account; never use a private profile');
@@ -52,7 +53,7 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
   assert.equal(context.isPackaged,true);assert.equal(context.name,report.sourceContext.name);
   assert.equal(context.userData,report.sourceContext.userData);
   assert.notEqual(context.userData,env.DEIDEI_TEST_DATA_DIR);
-  assert.equal(path.resolve(context.resourcesPath),path.resolve(resources(base)));
+  assert.ok(samePath(context.resourcesPath,resources(base)));
   report.packagedContext={...context,userData:'<CI_USER_DATA>/'+path.basename(context.userData),resourcesPath:'<UNPACKED_APPLICATION>/'+path.relative(base,context.resourcesPath)};
   return context;
  }
@@ -63,7 +64,7 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
   const view=(await page.evaluate(()=>window.desktop.port.getView())).data;
   assert.equal(view.source,'live');
   const processes=children(app.process().pid);
-  const worker=processes.find(p=>path.resolve(p.executable)===path.resolve(workerPath));
+  const worker=processes.find(p=>samePath(p.executable,workerPath));
   assert.ok(worker,JSON.stringify(processes));
   report.workers.push(worker.pid);
   if(process.platform==='win32')assert.ok(!processes.some(p=>/conhost/i.test(p.executable)));
@@ -146,7 +147,7 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
    view=(await page.evaluate(()=>window.desktop.port.getView())).data;
    assert.notEqual(view.match_id,match);assert.equal(view.turn_index,'1');
    assert.ok(view.participants.every(p=>p.alive&&p.resources.dd6==='0'));
-   const restartedWorker=children(app.process().pid).find(p=>path.resolve(p.executable)===path.resolve(workerPath));
+   const restartedWorker=children(app.process().pid).find(p=>samePath(p.executable,workerPath));
    assert.ok(restartedWorker);assert.ok(report.workers.every(pid=>!alive(pid)));
    report.workers.push(restartedWorker.pid);
   }
@@ -154,7 +155,7 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
   report.checks.push({id:'P12-auto-recovery',status:recovery?'PASS':'NOT_RUN',text:recovery?'observed automatic recovery in actual package':'not encountered within random run budget'});
   report.checks.push({id:'P12-fraction',status:fraction?'PASS':'NOT_RUN',text:fraction?'non-integer DD observed in actual package':'not encountered within random run budget; source regression remains separate'});
   // Abruptly terminate only the actual child we identified by parent and bundled path.
-  const own=children(app.process().pid).find(p=>path.resolve(p.executable)===path.resolve(workerPath));assert.ok(own);
+  const own=children(app.process().pid).find(p=>samePath(p.executable,workerPath));assert.ok(own);
   process.kill(own.pid,'SIGTERM');
   await page.getByText('本场中断，可重新开始。',{exact:false}).first().waitFor();await shot('packaged-worker-interrupted');
   await page.getByRole('button',{name:'退出本场',exact:true}).click();await start();

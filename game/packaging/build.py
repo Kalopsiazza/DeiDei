@@ -180,6 +180,12 @@ def main() -> None:
                      notices / ('Electron-' + name))
     python_license = Path(sys.base_prefix) / ('lib/python3.11/LICENSE.txt' if sys.platform == 'darwin' else 'LICENSE.txt')
     shutil.copy2(python_license, notices / 'Python-LICENSE.txt')
+    license_sources = json.loads((HERE / 'licenses/SOURCES.json').read_text())
+    for name, expected_hash in license_sources[PLATFORM]['license_sha256'].items():
+        source = HERE / 'licenses' / name
+        assert sha(source) == expected_hash
+        shutil.copy2(source, notices / ('Python-runtime-' + name))
+    write_json(notices / 'Python-runtime-SOURCES.json', license_sources[PLATFORM])
     for name in ['react', 'react-dom', 'scheduler']:
         shutil.copy2(DESKTOP / f'node_modules/{name}/LICENSE', notices / f'{name}-LICENSE.txt')
     distribution = importlib.metadata.distribution('pyinstaller')

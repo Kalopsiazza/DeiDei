@@ -54,13 +54,15 @@ jobs:
           npm --prefix game/desktop ci
           "$TASK_PYTHON" game/packaging/build.py
       - name: Final ZIP packaged automation in disposable CI account
-        shell: bash
+        shell: pwsh
         env:
           DEBUG: pw:browser
         run: |
-          set -euo pipefail
-          node game/desktop/node_modules/electron/install.js
-          node game/packaging/check-package.cjs
+          $ErrorActionPreference = 'Stop'
+          & node game/desktop/node_modules/electron/install.js
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          & node game/packaging/check-package.cjs
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
       - name: Candidate and public delivery manifest
         if: success()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
