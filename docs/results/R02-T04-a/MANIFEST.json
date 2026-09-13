@@ -5,7 +5,7 @@
   "tested_code_sha": "e340a2a20fa8d8274c995b3a17759abf3ade92b6",
   "branch": "codex/r02-t04-a-live",
   "target_pr_base": "integration/r02",
-  "remote_submission": "NOT_PUSHED_NOT_CREATED",
+  "remote_submission": "PUSHED_PR_CREATED",
   "sources": [
     {
       "path": "game/core",
@@ -72,9 +72,15 @@
       "scope": "delivery evidence"
     },
     {
+      "path": "PR-SUBMISSION.json",
+      "bytes": 446,
+      "sha256": "b965fd450ed751251de5650bc1246ad903c808b9c6586bc4e1beac751b4039c7",
+      "scope": "delivery evidence"
+    },
+    {
       "path": "REPORT.md",
-      "bytes": 5973,
-      "sha256": "0ab14b60515c6f663b9613a49916213d7c538481b5736fc708854ffa3421fa7d",
+      "bytes": 6097,
+      "sha256": "1a21cd97ff4e73bbcb279ffbc3117dd7807470410256dcccc2a8c452eb8c2c19",
       "scope": "delivery evidence"
     },
     {
@@ -257,5 +263,7 @@
       "sha256": "d20269e94fb795f5b51c1ecdbd75c522eb77719638e77a72a00b13a0a2bd81d3",
       "scope": "delivery evidence"
     }
-  ]
+  ],
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/16",
+  "pr_number": 16
 }

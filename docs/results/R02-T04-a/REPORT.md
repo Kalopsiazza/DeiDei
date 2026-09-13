@@ -5,7 +5,7 @@
 - 输入 `input_sha`：`41029218df420985ec06c01f27d4620fd8f35a16`（`integration/r02`）。
 - 受测代码 `tested_code_sha`：`e340a2a20fa8d8274c995b3a17759abf3ade92b6`。
 - 本地结果分支：`codex/r02-t04-a-live`；后续结果提交仅增加本目录证据，不改变受测代码。
-- 本次 **未 push、未创建 PR、未合入**。PR 文案已备好；待用户明确授权后，目标为 `integration/r02`。
+- 用户明确授权后已推送并创建 [PR #16](https://github.com/Kalopsiazza/DeiDei/pull/16)，目标为 `integration/r02`。已回读 base/head/SHA；PR 为 OPEN，未合入。创建时的回读记录见 [PR-SUBMISSION.json](PR-SUBMISSION.json)。
 
 ## 解决什么、改了什么
 
