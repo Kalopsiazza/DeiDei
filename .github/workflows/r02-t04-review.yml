@@ -5,6 +5,9 @@ on:
     paths: [.github/workflows/r02-t04-review.yml]
 permissions:
   contents: read
+defaults:
+  run:
+    shell: bash
 jobs:
   source-check:
     if: github.head_ref == 'review/r02-t04-20260913'
