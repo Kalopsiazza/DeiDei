@@ -1,7 +1,11 @@
-# DeiDei｜集成工作起点
+# DeiDei｜第三轮工作入口
 
-当前为integration/r02隔离工作分支。请先阅读[第二轮集成入口](docs/production/R02-LIVE-START.md)及[SOURCE-MANIFEST](SOURCE-MANIFEST.json)。它包含已核对的三个固定目录和一份新实现任务。
+更新2026-09-14。当前主工作区integration/r03。先读[第三轮交付记录](docs/production/R03-DELIVERY-20260914.md)，不要重复执行已经验收的第二轮任务。
 
-main、原规划分支与原任务PR均未因建立本起点而合入。旧a包与第一轮文档保留作历史，当前新任务为R02-T04-a。正式规则classic-1.0.1与原R02合同在用户交接附件original-r02-input.zip；开始前核对hash，只读使用。
+本批三个a包：R03-T01-a房间服务与唯一的用户选项收集、R03-T02-a桌面联机流程、R03-T03-a独立房间测试。可以并行，尚未执行。完整PRD、架构、消息约定、页面安排和任务正文在Teddy本轮附件deidei-r03-a-handoff-v1.zip，校验值见交付记录；没有把完整正文上传到此分支，plan_sha=null。
 
-ChatGPT写PRD、架构、编号任务并验收；Codex只执行指定包。没有自行改规则、写正式PRD、发布或合入的许可。结果PR目标integration/r02，自己的分支是codex/r02-t04-a-live。
+产品输入固定23520350393ba43384c20b60bef7d6dbd89fc142（已验收PR #19）；三线程各自从这个提交建立独立worktree/分支，结果PR投integration/r03。本分支在该产品上只新增交付和工作入口，原PR没有合入或关闭，main不变。旧SOURCE-MANIFEST和早期R01/R02状态仅作历史，不能当作第三轮最新产品清单。
+
+用户希望必要讨论尽量在Codex线程完成。仅任务01确认房间参数，其他线程不重复问；用户可以一次同意默认或只改几项。默认仍属提案，未确认不得冒称认可。超出当前设计的意见单独记录，等待ChatGPT审阅。
+
+ChatGPT写正式PRD、架构和工作包并验收；Codex按包执行、测试、保存用户原话与结果，不自行发下一包、改规则或合入。当前只做本地服务、客户端和独立测试，不采购、不部署公网、不发布新安装版。后续集成/部署再发包。
