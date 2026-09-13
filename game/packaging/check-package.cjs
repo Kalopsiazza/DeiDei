@@ -24,7 +24,8 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'叠叠 成包 测试 '));
  const application=path.join(scratch,path.basename(latest.unpacked_application));
  const pass=(id,text)=>{report.checks.push({id,status:'PASS',text});console.log(id,text);};
- const save=()=>fs.writeFileSync(path.join(output,'packaged-automation.json'),JSON.stringify(report,null,2)+'\n');
+ const save=()=>fs.writeFileSync(path.join(output,'packaged-automation.json'),
+  (JSON.stringify(report,null,2)+'\n').split(JSON.stringify(os.homedir()).slice(1,-1)).join('<CI_USER_HOME>'));
  process.on('exit',code=>{report.driver_exit_code=code;save();});
  const exe=base=>path.join(base,process.platform==='darwin'?'Contents/MacOS/DeiDeiR02':'DeiDeiR02.exe');
  const resources=base=>path.join(base,process.platform==='darwin'?'Contents/Resources':'resources');
@@ -33,7 +34,11 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   DEIDEI_TEST_DATA_DIR:path.join(scratch,'must-be-ignored'),
   PATH:process.platform==='win32'?path.join(process.env.SystemRoot,'System32'):'/usr/bin:/bin'};
  delete env.ELECTRON_RUN_AS_NODE;
- if(process.platform==='win32')env.ELECTRON_NO_ATTACH_CONSOLE='1';
+ function copyApplication(source,target) {
+  if(process.platform==='darwin')execFileSync('ditto',[source,target]);
+  else execFileSync(path.join(root,'game/packaging/.venv/Scripts/python.exe'),
+   ['-c','import shutil,sys; shutil.copytree(sys.argv[1],sys.argv[2])',source,target],{windowsHide:true});
+ }
  function children(pid) {
   if(process.platform==='darwin')return execFileSync('/bin/ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8'}).split('\n').flatMap(line=>{
    const m=line.trim().match(/^(\d+)\s+(\d+)\s+(.+)$/);return m&&Number(m[2])===pid?[{pid:Number(m[1]),executable:m[3]}]:[];
@@ -82,7 +87,6 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  try {
   // Read the original application's default name/path before creating any CI profile.
   const sourceEnv={...process.env};delete sourceEnv.ELECTRON_RUN_AS_NODE;delete sourceEnv.DEIDEI_TEST_DATA_DIR;
-  if(process.platform==='win32')sourceEnv.ELECTRON_NO_ATTACH_CONSOLE='1';
   report.progress='launch source executable for name/path comparison';save();
   const sourceExecutable=path.join(root,'game/desktop/node_modules/electron/dist',process.platform==='darwin'?'Electron.app/Contents/MacOS/Electron':'electron.exe');
   assert.ok(fs.existsSync(sourceExecutable),'install the fixed source Electron before GUI comparison');
@@ -94,8 +98,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   report.progress='source comparison read; closing source';save();
   await app.close();app=null;
   report.progress='source closed; copying unpacked application';save();
-  if(process.platform==='darwin')execFileSync('ditto',[latest.unpacked_application,application]);
-  else fs.cpSync(latest.unpacked_application,application,{recursive:true});
+  copyApplication(latest.unpacked_application,application);
   // Only the disposable CI checkout is hidden, never the user's working trees.
   for(const part of ['core','runtime'])fs.renameSync(path.join(root,'game',part),path.join(root,'game',part+'.t05-hidden'));
   hidden=true;
@@ -176,8 +179,8 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   pass('P15','both renderer viewports verified; name/default userData unchanged; nickname and settings survive restart');
   for(const missing of ['worker','catalog']){
    const damaged=path.join(scratch,missing,path.basename(application));fs.mkdirSync(path.dirname(damaged));
-   if(process.platform==='darwin'){execFileSync('ditto',[application,damaged]);execFileSync('chmod',['-R','u+w',damaged]);}
-   else fs.cpSync(application,damaged,{recursive:true});
+   copyApplication(application,damaged);
+   if(process.platform==='darwin')execFileSync('chmod',['-R','u+w',damaged]);
    const missingPath=path.join(resources(damaged),'worker',missing==='worker'?(process.platform==='darwin'?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json');
    fs.renameSync(missingPath,missingPath+'.removed');
    await launch(damaged);

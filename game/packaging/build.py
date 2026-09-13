@@ -73,6 +73,7 @@ def main() -> None:
         (evidence / f'{name}.txt').write_text(output, encoding='utf-8')
         commands.append({'name': name, 'command': sanitize(json.dumps([str(a) for a in args])),
                          'cwd': sanitize(str(cwd)), 'exit_code': result.returncode,
+                         'environment': {key: sanitize(env[key]) for key in ['PYTHONPATH', 'DEIDEI_PYTHON', 'PYINSTALLER_CONFIG_DIR'] if env and key in env},
                          'seconds': round(time.time() - started, 3)})
         write_json(evidence / 'commands.json', {'tested_code_sha': head, 'commands': commands})
         print(f'{name}: exit {result.returncode}', flush=True)
