@@ -57,6 +57,10 @@ def main() -> None:
     assert not subprocess.check_output(['git', 'status', '--porcelain', '--', 'game', '.github'], cwd=ROOT, text=True).strip(), 'commit product and CI before building'
     if os.environ.get('DEIDEI_EXPECTED_SHA'):
         assert head == os.environ['DEIDEI_EXPECTED_SHA']
+    for relative in ['game/desktop/catalog.json', 'game/runtime/deidei_runtime/entry-map.json',
+                     'game/desktop/package-lock.json', f'game/packaging/requirements-{PLATFORM}.lock']:
+        committed = subprocess.check_output(['git', 'show', f'{head}:{relative}'], cwd=ROOT)
+        assert (ROOT / relative).read_bytes() == committed, f'checkout changed committed bytes: {relative}'
     build = HERE / 'build'
     build.mkdir(exist_ok=True)
     out = Path(tempfile.mkdtemp(prefix=PLATFORM + '-', dir=build))
