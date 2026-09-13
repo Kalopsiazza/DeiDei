@@ -10,6 +10,10 @@ CATALOG = {e["entry_id"]: e for e in json.loads(
     (Path(__file__).resolve().parents[2] / "desktop/catalog.json").read_text(encoding="utf-8"))["entries"]}
 RESOURCE_NAMES = {"dd6": "DD", "lightning": "雷电", "nx_charge": "充能",
                   "mature_bombs": "成熟层", "reward_stock": "奖励"}
+EVENT_RESOURCE_NAMES = {**RESOURCE_NAMES, "pending_bombs": "待成熟炸药",
+                        "bomb_placement_count": "炸药放置次数", "enhanced_xiao": "强化削"}
+EVENT_NAMES = {"resource_gain": "获得", "resource_spend": "消耗", "resource_clear": "清空",
+               "bomb_mature": "炸药成熟", "reward_granted": "奖励发放"}
 TRANSITIONS = {"continue_game": "双方仍在场，继续下一拍。", "restart_survivors": "存活者进入新局，资源归零。",
                "sole_survivor": "唯一存活者", "nobody_survives": "全员淘汰，无人获胜"}
 
@@ -76,11 +80,22 @@ def ledger_summary(resolution: dict, profiles: dict) -> list[str]:
         condition = {"success": " · 成功", "failure": " · 失败", None: ""}[action["condition"]]
         summary.append(f"{name}：{'曾义自动休整' if action['is_recovery'] else entry}"
                        f"（{origins[action['origin']]}：{actual}{branch}{condition}）；实付 {resource_text(action['spend'])}。")
-    summary.append(TRANSITIONS[resolution["transition"]["kind"]])
     for event in ledger["events"]:
         if event["resource_delta"] is not None:
             pid = event["target_id"] or event["actor_id"]
-            summary.append(f"{profiles.get(pid, {}).get('nickname', '系统')}："
-                           f"{RESOURCE_NAMES.get(event['resource'], event['resource'])} {event['resource_delta']}"
-                           f"{'（六分之一单位）' if event['resource'] == 'dd6' else ''} · {event['kind']}。")
+            name = profiles.get(pid, {}).get('nickname', '系统')
+            if event['result'] != 'applied':
+                reason = ('本次攒未生效，DD没有增加' if event['result'] == 'suppressed'
+                          and event['reason_code'] == 'CHARGE_CANCELLED' else '本次资源变动未生效')
+                summary.append(f"{name}：{reason}。")
+                continue
+            delta = event['resource_delta']
+            if delta == '0':
+                continue
+            sign = '-' if delta.startswith('-') else '+'
+            absolute = delta.removeprefix('-')
+            amount = dd_text(absolute) if event['resource'] == 'dd6' else absolute
+            summary.append(f"{name}：{EVENT_NAMES.get(event['kind'], '资源变动')} {sign}{amount} "
+                           f"{EVENT_RESOURCE_NAMES.get(event['resource'], '资源')}。")
+    summary.append(TRANSITIONS[resolution["transition"]["kind"]])
     return summary

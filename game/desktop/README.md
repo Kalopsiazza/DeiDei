@@ -38,13 +38,21 @@ npm --prefix game/desktop start
 从仓库根目录：
 
 ```sh
-npm --prefix game/desktop test                         # 原有 9 项自测、类型检查、构建
-node --test game/desktop/test-live.cjs                 # 通信、刷新、显示与真实子进程
+npm --prefix game/desktop test                         # 类型检查、构建；桌面 9 + 通信 9 + 导航 4 项
 node game/desktop/smoke-live.cjs                       # 当前真实 Electron 验收
 PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -v
 ```
 
 窗口测试用独立临时档案和专用启动器 `smoke-live-main.cjs`，固定 Random(2) 与独立分支 Random(999)，仍调用真实核心；保存实际 ledger 和截图至 `docs/results/R02-T04-a`。它会终止自己启动的测试 worker 验证中断，不修改网络或系统权限。`npm --prefix game/desktop run smoke` 同样运行当前窗口验收。旧 `smoke.cjs` 保留为 T03 历史脚本，含已变更的演示按钮和固定结果预期；当前 UI 验收使用 `smoke-live.cjs`。
+
+R02-T04-b 开场和场景切换期间，返回、标题等导航暂时禁用，成功或失败后恢复。专项窗口复测与原回归可从根目录运行：
+
+```sh
+node game/desktop/smoke-live-b.cjs
+DEIDEI_SMOKE_OUTPUT=docs/results/R02-T04-b/regression node game/desktop/smoke-live.cjs
+```
+
+专项脚本在独立临时档案中延迟开场成功/失败、验证返回与标题、重试重开及预览切换；用 Random(13) 产生真实攒/云账目。延迟与失败注入只在专用测试启动器中。截图和账目写入 `docs/results/R02-T04-b`；原回归用输出目录覆盖参数，避免改写 a 包结果。
 
 ## 来源与边界
 

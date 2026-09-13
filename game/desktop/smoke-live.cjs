@@ -3,7 +3,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const os = require('node:os');
-const output = path.resolve(__dirname, '../../docs/results/R02-T04-a');
+const output = process.env.DEIDEI_SMOKE_OUTPUT ? path.resolve(process.env.DEIDEI_SMOKE_OUTPUT) : path.resolve(__dirname, '../../docs/results/R02-T04-a');
 
 (async () => {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'deidei-t04-live-'));

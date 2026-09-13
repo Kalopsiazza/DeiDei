@@ -24,3 +24,5 @@ JSONL 请求 `{v:1,id,op,payload}`，每帧含换行最多 1MiB。仅允许 `hea
 `submit` 仅接受 `{view_id,entry_id}`。成功请求以选择视图 ID 去重，重试返回当前可见阶段；不会把旧视图推回桌面。离开或 worker 退出后需显式开始另一场，没有隐式续局。
 
 测试 S01—S08 位于 `tests/test_runtime.py`；S09—S10 与真实子进程测试位于 `game/desktop/test-live.cjs`。C065/C074/C081 只读用于来源明确的新增检查；原独立驱动两份 session 项仍为 NOT_RUN。`tests/seeded_worker.py` 仅由窗口测试专用启动器调用，以固定随机种子记录真实核心账目，不进入普通产品启动路径。
+
+R02-T04-b 摘要只将 `applied` 事件解释为资源变动；取消的攒显示“本次攒未生效，DD没有增加”。DD 增减按精确玩家单位显示，其他资源使用中文名称，回合事件保留在重开清零说明之前。`tests/test_summary.py` 的 8 项回归检查真实核心账目、精确符号/分数/大整数及调用前后 Resolution 不变；其中未生效事件的兜底文案单列为格式层防御用例。`tests/summary_worker.py` 仅用于专项窗口复测。
