@@ -20,7 +20,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const output=path.join(latest.out,'evidence');
  const report={code_sha:manifest.code_sha,package_sha256:manifest.sha256,evidence_kind:'packaged_automation',
   environment:{platform:process.platform,arch:process.arch,os:os.release(),account:'disposable GitHub-hosted CI account'},checks:[],games:[],screenshots:[],workers:[]};
- let app,page,hidden=false;
+ let app,page,mainPid,hidden=false;
  const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'叠叠 成包 测试 '));
  const application=path.join(scratch,path.basename(latest.unpacked_application));
  const pass=(id,text)=>{report.checks.push({id,status:'PASS',text});console.log(id,text);};
@@ -56,12 +56,14 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  async function launch(base=application) {
   app=await electron.launch({executablePath:exe(base),args:[],cwd:scratch,env,timeout:30000});
   page=await app.firstWindow();page.setDefaultTimeout(12000);
-  const context=await app.evaluate(({app})=>({isPackaged:app.isPackaged,name:app.getName(),userData:app.getPath('userData'),resourcesPath:process.resourcesPath,versions:process.versions}));
+  const context=await app.evaluate(({app})=>({pid:process.pid,isPackaged:app.isPackaged,name:app.getName(),userData:app.getPath('userData'),resourcesPath:process.resourcesPath,versions:process.versions}));
+  mainPid=context.pid;
   assert.equal(context.isPackaged,true);assert.equal(context.name,report.sourceContext.name);
   assert.equal(context.userData,report.sourceContext.userData);
   assert.notEqual(context.userData,env.DEIDEI_TEST_DATA_DIR);
   assert.ok(samePath(context.resourcesPath,resources(base)));
-  report.packagedContext={...context,userData:'<CI_USER_DATA>/'+path.basename(context.userData),resourcesPath:'<UNPACKED_APPLICATION>/'+path.relative(base,context.resourcesPath)};
+  if(base===application)report.packagedContext={...context,userData:'<CI_USER_DATA>/'+path.basename(context.userData),
+   resourcesPath:'<UNPACKED_APPLICATION>/'+path.relative(fs.realpathSync(base),fs.realpathSync(context.resourcesPath))};
   return context;
  }
  async function start() {
@@ -70,7 +72,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   await page.locator('.table[data-phase="selecting"]').waitFor();
   const view=(await page.evaluate(()=>window.desktop.port.getView())).data;
   assert.equal(view.source,'live');
-  const processes=children(app.process().pid);
+  const processes=children(mainPid);
   const worker=processes.find(p=>samePath(p.executable,workerPath));
   assert.ok(worker,JSON.stringify(processes));
   report.workers.push(worker.pid);
@@ -129,16 +131,21 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   await page.setViewportSize({width:1366,height:768});
   const deadline=Date.now()+12*60*1000;
   let recovery=false,fraction=false;
-  for(let game=0;game<5;game++){
+  for(let game=0;game<5||(!fraction&&game<10);game++){
    const match=view.match_id,turns=[];
-   let zengUsed=false,lastView='';
+   let zengUsed=false,xiaoUsed=false,lastView='';
    while(view.phase!=='result'&&Date.now()<deadline){
     if(view.summary.some(s=>s.includes('自动休整')))recovery=true;
-    if(view.participants.some(p=>BigInt(p.resources.dd6)%6n!==0n))fraction=true;
+    if(!fraction&&view.phase!=='result'&&view.participants.some(p=>p.player_id===view.self_id&&BigInt(p.resources.dd6)%6n!==0n)){
+     fraction=true;report.fraction_view={phase:view.phase,participants:view.participants,summary:view.summary};
+     await page.waitForFunction(()=>/DD\s+\S*\//.test(document.querySelector('.self-strip .resources b')?.textContent||''));
+     await shot('packaged-fraction');
+    }
     if(view.phase==='selecting'&&view.view_id!==lastView){
      const available=id=>view.options.some(o=>o.entry_id===id&&o.available);
-     const choice=!zengUsed&&available('ZengYi')?'ZengYi':available('GanBi')?'GanBi':available('Bi')?'Bi':'Charge';
+     const choice=!zengUsed&&available('ZengYi')?'ZengYi':!xiaoUsed&&available('Xiao')?'Xiao':available('Bi')?'Bi':'Charge';
      if(choice==='ZengYi')zengUsed=true;
+     if(choice==='Xiao')xiaoUsed=true;
      await page.locator(`[data-entry="${choice}"] .card-pick`).click();
      await page.getByRole('button',{name:'提交所选',exact:true}).click();
      lastView=view.view_id;turns.push({turn:view.turn_index,entry:choice});
@@ -155,15 +162,15 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
    view=(await page.evaluate(()=>window.desktop.port.getView())).data;
    assert.notEqual(view.match_id,match);assert.equal(view.turn_index,'1');
    assert.ok(view.participants.every(p=>p.alive&&p.resources.dd6==='0'));
-   const restartedWorker=children(app.process().pid).find(p=>samePath(p.executable,workerPath));
+   const restartedWorker=children(mainPid).find(p=>samePath(p.executable,workerPath));
    assert.ok(restartedWorker);assert.ok(report.workers.every(pid=>!alive(pid)));
    report.workers.push(restartedWorker.pid);
   }
-  pass('P12','five real random-legal-v1 matches completed; each restart has fresh match and resources');
+  pass('P12',`${report.games.length} real random-legal-v1 matches completed; each restart has fresh match and resources`);
   report.checks.push({id:'P12-auto-recovery',status:recovery?'PASS':'NOT_RUN',text:recovery?'observed automatic recovery in actual package':'not encountered within random run budget'});
   report.checks.push({id:'P12-fraction',status:fraction?'PASS':'NOT_RUN',text:fraction?'non-integer DD observed in actual package':'not encountered within random run budget; source regression remains separate'});
   // Abruptly terminate only the actual child we identified by parent and bundled path.
-  const own=children(app.process().pid).find(p=>samePath(p.executable,workerPath));assert.ok(own);
+  const own=children(mainPid).find(p=>samePath(p.executable,workerPath));assert.ok(own);
   process.kill(own.pid,'SIGTERM');
   await page.getByText('本场中断，可重新开始。',{exact:false}).first().waitFor();await shot('packaged-worker-interrupted');
   await page.getByRole('button',{name:'退出本场',exact:true}).click();await start();
@@ -186,7 +193,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
    await launch(damaged);
    await page.getByRole('button',{name:/^单人对局/}).click();await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
    await page.getByText('游戏文件不完整，请重新取得完整测试包',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);
-   assert.ok(!children(app.process().pid).some(p=>/deidei-worker|python/i.test(p.executable)));
+   assert.ok(!children(mainPid).some(p=>/deidei-worker|python/i.test(p.executable)));
    await close();
   }
   pass('P09','damaged bundle copies show PACKAGE_INCOMPLETE; no Python/worker fallback spawned');
