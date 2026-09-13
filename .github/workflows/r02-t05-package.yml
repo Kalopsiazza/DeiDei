@@ -55,8 +55,11 @@ jobs:
           "$TASK_PYTHON" game/packaging/build.py
       - name: Final ZIP packaged automation in disposable CI account
         shell: bash
+        env:
+          DEBUG: pw:browser
         run: |
           set -euo pipefail
+          node game/desktop/node_modules/electron/install.js
           node game/packaging/check-package.cjs
       - name: Candidate and public delivery manifest
         if: success()

@@ -79,7 +79,10 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
  try {
   // Read the original application's default name/path before creating any CI profile.
   const sourceEnv={...process.env};delete sourceEnv.ELECTRON_RUN_AS_NODE;delete sourceEnv.DEIDEI_TEST_DATA_DIR;
-  app=await electron.launch({executablePath:require('../desktop/node_modules/electron'),args:[path.join(root,'game/desktop')],env:sourceEnv});
+  report.progress='launch source executable for name/path comparison';save();
+  const sourceExecutable=path.join(root,'game/desktop/node_modules/electron/dist',process.platform==='darwin'?'Electron.app/Contents/MacOS/Electron':'electron.exe');
+  assert.ok(fs.existsSync(sourceExecutable),'install the fixed source Electron before GUI comparison');
+  app=await electron.launch({executablePath:sourceExecutable,args:[path.join(root,'game/desktop')],env:sourceEnv});
   page=await app.firstWindow();
   report.sourceContext=await app.evaluate(({app})=>({name:app.getName(),userData:app.getPath('userData'),isPackaged:app.isPackaged}));
   assert.equal(report.sourceContext.isPackaged,false);
@@ -91,6 +94,7 @@ const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex'
   for(const part of ['core','runtime'])fs.renameSync(path.join(root,'game',part),path.join(root,'game',part+'.t05-hidden'));
   hidden=true;
   if(process.platform==='darwin')execFileSync('chmod',['-R','a-w',application]);
+  report.progress='launch real packaged executable';save();
   await launch();
   await page.getByRole('textbox',{name:'昵称',exact:true}).fill('成包验收');
   await page.getByRole('button',{name:'保存，进入课间 →',exact:true}).click();

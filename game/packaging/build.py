@@ -175,6 +175,9 @@ def main() -> None:
     shutil.copy2(HERE / 'PLAYER-README.txt', delivery / '使用说明.txt')
     notices = delivery / 'THIRD-PARTY'
     notices.mkdir()
+    for name in ['LICENSE', 'LICENSES.chromium.html']:
+        shutil.copy2((application.parent if sys.platform == 'darwin' else application) / name,
+                     notices / ('Electron-' + name))
     python_license = Path(sys.base_prefix) / ('lib/python3.11/LICENSE.txt' if sys.platform == 'darwin' else 'LICENSE.txt')
     shutil.copy2(python_license, notices / 'Python-LICENSE.txt')
     for name in ['react', 'react-dom', 'scheduler']:
@@ -185,7 +188,7 @@ def main() -> None:
             source = Path(distribution.locate_file(file))
             if source.is_file():
                 shutil.copy2(source, notices / ('PyInstaller-' + source.name))
-    assert any('license' in p.name.lower() for p in target.rglob('*')), 'Electron license missing'
+    assert (notices / 'Electron-LICENSE').is_file() and (notices / 'Electron-LICENSES.chromium.html').is_file()
     filename = f'DeiDei-R02-T05-a-{"macOS-arm64" if sys.platform == "darwin" else "Windows-x64"}-{head[:7]}.zip'
     archive = out / filename
     if sys.platform == 'darwin':
