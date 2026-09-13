@@ -12,23 +12,29 @@ jobs:
   source-check:
     if: github.head_ref == 'review/r02-t04-20260913'
     runs-on: ubuntu-24.04
-    timeout-minutes: 10
+    timeout-minutes: 12
     env:
       PYTHONDONTWRITEBYTECODE: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
     steps:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           repository: Kalopsiazza/DeiDei
-          ref: 980a019d9a1410bf3ee72263d90397023696f32b
+          ref: 3ce99f1cdd5f2f52c757ef61b696ecaade4877d0
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
           python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.12.0'
       - name: Source identity
         run: |
-          mkdir review-evidence
+          mkdir -p review-evidence
           git rev-parse HEAD > review-evidence/candidate-sha.txt
           python --version > review-evidence/python-version.txt
+          node --version > review-evidence/node-version.txt
+          npm --version > review-evidence/npm-version.txt
       - name: Runtime tests
         env:
           PYTHONPATH: game/core:game/runtime
@@ -41,17 +47,35 @@ jobs:
       - name: Independent cases
         if: always()
         run: python tests/rules_v1_001/run_acceptance.py --core game/core 2>&1 | tee review-evidence/independent.txt
+      - name: Independent harness checks
+        if: always()
+        run: python -m unittest discover -s tests/rules_v1_001 -p 'test_*.py' -v 2>&1 | tee review-evidence/harness.txt
+      - name: Original root checks
+        if: always()
+        run: python scripts/check.py 2>&1 | tee review-evidence/root-check.txt
+      - name: Install exact desktop lock without install scripts
+        if: always()
+        run: npm --prefix game/desktop ci --ignore-scripts --no-audit --no-fund 2>&1 | tee review-evidence/npm-ci.txt
+      - name: Default desktop command - no Electron window
+        if: always()
+        run: npm --prefix game/desktop test 2>&1 | tee review-evidence/desktop-default.txt
+      - name: Confirm candidate tracked files unchanged
+        if: always()
+        run: git diff --exit-code 2>&1 | tee review-evidence/source-unchanged.txt
       - name: Preserve inspected source and results
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: r02-t04-review-980a019
+          name: r02-t04-b-review-3ce99f1
           retention-days: 7
           path: |
             review-evidence/
             game/
+            !game/desktop/node_modules/**
+            !game/desktop/build/**
+            !game/**/__pycache__/**
             tests/
-            docs/results/R02-T04-a/
+            docs/results/R02-T04-b/
             docs/architecture/
             docs/prd/
             docs/tasks/R02/
