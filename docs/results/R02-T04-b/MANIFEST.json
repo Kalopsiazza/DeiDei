@@ -1,0 +1,488 @@
+{
+  "task_id": "R02-T04-b",
+  "plan_sha": "20312a2244ff0447593f22fde41b9b8bb960da9a",
+  "input_sha": "980a019d9a1410bf3ee72263d90397023696f32b",
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "branch": "codex/r02-t04-b-live-fixes",
+  "base_branch": "integration/r02",
+  "inheritance": "Product input is PR #16 ancestry, retained unchanged; files below are b delta only.",
+  "hash_scope": "Every incremental product/test/README and b result file except MANIFEST.json itself. Ignored builds, node_modules and temporary profiles excluded.",
+  "incremental_files": [
+    "game/desktop/README.md",
+    "game/desktop/package.json",
+    "game/desktop/renderer.tsx",
+    "game/desktop/smoke-live-b-main.cjs",
+    "game/desktop/smoke-live-b.cjs",
+    "game/desktop/smoke-live.cjs",
+    "game/desktop/test-navigation.cjs",
+    "game/runtime/README.md",
+    "game/runtime/deidei_runtime/view.py",
+    "game/runtime/tests/summary_worker.py",
+    "game/runtime/tests/test_summary.py",
+    "docs/results/R02-T04-b/F01-after.json",
+    "docs/results/R02-T04-b/F01-before.json",
+    "docs/results/R02-T04-b/F01-cancelled-charge-after.png",
+    "docs/results/R02-T04-b/F01-cancelled-charge-before.png",
+    "docs/results/R02-T04-b/F02-failure-recovered-back-after.png",
+    "docs/results/R02-T04-b/F02-failure-recovered-retry-after.png",
+    "docs/results/R02-T04-b/F02-late-return-before.png",
+    "docs/results/R02-T04-b/F02-left-while-pending-before.png",
+    "docs/results/R02-T04-b/F02-pending-failure-back-after.png",
+    "docs/results/R02-T04-b/F02-pending-failure-retry-after.png",
+    "docs/results/R02-T04-b/F02-pending-success-after.png",
+    "docs/results/R02-T04-b/F02-pending-success-before.png",
+    "docs/results/R02-T04-b/F02-preview-pending-after.png",
+    "docs/results/R02-T04-b/F02-preview-restored-after.png",
+    "docs/results/R02-T04-b/F02-success-after.png",
+    "docs/results/R02-T04-b/PR-BODY.md",
+    "docs/results/R02-T04-b/REPORT.md",
+    "docs/results/R02-T04-b/TEST-MATRIX.md",
+    "docs/results/R02-T04-b/core-self-tests.txt",
+    "docs/results/R02-T04-b/desktop-development.txt",
+    "docs/results/R02-T04-b/desktop-tests.txt",
+    "docs/results/R02-T04-b/development-checks.json",
+    "docs/results/R02-T04-b/fixture-validation.txt",
+    "docs/results/R02-T04-b/harness-self-tests.txt",
+    "docs/results/R02-T04-b/independent-acceptance.txt",
+    "docs/results/R02-T04-b/live-regression.txt",
+    "docs/results/R02-T04-b/provenance.json",
+    "docs/results/R02-T04-b/regression/fixture-retained.png",
+    "docs/results/R02-T04-b/regression/live-again.png",
+    "docs/results/R02-T04-b/regression/live-auto-recovery.png",
+    "docs/results/R02-T04-b/regression/live-bi-defense-revealed.png",
+    "docs/results/R02-T04-b/regression/live-charge-revealed.png",
+    "docs/results/R02-T04-b/regression/live-prepare.png",
+    "docs/results/R02-T04-b/regression/live-public-resources.png",
+    "docs/results/R02-T04-b/regression/live-read-failure.png",
+    "docs/results/R02-T04-b/regression/live-result.png",
+    "docs/results/R02-T04-b/regression/live-second-result.png",
+    "docs/results/R02-T04-b/regression/live-smoke.json",
+    "docs/results/R02-T04-b/regression/live-table-1366x768.png",
+    "docs/results/R02-T04-b/regression/live-table-1920x1080.png",
+    "docs/results/R02-T04-b/regression/live-window-ledger.jsonl",
+    "docs/results/R02-T04-b/regression/live-worker-interrupted.png",
+    "docs/results/R02-T04-b/root-check.txt",
+    "docs/results/R02-T04-b/runtime-tests.txt",
+    "docs/results/R02-T04-b/scope-check.json",
+    "docs/results/R02-T04-b/summary-before.txt",
+    "docs/results/R02-T04-b/validate.py",
+    "docs/results/R02-T04-b/validation.json",
+    "docs/results/R02-T04-b/window-after.json",
+    "docs/results/R02-T04-b/window-after.txt",
+    "docs/results/R02-T04-b/window-before.json",
+    "docs/results/R02-T04-b/window-before.txt",
+    "docs/results/R02-T04-b/window-development.txt",
+    "docs/results/R02-T04-b/window-ledger-after.jsonl",
+    "docs/results/R02-T04-b/window-ledger-before.jsonl",
+    "docs/results/R02-T04-b/MANIFEST.json"
+  ],
+  "files": [
+    {
+      "path": "game/desktop/README.md",
+      "bytes": 4418,
+      "sha256": "8b3b51b111611bd1540cd1f8054822f3b0eac9997900adc75c1bda8af0b15e15",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/package.json",
+      "bytes": 811,
+      "sha256": "f7ac979da87b6b1be9a2687ab6d677141260d830622b3a073722396ebe54be31",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/renderer.tsx",
+      "bytes": 27184,
+      "sha256": "d47bd6ca1318064891bb47ee6348e4bd924ef5dab2d75a064ff696236728cfc4",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/smoke-live-b-main.cjs",
+      "bytes": 1420,
+      "sha256": "be8fd3bafb7fea3996e252c20291a9f42e9527a47d322c813ef25d1b8bf94b10",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/smoke-live-b.cjs",
+      "bytes": 8176,
+      "sha256": "3f22684f4b074bc1fc94b9759ae40580af62e7daa48c4e95dd3915d87135d07b",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/smoke-live.cjs",
+      "bytes": 11570,
+      "sha256": "33de3e8aa70328cfda9b1b640bdda1b4d152a0672183f51111f7f21ee936ba12",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/desktop/test-navigation.cjs",
+      "bytes": 3813,
+      "sha256": "abf7d03a2e3fcee2a26c769233d0238c6ecee0937da71a9a12df6f99a4cee2af",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/runtime/README.md",
+      "bytes": 3157,
+      "sha256": "fa478ff377a30f3104c907e4431435f642d2c968d8c33f5e12a7d26caf547c89",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/runtime/deidei_runtime/view.py",
+      "bytes": 5812,
+      "sha256": "ed4fbabe431f599e0d92db5bb7d614e77a2fd571a652e209e44e586aaf7b5e2a",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/runtime/tests/summary_worker.py",
+      "bytes": 514,
+      "sha256": "f48e4cf3a0a64c8afff79132bb4cafd2c1c684662c3f106e1f7f1c40aa3868cc",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "game/runtime/tests/test_summary.py",
+      "bytes": 5932,
+      "sha256": "17fae35a887c8f6d2c6ec4aa42fdd61cb0d4034715ad228b3aff9b95a81466e5",
+      "role": "incremental code, test or README"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F01-after.json",
+      "bytes": 6933,
+      "sha256": "9cfe9745006829639d090df0a26fe569154be87c94fc0134bc5e0d94207e836c",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F01-before.json",
+      "bytes": 6797,
+      "sha256": "830bbd4237569e250fda431ae5da0b8cda83e9a4b74c76b067310839d255542a",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F01-cancelled-charge-after.png",
+      "bytes": 212725,
+      "sha256": "9ed00bf6fb9b95ae9fac5fe4d19539b467f1d94deca74e26103cef92d5a5faa7",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F01-cancelled-charge-before.png",
+      "bytes": 220490,
+      "sha256": "6fbf5de84e8a41b46236395557ef055cc9f7fd36232cad662c8bebb875ed4929",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-failure-recovered-back-after.png",
+      "bytes": 61556,
+      "sha256": "6b5adfbb2d191e22fa4f788e41132e34ce6484ca959873b8dcd923c7877e8d56",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-failure-recovered-retry-after.png",
+      "bytes": 61556,
+      "sha256": "6b5adfbb2d191e22fa4f788e41132e34ce6484ca959873b8dcd923c7877e8d56",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-late-return-before.png",
+      "bytes": 199736,
+      "sha256": "a35d5f9e6706ab69d651d6ccc2452c990e2899ab59aa5ccab94665c0fc62325d",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-left-while-pending-before.png",
+      "bytes": 61155,
+      "sha256": "1fe0abe0e50add0f258aacca34f3526f2b3284c19b10446be524eaeee9441f7b",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-pending-failure-back-after.png",
+      "bytes": 53604,
+      "sha256": "e8b4826b309a64842c621e4abdb9f9b15807f12cb6fa7fdf8f253b75abe7fa8f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-pending-failure-retry-after.png",
+      "bytes": 53604,
+      "sha256": "e8b4826b309a64842c621e4abdb9f9b15807f12cb6fa7fdf8f253b75abe7fa8f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-pending-success-after.png",
+      "bytes": 53604,
+      "sha256": "e8b4826b309a64842c621e4abdb9f9b15807f12cb6fa7fdf8f253b75abe7fa8f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-pending-success-before.png",
+      "bytes": 53604,
+      "sha256": "e8b4826b309a64842c621e4abdb9f9b15807f12cb6fa7fdf8f253b75abe7fa8f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-preview-pending-after.png",
+      "bytes": 186343,
+      "sha256": "d9fdf96c76f4fdb6cbb1fc54bb781f5742f9be4f941bb7126cb5738f1cc597af",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-preview-restored-after.png",
+      "bytes": 208393,
+      "sha256": "b60bc731cf0a6161bc837014098fd12dbd06e6b0e8edf2d90f97c98e5f5a2172",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/F02-success-after.png",
+      "bytes": 199930,
+      "sha256": "5b987905a3c61267dc511954d678350531a3f4d0624c5c68fe2733f1904332a0",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/PR-BODY.md",
+      "bytes": 4025,
+      "sha256": "27fba93758174968ceb520c7d7ece2514c54eadabdadb0370a5357a08fc9cb4c",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/REPORT.md",
+      "bytes": 7200,
+      "sha256": "feed6d48b9795ebc6cfdd1bb16e009de4d38a8598b6d0712a51ae301281ea1e2",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/TEST-MATRIX.md",
+      "bytes": 4182,
+      "sha256": "1ebbf3a26e2f87909c22bf7bc19916a16aabb4dad971ddb9d566b5ac9c735dfb",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/core-self-tests.txt",
+      "bytes": 15048,
+      "sha256": "05380fedf8ec5a51b032dfb605db4fc2caf33651abf3fdda321c927028cb1b75",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/desktop-development.txt",
+      "bytes": 2435,
+      "sha256": "85ea67f3e84506aec75b832449a4d7568eff559cb1595d04fc765d5507c07d10",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/desktop-tests.txt",
+      "bytes": 2439,
+      "sha256": "eb77ab31133a301228dae1adf2ac053b97c39f054178cd72ff05753ebc23e3ad",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/development-checks.json",
+      "bytes": 1643,
+      "sha256": "27300e625a60bf6585752e6788eee12a250f4e8320245eb0696adf776772800a",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/fixture-validation.txt",
+      "bytes": 222,
+      "sha256": "e2ea98f2021635bff51c4735cf3e73b75b201d182d0954ef52eccafb6e1bce7c",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/harness-self-tests.txt",
+      "bytes": 1190,
+      "sha256": "976b6901c32b10a3e189de6b604ae6bc476ccd2f3a14a2dfc62a6480832e5dd2",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/independent-acceptance.txt",
+      "bytes": 249,
+      "sha256": "6419402f46b1a72f6ef297571f9faca8c26fa6f2389635d3d1153f0e1a0a88f8",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/live-regression.txt",
+      "bytes": 576,
+      "sha256": "e352703d782003203b88be29ab45ce9bd4bd11991928115d78134e4ad0a45730",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/provenance.json",
+      "bytes": 1246,
+      "sha256": "098fe9ba69db53e5fbb901a09bcf3f44675b380cfec770b429e80e6e458968ef",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/fixture-retained.png",
+      "bytes": 208393,
+      "sha256": "b60bc731cf0a6161bc837014098fd12dbd06e6b0e8edf2d90f97c98e5f5a2172",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-again.png",
+      "bytes": 199812,
+      "sha256": "233909bea44e90fcfb532527290765cf8ec78f6bce0e196d1d3e2accf6e51edb",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-auto-recovery.png",
+      "bytes": 177456,
+      "sha256": "249c140924d45b456ac613f0c4d51140fcc38df33745fb297246562a74937d2b",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-bi-defense-revealed.png",
+      "bytes": 211816,
+      "sha256": "256c43db4afc1f3772441b96efd2c64bd2c6e51b8e4703d3f04b5a519e3d42c4",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-charge-revealed.png",
+      "bytes": 202345,
+      "sha256": "3308c90470ad57a1dd465c804d3157496760f2dddc66263f70cad94b5c6cb506",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-prepare.png",
+      "bytes": 54260,
+      "sha256": "d31e2b93c820da528ebe018b8cd2d1e7e8c4dff6cab10d76e2c596c6a8718a69",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-public-resources.png",
+      "bytes": 204325,
+      "sha256": "2c6424cbc06f732415b2ec9b2adb4d6defebffa7ad3288a7edd0ce8ecbc51235",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-read-failure.png",
+      "bytes": 197520,
+      "sha256": "25f0e448a47854511e988536308941d3040dfc597c227cb522b5fa8e0075eaa6",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-result.png",
+      "bytes": 47401,
+      "sha256": "6ebc5f5c5a8dc7e689eeb0e6d85c1c6c4ef89a6942fd34ae2a729570d356cb61",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-second-result.png",
+      "bytes": 47401,
+      "sha256": "6ebc5f5c5a8dc7e689eeb0e6d85c1c6c4ef89a6942fd34ae2a729570d356cb61",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-smoke.json",
+      "bytes": 13886,
+      "sha256": "91d4cb9182c7ed44bc189f0977c078bd2d91abeb4ab7a302fdb3fc41f5d35534",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-table-1366x768.png",
+      "bytes": 199789,
+      "sha256": "a9f24de4a133428e6ae2ce9f9ddb3c3a62229ad7dc5107980e7a03851ebf81b2",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-table-1920x1080.png",
+      "bytes": 232487,
+      "sha256": "e2418a9086dcd8d87fd1b188a8616b634bc3dab4452dc4952c104e3d83dd521f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-window-ledger.jsonl",
+      "bytes": 65751,
+      "sha256": "62c4fa1452055489377b834b9034e538842a4ead29c865911454f6d73460a8c8",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/regression/live-worker-interrupted.png",
+      "bytes": 196460,
+      "sha256": "54ee571e8578f1849146231f29082e42a45b06afae8d56054d171acab3a51c86",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/root-check.txt",
+      "bytes": 5078,
+      "sha256": "98ff60953bf4e0e007c1ecf3d4226d6d196c119d7a17a13d27275d97814b633a",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/runtime-tests.txt",
+      "bytes": 3080,
+      "sha256": "55b57e17a378eb4d5fc7475267e756ff0c55516c9d1040496eca7b6692772b42",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/scope-check.json",
+      "bytes": 1649,
+      "sha256": "4abe25050033d8d04f120fb1b207518e2c05616c884c4037d91281f65200ccf5",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/summary-before.txt",
+      "bytes": 14163,
+      "sha256": "73cc123cb6ffcde50d161478b3b9f02ad4593baf7e13d23540ed625b523b4ae5",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/validate.py",
+      "bytes": 2216,
+      "sha256": "8b95ee592fb844ce523dfe243357a44199dd12fe94499aa2e748faea8355a563",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/validation.json",
+      "bytes": 2492,
+      "sha256": "af69a2cfd85be0c51454e99a61b5ed71e5f72b5d8660294670ad5b975e196808",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-after.json",
+      "bytes": 2848,
+      "sha256": "d948c460032b01eb8c3715573ea90212c62723b066421e1977473efd7d02da67",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-after.txt",
+      "bytes": 304,
+      "sha256": "98f38005e64dc4d88988478c7617285148459b12af11266db86233c5980a211f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-before.json",
+      "bytes": 2435,
+      "sha256": "74b1edb4fa7aa89307bc315c905d63ff0d02d7e46cab50d211c329d929019865",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-before.txt",
+      "bytes": 142,
+      "sha256": "e1ef36622d0aaba09a64133dba08037ed196e81abe7bc822a04a1a8b6ec76dbe",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-development.txt",
+      "bytes": 304,
+      "sha256": "98f38005e64dc4d88988478c7617285148459b12af11266db86233c5980a211f",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-ledger-after.jsonl",
+      "bytes": 5118,
+      "sha256": "021d46428d895756109ce313fa35884cbecbe7b7be523dc8f5b1f8999a886ec6",
+      "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/window-ledger-before.jsonl",
+      "bytes": 5118,
+      "sha256": "ec8ead7e9d91b095bd0b209197eb5c65a513762af16d77476d23c01e56cbb418",
+      "role": "b delivery evidence"
+    }
+  ],
+  "final_validation": "validation.json",
+  "status": "LOCAL_SOURCE_PASS_READY_FOR_PR",
+  "not_run": [
+    "original independent session placeholders (2)",
+    "Windows",
+    "physical offline",
+    "Python 3.11 separate machine",
+    "user manual acceptance",
+    "packaging/signing/release"
+  ],
+  "kimi": "NOT_CALLED_PAUSED"
+}

@@ -1,0 +1,126 @@
+{
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "node": "v24.12.0",
+  "npm": "11.6.2",
+  "checks": [
+    {
+      "args": [
+        "python3",
+        "tests/rules_v1_001/validate_fixtures.py"
+      ],
+      "environment": {},
+      "log": "fixture-validation.txt",
+      "exit_code": 0,
+      "seconds": 0.085
+    },
+    {
+      "args": [
+        "python3",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "game/core"
+      ],
+      "environment": {},
+      "log": "independent-acceptance.txt",
+      "exit_code": 0,
+      "seconds": 0.965
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "environment": {
+        "PYTHONPATH": "game/core"
+      },
+      "log": "core-self-tests.txt",
+      "exit_code": 0,
+      "seconds": 0.591
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "environment": {},
+      "log": "harness-self-tests.txt",
+      "exit_code": 0,
+      "seconds": 0.878
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/runtime/tests",
+        "-v"
+      ],
+      "environment": {
+        "PYTHONPATH": "game/core:game/runtime"
+      },
+      "log": "runtime-tests.txt",
+      "exit_code": 0,
+      "seconds": 0.233
+    },
+    {
+      "args": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "environment": {},
+      "log": "root-check.txt",
+      "exit_code": 0,
+      "seconds": 0.964
+    },
+    {
+      "args": [
+        "npm",
+        "--prefix",
+        "game/desktop",
+        "test"
+      ],
+      "environment": {},
+      "log": "desktop-tests.txt",
+      "exit_code": 0,
+      "seconds": 0.87
+    },
+    {
+      "args": [
+        "node",
+        "game/desktop/smoke-live-b.cjs"
+      ],
+      "environment": {},
+      "log": "window-after.txt",
+      "exit_code": 0,
+      "seconds": 4.364
+    },
+    {
+      "args": [
+        "node",
+        "game/desktop/smoke-live.cjs"
+      ],
+      "environment": {
+        "DEIDEI_SMOKE_OUTPUT": "docs/results/R02-T04-b/regression"
+      },
+      "log": "live-regression.txt",
+      "exit_code": 0,
+      "seconds": 21.066
+    }
+  ]
+}
