@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
         with:
           repository: Kalopsiazza/DeiDei
-          ref: 3ce99f1cdd5f2f52c757ef61b696ecaade4877d0
+          ref: 23520350393ba43384c20b60bef7d6dbd89fc142
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
@@ -32,6 +32,7 @@ jobs:
         run: |
           mkdir -p review-evidence
           git rev-parse HEAD > review-evidence/candidate-sha.txt
+          git ls-tree -r HEAD > review-evidence/git-tree.txt
           python --version > review-evidence/python-version.txt
           node --version > review-evidence/node-version.txt
           npm --version > review-evidence/npm-version.txt
@@ -53,21 +54,28 @@ jobs:
       - name: Original root checks
         if: always()
         run: python scripts/check.py 2>&1 | tee review-evidence/root-check.txt
-      - name: Install exact desktop lock without install scripts
+      - name: Install pinned desktop dependencies without installation scripts
         if: always()
         run: npm --prefix game/desktop ci --ignore-scripts --no-audit --no-fund 2>&1 | tee review-evidence/npm-ci.txt
-      - name: Default desktop command - no Electron window
+      - name: Full npm dependency audit
+        if: always()
+        run: npm --prefix game/desktop audit --json 2>&1 | tee review-evidence/npm-audit.json
+      - name: Runtime npm dependency audit
+        if: always()
+        run: npm --prefix game/desktop audit --omit=dev --json 2>&1 | tee review-evidence/npm-audit-runtime.json
+      - name: Default desktop tests - no Electron window
         if: always()
         run: npm --prefix game/desktop test 2>&1 | tee review-evidence/desktop-default.txt
-      - name: Confirm candidate tracked files unchanged
+      - name: Candidate tracked files unchanged
         if: always()
         run: git diff --exit-code 2>&1 | tee review-evidence/source-unchanged.txt
-      - name: Preserve inspected source and results
+      - name: Preserve source and evidence only
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: r02-t04-b-review-3ce99f1
-          retention-days: 7
+          name: pr19-review-source-2352035
+          retention-days: 14
+          include-hidden-files: true
           path: |
             review-evidence/
             game/
@@ -75,8 +83,6 @@ jobs:
             !game/desktop/build/**
             !game/**/__pycache__/**
             tests/
-            docs/results/R02-T04-b/
-            docs/architecture/
-            docs/prd/
-            docs/tasks/R02/
-            docs/production/
+            scripts/check.py
+            docs/results/R02-T05-a/
+            .github/workflows/r02-t05-package.yml
