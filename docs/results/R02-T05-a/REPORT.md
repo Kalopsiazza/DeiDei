@@ -1,6 +1,8 @@
 # R02-T05-a 提交验收报告
 
-结论：**PARTIAL**。Windows x64 与 macOS arm64 已生成原生包，两端均为 SOURCE_PASS / BUILT / PACKAGED_AUTOMATION_PASS。真人电脑、物理断网、无开发工具电脑没有验收。Mac ad-hoc 完整性通过，Gatekeeper 实际拒绝；Windows 未签名。本包停在提交验收，待 ChatGPT/维护者决定下一步。
+结论：**PARTIAL**。Windows x64 与 macOS arm64 已生成原生包，两端均为 SOURCE_PASS / BUILT / PACKAGED_AUTOMATION_PASS。**macOS 已由用户本人确认人工验收通过**，常规人工流程包含物理断网步骤；Windows 人工验收仍未测。可选新档案离线首启及无开发工具电脑未单独确认。Mac ad-hoc 完整性通过，CI Gatekeeper 拒绝记录保留；Windows 未签名。本包停在提交验收，待 ChatGPT/维护者决定下一步。
+
+本人反馈原文：“都没问题， macOS验收通过”。这是整体文字确认，未附逐项日志、计数、机器参数或新截图；详见 [HUMAN-ACCEPTANCE.md](HUMAN-ACCEPTANCE.md)。
 
 ## 来源与提交边界
 
@@ -40,7 +42,7 @@ Forge 7.11.2 改为 Packager 20.3.0，Electron 44.3.0 及其他直接前端版�
 - [Mac 1366视口](native-ci/darwin-arm64/evidence/packaged-1366x768.png) / [分数DD](native-ci/darwin-arm64/evidence/packaged-fraction.png)
 - [Windows 1366视口](native-ci/win32-x64/evidence/packaged-1366x768.png) / [分数DD](native-ci/win32-x64/evidence/packaged-fraction.png)
 
-本机 macOS 27 arm64 的较早 `8d23cb1` 原生构建、冻结后台与解压后签名完整性亦通过，保留独立 local-macos 证据；它不是最终两端候选。为避免触碰私人默认档案，本机 GUI 未执行。实际 GUI 测试使用一次性 CI 系统账户，未改变产品档案目录或放开成包测试档案变量。
+本机 macOS 27 arm64 的较早 `8d23cb1` 原生构建、冻结后台与解压后签名完整性亦通过，保留独立 local-macos 证据；它不是最终两端候选。此前 Codex 为避免触碰私人默认档案，未执行本机 GUI；其自动化 GUI 测试使用一次性 CI 系统账户。随后用户本人完成 Mac 人工验收并确认通过，未提供新的截图或环境参数。产品档案目录及成包测试档案变量保护未改变。
 
 ## 未完成的验收与限制
 
@@ -48,7 +50,7 @@ Forge 7.11.2 改为 Packager 20.3.0，Electron 44.3.0 及其他直接前端版�
 
 Mac codesign verify 退出0；CI spctl assess 退出3、rejected，P16记FAIL。未公证、未用商业证书。当前本机 spctl 的 override=security disabled 是既有环境状态，不算信任通过；本任务没有改系统防护。Windows 发布者/Defender提示和真人控制台观察未测。遇到系统阻止应保留提示交回维护者，不关闭防护、不管理员运行。
 
-物理断网由本人操作，本轮没有操作；旧档案断网冷启动/三场/再开、新档案离线首启、无开发工具干净机与物理屏幕均 NOT_RUN。已保存人工复测步骤，不等待 Windows 同学、不将模拟隔离冒充这些证据。未合入、未关旧PR、未分发给玩家、未发布或启动下一包。
+macOS 常规人工流程（含物理断网、界面、对局及退出保存）已获本人整体确认；状态依据用户反馈，不补造单项记录。可选新档案离线首启和无开发工具干净机没有单独确认；Windows 人工项目仍 NOT_RUN。保留人工流程及 CI 原始记录，未把模拟隔离或 CI 图片改称真人证据。未合入、未关旧PR、未分发给玩家、未发布或启动下一包。
 
 ## 审查材料
 

@@ -19,8 +19,8 @@
     "source": "SOURCE_PASS",
     "native_build": "BUILT (both platforms)",
     "packaged_automation": "PACKAGED_AUTOMATION_PASS (both platforms)",
-    "human": "NOT_RUN",
-    "physical_offline": "NOT_RUN",
+    "human": "macOS PASS (user confirmation); Windows NOT_RUN",
+    "physical_offline": "macOS PASS (overall manual-workflow confirmation); Windows NOT_RUN",
     "clean_machine": "NOT_RUN",
     "mac_gatekeeper": "FAIL (rejected, exit 3)"
   },
@@ -40,8 +40,8 @@
         "built": "PASS",
         "frozen_worker": "PASS",
         "packaged_automation": "PASS",
-        "human": "NOT_RUN",
-        "physical_offline": "NOT_RUN"
+        "human": "PASS",
+        "physical_offline": "PASS"
       },
       "plan_sha": null,
       "plan_manifest_sha256": "84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc",
@@ -97,7 +97,9 @@
       "evidence_directory": "native-ci/darwin-arm64/evidence",
       "internal_files": "native-ci/darwin-arm64/evidence/file-manifest.json",
       "gatekeeper": "REJECTED (exit 3)",
-      "ordinary_user_readonly": "PASS"
+      "ordinary_user_readonly": "PASS",
+      "human_evidence": "HUMAN-ACCEPTANCE.md",
+      "human_evidence_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
     },
     {
       "task_id": "R02-T05-a",
@@ -184,5 +186,24 @@
     "scope": "earlier local native build and frozen worker; GUI NOT_RUN to avoid private profile. Not the final CI candidate."
   },
   "result_commits": "Only docs/results/R02-T05-a after tested_code_sha; PR head includes evidence commits and is not represented as the packaged code SHA.",
-  "file_inventory": "EVIDENCE-FILES.json"
+  "file_inventory": "EVIDENCE-FILES.json",
+  "human_acceptance": {
+    "recorded_at": "2026-09-13T17:59:26.729261+00:00",
+    "platform": "darwin-arm64",
+    "status": "PASS",
+    "evidence_kind": "human",
+    "evidence_source": "User confirmation in this task after the supplied macOS manual test workflow",
+    "quote": "都没问题， macOS验收通过",
+    "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+    "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+    "artifact_identity_basis": "Candidate linked in the preceding manual test workflow; no new checksum supplied by the user",
+    "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied",
+    "command": null,
+    "exit_code": null,
+    "optional_new_profile_offline": "NOT_RUN; optional step not separately confirmed",
+    "clean_machine": "NOT_RUN; no assertion that Python/Node/Git are absent",
+    "windows_human": "NOT_RUN; user currently has no Windows device",
+    "gatekeeper_scope": "Prior CI spctl rejection remains unchanged; user acceptance does not establish notarization or system trust"
+  },
+  "overall_reason": "macOS accepted by user; Windows human acceptance and optional/specialized checks remain unconfirmed"
 }

@@ -1,6 +1,6 @@
 ## 这次想解决什么
 
-让现有单人实算程序随包携带 Python 后台与资料，提供 macOS arm64 / Windows x64 内部测试 ZIP。两端原生构建和成包自动化已通过，整体验收 **PARTIAL**：真人/物理断网/干净电脑未测，Mac Gatekeeper 拒绝。
+让现有单人实算程序随包携带 Python 后台与资料，提供 macOS arm64 / Windows x64 内部测试 ZIP。两端原生构建和成包自动化已通过，整体验收 **PARTIAL**：macOS 已获用户本人人工验收通过，Windows 真人验收仍未测；可选新档案离线/干净机未单独确认，原 CI Gatekeeper 拒绝记录保留。
 
 ## 改了什么，哪些没有涉及
 
@@ -10,6 +10,7 @@
 
 ## 怎样验证
 
+- 用户最新反馈：“都没问题， macOS验收通过”。据此记录 Mac 常规人工流程（含断网步骤）PASS，依据为整体文字确认，未新增逐项计数或截图。[人工验收记录](https://github.com/Kalopsiazza/DeiDei/blob/codex/r02-t05-a-packaging/docs/results/R02-T05-a/HUMAN-ACCEPTANCE.md)。
 - 精确 tested_code_sha：`45dbf9c4e13e693b01736a79cb97652f760f8bad`；其后只提交 docs/results/R02-T05-a 的证据，不能用后续 PR head 冒充包 SHA。
 - [原生CI两端通过](https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020)；核心174、runtime23（原21+新2）、独立192/469调用、工具8、桌面25（原22+新3）、`python scripts/check.py` 39通过+1原expected failure。两个Session占位仍NOT_RUN。
 - 最终ZIP实际app启动、内置worker六指令、开发环境隔离、缺文件、每端5场及再开、分数DD/自动休整/中断恢复、10次退出回收、两种真实renderer视口与档案保留均通过。
@@ -28,7 +29,7 @@
 
 ## 已知问题
 
-Mac ad-hoc完整性通过，但CI Gatekeeper实际拒绝（退出3），未公证；Windows未签名。Windows普通用户只读安装、真人控制台/系统安全提示、物理屏幕、物理断网与无开发工具电脑未测。截图是原生CI真实应用renderer视口，不能替代真人机器验收。未发布Release、未分发、未合入，停在提交验收。
+Mac ad-hoc完整性通过，但CI Gatekeeper实际拒绝（退出3），未公证；Windows未签名。Windows普通用户只读安装、真人控制台/系统安全提示、物理屏幕、物理断网与无开发工具电脑未测。既有截图仍是原生CI真实应用renderer视口；Mac 本人后续验收采用文字确认，不把 CI 图片改称人工截图。未发布Release、未分发、未合入，停在提交验收。
 
 ## 提交者确认
 

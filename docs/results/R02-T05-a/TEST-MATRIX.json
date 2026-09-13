@@ -196,18 +196,19 @@
     {
       "id": "P13",
       "platform": "darwin-arm64",
-      "status": "NOT_RUN",
+      "status": "PASS",
       "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
       "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
-      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
       "evidence_kind": "human",
       "command": null,
       "exit_code": null,
       "evidence": [
-        "OFFLINE-CHECKLIST.txt"
+        "HUMAN-ACCEPTANCE.md"
       ],
-      "detail": "没有由本人断网；已有档案断网三场及新档案离线首启均未测。",
-      "not_run_reason": "没有由本人断网；已有档案断网三场及新档案离线首启均未测。"
+      "detail": "用户在常规流程（含第6步物理断网冷启动）后整体确认 macOS 验收通过；没有逐局日志。可选新档案离线首启另列。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
     },
     {
       "id": "P14",
@@ -302,40 +303,42 @@
       "evidence": [
         "OFFLINE-CHECKLIST.txt"
       ],
-      "detail": "新档案物理离线首启没有由本人执行。",
-      "not_run_reason": "新档案物理离线首启没有由本人执行。"
+      "detail": "该项在人工流程中为可选补测；用户未单独确认，不从整体反馈推定执行。",
+      "not_run_reason": "该项在人工流程中为可选补测；用户未单独确认，不从整体反馈推定执行。"
     },
     {
       "id": "P15-physical-display",
       "platform": "darwin-arm64",
-      "status": "NOT_RUN",
+      "status": "PASS",
       "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
       "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
-      "environment": "human machine unavailable",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
       "evidence_kind": "human",
       "command": null,
       "exit_code": null,
       "evidence": [
-        "OFFLINE-CHECKLIST.txt"
+        "HUMAN-ACCEPTANCE.md"
       ],
-      "detail": "CI 渲染视口不证明真人物理屏幕、缩放和输入体验。",
-      "not_run_reason": "CI 渲染视口不证明真人物理屏幕、缩放和输入体验。"
+      "detail": "用户本人确认 Mac 流程无问题；未提供屏幕参数或新截图，不把既有 CI 图片改称人工截图。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
     },
     {
       "id": "P16-human",
       "platform": "darwin-arm64",
-      "status": "NOT_RUN",
+      "status": "PASS",
       "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
       "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
-      "environment": "human machine unavailable",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
       "evidence_kind": "human",
       "command": null,
       "exit_code": null,
       "evidence": [
-        "OFFLINE-CHECKLIST.txt"
+        "HUMAN-ACCEPTANCE.md"
       ],
-      "detail": "没有在独立真人电脑检查首次下载后的系统安全提示。",
-      "not_run_reason": "没有在独立真人电脑检查首次下载后的系统安全提示。"
+      "detail": "用户确认 Mac 人工验收通过；没有回传安全提示过程，不能推断 Gatekeeper 评估或公证通过。CI P16 拒绝记录仍保留。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
     },
     {
       "id": "P01",
@@ -688,6 +691,75 @@
       ],
       "detail": "没有在独立真人电脑检查首次下载后的系统安全提示。",
       "not_run_reason": "没有在独立真人电脑检查首次下载后的系统安全提示。"
+    },
+    {
+      "id": "P07-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "首次启动：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P11-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "退出重开与保存：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P12-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "真实单人对局：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
     }
-  ]
+  ],
+  "human_acceptance": {
+    "recorded_at": "2026-09-13T17:59:26.729261+00:00",
+    "platform": "darwin-arm64",
+    "status": "PASS",
+    "evidence_kind": "human",
+    "evidence_source": "User confirmation in this task after the supplied macOS manual test workflow",
+    "quote": "都没问题， macOS验收通过",
+    "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+    "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+    "artifact_identity_basis": "Candidate linked in the preceding manual test workflow; no new checksum supplied by the user",
+    "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied",
+    "command": null,
+    "exit_code": null,
+    "optional_new_profile_offline": "NOT_RUN; optional step not separately confirmed",
+    "clean_machine": "NOT_RUN; no assertion that Python/Node/Git are absent",
+    "windows_human": "NOT_RUN; user currently has no Windows device",
+    "gatekeeper_scope": "Prior CI spctl rejection remains unchanged; user acceptance does not establish notarization or system trust"
+  }
 }

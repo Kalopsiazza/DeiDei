@@ -19,9 +19,14 @@
       "sha256": "b0eeeb049bdb2c1b128f90da7cac0dac29492b092095cc72cef4478c14c1a081"
     },
     {
+      "path": "HUMAN-ACCEPTANCE.md",
+      "bytes": 1210,
+      "sha256": "837cb3a64962963ff6b00cb7d781d4a83f8618b327e8fcea4ba7991a8b3b472e"
+    },
+    {
       "path": "MANIFEST.json",
-      "bytes": 6809,
-      "sha256": "2585ee06323df08acf0512c0e9f1f5627fe92fd3980b89f7a6b99a875b769abe"
+      "bytes": 8457,
+      "sha256": "37ed3125fe9b30bc0a8634ba3d69cc1eda5fc88f1225086e0bc72efce302e67b"
     },
     {
       "path": "OFFLINE-CHECKLIST.txt",
@@ -35,8 +40,8 @@
     },
     {
       "path": "PR-BODY.md",
-      "bytes": 3791,
-      "sha256": "2a012e6dafbb06c6d6323f28760feefb1be5ff560e83844d60590c13b6f17d9a"
+      "bytes": 4275,
+      "sha256": "364d4bd9de292aabf8df3e77e10e02cdb845d1fa639c723adcf3ab1896917ddf"
     },
     {
       "path": "PR-SUBMISSION.json",
@@ -45,18 +50,18 @@
     },
     {
       "path": "REPORT.md",
-      "bytes": 7958,
-      "sha256": "a98b575e9bb6e0767d3595c6ddf8442fae96facf16ef905603173e5ce563ae8f"
+      "bytes": 8511,
+      "sha256": "20932fb3613ae755f3515bfdffd52ff5b4ff0b4c63548ed9290ba445a724ab25"
     },
     {
       "path": "TEST-MATRIX.json",
-      "bytes": 30569,
-      "sha256": "1a46d3a227b0ba5bc6f1558dbaff9ff7bc386e5cd6734da44cc3bddac385d1a2"
+      "bytes": 34855,
+      "sha256": "137e132ea52cc2bb13293d03ab57d652484ea8fb5f4979771c5073c268daf897"
     },
     {
       "path": "TEST-MATRIX.md",
-      "bytes": 3968,
-      "sha256": "d1480da026d3f36ed0b3d2faecf892fee4327fca780081ac5c8aa9adb0005bce"
+      "bytes": 4380,
+      "sha256": "c2d04d8ea4259e4068e259d865abd5a54211ca1719d48224d64cdff836776347"
     },
     {
       "path": "baseline/commands.json",
