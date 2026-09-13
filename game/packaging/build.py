@@ -145,6 +145,8 @@ def main() -> None:
     write_json(stage / 'build-info.json', build_info)
     run('packager', [node, str(HERE / 'pack.mjs'), str(out)])
     application = Path((out / 'application-path.txt').read_text())
+    if sys.platform == 'darwin':
+        application = application / 'DeiDei R02.app'
     delivery = out / 'delivery'
     delivery.mkdir()
     target = delivery / application.name
