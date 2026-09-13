@@ -1,0 +1,1 @@
+<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app: rejected

@@ -1,0 +1,76 @@
+{
+  "command": [
+    "git",
+    "diff",
+    "--check",
+    "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+    "HEAD"
+  ],
+  "exit_code": 2,
+  "warning_counts_by_file": {
+    "game/packaging/licenses/LICENSE.libX11.txt": 1,
+    "game/packaging/licenses/LICENSE.tix.txt": 54,
+    "game/packaging/licenses/win32-x64-LICENSE.bdb.txt": 126,
+    "game/packaging/licenses/win32-x64-LICENSE.bzip2.txt": 37,
+    "game/packaging/licenses/win32-x64-LICENSE.cpython.txt": 771,
+    "game/packaging/licenses/win32-x64-LICENSE.expat.txt": 21,
+    "game/packaging/licenses/win32-x64-LICENSE.libX11.txt": 943,
+    "game/packaging/licenses/win32-x64-LICENSE.libXau.txt": 21,
+    "game/packaging/licenses/win32-x64-LICENSE.libedit.txt": 29,
+    "game/packaging/licenses/win32-x64-LICENSE.libffi.txt": 21,
+    "game/packaging/licenses/win32-x64-LICENSE.liblzma.txt": 13,
+    "game/packaging/licenses/win32-x64-LICENSE.libuuid.txt": 27,
+    "game/packaging/licenses/win32-x64-LICENSE.libxcb.txt": 30,
+    "game/packaging/licenses/win32-x64-LICENSE.mpdecimal.txt": 24,
+    "game/packaging/licenses/win32-x64-LICENSE.ncurses.txt": 29,
+    "game/packaging/licenses/win32-x64-LICENSE.openssl-1.1.txt": 124,
+    "game/packaging/licenses/win32-x64-LICENSE.openssl-3.txt": 177,
+    "game/packaging/licenses/win32-x64-LICENSE.sqlite.txt": 23,
+    "game/packaging/licenses/win32-x64-LICENSE.tcl.txt": 40,
+    "game/packaging/licenses/win32-x64-LICENSE.zlib.txt": 21
+  },
+  "reason": "Official third-party license bytes intentionally retained, including CRLF and terminal blank lines; hashes map to official archives. No application code whitespace warnings.",
+  "source_excluding_verbatim_licenses": {
+    "command": [
+      "git",
+      "diff",
+      "--check",
+      "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+      "HEAD",
+      "--",
+      ".",
+      ":(exclude)game/packaging/licenses/**"
+    ],
+    "exit_code": 0
+  },
+  "evidence_staging": {
+    "command": "git diff --cached --check",
+    "exit_code": 2,
+    "warning_counts_by_file": {
+      "docs/results/R02-T05-a/failures/8d23cb1-checkout-bytes/win32-x64/build-info.json": 160,
+      "docs/results/R02-T05-a/native-ci/win32-x64/build-info.json": 160,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/commands.json": 155,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/core.txt": 179,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/desktop.txt": 45,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/file-manifest.json": 852,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/freeze.txt": 68,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/frozen-worker.txt": 3135,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/independent.txt": 1,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/node-version.txt": 1,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/npm-audit-runtime.txt": 22,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/npm-audit.txt": 22,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/npm-tree.txt": 514,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/npm-version.txt": 1,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/packager.txt": 1,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/python-check.txt": 3,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/python-public-advisories.json": 44,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/python-tree.json": 30,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/root.txt": 49,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/runtime.txt": 29,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/tools.txt": 13,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/unpacked-worker.txt": 3135,
+      "docs/results/R02-T05-a/native-ci/win32-x64/evidence/uv-version.txt": 1
+    },
+    "reason": "Raw Windows build-info retains original CRLF so its byte hash still matches the delivered ZIP; other captured command output retains terminal whitespace. Not application source warnings."
+  }
+}

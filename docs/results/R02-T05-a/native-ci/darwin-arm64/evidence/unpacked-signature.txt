@@ -1,0 +1,20 @@
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/Current/.
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/Current/.
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app
+--prepared:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app
+--validated:<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app
+<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app: valid on disk
+<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/中文 空格 解压/DeiDei R02.app: satisfies its Designated Requirement

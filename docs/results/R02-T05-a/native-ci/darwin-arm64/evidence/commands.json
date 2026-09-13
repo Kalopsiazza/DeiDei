@@ -1,0 +1,243 @@
+{
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "commands": [
+    {
+      "name": "node-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.026
+    },
+    {
+      "name": "npm-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.146
+    },
+    {
+      "name": "uv-version",
+      "command": "[\"uv\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.014
+    },
+    {
+      "name": "python-check",
+      "command": "[\"uv\", \"pip\", \"check\", \"--python\", \"<WORKTREE>/game/packaging/.venv/bin/python\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.027
+    },
+    {
+      "name": "npm-audit",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.504
+    },
+    {
+      "name": "npm-audit-runtime",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.376
+    },
+    {
+      "name": "npm-tree",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"ls\", \"--all\", \"--json\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.307
+    },
+    {
+      "name": "core",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/core/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>/game/core"
+      },
+      "seconds": 1.082
+    },
+    {
+      "name": "runtime",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/runtime/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>/game/core:<WORKTREE>/game/runtime"
+      },
+      "seconds": 0.337
+    },
+    {
+      "name": "independent",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"tests/rules_v1_001/run_acceptance.py\", \"--core\", \"game/core\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.088
+    },
+    {
+      "name": "tools",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/rules_v1_001\", \"-p\", \"test_*.py\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.132
+    },
+    {
+      "name": "root",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"scripts/check.py\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.038
+    },
+    {
+      "name": "desktop",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"test\"]",
+      "cwd": "<WORKTREE>/game/desktop",
+      "exit_code": 0,
+      "environment": {
+        "DEIDEI_PYTHON": "<WORKTREE>/game/packaging/.venv/bin/python"
+      },
+      "seconds": 1.189
+    },
+    {
+      "name": "freeze",
+      "command": "[\"<WORKTREE>/game/packaging/.venv/bin/python\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen\", \"--workpath\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/pyinstaller\", \"<WORKTREE>/game/packaging/worker.spec\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYINSTALLER_CONFIG_DIR": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/pyinstaller-cache"
+      },
+      "seconds": 3.303
+    },
+    {
+      "name": "frozen-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.088
+    },
+    {
+      "name": "worker-signature-before",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.01
+    },
+    {
+      "name": "worker-identity-before",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/frozen/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.006
+    },
+    {
+      "name": "packager",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/pack.mjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 8.803
+    },
+    {
+      "name": "copy-app",
+      "command": "[\"ditto\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/packaged/DeiDei R02-darwin-arm64/DeiDei R02.app\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.25
+    },
+    {
+      "name": "signature-verify",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.284
+    },
+    {
+      "name": "signature-display",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.007
+    },
+    {
+      "name": "gatekeeper",
+      "command": "[\"spctl\", \"--assess\", \"--type\", \"execute\", \"--verbose=4\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 3,
+      "environment": {},
+      "seconds": 1.069
+    },
+    {
+      "name": "desktop-architecture",
+      "command": "[\"lipo\", \"-archs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app/Contents/MacOS/DeiDeiR02\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.019
+    },
+    {
+      "name": "worker-architecture",
+      "command": "[\"lipo\", \"-archs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery/DeiDei R02.app/Contents/Resources/worker/deidei-worker\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.018
+    },
+    {
+      "name": "archive",
+      "command": "[\"ditto\", \"-c\", \"-k\", \"--sequesterRsrc\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/delivery\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 14.882
+    },
+    {
+      "name": "unpack-final",
+      "command": "[\"ditto\", \"-x\", \"-k\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 1.607
+    },
+    {
+      "name": "unpacked-signature",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/DeiDei R02.app\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 2.741
+    },
+    {
+      "name": "unpacked-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<WORKTREE>/game/packaging/check-worker.cjs\", \"<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/DeiDei R02.app/Contents/Resources\"]",
+      "cwd": "<WORKTREE>/game/packaging/build/darwin-arm64-9cprokn5",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.406
+    }
+  ]
+}

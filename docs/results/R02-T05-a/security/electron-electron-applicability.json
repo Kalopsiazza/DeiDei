@@ -1,0 +1,1313 @@
+{
+  "version": "44.3.0",
+  "checked_at": "2026-09-13T16:47:49.297Z",
+  "advisories": [
+    {
+      "id": "GHSA-gr2m-v5gq-v685",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-gr2m-v5gq-v685",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 41.10.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 43.0.0-alpha.1, < 43.4.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 44.0.0-alpha.1, < 44.0.0-beta.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9qh4-3jw8-366w",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9qh4-3jw8-366w",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 41.10.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 43.0.0-alpha.1, < 43.4.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 44.0.0-alpha.1, < 44.0.0-beta.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-j84w-jfhq-vhvj",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-j84w-jfhq-vhvj",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 41.10.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 43.0.0-alpha.1, < 43.4.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 44.0.0-alpha.1, < 44.0.0-beta.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-r4w5-6pfg-jxp5",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-r4w5-6pfg-jxp5",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": ">= 43.0.0-alpha.1, < 43.0.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.5.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.9.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.10.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-hq2x-r82h-9wj4",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-hq2x-r82h-9wj4",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 41.10.4",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.5.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 43.0.0-alpha.1, < 43.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-qmv3-fv6v-rmhq",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-qmv3-fv6v-rmhq",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 42.3.3, < 42.10.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 43.0.0-beta.1, < 43.4.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 44.0.0-alpha.1, < 44.0.0-beta.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-q6m5-f73j-m9mc",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-q6m5-f73j-m9mc",
+      "severity": "critical",
+      "ranges": [
+        {
+          "range": "42.3.1,42.3.2",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9f4c-93c8-jc8g",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9f4c-93c8-jc8g",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 41.10.3",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": "< 39.8.10",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-v3j7-r9gq-3gjw",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-v3j7-r9gq-3gjw",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.4.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.3",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": "< 39.8.10",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-x8rc-wpg4-grpf",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-x8rc-wpg4-grpf",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-jm7p-cc5g-qwxx",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-jm7p-cc5g-qwxx",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-m55f-7gqj-fr98",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-m55f-7gqj-fr98",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-f2r8-jv7c-xqmp",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-f2r8-jv7c-xqmp",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.9",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-pfmc-3mgc-p6fp",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-pfmc-3mgc-p6fp",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 39.8.10",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-p2rr-rvmm-c5fp",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-p2rr-rvmm-c5fp",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-ff2p-hmqr-hxm4",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-ff2p-hmqr-hxm4",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.9",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.4",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-v93f-fgjr-hjrj",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-v93f-fgjr-hjrj",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-v64r-4m7r-3mvq",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-v64r-4m7r-3mvq",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.8",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-h7rp-cf8h-j98x",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-h7rp-cf8h-j98x",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 39.8.9",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.2",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-vv43-5jgx-7qv8",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-vv43-5jgx-7qv8",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.10",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1",
+          "affected": true,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.10.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.2",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9pf5-hg6p-4pwp",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9pf5-hg6p-4pwp",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.7",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.1",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-4f78-qhmw-8j8m",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-4f78-qhmw-8j8m",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.7",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.2.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.1",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-5c9j-mhmv-5xgx",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-5c9j-mhmv-5xgx",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-beta.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.1.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.9.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": "< 39.8.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-8x5q-pvf5-64mp",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-8x5q-pvf5-64mp",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": ">= 33.0.0-alpha.1, < 39.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.1.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-f3pv-wv63-48x8",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-f3pv-wv63-48x8",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 39.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.1.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-4p4r-m79c-wq3v",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-4p4r-m79c-wq3v",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.3",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.3",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9899-m83m-qhpj",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9899-m83m-qhpj",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-jfqx-fxh3-c62j",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-jfqx-fxh3-c62j",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9wfr-w7mm-pc7f",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9wfr-w7mm-pc7f",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-jjp3-mq3x-295m",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-jjp3-mq3x-295m",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-8337-3p73-46f4",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-8337-3p73-46f4",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-9w97-2464-8783",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-9w97-2464-8783",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.7",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-532v-xpq5-8h95",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-532v-xpq5-8h95",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": "< 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-mwmh-mq4g-g6gr",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-mwmh-mq4g-g6gr",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-3c8v-cfp5-9885",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-3c8v-cfp5-9885",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-r5p7-gp4j-qhrx",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-r5p7-gp4j-qhrx",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-xwr5-m59h-vwqr",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-xwr5-m59h-vwqr",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.4",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.4",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-xj5x-m3f3-5x3h",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-xj5x-m3f3-5x3h",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-5rqw-r77c-jp79",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-5rqw-r77c-jp79",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 38.8.6",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.1",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-jfqg-hf23-qpw2",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-jfqg-hf23-qpw2",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 39.0.0-alpha.1, < 39.8.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.7.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.0.0-beta.8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-f37v-82c4-4x64",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-f37v-82c4-4x64",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 39.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 40.0.0-alpha.1, < 40.8.5",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 41.0.0-alpha.1, < 41.1.0",
+          "affected": false,
+          "valid": true
+        },
+        {
+          "range": ">= 42.0.0-alpha.1, < 42.0.0-alpha.5",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-vmqv-hx8q-j7mg",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-vmqv-hx8q-j7mg",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 35.7.5 || >= 36.0.0-alpha.1 < 36.8.1 || >= 37.0.0-alpha.1 < 37.3.1 || >= 38.0.0-alpha.1 < 38.0.0-beta.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-xw5q-g62x-2qjc",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-xw5q-g62x-2qjc",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 30.0.0-alpha.1 < 30.0.5 || >= 31.0.0-alpha.1 < 31.0.0-beta.1",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-6r2x-8pq8-9489",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-6r2x-8pq8-9489",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 28.3.2 || >= 29.0.0-alpha.1 < 29.3.3 || >= 30.0.0-alpha.1 < 30.0.3",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-2hfc-r8fq-92h7",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-2hfc-r8fq-92h7",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "4f76fff97879ee8f9b2d0dcfd43e686ff8757c69",
+          "affected": false,
+          "valid": false
+        }
+      ]
+    },
+    {
+      "id": "GHSA-7m48-wc93-9g85",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-7m48-wc93-9g85",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 22.3.24 || >= 23.0.0-alpha.1 < 23.3.14 || >= 24.0.0-alpha.1 < 24.8.3 || >= 25.0.0-alpha.1 < 25.8.1 || >= 26.0.0-alpha.1 < 26.2.1 || >= 27.0.0-alpha.1 < 27.0.0-alpha.7",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-7x97-j373-85x5",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-7x97-j373-85x5",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 22.3.19 || >= 23.0.0-alpha.1 < 23.3.13 || >= 24.0.0-alpha.1 < 24.7.1 || >= 25.0.0-alpha.1 < 25.5.0 || >= 26.0.0-alpha.1 < 26.0.0-beta.13",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-p7v2-p9m8-qqg7",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-p7v2-p9m8-qqg7",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 22.3.6 || >= 23.0.0-alpha.1 < 23.2.3 || >= 24.0.0-alpha.1 < 24.0.1 || >= 25.0.0-alpha.1 < 25.0.0-alpha.2",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-gxh7-wv9q-fwfr",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-gxh7-wv9q-fwfr",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">= 22.0.0-beta.1 < 22.0.1, >= 23.0.0-alpha.1 < 23.0.0-alpha.2",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-p2jh-44qj-pf2v",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-p2jh-44qj-pf2v",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 18.3.7, >= 19.0.0-beta.1 < 19.0.11, >= 20.0.0-beta.1 < 20.0.1",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-77xc-hjv8-ww97",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-77xc-hjv8-ww97",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 15.5.0 || >= 16.0.0-beta.1 < 16.2.0 || >= 17.0.0-beta.1 < 17.2.0 || >= 18.0.0-beta.1 < 18.0.0-beta.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-mq8j-3h7h-p8g7",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-mq8j-3h7h-p8g7",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": "< 15.5.5 || >= 16.0.0-beta.1 < 16.2.6 || >= 17.0.0-beta.1 < 17.2.0 || >= 18.0.0-beta.1 < 18.0.0-beta.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-3p22-ghq8-v749",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-3p22-ghq8-v749",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": "< 13.6.6 || >=14.0.0-beta.1 < 14.2.4 || >=15.0.0-beta.1 <15.3.5 || >=16.0.0-beta.1 <16.0.6 || >=17.0.0-alpha.1 <17.0.0-alpha.6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-mpjm-v997-c4h4",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-mpjm-v997-c4h4",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": ">=10.1.0 <11.0.0-beta.1 || >=11.0.0-beta.1 < 11.5.0 || >=12.0.0-beta.1 < 12.1.0 || >=13.0.0-beta.1 <13.3.0 || >=14.0.0-beta.1 <14.0.0 || >=15.0.0-alpha.1 <15.0.0-alpha.10",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-hvf8-h2qh-37m9",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-hvf8-h2qh-37m9",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": ">=9.0.0-beta.0 < 9.4.0 || >= 10.0.0-beta.0 < 10.2.0 || >= 11.0.0-beta.0 < 11.1.0 || >= 12.0.0-beta.0 < 12.0.0-beta.9 || <= 8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-56pc-6jqp-xqj8",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-56pc-6jqp-xqj8",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": ">=11.0.0-beta.0 <=11.0.0-beta.5 || >=10.0.0-beta.0 <=10.1.1 || >=9.0.0-beta.0 <=9.3.0 || >=8.0.0-beta.0 <=8.5.1 <= 8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-2q4g-w47c-4674",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-2q4g-w47c-4674",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">=10.0.0-beta.0 <=10.0.0 || >=9.0.0-beta.0 <=9.2.1 || >=8.0.0-beta.0 <=8.5.0 <= 8",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-6vrv-94jv-crrg",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-6vrv-94jv-crrg",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">=9.0.0-beta.0 <=9.0.0-beta.20 || >=8.0.0-beta.0 <=8.2.3 || >= 7.0.0-beta < =7.2.3 || >= 6.0.0-beta.0 <= 6.1.10 || <= 6",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-f9mq-jph6-9mhm",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-f9mq-jph6-9mhm",
+      "severity": "low",
+      "ranges": [
+        {
+          "range": ">=9.0.0-beta.0 <=9.0.0-beta.20 || >=8.0.0-beta.0 <=8.2.3 || >= 7.0.0-beta < =7.2.3 || <7",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-m93v-9qjc-3g79",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-m93v-9qjc-3g79",
+      "severity": "high",
+      "ranges": [
+        {
+          "range": ">=9.0.0-beta.0 <=9.0.0-beta.20 || >=8.0.0-beta.0 <=8.2.3 || >= 7.0.0-beta < =7.2.3 || <7",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    },
+    {
+      "id": "GHSA-h9jc-284h-533g",
+      "url": "https://github.com/electron/electron/security/advisories/GHSA-h9jc-284h-533g",
+      "severity": "medium",
+      "ranges": [
+        {
+          "range": ">=9.0.0-beta.0 <=9.0.0-beta.20 || >=8.0.0-beta.0 <=8.2.3 || >= 7.0.0-beta < =7.2.3 || <7",
+          "affected": false,
+          "valid": true
+        }
+      ]
+    }
+  ]
+}

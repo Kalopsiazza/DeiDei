@@ -1,0 +1,66 @@
+{
+  "outer_artifacts": [
+    {
+      "artifact_id": 10322476302,
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/artifacts/10322476302/zip",
+      "exit_code": 0,
+      "outer_digest": "sha256:5436587ec41d3eb73cb692f7a03662afe7e3efcf3d78a9be5bbf19baa5dca45b",
+      "bytes": 748727,
+      "status": "PASS"
+    },
+    {
+      "artifact_id": 10322059034,
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/artifacts/10322059034/zip",
+      "exit_code": 0,
+      "outer_digest": "sha256:7a47d278a6edecab498149c86a2308c8842beb0a668a4491a9abb2300ab9acff",
+      "bytes": 168281227,
+      "status": "PASS"
+    },
+    {
+      "artifact_id": 10321999156,
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/artifacts/10321999156/zip",
+      "exit_code": 0,
+      "outer_digest": "sha256:878981b41fee015179292bdf89acccd20ff5082d0265a32651d67f5d6f632b4f",
+      "bytes": 1174307,
+      "status": "PASS"
+    },
+    {
+      "artifact_id": 10321614908,
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/artifacts/10321614908/zip",
+      "exit_code": 0,
+      "outer_digest": "sha256:71f49853133d8f1118dad9188a2fc50bc10a4964f2a590fd8d4b5fe8d2b4e6a8",
+      "bytes": 138860276,
+      "status": "PASS"
+    }
+  ],
+  "inner_archives": [
+    {
+      "platform": "darwin-arm64",
+      "filename": "DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip",
+      "bytes": 139460469,
+      "sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "build_info_sha256": "73c4a060bcbc5d196da6b433a1f6e0d808622810e28a73899314fe8f7d804c11",
+      "internal_entries_verified": 323,
+      "committed_resources_and_locks": "byte-identical to Git blobs",
+      "command": "Python hashlib/zipfile: compare downloaded ZIP, every file/symlink and macOS mode, build-info, catalog/entry-map/locks versus git show",
+      "exit_code": 0,
+      "status": "PASS"
+    },
+    {
+      "platform": "win32-x64",
+      "filename": "DeiDei-R02-T05-a-Windows-x64-45dbf9c.zip",
+      "bytes": 168641592,
+      "sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "build_info_sha256": "3071c64d7862fbbcd85cf0a2f18dbe9cbd4ae298fc75c5303febecdf84536599",
+      "internal_entries_verified": 170,
+      "committed_resources_and_locks": "byte-identical to Git blobs",
+      "command": "Python hashlib/zipfile: compare downloaded ZIP, every file/symlink and macOS mode, build-info, catalog/entry-map/locks versus git show",
+      "exit_code": 0,
+      "status": "PASS"
+    }
+  ],
+  "cross_platform_source_bytes": "PASS; every recorded input file is byte-identical",
+  "status": "PASS"
+}

@@ -1,0 +1,155 @@
+{
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "commands": [
+    {
+      "name": "node-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "name": "npm-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.125
+    },
+    {
+      "name": "uv-version",
+      "command": "[\"uv\", \"--version\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "name": "python-check",
+      "command": "[\"uv\", \"pip\", \"check\", \"--python\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.016
+    },
+    {
+      "name": "npm-audit",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.735
+    },
+    {
+      "name": "npm-audit-runtime",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.704
+    },
+    {
+      "name": "npm-tree",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"ls\", \"--all\", \"--json\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.61
+    },
+    {
+      "name": "core",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/core/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>\\game\\core"
+      },
+      "seconds": 1.268
+    },
+    {
+      "name": "runtime",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"game/runtime/tests\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": "<WORKTREE>\\game\\core;<WORKTREE>\\game\\runtime"
+      },
+      "seconds": 0.563
+    },
+    {
+      "name": "independent",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"tests/rules_v1_001/run_acceptance.py\", \"--core\", \"game/core\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.782
+    },
+    {
+      "name": "tools",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"unittest\", \"discover\", \"-s\", \"tests/rules_v1_001\", \"-p\", \"test_*.py\", \"-v\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 1.783
+    },
+    {
+      "name": "root",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"scripts/check.py\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYTHONPATH": ""
+      },
+      "seconds": 2.001
+    },
+    {
+      "name": "desktop",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"test\"]",
+      "cwd": "<WORKTREE>\\game\\desktop",
+      "exit_code": 0,
+      "environment": {
+        "DEIDEI_PYTHON": "<WORKTREE>\\game\\packaging\\.venv\\Scripts\\python.exe"
+      },
+      "seconds": 1.774
+    },
+    {
+      "name": "freeze",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\frozen\", \"--workpath\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\pyinstaller\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\worker.spec\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {
+        "PYINSTALLER_CONFIG_DIR": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux\\pyinstaller-cache"
+      },
+      "seconds": 5.456
+    },
+    {
+      "name": "frozen-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\frozen\"]",
+      "cwd": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.172
+    },
+    {
+      "name": "packager",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\pack.mjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\"]",
+      "cwd": "<WORKTREE>",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 8.577
+    },
+    {
+      "name": "unpacked-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging\\\\build\\\\win32-x64-u39br1ux\\\\\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\\\\DeiDei R02-win32-x64\\\\resources\"]",
+      "cwd": "<WORKTREE>\\game\\packaging\\build\\win32-x64-u39br1ux",
+      "exit_code": 0,
+      "environment": {},
+      "seconds": 0.188
+    }
+  ]
+}

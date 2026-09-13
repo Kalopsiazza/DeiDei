@@ -1,0 +1,188 @@
+{
+  "task_id": "R02-T05-a",
+  "plan_sha": null,
+  "plan_version": "1.0",
+  "plan_manifest_sha256": "84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc",
+  "input_sha": "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "branch": "codex/r02-t05-a-packaging",
+  "base": "integration/r02",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/19",
+  "ci": {
+    "run_id": 34771885020,
+    "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020",
+    "head_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+    "conclusion": "success"
+  },
+  "overall": "PARTIAL",
+  "levels": {
+    "source": "SOURCE_PASS",
+    "native_build": "BUILT (both platforms)",
+    "packaged_automation": "PACKAGED_AUTOMATION_PASS (both platforms)",
+    "human": "NOT_RUN",
+    "physical_offline": "NOT_RUN",
+    "clean_machine": "NOT_RUN",
+    "mac_gatekeeper": "FAIL (rejected, exit 3)"
+  },
+  "packages": [
+    {
+      "task_id": "R02-T05-a",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "platform": "darwin-arm64",
+      "filename": "DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip",
+      "bytes": 139460469,
+      "sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "build_info": "DeiDei R02.app/Contents/Resources/app/build-info.json",
+      "build_info_sha256": "73c4a060bcbc5d196da6b433a1f6e0d808622810e28a73899314fe8f7d804c11",
+      "signature": "ad-hoc; not notarized",
+      "levels": {
+        "source": "PASS",
+        "built": "PASS",
+        "frozen_worker": "PASS",
+        "packaged_automation": "PASS",
+        "human": "NOT_RUN",
+        "physical_offline": "NOT_RUN"
+      },
+      "plan_sha": null,
+      "plan_manifest_sha256": "84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc",
+      "plan_version": "1.0",
+      "input_sha": "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+      "os": "macOS-15.7.9-arm64-arm-64bit",
+      "arch": "arm64",
+      "versions": {
+        "python": "3.11.16",
+        "electron": "44.3.0",
+        "node_build": "24.12.0",
+        "npm": "11.6.2",
+        "uv": "0.11.13",
+        "python_tools": [
+          {
+            "name": "packaging",
+            "version": "26.3"
+          },
+          {
+            "name": "altgraph",
+            "version": "0.17.5"
+          },
+          {
+            "name": "setuptools",
+            "version": "84.0.0"
+          },
+          {
+            "name": "pyinstaller",
+            "version": "6.22.3"
+          },
+          {
+            "name": "macholib",
+            "version": "1.16.4"
+          },
+          {
+            "name": "pyinstaller-hooks-contrib",
+            "version": "2026.7"
+          }
+        ]
+      },
+      "lock_sha256": {
+        "npm": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+        "python": "12d8471df394aee503afa3c6e48fad5f6db9544d5b4a61bb193c7c17d8013473"
+      },
+      "artifact": {
+        "id": 10321614908,
+        "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/artifacts/10321614908",
+        "expires_at": "2026-10-13T17:34:31Z",
+        "outer_bytes": 138860276,
+        "outer_digest": "sha256:71f49853133d8f1118dad9188a2fc50bc10a4964f2a590fd8d4b5fe8d2b4e6a8"
+      },
+      "job_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/job/103762851697",
+      "evidence_directory": "native-ci/darwin-arm64/evidence",
+      "internal_files": "native-ci/darwin-arm64/evidence/file-manifest.json",
+      "gatekeeper": "REJECTED (exit 3)",
+      "ordinary_user_readonly": "PASS"
+    },
+    {
+      "task_id": "R02-T05-a",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "platform": "win32-x64",
+      "filename": "DeiDei-R02-T05-a-Windows-x64-45dbf9c.zip",
+      "bytes": 168641592,
+      "sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "build_info": "DeiDei R02-win32-x64/resources/app/build-info.json",
+      "build_info_sha256": "3071c64d7862fbbcd85cf0a2f18dbe9cbd4ae298fc75c5303febecdf84536599",
+      "signature": "unsigned",
+      "levels": {
+        "source": "PASS",
+        "built": "PASS",
+        "frozen_worker": "PASS",
+        "packaged_automation": "PASS",
+        "human": "NOT_RUN",
+        "physical_offline": "NOT_RUN"
+      },
+      "plan_sha": null,
+      "plan_manifest_sha256": "84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc",
+      "plan_version": "1.0",
+      "input_sha": "3ce99f1cdd5f2f52c757ef61b696ecaade4877d0",
+      "os": "Windows-10-10.0.20348-SP0",
+      "arch": "AMD64",
+      "versions": {
+        "python": "3.11.16",
+        "electron": "44.3.0",
+        "node_build": "24.12.0",
+        "npm": "11.6.2",
+        "uv": "0.11.13",
+        "python_tools": [
+          {
+            "name": "altgraph",
+            "version": "0.17.5"
+          },
+          {
+            "name": "packaging",
+            "version": "26.3"
+          },
+          {
+            "name": "pefile",
+            "version": "2024.8.26"
+          },
+          {
+            "name": "pyinstaller",
+            "version": "6.22.3"
+          },
+          {
+            "name": "pyinstaller-hooks-contrib",
+            "version": "2026.7"
+          },
+          {
+            "name": "pywin32-ctypes",
+            "version": "0.2.3"
+          },
+          {
+            "name": "setuptools",
+            "version": "84.0.0"
+          }
+        ]
+      },
+      "lock_sha256": {
+        "npm": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+        "python": "7188b49fd280901f624fb65288146fc10844b0727fc1c824a8d1cb0609abc330"
+      },
+      "artifact": {
+        "id": 10322059034,
+        "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/artifacts/10322059034",
+        "expires_at": "2026-10-13T17:34:43Z",
+        "outer_bytes": 168281227,
+        "outer_digest": "sha256:7a47d278a6edecab498149c86a2308c8842beb0a668a4491a9abb2300ab9acff"
+      },
+      "job_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34771885020/job/103762851802",
+      "evidence_directory": "native-ci/win32-x64/evidence",
+      "internal_files": "native-ci/win32-x64/evidence/file-manifest.json",
+      "gatekeeper": "NOT_RUN; unsigned",
+      "ordinary_user_readonly": "NOT_RUN"
+    }
+  ],
+  "local_macos_evidence": {
+    "code_sha": "8d23cb18a9294aed466edaff18820b36fb68111e",
+    "manifest": "local-macos/delivery-manifest.json",
+    "scope": "earlier local native build and frozen worker; GUI NOT_RUN to avoid private profile. Not the final CI candidate."
+  },
+  "result_commits": "Only docs/results/R02-T05-a after tested_code_sha; PR head includes evidence commits and is not represented as the packaged code SHA.",
+  "file_inventory": "EVIDENCE-FILES.json"
+}

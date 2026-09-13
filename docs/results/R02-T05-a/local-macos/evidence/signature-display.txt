@@ -1,0 +1,25 @@
+Executable=<WORKTREE>/game/packaging/build/darwin-arm64-xo0ewoko/delivery/DeiDei R02.app/Contents/MacOS/DeiDeiR02
+Identifier=cn.kalopsia.deidei.r02
+Format=app bundle with Mach-O thin (arm64)
+CodeDirectory v=20400 size=431 flags=0x2(adhoc) hashes=3+7 location=embedded
+VersionPlatform=1
+VersionMin=851968
+VersionSDK=1705216
+Hash type=sha256 size=32
+CandidateCDHash sha256=619f1c62e5c03aad0133ca264361ebaac70ef356
+CandidateCDHashFull sha256=619f1c62e5c03aad0133ca264361ebaac70ef3566338e3376b58a46180e9b59e
+Hash choices=sha256
+CMSDigest=619f1c62e5c03aad0133ca264361ebaac70ef3566338e3376b58a46180e9b59e
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=16384
+Executable Segment flags=0x1
+Page size=16384
+CDHash=619f1c62e5c03aad0133ca264361ebaac70ef356
+Signature=adhoc
+Info.plist entries=30
+TeamIdentifier=not set
+Sealed Resources version=2 rules=13 files=26
+Internal requirements count=0 size=12
+Total signatures=1
+Chosen signature=1

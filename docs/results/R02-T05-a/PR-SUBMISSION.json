@@ -1,0 +1,16 @@
+{
+  "snapshot_phase": "product and native CI submitted; evidence commit pending; final GitHub readback follows evidence push",
+  "captured_at": "2026-09-13T17:43:05.615932+00:00",
+  "command": "gh pr view 19 --repo Kalopsiazza/DeiDei --json url,title,baseRefName,headRefName,headRefOid,state,isDraft",
+  "exit_code": 0,
+  "readback": {
+    "baseRefName": "integration/r02",
+    "headRefName": "codex/r02-t05-a-packaging",
+    "headRefOid": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+    "isDraft": true,
+    "state": "OPEN",
+    "title": "[R02-T05-a] 免开发环境单人测试版｜提交验收",
+    "url": "https://github.com/Kalopsiazza/DeiDei/pull/19"
+  },
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad"
+}

@@ -1,0 +1,4 @@
+Error: worker closed before reply
+    at <WORKTREE>/game/packaging/check-worker.cjs:26:63
+    at async request (<WORKTREE>/game/packaging/check-worker.cjs:26:11)
+    at async <WORKTREE>/game/packaging/check-worker.cjs:31:17
