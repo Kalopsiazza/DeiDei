@@ -1,0 +1,29 @@
+
+> deidei-r02-desktop@0.1.0 test
+> npm run build && node --test test.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ nickname Unicode boundary, exact fields, avatars and settings validation (1.026916ms)
+✔ atomic profile creation, stable identity, settings and restart read (6.231292ms)
+✔ write/rename failures preserve old bytes, input and remove temporary file (2.023083ms)
+✔ corruption never overwritten automatically, recovery backs up original only with confirmation (2.075959ms)
+✔ oversized and symbolic-link profiles rejected; concurrent writes cannot race (2.5205ms)
+✔ 33 unique static cards, categories 18/9/6, initial 12 and midgame 26 available (1.234709ms)
+✔ keyboard assignment stable, unique 1–0, blocked input and grey card rejection (8.736875ms)
+✔ script states, duplicate/stale submission, privacy and immutable snapshots (1.075125ms)
+✔ error preserves selection, retry works, draw and spectating keep real roster (0.963625ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 73.469958

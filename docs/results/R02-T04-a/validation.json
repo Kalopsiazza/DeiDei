@@ -1,0 +1,116 @@
+{
+  "tested_code_sha": "e340a2a20fa8d8274c995b3a17759abf3ade92b6",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "machine": "arm64",
+  "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "node": "v24.12.0",
+  "npm": "11.6.2",
+  "checks": [
+    {
+      "args": [
+        "python3",
+        "tests/rules_v1_001/validate_fixtures.py"
+      ],
+      "PYTHONPATH": null,
+      "log": "fixture-validation.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "python3",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "game/core"
+      ],
+      "PYTHONPATH": null,
+      "log": "independent-acceptance.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "PYTHONPATH": "game/core",
+      "log": "core-self-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "PYTHONPATH": null,
+      "log": "harness-self-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/runtime/tests",
+        "-v"
+      ],
+      "PYTHONPATH": "game/core:game/runtime",
+      "log": "runtime-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "PYTHONPATH": null,
+      "log": "root-check.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "npm",
+        "--prefix",
+        "game/desktop",
+        "test"
+      ],
+      "PYTHONPATH": null,
+      "log": "desktop-original-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "node",
+        "--test",
+        "game/desktop/test-live.cjs"
+      ],
+      "PYTHONPATH": null,
+      "log": "desktop-live-tests.txt",
+      "exit_code": 0
+    },
+    {
+      "args": [
+        "npm",
+        "--prefix",
+        "game/desktop",
+        "run",
+        "smoke"
+      ],
+      "PYTHONPATH": null,
+      "log": "live-smoke.txt",
+      "exit_code": 0
+    }
+  ]
+}
