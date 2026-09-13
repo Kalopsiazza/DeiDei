@@ -1,0 +1,328 @@
+{
+  "task_id": "R01-T02-b",
+  "status": "PARTIAL",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/10",
+  "input_ref": "local b handoff + fixed planning commit",
+  "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "attachment_sha256": "83a0fe5ae795217f6d2e53e2f84f0cd4f32e573c8f13ad5e3a3660d31f7bac44",
+  "a_source_sha": "5421e905834eef3a84c74199998b14f72807fef9",
+  "prd_version": "R01-B 1.0",
+  "architecture_version": "R01-B 1.0",
+  "tested_code_sha": "d6bcd3e848445e32dbc7908c664610fdde1dd1fb",
+  "ci_tested_code_sha": "135b938fcfe0486895adfeea37fab73ee5f881dd",
+  "runtime_code_equal_between_tested_shas": true,
+  "user_authorization": {
+    "source": "current direct user message",
+    "windows_verification_deferral_accepted": true,
+    "may_proceed_without_windows_success": true,
+    "windows_task_blocks_round_2": false,
+    "request_chatgpt_separate_comprehensive_windows_codex_task": true,
+    "prefer_agents_and_final_pr": true,
+    "does_not_claim_windows_pass": true
+  },
+  "platforms": {
+    "macOS_local": {
+      "os": "27.0",
+      "cpu": "Apple M2",
+      "arch": "arm64",
+      "memory_gb": 16,
+      "build": "PASS",
+      "automated_native_window": "PASS",
+      "chinese_space_path": "PASS",
+      "ten_cycles": "PASS",
+      "human_double_click": "NOT_RUN",
+      "physical_offline": "NOT_RUN",
+      "no_system_runtimes": "NOT_RUN"
+    },
+    "macOS_ci": {
+      "build": "PASS",
+      "runtime": "see package metadata",
+      "human": "NOT_RUN"
+    },
+    "Windows_ci": {
+      "build": "PASS",
+      "protocol_and_process_tests": "PASS",
+      "desktop_human": "NOT_RUN"
+    },
+    "Windows_friend": {
+      "status": "NOT_RUN",
+      "blocks_round_2": false
+    }
+  },
+  "packages": [
+    {
+      "task_id": "R01-T02-b",
+      "code_sha": "135b938fcfe0486895adfeea37fab73ee5f881dd",
+      "platform": "macOS-15.7.9-arm64-arm-64bit",
+      "machine": "arm64",
+      "python": "3.11.15",
+      "file": "DeiDei-R01-T02-b-macOS-arm64.zip",
+      "bytes": 136658281,
+      "sha256": "96d93b339f4a5fde3c3e145a8f4233a61839471f77c0a840179005624ae8608c",
+      "build_only": true,
+      "physical_offline": "NOT_RUN",
+      "human_acceptance": "NOT_RUN",
+      "artifact_id": 10293203569,
+      "download_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34681310902/artifacts/10293203569",
+      "expires_at": "2026-09-26T07:40:38Z",
+      "local_path": "experiments/r01-t02-b/build/ci-artifacts/r01-t02-b-macOS-arm64-135b938fcfe0486895adfeea37fab73ee5f881dd/DeiDei-R01-T02-b-macOS-arm64.zip",
+      "downloaded_hash_verified": true
+    },
+    {
+      "task_id": "R01-T02-b",
+      "code_sha": "135b938fcfe0486895adfeea37fab73ee5f881dd",
+      "platform": "Windows-10-10.0.20348-SP0",
+      "machine": "AMD64",
+      "python": "3.11.15",
+      "file": "DeiDei-R01-T02-b-Windows-x64.zip",
+      "bytes": 166314346,
+      "sha256": "c573afd8b41d1bf73293c404f8679602e0889762945028024181e5f27960d850",
+      "build_only": true,
+      "physical_offline": "NOT_RUN",
+      "human_acceptance": "NOT_RUN",
+      "artifact_id": 10292994172,
+      "download_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34681310902/artifacts/10292994172",
+      "expires_at": "2026-09-26T07:41:24Z",
+      "local_path": "experiments/r01-t02-b/build/ci-artifacts/r01-t02-b-Windows-x64-135b938fcfe0486895adfeea37fab73ee5f881dd/DeiDei-R01-T02-b-Windows-x64.zip",
+      "downloaded_hash_verified": true
+    }
+  ],
+  "local_package": {
+    "task_id": "R01-T02-b",
+    "code_sha": "d6bcd3e848445e32dbc7908c664610fdde1dd1fb",
+    "platform": "macOS-27.0-arm64-arm-64bit",
+    "machine": "arm64",
+    "python": "3.11.15",
+    "file": "DeiDei-R01-T02-b-macOS-arm64.zip",
+    "bytes": 136885971,
+    "sha256": "1e6d0381e40f7ff214896a48f11d45ef603f4f8e7b89ecaffc7f2d73795ad34a",
+    "build_only": true,
+    "physical_offline": "NOT_RUN",
+    "human_acceptance": "NOT_RUN",
+    "path": "experiments/r01-t02-b/build/delivery/DeiDei-R01-T02-b-macOS-arm64.zip"
+  },
+  "commands": [
+    {
+      "command": "node <attachment probe> <exact old bridge blob>",
+      "exit_code": 0,
+      "evidence": "old-generation-reproduction.json",
+      "scope": "old code reproduction"
+    },
+    {
+      "command": "npm test",
+      "exit_code": 0,
+      "evidence": "regression.txt",
+      "code_sha": "d6bcd3e848445e32dbc7908c664610fdde1dd1fb"
+    },
+    {
+      "command": ".venv/bin/python test-worker.py",
+      "exit_code": 0,
+      "evidence": "worker-source.json"
+    },
+    {
+      "command": ".venv/bin/python test-worker.py dist/worker/worker",
+      "exit_code": 0,
+      "evidence": "worker-packaged.json"
+    },
+    {
+      "command": "python3 scripts/check.py",
+      "exit_code": 0,
+      "evidence": "original-check.txt"
+    },
+    {
+      "command": "npm run package",
+      "exit_code": 0,
+      "evidence": "local-package-log.txt"
+    },
+    {
+      "command": "node smoke.cjs 'build/得得 验证 b/DeiDei R01 Tech B.app/Contents/MacOS/DeiDei R01 Tech B' ../../docs/results/R01-T02-b",
+      "exit_code": 0,
+      "evidence": "desktop-smoke.json"
+    },
+    {
+      "command": ".venv/bin/python collect-package.py",
+      "exit_code": 0,
+      "evidence": "local-package-manifest.json"
+    },
+    {
+      "command": "npm audit --json (before/after)",
+      "exit_code": 1,
+      "evidence": "audit-after.json"
+    },
+    {
+      "command": "npm audit --omit=dev --json",
+      "exit_code": 0,
+      "evidence": "audit-runtime.json"
+    },
+    {
+      "command": "R01-T02-b packages GitHub Actions run34681310902",
+      "exit_code": 0,
+      "evidence": "ci-run.json",
+      "code_sha": "135b938fcfe0486895adfeea37fab73ee5f881dd"
+    }
+  ],
+  "remaining": [
+    "Windows native human/offline/clean-machine/signing deferred by user",
+    "Mac physical offline and human/clean-machine/signing NOT_RUN",
+    "Build dependency advisories remain; see DEPENDENCIES",
+    "ChatGPT must issue separate Windows task and next-round plan"
+  ],
+  "artifacts": [
+    {
+      "path": "CHATGPT-HANDOFF.md",
+      "sha256": "b5bbc8b525ccc429cc8f976cfd8caa006b874bbfe5da9545b09a5e14450fb2c8",
+      "bytes": 5401,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "DEPENDENCIES.md",
+      "sha256": "1410f1e04238cc85859a0195d3ad99a4da3e369d11341bf8720692782ac7c3c5",
+      "bytes": 2516,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "5d3c314b597ebf51bf911c2f19c661a2c9c8e7d2353485485c33f35c40abe8e6",
+      "bytes": 6658,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "RUNBOOK.md",
+      "sha256": "625be1ce6c6c6dbb68a10c4edbfd4b5cc8c04cd6099cf72374477b66daed9c3b",
+      "bytes": 4081,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "TEST-MATRIX.md",
+      "sha256": "ef84781f93b2ece5e4add86db6510622731ec9065c7a2c813dfe211671ba79ab",
+      "bytes": 2432,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "audit-after.json",
+      "sha256": "ae97648ee1fa37cb2c77f58c547d06598ffce9b240799574c39d403e7441e3f1",
+      "bytes": 19741,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "audit-before.json",
+      "sha256": "1f8df2299a0f091af0d41122954f18fcefe8633022c78c25781351725e7819db",
+      "bytes": 19741,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "audit-runtime.json",
+      "sha256": "0e144ddf942b0486313d0fd9eb308e86f10cb010e50815cbb316877d0d674cd5",
+      "bytes": 363,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "ci-artifacts.json",
+      "sha256": "ecefa6bbe4af0b1b35fc0d684460a6c45aff4d1e0d64e95e82e5bb5d75705e16",
+      "bytes": 1521,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "ci-build-log.txt",
+      "sha256": "7632f85feda2d8e2bddbde75a9eaa7724fcb5b8bd38797f9a792d16bc8b6895b",
+      "bytes": 380987,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "ci-initial-failure.txt",
+      "sha256": "f6508254f0c45c7c6911e519b2bc34b4d7be1cf87dcec8811ab412e0874a4482",
+      "bytes": 7477,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "ci-run.json",
+      "sha256": "b8fb88abd4af201106c2485b4a1593196e00caa66aff11790f7aa61a6f40f8f7",
+      "bytes": 5360,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "darwin-packaged-window.png",
+      "sha256": "fded58b01ec05ce90f196a5fa13ced625a654a2beda560c11e181892b64cd5cd",
+      "bytes": 165076,
+      "kind": "native_screenshot"
+    },
+    {
+      "path": "dependency-tree.json",
+      "sha256": "c67fbab52b048b38726ba37352da265017348739040628c8a750c364ed06a0f9",
+      "bytes": 3918,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "desktop-smoke.json",
+      "sha256": "88c8177fb587416ea79f04898b0c0b99fe81041b1d6cede8fe8a2adaf4dca64f",
+      "bytes": 26215,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "local-package-log.txt",
+      "sha256": "d53d19d6adc13effe7ad0a903e7aa1bc4ba8750c9c2e71526eea04a77fdb4d61",
+      "bytes": 858,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "local-package-manifest.json",
+      "sha256": "2f7633d72f48944a23e35645234f78c014b76e302e909b2e9213dae64364f716",
+      "bytes": 412,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "local-worker-build-log.txt",
+      "sha256": "039f387c0540ca0d23997b0050e2c9d5cd19aa7f0ffb36849f3afd31f75bac89",
+      "bytes": 4474,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "macos-observations.json",
+      "sha256": "bdecf09cc92f3d1060d5631e0102fb67f064320a03debc6a876c2eb90a917377",
+      "bytes": 615,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "macos-worker-restart.png",
+      "sha256": "850cf4dd66cf8a10ca6bc42f3e019dca17f7b4fdbb098db9d506ad45b95c405b",
+      "bytes": 83752,
+      "kind": "native_screenshot"
+    },
+    {
+      "path": "old-generation-reproduction.json",
+      "sha256": "f2262d18fac069071c79414ea2383a166962149a70432d4c8c48304fe68c5a63",
+      "bytes": 454,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "original-check.txt",
+      "sha256": "737b727273a40cd014f4e99906e5a7cb722402969ae7ae322dbc354ac6eb13ca",
+      "bytes": 3882,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "regression.txt",
+      "sha256": "7b5d5a979a494a1109362f7004420c5a3364902f5251fa9ff99437f28a575133",
+      "bytes": 898,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "verified-ci-packages.json",
+      "sha256": "c4a89ef676c035968b80cfb17e7a3df5c6b05a365b980c9b884d8ed428da32fe",
+      "bytes": 1638,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "worker-packaged.json",
+      "sha256": "05434b9a7b686f115ec7eb585de85995b95b231d7da16ad60906632d4cddfe29",
+      "bytes": 6992,
+      "kind": "report_or_evidence"
+    },
+    {
+      "path": "worker-source.json",
+      "sha256": "05434b9a7b686f115ec7eb585de85995b95b231d7da16ad60906632d4cddfe29",
+      "bytes": 6992,
+      "kind": "report_or_evidence"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "tested_code_sha": "d6bcd3e848445e32dbc7908c664610fdde1dd1fb",
+  "observation_type": "Codex CUA native interaction, not Teddy acceptance",
+  "platform": "macOS 27.0 / Apple M2 arm64",
+  "events": [
+    "Native app launch displays R01-T02-b",
+    "Health ready 109.8ms",
+    "shutdown stopping 16.6ms",
+    "Health retry ready 48.6ms",
+    "Quit then owned app/worker processes absent"
+  ],
+  "remaining_owned_processes": 0,
+  "zip_retest": "Local delivery ZIP extracted to build/得得 验证 b; smoke.cjs ten cycles PASS; desktop-smoke.json",
+  "physical_offline": "NOT_RUN",
+  "human_acceptance": "NOT_RUN"
+}

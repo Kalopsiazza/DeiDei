@@ -1,0 +1,66 @@
+125 INFO: PyInstaller: 6.22.2, contrib hooks: 2026.7
+125 INFO: Python: 3.11.15
+139 INFO: Platform: macOS-27.0-arm64-arm-64bit
+139 INFO: Python environment: <repo>/experiments/r01-t02-b/.venv
+140 INFO: wrote <repo>/experiments/r01-t02-b/build/worker.spec
+146 INFO: Removing temporary files and cleaning cache in <home>/Library/Application Support/pyinstaller
+150 INFO: Module search paths (PYTHONPATH):
+['<repo>/experiments/r01-t02-b',
+ '<home>/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python311.zip',
+ '<home>/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11',
+ '<home>/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/python3.11/lib-dynload',
+ '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages',
+ '<repo>/experiments/r01-t02-b',
+ '<repo>/experiments/r01-t02-b/build/rules']
+258 INFO: checking Analysis
+258 INFO: Building Analysis because Analysis-00.toc is non existent
+258 INFO: Looking for Python shared library...
+274 INFO: Using Python shared library: <home>/.local/share/uv/python/cpython-3.11.15-macos-aarch64-none/lib/libpython3.11.dylib
+274 INFO: Running Analysis Analysis-00.toc
+274 INFO: Target bytecode optimization level: 0
+274 INFO: Initializing module dependency graph...
+276 INFO: Initializing module graph hook caches...
+281 INFO: Analyzing modules for base_library.zip ...
+636 INFO: Processing standard module hook 'hook-heapq.py' from '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+677 INFO: Processing standard module hook 'hook-encodings.py' from '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+1406 INFO: Processing standard module hook 'hook-math.py' from '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+1511 INFO: Processing standard module hook 'hook-pickle.py' from '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+2247 INFO: Caching module dependency graph...
+2272 INFO: Analyzing <repo>/experiments/r01-t02-b/worker.py
+2305 INFO: Processing module hooks (post-graph stage)...
+2308 INFO: Performing binary vs. data reclassification (1 entries)
+2315 INFO: Looking for ctypes DLLs
+2319 INFO: Analyzing run-time hooks ...
+2320 INFO: Including run-time hook 'pyi_rth_inspect.py' from '<repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/hooks/rthooks'
+2322 INFO: Creating base_library.zip...
+2331 INFO: Looking for dynamic libraries
+2338 INFO: Warnings written to <repo>/experiments/r01-t02-b/build/pyinstaller/worker/warn-worker.txt
+2342 INFO: Graph cross-reference written to <repo>/experiments/r01-t02-b/build/pyinstaller/worker/xref-worker.html
+2352 INFO: checking PYZ
+2352 INFO: Building PYZ because PYZ-00.toc is non existent
+2352 INFO: Building PYZ (ZlibArchive) <repo>/experiments/r01-t02-b/build/pyinstaller/worker/PYZ-00.pyz
+2448 INFO: Building PYZ (ZlibArchive) <repo>/experiments/r01-t02-b/build/pyinstaller/worker/PYZ-00.pyz completed successfully.
+2449 INFO: EXE target arch: arm64
+2449 INFO: Code signing identity: None
+2455 INFO: checking PKG
+2455 INFO: Building PKG because PKG-00.toc is non existent
+2455 INFO: Building PKG (CArchive) worker.pkg
+2463 INFO: Building PKG (CArchive) worker.pkg completed successfully.
+2463 INFO: Bootloader <repo>/experiments/r01-t02-b/.venv/lib/python3.11/site-packages/PyInstaller/bootloader/Darwin-64bit/run
+2463 INFO: checking EXE
+2463 INFO: Building EXE because EXE-00.toc is non existent
+2463 INFO: Building EXE from EXE-00.toc
+2463 INFO: Copying bootloader EXE to <repo>/experiments/r01-t02-b/build/pyinstaller/worker/worker
+2464 INFO: Converting EXE to target arch (arm64)
+6188 INFO: Removing signature(s) from EXE
+6212 INFO: Modifying Mach-O image UUID(s) in EXE
+6215 INFO: Appending PKG archive to EXE
+6216 INFO: Fixing EXE headers for code signing
+6220 INFO: Rewriting the executable's macOS SDK version (26.2.0) to match the SDK version of the Python library (15.5.0) in order to avoid inconsistent behavior and potential UI issues in the frozen application.
+6221 INFO: Re-signing the EXE
+6243 INFO: Building EXE from EXE-00.toc completed successfully.
+6244 INFO: checking COLLECT
+6244 INFO: Building COLLECT because COLLECT-00.toc is non existent
+6244 INFO: Building COLLECT COLLECT-00.toc
+6771 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+6771 INFO: Build complete! The results are available in: <repo>/experiments/r01-t02-b/dist

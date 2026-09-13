@@ -1,0 +1,20 @@
+
+> deidei-r01-tech-b@0.1.0 test
+> node --test test-main.cjs test-generation.cjs
+
+✔ old exit and stdout cannot touch fresh generation; immediate retry; retained cleanup (2.891708ms)
+✔ stdin failure, repeated stop, spawn error with close but no exit; late events (2.195917ms)
+✔ oversize and capacity rejected before spawn; concurrent requests settle once (1.499125ms)
+{"timeoutMs":200,"observedMs":203.728667,"reaped":true,"retry":true}
+{"timeoutMs":10000,"observedMs":10002.295084000001,"reaped":true,"retry":true}
+✔ injected 200ms and production 10s timeout both reap actual child; retry works (10302.056542ms)
+✔ worker failure, timeout, protocol fault, shutdown and restart (381.72975ms)
+✔ profile atomic replacement, validation and preservation on errors (5.289083ms)
+ℹ tests 6
+ℹ suites 0
+ℹ pass 6
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 10350.85475

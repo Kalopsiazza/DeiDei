@@ -1,0 +1,71 @@
+name: R01-T02-b packages
+on:
+  pull_request:
+    branches: [docs/design-discussion-20260911]
+    paths:
+      - experiments/r01-t02-b/**
+      - .github/workflows/r01-t02-b.yml
+permissions:
+  contents: read
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            platform: macOS-arm64
+            python: .venv/bin/python
+            lock: requirements-build-macos-arm64.txt
+          - os: windows-2022
+            platform: Windows-x64
+            python: .venv/Scripts/python.exe
+            lock: requirements-build-windows.txt
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 20
+    env:
+      EXPERIMENT_PYTHON: ${{ matrix.python }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: experiments/r01-t02-b
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          ref: ${{ github.event.pull_request.head.sha }}
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: '24.12.0'
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff # v6
+        with:
+          version: '0.11.13'
+          enable-cache: false
+      - name: Locked build dependencies
+        env:
+          LOCK: ${{ matrix.lock }}
+        run: |
+          uv venv --python 3.11.15 .venv
+          uv pip install --python "$EXPERIMENT_PYTHON" -r "$LOCK"
+          npm ci
+      - name: Build worker and test
+        run: |
+          "$EXPERIMENT_PYTHON" build-worker.py
+          "$EXPERIMENT_PYTHON" test-worker.py
+          if [ "$RUNNER_OS" = "Windows" ]; then
+            "$EXPERIMENT_PYTHON" test-worker.py dist/worker/worker.exe
+          else
+            "$EXPERIMENT_PYTHON" test-worker.py dist/worker/worker
+          fi
+          npm test
+          "$EXPERIMENT_PYTHON" ../../scripts/check.py
+      - name: Package without desktop acceptance claim
+        run: |
+          npm run package
+          "$EXPERIMENT_PYTHON" collect-package.py
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
+        with:
+          name: r01-t02-b-${{ matrix.platform }}-${{ github.event.pull_request.head.sha }}
+          path: experiments/r01-t02-b/build/delivery/*
+          if-no-files-found: error
+          retention-days: 14
