@@ -25,6 +25,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const application=path.join(scratch,path.basename(latest.unpacked_application));
  const pass=(id,text)=>{report.checks.push({id,status:'PASS',text});console.log(id,text);};
  const save=()=>fs.writeFileSync(path.join(output,'packaged-automation.json'),JSON.stringify(report,null,2)+'\n');
+ process.on('exit',code=>{report.driver_exit_code=code;save();});
  const exe=base=>path.join(base,process.platform==='darwin'?'Contents/MacOS/DeiDeiR02':'DeiDeiR02.exe');
  const resources=base=>path.join(base,process.platform==='darwin'?'Contents/Resources':'resources');
  const workerPath=path.join(resources(application),'worker',process.platform==='darwin'?'deidei-worker':'deidei-worker.exe');
@@ -32,6 +33,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   DEIDEI_TEST_DATA_DIR:path.join(scratch,'must-be-ignored'),
   PATH:process.platform==='win32'?path.join(process.env.SystemRoot,'System32'):'/usr/bin:/bin'};
  delete env.ELECTRON_RUN_AS_NODE;
+ if(process.platform==='win32')env.ELECTRON_NO_ATTACH_CONSOLE='1';
  function children(pid) {
   if(process.platform==='darwin')return execFileSync('/bin/ps',['-axo','pid=,ppid=,comm='],{encoding:'utf8'}).split('\n').flatMap(line=>{
    const m=line.trim().match(/^(\d+)\s+(\d+)\s+(.+)$/);return m&&Number(m[2])===pid?[{pid:Number(m[1]),executable:m[3]}]:[];
@@ -58,7 +60,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   return context;
  }
  async function start() {
-  await page.getByRole('button',{name:'单人对局',exact:true}).click();
+  await page.getByRole('button',{name:/^单人对局/}).click();
   await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
   await page.locator('.table[data-phase="selecting"]').waitFor();
   const view=(await page.evaluate(()=>window.desktop.port.getView())).data;
@@ -80,6 +82,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  try {
   // Read the original application's default name/path before creating any CI profile.
   const sourceEnv={...process.env};delete sourceEnv.ELECTRON_RUN_AS_NODE;delete sourceEnv.DEIDEI_TEST_DATA_DIR;
+  if(process.platform==='win32')sourceEnv.ELECTRON_NO_ATTACH_CONSOLE='1';
   report.progress='launch source executable for name/path comparison';save();
   const sourceExecutable=path.join(root,'game/desktop/node_modules/electron/dist',process.platform==='darwin'?'Electron.app/Contents/MacOS/Electron':'electron.exe');
   assert.ok(fs.existsSync(sourceExecutable),'install the fixed source Electron before GUI comparison');
@@ -88,7 +91,9 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   report.sourceContext=await app.evaluate(({app})=>({name:app.getName(),userData:app.getPath('userData'),isPackaged:app.isPackaged}));
   assert.equal(report.sourceContext.isPackaged,false);
   assert.equal((await page.evaluate(()=>window.desktop.profile.read())).data,null,'CI profile must initially be empty');
+  report.progress='source comparison read; closing source';save();
   await app.close();app=null;
+  report.progress='source closed; copying unpacked application';save();
   if(process.platform==='darwin')execFileSync('ditto',[latest.unpacked_application,application]);
   else fs.cpSync(latest.unpacked_application,application,{recursive:true});
   // Only the disposable CI checkout is hidden, never the user's working trees.
@@ -176,7 +181,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
    const missingPath=path.join(resources(damaged),'worker',missing==='worker'?(process.platform==='darwin'?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json');
    fs.renameSync(missingPath,missingPath+'.removed');
    await launch(damaged);
-   await page.getByRole('button',{name:'单人对局',exact:true}).click();await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
+   await page.getByRole('button',{name:/^单人对局/}).click();await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
    await page.getByText('游戏文件不完整，请重新取得完整测试包',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);
    assert.ok(!children(app.process().pid).some(p=>/deidei-worker|python/i.test(p.executable)));
    await close();

@@ -116,7 +116,8 @@ def main() -> None:
         run(name, [sys.executable, *args], env=env)
     run('desktop', npm_command + ['test'], DESKTOP, env={**os.environ, 'DEIDEI_PYTHON': sys.executable})
     run('freeze', [sys.executable, '-m', 'PyInstaller', '--noconfirm', '--clean',
-                   '--distpath', str(out / 'frozen'), '--workpath', str(out / 'pyinstaller'), str(HERE / 'worker.spec')])
+                   '--distpath', str(out / 'frozen'), '--workpath', str(out / 'pyinstaller'), str(HERE / 'worker.spec')],
+        env={**os.environ, 'PYINSTALLER_CONFIG_DIR': str(out / 'pyinstaller-cache')})
     worker = out / 'frozen/worker'
     assert sha(worker / '_internal/deidei_runtime/data/catalog.json') == sha(DESKTOP / 'catalog.json')
     assert sha(worker / '_internal/deidei_runtime/entry-map.json') == sha(ROOT / 'game/runtime/deidei_runtime/entry-map.json')
