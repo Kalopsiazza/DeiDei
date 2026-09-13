@@ -23,7 +23,7 @@ const {workerLaunch}=require('../desktop/worker-launch.cjs');
   const id=`smoke-${transcript.length+1}`;
   const response=new Promise(resolve=>{receive=resolve;});
   child.stdin.write(JSON.stringify({v:1,id,op,payload})+'\n');
-  const r=await Promise.race([response,closed.then(()=>{throw new Error('worker closed before reply');})]);
+  const r=await Promise.race([response,closed.then(code=>{throw new Error(`worker closed before reply: ${code}; ${stderr}`);})]);
   assert.equal(r.id,id);assert.equal(r.v,1);assert.equal(r.ok,true,JSON.stringify(r));
   transcript.push({op,response:r});return r.data;
  }

@@ -1,5 +1,4 @@
 from pathlib import Path
-import sys
 
 root = Path(SPECPATH).resolve().parent
 a = Analysis(
@@ -11,6 +10,5 @@ a = Analysis(
 )
 pyz = PYZ(a.pure)
 exe = EXE(pyz, a.scripts, [], exclude_binaries=True, name='deidei-worker',
-          console=True, upx=False, contents_directory='_internal',
-          codesign_identity='-' if sys.platform == 'darwin' else None)
+          console=True, upx=False, contents_directory='_internal')
 coll = COLLECT(exe, a.binaries, a.datas, name='worker', upx=False)
