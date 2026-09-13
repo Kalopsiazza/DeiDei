@@ -1,0 +1,286 @@
+{
+  "task_id": "R01-T03-a",
+  "status": "SUBMITTED",
+  "input_ref": "plan/r01-v1",
+  "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "prd_version": "1.0",
+  "architecture_version": "1.0",
+  "ui_version": "1.0",
+  "tested_code_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "branch": "work/r01-t03-a-ui",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/9",
+  "platforms": [
+    {
+      "os": "Darwin",
+      "cpu": "arm64",
+      "python": "3.13.7",
+      "git": "2.54.0"
+    }
+  ],
+  "tool": "image_gen.imagegen",
+  "model": "unknown",
+  "generation_counts": {
+    "P02": 1,
+    "P04": 1,
+    "P05": 1,
+    "P06": 2,
+    "P07": 1,
+    "P08": 1,
+    "P10": 1
+  },
+  "references": [
+    {
+      "path": "handoff/references/original-layout.png",
+      "sha256": "a56be34ec21953a997b27a02932616b09102e0ea5270359022fbc6dff929c211",
+      "opened": true
+    },
+    {
+      "path": "handoff/references/approved-style-02.png",
+      "sha256": "01b94d1e1f717913f4c90a23254b906921d0d64ed33fadc0dc78aa1b2e970bf2",
+      "opened": true
+    }
+  ],
+  "commands": [
+    {
+      "command": "python3 docs/results/R01-T03-a/make_wireframes.py",
+      "exit_code": 0
+    },
+    {
+      "command": "python3 scripts/check.py",
+      "exit_code": 0,
+      "tests": 32,
+      "expected_failures": 1
+    },
+    {
+      "command": "XML parse all result SVGs and PNG header dimension check",
+      "exit_code": 0
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "INDEX.svg",
+      "sha256": "ff9e95ac8676dd281d85c4611533b14f6b9100636cc3fa8f5dcc2f2744615f5c",
+      "kind": "evidence"
+    },
+    {
+      "path": "P02-concept-v1.png",
+      "sha256": "96e2db6d566b28d95bfe771ad218592a435937e0fe0d88002ef1d1d7d4d1a372",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P02-preview.png",
+      "sha256": "d2253312d2944c575a8ef333ee6434a662e710ee3f03950b3b9fc2574f47193d",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P02-wireframe-v1.svg",
+      "sha256": "02779b200b8648afdc3a0e4e9a80f79e842a1c87c7dd195f43f0b4855aa4d61f",
+      "kind": "wireframe"
+    },
+    {
+      "path": "P04-concept-v1.png",
+      "sha256": "4b25e1b749b4b9aa5e708e6565ee34a37b4b5394fa069fee536b44cbe2fb6031",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P04-preview.png",
+      "sha256": "6c7056eb09a0a97fae119e396c2e810acc08fbc027ae352fb668248a80cf942c",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P04-wireframe-v1.svg",
+      "sha256": "7945bf7dd03f7eb409900f8f5463989b47d7c5969c3ca2113925e4c8ae13315f",
+      "kind": "wireframe"
+    },
+    {
+      "path": "P05-concept-v1.png",
+      "sha256": "cc797f07d849709d45352d86abdff4245a0f243001c2039c6fdf780412ff421d",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P05-preview.png",
+      "sha256": "d8c77d7acccbf682a98fe7c9bf3bd301efe01ecc4b6883f3ec5ae6ea09f894c6",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P05-wireframe-v1.svg",
+      "sha256": "b1eaaf392bca64cc06f9ecc4de8ab7aacf409d7712736cf53ba5e3c8e881bff8",
+      "kind": "wireframe"
+    },
+    {
+      "path": "P06-concept-v1.png",
+      "sha256": "c9555d26888d8dc244d160c142ea8c53c7a97b6425508b71c1f5753f1b115db8",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P06-concept-v2.png",
+      "sha256": "d100d8c84950139d9d0bba023ab8b20a19c5189ffb7e6b8c85b18aa1bc3c92fa",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P06-preview.png",
+      "sha256": "c6dcff40bc7dd968f6dd0cebe7de1936d4497928e01d31234195b258040817bf",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P06-wireframe-v1.svg",
+      "sha256": "5b8afc51a93b87821b9b163e1e0d67b197305deb75374b515ee1d13d63c6fc64",
+      "kind": "wireframe"
+    },
+    {
+      "path": "P07-concept-v1.png",
+      "sha256": "0298063587dcec2707a7810439e386c52006938f37f7da65623bb5fb38242e72",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P07-density-1366.png",
+      "sha256": "abe7cbeabe0f337f104624da42bb1333c33aea8b5331d5aea86f169724f9df82",
+      "kind": "evidence",
+      "dimensions": [
+        1366,
+        854
+      ]
+    },
+    {
+      "path": "P07-preview.png",
+      "sha256": "6e1b950431ef7e604b3ffa785388107f7ec7a3d8b9481099d977bb23d99d4417",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P07-wireframe-v1.svg",
+      "sha256": "ed5758e79d370461f0ea38805fe6123b474ef784ffbf1bf2f15f65180ac57401",
+      "kind": "wireframe"
+    },
+    {
+      "path": "P08-concept-v1.png",
+      "sha256": "3f6d28ddc28daa8626311c70d44cdaf428a02fae93e8fc1cd493f6ef59ddbe67",
+      "kind": "concept",
+      "dimensions": [
+        1586,
+        992
+      ]
+    },
+    {
+      "path": "P08-preview.png",
+      "sha256": "6e34eb4fbdbeb7c0af5f7a4ca03ea945b0f6a9e280ddfc5d5f215b5135d4a851",
+      "kind": "evidence",
+      "dimensions": [
+        480,
+        300
+      ]
+    },
+    {
+      "path": "P08-wireframe-v1.svg",
+      "sha256": "6e06095d100e8e18d112a980c4c86e9fd88081cf85d6b445e8eb64d52e6b1ed2",
+      "kind": "wireframe"
+    },
+    {
+      "path": "PAGE-MAP.md",
+      "sha256": "29a1a4ea57f499c020a8b64770caae22cd1e4cf27305632eee9cb67cc121238e",
+      "kind": "evidence"
+    },
+    {
+      "path": "REPORT.md",
+      "sha256": "68387480e1ae57c7fe1619fb5037372b966ac7261407cb7def27150855cd8d94",
+      "kind": "evidence"
+    },
+    {
+      "path": "TEDDY-FEEDBACK.md",
+      "sha256": "8b84e0dfa0446866f7f81b79b605cec6037336e73af126fe3a7efd209c232b1a",
+      "kind": "evidence"
+    },
+    {
+      "path": "check.log",
+      "sha256": "c1528adbea5596c73be838b20c3ad324ad66641e9d2c47b95d298727131e3391",
+      "kind": "evidence"
+    },
+    {
+      "path": "make_wireframes.py",
+      "sha256": "e8f3348438ddc5cab08ef098f18a67dfc453adfbb7f52e03e091db16b44d56e9",
+      "kind": "evidence"
+    },
+    {
+      "path": "prompts.json",
+      "sha256": "3900e10144dac4ad73ed405c48597e93681032a9f731ad262c649329026101ed",
+      "kind": "evidence"
+    },
+    {
+      "path": "P10-concept-v1.png",
+      "kind": "concept",
+      "sha256": "44dc10c81f2adf067d9b6bab6481395c3f7328a84b6f4f9ed9f3ee5779c8dfe7"
+    },
+    {
+      "path": "P10-prompt.txt",
+      "kind": "prompt",
+      "sha256": "b8bdd22f133cf5b7e3a7005b0fb16daffb7f99665c67668c0fcdb9e02f0f16bc"
+    }
+  ],
+  "not_run": [
+    "Exact 1366x768 / 1920x1080 viewport validation",
+    "GUI/model/network/runtime tests: out of scope"
+  ],
+  "open_questions": [
+    "ChatGPT follow-up for P06 timer label after two attempts",
+    "P07 progress bar and self-submitted state",
+    "P08 preserve same seat identities/layout as P07"
+  ],
+  "user_feedback": {
+    "date": "2026-09-12",
+    "verbatim": "提交吧，我要去找 ChatGPT pro 验收了，你这个布局验收通过",
+    "scope": "layout accepted by Teddy; task review by ChatGPT Pro pending"
+  },
+  "additional_scope": {
+    "page": "P10",
+    "authorization": "User explicitly requested left sidebar and right detail settings concept",
+    "model": "unknown",
+    "tool": "image_gen.imagegen",
+    "reference": "P04-concept-v1.png",
+    "postprocessing": "none"
+  },
+  "submission_authorized": true,
+  "artifact_commit_sha": "adbe5740acd5d6d91a7026f33480f73b9138005f"
+}
