@@ -74,6 +74,7 @@
     "docs/results/R02-T04-b/window-development.txt",
     "docs/results/R02-T04-b/window-ledger-after.jsonl",
     "docs/results/R02-T04-b/window-ledger-before.jsonl",
+    "docs/results/R02-T04-b/PR-SUBMISSION.json",
     "docs/results/R02-T04-b/MANIFEST.json"
   ],
   "files": [
@@ -241,8 +242,8 @@
     },
     {
       "path": "docs/results/R02-T04-b/REPORT.md",
-      "bytes": 7200,
-      "sha256": "feed6d48b9795ebc6cfdd1bb16e009de4d38a8598b6d0712a51ae301281ea1e2",
+      "bytes": 7465,
+      "sha256": "32d3302da139cf0b95f5e94cc81db078b7d8ff81b50e4db18d94657fe72150de",
       "role": "b delivery evidence"
     },
     {
@@ -472,10 +473,16 @@
       "bytes": 5118,
       "sha256": "ec8ead7e9d91b095bd0b209197eb5c65a513762af16d77476d23c01e56cbb418",
       "role": "b delivery evidence"
+    },
+    {
+      "path": "docs/results/R02-T04-b/PR-SUBMISSION.json",
+      "bytes": 1565,
+      "sha256": "9c0f0ec6c6d2a8f2cfe22fa20c791a0aadc2987b359fbc35b49a16f729f215ef",
+      "role": "b delivery evidence"
     }
   ],
   "final_validation": "validation.json",
-  "status": "LOCAL_SOURCE_PASS_READY_FOR_PR",
+  "status": "PR_CREATED_AND_READ_BACK",
   "not_run": [
     "original independent session placeholders (2)",
     "Windows",
@@ -484,5 +491,7 @@
     "user manual acceptance",
     "packaging/signing/release"
   ],
-  "kimi": "NOT_CALLED_PAUSED"
+  "kimi": "NOT_CALLED_PAUSED",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/18",
+  "submission_record": "PR-SUBMISSION.json"
 }

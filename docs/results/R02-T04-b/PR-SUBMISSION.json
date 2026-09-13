@@ -1,0 +1,35 @@
+{
+  "status": "PR_CREATED_AND_READ_BACK",
+  "url": "https://github.com/Kalopsiazza/DeiDei/pull/18",
+  "initial_pr_readback": {
+    "baseRefName": "integration/r02",
+    "baseRefOid": "20312a2244ff0447593f22fde41b9b8bb960da9a",
+    "headRefName": "codex/r02-t04-b-live-fixes",
+    "headRefOid": "0fe74a9a7a0c0ef184d5537178f5a5db8dbed850",
+    "isDraft": false,
+    "mergeStateStatus": "CLEAN",
+    "state": "OPEN",
+    "statusCheckRollup": [],
+    "url": "https://github.com/Kalopsiazza/DeiDei/pull/18"
+  },
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "verification_checkpoint_sha": "0fe74a9a7a0c0ef184d5537178f5a5db8dbed850",
+  "note": "This receipt is committed after the initial verified PR head. Later commits add delivery records only; current final head is read back from GitHub after the last push.",
+  "commands": [
+    {
+      "command": "git push -u origin codex/r02-t04-b-live-fixes",
+      "exit_code": 0
+    },
+    {
+      "command": "gh pr create --repo Kalopsiazza/DeiDei --base integration/r02 --head codex/r02-t04-b-live-fixes --title \"[R02-T04-b] 单人摘要与等待导航修订｜提交验收\" --body-file docs/results/R02-T04-b/PR-BODY.md",
+      "exit_code": 0
+    },
+    {
+      "command": "gh pr view 18 --repo Kalopsiazza/DeiDei --json url,state,isDraft,baseRefName,baseRefOid,headRefName,headRefOid,mergeStateStatus,statusCheckRollup",
+      "exit_code": 0
+    }
+  ],
+  "ci_at_checkpoint": "No status checks reported; local validation is recorded separately.",
+  "automatic_merge": false,
+  "PR16_closed": false
+}

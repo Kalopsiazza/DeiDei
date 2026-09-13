@@ -67,4 +67,4 @@ F02：`renderer.tsx` 用同步 `sceneChangePending` ref 保护开场与预览切
 
 Windows、Python 3.11 单独实机、物理断网、用户本人手动对局为 NOT_RUN；没有把窗口自动化称为这些验收。原独立 2 项 session 占位仍为 NOT_RUN；规划者提供的独立 6 项复测另属附件。旧 23 项工具链审计告警沿用 a 包记录，本包未重新 audit、换依赖或处理告警。
 
-按指定路径与已有测试进行了自审，未调用 Kimi（已暂停）。本包只提交源码修订与本机证据；不合并 PR、不关闭 PR #16、不发下一包、不分发或发布。PR 创建与回读另见后续提交记录。
+按指定路径与已有测试进行了自审，未调用 Kimi（已暂停）。本包只提交源码修订与本机证据；不合并 PR、不关闭 PR #16、不发下一包、不分发或发布。[PR #18](https://github.com/Kalopsiazza/DeiDei/pull/18) 已创建并回读：base `integration/r02`、head `codex/r02-t04-b-live-fixes`、首次核对 SHA `0fe74a9a7a0c0ef184d5537178f5a5db8dbed850`；详见 [PR-SUBMISSION.json](PR-SUBMISSION.json)。该记录随后单独提交，不改变受测产品代码。
