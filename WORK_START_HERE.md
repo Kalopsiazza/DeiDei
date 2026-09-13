@@ -1,7 +1,11 @@
-# DeiDei｜集成工作起点
+# DeiDei｜工作入口
 
-当前为integration/r02隔离工作分支。请先阅读[第二轮集成入口](docs/production/R02-LIVE-START.md)及[SOURCE-MANIFEST](SOURCE-MANIFEST.json)。它包含已核对的三个固定目录和一份新实现任务。
+2026-09-13。当前在第二轮真实单人收尾，请先读[进度板](docs/production/STATUS.md)与[当前集成入口](docs/production/R02-LIVE-START.md)。
 
-main、原规划分支与原任务PR均未因建立本起点而合入。旧a包与第一轮文档保留作历史，当前新任务为R02-T04-a。正式规则classic-1.0.1与原R02合同在用户交接附件original-r02-input.zip；开始前核对hash，只读使用。
+任务04-a已提交PR #16，主体通过所列源码复测，验收提出两处小修。新任务为[第二轮｜任务04｜b](docs/tasks/R02/R02-T04-b.md)。产品输入从980a019d9a1410bf3ee72263d90397023696f32b开始，规划按本分支只读查看，两个SHA分别记录。
 
-ChatGPT写PRD、架构、编号任务并验收；Codex只执行指定包。没有自行改规则、写正式PRD、发布或合入的许可。结果PR目标integration/r02，自己的分支是codex/r02-t04-a-live。
+ChatGPT编写正式PRD、架构、工作包并验收；Codex按指定范围实现、测试和提交，不自行改玩法、换技术、发下一包或合入。Teddy决定产品取舍与最终发布。
+
+旧讨论和仓库旧规则1.0仅为历史。当前实际采用classic-1.0.1，已验收代码及测试按工作包指定版本读取。本轮不修改规则。原R02文档仍可从先前交接附件读取；做本次两项显示/导航修订只需本包PRD与架构以及候选源代码。
+
+没有自动启动Codex，没有发布安装包。Windows同学协作任务独立进行，不作为本包等待项。
