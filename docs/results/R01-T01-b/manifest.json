@@ -1,0 +1,378 @@
+{
+  "task_id": "R01-T01-b",
+  "status": "SUBMITTED",
+  "status_scope": "Teddy accepted the local review result and authorized PR submission; PR submitted, waiting for ChatGPT Pro acceptance",
+  "created_at": "2026-09-12T07:46:23.425530+00:00",
+  "input_ref": "fixed planning commit",
+  "input_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "source_evidence_sha": "d3a1e5842781fed433799c940619ab38da0230be",
+  "observed_remote_main_sha": "889162fc90000919004f498b27cffbd5fa4cbe45",
+  "observed_remote_target_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "branch": "work/r01-t01-b-review",
+  "pr_target": "docs/design-discussion-20260911",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/11",
+  "github_delivery": {
+    "pushed": true,
+    "pr_created": true,
+    "reason": "Explicit subsequent user authorization to submit the PR",
+    "base": "docs/design-discussion-20260911",
+    "head": "work/r01-t01-b-review"
+  },
+  "prd_version": "PRD-R01-B 1.0 / PRD-RULES 1.0",
+  "architecture_version": "ARC-R01-B 1.0 D01 / RULE-ENGINE 1.0",
+  "tested_code_sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+  "tested_code_scope": "Unmodified legacy repository checks only; new document checker is identified by artifact SHA-256",
+  "review_independence": "New task, not an author of source evidence or formal rules; AI-assisted review, not external professional certification",
+  "platforms": [
+    {
+      "os": "macOS",
+      "version": "27.0",
+      "machine": "arm64",
+      "python": "3.13.7",
+      "git": "git version 2.54.0 (Apple Git-157)"
+    }
+  ],
+  "attachment": {
+    "filename": "deidei-r01-b-handoff-local.zip",
+    "sha256": "83a0fe5ae795217f6d2e53e2f84f0cd4f32e573c8f13ad5e3a3660d31f7bac44",
+    "verified_manifest_items": 25,
+    "formal_reference_files_identical_to_base": 7,
+    "relevant_spec_files": [
+      {
+        "path": "WORK_START_HERE.md",
+        "sha256": "17704ac54867d1be5eaac352eefd7b2f3385e05cdc4ad1a11d5acbba6db7f172"
+      },
+      {
+        "path": "docs/tasks/R01/R01-T01-b.md",
+        "sha256": "cacd3b34836f02a1a693a865487ac6318d43428a23d741c7841cf6203ce10e11"
+      },
+      {
+        "path": "docs/prd/R01-b-prd.md",
+        "sha256": "307a577f90dd83c600cc1a1e327989c97b61042640942fb62ff9a422baf639eb"
+      },
+      {
+        "path": "docs/architecture/R01-b-validation.md",
+        "sha256": "8dd2eebd108bdae39ea31ecb084d41b57146e43833e4afffa00a43529588cc38"
+      },
+      {
+        "path": "DELIVERY-STATUS.txt",
+        "sha256": "ac3328ceafe05268a10e671f91b1560c4e99c0a021d5253a1c773e63766e6bff"
+      }
+    ],
+    "planning_files_copied_into_result": false
+  },
+  "coverage": {
+    "G": {
+      "reviewed": 60,
+      "complete": 58,
+      "text_omission": 2
+    },
+    "E": {
+      "reviewed": 33,
+      "cost_eligibility_origin_conflicts": 0,
+      "defense_text_omission": 1
+    },
+    "C": {
+      "reviewed_groups": 80,
+      "no_reported_document_issue": 55,
+      "groups_with_document_issue_or_clarification": 25,
+      "engine_executions": 0
+    },
+    "findings": {
+      "total": 5,
+      "P2": 4,
+      "P3": 1
+    }
+  },
+  "findings": [
+    {
+      "id": "F01",
+      "kind": "document_default_contradiction",
+      "status": "OPEN_FOR_PLANNER"
+    },
+    {
+      "id": "F02",
+      "kind": "case_coverage_gap",
+      "status": "OPEN_FOR_PLANNER"
+    },
+    {
+      "id": "F03",
+      "kind": "fixture_fields_require_clarification",
+      "status": "OPEN_FOR_PLANNER"
+    },
+    {
+      "id": "F04",
+      "kind": "case_coverage_gap",
+      "status": "OPEN_FOR_PLANNER"
+    },
+    {
+      "id": "F05",
+      "kind": "confirmed_numeric_field_omitted",
+      "status": "OPEN_FOR_PLANNER"
+    }
+  ],
+  "validation": {
+    "legacy_tests": 32,
+    "legacy_successes": 31,
+    "legacy_known_expected_failures": 1,
+    "new_rule_tests_run": 0,
+    "arithmetic_sums": 11,
+    "exact_sixth_values": 17,
+    "document_check": "PASS",
+    "self_review": "completed",
+    "kimi_called": false,
+    "external_reviewer_used": false
+  },
+  "commands": [
+    {
+      "argv": [
+        "python3",
+        "docs/results/R01-T01-b/check_documents.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "python3",
+        "<allowed-path-check>"
+      ],
+      "exit_code": 0,
+      "description": "No tracked file changes; all untracked files under docs/results/R01-T01-b/"
+    },
+    {
+      "argv": [
+        "python3",
+        "docs/results/R01-T01-b/check_documents.py"
+      ],
+      "exit_code": 0,
+      "purpose": "Final manifest input and artifact hash verification; actual run completed with exit 0"
+    },
+    {
+      "argv": [
+        "git",
+        "diff",
+        "--cached",
+        "--check"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "git",
+        "push",
+        "-u",
+        "origin",
+        "HEAD:refs/heads/work/r01-t01-b-review"
+      ],
+      "exit_code": 0
+    },
+    {
+      "argv": [
+        "gh",
+        "pr",
+        "create",
+        "--repo",
+        "Kalopsiazza/DeiDei",
+        "--base",
+        "docs/design-discussion-20260911",
+        "--head",
+        "work/r01-t01-b-review",
+        "--title",
+        "[R01-T01-b] 规则独立线程复核｜提交验收",
+        "--body-file",
+        "<temporary PR description file>"
+      ],
+      "exit_code": 0,
+      "result": "https://github.com/Kalopsiazza/DeiDei/pull/11"
+    }
+  ],
+  "inputs": [
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/rules/v1/README.md",
+      "sha256": "d8f451c68801ce3fd6d1dbdb8be30497a6341166ae034527004184200f915b0c",
+      "bytes": 1132
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/rules/v1/RULEBOOK.md",
+      "sha256": "ff4694226c9cd1bee918d6bad5ba28183696bc7c8064ba46d3a7fcdfb3261c93",
+      "bytes": 25626
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/rules/v1/PLAYER-GUIDE.md",
+      "sha256": "61828ce13aa4951a500e405e241422616607d69f8c709fa5708ceac0c40b493d",
+      "bytes": 7477
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/rules/v1/CASES.md",
+      "sha256": "61c88a5c54865179b6a7f6e86493aed5cc0d43b19616316ffff7d47309107bab",
+      "bytes": 27654
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/rules/v1/TRACEABILITY.md",
+      "sha256": "62e617cd3fb30314502e0d0524aeac31377f242b2348e0c9b07b618b2c3adcdb",
+      "bytes": 8232
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/prd/PRD-RULES-v1.0.md",
+      "sha256": "4260e3326236bbcd473efce77aff281e18ecbdf5da534827462d55ad3eb0b99a",
+      "bytes": 3300
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/architecture/RULE-ENGINE-v1.0.md",
+      "sha256": "07a1947061d54c75306347c5d727fc291752a9124bab3fd9e56e75f2df2ffc4d",
+      "bytes": 15801
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "AGENTS.md",
+      "sha256": "0454de1420e40a28c613e3266a4a192758b54ca3edb0e77a2459b18d14368abb",
+      "bytes": 4428
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/production/WORKFLOW.md",
+      "sha256": "c90ffe4f9076c20b230fa6c91bfb5b2c661769e2b2e0d0cc0a7596a9058bb57f",
+      "bytes": 6137
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": "docs/templates/task-result.md",
+      "sha256": "9d7dc34988dfd82b84a4b4d03f9695a38d1969e8eb7e178304066ee41996277e",
+      "bytes": 1927
+    },
+    {
+      "sha": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "path": ".github/pull_request_template.md",
+      "sha256": "7d6418284d7ab37a0400623c865f19ea7378e25878a2367e699f41eceebbeab8",
+      "bytes": 1087
+    },
+    {
+      "sha": "d3a1e5842781fed433799c940619ab38da0230be",
+      "path": "docs/results/R01-T01-a/ANSWERS.md",
+      "sha256": "1b58a24f07d45eff8082dece329985265d882106dcb0d3915f2442cb957d512c",
+      "bytes": 82203
+    },
+    {
+      "sha": "d3a1e5842781fed433799c940619ab38da0230be",
+      "path": "docs/results/R01-T01-a/RULE-FRAMEWORK.md",
+      "sha256": "16e48036001c30ba3f799e2fc24f4217fb3af832dd99d34ea4af8a84584e80f3",
+      "bytes": 127230
+    },
+    {
+      "sha": "d3a1e5842781fed433799c940619ab38da0230be",
+      "path": "docs/results/R01-T01-a/MOVE-CATALOG.json",
+      "sha256": "a363bbb7e8df7ad3f32149b68a8c8c6e2c342a0d8f7e140337123e4d4de27f79",
+      "bytes": 177235
+    },
+    {
+      "sha": "d3a1e5842781fed433799c940619ab38da0230be",
+      "path": "docs/results/R01-T01-a/QUESTIONS.md",
+      "sha256": "9a5ec35cf960c47f1d69c7744faf16b23745c28a9c1a8f60ead30c8c198ab51c",
+      "bytes": 12120
+    },
+    {
+      "sha": "d3a1e5842781fed433799c940619ab38da0230be",
+      "path": "docs/results/R01-T01-a/JUYAN-REVIEW.md",
+      "sha256": "18afafff0df187d41cf281c447a337f7ee7905ffa6ad54a2d28f6d9e75aca180",
+      "bytes": 4655
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/results/R01-T01-b/COVERAGE.md",
+      "sha256": "263cbd3c2c6121a9e9a60c49ca8fc98737d8af3478d8a78f9db7d9a156dee1ba",
+      "bytes": 72388,
+      "kind": "review_document"
+    },
+    {
+      "path": "docs/results/R01-T01-b/FINDINGS.md",
+      "sha256": "0d559383569be7986377adc1a8587154f658c75c9551fe1121060500ff1d529a",
+      "bytes": 9937,
+      "kind": "review_document"
+    },
+    {
+      "path": "docs/results/R01-T01-b/REPORT.md",
+      "sha256": "d0390ee7c749cf27a08bbb1ce64920b006eb63e1582f7971651737f9308dd265",
+      "bytes": 6225,
+      "kind": "review_document"
+    },
+    {
+      "path": "docs/results/R01-T01-b/check.txt",
+      "sha256": "4cacc8142aa5decfe1fb4954ad66b638c2371ce36d5432e836e2e9fffb37b874",
+      "bytes": 4513,
+      "kind": "check_output"
+    },
+    {
+      "path": "docs/results/R01-T01-b/check_documents.py",
+      "sha256": "c42d6d852619335a0cc6d58ff90832b54406d811009b79009afcdfd1e69e06aa",
+      "bytes": 7648,
+      "kind": "document_checker"
+    }
+  ],
+  "not_run": [
+    "New rule engine and 80 case execution",
+    "GUI, model inference, multiplayer, installers and platform acceptance",
+    "Original round-40 screenshot verification: only excerpt available",
+    "Exhaustive reachable-state exploration",
+    "Merge and release; ChatGPT Pro acceptance pending"
+  ],
+  "open_questions": [
+    {
+      "owner": "ChatGPT planner",
+      "finding": "F01",
+      "request": "Review evidence and decide specification/case correction; no gameplay change made"
+    },
+    {
+      "owner": "ChatGPT planner",
+      "finding": "F02",
+      "request": "Review evidence and decide specification/case correction; no gameplay change made"
+    },
+    {
+      "owner": "ChatGPT planner",
+      "finding": "F03",
+      "request": "Review evidence and decide specification/case correction; no gameplay change made"
+    },
+    {
+      "owner": "ChatGPT planner",
+      "finding": "F04",
+      "request": "Review evidence and decide specification/case correction; no gameplay change made"
+    },
+    {
+      "owner": "ChatGPT planner",
+      "finding": "F05",
+      "request": "Review evidence and decide specification/case correction; no gameplay change made"
+    }
+  ],
+  "manifest_hash_policy": "Manifest excludes its own hash. Check log captures verification before manifest creation; final manifest verification is recorded by its command exit code.",
+  "user_accepted_result_sha": "5a081f2462f0814d6f6fe8c3aecba071710605d2",
+  "delivery_updated_at": "2026-09-12T08:04:33.133861+00:00",
+  "delivery_update_scope": "REPORT/manifest delivery metadata only; findings, coverage, document checker and original check output unchanged",
+  "delivery_validation": {
+    "document_check_exit_code": 0,
+    "manifest_hash_check": "PASS",
+    "diff_check_exit_code": 0,
+    "review_content_changed": false
+  }
+}
