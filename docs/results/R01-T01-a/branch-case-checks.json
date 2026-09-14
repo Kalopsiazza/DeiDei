@@ -1,0 +1,1396 @@
+{
+  "scope": "Score-table analysis only; no game engine, AI, randomness or resource updates",
+  "passed_tables": 13,
+  "rejected_incomplete_or_unknown_tables": 2,
+  "results": {
+    "K00_no_selector": {
+      "profiles": [
+        {
+          "profile": [],
+          "scores": [],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        []
+      ],
+      "nondominated_stable": [
+        []
+      ]
+    },
+    "K01_unique": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "K02_all_tied": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "K03_coordinated_tie": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "K04_joint_improvement": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                2
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "K05_conflicting_preferences": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                2
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              2
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0,
+          0
+        ],
+        [
+          1,
+          1
+        ]
+      ]
+    },
+    "K06_no_stable_profile": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "stable": [],
+      "nondominated_stable": []
+    },
+    "K07_local_tie_escape": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              2
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                2
+              ]
+            }
+          ]
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0,
+          0
+        ]
+      ]
+    },
+    "K08_all_dead_more_kills": {
+      "profiles": [
+        {
+          "profile": [
+            0
+          ],
+          "scores": [
+            [
+              0,
+              2
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                0,
+                4
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1
+          ],
+          "scores": [
+            [
+              0,
+              4
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          1
+        ]
+      ]
+    },
+    "K09_all_dead_tie": {
+      "profiles": [
+        {
+          "profile": [
+            0
+          ],
+          "scores": [
+            [
+              0,
+              2
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1
+          ],
+          "scores": [
+            [
+              0,
+              2
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0
+        ],
+        [
+          1
+        ]
+      ]
+    },
+    "K10_three_selectors": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 2,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            0,
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            0,
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 2,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            0,
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 2,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 1,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 2,
+              "alternative": 1,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "profile": [
+            1,
+            1,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        }
+      ],
+      "stable": [
+        [
+          1,
+          1,
+          1
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          1,
+          1,
+          1
+        ]
+      ]
+    },
+    "K11_three_tied_profiles": {
+      "profiles": [
+        {
+          "profile": [
+            0,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            0,
+            1
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1,
+            0
+          ],
+          "scores": [
+            [
+              1,
+              1
+            ],
+            [
+              1,
+              1
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1,
+            1
+          ],
+          "scores": [
+            [
+              0,
+              0
+            ],
+            [
+              0,
+              0
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            },
+            {
+              "actor": 1,
+              "alternative": 0,
+              "better_score": [
+                1,
+                1
+              ]
+            }
+          ]
+        }
+      ],
+      "stable": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0,
+          0
+        ],
+        [
+          0,
+          1
+        ],
+        [
+          1,
+          0
+        ]
+      ]
+    },
+    "K12_survival_first": {
+      "profiles": [
+        {
+          "profile": [
+            0
+          ],
+          "scores": [
+            [
+              1,
+              0
+            ]
+          ],
+          "strict_improvements": []
+        },
+        {
+          "profile": [
+            1
+          ],
+          "scores": [
+            [
+              0,
+              4
+            ]
+          ],
+          "strict_improvements": [
+            {
+              "actor": 0,
+              "alternative": 0,
+              "better_score": [
+                1,
+                0
+              ]
+            }
+          ]
+        }
+      ],
+      "stable": [
+        [
+          0
+        ]
+      ],
+      "nondominated_stable": [
+        [
+          0
+        ]
+      ]
+    }
+  }
+}
