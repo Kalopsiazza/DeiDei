@@ -1,0 +1,88 @@
+name: R02 T04 source review
+on:
+  pull_request:
+    branches: [integration/r02]
+    paths: [.github/workflows/r02-t04-review.yml]
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash
+jobs:
+  source-check:
+    if: github.head_ref == 'review/r02-t04-20260913'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: Kalopsiazza/DeiDei
+          ref: 23520350393ba43384c20b60bef7d6dbd89fc142
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.12.0'
+      - name: Source identity
+        run: |
+          mkdir -p review-evidence
+          git rev-parse HEAD > review-evidence/candidate-sha.txt
+          git ls-tree -r HEAD > review-evidence/git-tree.txt
+          python --version > review-evidence/python-version.txt
+          node --version > review-evidence/node-version.txt
+          npm --version > review-evidence/npm-version.txt
+      - name: Runtime tests
+        env:
+          PYTHONPATH: game/core:game/runtime
+        run: python -m unittest discover -s game/runtime/tests -v 2>&1 | tee review-evidence/runtime.txt
+      - name: Core tests
+        if: always()
+        env:
+          PYTHONPATH: game/core
+        run: python -m unittest discover -s game/core/tests -v 2>&1 | tee review-evidence/core.txt
+      - name: Independent cases
+        if: always()
+        run: python tests/rules_v1_001/run_acceptance.py --core game/core 2>&1 | tee review-evidence/independent.txt
+      - name: Independent harness checks
+        if: always()
+        run: python -m unittest discover -s tests/rules_v1_001 -p 'test_*.py' -v 2>&1 | tee review-evidence/harness.txt
+      - name: Original root checks
+        if: always()
+        run: python scripts/check.py 2>&1 | tee review-evidence/root-check.txt
+      - name: Install pinned desktop dependencies without installation scripts
+        if: always()
+        run: npm --prefix game/desktop ci --ignore-scripts --no-audit --no-fund 2>&1 | tee review-evidence/npm-ci.txt
+      - name: Full npm dependency audit
+        if: always()
+        run: npm --prefix game/desktop audit --json 2>&1 | tee review-evidence/npm-audit.json
+      - name: Runtime npm dependency audit
+        if: always()
+        run: npm --prefix game/desktop audit --omit=dev --json 2>&1 | tee review-evidence/npm-audit-runtime.json
+      - name: Default desktop tests - no Electron window
+        if: always()
+        run: npm --prefix game/desktop test 2>&1 | tee review-evidence/desktop-default.txt
+      - name: Candidate tracked files unchanged
+        if: always()
+        run: git diff --exit-code 2>&1 | tee review-evidence/source-unchanged.txt
+      - name: Preserve source and evidence only
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: pr19-review-source-2352035
+          retention-days: 14
+          include-hidden-files: true
+          path: |
+            review-evidence/
+            game/
+            !game/desktop/node_modules/**
+            !game/desktop/build/**
+            !game/**/__pycache__/**
+            tests/
+            scripts/check.py
+            docs/results/R02-T05-a/
+            .github/workflows/r02-t05-package.yml
