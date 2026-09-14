@@ -133,6 +133,7 @@ class RoomServer:
         self.host_leave_timing = host_leave_timing
         self.policy = load_policy(policy)
         self.clock = clock if clock is not None else Clock()
+        self.anchor_mono, self.anchor_wall = self.clock.now_ms(), self.clock.wall_ms()
         self.new_match_factory = new_match_factory or new_match
         self.rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
         self.token_rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
@@ -147,6 +148,10 @@ class RoomServer:
         self.ws_server = self.timer_task = None
         self.closed = False
         logging.getLogger('deidei.transport').disabled = True
+
+    def to_public(self, mono_ms: int) -> int:
+        """Project every public time from one fixed anchor; wall-clock edits cannot move deadlines."""
+        return self.anchor_wall + mono_ms - self.anchor_mono
 
     def background(self, awaitable) -> None:
         task = asyncio.create_task(awaitable)
@@ -383,7 +388,7 @@ class RoomServer:
         self.connections.add(c)
         writer = asyncio.create_task(c.writer())
         c.put(dict(v=1, type='hello', boot_id=self.boot_id, connection_id=c.id,
-            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.clock.wall_ms(),
+            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.to_public(self.clock.now_ms()),
             policy_defaults=dict(self.policy), capabilities=dict(max_players=6, allowed_turn_ms=TURN_TIMES,
                                                                 spectator_max=self.policy['spectator_cap'])))
         auth_deadline = time.monotonic() + 5
@@ -399,15 +404,15 @@ class RoomServer:
                     break
                 request_id = None
                 try:
-                    if c.limited():
-                        raise Rejected('RATE_LIMITED')
                     msg = parse(raw)
                     if isinstance(msg, dict) and request_uuid(msg.get('request_id')):
                         request_id = msg['request_id']
+                    if c.limited():
+                        raise Rejected('RATE_LIMITED')
                     await self.command(c, msg)
                 except (Rejected, UnicodeError) as exc:
                     error = exc if isinstance(exc, Rejected) else Rejected('INVALID_MESSAGE')
-                    if request_id is None and error.code != 'RATE_LIMITED':
+                    if request_id is None:
                         error = Rejected('INVALID_MESSAGE')
                     c.put(ack(request_id, error=error))
                     self.flush()
