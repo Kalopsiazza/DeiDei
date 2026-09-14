@@ -1,0 +1,32 @@
+{
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "packaging_sha": "d6fea37637af543542c1f7f1218c24427f24707a",
+  "archive_sha256": "4b11bc25f863ee27d5adcc38ec0b0898d5eaefb45f9e297bb7471177b2989bde",
+  "platform": "win32",
+  "arch": "x64",
+  "status": "RUNNING",
+  "headless": false,
+  "games": 5,
+  "cycles": 10,
+  "checks": [
+    "final ZIP frozen server starts without system Python; rooms-1.1 hello",
+    "five real packaged Electron + normal peer matches; future timing effective only next select",
+    "ordinary peer receives directed removal after three absent turns",
+    "host after_turn leave closes without false winner",
+    "server restart invalidates old temporary identity",
+    "frozen server stopped before offline solo and all relaunch cycles",
+    "ten app launch/solo/leave/exit cycles; bundled offline worker remains usable"
+  ],
+  "screenshots": [
+    "packaged-future-time.png",
+    "packaged-table-1366x768.png",
+    "packaged-table-1920x1080.png",
+    "packaged-result-1.png",
+    "packaged-result-2.png",
+    "packaged-result-3.png",
+    "packaged-result-4.png",
+    "packaged-result-5.png",
+    "packaged-server-restarted.png",
+    "packaged-offline.png"
+  ]
+}

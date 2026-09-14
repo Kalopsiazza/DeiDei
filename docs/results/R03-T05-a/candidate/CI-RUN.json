@@ -1,0 +1,28 @@
+{
+  "conclusion": "success",
+  "databaseId": 34909293225,
+  "event": "workflow_dispatch",
+  "headSha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+  "jobs": [
+    {
+      "name": "package (macos-15, arm64, darwin-arm64)",
+      "databaseId": 104192975845,
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-09-14T23:32:10Z",
+      "completedAt": "2026-09-14T23:34:07Z",
+      "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/job/104192975845"
+    },
+    {
+      "name": "package (windows-2022, x64, win32-x64)",
+      "databaseId": 104192976064,
+      "status": "completed",
+      "conclusion": "success",
+      "startedAt": "2026-09-14T23:32:08Z",
+      "completedAt": "2026-09-14T23:34:59Z",
+      "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/job/104192976064"
+    }
+  ],
+  "status": "completed",
+  "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225"
+}

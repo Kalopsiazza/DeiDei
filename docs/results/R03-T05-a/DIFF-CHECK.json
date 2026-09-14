@@ -1,8 +1,15 @@
 {
   "full_diff_exit_code": 2,
   "source_ci_diff_exit_code": 0,
-  "reason": "Native Windows CI text uses CRLF. Raw evidence preserved byte-for-byte; no source or license rewritten to hide warnings.",
+  "candidate_staged_exit_code": 2,
+  "reason": "Native Windows CI CRLF evidence preserved byte-for-byte; warnings recorded without rewriting evidence.",
   "paths": [
+    "docs/results/R03-T05-a/candidate/attempt-1-win/commands.json",
+    "docs/results/R03-T05-a/candidate/ci-win/commands.json",
+    "docs/results/R03-T05-a/candidate/ci-win/npm-audit-runtime.json",
+    "docs/results/R03-T05-a/candidate/ci-win/npm-audit.json",
+    "docs/results/R03-T05-a/candidate/ci-win/python-audit.json",
+    "docs/results/R03-T05-a/candidate/ci-win/windows-signatures.txt",
     "docs/results/R03-T05-a/ci-windows/commands.json",
     "docs/results/R03-T05-a/ci-windows/npm-audit-runtime.json",
     "docs/results/R03-T05-a/ci-windows/npm-audit.json",

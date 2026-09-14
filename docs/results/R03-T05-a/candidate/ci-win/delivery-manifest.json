@@ -1,0 +1,13 @@
+{
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+  "status": "CANDIDATE",
+  "platform": "win32-x64",
+  "filename": "DeiDei-R03-T05-a-CANDIDATE-win32-x64-d0c9640.zip",
+  "sha256": "80e185cec1c05817bee31019733480693ae8d8888d52c6cf419a0f2b87a99e27",
+  "bytes": 178846599,
+  "inventory_sha256": "4e77c709b216d01a973448ece0f620d67bf7a94d94da346e1ad733d9c5fbc936",
+  "signature": "unsigned",
+  "packaged_automation": "PACKAGED_AUTOMATION_PASS",
+  "human": "NOT_RUN"
+}

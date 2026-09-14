@@ -1,0 +1,23 @@
+Executable=<OUTPUT>/delivery/room-server/deidei-room-server
+Identifier=deidei-room-server-55554944d942e709b8479a194e3d333589d3e385
+Format=Mach-O thin (arm64)
+CodeDirectory v=20400 size=21460 flags=0x2(adhoc) hashes=664+2 location=embedded
+VersionPlatform=1
+VersionMin=720896
+VersionSDK=983040
+Hash type=sha256 size=32
+CandidateCDHash sha256=ad5588fa03e7aea0a5ec869caa1668ac8964f05c
+CandidateCDHashFull sha256=ad5588fa03e7aea0a5ec869caa1668ac8964f05c62fa2b30a592e9e6db836636
+Hash choices=sha256
+CMSDigest=ad5588fa03e7aea0a5ec869caa1668ac8964f05c62fa2b30a592e9e6db836636
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=49152
+Executable Segment flags=0x1
+Page size=4096
+CDHash=ad5588fa03e7aea0a5ec869caa1668ac8964f05c
+Signature=adhoc
+Info.plist=not bound
+TeamIdentifier=not set
+Sealed Resources=none
+Internal requirements count=0 size=12

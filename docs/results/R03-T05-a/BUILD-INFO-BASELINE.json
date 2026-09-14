@@ -1,8 +1,8 @@
 {
   "task_id": "R03-T05-a",
-  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
-  "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
-  "status": "CANDIDATE",
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "2e2007a61c4448d4131e9bde09d919be3fb37e54",
+  "status": "DIAGNOSTIC_BASELINE",
   "platform": "darwin-arm64",
   "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
   "rules_version": "classic-1.0.1",
@@ -10,8 +10,8 @@
   "trees": {
     "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
     "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
-    "game/server": "e5fc195ae26d48b86558332dd15402e3dd00e24a",
-    "game/desktop": "47d0de87463fa13bebb753140c23a2beb5faf554"
+    "game/server": "dd9b56bdc7df4add9e603fc4ced4f29fffb27ff8",
+    "game/desktop": "f33e71b7ef9bf7626f75e2a145a46f92e1f2e4b6"
   },
   "python": "3.11.16",
   "python_tools": {

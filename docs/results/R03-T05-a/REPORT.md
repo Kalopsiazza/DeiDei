@@ -1,44 +1,33 @@
-# R03-T05-a 原生诊断包与成包联机验证
+# R03-T05-a 原生候选成包验证
 
-本包只改独立打包工具、具名CI与本结果目录。当前产品输入是有已知失败的基线，状态 BASELINE_ONLY；不是修订产品通过或可发给玩家的联机版。
+当前状态：PACKAGED_AUTOMATION_PASS（macOS arm64、Windows x64）。两端使用任务04同一固定候选，在原生CI构建并重新展开最终ZIP，以真实成包Electron、独立冻结server和正常协议peer完成验证。不是公网发行或真人/干净机验收。
 
-## 来源
+## 固定来源
 
-- 产品输入：8a6f8b29f517ab4c5a16466f0894e86995f8a852。
-- 规划：plan/r03-live-v1，a1e01ee259c65d9241ad1c4daee7852faca366bf；长批次附件15项清单逐项size/SHA256通过。
-- 分支：codex/r03-t05-a-native-diagnostic；PR #26，base integration/r03-live。
-- macOS本机基线构建的工具SHA：2e2007a61c4448d4131e9bde09d919be3fb37e54。其后的CI/外部窗口驱动另有提交，不能将本机包工具SHA替换成最终文档SHA。
-- CI首轮工具SHA：fabcb1d8438f05988d8eb64ac58ca0862ee92fb0，run 34875308825。每个包的真实两种SHA位于自己的build-info。
+- 产品 source_sha：d0c96408a3aa8c14174099da4247bcac953fb9f7。
+- T04回执提交：db51a442d0f6640ce499ffbf4320c7098044cb92，具名分支codex/r03-t04-a-live-integration，回执stage为integrated_local_pass。已验证schema、提交祖先关系、受保护core/runtime树及依赖锁。
+- 最终受测工具 packaging_sha：325006a2fd17f9beaa5ee68ae0142da01986806f。后续报告提交不冒充重新构建。
+- 最终CI run：34909293225（workflow_dispatch），macOS job 104192975845、Windows job 104192976064，均success。
+- PR #26：codex/r03-t05-a-native-diagnostic → integration/r03-live。规划仍为a1e01ee259c65d9241ad1c4daee7852faca366bf。
 
-## 完成的工具
+## 本次续跑与实际结果
 
-1. --source必须是提交内candidate-input指定的干净固定检出，构建只从git archive复制到新输出目录；不改源检出或其他线程。--output拒绝已有目录和源目录内部位置。
-2. 严格candidate回执验证：具名同仓库T04分支、code先于receipt、固定base后代、允许路径、core/runtime树、npm锁及依赖字段、server锁。回执不接受命令字段或任意URL。本批三个规定查看点均未发现远端回执，未猜测未提交源码。
-3. R03独立双平台hash lock沿用R02各平台固定条目，增加现有websockets17.0.1；独立Python环境。npm lock/版本和旧CI均未改。
-4. stage保持旧运行链，加online/network-room-port.cjs、online/wire.cjs及catalog.json，逐个核验main/CJS的本地require。TSX已由固定build生成。真实产品依赖的fixture bundle保留；tests-online/fake不进入安装包。
-5. 客户端携带冻结离线worker；room-server使用独立onedir，入口只调用现有CLI。两者固定同版core，build-info写source_sha、packaging_sha、tree/lock/stage/资源hash。
-6. 最终ZIP重展、完整逐文件清单/符号链接/权限/架构/许可检查。Python/Electron/Chromium/React/PyInstaller/websockets及Python内嵌库许可保留，不新增游戏许可证。
-7. 外部真实成包驱动：冻结服务、正常WebSocket peer、真实成包Electron；计划自动5场/10次开退、时限/移除/房主离开/服务重启与原离线；缺worker/catalog副本、缺服务路径明确失败。仅允许一次性CI账户，默认档案必须为空。未给成包产品增加测试后门。
-8. 具名CI仅本任务同仓库PR或具名分支dispatch、contents:read、固定actions SHA、macOS arm64与Windows x64、45分钟、fail-fast=false。诊断包与候选的artifact门槛分开，公开日志不包含会话token/密码或未揭晓动作。
+更新提交内candidate-input；外部驱动在服务重启身份失效后停止冻结服务，等待退出，再做离线单人和十次开退，补齐Q22环境条件。产品目录、旧打包、旧CI和依赖版本未修改。
 
-## 当前实际证据
+候选首轮run 34908825587、工具d6fea37637af543542c1f7f1218c24427f24707a：macOS通过；Windows已经完成5场、10次开退，但在损坏副本复制区间无JS异常退出127，原报告停留RUNNING，必须按CI失败解释。没有Windows候选artifact上传。证据见candidate/attempt-1-*。
 
-本机macOS arm64：8个工具负例通过；根40项通过（保留1个历史expectedFailure）。原生构建及最终ZIP校验成功；冻结worker health/start/submit/get_view/leave/shutdown通过，最终独立server --help通过。最终ZIP再次解压后真实rooms-1.1 hello通过，使用无效Python变量及仅OS PATH，未借用系统Python。无界面probe是HEADLESS_DIAGNOSTIC_PASS，games=0/cycles=0，不冒充窗口通过。
+将Windows的Node fs.cpSync替换为旧R02验证工具已有的专用Python shutil.copytree，加入复制/启动阶段记录后，仅做一次有实质改动的复测，两端全部通过。这将问题收敛到外部复制路径；未声称已诊断Node/OS原生退出的内部根因。候选各平台共2次构建；基线历史另列，不混算为候选通过。
 
-npm audit（全部及runtime）无high/critical，Python固定环境各包PyPI公告为空。macOS代码签名验证通过，identity明确flags=adhoc；Gatekeeper本机命令退出0不代表公证或其他电脑信任通过。构建日志仅保留去路径的有限尾部和命令退出码；二进制不入Git。
+最终两端各完成5场真实联机、10次启动/离线单人/离开/退出；验证当前拍deadline精确不变、下一拍时限生效、普通玩家第三缺席移出、房主after_turn离开无伪胜者、服务重启身份恢复失败。冻结服务持续停止时离线worker仍可用；缺worker/catalog显示“游戏文件不完整”，缺server得到ENOENT，不下载或回退MOCK。1366×768及1920×1080均三排33牌，真实截图已查看。Q21—Q24的本包自动验证通过。
 
-原生CI run 34875308825 已结束：macOS job success，实际成包Electron+冻结server完成5场、10次开退，未来时限生效、普通玩家第三缺席移出、房主after_turn关闭、服务重启身份失效、离线单人、缺worker/catalog窗口和缺server路径均通过；两目标视口有33牌三排截图，见ci-macos。Q22未另外在服务持续停止状态下重跑单人GUI；已观测的是服务重启导致在线身份失效后的单人启动，不能把这两种环境条件混为一项。该成绩标DIAGNOSTIC_BASELINE_AUTOMATION_PASS，仍保留基线其他已知失败。
+8项工具检查在本地和两端CI通过；语法检查通过。原根检查40项、1个历史expectedFailure属于基线工具交付记录，续跑不冒称重新执行全仓测试；T04回执中的产品检查为其提供的证据。两端执行时npm全部/runtime审计无high/critical，固定Python依赖PyPI公告为空。
 
-Windows job failure：包构建和最终ZIP核验、冻结服务真实hello通过；真实成包客户端已启动并进入房间，第一次改时限后当前拍deadline从1789407238434变为1789407238427（-7ms），精确相等断言失败。games=0/cycles=0，未把后续未运行项目算通过。这是本批待T04修订的F06稳定期限问题，T05不放宽断言、不修改产品、不为同一未修产品反复构建。两端均已上传具名DIAGNOSTIC_BASELINE内部artifact，Windows包明确附失败状态，不能当可验收联机版使用。
+最终包实际下载及内外hash/build-info/清单复核见DOWNLOADS.md、downloads.json。Mac在本机以ditto再次展开并核验权限/链接/架构；Windows下载后验证250项原始字节，Windows原生架构检查由runner完成。
 
-原生CI的首轮工具SHA fabcb1d 与本机初次工具2e2007a分别记录。每平台本批只有本机mac一次与CI各一次构建；没有失败重试、无无限等待。三个候选查看点均NO_CANDIDATE，最终交BASELINE_ONLY。精确artifact ID/内外hash/有效期及下载说明见DOWNLOADS.md。
+## 签名、边界和历史
 
-## 边界与后续
+macOS为ad-hoc、未公证，CI中codesign验证通过，spctl明确rejected；Windows客户端/server的Authenticode状态为NotSigned。没有关闭防护或修改系统安全设置。普通用户/干净机系统信任、真人、物理断网、公网/异地均NOT_RUN。
 
-基线已知N33/burst_limit、N36/real_clock、N48/real_clock未被T05修改；T05不接管产品修复。正式candidate仍需T04具名回执，消费后重新固定source_sha构建。任务04未交时不整夜等待，交BASELINE_ONLY和下一命令。真人/干净机、物理断网、公网/异地、收费证书和系统信任全部未验收。
+旧8a6f8b2基线的Windows -7ms失败、macOS诊断成绩及下载记录原样保留于REPORT-BASELINE、TEST-MATRIX-BASELINE、ci-macos、ci-windows和downloads-baseline.json。不能把候选通过回写成基线通过。
 
-按vibe-engineering-workflow完成高风险构建路径的负例与重点自审。未调用Kimi（保持暂停）。没有合入、关闭旧PR、部署或发布Release。
-
-## 原始证据换行记录
-
-全增量git diff --check退出2，仅来自原生Windows CI导出的CRLF文本（commands/audit/signature），文件列表见DIFF-CHECK.json。原始证据保留字节，不通过改写原文隐藏告警；单独检查打包源码与具名CI退出0。最终仅记录证据的提交带skip ci，避免对未改工具和已知失败基线再发起无意义原生构建；受测工具仍为fabcb1d，最终文档不冒充新二进制测试。
+原生Windows文本CRLF保留原字节，diff换行告警独立记录于DIFF-CHECK.json；源码/CI检查无告警。只交付授权的独立工具与证据，无产品规则/模型/依赖变化，无合入、发布或部署。已重点自审；未调用Kimi（暂停）。

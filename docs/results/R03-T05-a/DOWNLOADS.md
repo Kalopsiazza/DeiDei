@@ -1,38 +1,44 @@
-# R03-T05-a 内部诊断包下载
+# 候选诊断包下载
 
-仅供诊断。产品为有已知缺陷的基线8a6f8b29f517ab4c5a16466f0894e86995f8a852，工具fabcb1d8438f05988d8eb64ac58ca0862ee92fb0。macOS这组实际成包旅程通过；Windows时限检查失败。未取得T04修订候选，不标为正式联机版。
+两端PACKAGED_AUTOMATION_PASS；产品d0c96408a3aa8c14174099da4247bcac953fb9f7，工具325006a2fd17f9beaa5ee68ae0142da01986806f。
 
-[原生CI](https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825)。需Actions下载权限。两份外层artifact已实际下载，外层SHA、内层ZIP、build-info和每个清单条目均核验；权限和架构由对应native runner验证，macOS下载副本又做了一遍原生核验。
-
-| 平台 | 内部artifact | 过期时间（UTC） | 状态 |
-|---|---|---|---|
-| windows | [下载 #10361275991](https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10361275991) | 2026-10-14T17:33:48Z | FAIL |
-| macos | [下载 #10360039450](https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10360039450) | 2026-10-14T17:34:12Z | DIAGNOSTIC_BASELINE_AUTOMATION_PASS |
+[原生CI run 34909293225](https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225) 双端通过。内部artifact保留30天；到期时间为UTC。下载需有仓库访问权限。下载Actions外层ZIP后，取出里面的DeiDei候选ZIP并完整解压，保留客户端、room-server、THIRD-PARTY。不要单独搬动exe或app。
 
 ## windows
 
-- 外层SHA256：`cb129fb1864bee28c49c77f4dd6bfe8c9a038fd67fa364e1a2f87a13f0bdc40e`；178427589 bytes。
-- 内层：`DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-win32-x64-8a6f8b2.zip`。
-- 内层SHA256：`a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16`；178843667 bytes。
-- 逐项验证250个清单条目。
+[下载artifact 10373429643](https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/artifacts/10373429643)，到期2026-10-14T23:34:45Z。
+
+- 外层ZIP SHA256：`c567af38cdcef30ec8afd5b1cdbc7b3bba0ae98963e060e82b169ba97d72fb1a`，178430281 bytes。
+- 内层文件：`DeiDei-R03-T05-a-CANDIDATE-win32-x64-d0c9640.zip`，178846599 bytes。
+- 内层SHA256：`80e185cec1c05817bee31019733480693ae8d8888d52c6cf419a0f2b87a99e27`。
+- 实际下载验证：PASS，250项清单一致。包内build-info与client/server一致。
 
 ## macos
 
-- 外层SHA256：`ec34b265a17b1a0e8b9a8b323977df9878313b18d516e52994c13aac75fa6b28`；149268378 bytes。
-- 内层：`DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip`。
-- 内层SHA256：`364d1777f6527819e0521f13d0a4e259d5b23a0511cd7a554d80863825c23b47`；149937221 bytes。
-- 逐项验证341个清单条目。
+[下载artifact 10373269801](https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/artifacts/10373269801)，到期2026-10-14T23:33:55Z。
 
-## 使用
+- 外层ZIP SHA256：`66a42ccebe1d8ccdc963b3a07303911120f0db9aadbca99b9244b40423fdc18c`，149268540 bytes。
+- 内层文件：`DeiDei-R03-T05-a-CANDIDATE-darwin-arm64-d0c9640.zip`，149937759 bytes。
+- 内层SHA256：`4409f0d016adb91405d4e367487e18fabc5cc5cd634d9abe2f40fa8102959d21`。
+- 实际下载验证：PASS，341项清单一致。包内build-info与client/server一致。
 
-下载并解压外层artifact，再展开里面的DeiDei ZIP。macOS用Archive Utility或ditto，保留符号链接、可执行位和中文文件名；Windows用系统解压。保留room-server和THIRD-PARTY，按内含使用说明先启动loopback服务，再通过DEIDEI_ROOM_URL启动客户端。具体命令见game/packaging_r03/PLAYER-README.txt，无需系统Python。
+## 启动
 
-Mac用`shasum -a 256 <zip>`、Windows用`Get-FileHash <zip> -Algorithm SHA256`核对两层hash。macOS为ad-hoc/未公证，Windows未签名；不关闭系统防护。本机另存初次mac构建（packaging 2e2007a），以mac-local-delivery.json单独对应，不能混用CIhash。
+仅本机loopback验证，不是异地联机发行版。无需系统Python。macOS终端先启动服务，再在另一终端启动客户端：
 
-已下载原件位于当前用户Downloads/DeiDei-R03-T05-a-native目录；二进制不入Git。下载校验第一次直接用Python ZipFile查找mac中文文件名未匹配，改用构建时相同的ditto原生解压后完整通过；产物未修改。
+```sh
+./room-server/deidei-room-server --host 127.0.0.1 --port 8765
+DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 './DeiDei R03 Diagnostic.app/Contents/MacOS/DeiDeiR03'
+```
 
-## 候选到达后的下一命令
+Windows PowerShell先启动服务，再在另一窗口设置地址并启动客户端：
 
-`python3 game/packaging_r03/candidate.py --refresh --output game/packaging_r03/candidate-input.json`
+```powershell
+.\room-server\deidei-room-server.exe --host 127.0.0.1 --port 8765
+$env:DEIDEI_ROOM_URL='ws://127.0.0.1:8765/rooms-v1'
+& '.\DeiDei R03 Diagnostic-win32-x64\DeiDeiR03.exe'
+```
 
-仅在得到CANDIDATE后提交该固定输入，从source_sha新建干净只读检出，再运行`game/packaging_r03/.venv/bin/python game/packaging_r03/build.py --source <该检出> --output <新目录>`；Windows改Scripts/python.exe。真实GUI由一次性CI账户执行，不在私人默认档案下伪造GITHUB_ACTIONS绕过保护。
+macOS ad-hoc、未公证，CI spctl rejected；Windows未签名。遇系统阻止保留提示，不关闭防护。真人/干净机/公网未验收。CI在停止服务后验证了原离线单人。
+
+旧DIAGNOSTIC_BASELINE产物及失败记录仅用于历史诊断，见downloads-baseline.json和REPORT-BASELINE.md；不替换或改标为候选。

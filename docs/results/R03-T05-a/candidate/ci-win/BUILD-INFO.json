@@ -3,7 +3,7 @@
   "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
   "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
   "status": "CANDIDATE",
-  "platform": "darwin-arm64",
+  "platform": "win32-x64",
   "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
   "rules_version": "classic-1.0.1",
   "protocol": "rooms-1.1",
@@ -21,7 +21,8 @@
     "packaging": "26.3",
     "setuptools": "84.0.0",
     "websockets": "17.0.1",
-    "macholib": "1.16.4"
+    "pefile": "2024.8.26",
+    "pywin32-ctypes": "0.2.3"
   },
   "electron": "44.3.0",
   "packager": "20.3.0",
@@ -29,7 +30,7 @@
   "npm": "11.6.2",
   "locks": {
     "npm": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
-    "python": "36b6dd5bffc4295e31222c9f8eda6bc5ca0b8c8a5fff794b4daa274c5cf73ef2"
+    "python": "20134f4bed6d90bf00daa51c148f509e36c6e252be8930fceda2c83832fe235a"
   },
   "stage_sha256": {
     "main.cjs": "fb2a606738b842316e38744afafc5b2a64aa9ff6eed0864484036b70f620a698",

@@ -1,23 +1,23 @@
 {
   "task_id": "R03-T05-a",
-  "status": "BASELINE_ONLY",
-  "product_source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "status": "PACKAGED_AUTOMATION_PASS",
+  "product_source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
   "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
   "plan_manifest_sha256": "56e0026a16a156813962c25cd9b73a163207efd7302f7a62ab2208891140a4bf",
   "plan_files_verified": 15,
-  "tested_packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "tested_packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
   "local_build_packaging_sha": "2e2007a61c4448d4131e9bde09d919be3fb37e54",
   "branch": "codex/r03-t05-a-native-diagnostic",
   "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/26",
   "pr_base": "integration/r03-live",
-  "ci_run_id": 34875308825,
-  "ci_status": "FAIL_WINDOWS_BASELINE_F06",
-  "macos_packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
-  "windows_packaged_automation": "FAIL_DEADLINE_DRIFT_7MS",
+  "ci_run_id": 34909293225,
+  "ci_status": "SUCCESS",
+  "macos_packaged_automation": "PACKAGED_AUTOMATION_PASS",
+  "windows_packaged_automation": "PACKAGED_AUTOMATION_PASS",
   "candidate_checks": [
-    "NO_CANDIDATE",
-    "NO_CANDIDATE",
-    "NO_CANDIDATE"
+    "RECEIPT_VALID",
+    "SOURCE_VALID",
+    "PROTECTED_TREES_AND_LOCKS_UNCHANGED"
   ],
   "tools_tests": {
     "total": 8,
@@ -26,43 +26,54 @@
   "root_tests": {
     "total": 40,
     "historical_expected_failure": 1,
-    "exit_code": 0
+    "exit_code": 0,
+    "scope": "Historical baseline check; not rerun for candidate product"
   },
   "native_builds": {
-    "macos": 2,
-    "windows": 1,
-    "retries": 0
+    "baseline": {
+      "macos": 2,
+      "windows": 1
+    },
+    "candidate": {
+      "macos": 2,
+      "windows": 2,
+      "retries": 1
+    },
+    "total": {
+      "macos": 4,
+      "windows": 3
+    }
   },
   "downloads": [
     {
       "platform": "windows",
-      "artifact_id": 10361275991,
-      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10361275991",
-      "outer_sha256": "cb129fb1864bee28c49c77f4dd6bfe8c9a038fd67fa364e1a2f87a13f0bdc40e",
-      "outer_bytes": 178427589,
-      "expires_at": "2026-10-14T17:33:48Z",
-      "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-win32-x64-8a6f8b2.zip",
-      "inner_sha256": "a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16",
-      "inner_bytes": 178843667,
-      "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
-      "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
-      "packaged_automation": "FAIL",
+      "artifact_id": 10373429643,
+      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/artifacts/10373429643",
+      "outer_sha256": "c567af38cdcef30ec8afd5b1cdbc7b3bba0ae98963e060e82b169ba97d72fb1a",
+      "outer_bytes": 178430281,
+      "expires_at": "2026-10-14T23:34:45Z",
+      "inner_filename": "DeiDei-R03-T05-a-CANDIDATE-win32-x64-d0c9640.zip",
+      "inner_sha256": "80e185cec1c05817bee31019733480693ae8d8888d52c6cf419a0f2b87a99e27",
+      "inner_bytes": 178846599,
+      "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+      "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+      "packaged_automation": "PACKAGED_AUTOMATION_PASS",
       "download_verified": true,
       "inventory_files": 250
     },
     {
       "platform": "macos",
-      "artifact_id": 10360039450,
-      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10360039450",
-      "outer_sha256": "ec34b265a17b1a0e8b9a8b323977df9878313b18d516e52994c13aac75fa6b28",
-      "outer_bytes": 149268378,
-      "expires_at": "2026-10-14T17:34:12Z",
-      "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip",
-      "inner_sha256": "364d1777f6527819e0521f13d0a4e259d5b23a0511cd7a554d80863825c23b47",
-      "inner_bytes": 149937221,
-      "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
-      "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
-      "packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+      "artifact_id": 10373269801,
+      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34909293225/artifacts/10373269801",
+      "outer_sha256": "66a42ccebe1d8ccdc963b3a07303911120f0db9aadbca99b9244b40423fdc18c",
+      "outer_bytes": 149268540,
+      "expires_at": "2026-10-14T23:33:55Z",
+      "inner_filename": "DeiDei-R03-T05-a-CANDIDATE-darwin-arm64-d0c9640.zip",
+      "inner_sha256": "4409f0d016adb91405d4e367487e18fabc5cc5cd634d9abe2f40fa8102959d21",
+      "inner_bytes": 149937759,
+      "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+      "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+      "packaged_automation": "PACKAGED_AUTOMATION_PASS",
       "download_verified": true,
       "inventory_files": 341
     }
@@ -99,8 +110,8 @@
     },
     {
       "path": "game/packaging_r03/candidate-input.json",
-      "bytes": 131,
-      "sha256": "8fc92bd34f5d68939626af0a2e2c5e2390e4b7aaef68cd4a3037810a17061207"
+      "bytes": 159,
+      "sha256": "437dc18032e178c389489a743d9d4c254003806569110598773de59c44dd74c4"
     },
     {
       "path": "game/packaging_r03/candidate.py",
@@ -109,8 +120,8 @@
     },
     {
       "path": "game/packaging_r03/check-package.cjs",
-      "bytes": 11956,
-      "sha256": "6ca11810c32d90e29ce96ae281f4f7a9fff40933dfad3924817de9734da3c5d8"
+      "bytes": 12373,
+      "sha256": "e8da624ce38a8b0f38cc9b6d3cce0ffb2c94b610f19c930beb6da203aeb8afa2"
     },
     {
       "path": "game/packaging_r03/freeze.spec",
@@ -155,49 +166,64 @@
   ],
   "artifacts": [
     {
-      "path": "docs/results/R03-T05-a/BUILD-INFO.json",
+      "path": "docs/results/R03-T05-a/BUILD-INFO-BASELINE.json",
       "bytes": 2523,
       "sha256": "349c375d23b2c1d05f669f3db50f9f30c159d98ab4de19ed3c326a2f408c9cae"
     },
     {
+      "path": "docs/results/R03-T05-a/BUILD-INFO.json",
+      "bytes": 2513,
+      "sha256": "d3fcc12ce074796725da5d84f22ea7ef0910bb98a3e9656a529814f92407a6a6"
+    },
+    {
       "path": "docs/results/R03-T05-a/CANDIDATE-INPUT.json",
-      "bytes": 131,
-      "sha256": "8fc92bd34f5d68939626af0a2e2c5e2390e4b7aaef68cd4a3037810a17061207"
+      "bytes": 159,
+      "sha256": "437dc18032e178c389489a743d9d4c254003806569110598773de59c44dd74c4"
     },
     {
       "path": "docs/results/R03-T05-a/DIFF-CHECK.json",
-      "bytes": 515,
-      "sha256": "99f312ecc0f5c3b0cb5dd249171cd8b54a6056a4bd49c5bc7846c92499e2b77a"
+      "bytes": 928,
+      "sha256": "1afa048ad70dcdcee418d1d341eafe3235280e3390115ba8324449bbe49f418e"
     },
     {
       "path": "docs/results/R03-T05-a/DOWNLOADS.md",
-      "bytes": 3083,
-      "sha256": "253dd1ef9cc6adb1739f9fa936dc98339af3bbd48582ad3ae7bc4a5748000a83"
+      "bytes": 2531,
+      "sha256": "70cae770f036f61535dff6c0e505dbf3f5136895f696263f38d53fa8c3936d7f"
     },
     {
       "path": "docs/results/R03-T05-a/FINDINGS.json",
-      "bytes": 578,
-      "sha256": "3e8165e1bcab3c4cd879ed554eed318cdb5bfa449dd124d3b5d36862e0f12ee8"
+      "bytes": 1229,
+      "sha256": "6359e07b4cc65a787fbf03177d8bd546a49cd84349063ec94f06a11a613d293b"
     },
     {
       "path": "docs/results/R03-T05-a/PENDING-HUMAN.md",
-      "bytes": 323,
-      "sha256": "8fc724434f9095b2565c292180ba93fcc1a2a73a755eeb4e55aa575c8fa02654"
+      "bytes": 411,
+      "sha256": "c23abaa1e609277b320703bb248baa582d8a0551325ae5b95a4447c41e1d9c6d"
     },
     {
       "path": "docs/results/R03-T05-a/PR-BODY.md",
-      "bytes": 2304,
-      "sha256": "6eb9094bc48ef4117650cab2a374a4fac83516575c8459871392299f5ffd60d4"
+      "bytes": 1907,
+      "sha256": "b79b93c36ad422106258f6d6f5fb67f9762c4f6dd9a71efdf5e08b57d82c871c"
     },
     {
-      "path": "docs/results/R03-T05-a/REPORT.md",
+      "path": "docs/results/R03-T05-a/REPORT-BASELINE.md",
       "bytes": 6032,
       "sha256": "b207d12d5c874a8c4e9d4591d9e1ad57751e6af225b926568acdf3994070f464"
     },
     {
-      "path": "docs/results/R03-T05-a/TEST-MATRIX.md",
+      "path": "docs/results/R03-T05-a/REPORT.md",
+      "bytes": 3829,
+      "sha256": "ef49df76d9fb552c02d5a3c609eac856ad6bb05606b5fda8f0ec18deedb4f9c7"
+    },
+    {
+      "path": "docs/results/R03-T05-a/TEST-MATRIX-BASELINE.md",
       "bytes": 2086,
       "sha256": "e7e66cb7a4d96d54d6c600fa693369e04295eb086b5ca736d55ff9aa19555111"
+    },
+    {
+      "path": "docs/results/R03-T05-a/TEST-MATRIX.md",
+      "bytes": 1670,
+      "sha256": "2c3e53f189182b6b4c08faf70bda92c3d2e86d5669d44736d1c048cde07cb04c"
     },
     {
       "path": "docs/results/R03-T05-a/app-identity.txt",
@@ -208,6 +234,241 @@
       "path": "docs/results/R03-T05-a/app-signature.txt",
       "bytes": 2300,
       "sha256": "68fa9895748f6b965f19495060127da88b449d73c9a431cc919ae6c38ff3b190"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ARTIFACTS.json",
+      "bytes": 1210,
+      "sha256": "54f4decf127ac634431ef89d24a8a50fb9019ea84bdd25bf4cf5be60397ed25c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/CANDIDATE-INPUT.json",
+      "bytes": 159,
+      "sha256": "437dc18032e178c389489a743d9d4c254003806569110598773de59c44dd74c4"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/CI-RUN.json",
+      "bytes": 957,
+      "sha256": "81fa21aa0459905d7f40996021e2ab0b4e1065ac12706018866a109decd3b9d4"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/T04-CANDIDATE.json",
+      "bytes": 583,
+      "sha256": "3804e2fad8df9f5fda85b5c06b5a9d4e7dab87dbb5a5a41b449179b2330af2bb"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/attempt-1-artifacts.json",
+      "bytes": 908,
+      "sha256": "cae6e8303704938758cda05574ffe3d2911087ad1a148955694fda3e00c014da"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/attempt-1-mac/commands.json",
+      "bytes": 5273,
+      "sha256": "652993c93abef3614344a3103bbd0beaa4adea0554a1f42d95f5d424238496a7"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/attempt-1-mac/packaged-automation.json",
+      "bytes": 1390,
+      "sha256": "355bb7447311f71e37c194a8afacca081c1ab897913b46a233daa584206309cc"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/attempt-1-win/commands.json",
+      "bytes": 4509,
+      "sha256": "0802f27c47597431a9dc78349af82a62d470b6bb3f4a27706a3e08b46f710436"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/attempt-1-win/packaged-automation.json",
+      "bytes": 1201,
+      "sha256": "4f55f2a485efa86fa82b3cda0bf95a34a54e1450e60ba0374f006d261da5b07f"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/BUILD-INFO.json",
+      "bytes": 2513,
+      "sha256": "d3fcc12ce074796725da5d84f22ea7ef0910bb98a3e9656a529814f92407a6a6"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/app-identity.txt",
+      "bytes": 885,
+      "sha256": "f2457db036a5bed35e862585568096cf8a53b7ab375c0cb6ac76782ff1a4a77a"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/app-signature.txt",
+      "bytes": 2300,
+      "sha256": "96491330703bae2ba8e0b2951066d86a630fb0c57ca089fd6b6f5bba6984e430"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/commands.json",
+      "bytes": 5271,
+      "sha256": "1868169cd593bafc5f3c3c3b0128f91bc4daf32149a2af5529fbbef4f12ac41f"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/delivery-manifest.json",
+      "bytes": 557,
+      "sha256": "82cf9ac77a76bdbf145eaee9e7eb00f5e93b63d5292bb50b34960c6fcbf62979"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/electron-download.json",
+      "bytes": 369,
+      "sha256": "5d0643220e64cf5f07326d2db38905c0b774e4dec4865aa26500539c72f67a72"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/gatekeeper.txt",
+      "bytes": 54,
+      "sha256": "ddd5b01b404b80dc5d6f896057c2728192da799a6f7582634d2f189959b0c8ef"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/npm-audit-runtime.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/npm-audit.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-automation.json",
+      "bytes": 1432,
+      "sha256": "6412a607ac1a622aa12fb370d8dac62d290a590aaab900e7eec44bd15eb2ce43"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-future-time.png",
+      "bytes": 141033,
+      "sha256": "dff1ed94305f34e2d110782b1789e93b8e567c1a67786f2a0353c3661818cd31"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-missing-catalog.png",
+      "bytes": 68266,
+      "sha256": "74b7ce6d7d4e7b2d42fdf4207e68806d2d98f17742dd7ae93bea82c125cdf1b9"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-missing-worker.png",
+      "bytes": 68263,
+      "sha256": "bbb307d1ed0956144f6ba5169c55fb97017d44640979bb6f71deed80f698b019"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-offline.png",
+      "bytes": 191475,
+      "sha256": "f8d10cdcaecfa2d93ce66a306a4febe80e57bd805bf90a9897b287b46d5d14d0"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-result-5.png",
+      "bytes": 74404,
+      "sha256": "04e2250dd7ae06df6ed040bfc962ed9c619e2571373b2de5cf352d9d28593a5f"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-server-restarted.png",
+      "bytes": 41323,
+      "sha256": "43ac00606c2aeadc5fad45a12484152a473ebac56b8f19c4892e97539bc631dd"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-table-1366x768.png",
+      "bytes": 196865,
+      "sha256": "d1b19a9e28796603db94f240f3d55c4a5138a28295326452e8db035d60930862"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/packaged-table-1920x1080.png",
+      "bytes": 225430,
+      "sha256": "0d83eae2ea3fa56483b721e2b1b128d2bd0969773197764e7c833199ba30e0c5"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/python-audit.json",
+      "bytes": 579,
+      "sha256": "eaa04198eae67ce399a46a6b283fbcbfca67d82c8357c80e4fcc3affe75cf719"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/server-identity.txt",
+      "bytes": 854,
+      "sha256": "06d924f565dcae93c4bf98c64c97ca5192e46bad2b5c9527b058b4a7390462ac"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-mac/server-signature.txt",
+      "bytes": 151,
+      "sha256": "52bf52360d080c22dd0802f9b5d39cac71962bad4206cf33aa439cc22b759220"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/BUILD-INFO.json",
+      "bytes": 2542,
+      "sha256": "b0663def0b1f1ef9d6bbac3135b8d15beff44fff74cb22f95dc5cd342701fdd3"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/commands.json",
+      "bytes": 4510,
+      "sha256": "42cc96d837dd3be23f19b1798ea6413a79220b2f4cf466e4c63dbe4d0d106858"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/delivery-manifest.json",
+      "bytes": 538,
+      "sha256": "b702d537d797443af1f7e012aa520b50826d3909ee5476c6d8bd1d971f80cbf9"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/electron-download.json",
+      "bytes": 363,
+      "sha256": "08f382a830288c828c4521f445575a9b2f9aa4ce974c37a32ebc918d525d13ce"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/npm-audit-runtime.json",
+      "bytes": 385,
+      "sha256": "d1b9af0998f55b86be4743b2913afbbb9dfae5d80c2adf43db28203066978456"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/npm-audit.json",
+      "bytes": 385,
+      "sha256": "d1b9af0998f55b86be4743b2913afbbb9dfae5d80c2adf43db28203066978456"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-automation.json",
+      "bytes": 1429,
+      "sha256": "a8d1f54d1fec955c2aae622325fb4811b4615a2760192704aca441fca27611ff"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-future-time.png",
+      "bytes": 104899,
+      "sha256": "081c5912386ad3101a23a5e3ee149d4f4c855b7d4daf46f4104d6b54b6947371"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-missing-catalog.png",
+      "bytes": 45295,
+      "sha256": "ae3556336ae731fd07063b1e1a0f157dc99badd180d9a78765da8d1f2324342c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-missing-worker.png",
+      "bytes": 45295,
+      "sha256": "ae3556336ae731fd07063b1e1a0f157dc99badd180d9a78765da8d1f2324342c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-offline.png",
+      "bytes": 120830,
+      "sha256": "7c621968ae29aef6efe2a5b4b019a9730735a946ae51e810d252fc1b9b24d671"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-result-5.png",
+      "bytes": 49195,
+      "sha256": "e6a3ac25edeae10867c8d32dfc9fd58287a74bf07a12579b63d7d96803be3041"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-server-restarted.png",
+      "bytes": 27861,
+      "sha256": "c22ff19b0841f95a4f57b0667ae52f26b55cdd09e7cd863e92c763e9cab7165a"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-table-1366x768.png",
+      "bytes": 122499,
+      "sha256": "0fdfe36c0fd926364ac664aeca5e222549981e15f76b2bb999324f237bb9fd75"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/packaged-table-1920x1080.png",
+      "bytes": 143968,
+      "sha256": "d5d5553e01e90bf334a493d3794c1e70c69c3183cc4307521574c00d3aa12965"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/python-audit.json",
+      "bytes": 706,
+      "sha256": "c0b21b3ec31ab9bf8b01c0a40e1140822c8bdaa6568ed7d3e12f6484e56f1058"
+    },
+    {
+      "path": "docs/results/R03-T05-a/candidate/ci-win/windows-signatures.txt",
+      "bytes": 772,
+      "sha256": "5188f63ad12b7cdd212b4a72053ccd32ed7fec690a00843e5c780dca14db4b02"
     },
     {
       "path": "docs/results/R03-T05-a/ci-macos/commands.json",
@@ -320,9 +581,14 @@
       "sha256": "f1ca3cc8c14454554485d3b466478edc6942bc2ac1dec8d29c6c0f5c9a353215"
     },
     {
-      "path": "docs/results/R03-T05-a/downloads.json",
+      "path": "docs/results/R03-T05-a/downloads-baseline.json",
       "bytes": 1551,
       "sha256": "0c68caefadc4bfae2ef5a27e9dc2858f04537d426ce60be173e26d66e74c394c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/downloads.json",
+      "bytes": 1540,
+      "sha256": "f3583964cd55c529270c961c73041a8d8e14c7eeeccb7ed9bd30002cb7aa8338"
     },
     {
       "path": "docs/results/R03-T05-a/electron-download.json",
@@ -383,13 +649,56 @@
   "diff_check": {
     "full_diff_exit_code": 2,
     "source_ci_diff_exit_code": 0,
-    "reason": "Native Windows CI text uses CRLF. Raw evidence preserved byte-for-byte; no source or license rewritten to hide warnings.",
+    "candidate_staged_exit_code": 2,
+    "reason": "Native Windows CI CRLF evidence preserved byte-for-byte; warnings recorded without rewriting evidence.",
     "paths": [
+      "docs/results/R03-T05-a/candidate/attempt-1-win/commands.json",
+      "docs/results/R03-T05-a/candidate/ci-win/commands.json",
+      "docs/results/R03-T05-a/candidate/ci-win/npm-audit-runtime.json",
+      "docs/results/R03-T05-a/candidate/ci-win/npm-audit.json",
+      "docs/results/R03-T05-a/candidate/ci-win/python-audit.json",
+      "docs/results/R03-T05-a/candidate/ci-win/windows-signatures.txt",
       "docs/results/R03-T05-a/ci-windows/commands.json",
       "docs/results/R03-T05-a/ci-windows/npm-audit-runtime.json",
       "docs/results/R03-T05-a/ci-windows/npm-audit.json",
       "docs/results/R03-T05-a/ci-windows/python-audit.json",
       "docs/results/R03-T05-a/ci-windows/windows-signatures.txt"
     ]
-  }
+  },
+  "baseline_summary": {
+    "status": "BASELINE_ONLY",
+    "product_source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "tested_packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+    "local_build_packaging_sha": "2e2007a61c4448d4131e9bde09d919be3fb37e54",
+    "ci_run_id": 34875308825,
+    "ci_status": "FAIL_WINDOWS_BASELINE_F06",
+    "macos_packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+    "windows_packaged_automation": "FAIL_DEADLINE_DRIFT_7MS",
+    "candidate_checks": [
+      "NO_CANDIDATE",
+      "NO_CANDIDATE",
+      "NO_CANDIDATE"
+    ],
+    "native_builds": {
+      "macos": 2,
+      "windows": 1,
+      "retries": 0
+    }
+  },
+  "candidate_receipt_sha": "db51a442d0f6640ce499ffbf4320c7098044cb92",
+  "candidate_attempts": [
+    {
+      "run_id": 34908825587,
+      "tool_sha": "d6fea37637af543542c1f7f1218c24427f24707a",
+      "macos": "PASS",
+      "windows": "DRIVER_EXIT_127_AFTER_5_GAMES_10_CYCLES"
+    },
+    {
+      "run_id": 34909293225,
+      "tool_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+      "macos": "PASS",
+      "windows": "PASS"
+    }
+  ],
+  "local_build_packaging_sha_is_baseline_only": true
 }
