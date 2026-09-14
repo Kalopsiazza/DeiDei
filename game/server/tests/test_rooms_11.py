@@ -13,6 +13,8 @@ from test_rooms import SocketCase, Client, funded
 class Rooms11(SocketCase):
     async def server(self, **kwargs):
         kwargs['policy'] = {'turn_ms': 10000} | kwargs.get('policy', {})
+        # Timing scenarios need a stable legal proxy, not random recovery/terminal moves.
+        kwargs.setdefault('timeout_chooser', lambda state, options: 'Charge')
         return await super().server(**kwargs)
 
     async def change(self, client, rid, ms, revision):
