@@ -72,7 +72,7 @@ const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
    fs.unlinkSync(path.join(res,'worker',missing==='worker'?(mac?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json'));
    await launch(path.join(damaged,mac?'Contents/MacOS/DeiDeiR03':'DeiDeiR03.exe'));
    await page.getByRole('button',{name:'单人对局',exact:false}).click();await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
-   await page.getByText('安装包不完整',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);await app.close();app=null;
+   await page.getByText('游戏文件不完整',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);await app.close();app=null;
   }
   const missingServer=spawn(path.join(unpacked,'missing-server'),[],{stdio:'ignore'});
   const missingError=await new Promise(resolve=>missingServer.once('error',e=>resolve(e.code)));assert.equal(missingError,'ENOENT');

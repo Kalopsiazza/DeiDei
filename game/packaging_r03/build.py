@@ -126,7 +126,7 @@ def main() -> None:
             run(label+'-identity',['codesign','--display','--verbose=4',binary])
         run('gatekeeper',['spctl','--assess','--type','execute','--verbose=4',delivery/application.name],allowed=(0,1,3))
     else:
-        run('windows-signatures',['powershell','-NoProfile','-Command',"Get-AuthenticodeSignature -LiteralPath $args[0],$args[1] | Select-Object Status,StatusMessage | ConvertTo-Json",str(executable),str(server)])
+        run('windows-signatures',['powershell','-NoProfile','-Command',"Get-AuthenticodeSignature -LiteralPath $env:R03_CLIENT_EXE,$env:R03_SERVER_EXE | Select-Object Status,StatusMessage | ConvertTo-Json"],env={**env,'R03_CLIENT_EXE':str(executable),'R03_SERVER_EXE':str(server)})
     write_json(delivery/'FILE-MANIFEST.json',inventory(delivery))
     verify(delivery,source_sha,packaging_sha,target)
     archive = out/f'DeiDei-R03-T05-a-{selected["status"]}-{target}-{source_sha[:7]}.zip'
