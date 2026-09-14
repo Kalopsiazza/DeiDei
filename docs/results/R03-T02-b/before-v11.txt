@@ -1,0 +1,110 @@
+✖ W09/W10 accept rooms-1.1 only, exact six time choices and new fields (1.194834ms)
+✖ W09 policy ack never overwrites snapshot or current deadline, failed change can be corrected (1.907ms)
+✖ W09 host-only setting includes eliminated host; pending close blocks changes but not player submit (0.272083ms)
+✖ W10 independent grace timer does not freeze play or restart on duplicate snapshot (0.141833ms)
+✖ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (0.56025ms)
+✖ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (0.25075ms)
+✖ W12 null request ack is strictly checked and cannot complete pending command (0.169791ms)
+✔ W13 Unicode profile boundary and password spaces remain strict (0.495125ms)
+ℹ tests 8
+ℹ suites 0
+ℹ pass 1
+ℹ fail 7
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 63.799375
+
+✖ failing tests:
+
+test at game/desktop/tests-online/test-v11.cjs:15:1
+✖ W09/W10 accept rooms-1.1 only, exact six time choices and new fields (1.194834ms)
+  Error: INVALID_MESSAGE
+      at fail (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:4:28)
+      at check (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:5:34)
+      at /Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:12:33
+      at validate (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:17:44)
+      at validate (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:20:53)
+      at readMessage (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/online/wire.cjs:90:28)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:16:31)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+
+test at game/desktop/tests-online/test-v11.cjs:23:1
+✖ W09 policy ack never overwrites snapshot or current deadline, failed change can be corrected (1.907ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:24:22)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async startSubtestAfterBootstrap (node:internal/test_runner/harness:358:3)
+
+test at game/desktop/tests-online/test-v11.cjs:31:1
+✖ W09 host-only setting includes eliminated host; pending close blocks changes but not player submit (0.272083ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:32:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at game/desktop/tests-online/test-v11.cjs:39:1
+✖ W10 independent grace timer does not freeze play or restart on duplicate snapshot (0.141833ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:40:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at game/desktop/tests-online/test-v11.cjs:45:1
+✖ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (0.56025ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:46:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at game/desktop/tests-online/test-v11.cjs:54:1
+✖ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (0.25075ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:55:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)
+
+test at game/desktop/tests-online/test-v11.cjs:60:1
+✖ W12 null request ack is strictly checked and cannot complete pending command (0.169791ms)
+  TypeError: Cannot read properties of undefined (reading 'request_id')
+      at FakeSocket.ack (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/fake.cjs:20:68)
+      at room (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:10:91)
+      at TestContext.<anonymous> (/Users/zengchongtai/develop/DeiDei-r03-t02-b/game/desktop/tests-online/test-v11.cjs:61:10)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.processPendingSubtests (node:internal/test_runner/test:788:18)
+      at Test.postRun (node:internal/test_runner/test:1235:19)
+      at Test.run (node:internal/test_runner/test:1163:12)
+      at async Test.processPendingSubtests (node:internal/test_runner/test:788:7)

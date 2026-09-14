@@ -1,0 +1,19 @@
+
+> deidei-r02-desktop@0.1.0 smoke:online
+> npm run build && node tests-online/smoke.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+PASS Actual Electron create, six-seat lobby, ready/start; 33 cards in three rows at both target viewports
+PASS Future limits 10→5→30 preserve current deadline and accepted move; host absence keeps cards/timers; naturally eliminated host can configure
+PASS Submit confirmation lock, complete result last_turn, result-page settings, public reveal ledger and next-match lobby
+PASS Host leave confirmation, indistinguishable access error, explicit full-room spectator choice, lobby role buttons
+PASS Pending-close notice and hidden controls; directed removal navigates without a click, keeps identity, and late old event/snapshot do not restore old room
+PASS Named IPC rejects URL injection and oversized input; native host-close cancellation preserves connection and confirmation exits
+PASS Ordinary main without endpoint reports unavailable; original offline worker starts, online switch rejects an active solo

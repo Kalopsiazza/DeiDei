@@ -1,0 +1,471 @@
+{
+  "task": "R03-T02-b",
+  "product_input_sha": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+  "tested_sha": "19e75c0d3f3ca8423733538a57ef071ad808a713",
+  "plan_id": "R03-plan-1.1-b",
+  "plan_sha": null,
+  "plan_manifest_sha256": "3b5f1fdf74e2c236768216d27edbd1bffa67bb57577c21c2b38504d6edac7d2c",
+  "plan_files_verified": 26,
+  "branch": "codex/r03-t02-b-online-desktop",
+  "pr_target": "integration/r03",
+  "input_pr": "https://github.com/Kalopsiazza/DeiDei/pull/21",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/24",
+  "remote_submission": "PR_CREATED_VERIFIED",
+  "local_status": "PASS",
+  "real_room_service_socket": "NOT_RUN",
+  "electron_real_service": "NOT_RUN",
+  "real_room_core_dto": "PASS_10_CAPTURED_FRAMES",
+  "windows": "NOT_RUN",
+  "kimi": "NOT_CALLED",
+  "dependencies_changed": false,
+  "package_lock_sha256": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+  "test_environment": "Darwin arm64; Electron 44.3.0 / embedded Node 24.20.0; reused existing ignored node_modules with unchanged lock",
+  "capture": {
+    "source": "real Room + real core; synthetic clock/session container; no socket",
+    "service_head": "0f114284492417ec61634895c485d73417ff1b49",
+    "service_dirty": true,
+    "source_sha256": {
+      "game/server/deidei_server/__init__.py": "3e37e37e633d31ac8afad5970c7d57cf076583c0994997ec031b270a3e9bb32f",
+      "game/server/deidei_server/__main__.py": "f91c681d82c171bb104b120458d9e4e352d92b0cd218b8de6363ccb7773762d3",
+      "game/server/deidei_server/protocol.py": "a604a984c135903f39e72d9bc83e414a78d9592bc280ac0e9ca2f9a7cb2f0fc8",
+      "game/server/deidei_server/room.py": "90396c19ee497822ce4edf44db28d6393a8152f66a33f80dd9cbc12b08f88cb6",
+      "game/server/deidei_server/server.py": "97c77e1ce7604b8d6014719d75fa242cba0a16ab372851926bf58a6292d52f72",
+      "game/server/deidei_server/testing.py": "3a2e015dc5984c7ffcd3e7e82dd16150e67749c613ff4ef352ff7971434cb354",
+      "game/core/deidei_core/__init__.py": "4de766565b2189aeda70810daf68619f590963c3c4c70ec1ac5175c9abf4ae88",
+      "game/core/deidei_core/api.py": "190a6741f91c7cbfa775ea40edc0604997425cebbd888dbb91f2237fc10b3691",
+      "game/core/deidei_core/engine.py": "1d63b6a07350a1c047ac0a3fa6662fefaea265e7272e4eeb34fe345be9b26fd2",
+      "game/core/deidei_core/entries.py": "478f1dd6e38746ff2241eccb7729653635f171c16206511ec3e9537099e51295",
+      "game/core/deidei_core/wire.py": "e2b29078ddf198144ba0332ca977a4ea4af59df8ae12fd2fb73a4e750a212959"
+    }
+  },
+  "capture_command": "python3 game/desktop/tests-online/capture-room-results.py /Users/zengchongtai/develop/DeiDei-r03-t01-b > game/desktop/tests-online/room-results-v11.json",
+  "capture_exit_code": 0,
+  "validation": {
+    "tested_sha": "19e75c0d3f3ca8423733538a57ef071ad808a713",
+    "platform": "Darwin",
+    "arch": "arm64",
+    "checks": [
+      {
+        "name": "root",
+        "command": [
+          "python3",
+          "scripts/check.py"
+        ],
+        "cwd": ".",
+        "exit_code": 0,
+        "seconds": 1.17
+      },
+      {
+        "name": "desktop-baseline",
+        "command": [
+          "npm",
+          "test"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "seconds": 0.97
+      },
+      {
+        "name": "online-unit",
+        "command": [
+          "npm",
+          "run",
+          "test:online"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "seconds": 0.71
+      },
+      {
+        "name": "websocket-probe",
+        "command": [
+          "./node_modules/.bin/electron",
+          "tests-online/probe.cjs"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "seconds": 1.43
+      },
+      {
+        "name": "online-window",
+        "command": [
+          "npm",
+          "run",
+          "smoke:online"
+        ],
+        "cwd": "game/desktop",
+        "exit_code": 0,
+        "seconds": 10.07
+      },
+      {
+        "name": "offline-window",
+        "command": [
+          "node",
+          "game/desktop/smoke-live.cjs"
+        ],
+        "cwd": ".",
+        "exit_code": 0,
+        "seconds": 21.23
+      }
+    ],
+    "real_room_service": "NOT_RUN",
+    "windows": "NOT_RUN",
+    "status": "PASS"
+  },
+  "incremental_source_files": [
+    {
+      "path": "game/desktop/README.md",
+      "bytes": 8187,
+      "sha256": "c438562dedbdc98b06144b0186f4cb319b9376e0dae79c0ea87434102111c951"
+    },
+    {
+      "path": "game/desktop/main.cjs",
+      "bytes": 7498,
+      "sha256": "fb2a606738b842316e38744afafc5b2a64aa9ff6eed0864484036b70f620a698"
+    },
+    {
+      "path": "game/desktop/online/OnlineRoom.tsx",
+      "bytes": 20561,
+      "sha256": "be92d91bb77c3c48f62890fd1731838c468b638c060487c0ff63b08d4ad5289a"
+    },
+    {
+      "path": "game/desktop/online/model.ts",
+      "bytes": 7152,
+      "sha256": "5d57de846fbb2f1aaf4973a4a220caafe511fd05101f4fc49e47d1edbc6795f4"
+    },
+    {
+      "path": "game/desktop/online/network-room-port.cjs",
+      "bytes": 13065,
+      "sha256": "9e97e20dc59a14f74387c6a0302c318ef67d0afa4f767debfde63a7126bca546"
+    },
+    {
+      "path": "game/desktop/online/types.ts",
+      "bytes": 4491,
+      "sha256": "9248fdd49d319e25d837203a1245bf1615724bea17ace92d8394f4e9c5214eb6"
+    },
+    {
+      "path": "game/desktop/online/wire.cjs",
+      "bytes": 13292,
+      "sha256": "a39295fe05f5f6cc78287338d968d0e2ec4d32c312aa23754b27cd14da2252e8"
+    },
+    {
+      "path": "game/desktop/preload.cjs",
+      "bytes": 1719,
+      "sha256": "a775d849ce6dbe37d7ce7628db778c78207675a08366ce5b3416a9c4c4318752"
+    },
+    {
+      "path": "game/desktop/style.css",
+      "bytes": 16866,
+      "sha256": "0d001a5a5943bd7cb9eac4cafadcb70fe1b5d40034953d305a7e95cfc7ea89d1"
+    },
+    {
+      "path": "game/desktop/tests-online/capture-room-results.py",
+      "bytes": 3498,
+      "sha256": "2e41e5420872cb86da7ea8f3b83c023909b6dff6e9e436c8cde13cbf510ed63c"
+    },
+    {
+      "path": "game/desktop/tests-online/fake.cjs",
+      "bytes": 7482,
+      "sha256": "0f8aa1fba2e9191da13a5b46017e22be4f59e28d1660075d9898eab9d075eaee"
+    },
+    {
+      "path": "game/desktop/tests-online/room-results-v11.json",
+      "bytes": 162576,
+      "sha256": "e9a0f04b5c6fe00cb17907bd0056bb4426ef012898961237c82ec9995bec0396"
+    },
+    {
+      "path": "game/desktop/tests-online/smoke.cjs",
+      "bytes": 18068,
+      "sha256": "32678c12af7387ac1899c155c1c3d167a577065b2cc2151ff407fcd1d545d930"
+    },
+    {
+      "path": "game/desktop/tests-online/test-model.cjs",
+      "bytes": 3580,
+      "sha256": "470d1598addcce711863cf66612a019c521e05585a98fa015e76349b683170ff"
+    },
+    {
+      "path": "game/desktop/tests-online/test-network.cjs",
+      "bytes": 9762,
+      "sha256": "2ff1666b76faec7dcfd2e6700086138e4255f5b0147be57226bd626a878f83da"
+    },
+    {
+      "path": "game/desktop/tests-online/test-preload.cjs",
+      "bytes": 1340,
+      "sha256": "13b5c778b19f4c7832b802154f79fc0478def097c3154f8653a436863070372f"
+    },
+    {
+      "path": "game/desktop/tests-online/test-v11.cjs",
+      "bytes": 10262,
+      "sha256": "ad8eaf82adf83791ab89288289cf020b95e46d6508276bba64f26a6d9431615a"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/results/R03-T02-b/PR-BODY.md",
+      "bytes": 3124,
+      "sha256": "ea4e45f404e8449243f7a9aec7d2f3d232ff8bfb65f62163055bfede8be240a2"
+    },
+    {
+      "path": "docs/results/R03-T02-b/REPORT.md",
+      "bytes": 6443,
+      "sha256": "74673b82a634ca91947cbd6ba69ecbf289578261a6084c5445a338573b472239"
+    },
+    {
+      "path": "docs/results/R03-T02-b/TEST-MATRIX.md",
+      "bytes": 3517,
+      "sha256": "505aeaf42bf4504de0e582b70f993778489a7e257c89daa0a1be00e4f6a3391c"
+    },
+    {
+      "path": "docs/results/R03-T02-b/before-v11.txt",
+      "bytes": 7806,
+      "sha256": "e9eab7c3f4f62f71a3429996555d725bdcc34efb9012d87a008e6394a16117d0"
+    },
+    {
+      "path": "docs/results/R03-T02-b/desktop-baseline.txt",
+      "bytes": 2737,
+      "sha256": "a7a6baf211cfbbbeff18c5f3bcb7c47bd662110b8d7593c55ec7503442e7175d"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-create.png",
+      "bytes": 46850,
+      "sha256": "4a0f0284cee94534279059cbe73d4efb4998f1e1aad17c90629d452042997786"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-eliminated-host-setting.png",
+      "bytes": 90131,
+      "sha256": "0db977691b6a4626c1ac05a95e39caf17b295dc4018ad56c6259e61a8b6ee7a5"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-full-room.png",
+      "bytes": 50324,
+      "sha256": "7780eed43c0ac582366b62ec1cf4639fca25826763ed88725e033e5e8bd2580a"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-host-continues.png",
+      "bytes": 220145,
+      "sha256": "86e60022aa40c41f28cb1812388f7a500ff6e98ffde09717d49a6bfec85313fb"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-host-grace-continues.png",
+      "bytes": 215979,
+      "sha256": "4af45962e79b9bad7aadacbacd2c84938d19656a4db54c59d76eb06068ad58bd"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-host-leave.png",
+      "bytes": 81826,
+      "sha256": "5a428df914e1eafb03cd537022f6401b0106e6488324e9d9a0e1162d4013d31f"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-limit-before.png",
+      "bytes": 207969,
+      "sha256": "60e629041e63d77e91c637f11b24f590dcb080da85370286005cb76d31af6eb9"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-limit-dialog.png",
+      "bytes": 197708,
+      "sha256": "15d54c44ace1a66044c8de3c6a6d56ceead4ec53fbcc15d16d41e1ca01ca4584"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-limit-next30.png",
+      "bytes": 210981,
+      "sha256": "3ba3528c0dcb0c2149a3cd09cf09205e57cb8a88cf505ccda90ce33eb45307b6"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-limit-next5.png",
+      "bytes": 212795,
+      "sha256": "7265415dd957688977b2af3ece95ee2ebce1712a336b04c8fccbb2a261c54db0"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-lobby-1366x768.png",
+      "bytes": 73002,
+      "sha256": "acd2732660ba4e5698863038fb2f32155a8771dcd021c02b77b6e4c80b9d255d"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-lobby-1920x1080.png",
+      "bytes": 78259,
+      "sha256": "eae42e600641382e68b509892ef1caea245a99012d58d9aadf214568a85eee87"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-membership-ended.png",
+      "bytes": 43371,
+      "sha256": "5b42915ba3d2c03ca4392369e75f62cc2459c25c5090cbdefe65cb88e6a99c97"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-new-room-old-event.png",
+      "bytes": 70159,
+      "sha256": "28c0cc90ea8312fbff82968a405a91dd1ecedf3416c607c26b89824b6f2480b7"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-pending-close.png",
+      "bytes": 74824,
+      "sha256": "b02eb1d16dd18365bc776c00631aea09591f1402c7a7572c19112132cf039fc4"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-reconnecting.png",
+      "bytes": 79477,
+      "sha256": "5e642d75411178c5dfa75c811d4a6f787c3f6b1d9135f5d739e0d00a193a162b"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-result.png",
+      "bytes": 90675,
+      "sha256": "a685c26f75208917d1f327165a49683c5a3a72d0a879b80dc6f3a9a31f9fc325"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-revealing.png",
+      "bytes": 86534,
+      "sha256": "8f88da1521f209b912cc48150de5e14e9730ea464497d1df23340f48912af420"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-spectating.png",
+      "bytes": 70905,
+      "sha256": "8aa62f733702c5c5bbd10f44facbb3de2c5ee4f713e87c80d56095461280f334"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-spectator-lobby.png",
+      "bytes": 65927,
+      "sha256": "08177cc7509d0167951215928fcc99ddb0848667a0a2a0ad1eaa77d525036a4e"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-submitted.png",
+      "bytes": 207741,
+      "sha256": "c6c68035f6f5abfcf58d71214218a877c4a95a806d6aa43301b550c529c72b1f"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-table-1366x768.png",
+      "bytes": 203706,
+      "sha256": "3ebc0f6d55660b5057c1987b548ab705cb1d051d18f075270c5f307e245661b4"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-table-1920x1080.png",
+      "bytes": 242841,
+      "sha256": "68103fda5e4a98350f8b96faebe4e377ac87de5cec532b9c87b8da5c4eb2b001"
+    },
+    {
+      "path": "docs/results/R03-T02-b/mock-wrong-room.png",
+      "bytes": 45497,
+      "sha256": "22facdfa97fb9bd1aaf999e068b6e077bcde547220fa5f670c47e760a99d2104"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/fixture-retained.png",
+      "bytes": 208393,
+      "sha256": "b60bc731cf0a6161bc837014098fd12dbd06e6b0e8edf2d90f97c98e5f5a2172"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-again.png",
+      "bytes": 199812,
+      "sha256": "233909bea44e90fcfb532527290765cf8ec78f6bce0e196d1d3e2accf6e51edb"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-auto-recovery.png",
+      "bytes": 177370,
+      "sha256": "173d51dd5febf2bf3214bed73e0a9b13714447ba39e025054319f167138ce0cf"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-bi-defense-revealed.png",
+      "bytes": 211844,
+      "sha256": "6e44ee5118eb0ee5bc7d5edae25e6b6a12b10f5e30d0ae61bfa8092ee0416e02"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-charge-revealed.png",
+      "bytes": 202786,
+      "sha256": "19e7a67bbbf3b213dfd7c7ddb2ce8f3e061b21dfba516f09e0cc560878e9f981"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-prepare.png",
+      "bytes": 54260,
+      "sha256": "d31e2b93c820da528ebe018b8cd2d1e7e8c4dff6cab10d76e2c596c6a8718a69"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-public-resources.png",
+      "bytes": 204316,
+      "sha256": "947202b5997fcaeec4c671ebaa6f3dae35920036517ceca7d77157fc3d0b5269"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-read-failure.png",
+      "bytes": 197399,
+      "sha256": "2f83c627be73b3e610f0f6c9326278b63649e340183d3baacb529906d04c6a20"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-result.png",
+      "bytes": 47401,
+      "sha256": "4dfabacaa492adcc14fe4f573c62d71496f7f449362070ca17a37bfed062fce0"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-second-result.png",
+      "bytes": 47401,
+      "sha256": "4dfabacaa492adcc14fe4f573c62d71496f7f449362070ca17a37bfed062fce0"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-smoke.json",
+      "bytes": 13886,
+      "sha256": "91d4cb9182c7ed44bc189f0977c078bd2d91abeb4ab7a302fdb3fc41f5d35534"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-table-1366x768.png",
+      "bytes": 199812,
+      "sha256": "233909bea44e90fcfb532527290765cf8ec78f6bce0e196d1d3e2accf6e51edb"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-table-1920x1080.png",
+      "bytes": 232487,
+      "sha256": "e2418a9086dcd8d87fd1b188a8616b634bc3dab4452dc4952c104e3d83dd521f"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-window-ledger.jsonl",
+      "bytes": 65751,
+      "sha256": "28cb2fdb8f08f179f35b5826037fae03de6277847f7962db6ee795b11885e8a6"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-regression/live-worker-interrupted.png",
+      "bytes": 196460,
+      "sha256": "54ee571e8578f1849146231f29082e42a45b06afae8d56054d171acab3a51c86"
+    },
+    {
+      "path": "docs/results/R03-T02-b/offline-window.txt",
+      "bytes": 576,
+      "sha256": "e352703d782003203b88be29ab45ce9bd4bd11991928115d78134e4ad0a45730"
+    },
+    {
+      "path": "docs/results/R03-T02-b/online-smoke.json",
+      "bytes": 16617,
+      "sha256": "539eb6402c11c1c29ac464fdd6157c8a3258ed01a7e0c9bc97b56f26223ce12e"
+    },
+    {
+      "path": "docs/results/R03-T02-b/online-unit.txt",
+      "bytes": 3142,
+      "sha256": "bf202c49b5b2195e7ec8cc19190c64090dd207300dc6f789bc63f078036f03ff"
+    },
+    {
+      "path": "docs/results/R03-T02-b/online-window.txt",
+      "bytes": 1129,
+      "sha256": "653474a31ec53b9320d45f8cb3176b7395587dee7a551a8d1e0eb666a99af2e8"
+    },
+    {
+      "path": "docs/results/R03-T02-b/root.txt",
+      "bytes": 5078,
+      "sha256": "a56626ddbc297a90458ed8358af83d281607526356b27834db8b876c2fe2e9c6"
+    },
+    {
+      "path": "docs/results/R03-T02-b/unconfigured-real-main.png",
+      "bytes": 39127,
+      "sha256": "aae402b29b3e28e1bd758a06384804fdde0214a0cb14ca09d65e7b995d0c8eba"
+    },
+    {
+      "path": "docs/results/R03-T02-b/validate.py",
+      "bytes": 2029,
+      "sha256": "555548f3c2a340ddab2ce1852736f578543de303cef1f320a86c47238420ac58"
+    },
+    {
+      "path": "docs/results/R03-T02-b/validation.json",
+      "bytes": 1355,
+      "sha256": "295a6a320d1647166da5277fe5672bbd491d451123c936e464397dde2f3112c3"
+    },
+    {
+      "path": "docs/results/R03-T02-b/websocket-probe.txt",
+      "bytes": 97,
+      "sha256": "f4cedec022e1166153ca21960b32e9c8e1dd507946c040dda22fc78082855c12"
+    }
+  ],
+  "pr_head_sha_at_creation": "c717881fbbff21790eb5d3a0e8b7db551178f541",
+  "pr_state_at_verification": "OPEN"
+}
