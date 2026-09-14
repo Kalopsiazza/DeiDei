@@ -1,0 +1,11 @@
+{
+  "baseRefName": "integration/r03",
+  "headRefName": "codex/r03-t01-a-room-service",
+  "headRefOid": "8839e4b8a0c9ae572f9c0337f3eb6d18a8ef67f7",
+  "isDraft": true,
+  "number": 22,
+  "state": "OPEN",
+  "url": "https://github.com/Kalopsiazza/DeiDei/pull/22",
+  "verification_scope": "Creation head verified before this evidence-only follow-up commit. Final remote head is reread after pushing the evidence commit.",
+  "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+}
