@@ -1,0 +1,378 @@
+{
+  "task_id": "R03-T05-a",
+  "status": "BASELINE_ONLY",
+  "product_source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
+  "plan_manifest_sha256": "56e0026a16a156813962c25cd9b73a163207efd7302f7a62ab2208891140a4bf",
+  "plan_files_verified": 15,
+  "tested_packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "local_build_packaging_sha": "2e2007a61c4448d4131e9bde09d919be3fb37e54",
+  "branch": "codex/r03-t05-a-native-diagnostic",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/26",
+  "pr_base": "integration/r03-live",
+  "ci_run_id": 34875308825,
+  "ci_status": "FAIL_WINDOWS_BASELINE_F06",
+  "macos_packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+  "windows_packaged_automation": "FAIL_DEADLINE_DRIFT_7MS",
+  "candidate_checks": [
+    "NO_CANDIDATE",
+    "NO_CANDIDATE",
+    "NO_CANDIDATE"
+  ],
+  "tools_tests": {
+    "total": 8,
+    "exit_code": 0
+  },
+  "root_tests": {
+    "total": 40,
+    "historical_expected_failure": 1,
+    "exit_code": 0
+  },
+  "native_builds": {
+    "macos": 2,
+    "windows": 1,
+    "retries": 0
+  },
+  "downloads": [
+    {
+      "platform": "windows",
+      "artifact_id": 10361275991,
+      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10361275991",
+      "outer_sha256": "cb129fb1864bee28c49c77f4dd6bfe8c9a038fd67fa364e1a2f87a13f0bdc40e",
+      "outer_bytes": 178427589,
+      "expires_at": "2026-10-14T17:33:48Z",
+      "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-win32-x64-8a6f8b2.zip",
+      "inner_sha256": "a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16",
+      "inner_bytes": 178843667,
+      "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+      "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+      "packaged_automation": "FAIL",
+      "download_verified": true,
+      "inventory_files": 250
+    },
+    {
+      "platform": "macos",
+      "artifact_id": 10360039450,
+      "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10360039450",
+      "outer_sha256": "ec34b265a17b1a0e8b9a8b323977df9878313b18d516e52994c13aac75fa6b28",
+      "outer_bytes": 149268378,
+      "expires_at": "2026-10-14T17:34:12Z",
+      "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip",
+      "inner_sha256": "364d1777f6527819e0521f13d0a4e259d5b23a0511cd7a554d80863825c23b47",
+      "inner_bytes": 149937221,
+      "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+      "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+      "packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+      "download_verified": true,
+      "inventory_files": 341
+    }
+  ],
+  "product_files_changed": false,
+  "kimi": "NOT_CALLED",
+  "human": "NOT_RUN",
+  "release": "NOT_RUN",
+  "sources": [
+    {
+      "path": ".github/workflows/r03-native-diagnostic.yml",
+      "bytes": 4596,
+      "sha256": "70121c2c830ef506c7097b38e6eef7d93e14077adfdbdaeb76c931f7cc7f14f3"
+    },
+    {
+      "path": "game/packaging_r03/.gitignore",
+      "bytes": 27,
+      "sha256": "338085e7ad49e06aa56f7bcd7564cb634fc76dbb3bb2e917e7f570750b20b4e0"
+    },
+    {
+      "path": "game/packaging_r03/PLAYER-README.txt",
+      "bytes": 1294,
+      "sha256": "fa004709d3f4cb78fcdc11fbc2418014664ccb9d0c10fd806b1327becaa4aae5"
+    },
+    {
+      "path": "game/packaging_r03/README.md",
+      "bytes": 4356,
+      "sha256": "6111002d24c3e04097b57af6b7513adca65b38badba80fd59118bed58161cd34"
+    },
+    {
+      "path": "game/packaging_r03/build.py",
+      "bytes": 11562,
+      "sha256": "924494ca5d73b7eccb004539d8259bb6fed4c39a15d827b383cbd3dfb44f6975"
+    },
+    {
+      "path": "game/packaging_r03/candidate-input.json",
+      "bytes": 131,
+      "sha256": "8fc92bd34f5d68939626af0a2e2c5e2390e4b7aaef68cd4a3037810a17061207"
+    },
+    {
+      "path": "game/packaging_r03/candidate.py",
+      "bytes": 5840,
+      "sha256": "2f317b8d94227d72c4e4d8d1823b33b623364cf7654552f513d54644f2bff4d7"
+    },
+    {
+      "path": "game/packaging_r03/check-package.cjs",
+      "bytes": 11956,
+      "sha256": "6ca11810c32d90e29ce96ae281f4f7a9fff40933dfad3924817de9734da3c5d8"
+    },
+    {
+      "path": "game/packaging_r03/freeze.spec",
+      "bytes": 884,
+      "sha256": "813599e13ac3c735edbc0e9ccbf65782843af1ebc9766edb309836f5421fb1b8"
+    },
+    {
+      "path": "game/packaging_r03/pack.mjs",
+      "bytes": 2477,
+      "sha256": "5a04a0bcb7e015033033e6f685cb94caf2ac848b35c1677c08ca91afc8d8669c"
+    },
+    {
+      "path": "game/packaging_r03/peer.cjs",
+      "bytes": 2115,
+      "sha256": "11b29f78e44559097487c5a60283aa58d2d4d483c5b7092ed33ef91edd777a5d"
+    },
+    {
+      "path": "game/packaging_r03/requirements-darwin-arm64.lock",
+      "bytes": 11613,
+      "sha256": "36b6dd5bffc4295e31222c9f8eda6bc5ca0b8c8a5fff794b4daa274c5cf73ef2"
+    },
+    {
+      "path": "game/packaging_r03/requirements-win32-x64.lock",
+      "bytes": 11805,
+      "sha256": "20134f4bed6d90bf00daa51c148f509e36c6e252be8930fceda2c83832fe235a"
+    },
+    {
+      "path": "game/packaging_r03/server_entry.py",
+      "bytes": 140,
+      "sha256": "ec0afed98565411fc529be3934230d78aaddf8a29ad303b50fce070960ca5a03"
+    },
+    {
+      "path": "game/packaging_r03/test_tools.py",
+      "bytes": 4884,
+      "sha256": "46dfbd96c5594426402f1e386f8438347d798419ffdce799056fbcafd58508eb"
+    },
+    {
+      "path": "game/packaging_r03/verify.py",
+      "bytes": 4513,
+      "sha256": "8572bd8572e7efafa8f7eb2f0516d724280825aceb1decfdbf946efc4c4203da"
+    }
+  ],
+  "artifacts": [
+    {
+      "path": "docs/results/R03-T05-a/BUILD-INFO.json",
+      "bytes": 2523,
+      "sha256": "349c375d23b2c1d05f669f3db50f9f30c159d98ab4de19ed3c326a2f408c9cae"
+    },
+    {
+      "path": "docs/results/R03-T05-a/CANDIDATE-INPUT.json",
+      "bytes": 131,
+      "sha256": "8fc92bd34f5d68939626af0a2e2c5e2390e4b7aaef68cd4a3037810a17061207"
+    },
+    {
+      "path": "docs/results/R03-T05-a/DOWNLOADS.md",
+      "bytes": 3083,
+      "sha256": "253dd1ef9cc6adb1739f9fa936dc98339af3bbd48582ad3ae7bc4a5748000a83"
+    },
+    {
+      "path": "docs/results/R03-T05-a/FINDINGS.json",
+      "bytes": 578,
+      "sha256": "3e8165e1bcab3c4cd879ed554eed318cdb5bfa449dd124d3b5d36862e0f12ee8"
+    },
+    {
+      "path": "docs/results/R03-T05-a/PENDING-HUMAN.md",
+      "bytes": 323,
+      "sha256": "8fc724434f9095b2565c292180ba93fcc1a2a73a755eeb4e55aa575c8fa02654"
+    },
+    {
+      "path": "docs/results/R03-T05-a/PR-BODY.md",
+      "bytes": 2304,
+      "sha256": "6eb9094bc48ef4117650cab2a374a4fac83516575c8459871392299f5ffd60d4"
+    },
+    {
+      "path": "docs/results/R03-T05-a/REPORT.md",
+      "bytes": 5560,
+      "sha256": "d17c51bc9185a8acc2a2aa2867810763797fae0a6dd92ebf70018d8c19b1c4d1"
+    },
+    {
+      "path": "docs/results/R03-T05-a/TEST-MATRIX.md",
+      "bytes": 2086,
+      "sha256": "e7e66cb7a4d96d54d6c600fa693369e04295eb086b5ca736d55ff9aa19555111"
+    },
+    {
+      "path": "docs/results/R03-T05-a/app-identity.txt",
+      "bytes": 924,
+      "sha256": "9b4e5bbd81be432e829baba78dc4d40f5a0340e1b99b83f1ca4ee06b5b14596a"
+    },
+    {
+      "path": "docs/results/R03-T05-a/app-signature.txt",
+      "bytes": 2300,
+      "sha256": "68fa9895748f6b965f19495060127da88b449d73c9a431cc919ae6c38ff3b190"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/commands.json",
+      "bytes": 5293,
+      "sha256": "af078a8a10a76ba4e4b019083188d80fbca63baf59fec8e2ab0b29a3dc49ff33"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/delivery-manifest.json",
+      "bytes": 588,
+      "sha256": "994926369caf5dad4a8e9004452d9c18bbc1e06c911cd113b7725b8a160a7900"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/npm-audit-runtime.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/npm-audit.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-automation.json",
+      "bytes": 1328,
+      "sha256": "f5e5ab9e9eb71265cdc9efcb8cbb27876cb0de5af0ca196f3372d2a8ad68fd1f"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-future-time.png",
+      "bytes": 140924,
+      "sha256": "5da785b123761bf5b9654007c83330c1a6570d5fc43b6bba23b85305c00c3ece"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-missing-catalog.png",
+      "bytes": 68263,
+      "sha256": "bbb307d1ed0956144f6ba5169c55fb97017d44640979bb6f71deed80f698b019"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-missing-worker.png",
+      "bytes": 68263,
+      "sha256": "bbb307d1ed0956144f6ba5169c55fb97017d44640979bb6f71deed80f698b019"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-offline.png",
+      "bytes": 191475,
+      "sha256": "f8d10cdcaecfa2d93ce66a306a4febe80e57bd805bf90a9897b287b46d5d14d0"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-result-5.png",
+      "bytes": 74279,
+      "sha256": "179a009a46577da08ce4a9541f97b42d118b47767eb33d793edad2bb657c7481"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-server-restarted.png",
+      "bytes": 41322,
+      "sha256": "af594643ecc5509feff5f5e3ed17e8a58d032223499a6f636a90ce0b39e7d4d3"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-table-1366x768.png",
+      "bytes": 196735,
+      "sha256": "4c7a7cafa5ebb5e917daef9e47f15890db309eb849f6f032200d5867008a3476"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/packaged-table-1920x1080.png",
+      "bytes": 225065,
+      "sha256": "58cb7ce9bffc11e87d4ed74400657cb9b314a7f31dd016e9bf760282a95de614"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-macos/python-audit.json",
+      "bytes": 579,
+      "sha256": "eaa04198eae67ce399a46a6b283fbcbfca67d82c8357c80e4fcc3affe75cf719"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/commands.json",
+      "bytes": 4510,
+      "sha256": "cfe54bd53cc566112fb68abacc5538739be73214b66ce38a846dbf3d15795cf7"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/delivery-manifest.json",
+      "bytes": 538,
+      "sha256": "00c70fb9331c621b9abeecdffb9df1e15c3693045f780fd338c39b2fd588d3b3"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/npm-audit-runtime.json",
+      "bytes": 385,
+      "sha256": "d1b9af0998f55b86be4743b2913afbbb9dfae5d80c2adf43db28203066978456"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/npm-audit.json",
+      "bytes": 385,
+      "sha256": "d1b9af0998f55b86be4743b2913afbbb9dfae5d80c2adf43db28203066978456"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/packaged-automation.json",
+      "bytes": 567,
+      "sha256": "c95d5bd205affe897547e97cf0757ed976e4254572ffb552555dd0a16cfaa18e"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/python-audit.json",
+      "bytes": 706,
+      "sha256": "c0b21b3ec31ab9bf8b01c0a40e1140822c8bdaa6568ed7d3e12f6484e56f1058"
+    },
+    {
+      "path": "docs/results/R03-T05-a/ci-windows/windows-signatures.txt",
+      "bytes": 772,
+      "sha256": "5188f63ad12b7cdd212b4a72053ccd32ed7fec690a00843e5c780dca14db4b02"
+    },
+    {
+      "path": "docs/results/R03-T05-a/commands.json",
+      "bytes": 4789,
+      "sha256": "f1ca3cc8c14454554485d3b466478edc6942bc2ac1dec8d29c6c0f5c9a353215"
+    },
+    {
+      "path": "docs/results/R03-T05-a/downloads.json",
+      "bytes": 1551,
+      "sha256": "0c68caefadc4bfae2ef5a27e9dc2858f04537d426ce60be173e26d66e74c394c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/electron-download.json",
+      "bytes": 369,
+      "sha256": "5d0643220e64cf5f07326d2db38905c0b774e4dec4865aa26500539c72f67a72"
+    },
+    {
+      "path": "docs/results/R03-T05-a/frozen-server-probe.json",
+      "bytes": 462,
+      "sha256": "ed0daaa4653ee46ecefbb1e1a2a7f7c866be8603585bec091171f4c3149c7499"
+    },
+    {
+      "path": "docs/results/R03-T05-a/gatekeeper.txt",
+      "bytes": 81,
+      "sha256": "61239aca8549200ed8d02d649b1cb1e74a59b4e828e712285a6ed7d3473a7eff"
+    },
+    {
+      "path": "docs/results/R03-T05-a/mac-local-delivery.json",
+      "bytes": 560,
+      "sha256": "f95560a39a8367a87eafec9746b8b694c63fd37a045eeed442ead82e58d8367b"
+    },
+    {
+      "path": "docs/results/R03-T05-a/npm-audit-runtime.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/npm-audit.json",
+      "bytes": 363,
+      "sha256": "6a42e0f7e2877f0475270cdc42fb981ae261c5f82e8cd7f15a3056bc92587a4c"
+    },
+    {
+      "path": "docs/results/R03-T05-a/python-audit.json",
+      "bytes": 579,
+      "sha256": "eaa04198eae67ce399a46a6b283fbcbfca67d82c8357c80e4fcc3affe75cf719"
+    },
+    {
+      "path": "docs/results/R03-T05-a/root-check.txt",
+      "bytes": 7740,
+      "sha256": "de9af48e3e149d24bf9af5feb412db4220330f6214be54d613c2a21480642b30"
+    },
+    {
+      "path": "docs/results/R03-T05-a/server-identity.txt",
+      "bytes": 892,
+      "sha256": "83534a983d367682b384829e21224f312633e6b87104cb66bed715bc073df826"
+    },
+    {
+      "path": "docs/results/R03-T05-a/server-signature.txt",
+      "bytes": 151,
+      "sha256": "52bf52360d080c22dd0802f9b5d39cac71962bad4206cf33aa439cc22b759220"
+    },
+    {
+      "path": "docs/results/R03-T05-a/tools-check.txt",
+      "bytes": 814,
+      "sha256": "34f2568c6ff1e020cf0bfc0dac723646198310b334a67a11e1dcaf9e204393eb"
+    }
+  ]
+}

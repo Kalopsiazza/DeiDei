@@ -1,0 +1,126 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "commands": [
+    {
+      "name": "node-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"--version\"]",
+      "exit_code": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "npm-version",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"--version\"]",
+      "exit_code": 0,
+      "seconds": 0.13
+    },
+    {
+      "name": "npm-ci",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"ci\"]",
+      "exit_code": 0,
+      "seconds": 3.17
+    },
+    {
+      "name": "npm-audit",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\"]",
+      "exit_code": 0,
+      "seconds": 0.64
+    },
+    {
+      "name": "npm-audit-runtime",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "exit_code": 0,
+      "seconds": 0.49
+    },
+    {
+      "name": "desktop-build",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/lib/node_modules/npm/bin/npm-cli.js\", \"run\", \"build\"]",
+      "exit_code": 0,
+      "seconds": 0.78
+    },
+    {
+      "name": "freeze-worker",
+      "command": "[\"<PACKAGING>/game/packaging_r03/.venv/bin/python\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"<OUTPUT>/frozen\", \"--workpath\", \"<OUTPUT>/freeze-worker\", \"<PACKAGING>/game/packaging_r03/freeze.spec\"]",
+      "exit_code": 0,
+      "seconds": 4.3
+    },
+    {
+      "name": "freeze-server",
+      "command": "[\"<PACKAGING>/game/packaging_r03/.venv/bin/python\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"<OUTPUT>/frozen\", \"--workpath\", \"<OUTPUT>/freeze-server\", \"<PACKAGING>/game/packaging_r03/freeze.spec\"]",
+      "exit_code": 0,
+      "seconds": 4.86
+    },
+    {
+      "name": "frozen-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<OUTPUT>/source/game/packaging/check-worker.cjs\", \"<OUTPUT>/frozen\"]",
+      "exit_code": 0,
+      "seconds": 0.12
+    },
+    {
+      "name": "packager",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<PACKAGING>/game/packaging_r03/pack.mjs\", \"<OUTPUT>\"]",
+      "exit_code": 0,
+      "seconds": 11.29
+    },
+    {
+      "name": "copy-app",
+      "command": "[\"ditto\", \"<OUTPUT>/packaged/DeiDei R03 Diagnostic-darwin-arm64/DeiDei R03 Diagnostic.app\", \"<OUTPUT>/delivery/DeiDei R03 Diagnostic.app\"]",
+      "exit_code": 0,
+      "seconds": 0.43
+    },
+    {
+      "name": "app-signature",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<OUTPUT>/delivery/DeiDei R03 Diagnostic.app\"]",
+      "exit_code": 0,
+      "seconds": 0.33
+    },
+    {
+      "name": "app-identity",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<OUTPUT>/delivery/DeiDei R03 Diagnostic.app\"]",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "name": "server-signature",
+      "command": "[\"codesign\", \"--verify\", \"--deep\", \"--strict\", \"--verbose=2\", \"<OUTPUT>/delivery/room-server/deidei-room-server\"]",
+      "exit_code": 0,
+      "seconds": 0.03
+    },
+    {
+      "name": "server-identity",
+      "command": "[\"codesign\", \"--display\", \"--verbose=4\", \"<OUTPUT>/delivery/room-server/deidei-room-server\"]",
+      "exit_code": 0,
+      "seconds": 0.01
+    },
+    {
+      "name": "gatekeeper",
+      "command": "[\"spctl\", \"--assess\", \"--type\", \"execute\", \"--verbose=4\", \"<OUTPUT>/delivery/DeiDei R03 Diagnostic.app\"]",
+      "exit_code": 3,
+      "seconds": 1.23
+    },
+    {
+      "name": "archive",
+      "command": "[\"ditto\", \"-c\", \"-k\", \"--sequesterRsrc\", \"<OUTPUT>/delivery\", \"<OUTPUT>/DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip\"]",
+      "exit_code": 0,
+      "seconds": 13.56
+    },
+    {
+      "name": "unpack-final",
+      "command": "[\"ditto\", \"-x\", \"-k\", \"<OUTPUT>/DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip\", \"<OUTPUT>/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\"]",
+      "exit_code": 0,
+      "seconds": 1.46
+    },
+    {
+      "name": "unpacked-worker",
+      "command": "[\"<USER_HOME>/hostedtoolcache/node/24.12.0/arm64/bin/node\", \"<OUTPUT>/source/game/packaging/check-worker.cjs\", \"<OUTPUT>/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/DeiDei R03 Diagnostic.app/Contents/Resources\"]",
+      "exit_code": 0,
+      "seconds": 0.16
+    },
+    {
+      "name": "unpacked-server-cli",
+      "command": "[\"<OUTPUT>/\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b/room-server/deidei-room-server\", \"--help\"]",
+      "exit_code": 0,
+      "seconds": 0.11
+    }
+  ]
+}

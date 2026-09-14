@@ -12,7 +12,7 @@
 - 本机 macOS arm64 基线包构建、签名/架构/内外清单验证通过；最终ZIP重新展开后冻结worker正常执行，冻结server在OS-only PATH、无系统Python的条件下真实接受rooms-1.1连接。
 - 依赖审计无高/严重项，Python公开公告为空。
 - 当前候选输入 DIAGNOSTIC_BASELINE。基线已知 N33/N36/N48 产品问题保留；本结果不是联机验收版本。
-- 本PR具名CI将分别记录macOS/Windows原生构建与成包窗口；实际结果随后回填，不能把脚本提交当作运行通过。
+- 原生CI已结束：macOS真实包5场/10次开退、目标视口与故障旅程通过；Windows包构建/校验通过，实际窗口改时限时本拍deadline漂移-7ms而失败。保留断言，Windows后续0场/0次完整开退，未冒充通过。
 
 ## 对现有内容的影响
 
@@ -20,10 +20,12 @@
 
 ## 已知问题
 
-T04候选尚未收到。缺候选时交BASELINE_ONLY和固定复跑命令。真实成包窗口仅在一次性CI账户执行；本机默认私人档案不用于测试。未调用Kimi，保持暂停。
+三个规定查看点均未收到T04候选。Windows失败对应基线已知F06，须T04修复后再测。缺候选时交BASELINE_ONLY和固定复跑命令。真实成包窗口仅在一次性CI账户执行；本机默认私人档案不用于测试。未调用Kimi，保持暂停。
 
 ## 提交者确认
 
 - [x] 变更路径受限，原目录只读。
 - [x] 失败/未测与实际通过分开。
 - [x] 不提交二进制、凭证、私人档案或字体。
+
+CI：https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825 。两端内部artifact明确标DIAGNOSTIC_BASELINE，详细SHA/到期与截图见docs/results/R03-T05-a。

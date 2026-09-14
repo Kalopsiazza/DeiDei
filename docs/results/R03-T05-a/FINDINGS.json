@@ -1,0 +1,23 @@
+{
+  "task_id": "R03-T05-a",
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "run_id": 34875308825,
+  "findings": [
+    {
+      "id": "T05-F01",
+      "platform": "win32-x64",
+      "related": "F06/Q05",
+      "operation": "room.set_turn_limit 10000 -> 5000 during selecting",
+      "expected": "current deadline_at_ms unchanged",
+      "before": 1789407238434,
+      "after": 1789407238427,
+      "status": "FAIL_PRODUCT_BASELINE",
+      "product_modified": false
+    }
+  ],
+  "candidate_checks": [
+    "NO_CANDIDATE",
+    "NO_CANDIDATE",
+    "NO_CANDIDATE"
+  ]
+}

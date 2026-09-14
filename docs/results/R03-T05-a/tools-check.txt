@@ -8,6 +8,6 @@ test_test_file_leak (test_tools.Tools.test_test_file_leak) ... ok
 test_wrong_sha_and_corrupt_manifest (test_tools.Tools.test_wrong_sha_and_corrupt_manifest) ... ok
 
 ----------------------------------------------------------------------
-Ran 8 tests in 0.306s
+Ran 8 tests in 0.293s
 
 OK

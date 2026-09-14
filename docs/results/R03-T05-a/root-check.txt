@@ -61,7 +61,7 @@ test_readback_rejects_missing_pr_requirement (test_maintainer_setup.Configuratio
 test_single_maintainer_does_not_need_another_approver (test_maintainer_setup.ConfigurationTests.test_single_maintainer_does_not_need_another_approver) ... ok
 
 ----------------------------------------------------------------------
-Ran 59 tests in 3.239s
+Ran 59 tests in 3.080s
 
 OK (expected failures=1)
 Tests run: 59; known expected failures: 1.

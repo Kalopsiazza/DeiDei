@@ -1,0 +1,34 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "archive_sha256": "364d1777f6527819e0521f13d0a4e259d5b23a0511cd7a554d80863825c23b47",
+  "platform": "darwin",
+  "arch": "arm64",
+  "status": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+  "headless": false,
+  "games": 5,
+  "cycles": 10,
+  "checks": [
+    "final ZIP frozen server starts without system Python; rooms-1.1 hello",
+    "five real packaged Electron + normal peer matches; future timing effective only next select",
+    "ordinary peer receives directed removal after three absent turns",
+    "host after_turn leave closes without false winner",
+    "server restart invalidates old temporary identity",
+    "ten app launch/solo/leave/exit cycles; bundled offline worker remains usable",
+    "damaged worker/catalog copies fail explicitly; missing server spawn fails without fallback"
+  ],
+  "screenshots": [
+    "packaged-future-time.png",
+    "packaged-table-1366x768.png",
+    "packaged-table-1920x1080.png",
+    "packaged-result-1.png",
+    "packaged-result-2.png",
+    "packaged-result-3.png",
+    "packaged-result-4.png",
+    "packaged-result-5.png",
+    "packaged-server-restarted.png",
+    "packaged-offline.png",
+    "packaged-missing-worker.png",
+    "packaged-missing-catalog.png"
+  ]
+}
