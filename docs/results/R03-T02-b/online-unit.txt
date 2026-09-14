@@ -1,0 +1,48 @@
+
+> deidei-r02-desktop@0.1.0 test:online
+> npm run build && node --test tests-online/test-*.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ public amounts use ledger at reveal and new state only in next selecting phase (0.719875ms)
+✔ 33 option costs are live server values, big DD stays rational and catalog supplies only text (1.538666ms)
+✔ spectator, eliminated, forced, disconnected, revealing, pending and accepted never become editable (0.794292ms)
+✔ start requires two ready connected players and summary reports actual source, gains and outcomes (0.567792ms)
+✔ host configuration includes natural elimination and recovery copy never pauses the table (0.667292ms)
+✔ endpoint only accepts explicit loopback and rooms path; no URL credentials (1.112875ms)
+✔ credentials and local_id never enter any renderer state or broadcast (6.991167ms)
+✔ hello defaults drive client data, commands serialize, extra fields rejected (0.898ms)
+✔ snapshot before create ack buffered, old sequence and unrelated room ignored (2.796292ms)
+✔ late submit ack does not restore an old turn; same turn ack confirms only own entry (4.725042ms)
+✔ disconnect retries exact pending intent after resume and ignores the old generation (1.514625ms)
+✔ ack timeout reconnects; sync serializes after resume and failed commands never auto retry (0.910375ms)
+✔ explicit disconnected leave cancels pending, timers and late snapshots (0.637125ms)
+✔ room leave ack revokes receiving old room; session replacement and server reboot terminate (1.4445ms)
+✔ monotonic estimate continues during host absence and cutoff blocks clicks (2.69875ms)
+✔ schema rejects unknown private nested fields, binary, duplicate keys and spectator options (4.469667ms)
+✔ other session snapshot cannot replace private self, recovery cannot manually submit (3.599792ms)
+✔ new session clears terminated room; invalid hello defaults never reach page (0.519875ms)
+✔ preload only exposes named methods, strips IPC event and removes exact subscription (1.806583ms)
+✔ W09/W10 accept rooms-1.1 only, exact six time choices and new fields (4.335333ms)
+✔ W09 policy ack never overwrites snapshot or current deadline, failed change can be corrected (5.204083ms)
+✔ W09 host-only setting includes eliminated host; pending close blocks changes but not player submit (3.661667ms)
+✔ W10 independent grace timer does not freeze play or restart on duplicate snapshot (4.4365ms)
+✔ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (4.218042ms)
+✔ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (2.697209ms)
+✔ W12 null request ack is strictly checked and cannot complete pending command (1.45275ms)
+✔ W13 Unicode profile boundary and password spaces remain strict (0.337542ms)
+✔ W14 real Room/core reveal and full result DTOs decode without dropping last_turn (11.883333ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 91.957834

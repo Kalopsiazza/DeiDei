@@ -1,0 +1,1 @@
+{"electron":"44.3.0","node":"24.20.0","platform":"darwin","arch":"arm64","WebSocket":"function"}

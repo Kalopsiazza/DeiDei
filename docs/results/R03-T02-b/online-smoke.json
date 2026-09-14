@@ -1,0 +1,787 @@
+{
+  "source": "fixture",
+  "transport": "scripted fake socket in tests only; NOT a real room service",
+  "platform": "darwin",
+  "arch": "arm64",
+  "checks": [
+    "Actual Electron create, six-seat lobby, ready/start; 33 cards in three rows at both target viewports",
+    "Future limits 10→5→30 preserve current deadline and accepted move; host absence keeps cards/timers; naturally eliminated host can configure",
+    "Submit confirmation lock, complete result last_turn, result-page settings, public reveal ledger and next-match lobby",
+    "Host leave confirmation, indistinguishable access error, explicit full-room spectator choice, lobby role buttons",
+    "Pending-close notice and hidden controls; directed removal navigates without a click, keeps identity, and late old event/snapshot do not restore old room",
+    "Named IPC rejects URL injection and oversized input; native host-close cancellation preserves connection and confirmation exits",
+    "Ordinary main without endpoint reports unavailable; original offline worker starts, online switch rejects an active solo"
+  ],
+  "screenshots": [
+    {
+      "name": "mock-create",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2
+      }
+    },
+    {
+      "name": "mock-lobby-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-lobby-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-table-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-table-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-submitted",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-before",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-dialog",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-next5",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-next30",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-continues",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-grace-continues",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-eliminated-host-setting",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-revealing",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-result",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-leave",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-wrong-room",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-full-room",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-spectator-lobby",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-spectating",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-pending-close",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-membership-ended",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-new-room-old-event",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-reconnecting",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    }
+  ],
+  "native": {
+    "content": {
+      "x": 172,
+      "y": 204,
+      "width": 1366,
+      "height": 768
+    },
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "WebSocket": "function"
+  },
+  "layout_1366": {
+    "size": [
+      1366,
+      768
+    ],
+    "scroll": [
+      1366,
+      768
+    ],
+    "cards": [
+      {
+        "x": 24,
+        "y": 381.5,
+        "right": 137.46875,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 142.46875,
+        "y": 381.5,
+        "right": 255.9375,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 260.9375,
+        "y": 381.5,
+        "right": 374.40625,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 379.40625,
+        "y": 381.5,
+        "right": 492.875,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 497.875,
+        "y": 381.5,
+        "right": 611.34375,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 616.34375,
+        "y": 381.5,
+        "right": 729.8125,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 24,
+        "y": 490.5,
+        "right": 137.46875,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 142.46875,
+        "y": 490.5,
+        "right": 255.9375,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 260.9375,
+        "y": 490.5,
+        "right": 374.40625,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 379.40625,
+        "y": 490.5,
+        "right": 492.875,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 497.875,
+        "y": 490.5,
+        "right": 611.34375,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 616.34375,
+        "y": 490.5,
+        "right": 729.8125,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 24,
+        "y": 599.5,
+        "right": 137.46875,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 142.46875,
+        "y": 599.5,
+        "right": 255.9375,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 260.9375,
+        "y": 599.5,
+        "right": 374.40625,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 379.40625,
+        "y": 599.5,
+        "right": 492.875,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 497.875,
+        "y": 599.5,
+        "right": 611.34375,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 616.34375,
+        "y": 599.5,
+        "right": 729.8125,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 741.8125,
+        "y": 381.5,
+        "right": 856.1171875,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 861.1171875,
+        "y": 381.5,
+        "right": 975.421875,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 980.421875,
+        "y": 381.5,
+        "right": 1094.7265625,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 741.8125,
+        "y": 490.5,
+        "right": 856.1171875,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 861.1171875,
+        "y": 490.5,
+        "right": 975.421875,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 980.421875,
+        "y": 490.5,
+        "right": 1094.7265625,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 741.8125,
+        "y": 599.5,
+        "right": 856.1171875,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 861.1171875,
+        "y": 599.5,
+        "right": 975.421875,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 980.421875,
+        "y": 599.5,
+        "right": 1094.7265625,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 1106.7265625,
+        "y": 381.5,
+        "right": 1221.859375,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 1226.859375,
+        "y": 381.5,
+        "right": 1341.9921875,
+        "bottom": 485.5,
+        "font": 16
+      },
+      {
+        "x": 1106.7265625,
+        "y": 490.5,
+        "right": 1221.859375,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 1226.859375,
+        "y": 490.5,
+        "right": 1341.9921875,
+        "bottom": 594.5,
+        "font": 16
+      },
+      {
+        "x": 1106.7265625,
+        "y": 599.5,
+        "right": 1221.859375,
+        "bottom": 703.5,
+        "font": 16
+      },
+      {
+        "x": 1226.859375,
+        "y": 599.5,
+        "right": 1341.9921875,
+        "bottom": 703.5,
+        "font": 16
+      }
+    ]
+  },
+  "layout_1920": {
+    "size": [
+      1920,
+      1080
+    ],
+    "scroll": [
+      1920,
+      1080
+    ],
+    "cards": [
+      {
+        "x": 34,
+        "y": 549.5,
+        "right": 193.5078125,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 201.5078125,
+        "y": 549.5,
+        "right": 361.0234375,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 369.0234375,
+        "y": 549.5,
+        "right": 528.5390625,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 536.5390625,
+        "y": 549.5,
+        "right": 696.0546875,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 704.0546875,
+        "y": 549.5,
+        "right": 863.5703125,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 871.5703125,
+        "y": 549.5,
+        "right": 1031.0859375,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 34,
+        "y": 702.5,
+        "right": 193.5078125,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 201.5078125,
+        "y": 702.5,
+        "right": 361.0234375,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 369.0234375,
+        "y": 702.5,
+        "right": 528.5390625,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 536.5390625,
+        "y": 702.5,
+        "right": 696.0546875,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 704.0546875,
+        "y": 702.5,
+        "right": 863.5703125,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 871.5703125,
+        "y": 702.5,
+        "right": 1031.0859375,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 34,
+        "y": 855.5,
+        "right": 193.5078125,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 201.5078125,
+        "y": 855.5,
+        "right": 361.0234375,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 369.0234375,
+        "y": 855.5,
+        "right": 528.5390625,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 536.5390625,
+        "y": 855.5,
+        "right": 696.0546875,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 704.0546875,
+        "y": 855.5,
+        "right": 863.5703125,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 871.5703125,
+        "y": 855.5,
+        "right": 1031.0859375,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 1043.0859375,
+        "y": 549.5,
+        "right": 1203.9296875,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 1211.9296875,
+        "y": 549.5,
+        "right": 1372.78125,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 1380.78125,
+        "y": 549.5,
+        "right": 1541.625,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 1043.0859375,
+        "y": 702.5,
+        "right": 1203.9296875,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 1211.9296875,
+        "y": 702.5,
+        "right": 1372.78125,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 1380.78125,
+        "y": 702.5,
+        "right": 1541.625,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 1043.0859375,
+        "y": 855.5,
+        "right": 1203.9296875,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 1211.9296875,
+        "y": 855.5,
+        "right": 1372.78125,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 1380.78125,
+        "y": 855.5,
+        "right": 1541.625,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 1553.6328125,
+        "y": 549.5,
+        "right": 1715.8125,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 1723.8125,
+        "y": 549.5,
+        "right": 1886,
+        "bottom": 694.5,
+        "font": 21
+      },
+      {
+        "x": 1553.6328125,
+        "y": 702.5,
+        "right": 1715.8125,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 1723.8125,
+        "y": 702.5,
+        "right": 1886,
+        "bottom": 847.5,
+        "font": 21
+      },
+      {
+        "x": 1553.6328125,
+        "y": 855.5,
+        "right": 1715.8125,
+        "bottom": 1000.5,
+        "font": 21
+      },
+      {
+        "x": 1723.8125,
+        "y": 855.5,
+        "right": 1886,
+        "bottom": 1000.5,
+        "font": 21
+      }
+    ]
+  },
+  "console_errors": [],
+  "status": "PASS"
+}

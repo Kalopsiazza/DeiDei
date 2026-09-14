@@ -1,0 +1,72 @@
+{
+  "tested_sha": "19e75c0d3f3ca8423733538a57ef071ad808a713",
+  "platform": "Darwin",
+  "arch": "arm64",
+  "checks": [
+    {
+      "name": "root",
+      "command": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 1.17
+    },
+    {
+      "name": "desktop-baseline",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "game/desktop",
+      "exit_code": 0,
+      "seconds": 0.97
+    },
+    {
+      "name": "online-unit",
+      "command": [
+        "npm",
+        "run",
+        "test:online"
+      ],
+      "cwd": "game/desktop",
+      "exit_code": 0,
+      "seconds": 0.71
+    },
+    {
+      "name": "websocket-probe",
+      "command": [
+        "./node_modules/.bin/electron",
+        "tests-online/probe.cjs"
+      ],
+      "cwd": "game/desktop",
+      "exit_code": 0,
+      "seconds": 1.43
+    },
+    {
+      "name": "online-window",
+      "command": [
+        "npm",
+        "run",
+        "smoke:online"
+      ],
+      "cwd": "game/desktop",
+      "exit_code": 0,
+      "seconds": 10.07
+    },
+    {
+      "name": "offline-window",
+      "command": [
+        "node",
+        "game/desktop/smoke-live.cjs"
+      ],
+      "cwd": ".",
+      "exit_code": 0,
+      "seconds": 21.23
+    }
+  ],
+  "real_room_service": "NOT_RUN",
+  "windows": "NOT_RUN",
+  "status": "PASS"
+}
