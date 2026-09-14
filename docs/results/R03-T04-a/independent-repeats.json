@@ -1,0 +1,37 @@
+{
+  "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "completed_runs": 3,
+  "passed_each": 159,
+  "not_run_each": [
+    "N35/electron_manual"
+  ],
+  "logs": [
+    "evidence/checks-independent-1.json",
+    "evidence/checks-independent-2.json",
+    "evidence/checks-independent-3.json"
+  ],
+  "last_run_command": {
+    "name": "independent-socket-2",
+    "command": [
+      "/tmp/deidei-r03-t01-venv/bin/python",
+      "tests/rooms_v1/run_acceptance.py",
+      "--server-path",
+      "game/server",
+      "--core-path",
+      "game/core",
+      "--tested-code-sha",
+      "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+      "--desktop-path",
+      "game/desktop",
+      "--desktop-sha",
+      "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+      "--output",
+      "<output>/independent-2.json"
+    ],
+    "exit_code": 0,
+    "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "elapsed_seconds": 191.32463079199078,
+    "checkout": "detached fixed code_sha"
+  },
+  "note": "Original live checkout completed two PASS runs before its runner was stopped for candidate metadata publication. One further complete PASS ran in detached code_sha checkout. A redundant fourth dispatch was stopped; it is not counted."
+}

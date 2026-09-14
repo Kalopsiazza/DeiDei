@@ -1,0 +1,84 @@
+{
+  "transport": "real CLI service and native WebSockets; no injected clock",
+  "rooms": 4,
+  "connections": 48,
+  "requested_seconds": 900,
+  "status": "PASS",
+  "elapsed_seconds": 900.0530921669999,
+  "matches": 636,
+  "turns": 1913,
+  "samples": [
+    {
+      "elapsed_ms": 501,
+      "server_rss_kib": 34144
+    },
+    {
+      "elapsed_ms": 60514,
+      "server_rss_kib": 39312
+    },
+    {
+      "elapsed_ms": 120532,
+      "server_rss_kib": 33056
+    },
+    {
+      "elapsed_ms": 180545,
+      "server_rss_kib": 33952
+    },
+    {
+      "elapsed_ms": 240558,
+      "server_rss_kib": 34256
+    },
+    {
+      "elapsed_ms": 300607,
+      "server_rss_kib": 34336
+    },
+    {
+      "elapsed_ms": 360725,
+      "server_rss_kib": 30048
+    },
+    {
+      "elapsed_ms": 420750,
+      "server_rss_kib": 30224
+    },
+    {
+      "elapsed_ms": 480753,
+      "server_rss_kib": 30272
+    },
+    {
+      "elapsed_ms": 540785,
+      "server_rss_kib": 30384
+    },
+    {
+      "elapsed_ms": 600792,
+      "server_rss_kib": 30528
+    },
+    {
+      "elapsed_ms": 660860,
+      "server_rss_kib": 30528
+    },
+    {
+      "elapsed_ms": 720980,
+      "server_rss_kib": 30336
+    },
+    {
+      "elapsed_ms": 780984,
+      "server_rss_kib": 30208
+    },
+    {
+      "elapsed_ms": 841003,
+      "server_rss_kib": 30224
+    }
+  ],
+  "response_ms": {
+    "sample_count": 10000,
+    "p50": 82.45883300004061,
+    "p95": 126.71495900000446,
+    "max": 417.71254199999385
+  },
+  "client_loop_delay_ms": {
+    "mean": 21.295916336541858,
+    "max": 75.431935
+  },
+  "closed_connections": 48,
+  "server_exited": true
+}

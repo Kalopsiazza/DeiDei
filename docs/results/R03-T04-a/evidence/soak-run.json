@@ -1,14 +1,24 @@
 {
-  "task_id": "R03-T04-a",
-  "task_status": "INTEGRATED_LOCAL_PASS",
-  "input_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "base_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
   "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
-  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
-  "plan_manifest_sha256": "56e0026a16a156813962c25cd9b73a163207efd7302f7a62ab2208891140a4bf",
-  "candidate": "CANDIDATE.json",
+  "stage": "soak",
   "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
   "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
-  "node": "v24.12.0",
+  "commands": [
+    {
+      "name": "soak",
+      "command": [
+        "node",
+        "game/integration/soak.cjs"
+      ],
+      "cwd": ".",
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 905.138,
+      "log": "soak.txt"
+    }
+  ],
+  "status": "PASS",
   "source_hashes": {
     "game/desktop/.gitignore": "cd8dc76f2de61e9296c08ade2644ffe73afb27bbbcef46495adec86a252caca3",
     "game/desktop/README.md": "c438562dedbdc98b06144b0186f4cb319b9376e0dae79c0ea87434102111c951",
@@ -76,28 +86,5 @@
     "game/server/tests/test_live_contract.py": "5bb71d1f4ee9918c4fd84e5e5a98f4ec5c91a7a6c5d54fc1ea254cb569871476",
     "game/server/tests/test_rooms.py": "b72057b8cc1cd82bd54ec4e60b7997a9f1a74f4187ec31a3c921836215504536",
     "game/server/tests/test_rooms_11.py": "80ffedff49f550661cedec43e720a5e65516bfd8f7f4fc3a990151649da1d7ec"
-  },
-  "checks": "evidence/checks-run.json",
-  "gui": "evidence/gui-gui.json",
-  "sequences": "evidence/sequences-sequences.json",
-  "baseline": "evidence/baseline-independent.json",
-  "pending": [],
-  "not_run": [
-    "N35 old Electron placeholder",
-    "Windows native",
-    "physical network faults",
-    "cross-machine human play",
-    "final ZIP / T05"
-  ],
-  "notes": [
-    "Source package integration only; no public deployment, merge or release.",
-    "Three complete independent runs passed at fixed code_sha; see independent-repeats.json for the checkout and artifact mapping.",
-    "Earlier soak was stopped when terminal ACK source changed; no partial duration counts as final soak.",
-    "Final real-clock soak: 900.053 seconds, four rooms, 48 connections, 636 completed matches, 1913 settled turns; all connections closed and owned service exited."
-  ],
-  "pr_base": "integration/r03-live",
-  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/28",
-  "kimi": "NOT_CALLED",
-  "independent_repeats": "independent-repeats.json",
-  "soak": "evidence/soak-soak.json"
+  }
 }
