@@ -1,0 +1,24 @@
+{
+  "input_sha": "0f114284492417ec61634895c485d73417ff1b49",
+  "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc",
+  "source_hashes_match": true,
+  "allowed_paths_only": true,
+  "changed_paths": [
+    "docs/results/R03-T01-b/DECISIONS.md",
+    "docs/results/R03-T01-b/TEST-MATRIX.md",
+    "docs/results/R03-T01-b/decisions.json",
+    "docs/results/R03-T01-b/policy-proposed.json",
+    "docs/results/R03-T01-b/validate.py",
+    "game/server/README.md",
+    "game/server/deidei_server/__main__.py",
+    "game/server/deidei_server/protocol.py",
+    "game/server/deidei_server/room.py",
+    "game/server/deidei_server/server.py",
+    "game/server/deidei_server/testing.py",
+    "game/server/tests/test_boundaries.py",
+    "game/server/tests/test_rooms.py",
+    "game/server/tests/test_rooms_11.py"
+  ],
+  "a_head_unchanged": true,
+  "dependency_lock_unchanged": true
+}

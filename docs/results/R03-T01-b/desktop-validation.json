@@ -1,0 +1,49 @@
+{
+  "input_sha": "0f114284492417ec61634895c485d73417ff1b49",
+  "method": "git archive input game/desktop game/runtime game/core into temporary directory; symlink already-installed node_modules there; no source-worktree writes",
+  "commands": [
+    {
+      "command": [
+        "node",
+        "node_modules/typescript/bin/tsc",
+        "--noEmit"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "node",
+        "build.cjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "test.cjs",
+        "test-live.cjs"
+      ],
+      "exit_code": 0
+    },
+    {
+      "command": [
+        "node",
+        "--test",
+        "test.cjs",
+        "test-live.cjs",
+        "test-navigation.cjs",
+        "test-packaging.cjs"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "log": "evidence/desktop.txt",
+  "rooms_11_decoder": "NOT_RUN: no fixed T02-b branch found; do not strip 1.1 fields for old decoder",
+  "gui": "NOT_RUN",
+  "node_version": "v24.12.0",
+  "desktop_test_count": 25,
+  "desktop_failures": 0,
+  "platform": "macOS arm64",
+  "b_desktop_remote_head": null
+}

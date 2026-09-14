@@ -1,0 +1,164 @@
+{
+  "plan_sha": null,
+  "context_plan_sha": "7ed0c388149dcd8caa7436e4a4574f2343eff9c9",
+  "plan_manifest_sha256": "3b5f1fdf74e2c236768216d27edbd1bffa67bb57577c21c2b38504d6edac7d2c",
+  "attachment_sha256": "0d1887d0cf0c1f7dfc9c7dac2ca39438f485d90b7456b4dd0bf1580f7cea27b4",
+  "files": [
+    {
+      "path": "PLANNING-CHECK.json",
+      "sha256": "523efa423b730549955e17cbba161bb9da46fc0665c94e206403019f5b454a29",
+      "size": 351,
+      "verified": true
+    },
+    {
+      "path": "docs/architecture/R03-ROOMS-v1.1.md",
+      "sha256": "ed5c1c8286dcaa0f276af8bfb019907e7785586c6d67791ad33f65d5f7235f8c",
+      "size": 6342,
+      "verified": true
+    },
+    {
+      "path": "docs/contracts/r03/ACCEPTANCE-v1.1.md",
+      "sha256": "a70f05e5b0b4d66e7ec6dfce652240c55b26f89fe92b0a80c45e074b349ed187",
+      "size": 3306,
+      "verified": true
+    },
+    {
+      "path": "docs/contracts/r03/CONTRACT-v1.1.md",
+      "sha256": "89387f6c11cc07f532366ad63ef2f22b905277eab13a2097d3b217f963182746",
+      "size": 5789,
+      "verified": true
+    },
+    {
+      "path": "docs/prd/R03-ROOMS-v1.1.md",
+      "sha256": "ce7d268fc04ca4fb6412b3b00a9fd2c906790dce9c9696028c85fe71caa5ab5b",
+      "size": 5055,
+      "verified": true
+    },
+    {
+      "path": "docs/production/R03-B-DECISIONS.md",
+      "sha256": "080c8bee865acb2281d98e811c88d2f72d22a0215274a2ba7319097ebfbc6644",
+      "size": 1857,
+      "verified": true
+    },
+    {
+      "path": "docs/production/R03-B-START.md",
+      "sha256": "5b97b1ca8db4616445877b06717d0b787536060ffcd81afc4276698697ae1741",
+      "size": 1604,
+      "verified": true
+    },
+    {
+      "path": "docs/reviews/R03-FIRST-DELIVERIES-20260914.md",
+      "sha256": "3954a0bf8de469a27bb65429f22e6c5206aab91b73fbcda8cab67fbf23c0a1dc",
+      "size": 5353,
+      "verified": true
+    },
+    {
+      "path": "docs/tasks/R03/R03-T01-b.md",
+      "sha256": "45241b57bcb003f323e742dfa0b6ef88a73988b26b4613755ac0df3fc3c06250",
+      "size": 3237,
+      "verified": true
+    },
+    {
+      "path": "docs/tasks/R03/R03-T02-b.md",
+      "sha256": "ce7d76a11b1da1c52203e996fac6f7e12a90ff4dae91edcc5e8971ad6dbb843c",
+      "size": 3393,
+      "verified": true
+    },
+    {
+      "path": "docs/tasks/R03/R03-T03-b.md",
+      "sha256": "cf38432dda3a7d8f657fe64879b6f16868c83f255cd8acd679f6803b6053a726",
+      "size": 3271,
+      "verified": true
+    },
+    {
+      "path": "original-r03-a-input.zip",
+      "sha256": "300314729c3b14900119bc11e8f473e12bf198376b58bfdc8a821c9bbc842457",
+      "size": 50760,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/README.md",
+      "sha256": "8f3217ec641cb91b3dd444d3a3eec742bbb619519166e2a6dbd60450258b5253",
+      "size": 526,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/__init__.py",
+      "sha256": "4de766565b2189aeda70810daf68619f590963c3c4c70ec1ac5175c9abf4ae88",
+      "size": 81,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/api.py",
+      "sha256": "190a6741f91c7cbfa775ea40edc0604997425cebbd888dbb91f2237fc10b3691",
+      "size": 4756,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/engine.py",
+      "sha256": "1d63b6a07350a1c047ac0a3fa6662fefaea265e7272e4eeb34fe345be9b26fd2",
+      "size": 17979,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/entries.py",
+      "sha256": "478f1dd6e38746ff2241eccb7729653635f171c16206511ec3e9537099e51295",
+      "size": 3905,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/wire.py",
+      "sha256": "e2b29078ddf198144ba0332ca977a4ea4af59df8ae12fd2fb73a4e750a212959",
+      "size": 8121,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/client/catalog.json",
+      "sha256": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4",
+      "size": 48460,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/client/online/wire.cjs",
+      "sha256": "dce0b5807264f3fea57024e6abc25f19b13e153576cac810fa2a87dba626c37d",
+      "size": 11625,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/focused-probes.json",
+      "sha256": "63696856adf520382322d840bb310f67db0d9f87f420df748ba159d58f3e5a8b",
+      "size": 2716,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/probe-output.txt",
+      "sha256": "63696856adf520382322d840bb310f67db0d9f87f420df748ba159d58f3e5a8b",
+      "size": 2716,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/probe_room_wire.py",
+      "sha256": "bd74354f6c26d4277bd4fdd90e9ffed8b5ad11b1bfaf1bcdbf8227d3ca94071e",
+      "size": 6552,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/room-wire-frames.json",
+      "sha256": "649bbbac55c79bf3d5b482c1b8bb0448ad210df25188cb768e4bf6e506fbfb60",
+      "size": 29507,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/service/deidei_server/protocol.py",
+      "sha256": "b01edd23851e3f952de1656d06757d3884bdaae9b01f495e2704094aef84ff36",
+      "size": 5702,
+      "verified": true
+    },
+    {
+      "path": "review-evidence/service/deidei_server/room.py",
+      "sha256": "d84a9a3c11ca6fb992ec6ede074a9dba0a8c4cae7db7e485861128c849775130",
+      "size": 20271,
+      "verified": true
+    }
+  ]
+}
