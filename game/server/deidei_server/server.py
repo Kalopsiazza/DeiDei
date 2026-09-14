@@ -55,6 +55,8 @@ class Connection:
         self.session, self.generation = None, 0
         self.queue, self.queued_bytes = deque(), 0
         self.wake = asyncio.Event()
+        self.drained = asyncio.Event()
+        self.drained.set()
         self.tokens, self.rate_at, self.violations = 40., time.monotonic(), 0
         self.closing = False
         self.opened = service.clock.now_ms()
@@ -86,6 +88,7 @@ class Connection:
         if len(self.queue) >= 32 or self.queued_bytes + size > 2 * 1024 * 1024:
             self.stop(1008, 'SLOW_CONSUMER')
             return
+        self.drained.clear()
         self.queue.append((text, size, room_id))
         self.queued_bytes += size
         self.wake.set()
@@ -107,6 +110,7 @@ class Connection:
                         allowed = room_id is None or self.allowed(room_id)
                     if allowed:
                         await self.ws.send(text)
+                self.drained.set()
                 self.wake.clear()
         except ConnectionClosed:
             pass
@@ -418,6 +422,9 @@ class RoomServer:
                     self.flush()
                     c.violations += 1
                     if c.violations >= 5:
+                        # The handler's finally cancels writer: send its terminal ACK first, bounded for slow peers.
+                        with suppress(asyncio.TimeoutError):
+                            await asyncio.wait_for(c.drained.wait(), 1)
                         c.stop(1008, 'INVALID_MESSAGE')
                         break
         except ConnectionClosed:

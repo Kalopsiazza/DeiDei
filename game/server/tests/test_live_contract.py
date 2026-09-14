@@ -3,6 +3,7 @@ import json
 from unittest.mock import patch
 from uuid import uuid4
 from test_rooms import SocketCase, ManualClock
+from websockets.exceptions import ConnectionClosed
 
 
 class JumpingClock(ManualClock):
@@ -90,3 +91,18 @@ class LiveContract(SocketCase):
         await server.advance_ms(30000)
         session = server.service.by_player[players[1].identity['player_id']]
         self.assertEqual(session.last_membership_end['server_time_ms'], anchor + clock.now_ms())
+
+    async def test_Q01_fifth_rejection_ack_precedes_policy_close(self):
+        server = await self.server()
+        client = await self.client(server)
+        connection = next(c for c in server.service.connections if c.session.player_id == client.identity['player_id'])
+        with patch.object(connection, 'limited', return_value=True):
+            for _ in range(5):
+                message = client.intent('room.sync', {'room_id': 'no-room'})
+                response = await client.send(message)
+                self.assertEqual(response['request_id'], message['request_id'])
+                self.assertEqual(response['error']['code'], 'RATE_LIMITED')
+            with self.assertRaises(ConnectionClosed):
+                await client.ws.recv()
+        self.assertEqual(client.ws.close_code, 1008)
+        self.assertEqual(connection.session.last_seq, 0)
