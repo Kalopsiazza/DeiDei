@@ -9,6 +9,7 @@ export type Reply<T> = { ok: true; data: T }|{ ok: false; error: string };
 export type Manual = { entries: (Option & { description: string })[]; sections: { id: string; text: string }[] };
 export type Scene = 'initial'|'midgame'|'spectator'|'eliminated'|'restart'|'winner'|'draw'|'invalid';
 export type Bridge = {
+  online: import('./online/types').OnlineBridge;
   profile: { read(): Promise<Reply<Profile|null>>; create(p: ProfileInput): Promise<Reply<Profile>>; update(p: ProfileInput): Promise<Reply<Profile>>; recover(p: ProfileInput & { confirmed: true }): Promise<Reply<Profile>> };
   settings: { apply(p: ProfileInput & { settings: Settings }): Promise<Reply<Profile>> };
   port: { startSolo(id: string): Promise<Reply<DesktopView>>; submit(id: string, entry: string): Promise<Reply<DesktopView>>; getView(): Promise<Reply<DesktopView>>; leave(): Promise<Reply<DesktopView>> };

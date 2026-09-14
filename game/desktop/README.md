@@ -61,3 +61,29 @@ DEIDEI_SMOKE_OUTPUT=docs/results/R02-T04-b/regression node game/desktop/smoke-li
 renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。没有网络服务、旧模型、训练、正式动画、安装包、签名或部署。
 
 手绘纸色与三类 18/9/6、三排十一列沿用已交付原型。1920×1080 证据为开发视口，非该尺寸物理显示器；物理断网和 Windows 仍需真人复测，步骤见本包 TEST-MATRIX。
+
+## R03-T02-a 好友房桌面客户端
+
+主菜单的好友联机现已接入 `online/NetworkRoomPort`，通过主进程全局 WebSocket 连接开发服务。默认没有服务器地址；没有配置时显示「联机服务尚未配置」，原离线单人仍可用。连接只在进入好友房时建立，临时会话凭证仅留在主进程内存，退出不修改本机档案格式。
+
+后续集成包准备好真实服务后，开发启动方式为：
+
+```sh
+DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
+```
+
+启动环境只接受 `ws://127.0.0.1:<port>/rooms-v1` 或 `ws://[::1]:<port>/rooms-v1`，拒绝用户名、查询、片段和公网地址。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
+
+创建表单从服务 hello 读取默认和范围。房间选项及身份来自服务；33 项卡牌资格/费用来自 self.options，卡面文字来自本地 catalog。DD 使用整数分数字形，揭晓资源取 ledger，观众与淘汰者没有选牌区。准备、房主开始、满员后主动改观战、暂停、重连、结果/下一场和离房均有独立状态。
+
+每次只发一个待确认意图。断线后按 1/2/4/8 秒带抖动重连，resume 后保留原请求 ID/序号/内容重试；明确失败的操作不自动重发。收到旧连接或旧快照不会覆盖新状态。正常离房等确认后关闭连接；网络断开时主动离开会停止重连，原席位由服务的掉线策略处理。系统关窗确认后最多等待 3 秒发送/确认离房，网络无法确认时仍允许退出。
+
+```sh
+npm --prefix game/desktop test          # 原有 25 项保留，包含构建与类型检查
+npm --prefix game/desktop run test:online
+npm --prefix game/desktop run smoke:online
+```
+
+新窗口测试只在 `tests-online/smoke-main.cjs` 注入 scripted fake socket，界面标记「开发预览 · MOCK」，截图不代表真实联网。`smoke:online` 另外启动普通 main 验证无配置提示和真实离线 worker。结果见 `docs/results/R03-T02-a/`，没有接入任务01服务、改变打包路线或进行公网部署。
+
+本任务使用输入锁定的 React 19.3.0、Electron 44.3.0、TypeScript 7.0.2、esbuild 0.28.2、Playwright-core 1.63.0 和 @electron/packager 20.3.0，未改直接依赖或 package-lock。上方 R02-T04-a 的 Forge/23 项告警文字是历史交付记录，不能当作本次依赖现状。
