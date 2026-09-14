@@ -677,6 +677,12 @@ def extend_v1_1() -> None:
             kind = ['nobody_survives', 'sole_survivor', 'restart_survivors'][survivors]
             expected = {'match.last_turn.effective_transition.kind': kind,
                 'match.last_turn.effective_state.active_ids': [] if survivors == 0 else ['h'] if survivors == 1 else ['h', 'r']}
+            expected['match.last_turn.core_resolution.ledger.kills'] = {
+                alias: ['h'] if removal == 'leave' and survivors == 0 and alias == 'p' else []
+                for alias in players}
+            expected['match.last_turn.room_forfeits'] = [
+                {'player_id': alias, 'reason': 'voluntary_leave' if removal == 'leave' else 'three_absences'}
+                for alias in (('p', 'q') if survivors == 2 else ('p',))]
             if survivors == 2: expected['match.last_turn.effective_state.game_index'] = '2'
             c.view('h', 'revealing', **expected)
             c.add('decoder', **{'as': 'h'})

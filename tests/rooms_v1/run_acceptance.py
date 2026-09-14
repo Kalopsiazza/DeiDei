@@ -215,6 +215,8 @@ class Scenario:
                 for key in ('roster', 'active_ids'):
                     if isinstance(mapped.get(key), list):
                         mapped[key].sort()
+                if isinstance(mapped.get('room_forfeits'), list):
+                    mapped['room_forfeits'].sort(key=lambda row: row['player_id'])
                 return mapped
             if isinstance(value, list):
                 return [walk(v) for v in value]

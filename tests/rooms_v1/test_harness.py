@@ -275,6 +275,8 @@ class AsyncHarnessTests(unittest.IsolatedAsyncioTestCase):
         scenario.env['p'] = {'player_id': 'id-a'}
         self.assertEqual(scenario.normalize({'roster': ['id-a', 'id-h'], 'active_ids': ['id-h', 'id-a']}),
                          {'roster': ['h', 'p'], 'active_ids': ['h', 'p']})
+        self.assertEqual(scenario.normalize({'room_forfeits': [{'player_id': 'id-a'}, {'player_id': 'id-h'}]}),
+                         {'room_forfeits': [{'player_id': 'h'}, {'player_id': 'p'}]})
         peer = SimpleNamespace(latest=lobby(), fault=None)
         scenario.peers['h'] = peer
         step = {'do': 'privacy', 'as': 'h', 'key': 'pair'}

@@ -46935,7 +46935,19 @@
         "expect": {
           "phase": "revealing",
           "match.last_turn.effective_transition.kind": "nobody_survives",
-          "match.last_turn.effective_state.active_ids": []
+          "match.last_turn.effective_state.active_ids": [],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": [
+              "h"
+            ]
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "voluntary_leave"
+            }
+          ]
         }
       },
       {
@@ -47172,6 +47184,16 @@
           "match.last_turn.effective_transition.kind": "sole_survivor",
           "match.last_turn.effective_state.active_ids": [
             "h"
+          ],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": []
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "voluntary_leave"
+            }
           ]
         }
       },
@@ -47560,6 +47582,22 @@
             "h",
             "r"
           ],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": [],
+            "q": [],
+            "r": []
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "voluntary_leave"
+            },
+            {
+              "player_id": "q",
+              "reason": "voluntary_leave"
+            }
+          ],
           "match.last_turn.effective_state.game_index": "2"
         }
       },
@@ -47828,7 +47866,17 @@
         "expect": {
           "phase": "revealing",
           "match.last_turn.effective_transition.kind": "nobody_survives",
-          "match.last_turn.effective_state.active_ids": []
+          "match.last_turn.effective_state.active_ids": [],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": []
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "three_absences"
+            }
+          ]
         }
       },
       {
@@ -48098,6 +48146,16 @@
           "match.last_turn.effective_transition.kind": "sole_survivor",
           "match.last_turn.effective_state.active_ids": [
             "h"
+          ],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": []
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "three_absences"
+            }
           ]
         }
       },
@@ -48521,6 +48579,22 @@
           "match.last_turn.effective_state.active_ids": [
             "h",
             "r"
+          ],
+          "match.last_turn.core_resolution.ledger.kills": {
+            "h": [],
+            "p": [],
+            "q": [],
+            "r": []
+          },
+          "match.last_turn.room_forfeits": [
+            {
+              "player_id": "p",
+              "reason": "three_absences"
+            },
+            {
+              "player_id": "q",
+              "reason": "three_absences"
+            }
           ],
           "match.last_turn.effective_state.game_index": "2"
         }
