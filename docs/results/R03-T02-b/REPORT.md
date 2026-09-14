@@ -42,4 +42,4 @@ rooms-1.1 桌面修订已实现。房主在大厅、选择、揭晓和结果阶�
 
 按 vibe-engineering-workflow 的实现/前端/重点自审路径执行。重点复核精确 DTO、凭证仅主进程、旧消息隔离、倒计时与权限、原单人回归及变更路径。未调用 Kimi（保持暂停）；无外部审查通过声明。
 
-未自动合入、关闭 PR #21、部署、发布或下发下一包。远端 PR 状态见 MANIFEST 的 pr_url 与回读记录。
+未自动合入、关闭 PR #21、部署、发布或下发下一包。PR： https://github.com/Kalopsiazza/DeiDei/pull/24 ，已回读 OPEN、base=integration/r03、head=codex/r03-t02-b-online-desktop，创建时 head=c717881fbbff21790eb5d3a0e8b7db551178f541；后续仅补本远端回执。

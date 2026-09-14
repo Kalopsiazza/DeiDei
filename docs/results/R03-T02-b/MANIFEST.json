@@ -9,8 +9,8 @@
   "branch": "codex/r03-t02-b-online-desktop",
   "pr_target": "integration/r03",
   "input_pr": "https://github.com/Kalopsiazza/DeiDei/pull/21",
-  "pr_url": null,
-  "remote_submission": "PENDING",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/24",
+  "remote_submission": "PR_CREATED_VERIFIED",
   "local_status": "PASS",
   "real_room_service_socket": "NOT_RUN",
   "electron_real_service": "NOT_RUN",
@@ -207,8 +207,8 @@
     },
     {
       "path": "docs/results/R03-T02-b/REPORT.md",
-      "bytes": 6280,
-      "sha256": "5050e13dfaa9e681a151e1e9f2fa81b4410d454b8ab36b92055b5e3fae5987c9"
+      "bytes": 6443,
+      "sha256": "74673b82a634ca91947cbd6ba69ecbf289578261a6084c5445a338573b472239"
     },
     {
       "path": "docs/results/R03-T02-b/TEST-MATRIX.md",
@@ -465,5 +465,7 @@
       "bytes": 97,
       "sha256": "f4cedec022e1166153ca21960b32e9c8e1dd507946c040dda22fc78082855c12"
     }
-  ]
+  ],
+  "pr_head_sha_at_creation": "c717881fbbff21790eb5d3a0e8b7db551178f541",
+  "pr_state_at_verification": "OPEN"
 }
