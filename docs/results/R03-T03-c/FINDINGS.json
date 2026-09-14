@@ -17,7 +17,7 @@
     "severity": "medium",
     "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
     "expected": "A03 fixed anchor projection; exact public deadline for same mono deadline",
-    "observed": "N36/N48 real_clock fail; 8-second own-service smoke records SAME_SEQ_PUBLIC_CHANGED",
+    "observed": "N36/N48 real_clock fail; Q03 and selecting/revealing/grace wall-jump probes fail. Full 900.057 s / 976 matches records SAME_SEQ_PUBLIC_CHANGED; cleanup succeeds.",
     "reproduction": [
       "Run rooms_v1/run_acceptance.py against fixed product with --case N36/real_clock --case N48/real_clock"
     ],

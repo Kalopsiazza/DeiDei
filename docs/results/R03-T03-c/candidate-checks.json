@@ -4,5 +4,17 @@
     "stage": "work_start",
     "result": "BRANCH_ABSENT",
     "branch": "codex/r03-t04-a-live-integration"
+  },
+  {
+    "check": 2,
+    "stage": "independent_complete",
+    "branch": "codex/r03-t04-a-live-integration",
+    "result": "BRANCH_ABSENT"
+  },
+  {
+    "check": 3,
+    "stage": "final_delivery",
+    "branch": "codex/r03-t04-a-live-integration",
+    "result": "BRANCH_ABSENT"
   }
 ]

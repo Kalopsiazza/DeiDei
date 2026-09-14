@@ -1,1 +1,3 @@
+Historical checkpoint at 87433ce. Final status is in REPORT.md.
+
 R03-T03-c IN_PROGRESS. First fixed baseline: 156/160 PASS; individual statuses retained. Original execution was interrupted before the 65-socket capacity case; N33 capacity now disconnects each temporary owner after creating a room, retaining the exact 64-room boundary with two live sockets. No expectation lowered. 11 crosscheck scenes retained; raw large output stays local. Candidate check 1: named T04 branch absent. 900-second run and remaining fault/mutation checks pending.

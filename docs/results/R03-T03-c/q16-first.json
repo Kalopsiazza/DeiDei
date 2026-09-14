@@ -1,0 +1,43 @@
+{
+  "source": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "513070d1fedf85f78062d6dc0febe7b440e64d04aeae36c3f90da3367226e1d2",
+    "dirty": false
+  },
+  "core": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "26d54ed3ad53e0816b7773ffd08d78d52c4e08d6",
+    "source_sha256": "1e31778d4ac208a45f21dc2cb381e9a01cd1d6c11bb35105c6966cd2c51c1f10",
+    "dirty": true
+  },
+  "status": "FAIL",
+  "cases": [
+    {
+      "case_id": "Q11/eliminated_grace",
+      "status": "PASS",
+      "evidence": {
+        "eliminated_kept_seat": true,
+        "expired_receipt": true
+      }
+    },
+    {
+      "case_id": "Q16/restart",
+      "status": "FAIL",
+      "error": "ValueError"
+    }
+  ],
+  "not_run": [
+    {
+      "case_id": "Q17",
+      "reason": "real Electron lifecycle is separate"
+    },
+    {
+      "case_id": "Q18",
+      "reason": "100 seeds and 900-second run reported separately"
+    }
+  ]
+}
