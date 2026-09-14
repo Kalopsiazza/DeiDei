@@ -272,6 +272,9 @@ class AsyncHarnessTests(unittest.IsolatedAsyncioTestCase):
         async def drain() -> None: await asyncio.sleep(0)
         scenario.server = SimpleNamespace(drain=drain)
         scenario.env = {'h': {'player_id': 'id-h'}}
+        scenario.env['p'] = {'player_id': 'id-a'}
+        self.assertEqual(scenario.normalize({'roster': ['id-a', 'id-h'], 'active_ids': ['id-h', 'id-a']}),
+                         {'roster': ['h', 'p'], 'active_ids': ['h', 'p']})
         peer = SimpleNamespace(latest=lobby(), fault=None)
         scenario.peers['h'] = peer
         step = {'do': 'privacy', 'as': 'h', 'key': 'pair'}

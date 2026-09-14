@@ -210,7 +210,12 @@ class Scenario:
                         return new + value[len(old):]
                 return value
             if isinstance(value, dict):
-                return {walk(k): walk(v) for k, v in value.items()}
+                mapped = {walk(k): walk(v) for k, v in value.items()}
+                # Core ID sets are sorted by generated UUID, which differs between runs.
+                for key in ('roster', 'active_ids'):
+                    if isinstance(mapped.get(key), list):
+                        mapped[key].sort()
+                return mapped
             if isinstance(value, list):
                 return [walk(v) for v in value]
             return value
@@ -219,16 +224,6 @@ class Scenario:
     def view(self, frame: dict) -> dict:
         view = self.normalize(frame['view'])
         view['members'] = {m['player_id']: m for m in view['members']}
-        def sort_ids(obj: Any) -> None:
-            if isinstance(obj, dict):
-                for key, value in obj.items():
-                    if key in {'active_ids', 'roster'} and isinstance(value, list):
-                        value.sort()
-                    sort_ids(value)
-            elif isinstance(obj, list):
-                for item in obj:
-                    sort_ids(item)
-        sort_ids(view)
         return view
 
     def check_public_consistency(self, frame: dict) -> None:
