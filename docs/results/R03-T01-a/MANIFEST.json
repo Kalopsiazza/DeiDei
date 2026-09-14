@@ -142,8 +142,8 @@
   "windows": "NOT_RUN",
   "cross_machine": "NOT_RUN",
   "human_play": "NOT_RUN",
-  "push": "AUTHORIZED_BY_USER; pending execution",
-  "pr_url": null,
+  "push": "COMPLETED: user-authorized draft PR; see PR-SUBMISSION.json",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/22",
   "result_pr_base": "integration/r03",
   "decision_change_request": "CHANGE-REQUEST-FOR-PRO.md"
 }

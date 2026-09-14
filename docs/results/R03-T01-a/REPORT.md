@@ -57,7 +57,7 @@ N01—N36 的具体自测与未测项见 `TEST-MATRIX.md`。原 expectedFailure 
 ## 尚未完成/不在本包
 
 - 已收到参数答复：部分选项 APPROVED，其余 USER_REQUESTED_PENDING_PLAN / NEEDS_CLARIFICATION；未生成整套 confirmed-policy.json。
-- 用户本次已明确要求提 PR；作为待规划修订的草稿交付，不合入。PR 的实际 URL/base/head/SHA 将回读记录在 PR-SUBMISSION.json。
+- 用户本次已明确要求提 PR；作为待规划修订的草稿交付，不合入。已创建草稿 PR #22（https://github.com/Kalopsiazza/DeiDei/pull/22），实际 URL/base/head/SHA 回读记录在 PR-SUBMISSION.json。
 - 任务 03 独立房间验收 NOT_RUN；未读取其浮动分支，也未替其宣布通过。
 - Electron 集成、Windows、跨电脑、真实弱网、六真人、安装包、TLS/公网部署全部 NOT_RUN。
 - 慢消费者为真 socket + 阻塞 writer 注入；容量为注册表边界注入，未声称吞吐压力测试。
