@@ -1,0 +1,103 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "task_id",
+    "base_sha",
+    "code_sha",
+    "core_tree",
+    "runtime_tree",
+    "desktop_lock_sha256",
+    "stage",
+    "checks"
+  ],
+  "properties": {
+    "schema_version": {
+      "const": 1
+    },
+    "task_id": {
+      "const": "R03-T04-a"
+    },
+    "base_sha": {
+      "const": "8a6f8b29f517ab4c5a16466f0894e86995f8a852"
+    },
+    "code_sha": {
+      "type": "string",
+      "pattern": "^[0-9a-f]{40}$"
+    },
+    "core_tree": {
+      "const": "628afbee9bd9d2c512c2b6d424a385f597025ebc"
+    },
+    "runtime_tree": {
+      "const": "e37caf42f81f004345fc4917a61874167c18fb21"
+    },
+    "desktop_lock_sha256": {
+      "const": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8"
+    },
+    "stage": {
+      "enum": [
+        "source_checked_pending_gui",
+        "integrated_local_pass"
+      ]
+    },
+    "checks": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "service",
+        "core",
+        "runtime",
+        "desktop",
+        "independent_socket",
+        "real_gui"
+      ],
+      "properties": {
+        "service": {
+          "const": "PASS"
+        },
+        "core": {
+          "const": "PASS"
+        },
+        "runtime": {
+          "const": "PASS"
+        },
+        "desktop": {
+          "const": "PASS"
+        },
+        "independent_socket": {
+          "const": "PASS"
+        },
+        "real_gui": {
+          "enum": [
+            "PASS",
+            "NOT_RUN"
+          ]
+        }
+      }
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "stage": {
+            "const": "integrated_local_pass"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "checks": {
+            "properties": {
+              "real_gui": {
+                "const": "PASS"
+              }
+            }
+          }
+        }
+      }
+    }
+  ]
+}
