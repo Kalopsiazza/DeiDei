@@ -1,0 +1,3 @@
+Syntax checked: 45 Python files.
+Tests run: 59; known expected failures: 1.
+GUI, model inference and online play are NOT covered by this check.

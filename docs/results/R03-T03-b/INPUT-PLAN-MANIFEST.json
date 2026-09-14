@@ -1,0 +1,164 @@
+{
+  "plan_id": "R03-plan-1.1-b",
+  "author": "ChatGPT",
+  "date": "2026-09-14",
+  "plan_sha": null,
+  "delivery": "attachment authoritative; GitHub review and delivery pointer",
+  "pr_target": "integration/r03",
+  "tasks": [
+    {
+      "id": "R03-T01-b",
+      "input_sha": "0f114284492417ec61634895c485d73417ff1b49",
+      "input_pr": 22,
+      "branch": "codex/r03-t01-b-room-service"
+    },
+    {
+      "id": "R03-T02-b",
+      "input_sha": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+      "input_pr": 21,
+      "branch": "codex/r03-t02-b-online-desktop"
+    },
+    {
+      "id": "R03-T03-b",
+      "input_sha": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+      "input_pr": 20,
+      "branch": "codex/r03-t03-b-room-tests"
+    }
+  ],
+  "classic_rules": "classic-1.0.1 unchanged",
+  "room_protocol": "rooms-1.1 proposed implementation, not yet executed",
+  "pending_user_choice": "host_leave_timing after_turn/immediate; task01 only",
+  "review_scope": "Local Room/core/desktop-decoder probes executed; complete socket/96 cases/GUI not executed",
+  "files": [
+    {
+      "path": "PLANNING-CHECK.json",
+      "size": 351,
+      "sha256": "523efa423b730549955e17cbba161bb9da46fc0665c94e206403019f5b454a29"
+    },
+    {
+      "path": "docs/architecture/R03-ROOMS-v1.1.md",
+      "size": 6342,
+      "sha256": "ed5c1c8286dcaa0f276af8bfb019907e7785586c6d67791ad33f65d5f7235f8c"
+    },
+    {
+      "path": "docs/contracts/r03/ACCEPTANCE-v1.1.md",
+      "size": 3306,
+      "sha256": "a70f05e5b0b4d66e7ec6dfce652240c55b26f89fe92b0a80c45e074b349ed187"
+    },
+    {
+      "path": "docs/contracts/r03/CONTRACT-v1.1.md",
+      "size": 5789,
+      "sha256": "89387f6c11cc07f532366ad63ef2f22b905277eab13a2097d3b217f963182746"
+    },
+    {
+      "path": "docs/prd/R03-ROOMS-v1.1.md",
+      "size": 5055,
+      "sha256": "ce7d268fc04ca4fb6412b3b00a9fd2c906790dce9c9696028c85fe71caa5ab5b"
+    },
+    {
+      "path": "docs/production/R03-B-DECISIONS.md",
+      "size": 1857,
+      "sha256": "080c8bee865acb2281d98e811c88d2f72d22a0215274a2ba7319097ebfbc6644"
+    },
+    {
+      "path": "docs/production/R03-B-START.md",
+      "size": 1604,
+      "sha256": "5b97b1ca8db4616445877b06717d0b787536060ffcd81afc4276698697ae1741"
+    },
+    {
+      "path": "docs/reviews/R03-FIRST-DELIVERIES-20260914.md",
+      "size": 5353,
+      "sha256": "3954a0bf8de469a27bb65429f22e6c5206aab91b73fbcda8cab67fbf23c0a1dc"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T01-b.md",
+      "size": 3237,
+      "sha256": "45241b57bcb003f323e742dfa0b6ef88a73988b26b4613755ac0df3fc3c06250"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T02-b.md",
+      "size": 3393,
+      "sha256": "ce7d76a11b1da1c52203e996fac6f7e12a90ff4dae91edcc5e8971ad6dbb843c"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T03-b.md",
+      "size": 3271,
+      "sha256": "cf38432dda3a7d8f657fe64879b6f16868c83f255cd8acd679f6803b6053a726"
+    },
+    {
+      "path": "original-r03-a-input.zip",
+      "size": 50760,
+      "sha256": "300314729c3b14900119bc11e8f473e12bf198376b58bfdc8a821c9bbc842457"
+    },
+    {
+      "path": "review-evidence/README.md",
+      "size": 526,
+      "sha256": "8f3217ec641cb91b3dd444d3a3eec742bbb619519166e2a6dbd60450258b5253"
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/__init__.py",
+      "size": 81,
+      "sha256": "4de766565b2189aeda70810daf68619f590963c3c4c70ec1ac5175c9abf4ae88"
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/api.py",
+      "size": 4756,
+      "sha256": "190a6741f91c7cbfa775ea40edc0604997425cebbd888dbb91f2237fc10b3691"
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/engine.py",
+      "size": 17979,
+      "sha256": "1d63b6a07350a1c047ac0a3fa6662fefaea265e7272e4eeb34fe345be9b26fd2"
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/entries.py",
+      "size": 3905,
+      "sha256": "478f1dd6e38746ff2241eccb7729653635f171c16206511ec3e9537099e51295"
+    },
+    {
+      "path": "review-evidence/base/game/core/deidei_core/wire.py",
+      "size": 8121,
+      "sha256": "e2b29078ddf198144ba0332ca977a4ea4af59df8ae12fd2fb73a4e750a212959"
+    },
+    {
+      "path": "review-evidence/client/catalog.json",
+      "size": 48460,
+      "sha256": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4"
+    },
+    {
+      "path": "review-evidence/client/online/wire.cjs",
+      "size": 11625,
+      "sha256": "dce0b5807264f3fea57024e6abc25f19b13e153576cac810fa2a87dba626c37d"
+    },
+    {
+      "path": "review-evidence/focused-probes.json",
+      "size": 2716,
+      "sha256": "63696856adf520382322d840bb310f67db0d9f87f420df748ba159d58f3e5a8b"
+    },
+    {
+      "path": "review-evidence/probe-output.txt",
+      "size": 2716,
+      "sha256": "63696856adf520382322d840bb310f67db0d9f87f420df748ba159d58f3e5a8b"
+    },
+    {
+      "path": "review-evidence/probe_room_wire.py",
+      "size": 6552,
+      "sha256": "bd74354f6c26d4277bd4fdd90e9ffed8b5ad11b1bfaf1bcdbf8227d3ca94071e"
+    },
+    {
+      "path": "review-evidence/room-wire-frames.json",
+      "size": 29507,
+      "sha256": "649bbbac55c79bf3d5b482c1b8bb0448ad210df25188cb768e4bf6e506fbfb60"
+    },
+    {
+      "path": "review-evidence/service/deidei_server/protocol.py",
+      "size": 5702,
+      "sha256": "b01edd23851e3f952de1656d06757d3884bdaae9b01f495e2704094aef84ff36"
+    },
+    {
+      "path": "review-evidence/service/deidei_server/room.py",
+      "size": 20271,
+      "sha256": "d84a9a3c11ca6fb992ec6ede074a9dba0a8c4cae7db7e485861128c849775130"
+    }
+  ]
+}

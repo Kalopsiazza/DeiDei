@@ -1,0 +1,36 @@
+{
+  "candidates": [
+    {
+      "name": "service-a",
+      "path": "/tmp/deidei-r03-t03-b-candidates/service-a",
+      "sha": "0f114284492417ec61634895c485d73417ff1b49",
+      "tracked_status": ""
+    },
+    {
+      "name": "desktop-a",
+      "path": "/tmp/deidei-r03-t03-b-candidates/desktop-a",
+      "sha": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+      "tracked_status": ""
+    },
+    {
+      "name": "tests-a",
+      "path": "/tmp/deidei-r03-t03-b-candidates/tests-a",
+      "sha": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+      "tracked_status": ""
+    },
+    {
+      "name": "service-b",
+      "path": "/tmp/deidei-r03-t03-b-candidates/service-b",
+      "sha": "c4b27b1b358a4823e65d92e0b035be3e18438c60",
+      "tracked_status": ""
+    },
+    {
+      "name": "desktop-b",
+      "path": "/tmp/deidei-r03-t03-b-candidates/desktop-b",
+      "sha": "1dbe1e4f8de28410dc42946efddffc011966cc3a",
+      "tracked_status": ""
+    }
+  ],
+  "core_runtime_old_fixtures_unchanged_from_input": true,
+  "desktop_environment": "Existing task02-b node_modules reused via ignored symlink; npm test built only ignored build files."
+}

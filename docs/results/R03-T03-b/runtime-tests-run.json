@@ -1,0 +1,20 @@
+{
+  "name": "runtime-tests",
+  "command": [
+    "python3",
+    "-m",
+    "unittest",
+    "discover",
+    "-s",
+    "game/runtime/tests",
+    "-v"
+  ],
+  "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+  "env": {
+    "PYTHONPATH": "game/core:game/runtime"
+  },
+  "exit_code": 0,
+  "started_at": "2026-09-14T15:58:50.338031+00:00",
+  "finished_at": "2026-09-14T15:58:50.572593+00:00",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+}

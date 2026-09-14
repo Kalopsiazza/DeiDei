@@ -1,0 +1,244 @@
+{
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d",
+  "checks": [
+    {
+      "name": "b-live",
+      "command": [
+        "/tmp/deidei-r03-t03-b-candidates/venv/bin/python",
+        "tests/rooms_v1/crosscheck.py",
+        "--server-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-b/game/server",
+        "--core-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-b/game/core",
+        "--desktop-path",
+        "/tmp/deidei-r03-t03-b-candidates/desktop-b/game/desktop",
+        "--server-sha",
+        "c4b27b1b358a4823e65d92e0b035be3e18438c60",
+        "--desktop-sha",
+        "1dbe1e4f8de28410dc42946efddffc011966cc3a",
+        "--tests-sha",
+        "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+        "--output",
+        "/Users/zengchongtai/develop/DeiDei-r03-t03-b/docs/results/R03-T03-b/b-live-crosscheck.json"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:44.903683+00:00",
+      "finished_at": "2026-09-14T15:58:47.307776+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "fixtures",
+      "command": [
+        "python3",
+        "tests/rooms_v1/validate.py"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:47.308450+00:00",
+      "finished_at": "2026-09-14T15:58:47.370644+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "a-live",
+      "command": [
+        "/tmp/deidei-r03-t03-b-candidates/venv/bin/python",
+        "tests/rooms_v1/crosscheck.py",
+        "--server-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-a/game/server",
+        "--core-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-a/game/core",
+        "--desktop-path",
+        "/tmp/deidei-r03-t03-b-candidates/desktop-a/game/desktop",
+        "--server-sha",
+        "0f114284492417ec61634895c485d73417ff1b49",
+        "--desktop-sha",
+        "72266fbc63e4982738ae83eee99e9001a6872d6f",
+        "--tests-sha",
+        "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+        "--output",
+        "/Users/zengchongtai/develop/DeiDei-r03-t03-b/docs/results/R03-T03-b/a-live-crosscheck.json"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 1,
+      "started_at": "2026-09-14T15:58:44.903248+00:00",
+      "finished_at": "2026-09-14T15:58:47.458567+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "room-tools",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "tests.rooms_v1.test_harness",
+        "-v"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:47.371000+00:00",
+      "finished_at": "2026-09-14T15:58:49.709619+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "core-tests",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {
+        "PYTHONPATH": "game/core"
+      },
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:49.710226+00:00",
+      "finished_at": "2026-09-14T15:58:50.337440+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "runtime-tests",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/runtime/tests",
+        "-v"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {
+        "PYTHONPATH": "game/core:game/runtime"
+      },
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:50.338031+00:00",
+      "finished_at": "2026-09-14T15:58:50.572593+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "root-check",
+      "command": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:47.459107+00:00",
+      "finished_at": "2026-09-14T15:58:50.813788+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "rules-acceptance",
+      "command": [
+        "python3",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "/tmp/deidei-r03-t03-b-candidates/service-b/game/core"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:50.572924+00:00",
+      "finished_at": "2026-09-14T15:58:51.588697+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "rules-tools",
+      "command": [
+        "python3",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:50.814558+00:00",
+      "finished_at": "2026-09-14T15:58:51.781348+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "decoder-syntax",
+      "command": [
+        "node",
+        "--check",
+        "tests/rooms_v1/decode_frames.cjs"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:51.782010+00:00",
+      "finished_at": "2026-09-14T15:58:51.814636+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "client-syntax",
+      "command": [
+        "node",
+        "--check",
+        "tests/rooms_v1/client_membership_check.cjs"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:51.815168+00:00",
+      "finished_at": "2026-09-14T15:58:51.842495+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "desktop-tests",
+      "command": [
+        "npm",
+        "test"
+      ],
+      "cwd": "/tmp/deidei-r03-t03-b-candidates/desktop-b/game/desktop",
+      "env": {},
+      "exit_code": 0,
+      "started_at": "2026-09-14T15:58:51.589479+00:00",
+      "finished_at": "2026-09-14T15:58:52.569163+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    },
+    {
+      "name": "b-acceptance",
+      "command": [
+        "/tmp/deidei-r03-t03-b-candidates/venv/bin/python",
+        "tests/rooms_v1/run_acceptance.py",
+        "--server-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-b/game/server",
+        "--core-path",
+        "/tmp/deidei-r03-t03-b-candidates/service-b/game/core",
+        "--tested-code-sha",
+        "c4b27b1b358a4823e65d92e0b035be3e18438c60",
+        "--desktop-path",
+        "/tmp/deidei-r03-t03-b-candidates/desktop-b/game/desktop",
+        "--desktop-sha",
+        "1dbe1e4f8de28410dc42946efddffc011966cc3a",
+        "--output",
+        "/Users/zengchongtai/develop/DeiDei-r03-t03-b/docs/results/R03-T03-b/b-acceptance.json"
+      ],
+      "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+      "env": {},
+      "exit_code": 1,
+      "started_at": "2026-09-14T15:58:44.903946+00:00",
+      "finished_at": "2026-09-14T16:01:55.542482+00:00",
+      "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+    }
+  ]
+}

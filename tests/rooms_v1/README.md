@@ -27,7 +27,7 @@ python3 scripts/check.py
 
 可追加 `--case N38` 或 `--case N38/10000_to_5000`；N10 自动包含两侧秘密差分。
 A08 工厂只收四项服务配置，固定展示值仍在完整 policy 中验证。请求 ID 使用稳定 UUID，
-同一标签的重放保持原 ID/序号/载荷。房主离开两种配置均覆盖，after_turn 仍是规划提案。
+同一标签的重放保持原 ID/序号/载荷。房主离开两种配置均覆盖，选项确认状态见任务01的最新决策记录。
 
 多数样本使用 ManualClock 和固定随机种子，N36/N48 的 real_clock 子例不注入时钟。
 `resolution_count` 用 Python profiler 观察实际公开核心函数调用，不修改产品函数；

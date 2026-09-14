@@ -1,0 +1,498 @@
+{
+  "server_status": "FAIL",
+  "fixture_status": "VALID",
+  "selected": 96,
+  "passed": 0,
+  "server": {
+    "sha": "0f114284492417ec61634895c485d73417ff1b49",
+    "source_sha256": "ed86f722f85c3b4b43236aa61183e088331b9fba04edc3f14e04d4844c4bc171",
+    "dirty": false
+  },
+  "core": {
+    "sha": "0f114284492417ec61634895c485d73417ff1b49",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "cases": [
+    {
+      "case_id": "N01/create",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N02/correct",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N02/wrong",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N02/missing",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N03/last_seat",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N04/cap_0",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N04/cap_6",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N04/cap_12",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N04/eliminated_keep_seat",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N05/room_ready",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N05/room_start",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N05/room_submit",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N05/forged",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N06/h",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N06/p",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N06/disconnected",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N07/player_join",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N07/player_leave",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N07/role",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N07/spectator_join_leave",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N07/host_role",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N08/mid_match",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N09/same",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N09/conflict",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N09/resume_retry",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N09/evicted",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N10/secret_Bi",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N10/secret_Def",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/5000_True",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/5000_False",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/12000_True",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/12000_False",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/30000_True",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N11/30000_False",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N12/before",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N12/at",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/illegal",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/missing",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/duplicate",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/nan",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/large",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/bool_number",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N13/extra",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N14/submit_replay",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N15/locked",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N16/fresh_old_turn",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N16/evicted",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N17/players_2",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N17/players_3",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N18/six_to_two",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N19/manual",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N19/illegal",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N19/resume",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N19/none",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N20/online",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N20/offline",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N21/C026_dead_reflector_returns",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N21/C050_cancelled_charge_still_kills",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N21/C043_dead_tian_clears",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N22/submitted_leave",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N22/three_absences",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N23/single_restart",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N24/winner_leaves",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N24/two_leave",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N25/continue",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N25/terminal",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N26/leave",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N26/absent",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/0_expire",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/30000_expire",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/30000_resume",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/60000_expire",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/60000_resume",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N27/reveal_resume",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N28/lobby",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N28/playing",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N28/replacement",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N29/correct",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N29/forged",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N29/removed",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N30/next_match",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N31/rooms",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N31/slow",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N32/set_state",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N32/debug",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N32/seed",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N32/forged_room",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N33/errors",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N33/burst_limit",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N33/room_capacity",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N34/C065_reward_replay",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N34/C074_core_full_reset",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N34/room_mode_absence_reset",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N35/electron_manual",
+      "status": "NOT_RUN",
+      "reason": "actual Electron requires integration package"
+    },
+    {
+      "case_id": "N36/six_players_three_matches",
+      "status": "FAIL",
+      "reason": "Rejected"
+    },
+    {
+      "case_id": "N36/real_clock",
+      "status": "FAIL",
+      "reason": "Rejected"
+    }
+  ]
+}
