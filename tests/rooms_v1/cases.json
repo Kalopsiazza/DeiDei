@@ -8104,7 +8104,9 @@
       "P09",
       "W04",
       "W05",
-      "A06"
+      "W11",
+      "A06",
+      "A14"
     ],
     "policy": {
       "turn_ms": 10000,
@@ -8126,6 +8128,10 @@
       "s": {
         "nickname": "测试s",
         "avatar_id": "leaf"
+      },
+      "gone": {
+        "nickname": "测试gone",
+        "avatar_id": "leaf"
       }
     },
     "initial": {
@@ -8137,7 +8143,8 @@
       "roles": {
         "h": "player",
         "p": "player",
-        "s": "spectator"
+        "s": "spectator",
+        "gone": "spectator"
       }
     },
     "steps": [
@@ -8152,6 +8159,10 @@
       {
         "do": "connect",
         "as": "s"
+      },
+      {
+        "do": "connect",
+        "as": "gone"
       },
       {
         "do": "command",
@@ -8216,16 +8227,17 @@
       },
       {
         "do": "command",
-        "as": "h",
+        "as": "gone",
         "message": {
           "v": 1,
           "type": "command",
           "request_id": "4fb4a149-2578-5234-a21b-37be4d9c1c19",
           "command_seq": "@next",
-          "op": "room.ready",
+          "op": "room.join",
           "payload": {
-            "room_id": "$room.room_id",
-            "ready": true
+            "room_code": "$room.room_code",
+            "password": null,
+            "role": "spectator"
           }
         },
         "ack": {
@@ -8233,8 +8245,24 @@
         }
       },
       {
+        "do": "view",
+        "as": "h",
+        "expect": {
+          "phase": "lobby",
+          "members.length": 4
+        }
+      },
+      {
+        "do": "disconnect",
+        "as": "gone"
+      },
+      {
+        "do": "advance",
+        "ms": 29000
+      },
+      {
         "do": "command",
-        "as": "p",
+        "as": "h",
         "message": {
           "v": 1,
           "type": "command",
@@ -8252,28 +8280,20 @@
       },
       {
         "do": "command",
-        "as": "h",
+        "as": "p",
         "message": {
           "v": 1,
           "type": "command",
           "request_id": "440b317c-30fd-52b8-af70-0a89032a1786",
           "command_seq": "@next",
-          "op": "room.start",
+          "op": "room.ready",
           "payload": {
-            "room_id": "$room.room_id"
+            "room_id": "$room.room_id",
+            "ready": true
           }
         },
         "ack": {
           "ok": true
-        },
-        "save": "start"
-      },
-      {
-        "do": "view",
-        "as": "h",
-        "expect": {
-          "phase": "selecting",
-          "members.length": 3
         }
       },
       {
@@ -8283,6 +8303,30 @@
           "v": 1,
           "type": "command",
           "request_id": "17dfcaca-21d8-5272-815d-f6827c2a21ac",
+          "command_seq": "@next",
+          "op": "room.start",
+          "payload": {
+            "room_id": "$room.room_id"
+          }
+        },
+        "ack": {
+          "ok": true
+        }
+      },
+      {
+        "do": "view",
+        "as": "h",
+        "expect": {
+          "phase": "selecting"
+        }
+      },
+      {
+        "do": "command",
+        "as": "h",
+        "message": {
+          "v": 1,
+          "type": "command",
+          "request_id": "39e31a22-7fab-5d22-bdff-7f13e8a5e424",
           "command_seq": "@next",
           "op": "room.submit",
           "payload": {
@@ -8311,7 +8355,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "39e31a22-7fab-5d22-bdff-7f13e8a5e424",
+          "request_id": "f40e5181-5c52-524a-b857-3991b5a7e550",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8344,7 +8388,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "f40e5181-5c52-524a-b857-3991b5a7e550",
+          "request_id": "308bd332-8ebe-5f91-9a39-10d0b9a91acb",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8381,7 +8425,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "308bd332-8ebe-5f91-9a39-10d0b9a91acb",
+          "request_id": "a1d14b61-63b3-514b-84c6-cb91e99ae782",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8411,7 +8455,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "a1d14b61-63b3-514b-84c6-cb91e99ae782",
+          "request_id": "503c15f1-73a7-5c6a-bf1c-a5573aa252cf",
           "command_seq": "@next",
           "op": "room.submit",
           "payload": {
@@ -8440,6 +8484,37 @@
         "as": "p",
         "key": "failure-p",
         "compare": false
+      },
+      {
+        "do": "advance",
+        "ms": 1000
+      },
+      {
+        "do": "resume",
+        "as": "gone"
+      },
+      {
+        "do": "receipt",
+        "as": "gone",
+        "count": 1,
+        "expect": {
+          "reason": "disconnect_grace_expired"
+        }
+      },
+      {
+        "do": "privacy",
+        "as": "gone",
+        "key": "ended-gone",
+        "compare": false,
+        "source": "membership.ended"
+      },
+      {
+        "do": "view",
+        "as": "p",
+        "expect": {
+          "phase": "selecting",
+          "match.last_turn": null
+        }
       }
     ],
     "needs_gui": false,
@@ -8459,7 +8534,9 @@
       "P09",
       "W04",
       "W05",
-      "A06"
+      "W11",
+      "A06",
+      "A14"
     ],
     "policy": {
       "turn_ms": 10000,
@@ -8481,6 +8558,10 @@
       "s": {
         "nickname": "测试s",
         "avatar_id": "leaf"
+      },
+      "gone": {
+        "nickname": "测试gone",
+        "avatar_id": "leaf"
       }
     },
     "initial": {
@@ -8492,7 +8573,8 @@
       "roles": {
         "h": "player",
         "p": "player",
-        "s": "spectator"
+        "s": "spectator",
+        "gone": "spectator"
       }
     },
     "steps": [
@@ -8507,6 +8589,10 @@
       {
         "do": "connect",
         "as": "s"
+      },
+      {
+        "do": "connect",
+        "as": "gone"
       },
       {
         "do": "command",
@@ -8571,16 +8657,17 @@
       },
       {
         "do": "command",
-        "as": "h",
+        "as": "gone",
         "message": {
           "v": 1,
           "type": "command",
           "request_id": "4fb4a149-2578-5234-a21b-37be4d9c1c19",
           "command_seq": "@next",
-          "op": "room.ready",
+          "op": "room.join",
           "payload": {
-            "room_id": "$room.room_id",
-            "ready": true
+            "room_code": "$room.room_code",
+            "password": null,
+            "role": "spectator"
           }
         },
         "ack": {
@@ -8588,8 +8675,24 @@
         }
       },
       {
+        "do": "view",
+        "as": "h",
+        "expect": {
+          "phase": "lobby",
+          "members.length": 4
+        }
+      },
+      {
+        "do": "disconnect",
+        "as": "gone"
+      },
+      {
+        "do": "advance",
+        "ms": 29000
+      },
+      {
         "do": "command",
-        "as": "p",
+        "as": "h",
         "message": {
           "v": 1,
           "type": "command",
@@ -8607,28 +8710,20 @@
       },
       {
         "do": "command",
-        "as": "h",
+        "as": "p",
         "message": {
           "v": 1,
           "type": "command",
           "request_id": "440b317c-30fd-52b8-af70-0a89032a1786",
           "command_seq": "@next",
-          "op": "room.start",
+          "op": "room.ready",
           "payload": {
-            "room_id": "$room.room_id"
+            "room_id": "$room.room_id",
+            "ready": true
           }
         },
         "ack": {
           "ok": true
-        },
-        "save": "start"
-      },
-      {
-        "do": "view",
-        "as": "h",
-        "expect": {
-          "phase": "selecting",
-          "members.length": 3
         }
       },
       {
@@ -8638,6 +8733,30 @@
           "v": 1,
           "type": "command",
           "request_id": "17dfcaca-21d8-5272-815d-f6827c2a21ac",
+          "command_seq": "@next",
+          "op": "room.start",
+          "payload": {
+            "room_id": "$room.room_id"
+          }
+        },
+        "ack": {
+          "ok": true
+        }
+      },
+      {
+        "do": "view",
+        "as": "h",
+        "expect": {
+          "phase": "selecting"
+        }
+      },
+      {
+        "do": "command",
+        "as": "h",
+        "message": {
+          "v": 1,
+          "type": "command",
+          "request_id": "39e31a22-7fab-5d22-bdff-7f13e8a5e424",
           "command_seq": "@next",
           "op": "room.submit",
           "payload": {
@@ -8666,7 +8785,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "39e31a22-7fab-5d22-bdff-7f13e8a5e424",
+          "request_id": "f40e5181-5c52-524a-b857-3991b5a7e550",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8699,7 +8818,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "f40e5181-5c52-524a-b857-3991b5a7e550",
+          "request_id": "308bd332-8ebe-5f91-9a39-10d0b9a91acb",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8736,7 +8855,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "308bd332-8ebe-5f91-9a39-10d0b9a91acb",
+          "request_id": "a1d14b61-63b3-514b-84c6-cb91e99ae782",
           "command_seq": "@next",
           "op": "room.sync",
           "payload": {
@@ -8766,7 +8885,7 @@
         "message": {
           "v": 1,
           "type": "command",
-          "request_id": "a1d14b61-63b3-514b-84c6-cb91e99ae782",
+          "request_id": "503c15f1-73a7-5c6a-bf1c-a5573aa252cf",
           "command_seq": "@next",
           "op": "room.submit",
           "payload": {
@@ -8795,6 +8914,37 @@
         "as": "p",
         "key": "failure-p",
         "compare": true
+      },
+      {
+        "do": "advance",
+        "ms": 1000
+      },
+      {
+        "do": "resume",
+        "as": "gone"
+      },
+      {
+        "do": "receipt",
+        "as": "gone",
+        "count": 1,
+        "expect": {
+          "reason": "disconnect_grace_expired"
+        }
+      },
+      {
+        "do": "privacy",
+        "as": "gone",
+        "key": "ended-gone",
+        "compare": true,
+        "source": "membership.ended"
+      },
+      {
+        "do": "view",
+        "as": "p",
+        "expect": {
+          "phase": "selecting",
+          "match.last_turn": null
+        }
       }
     ],
     "needs_gui": false,
@@ -25145,6 +25295,18 @@
         "expect": {
           "phase": "lobby",
           "members.length": 1
+        }
+      },
+      {
+        "do": "resume",
+        "as": "p"
+      },
+      {
+        "do": "receipt",
+        "as": "p",
+        "count": 1,
+        "expect": {
+          "reason": "disconnect_grace_expired"
         }
       }
     ],

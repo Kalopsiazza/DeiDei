@@ -462,10 +462,15 @@ class Scenario:
             await asyncio.sleep(0.1)
             need(not any(f.get('type') == 'snapshot' for f in peer.frames[count:]), 'revoked member received snapshot')
         elif action == 'privacy':
-            frame = deepcopy(self.normalize(self.peers[step['as']].latest))
+            peer = self.peers[step['as']]
+            ended = step.get('source') == 'membership.ended'
+            frame = deepcopy(self.normalize(peer.last_membership_end if ended else peer.latest))
             frame.pop('server_time_ms')
-            frame['view']['room_code'] = 'ROOMCODE'
-            frame['view']['timer'].pop('deadline_at_ms')
+            if ended:
+                frame['event_id'] = 'EVENT_ID'
+            else:
+                frame['view']['room_code'] = 'ROOMCODE'
+                frame['view']['timer'].pop('deadline_at_ms')
             key = step['key']
             need(not step.get('compare') or key in self.shared, 'missing paired privacy baseline')
             if key in self.shared:

@@ -198,9 +198,12 @@ def build() -> list[dict]:
         c.same('h', 'room_before', 'room_code')
 
     for entry in ('Bi', 'Def'):
-        c = Case(10, 'secret_' + entry, '只改变他人秘密牌的完整JSON非干扰对照', 'P04 P09 W04 W05 A06')
+        c = Case(10, 'secret_' + entry, '只改变他人秘密牌的完整JSON非干扰对照', 'P04 P09 W04 W05 W11 A06 A14')
         c.data['initial']['players'] = {'h': {'dd6': '6'}}
-        c.room(spectators=('s',)); c.submit('h', entry)
+        c.room(spectators=('s', 'gone'), start=False)
+        c.add('disconnect', **{'as': 'gone'}); c.wait(29000)
+        c.ready('h'); c.ready('p'); c.command('h', 'room.start', {'room_id': '$room.room_id'})
+        c.view('h', 'selecting'); c.submit('h', entry)
         c.view('h', 'selecting', **{'self.accepted_entry_id': entry, 'match.public_state.players.h.dd6': '6'})
         for observer in ('p', 's'):
             c.sync(observer); c.view(observer, 'selecting', **{'self.accepted_entry_id': None, 'members.h.submission_state': 'submitted', 'match.last_turn': None})
@@ -209,6 +212,10 @@ def build() -> list[dict]:
         c.add('privacy', **{'as': 'p'}, key='resume-p', compare=entry == 'Def')
         c.submit('p', 'Volvo', error='UNAVAILABLE_MOVE'); c.view('p', 'selecting')
         c.add('privacy', **{'as': 'p'}, key='failure-p', compare=entry == 'Def')
+        c.wait(1000); c.add('resume', **{'as': 'gone'})
+        c.add('receipt', **{'as': 'gone'}, count=1, expect={'reason': 'disconnect_grace_expired'})
+        c.add('privacy', **{'as': 'gone'}, key='ended-gone', compare=entry == 'Def', source='membership.ended')
+        c.view('p', 'selecting', **{'match.last_turn': None})
 
     for turn_ms in (5000, 12000, 30000):
         for early in (True, False):
@@ -390,6 +397,8 @@ def build() -> list[dict]:
         elif mode == 'lobby':
             c.add('disconnect', **{'as': 'p'}); c.wait(29999); c.view('h', 'lobby', **{'members.length': 2})
             c.wait(1); c.view('h', 'lobby', **{'members.length': 1})
+            c.add('resume', **{'as': 'p'})
+            c.add('receipt', **{'as': 'p'}, count=1, expect={'reason': 'disconnect_grace_expired'})
         else:
             c.add('disconnect', **{'as': 'p'}); c.submit('h'); c.wait(POLICY['turn_ms'])
             c.view('h', 'revealing', **{'members.p.absence_count': 1})

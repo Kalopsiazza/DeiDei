@@ -280,6 +280,14 @@ class AsyncHarnessTests(unittest.IsolatedAsyncioTestCase):
         await scenario.execute(step)
         peer.latest['view']['has_password'] = True
         with self.assertRaises(ValueError): await scenario.execute(step)
+        peer.last_membership_end = dict(v=1, type='membership.ended', event_id=request_uuid('event1'),
+            room_id='id-room', player_id='id-h', seq='4', server_time_ms=10, reason='disconnect_grace_expired')
+        step = {'do': 'privacy', 'as': 'h', 'key': 'ended', 'source': 'membership.ended'}
+        await scenario.execute(step)
+        peer.last_membership_end.update(event_id=request_uuid('event2'), server_time_ms=11)
+        await scenario.execute(step)
+        peer.last_membership_end['seq'] = '5'
+        with self.assertRaises(ValueError): await scenario.execute(step)
 
     async def test_same_seq_cannot_have_different_public_resources(self) -> None:
         scenario = Scenario(load_cases()[0], None, None, {})
