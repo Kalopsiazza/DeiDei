@@ -68,7 +68,10 @@ const hash=p=>createHash('sha256').update(fs.readFileSync(p)).digest('hex');
   pass('ten app launch/solo/leave/exit cycles; bundled offline worker remains usable');
   for(const missing of ['worker','catalog']){
    const damaged=path.join(out,'损坏 副本 '+missing,path.basename(application));fs.mkdirSync(path.dirname(damaged),{recursive:true});
-   if(mac)execFileSync('ditto',[application,damaged]);else fs.cpSync(application,damaged,{recursive:true});
+   report.checkpoint='copy damaged '+missing;save();console.log(report.checkpoint);
+   if(mac)execFileSync('ditto',[application,damaged]);
+   else execFileSync(python,['-c','import shutil,sys; shutil.copytree(sys.argv[1],sys.argv[2])',application,damaged],{windowsHide:true});
+   report.checkpoint='launch damaged '+missing;save();console.log(report.checkpoint);
    const res=path.join(damaged,mac?'Contents/Resources':'resources');
    fs.unlinkSync(path.join(res,'worker',missing==='worker'?(mac?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json'));
    await launch(path.join(damaged,mac?'Contents/MacOS/DeiDeiR03':'DeiDeiR03.exe'));
