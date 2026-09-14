@@ -91,6 +91,8 @@ class NetworkRoomPort {
         if(m.view.self.player_id!==this.identity.player_id)return;
         if(m.room_id!==this.room) {
           if(this.pending&&['room.create','room.join'].includes(this.pending.op)&&!this.room) {
+            // Room sequence numbers are independent; a departed room cannot replace a new-room buffer.
+            if(m.room_id===this.membershipEnd?.room_id&&(this.pending.op==='room.create'||BigInt(m.seq)<=BigInt(this.membershipEnd.seq)))return;
             if(this.pending.op==='room.join'&&m.view.room_code!==this.pending.payload.room_code)return;
             if(!this.buffered||BigInt(m.seq)>BigInt(this.buffered.seq))this.buffered=m;
           }

@@ -48,7 +48,10 @@ test('W11 removal cancels only old intent, preserves session, deduplicates and p
  const revision=c.port.read().revision;c.s.message(event);assert.equal(c.port.read().revision,revision);
  c.port.create({password:null,options:{turn_ms:10000,early_reveal:true,spectator_cap:6}});const create=c.s.sent.at(-1);
  c.s.message(ended());c.s.ack(old,{room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',accepted_entry_id:'Charge'});assert.equal(c.port.pending.request_id,create.request_id);
- c.s.ack(create,{room_id:'room2',room_code:'EFGH2345'});const fresh=snapshot('lobby');fresh.room_id='room2';fresh.view.room_code='EFGH2345';c.s.message(fresh);
+ const fresh=snapshot('lobby');fresh.room_id='room2';fresh.view.room_code='EFGH2345';c.s.message(fresh);
+ c.s.message(snapshot('selecting','99')); // A late old-room frame must not displace the new room's pre-ack snapshot.
+ c.s.ack(create,{room_id:'room2',room_code:'EFGH2345'});
+ assert.equal(c.port.read().snapshot?.room_id,'room2');
  c.s.message(event);c.s.message(snapshot('selecting','99'));assert.equal(c.port.read().snapshot.room_id,'room2');assert.equal(c.port.read().confirmed,null);
 });
 test('W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command',()=>{
