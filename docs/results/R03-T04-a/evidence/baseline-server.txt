@@ -1,0 +1,73 @@
+test_N20_online_recovery_keeps_prior_absence (test_boundaries.SecurityLifecycle.test_N20_online_recovery_keeps_prior_absence) ... ok
+test_N23_core_restart_and_departing_survivor (test_boundaries.SecurityLifecycle.test_N23_core_restart_and_departing_survivor) ... ok
+test_N25_result_leave_keeps_published_winner (test_boundaries.SecurityLifecycle.test_N25_result_leave_keeps_published_winner) ... ok
+test_N27_reveal_continues_and_departure_while_host_offline (test_boundaries.SecurityLifecycle.test_N27_reveal_continues_and_departure_while_host_offline) ... ok
+test_N31_bounded_slow_writer_does_not_block_room (test_boundaries.SecurityLifecycle.test_N31_bounded_slow_writer_does_not_block_room) ... ok
+test_closed_room_on_invalid_core_output (test_boundaries.SecurityLifecycle.test_closed_room_on_invalid_core_output) ... room=c265d13e-18d4-43de-8266-7130a8199169 event=terminate code=INTERNAL_ERROR
+ok
+test_disconnected_active_player_not_kicked_at_thirty_seconds (test_boundaries.SecurityLifecycle.test_disconnected_active_player_not_kicked_at_thirty_seconds) ... ok
+test_future_core_private_fields_never_projected (test_boundaries.SecurityLifecycle.test_future_core_private_fields_never_projected) ... ok
+test_import_clock_negative_and_cli_no_backdoor (test_boundaries.SecurityLifecycle.test_import_clock_negative_and_cli_no_backdoor) ... ok
+test_join_failure_limit_and_service_capacity (test_boundaries.SecurityLifecycle.test_join_failure_limit_and_service_capacity) ... ok
+test_password_absent_from_cache_and_rng_streams_separate (test_boundaries.SecurityLifecycle.test_password_absent_from_cache_and_rng_streams_separate) ... ok
+test_policy_limits_and_room_copy (test_boundaries.SecurityLifecycle.test_policy_limits_and_room_copy) ... ok
+test_restart_preserves_absence_and_multiplayer_mode (test_boundaries.SecurityLifecycle.test_restart_preserves_absence_and_multiplayer_mode) ... ok
+test_snapshot_coalescing_and_byte_ceiling (test_boundaries.SecurityLifecycle.test_snapshot_coalescing_and_byte_ceiling) ... ok
+test_snapshot_size_terminates_only_affected_room (test_boundaries.SecurityLifecycle.test_snapshot_size_terminates_only_affected_room) ... ok
+test_tombstone_idle_session_expiry_and_no_code_reuse (test_boundaries.SecurityLifecycle.test_tombstone_idle_session_expiry_and_no_code_reuse) ... ok
+test_schema_and_policy_reject_unknown_boolean_depth (test_rooms.Boundaries.test_schema_and_policy_reject_unknown_boolean_depth) ... ok
+test_N01_N02_identity_password_and_nonexistent (test_rooms.Rooms.test_N01_N02_identity_password_and_nonexistent) ... ok
+test_N03_N04_atomic_capacity_and_spectators (test_rooms.Rooms.test_N03_N04_atomic_capacity_and_spectators) ... ok
+test_N05_N06_N07_permissions_readiness_roles (test_rooms.Rooms.test_N05_N06_N07_permissions_readiness_roles) ... ok
+test_N08_N32_match_join_and_membership (test_rooms.Rooms.test_N08_N32_match_join_and_membership) ... ok
+test_N09_cache_create_resume_conflict_and_eviction (test_rooms.Rooms.test_N09_cache_create_resume_conflict_and_eviction) ... ok
+test_N10_private_differential_sync_resume_and_failure (test_rooms.Rooms.test_N10_private_differential_sync_resume_and_failure) ... ok
+test_N11_early_true_false_minimum_and_no_double_settle (test_rooms.Rooms.test_N11_early_true_false_minimum_and_no_double_settle) ... ok
+test_N12_deadline_minus_one_and_exact (test_rooms.Rooms.test_N12_deadline_minus_one_and_exact) ... ok
+test_N13_invalid_wire_and_oversized_frame (test_rooms.Rooms.test_N13_invalid_wire_and_oversized_frame) ... ok
+test_N14_N15_N16_submit_replay_conflict_stale (test_rooms.Rooms.test_N14_N15_N16_submit_replay_conflict_stale) ... ok
+test_N17_duel_chooser_and_multiplayer_charge (test_rooms.Rooms.test_N17_duel_chooser_and_multiplayer_charge) ... ok
+test_N18_N23_N34_restart_mode_absence_and_one_index (test_rooms.Rooms.test_N18_N23_N34_restart_mode_absence_and_one_index) ... ok
+test_N19_absences_manual_invalid_resume_and_third_removal (test_rooms.Rooms.test_N19_absences_manual_invalid_resume_and_third_removal) ... ok
+test_N20_forced_recovery_online_offline (test_rooms.Rooms.test_N20_forced_recovery_online_offline) ... ok
+test_N21_multiplayer_rule_actions (test_rooms.Rooms.test_N21_multiplayer_rule_actions) ... ok
+test_N22_N24_forfeit_winner_none_and_one (test_rooms.Rooms.test_N22_N24_forfeit_winner_none_and_one) ... ok
+test_N25_reveal_leave_does_not_rewrite (test_rooms.Rooms.test_N25_reveal_leave_does_not_rewrite) ... ok
+test_N26_host_leave_and_absence_close (test_rooms.Rooms.test_N26_host_leave_and_absence_close) ... ok
+test_N27_recovery_without_pause_and_grace (test_rooms.Rooms.test_N27_recovery_without_pause_and_grace) ... ok
+test_N28_N29_generation_lobby_expiry_and_fake_token (test_rooms.Rooms.test_N28_N29_generation_lobby_expiry_and_fake_token) ... ok
+test_N30_N36_six_players_two_spectators_three_matches (test_rooms.Rooms.test_N30_N36_six_players_two_spectators_three_matches) ... ok
+test_N31_isolated_rooms_and_departed_authority (test_rooms.Rooms.test_N31_isolated_rooms_and_departed_authority) ... ok
+test_N33_rate_limits_origin_path_and_protocol (test_rooms.Rooms.test_N33_rate_limits_origin_path_and_protocol) ... ok
+test_N34_C065_reward_consumed_replay_no_second_grant (test_rooms.Rooms.test_N34_C065_reward_consumed_replay_no_second_grant) ... ok
+test_N36_real_clock_timeout (test_rooms.Rooms.test_N36_real_clock_timeout) ... ok
+test_N37_default_and_protocol (test_rooms_11.Rooms11.test_N37_default_and_protocol) ... ok
+test_N38_N39_change_only_next_select_revision_and_noop (test_rooms_11.Rooms11.test_N38_N39_change_only_next_select_revision_and_noop) ... ok
+test_N39_deadline_wins_and_all_phases (test_rooms_11.Rooms11.test_N39_deadline_wins_and_all_phases) ... ok
+test_N40_fourth_host_absence_never_calls_core (test_rooms_11.Rooms11.test_N40_fourth_host_absence_never_calls_core) ... ok
+test_N41_forced_host_online_offline_and_fourth (test_rooms_11.Rooms11.test_N41_forced_host_online_offline_and_fourth) ... ok
+test_N41_host_accepted_resume_and_manual_reset (test_rooms_11.Rooms11.test_N41_host_accepted_resume_and_manual_reset) ... ok
+test_N42_eliminated_host_grace_and_other_game_continues (test_rooms_11.Rooms11.test_N42_eliminated_host_grace_and_other_game_continues) ... ok
+test_N42_grace_beats_later_game_deadlines_in_large_clock_jump (test_rooms_11.Rooms11.test_N42_grace_beats_later_game_deadlines_in_large_clock_jump) ... ok
+test_N42_result_host_grace_starts_at_result_transition (test_rooms_11.Rooms11.test_N42_result_host_grace_starts_at_result_transition) ... ok
+test_N43_eliminated_host_leaves_after_current_turn (test_rooms_11.Rooms11.test_N43_eliminated_host_leaves_after_current_turn) ... ok
+test_N43_host_leave_both_policies_select_reveal_and_lobby (test_rooms_11.Rooms11.test_N43_host_leave_both_policies_select_reveal_and_lobby) ... ok
+test_N44_forfeit_result_to_game_id (test_rooms_11.Rooms11.test_N44_forfeit_result_to_game_id) ... ok
+test_N45_offline_grace_notice_for_all_nonactive_roles (test_rooms_11.Rooms11.test_N45_offline_grace_notice_for_all_nonactive_roles) ... ok
+test_N45_online_event_no_command_then_resume_same_receipt (test_rooms_11.Rooms11.test_N45_online_event_no_command_then_resume_same_receipt) ... ok
+test_N46_queued_receipt_rechecks_generation_and_new_room (test_rooms_11.Rooms11.test_N46_queued_receipt_rechecks_generation_and_new_room) ... ok
+test_N46_receipt_and_old_ack_do_not_restore_old_room (test_rooms_11.Rooms11.test_N46_receipt_and_old_ack_do_not_restore_old_room) ... ok
+test_N47_invalid_uuid_and_role_errors (test_rooms_11.Rooms11.test_N47_invalid_uuid_and_role_errors) ... ok
+test_N48_six_players_two_spectators_three_matches_dynamic_timeout (test_rooms_11.Rooms11.test_N48_six_players_two_spectators_three_matches_dynamic_timeout) ... ok
+test_N49_profile_and_password_unicode_boundary (test_rooms_11.Rooms11.test_N49_profile_and_password_unicode_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 63.767s
+
+OK
+LOOPBACK N36 match=1 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK N36 match=2 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK N36 match=3 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK1.1 N48 match=1 players=6 spectators=2 dynamic_limit=5000 host_proxy=Charge consistent=true
+LOOPBACK1.1 N48 match=2 players=6 spectators=2 dynamic_limit=30000 host_proxy=Charge consistent=true
+LOOPBACK1.1 N48 match=3 players=6 spectators=2 dynamic_limit=8000 host_proxy=Charge consistent=true

@@ -1,0 +1,93 @@
+
+> deidei-r02-desktop@0.1.0 test
+> npm run build && node --test test.cjs test-live.cjs test-navigation.cjs test-packaging.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ S09 old exit/stdout cannot settle or fail new process requests; stop waits close (14.086125ms)
+✔ transport frame bounds, pending cap, malformed UTF8 and timeout reject all pending (15.049875ms)
+✔ WorkerPort marks dead match interrupted, no implicit respawn; restart is explicit (0.354208ms)
+✔ S10 late response after leave/new scene cannot restore old active match (0.158542ms)
+✔ S10 renderer polls selecting and stops on rejected/failed getView with retry possible (32.842708ms)
+✔ S10 single in-flight read spans disposed and new scene; late data is discarded (32.268833ms)
+✔ BigInt sixths formatting covers fractions and integers beyond Number precision (1.161375ms)
+✔ real subprocess protocol starts live UUID match, retries once and leaves cleanly (57.1755ms)
+✔ idle real worker exit is detected before any read can respawn it (32.947ms)
+✔ F02 synchronous flag blocks navigation and duplicate start before React rerenders (1.5975ms)
+✔ F02 delayed failure keeps original page, unlocks navigation and allows a fresh start (1.019083ms)
+✔ F02 scene preview and synchronous action failure both release the flag (0.413167ms)
+✔ F02 existing generation protection discards stale success and error (0.647708ms)
+✔ P08 packaged launch ignores developer variables and preserves OS environment (7.040375ms)
+✔ P09 missing worker/catalog/map, wrong binary or no executable bit never falls back (7.636916ms)
+✔ P04 source launch retains module arguments and explicit developer Python (0.139375ms)
+✔ nickname Unicode boundary, exact fields, avatars and settings validation (1.075333ms)
+✔ atomic profile creation, stable identity, settings and restart read (8.483417ms)
+✔ write/rename failures preserve old bytes, input and remove temporary file (5.958708ms)
+✔ corruption never overwritten automatically, recovery backs up original only with confirmation (2.3975ms)
+✔ oversized and symbolic-link profiles rejected; concurrent writes cannot race (1.904042ms)
+✔ 33 unique static cards, categories 18/9/6, initial 12 and midgame 26 available (1.223416ms)
+✔ keyboard assignment stable, unique 1–0, blocked input and grey card rejection (9.941ms)
+✔ script states, duplicate/stale submission, privacy and immutable snapshots (1.243334ms)
+✔ error preserves selection, retry works, draw and spectating keep real roster (1.022ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 233.577292
+
+> deidei-r02-desktop@0.1.0 test:online
+> npm run build && node --test tests-online/test-*.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ public amounts use ledger at reveal and new state only in next selecting phase (0.679709ms)
+✔ 33 option costs are live server values, big DD stays rational and catalog supplies only text (1.642625ms)
+✔ spectator, eliminated, forced, disconnected, revealing, pending and accepted never become editable (1.041042ms)
+✔ start requires two ready connected players and summary reports actual source, gains and outcomes (0.447792ms)
+✔ host configuration includes natural elimination and recovery copy never pauses the table (0.329708ms)
+✔ endpoint only accepts explicit loopback and rooms path; no URL credentials (1.468916ms)
+✔ credentials and local_id never enter any renderer state or broadcast (6.84125ms)
+✔ hello defaults drive client data, commands serialize, extra fields rejected (0.898083ms)
+✔ snapshot before create ack buffered, old sequence and unrelated room ignored (2.675875ms)
+✔ late submit ack does not restore an old turn; same turn ack confirms only own entry (4.307833ms)
+✔ disconnect retries exact pending intent after resume and ignores the old generation (0.963417ms)
+✔ ack timeout reconnects; sync serializes after resume and failed commands never auto retry (0.88125ms)
+✔ explicit disconnected leave cancels pending, timers and late snapshots (0.636125ms)
+✔ room leave ack revokes receiving old room; session replacement and server reboot terminate (1.641166ms)
+✔ monotonic estimate continues during host absence and cutoff blocks clicks (3.971583ms)
+✔ schema rejects unknown private nested fields, binary, duplicate keys and spectator options (4.460917ms)
+✔ other session snapshot cannot replace private self, recovery cannot manually submit (3.031208ms)
+✔ new session clears terminated room; invalid hello defaults never reach page (0.480083ms)
+✔ preload only exposes named methods, strips IPC event and removes exact subscription (1.709625ms)
+✔ W09/W10 accept rooms-1.1 only, exact six time choices and new fields (4.401542ms)
+✔ W09 policy ack never overwrites snapshot or current deadline, failed change can be corrected (6.552417ms)
+✔ W09 host-only setting includes eliminated host; pending close blocks changes but not player submit (3.3875ms)
+✔ W10 independent grace timer does not freeze play or restart on duplicate snapshot (3.41275ms)
+✔ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (4.459833ms)
+✔ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (3.267375ms)
+✔ W12 null request ack is strictly checked and cannot complete pending command (1.499667ms)
+✔ W13 Unicode profile boundary and password spaces remain strict (0.330583ms)
+✔ W14 real Room/core reveal and full result DTOs decode without dropping last_turn (11.380375ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 89.454416

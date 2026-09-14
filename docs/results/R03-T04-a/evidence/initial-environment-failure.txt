@@ -1,0 +1,26 @@
+
+> deidei-r02-desktop@0.1.0 test
+> npm run build && node --test test.cjs test-live.cjs test-navigation.cjs test-packaging.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+sh: tsc: command not found
+
+> deidei-r02-desktop@0.1.0 test:online
+> npm run build && node --test tests-online/test-*.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+sh: tsc: command not found

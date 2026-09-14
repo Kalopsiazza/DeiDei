@@ -1,0 +1,28 @@
+{
+  "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "allowed_paths_only": true,
+  "package_json_only_scripts": true,
+  "unchanged_paths": [
+    "game/core",
+    "game/runtime",
+    "game/packaging",
+    "tests/rooms_v1",
+    "tests/rules_v1_001",
+    "game/desktop/package-lock.json",
+    "game/server/requirements.in",
+    "game/server/requirements.lock",
+    ".github"
+  ],
+  "changed_paths": [
+    "game/desktop/package.json",
+    "game/integration/fault_proxy.py",
+    "game/integration/gui.cjs",
+    "game/integration/peer.cjs",
+    "game/integration/run.py",
+    "game/integration/sequences.py",
+    "game/integration/soak.cjs",
+    "game/server/deidei_server/room.py",
+    "game/server/deidei_server/server.py",
+    "game/server/tests/test_live_contract.py"
+  ]
+}

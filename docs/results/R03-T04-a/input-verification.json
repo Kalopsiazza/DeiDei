@@ -1,0 +1,16 @@
+{
+  "base_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
+  "plan_manifest_sha256": "56e0026a16a156813962c25cd9b73a163207efd7302f7a62ab2208891140a4bf",
+  "planning_files": 15,
+  "trees": {
+    "game/server": "dd9b56bdc7df4add9e603fc4ced4f29fffb27ff8",
+    "game/desktop": "f33e71b7ef9bf7626f75e2a145a46f92e1f2e4b6",
+    "tests/rooms_v1": "6d7c93352c2302667682fafff27f00fd951bd3b3",
+    "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+    "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
+    "game/packaging": "49e0af03dc130d13742e7c0dcdae5d83cae50fd4",
+    "tests/rules_v1_001": "237a573d53b6182c6d15da2411e0aca33fa9ca85"
+  },
+  "desktop_lock_sha256": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8"
+}

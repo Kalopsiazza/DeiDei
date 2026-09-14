@@ -1,0 +1,9 @@
+PASS Q06/Q14 Three actual Electron processes plus socket peers fill 6 player and 6 spectator places; wrong password, full capacities and spectator permission reject.
+PASS Q23 33 cards, three rows, both specified viewports without overflow; actual service and renderer.
+PASS Q05/Q15 In-flight timing and accepted card unchanged; next stage uses final 30s revision; spectator receives no private option or accepted entry.
+PASS Q12 ACK dropped after real server acceptance; original pending submission resumed once, same entry and human source.
+PASS Q08 Naturally eliminated host keeps seat and management rights, no selectable cards; other players continue.
+PASS Q07 Three complete real-core matches, including Charge/Bi/Def, natural elimination, common outcomes and return to lobby/new match IDs.
+PASS Q11/Q13 Third ordinary absence removes the member; delayed genuine snapshot/removal receipt released after a new room cannot revive or clear the old/new room.
+PASS Q09 Host selecting-phase UI exit closes after the current turn with HOST_LEFT and no new outcome. Reveal-phase exact-once boundary covered by server regression.
+Cannot read properties of undefined (reading '_object')
