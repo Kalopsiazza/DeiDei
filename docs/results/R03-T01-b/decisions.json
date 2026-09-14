@@ -1,7 +1,7 @@
 {
   "raw_quote": "1. 10s，我建议这个房主可以更改，而且可以在游戏当中更改，如果需要改架构和计划，交给 ChatGPT pro 下发任务工作包修正 提 pr 2.允许 注意，参战人员死了要保留参战席位，相当于观战有两种状态 3.房主掉线我们前面不是说由系统自动出三轮 deidei，如果第四轮仍然超时掉线则关闭房间吗？ 4.是的，不能改 5.是的，我觉得房主也是吧？",
   "answered_at": null,
-  "context": "本任务历史用户消息；未提供精确时间。b 的剩余选项已询问一次，尚无答复。",
+  "context": "本任务历史用户消息；后续用户在两项含义说明后回复“按这个”，确认剩余选择。精确消息时间未知。",
   "selected": {
     "turn_ms": 10000,
     "host_edit_during_match": true,
@@ -9,8 +9,8 @@
     "submit_change_allowed": false,
     "ordinary_absence": "third_after_turn",
     "host_absence": "three_auto_fourth_close",
-    "host_leave_timing": null,
-    "early_reveal": null
+    "host_leave_timing": "after_turn",
+    "early_reveal": true
   },
   "planner_choices": {
     "turn_limit_effective": "next_select",
@@ -20,9 +20,11 @@
     "host_leave_timing_proposed": "after_turn",
     "early_reveal_proposed": true
   },
-  "unresolved": [
-    "host_leave_timing",
-    "early_reveal"
-  ],
-  "status": "PROVISIONAL"
+  "unresolved": [],
+  "status": "APPROVED",
+  "confirmation": {
+    "raw_quote": "按这个",
+    "answered_at": null,
+    "context": "确认房主主动退出等待当拍／当前揭晓结束，大厅或结算页立即关房；需要选牌的玩家全员提交后提前揭晓。"
+  }
 }

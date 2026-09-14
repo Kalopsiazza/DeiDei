@@ -154,7 +154,7 @@
   },
   "out_of_scope_diff": "",
   "dependency_security": "Unchanged hash lock; see R03-T01-a/dependency-security.json for prior advisory snapshot",
-  "decisions_status": "PROVISIONAL",
+  "decisions_status": "APPROVED",
   "desktop_baseline": "See desktop-validation.json; isolated copy of unchanged input, not rooms-1.1 decoder acceptance",
   "independent_rooms": "NOT_RUN: T03 is a separate task",
   "gui": "NOT_RUN: T01 is server-only",
@@ -163,5 +163,15 @@
   "human_play": "NOT_RUN",
   "push": "COMPLETED: user-authorized draft PR; see PR-SUBMISSION.json",
   "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/23",
-  "result_pr_base": "integration/r03"
+  "result_pr_base": "integration/r03",
+  "parameter_confirmation": {
+    "raw_quote": "按这个",
+    "answered_at": null,
+    "policy_file": "policy-effective.json",
+    "host_leave_timing": "after_turn",
+    "early_reveal": true,
+    "runtime_changed": false,
+    "note": "Original tested_code_sha and server_source_sha256 retain historical test inputs. Only README changed under game/server after testing; current README hash recorded here.",
+    "current_readme_sha256": "49348c56d65e11bc7bf7a6a12656b7cd4eaa4ad160e8c02997596fc19b282b10"
+  }
 }

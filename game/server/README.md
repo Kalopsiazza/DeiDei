@@ -26,8 +26,8 @@ game/server/.venv/Scripts/python -m deidei_server
 `--policy <JSON路径>` 仅接受 `turn_ms / early_reveal / spectator_cap / host_disconnect_grace_ms`
 四项覆盖，其余继承默认。仅在有用户明确答复时把生效配置放进结果目录并使用该参数。
 `--host-leave-timing after_turn|immediate` 是独立本地开关，不能放进 public policy。
-默认 after_turn 与 early_reveal=true 尚为提案；10 秒和局中改时限已有用户指示。
-当前选择状态见 `docs/results/R03-T01-b/DECISIONS.md`；没有回复不代表确认。
+after_turn 与 early_reveal=true 已由用户确认；10 秒和局中改时限保持既有设定。
+确认记录见 `docs/results/R03-T01-b/DECISIONS.md`，生效配置为同目录 `policy-effective.json`。
 
 每连接先读 `hello`，再 `session.open`；保存其返回的临时身份后才能创建或加入房间。
 重连使用原 `session_id/resume_token`，随后按 `last_command_seq` 发新意图；丢失确认则重试原请求。

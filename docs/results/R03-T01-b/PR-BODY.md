@@ -27,7 +27,7 @@
 
 ## 已知问题
 
-- 参数 PROVISIONAL：本轮已询问一次，尚无答复。after_turn 与 early_reveal=true 为默认提案，支持 immediate/false，不能称已确认；见 DECISIONS.md / policy-proposed.json。
+- 参数 APPROVED：用户回复“按这个”，确认 after_turn 与 early_reveal=true，无剩余参数问题；见 DECISIONS.md / policy-effective.json。确认后只更新记录、配置文件名与说明，服务逻辑不变。
 - 独立 T03 房间验收、rooms-1.1 桌面/GUI 对接、Windows、跨电脑、真人及物理弱网 NOT_RUN。尚无固定 T02-b 分支，不把旧解码器删字段适配当通过。
 - 独立核心驱动的 C074/C081 session 项仍 NOT_RUN。未调用 Kimi。
 

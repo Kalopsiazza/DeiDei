@@ -10,12 +10,17 @@
 普通玩家第三次缺席当拍后移除是本轮规划已采用内容。
 下一选择阶段生效、固定 Charge（尊重休整）、不暂停全场、非参战恢复 30 秒是规划者细化。
 
-本线程已一次询问主动离开与提前揭晓。尚无新答复：host_leave_timing 与 early_reveal 的 selected 均为 null。
-测试与启动默认暂用 after_turn / true，保留 immediate 和 early_reveal=false，不能称这些参数已确认。
-`policy-proposed.json` 仅四项可覆盖字段；host_leave_timing 使用独立 CLI 选项，未混入公共 policy。
+用户在两项含义说明后回复：
+
+> 按这个
+
+确认状态为 APPROVED：host_leave_timing=after_turn，early_reveal=true，无剩余参数问题。
+房主主动退出等当前一拍／揭晓结束，大厅或结算页立即关房；本拍需要选牌者全员提交后提前揭晓。
+精确回复时间未知，保持 null。本次只确认已有默认行为，不修改服务逻辑。
+`policy-effective.json` 仅四项可覆盖字段；host_leave_timing 使用独立 CLI 选项，未混入公共 policy。
 
 ```sh
-PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m deidei_server --policy docs/results/R03-T01-b/policy-proposed.json --host-leave-timing after_turn
+PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m deidei_server --policy docs/results/R03-T01-b/policy-effective.json --host-leave-timing after_turn
 ```
 
 仅本地 loopback；没有部署、合并、发布或新增玩法授权。未调用 Kimi。

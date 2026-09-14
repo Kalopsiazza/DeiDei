@@ -31,9 +31,10 @@ evidence/first-run-server.txt；最终证据另记。更早的 N43 草拟测试�
 
 ## 边界与待验收
 
-参数状态 PROVISIONAL：尚未收到本轮剩余问题回复，after_turn / early_reveal=true 仅为默认提案。
+参数状态 APPROVED：用户回复“按这个”，确认 after_turn / early_reveal=true，无剩余参数问题。
+确认后仅更新参数记录、生效配置及说明；服务逻辑与既有通过测试的版本相同。
 10 秒、局中修改、淘汰留座及四次策略已有用户指示；下一拍生效等细节来自附件规划，未冒充用户原话。
-完整原话及选择分别见 DECISIONS.md、decisions.json；没有 policy-effective.json。
+完整原话及选择分别见 DECISIONS.md、decisions.json；生效配置见 policy-effective.json。
 
 本任务服务自测不等于 T03 独立房间验收。未发现固定 T02-b 远端分支，rooms-1.1 桌面解码与 GUI 联机 NOT_RUN；
 没有为通过旧客户端而删除新字段。独立核心驱动原有 C074/C081 session 项仍 NOT_RUN。
