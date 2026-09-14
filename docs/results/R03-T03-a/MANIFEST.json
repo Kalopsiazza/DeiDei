@@ -1,0 +1,110 @@
+{
+  "task": "R03-T03-a",
+  "input_sha": "23520350393ba43384c20b60bef7d6dbd89fc142",
+  "plan_sha": null,
+  "context_plan_sha": "51432688cf1bbdb1765e59af3540342599a71bc4",
+  "plan_manifest_sha256": "4442d966b87b477c111f9b99ae9e3444ccfe94dd8338ab5a1910b4e3acd88684",
+  "attachment_sha256": "300314729c3b14900119bc11e8f473e12bf198376b58bfdc8a821c9bbc842457",
+  "tested_code_sha": null,
+  "core_oracle_check_sha": "23520350393ba43384c20b60bef7d6dbd89fc142",
+  "branch": "codex/r03-t03-a-room-tests",
+  "pr_base": "integration/r03",
+  "pr_url": null,
+  "server_status": "NOT_RUN",
+  "fixture_count": 96,
+  "selftest_methods": 15,
+  "dependency_installation": "NOT_RUN",
+  "kimi_called": false,
+  "manifest_excludes": [
+    "docs/results/R03-T03-a/MANIFEST.json"
+  ],
+  "files": [
+    {
+      "path": "docs/results/R03-T03-a/CASE-MAP.md",
+      "size": 2572,
+      "sha256": "cdce497073e2e1f73c2bc143966d4e6626ee5c8286603ad036f4bbee4120540e"
+    },
+    {
+      "path": "docs/results/R03-T03-a/CHECKS.json",
+      "size": 20012,
+      "sha256": "6190779aca9a3ada15a93c02ba4b6a7897ed08187e30e2359c8c6e8c3046c975"
+    },
+    {
+      "path": "docs/results/R03-T03-a/PR-BODY.md",
+      "size": 1891,
+      "sha256": "e3e2eddf7d3ecbf285a51dd47fe079a3f1fb3b1181a4b461c9bd92ad24141096"
+    },
+    {
+      "path": "docs/results/R03-T03-a/REPORT.md",
+      "size": 4325,
+      "sha256": "c5008a8300e8cedaba2097cf7cf62bb5802368cde3c626d4ce24fe09182dbd15"
+    },
+    {
+      "path": "docs/results/R03-T03-a/TEST-MATRIX.md",
+      "size": 8156,
+      "sha256": "363bf541e81a1bf0a944dc8abcd5a60d983bbac08855af89606837d1e3b33311"
+    },
+    {
+      "path": "docs/results/R03-T03-a/acceptance-not-run.json",
+      "size": 7444,
+      "sha256": "9a9526b962a4af5b974ef4b2f6081b976d3fc1e4d640301f7c763f3185a63976"
+    },
+    {
+      "path": "tests/rooms_v1/README.md",
+      "size": 5041,
+      "sha256": "c1aaf487aa39dd57b75c266be73d30874490d94f3bd6756ca9c5821ec80a8b81"
+    },
+    {
+      "path": "tests/rooms_v1/__init__.py",
+      "size": 76,
+      "sha256": "8583020c1b052894f7f56a286166724c13094bfedac70b903cb90a17a49c6f4a"
+    },
+    {
+      "path": "tests/rooms_v1/author_cases.py",
+      "size": 33077,
+      "sha256": "9e199613dd8e8caf125af7155c1ca7d5a9c1abc30936925d37b47ec9d423b68c"
+    },
+    {
+      "path": "tests/rooms_v1/cases.json",
+      "size": 865663,
+      "sha256": "b90fb0f45c0bde36c8c499c69db2cc4cdb5dbd5333ff78b7811a7a2193ac203d"
+    },
+    {
+      "path": "tests/rooms_v1/run_acceptance.py",
+      "size": 24170,
+      "sha256": "e604ad3ed13cd0cd58207d194bb82f81e45e78c20af66f3525acd4d8924b92a4"
+    },
+    {
+      "path": "tests/rooms_v1/test_harness.py",
+      "size": 14340,
+      "sha256": "3cc45ef76d50527d8baa5385c06342dd765b1e13967df31eea830c8700ee8243"
+    },
+    {
+      "path": "tests/rooms_v1/validate.py",
+      "size": 20379,
+      "sha256": "61a449c0382b1c383f7f82705ddde8cae96823225ff9468f3e5b0a21a543fa80"
+    }
+  ],
+  "readonly_fixture_sources": [
+    {
+      "path": "tests/rules_v1_001/fixtures/C026.json",
+      "sha256": "1b117d09ccc954922a7b8bd1a9991e6c64d1d642150bcc20ac9038e985998d29"
+    },
+    {
+      "path": "tests/rules_v1_001/fixtures/C050.json",
+      "sha256": "04de67dfcdda13bb6bd1c1dd98b0c98122e803ea6229f9e7f6d31bc9d5b3700f"
+    },
+    {
+      "path": "tests/rules_v1_001/fixtures/C043.json",
+      "sha256": "f12fb30592af7099a6dbda308243d9c56d44f0a41f428e0de8069a6a779f16f6"
+    },
+    {
+      "path": "tests/rules_v1_001/fixtures/C065.json",
+      "sha256": "0b6e608ccc9b7fbba62700b65bbec00e71b32209bfb2a5e40cbee1674f249b35"
+    },
+    {
+      "path": "tests/rules_v1_001/fixtures/C074.json",
+      "sha256": "7402f5c2d6f76ca5ecdba5940587d0db32950e13c81d4213dc88610dea7a355d"
+    }
+  ]
+}
