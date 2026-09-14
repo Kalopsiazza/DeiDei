@@ -1,0 +1,8 @@
+[
+  {
+    "check": 1,
+    "stage": "work_start",
+    "result": "BRANCH_ABSENT",
+    "branch": "codex/r03-t04-a-live-integration"
+  }
+]
