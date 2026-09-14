@@ -116,8 +116,8 @@
       "sha256": "a0778894d9780a0b4ef26351776e0afde0b02297fd26eabfed3cf4b5e27cd8e6"
     },
     "desktop-build-tail.txt": {
-      "bytes": 127,
-      "sha256": "3a5f8dde300bba16f661acdd85b3907655c378eed560ef686845c558c11b0708"
+      "bytes": 126,
+      "sha256": "c12acc7723dafe8475c8ddf612f61d876c037d6c3526016566fc31885bc7eb14"
     },
     "desktop-online-tail.txt": {
       "bytes": 708,
