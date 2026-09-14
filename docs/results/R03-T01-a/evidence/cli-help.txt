@@ -1,0 +1,10 @@
+usage: __main__.py [-h] [--host {127.0.0.1,::1}] [--port PORT]
+                   [--policy POLICY]
+
+DeiDei loopback rooms
+
+options:
+  -h, --help            show this help message and exit
+  --host {127.0.0.1,::1}
+  --port PORT
+  --policy POLICY

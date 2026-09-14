@@ -31,17 +31,17 @@ def main() -> int:
         ('cli-help', ['-m', 'deidei_server', '--help'], 'game/core:game/server'),
     ]
     records = []
-    (OUT / 'logs').mkdir(exist_ok=True)
+    (OUT / 'evidence').mkdir(exist_ok=True)
     for name, args, path in jobs:
         env = dict(os.environ, PYTHONPATH=path.replace(':', os.pathsep))
         command = [sys.executable, *args]
         started = time.time()
         result = subprocess.run(command, cwd=ROOT, env=env, capture_output=True, text=True, timeout=180)
         output = (result.stdout + result.stderr).replace(str(ROOT), '<checkout>').replace(str(Path(sys.executable).parent.parent), '<venv>')
-        (OUT / 'logs' / (name + '.log')).write_text(output)
+        (OUT / 'evidence' / (name + '.txt')).write_text(output)
         records.append(dict(name=name, command=['<venv>/bin/python', *args], pythonpath=path,
                             exit_code=result.returncode, elapsed_seconds=round(time.time()-started, 3),
-                            log='logs/'+name+'.log', tested_code_sha=sha))
+                            log='evidence/'+name+'.txt', tested_code_sha=sha))
         print(name, 'exit', result.returncode, flush=True)
     files = git('ls-files', '--', 'game/server').splitlines()
     source_hashes = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in files}
