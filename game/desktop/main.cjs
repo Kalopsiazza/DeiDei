@@ -61,7 +61,7 @@ app.whenReady().then(async()=>{
     if(switching||port.isActive())throw new Error('SOLO_ACTIVE');
     return online.openLobby(profile);
   });
-  for(const method of ['create','join','ready','start','changeRole','submit','returnLobby'])expose(`online.${method}`,p=>online[method](p),true);
+  for(const method of ['create','join','ready','start','setTurnLimit','changeRole','submit','returnLobby'])expose(`online.${method}`,p=>online[method](p),true);
   expose('online.read',()=>online.read());
   expose('online.leave',()=>online.leave());
   expose('manual.read',()=>manual);

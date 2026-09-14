@@ -4,6 +4,7 @@ const entries = catalog.entries.map(e => e.entry_id);
 const fail = () => { throw new Error('INVALID_MESSAGE'); };
 const check = (ok) => { if (!ok) fail(); };
 const text = v => check(typeof v === 'string');
+const uuid = v => check(typeof v === 'string' && /^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$/i.test(v));
 const id = v => check(typeof v === 'string' && /^[A-Za-z0-9_:-]{1,96}$/.test(v));
 const decimal = v => check(typeof v === 'string' && /^(0|[1-9][0-9]*)$/.test(v));
 const positive = v => { decimal(v); check(v !== '0'); };
@@ -43,23 +44,28 @@ const event = {event_id:text,phase:text,kind:text,actor_id:nullable(id),target_i
 const resolution = {ok:one(true),ledger:{match_id:id,game_id:id,turn_index:positive,actions:map(action),events:array(event),kills:map(array(id,6)),eliminated_ids:array(id,6),post_turn_players:map(player)},next_state:state,transition};
 const turn = {turn_id:id,core_resolution:resolution,room_forfeits:array({player_id:id,reason:one('voluntary_leave','three_absences')},6),effective_transition:transition,effective_state:state,action_sources:map(one('human','timeout_auto','forced'))};
 const profile = {player_id:id,nickname,avatar_id:avatar,seat};
-const policy = {turn_ms:one(5000,8000,12000,20000,30000),early_reveal:bool,spectator_cap:v=>check(Number.isInteger(v)&&v>=0&&v<=12),host_disconnect_grace_ms:one(0,15000,30000,60000),reveal_ms:ms,min_select_ms:ms};
+const policy = {turn_ms:one(5000,8000,10000,12000,20000,30000),early_reveal:bool,spectator_cap:v=>check(Number.isInteger(v)&&v>=0&&v<=12),host_disconnect_grace_ms:one(0,15000,30000,60000),reveal_ms:ms,min_select_ms:ms};
 const closeReason = one('HOST_LEFT','HOST_TIMEOUT','HOST_ABSENT','SERVER_RESTART','ROOM_IDLE','INTERNAL_ERROR','ROOM_STATE_TOO_LARGE');
-const roomView = {source:one('online'),room_code:roomCode,host_id:id,phase:one('lobby','selecting','revealing','result','paused','closed'),has_password:bool,policy,
-  members:array({...profile,role,connected:bool,ready:bool,participation:one('lobby','active','eliminated','departing','spectating'),submission_state:one('none','thinking','submitted','forced','out'),absence_count:v=>check(Number.isInteger(v)&&v>=0&&v<=3)},18),
+const roomView = {source:one('online'),room_code:roomCode,host_id:id,phase:one('lobby','selecting','revealing','result','closed'),has_password:bool,policy,
+  policy_revision:positive,current_turn_ms:nullable(policy.turn_ms),
+  host_recovery:nullable(v=>validate(v?.kind==='rounds'?{kind:one('rounds'),missing_count:n=>check(Number.isInteger(n)&&n>=0&&n<=4),close_at_count:one(4)}:{kind:one('grace'),deadline_at_ms:ms,remaining_ms:ms},v)),
+  pending_close:nullable({reason:one('HOST_LEFT'),after:one('current_turn','current_reveal'),turn_id:id}),
+  members:array({...profile,role,connected:bool,ready:bool,participation:one('lobby','active','eliminated','departing','spectating'),submission_state:one('none','thinking','submitted','forced','out'),absence_count:v=>check(Number.isInteger(v)&&v>=0&&v<=4)},18),
   match:nullable({match_id:id,mode_at_start:one('duel','multiplayer'),turn_id:id,public_state:state,roster_profiles:array(profile,6),last_turn:nullable(turn),effective_outcome:nullable({kind:one('sole_survivor','nobody_survives'),winner_id:nullable(id),reason:one('rules','room_forfeit')})}),
   self:{player_id:id,role,seat,options:array(option,33),accepted_entry_id:nullable(one(...entries))},
-  timer:{kind:one('none','select','reveal','host_grace'),deadline_at_ms:nullable(ms),remaining_ms:nullable(ms)},
-  pause:nullable({reason:one('HOST_DISCONNECTED'),resume_phase:one('lobby','selecting','revealing','result'),phase_remaining_ms:nullable(ms)}),close_reason:nullable(closeReason)
+  timer:{kind:one('none','select','reveal'),deadline_at_ms:nullable(ms),remaining_ms:nullable(ms)},
+  pause:one(null),close_reason:nullable(closeReason)
 };
-const hello = {v:one(1),type:one('hello'),boot_id:id,connection_id:id,protocol:one('rooms-1.0'),rules_version:one('classic-1.0.1'),server_time_ms:ms,policy_defaults:policy,capabilities:{max_players:one(6),allowed_turn_ms:array(one(5000,8000,12000,20000,30000),5),spectator_max:policy.spectator_cap}};
+const hello = {v:one(1),type:one('hello'),boot_id:id,connection_id:id,protocol:one('rooms-1.1'),rules_version:one('classic-1.0.1'),server_time_ms:ms,policy_defaults:policy,capabilities:{max_players:one(6),allowed_turn_ms:v=>{validate(array(policy.turn_ms,6),v);check(v.length===6&&new Set(v).size===6);},spectator_max:policy.spectator_cap}};
 const snapshot = {v:one(1),type:one('snapshot'),room_id:id,seq:positive,server_time_ms:ms,view:roomView};
-const errors = 'INVALID_MESSAGE UNSUPPORTED_PROTOCOL UNAUTHENTICATED ALREADY_AUTHENTICATED SESSION_EXPIRED SESSION_REPLACED ALREADY_IN_ROOM ROOM_ACCESS_DENIED ROOM_FULL SPECTATORS_FULL SPECTATORS_DISABLED MATCH_IN_PROGRESS ROOM_GONE ROOM_NOT_MEMBER NOT_HOST WRONG_PHASE NOT_READY NOT_ACTIVE FORCED_RECOVERY UNAVAILABLE_MOVE ALREADY_SUBMITTED STALE_TURN TURN_CLOSED REQUEST_CONFLICT HOST_RECONNECTING RATE_LIMITED SERVER_BUSY STALE_COMMAND ROOM_STATE_TOO_LARGE INTERNAL_ERROR'.split(' ');
+const membershipEnded = {v:one(1),type:one('membership.ended'),event_id:uuid,room_id:id,player_id:id,seq:positive,server_time_ms:ms,reason:one('three_absences','disconnect_grace_expired')};
+const errors = 'HOST_ROLE_FIXED POLICY_STALE ROOM_CLOSING INVALID_MESSAGE UNSUPPORTED_PROTOCOL UNAUTHENTICATED ALREADY_AUTHENTICATED SESSION_EXPIRED SESSION_REPLACED ALREADY_IN_ROOM ROOM_ACCESS_DENIED ROOM_FULL SPECTATORS_FULL SPECTATORS_DISABLED MATCH_IN_PROGRESS ROOM_GONE ROOM_NOT_MEMBER NOT_HOST WRONG_PHASE NOT_READY NOT_ACTIVE FORCED_RECOVERY UNAVAILABLE_MOVE ALREADY_SUBMITTED STALE_TURN TURN_CLOSED REQUEST_CONFLICT HOST_RECONNECTING RATE_LIMITED SERVER_BUSY STALE_COMMAND ROOM_STATE_TOO_LARGE INTERNAL_ERROR'.split(' ');
 const error = {code:one(...errors),field:nullable(text),retryable:bool};
 const commandPayloads = {
   'session.open':{profile:{nickname,avatar_id:avatar}},'session.resume':{session_id:id,resume_token:text},
   'room.create':{password,options:{turn_ms:policy.turn_ms,early_reveal:bool,spectator_cap:policy.spectator_cap}},
   'room.join':{room_code:roomCode,password,role},'room.ready':{room_id:id,ready:bool},'room.role':{room_id:id,role},
+  'room.set_turn_limit':{room_id:id,turn_ms:policy.turn_ms,expected_policy_revision:positive},
   'room.start':{room_id:id},'room.submit':{room_id:id,match_id:id,turn_id:id,entry_id:one(...entries)},
   'room.sync':{room_id:id},'room.return_lobby':{room_id:id},'room.leave':{room_id:id}
 };
@@ -69,6 +75,7 @@ const ackData = {
   'session.resume':{session_id:id,player_id:id,boot_id:id,last_command_seq:seq},
   'room.create':{room_id:id,room_code:roomCode},'room.join':{room_id:id,room_code:roomCode,role},
   'room.ready':{room_id:id,ready:bool},'room.role':{room_id:id,role},'room.start':{room_id:id,match_id:id},
+  'room.set_turn_limit':{room_id:id,turn_ms:policy.turn_ms,policy_revision:positive,effective_from:one('next_select')},
   'room.submit':{room_id:id,match_id:id,turn_id:id,accepted_entry_id:one(...entries)},
   'room.sync':{room_id:id},'room.return_lobby':{room_id:id},'room.leave':{room_id:id,left:one(true)}
 };
@@ -87,7 +94,10 @@ function parse(raw) {
 }
 function readMessage(raw, op) {
   const m = parse(raw);
-  if (m?.type === 'hello') validate(hello,m);
+  if (m?.type === 'hello') {
+    if(m.protocol!=='rooms-1.1')throw new Error('UNSUPPORTED_PROTOCOL');
+    validate(hello,m);
+  }
   else if (m?.type === 'snapshot') {
     validate(snapshot,m);
     const v=m.view, me=v.members.find(p=>p.player_id===v.self.player_id);
@@ -95,6 +105,8 @@ function readMessage(raw, op) {
     const seats=v.members.filter(p=>p.seat!==null).map(p=>p.seat);
     check(new Set(seats).size===seats.length);
     check(v.members.every(p=>(p.role==='player')===(p.seat!==null)));
+    check(v.members.every(p=>p.absence_count <= (p.role==='spectator'?0:p.player_id===v.host_id?4:3)));
+    check(['selecting','revealing'].includes(v.phase) ? v.current_turn_ms!==null : v.current_turn_ms===null);
     check(v.phase==='closed'||(me&&me.role===v.self.role&&me.seat===v.self.seat));
     check(v.self.options.length===0||v.self.options.length===33);
     check(v.self.options.every(o=>o.doc_id===catalog.entries.find(e=>e.entry_id===o.entry_id).doc_id));
@@ -105,14 +117,24 @@ function readMessage(raw, op) {
       check(s.roster.slice().sort().join()===Object.keys(s.players).sort().join());
       check(s.active_ids.every(p=>s.roster.includes(p)));
       check(m.roster_profiles.map(p=>p.player_id).sort().join()===s.roster.slice().sort().join());
+      if(m.last_turn) {
+        const t=m.last_turn;
+        check(t.effective_transition.to_game_id===t.effective_state.game_id);
+        check(t.core_resolution.transition.to_game_id===t.core_resolution.next_state.game_id);
+      }
     }
     if(['selecting','revealing','result'].includes(v.phase))check(v.match!==null);
     check(new Set(v.self.options.map(o=>o.entry_id)).size===v.self.options.length);
     if(v.phase!=='selecting'||me?.participation!=='active'||v.self.role!=='player')check(v.self.options.length===0);
     if(v.self.role==='spectator')check(v.self.accepted_entry_id===null);
     check(v.timer.kind==='none' ? v.timer.deadline_at_ms===null&&v.timer.remaining_ms===null : v.timer.deadline_at_ms!==null&&v.timer.remaining_ms!==null);
-    check(v.phase==='paused' ? v.pause!==null&&v.timer.kind==='host_grace' : v.pause===null);
-  } else if (m?.type==='ack') {
+    if(v.pending_close)check(v.match!==null&&v.pending_close.turn_id===v.match.turn_id);
+  } else if (m?.type==='membership.ended') validate(membershipEnded,m);
+  else if (m?.type==='ack') {
+    if(m.request_id===null) {
+      validate({v:one(1),type:one('ack'),request_id:one(null),ok:one(false),error:{code:one('INVALID_MESSAGE'),field:one(null),retryable:one(false)}},m);
+      return null;
+    }
     // Uncorrelated acks are discarded without exposing even their error text.
     if(!op)return null;
     validate(m.ok===true?{v:one(1),type:one('ack'),request_id:id,ok:one(true),data:ackData[op]}:{v:one(1),type:one('ack'),request_id:id,ok:one(false),error},m);

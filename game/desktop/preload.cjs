@@ -10,6 +10,7 @@ contextBridge.exposeInMainWorld('desktop', {
     join: p => ipcRenderer.invoke('online.join', p),
     ready: p => ipcRenderer.invoke('online.ready', p),
     start: p => ipcRenderer.invoke('online.start', p),
+    setTurnLimit: p => ipcRenderer.invoke('online.setTurnLimit', p),
     changeRole: p => ipcRenderer.invoke('online.changeRole', p),
     submit: p => ipcRenderer.invoke('online.submit', p),
     returnLobby: p => ipcRenderer.invoke('online.returnLobby', p),

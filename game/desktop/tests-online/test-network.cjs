@@ -73,12 +73,11 @@ test('room leave ack revokes receiving old room; session replacement and server 
  const d=inRoom();d.socket.emit('close',{code:1006});d.time.advance(1000);d.sockets[1].message({...hello(),boot_id:'boot2'});assert.equal(d.port.read().error.code,'SERVER_RESTART');assert.equal(d.port.identity,null);
  const e=inRoom();e.socket.emit('close',{code:1006});e.time.advance(1000);const s=e.sockets[1];s.message(hello());s.fail(s.sent[0],'SESSION_REPLACED');assert.equal(e.port.read().status,'unavailable');
 });
-test('monotonic estimate, paused phase freezes selection, cutoff blocks clicks',()=>{
- const c=inRoom('selecting');c.time.advance(1200);assert.equal(c.port.remaining(),10800);
- const p=snapshot('selecting','2');p.view.phase='paused';p.view.self.options=[];p.view.pause={reason:'HOST_DISCONNECTED',resume_phase:'selecting',phase_remaining_ms:10800};p.view.timer={kind:'host_grace',deadline_at_ms:130000,remaining_ms:30000};c.socket.message(p);c.time.advance(1000);
- assert.equal(c.port.remaining(),29000);assert.equal(c.port.read().snapshot.view.pause.phase_remaining_ms,10800);
- assert.throws(()=>c.port.submit({room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',entry_id:'Charge'}),/HOST_RECONNECTING/);
- c.socket.message(snapshot('selecting','3'));c.time.advance(12000);assert.throws(()=>c.port.submit({room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',entry_id:'Charge'}),/TURN_CLOSED/);
+test('monotonic estimate continues during host absence and cutoff blocks clicks',()=>{
+ const c=inRoom('selecting');c.time.advance(1200);assert.equal(c.port.remaining(),8800);
+ const p=snapshot('selecting','2');p.view.host_id='p2';p.view.members[1].connected=false;p.view.members[1].absence_count=1;p.view.host_recovery={kind:'rounds',missing_count:1,close_at_count:4};c.socket.message(p);c.time.advance(1000);
+ assert.equal(c.port.remaining(),9000);assert.equal(c.port.read().snapshot.view.pause,null);
+ c.time.advance(9000);assert.throws(()=>c.port.submit({room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',entry_id:'Charge'}),/TURN_CLOSED/);
 });
 test('schema rejects unknown private nested fields, binary, duplicate keys and spectator options',()=>{
  for(const phase of ['lobby','selecting','revealing'])assert.equal(readMessage(JSON.stringify(snapshot(phase))).view.phase,phase);

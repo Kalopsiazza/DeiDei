@@ -12,3 +12,5 @@
 .online-table{padding-top:8px;padding-bottom:8px}.online-table .online-header{min-height:36px}.online-table .online-header>div{display:flex;align-items:center;gap:16px}.online-table .online-header h2{font-size:18px}.online-table .online-header .eyebrow{margin:0;font-size:10px;letter-spacing:1px}.online-table .online-policy{padding:5px 0}.online-table .online-public{height:120px}.online .card button:disabled{opacity:1}
 @media(min-height:950px) and (min-width:1600px){.online-table{padding:18px 34px}.online-table .online-header{height:55px}.online-table .online-public{height:210px}.online-table .online-header h2{font-size:24px}}
 .online-opponents{min-height:0;grid-template-rows:repeat(2,minmax(0,1fr))}.online-public>.summary{min-height:0}.online-opponents .online-seat{overflow:hidden}
+
+.online-public>.summary:has(.room-progress){padding:8px 14px}.online-public>.summary:has(.room-progress) .eyebrow{margin-bottom:4px}.online-public>.summary .room-progress{font-size:12px;line-height:1.45;margin-bottom:4px}

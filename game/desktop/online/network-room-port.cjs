@@ -6,15 +6,19 @@ class NetworkRoomPort {
     this.url=url;this.socketFactory=socketFactory;this.now=now;this.schedule=schedule;this.cancel=cancel;this.random=random;
     this.source=source;this.listeners=new Set();this.generation=0;this.running=false;
     this.status='idle';this.room=null;this.snapshot=null;this.hello=null;this.identity=null;
-    this.pending=null;this.handshake=null;this.commandSeq=0n;this.error=null;this.confirmed=null;this.retry=0;
+    this.pending=null;this.handshake=null;this.commandSeq=0n;this.error=null;this.confirmed=null;this.retry=0;this.membershipEnd=null;this.lastMembershipEventId=null;
   }
   read() {
     return structuredClone({source:this.source,status:this.status,hello:this.hello?{policy_defaults:this.hello.policy_defaults,capabilities:this.hello.capabilities}:null,
-      snapshot:this.snapshot,pending:!!this.pending,error:this.error,confirmed:this.confirmed,remaining_ms:this.remaining(),revision:this.revision||0});
+      membership_end:this.membershipEnd,host_remaining_ms:this.hostRemaining(),snapshot:this.snapshot,pending:!!this.pending,error:this.error,confirmed:this.confirmed,remaining_ms:this.remaining(),revision:this.revision||0});
   }
   remaining() {
     if(!this.snapshot||this.snapshot.view.timer.kind==='none')return null;
     return Math.max(0,this.remainingAtReceipt-(this.now()-this.receivedAt));
+  }
+  hostRemaining() {
+    if(this.snapshot?.view.host_recovery?.kind!=='grace')return null;
+    return Math.max(0,this.hostRemainingAtReceipt-(this.now()-this.receivedAt));
   }
   publish() {this.revision=(this.revision||0)+1;const view=this.read();for(const listener of this.listeners)listener(view);}
   onChange(listener) {this.listeners.add(listener);return()=>this.listeners.delete(listener);}
@@ -73,6 +77,15 @@ class NetworkRoomPort {
         this.handshake={v:1,type:'command',request_id:randomUUID(),command_seq:null,op:this.identity?'session.resume':'session.open',payload:this.identity?{session_id:this.identity.session_id,resume_token:this.identity.resume_token}:{profile:this.profile}};
         this.send(this.handshake);return;
       }
+      if(m.type==='membership.ended') {
+        if(!this.authenticated||m.player_id!==this.identity.player_id||m.room_id!==this.room||m.event_id===this.lastMembershipEventId)return;
+        if(this.snapshot&&BigInt(m.seq)<BigInt(this.snapshot.seq))return;
+        this.lastMembershipEventId=m.event_id;
+        this.membershipEnd={...m,room_code:this.snapshot?.view.room_code||null};
+        this.room=null;this.snapshot=null;this.confirmed=null;this.buffered=null;this.error=null;
+        if(this.pending?.payload.room_id===m.room_id){this.pending=null;this.cancel(this.timeout);}
+        this.publish();return;
+      }
       if(m.type==='snapshot') {
         if(!this.authenticated)return;
         if(m.view.self.player_id!==this.identity.player_id)return;
@@ -106,11 +119,13 @@ class NetworkRoomPort {
       } else {
         this.error=null;const d=m.data;
         if(awaiting.op==='room.create'||awaiting.op==='room.join') {
-          this.room=d.room_id;this.snapshot=null;this.confirmed=null;
+          this.room=d.room_id;this.snapshot=null;this.confirmed=null;this.membershipEnd=null;
           if(this.buffered?.room_id===this.room)this.applySnapshot(this.buffered);
           this.buffered=null;
         } else {
           if(d.room_id!==awaiting.payload.room_id)throw new Error('INVALID_MESSAGE');
+          if(awaiting.op==='room.set_turn_limit'&&d.turn_ms!==awaiting.payload.turn_ms)throw new Error('INVALID_MESSAGE');
+          // Configuration acks may be replayed; only snapshots update the displayed policy.
           if(awaiting.op==='room.submit') {
             if(d.match_id!==awaiting.payload.match_id||d.turn_id!==awaiting.payload.turn_id||d.accepted_entry_id!==awaiting.payload.entry_id)throw new Error('INVALID_MESSAGE');
             const match=this.snapshot?.view.match;
@@ -120,13 +135,15 @@ class NetworkRoomPort {
         }
       }
       this.publish();
-    } catch {if(generation===this.generation)this.stop('INVALID_MESSAGE');}
+    } catch(e) {if(generation===this.generation)this.stop(e.message==='UNSUPPORTED_PROTOCOL'?'UNSUPPORTED_PROTOCOL':'INVALID_MESSAGE');}
   }
   applySnapshot(m) {
     if(this.snapshot?.room_id===m.room_id&&BigInt(m.seq)<BigInt(this.snapshot.seq))return;
+    if(this.snapshot?.room_id===m.room_id&&m.seq===this.snapshot.seq&&m.server_time_ms<=this.snapshot.server_time_ms)return;
     const v=m.view;
     this.snapshot=m;this.receivedAt=this.now();
     this.remainingAtReceipt=v.timer.kind==='none'?0:Math.max(0,Math.min(v.timer.remaining_ms,v.timer.deadline_at_ms-m.server_time_ms));
+    this.hostRemainingAtReceipt=v.host_recovery?.kind==='grace'?Math.max(0,Math.min(v.host_recovery.remaining_ms,v.host_recovery.deadline_at_ms-m.server_time_ms)):0;
     if(this.confirmed&&(v.match?.turn_id!==this.confirmed.turn_id||v.match?.match_id!==this.confirmed.match_id||v.phase!=='selecting'))this.confirmed=null;
     if(v.phase==='closed') {this.room=null;this.pending=null;this.confirmed=null;this.error={code:v.close_reason,field:null,retryable:false};this.cancel(this.timeout);}
     this.publish();
@@ -137,9 +154,16 @@ class NetworkRoomPort {
     validateCommand(op,payload);
     if(op==='room.create'||op==='room.join'){if(this.room)throw new Error('ALREADY_IN_ROOM');}
     else if(!this.room||payload.room_id!==this.room)throw new Error('ROOM_NOT_MEMBER');
+    const v=this.snapshot?.view;
+    if(v?.pending_close&&['room.join','room.set_turn_limit','room.start','room.return_lobby'].includes(op))throw new Error('ROOM_CLOSING');
+    if(op==='room.set_turn_limit') {
+      const me=v?.members.find(p=>p.player_id===v.self.player_id);
+      if(!v||v.host_id!==v.self.player_id||!me?.connected)throw new Error('NOT_HOST');
+      if(!['lobby','selecting','revealing','result'].includes(v.phase))throw new Error('WRONG_PHASE');
+    }
     if(op==='room.submit') {
       const v=this.snapshot?.view;
-      if(!v||v.phase!=='selecting')throw new Error(v?.phase==='paused'?'HOST_RECONNECTING':'TURN_CLOSED');
+      if(!v||v.phase!=='selecting')throw new Error('TURN_CLOSED');
       if(v.match?.match_id!==payload.match_id||v.match?.turn_id!==payload.turn_id)throw new Error('STALE_TURN');
       if(v.self.accepted_entry_id||this.confirmed)throw new Error('ALREADY_SUBMITTED');
       if(!v.self.options.some(o=>o.entry_id===payload.entry_id&&o.available&&!o.forced))throw new Error('UNAVAILABLE_MOVE');
@@ -153,6 +177,7 @@ class NetworkRoomPort {
   join(p){return this.command('room.join',p);}
   ready(p){return this.command('room.ready',p);}
   start(p){return this.command('room.start',p);}
+  setTurnLimit(p){return this.command('room.set_turn_limit',p);}
   changeRole(p){return this.command('room.role',p);}
   submit(p){return this.command('room.submit',p);}
   returnLobby(p){return this.command('room.return_lobby',p);}
@@ -168,7 +193,7 @@ class NetworkRoomPort {
   close(clear=true) {
     this.running=false;++this.generation;this.cancel(this.timeout);this.cancel(this.reconnectTimer);
     try{this.socket?.close();}catch{}
-    this.identity=null;this.pending=null;this.handshake=null;this.authenticated=false;this.room=null;this.buffered=null;this.confirmed=null;this.commandSeq=0n;
+    this.identity=null;this.pending=null;this.handshake=null;this.authenticated=false;this.room=null;this.buffered=null;this.confirmed=null;this.commandSeq=0n;this.membershipEnd=null;this.lastMembershipEventId=null;
     if(clear){this.snapshot=null;this.hello=null;this.error=null;this.status='idle';}
     this.publish();
   }
