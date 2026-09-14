@@ -17,7 +17,7 @@ from uuid import uuid4
 from websockets.asyncio.server import serve
 from websockets.exceptions import ConnectionClosed
 from deidei_core.api import new_match
-from .protocol import Rejected, ack, dumps, parse, policy as load_policy, require, validate, TURN_TIMES
+from .protocol import Rejected, ack, dumps, parse, policy as load_policy, require, validate, TURN_TIMES, request_uuid
 from .room import Room
 
 LOGGER = logging.getLogger('deidei.rooms')
@@ -43,6 +43,7 @@ class Session:
     generation: int = 0
     connection: object = None
     disconnected_at: int | None = None
+    last_membership_end: dict | None = None
     last_seq: int = 0
     cache: OrderedDict = field(default_factory=OrderedDict)
     lock: asyncio.Lock = field(default_factory=asyncio.Lock)
@@ -76,8 +77,10 @@ class Connection:
         text = dumps(value)
         size = len(text.encode('utf-8'))
         room_id = value.get('room_id') if value['type'] == 'snapshot' else None
+        if value['type'] == 'membership.ended':
+            room_id = ('membership.ended', self.session.id, self.generation, value['room_id'], value['event_id'])
         # ponytail: coalesce only adjacent same-room snapshots; ack order remains intact.
-        if room_id and self.queue and self.queue[-1][2] == room_id:
+        if isinstance(room_id, str) and self.queue and self.queue[-1][2] == room_id:
             _, old_size, _ = self.queue.pop()
             self.queued_bytes -= old_size
         if len(self.queue) >= 32 or self.queued_bytes + size > 2 * 1024 * 1024:
@@ -94,7 +97,15 @@ class Connection:
                 while self.queue:
                     text, size, room_id = self.queue.popleft()
                     self.queued_bytes -= size
-                    if room_id is None or self.allowed(room_id):
+                    if isinstance(room_id, tuple):
+                        _, sid, generation, old_room, event_id = room_id
+                        receipt = self.session.last_membership_end if self.valid() else None
+                        allowed = (self.valid() and self.session.id == sid and self.generation == generation
+                                   and self.session.room_id is None and receipt is not None
+                                   and receipt['room_id'] == old_room and receipt['event_id'] == event_id)
+                    else:
+                        allowed = room_id is None or self.allowed(room_id)
+                    if allowed:
                         await self.ws.send(text)
                 self.wake.clear()
         except ConnectionClosed:
@@ -116,7 +127,10 @@ def password_hash(password: str, salt: bytes) -> bytes:
 
 class RoomServer:
     def __init__(self, policy: dict | None = None, *, clock=None, new_match_factory=None,
-                 timeout_chooser=None, rng=None):
+                 timeout_chooser=None, rng=None, host_leave_timing='after_turn'):
+        if host_leave_timing not in ('after_turn', 'immediate'):
+            raise ValueError('host_leave_timing must be after_turn or immediate')
+        self.host_leave_timing = host_leave_timing
         self.policy = load_policy(policy)
         self.clock = clock if clock is not None else Clock()
         self.new_match_factory = new_match_factory or new_match
@@ -197,6 +211,10 @@ class RoomServer:
             room.state, room.last_turn, room.outcome = None, None, None
             value = room.snapshot(c.session, self.clock.now_ms())
         c.put(value)
+
+    def membership_end(self, c: Connection) -> None:
+        if c.valid() and c.session.room_id is None and c.session.last_membership_end is not None:
+            c.put(c.session.last_membership_end)
 
     def current_snapshot(self, c: Connection) -> None:
         if c.valid():
@@ -307,6 +325,7 @@ class RoomServer:
         if msg['op'].startswith('session.'):
             data = self.authenticate(c, msg)
             c.put(ack(msg['request_id'], data))
+            self.membership_end(c)
             self.current_snapshot(c)
             self.flush()
             return
@@ -352,7 +371,8 @@ class RoomServer:
             # Due work and this command are fully applied before the current view is generated.
             if result['ok']:
                 self.tick()
-                self.current_snapshot(c)
+                if msg['op'] != 'room.set_turn_limit':
+                    self.current_snapshot(c)
             self.flush()
 
     async def handler(self, ws) -> None:
@@ -363,7 +383,7 @@ class RoomServer:
         self.connections.add(c)
         writer = asyncio.create_task(c.writer())
         c.put(dict(v=1, type='hello', boot_id=self.boot_id, connection_id=c.id,
-            protocol='rooms-1.0', rules_version='classic-1.0.1', server_time_ms=self.clock.wall_ms(),
+            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.clock.wall_ms(),
             policy_defaults=dict(self.policy), capabilities=dict(max_players=6, allowed_turn_ms=TURN_TIMES,
                                                                 spectator_max=self.policy['spectator_cap'])))
         auth_deadline = time.monotonic() + 5
@@ -382,11 +402,14 @@ class RoomServer:
                     if c.limited():
                         raise Rejected('RATE_LIMITED')
                     msg = parse(raw)
-                    if isinstance(msg, dict) and isinstance(msg.get('request_id'), str) and len(msg['request_id']) <= 96:
+                    if isinstance(msg, dict) and request_uuid(msg.get('request_id')):
                         request_id = msg['request_id']
                     await self.command(c, msg)
                 except (Rejected, UnicodeError) as exc:
-                    c.put(ack(request_id, error=exc if isinstance(exc, Rejected) else Rejected('INVALID_MESSAGE')))
+                    error = exc if isinstance(exc, Rejected) else Rejected('INVALID_MESSAGE')
+                    if request_id is None and error.code != 'RATE_LIMITED':
+                        error = Rejected('INVALID_MESSAGE')
+                    c.put(ack(request_id, error=error))
                     self.flush()
                     c.violations += 1
                     if c.violations >= 5:

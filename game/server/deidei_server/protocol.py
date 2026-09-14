@@ -1,17 +1,18 @@
-"""Strict rooms-1.0 input and policy validation; no game state enters commands."""
+"""Strict rooms-1.1 input and policy validation; no game state enters commands."""
 import json
 import re
 import unicodedata
 from uuid import UUID
 
-DEFAULT_POLICY = dict(turn_ms=12000, early_reveal=True, spectator_cap=6,
+DEFAULT_POLICY = dict(turn_ms=10000, early_reveal=True, spectator_cap=6,
                       host_disconnect_grace_ms=30000, reveal_ms=1500, min_select_ms=300)
-TURN_TIMES = [5000, 8000, 12000, 20000, 30000]
+TURN_TIMES = [5000, 8000, 10000, 12000, 20000, 30000]
 FIELDS = {
     'session.open': {'profile'}, 'session.resume': {'session_id', 'resume_token'},
     'room.create': {'password', 'options'}, 'room.join': {'room_code', 'password', 'role'},
     'room.ready': {'room_id', 'ready'}, 'room.role': {'room_id', 'role'},
     'room.start': {'room_id'}, 'room.submit': {'room_id', 'match_id', 'turn_id', 'entry_id'},
+    'room.set_turn_limit': {'room_id', 'turn_ms', 'expected_policy_revision'},
     'room.sync': {'room_id'}, 'room.return_lobby': {'room_id'}, 'room.leave': {'room_id'},
 }
 
@@ -41,7 +42,14 @@ def identifier(value: object) -> bool:
 
 def clean_text(value: object, low: int, high: int) -> bool:
     return (isinstance(value, str) and low <= len(value) <= high
-            and all(unicodedata.category(c) not in ('Cc', 'Cs') for c in value))
+            and all(unicodedata.category(c) not in ('Cc', 'Cf', 'Cs') for c in value))
+
+
+def request_uuid(value: object) -> bool:
+    try:
+        return isinstance(value, str) and str(UUID(value)) == value
+    except (ValueError, AttributeError):
+        return False
 
 
 def pairs(items: list) -> dict:
@@ -75,10 +83,7 @@ def validate(msg: dict) -> dict:
     exact(msg, {'v', 'type', 'request_id', 'command_seq', 'op', 'payload'})
     require(type(msg['v']) is int and msg['v'] == 1, 'UNSUPPORTED_PROTOCOL')
     require(msg['type'] == 'command')
-    try:
-        require(isinstance(msg['request_id'], str) and str(UUID(msg['request_id'])) == msg['request_id'])
-    except (ValueError, AttributeError):
-        raise Rejected('INVALID_MESSAGE', 'request_id') from None
+    require(request_uuid(msg['request_id']))
     op, p, seq = msg['op'], msg['payload'], msg['command_seq']
     require(isinstance(op, str) and op in FIELDS)
     exact(p, FIELDS[op])
@@ -89,7 +94,7 @@ def validate(msg: dict) -> dict:
                 and int(seq) <= 18446744073709551615, field='command_seq')
     if op == 'session.open':
         exact(p['profile'], {'nickname', 'avatar_id'})
-        require(clean_text(p['profile']['nickname'], 1, 20), field='nickname')
+        require(clean_text(p['profile']['nickname'], 1, 20) and bool(p['profile']['nickname'].strip()), field='nickname')
         require(p['profile']['avatar_id'] in ('leaf', 'sun', 'moon', 'star'), field='avatar_id')
     for key in ('room_id', 'session_id', 'match_id', 'turn_id', 'entry_id'):
         if key in p:
@@ -105,6 +110,11 @@ def validate(msg: dict) -> dict:
         require(p['role'] in ('player', 'spectator'), field='role')
     if 'ready' in p:
         require(type(p['ready']) is bool, field='ready')
+    if op == 'room.set_turn_limit':
+        require(type(p['turn_ms']) is int and p['turn_ms'] in TURN_TIMES, field='turn_ms')
+        revision = p['expected_policy_revision']
+        require(isinstance(revision, str) and re.fullmatch(r'[1-9][0-9]*', revision) is not None,
+                field='expected_policy_revision')
     if 'options' in p:
         exact(p['options'], {'turn_ms', 'early_reveal', 'spectator_cap'})
         policy(p['options'])

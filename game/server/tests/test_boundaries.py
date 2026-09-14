@@ -104,7 +104,8 @@ class SecurityLifecycle(SocketCase):
         self.assertEqual(guest['absence_count'],1)
         self.assertEqual(end['match']['last_turn']['action_sources'][guest['player_id']],'forced')
 
-    async def test_N27_pause_reveal_and_departure_while_paused(self):
+    async def test_N27_reveal_continues_and_departure_while_host_offline(self):
+        # ARC1.1 removes pause: a host disconnect must not extend an existing reveal.
         s=await self.server()
         players,_,rid,_=await self.room(s,3)
         await self.start(players,rid)
@@ -113,13 +114,13 @@ class SecurityLifecycle(SocketCase):
         await s.advance_ms(500)
         await players[0].ws.close(); await s.drain()
         self.ok(await players[2].command('room.leave',dict(room_id=rid)))
-        await s.advance_ms(20000)
+        await s.advance_ms(700)
         host=await self.client(s,players[0].identity)
         resumed=await host.sync(rid)
         self.assertEqual(resumed['phase'],'revealing')
-        self.assertEqual(resumed['timer']['remaining_ms'],1000)
+        self.assertEqual(resumed['timer']['remaining_ms'],300)
         self.assertEqual(resumed['match']['last_turn'],original)
-        await s.advance_ms(1000)
+        await s.advance_ms(300)
         self.assertEqual((await host.sync(rid))['phase'],'selecting')
 
     async def test_N25_result_leave_keeps_published_winner(self):

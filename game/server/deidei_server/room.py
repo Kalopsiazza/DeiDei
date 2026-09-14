@@ -22,10 +22,13 @@ class Room:
         self.phase, self.seq, self.deadline = 'lobby', 0, None
         self.last_activity = service.clock.now_ms()
         self.closed_at = None
+        self.policy_revision, self.current_turn_ms = 1, None
+        self.pending_close = self.host_grace_deadline = None
         self.add(host, 'player')
 
     def add(self, session, role: str) -> None:
         require(self.phase != 'closed', 'ROOM_GONE')
+        require(self.pending_close is None, 'ROOM_CLOSING')
         require(role != 'player' or self.phase == 'lobby', 'MATCH_IN_PROGRESS')
         count = sum(m['role'] == role for m in self.members.values())
         if role == 'spectator':
@@ -39,7 +42,7 @@ class Room:
             role=role, seat=seat, connected=True, ready=False,
             participation='lobby' if role == 'player' else 'spectating',
             submission_state='none', absence_count=0)
-        session.room_id, session.closed_room = self.id, None
+        session.room_id, session.closed_room, session.last_membership_end = self.id, None, None
         if role == 'player':
             self.clear_ready()
         self.changed()
@@ -60,7 +63,8 @@ class Room:
                 if self.state['players'][pid]['zeng_state'] != 'recovery']
 
     def prepare(self, now: int) -> None:
-        self.phase, self.deadline, self.select_started = 'selecting', now + self.policy['turn_ms'], now
+        self.current_turn_ms = self.policy['turn_ms']
+        self.phase, self.deadline, self.select_started = 'selecting', now + self.current_turn_ms, now
         self.pending = {}
         self.tokens = {pid: self.service.token_rng.randrange(2) for pid in self.state['active_ids']}
         for pid, m in self.members.items():
@@ -82,9 +86,18 @@ class Room:
             return dict(room_id=self.id)
         if op == 'room.leave':
             if pid == self.host_id:
-                self.close('HOST_LEFT', now)
+                if self.service.host_leave_timing == 'after_turn' and self.phase in ('selecting', 'revealing'):
+                    self.pending_close = dict(reason='HOST_LEFT',
+                        after='current_turn' if self.phase == 'selecting' else 'current_reveal',
+                        turn_id=turn_id(self.state))
+                    self.host_grace_deadline = None
+                    self.departing.add(pid)
+                    m.update(participation='departing', connected=False)
+                    self.changed()
+                else:
+                    self.close('HOST_LEFT', now)
             else:
-                phase = self.pause['resume_phase'] if self.phase == 'paused' else self.phase
+                phase = self.phase
                 active = self.last_turn['effective_state']['active_ids'] if phase == 'revealing' else (self.state['active_ids'] if self.state else [])
                 ongoing = phase in ('selecting', 'revealing') and pid in active
                 finished = self.last_turn and self.last_turn['effective_state']['status'] == 'finished'
@@ -98,7 +111,17 @@ class Room:
             session.room_id = session.closed_room = None
             session.touched = now
             return dict(room_id=self.id, left=True)
-        require(self.phase != 'paused', 'HOST_RECONNECTING')
+        if op in ('room.set_turn_limit', 'room.start', 'room.return_lobby'):
+            require(pid == self.host_id, 'NOT_HOST')
+            require(self.pending_close is None, 'ROOM_CLOSING')
+        if op == 'room.set_turn_limit':
+            require(p['expected_policy_revision'] == str(self.policy_revision), 'POLICY_STALE')
+            if self.policy['turn_ms'] != p['turn_ms']:
+                self.policy['turn_ms'] = p['turn_ms']
+                self.policy_revision += 1
+                self.changed()
+            return dict(room_id=self.id, turn_ms=self.policy['turn_ms'],
+                        policy_revision=str(self.policy_revision), effective_from='next_select')
         if op == 'room.ready':
             require(m['role'] == 'player', 'NOT_ACTIVE')
             require(self.phase == 'lobby', 'WRONG_PHASE')
@@ -107,7 +130,7 @@ class Room:
                 self.changed()
             return dict(room_id=self.id, ready=m['ready'])
         if op == 'room.role':
-            require(pid != self.host_id, 'NOT_HOST')
+            require(pid != self.host_id, 'HOST_ROLE_FIXED')
             require(self.phase == 'lobby', 'WRONG_PHASE')
             if m['role'] != p['role']:
                 count = sum(v['role'] == p['role'] for v in self.members.values())
@@ -163,13 +186,20 @@ class Room:
             return dict(room_id=self.id)
         require(False, 'INVALID_MESSAGE')
 
-    def remove(self, pid: str) -> None:
+    def remove(self, pid: str, reason: str | None = None) -> None:
         m = self.members.pop(pid, None)
         self.departing.discard(pid)
         s = self.service.by_player.get(pid)
         if s and s.room_id == self.id:
             s.room_id = None
             s.touched = self.service.clock.now_ms()
+            if reason:
+                self.changed()
+                s.last_membership_end = dict(v=1, type='membership.ended', event_id=str(uuid4()),
+                    room_id=self.id, player_id=pid, seq=str(self.seq),
+                    server_time_ms=self.service.clock.wall_ms(), reason=reason)
+                if s.connection:
+                    self.service.membership_end(s.connection)
         if m and m['role'] == 'player' and self.phase == 'lobby':
             self.clear_ready()
 
@@ -177,7 +207,7 @@ class Room:
         if self.phase == 'closed':
             return
         self.phase, self.close_reason, self.closed_at = 'closed', reason, now
-        self.deadline = self.pause = None
+        self.deadline = self.pause = self.host_grace_deadline = None
         self.pending, self.tokens, self.departing = {}, {}, set()
         for pid in self.members:
             s = self.service.by_player[pid]
@@ -186,33 +216,31 @@ class Room:
         self.password = None
         self.changed()
 
+    def host_can_play(self) -> bool:
+        return (self.phase in ('selecting', 'revealing') and
+                self.members[self.host_id]['participation'] == 'active')
+
+    def update_host_grace(self, now: int) -> None:
+        if (self.phase == 'closed' or self.pending_close or
+                self.members[self.host_id]['connected'] or self.host_can_play()):
+            self.host_grace_deadline = None
+        elif self.host_grace_deadline is None:
+            self.host_grace_deadline = now + self.policy['host_disconnect_grace_ms']
+
     def disconnected(self, session, now: int) -> None:
         if self.phase == 'closed' or session.player_id not in self.members:
             return
         self.members[session.player_id]['connected'] = False
-        if session.player_id == self.host_id:
-            grace = self.policy['host_disconnect_grace_ms']
-            if not grace:
-                self.close('HOST_TIMEOUT', now)
-                return
-            self.pause = dict(reason='HOST_DISCONNECTED', resume_phase=self.phase,
-                phase_remaining_ms=None if self.deadline is None else max(0, self.deadline - now))
-            self.phase, self.deadline = 'paused', now + grace
+        self.update_host_grace(now)
         self.changed()
+        self.tick(now)
 
     def resumed(self, session, now: int) -> None:
         m = self.members.get(session.player_id)
         if not m or self.phase == 'closed':
             return
         m['connected'] = True
-        if session.player_id == self.host_id and self.phase == 'paused':
-            self.phase = self.pause['resume_phase']
-            remaining = self.pause['phase_remaining_ms']
-            self.deadline = None if remaining is None else now + remaining
-            if self.phase == 'selecting':
-                # Preserve the unconsumed minimum display time as well as the deadline.
-                self.select_started += now - session.disconnected_at
-            self.pause = None
+        self.update_host_grace(now)
         self.changed()
 
     def settle(self, at: int) -> None:
@@ -222,12 +250,18 @@ class Room:
             forced = self.state['players'][pid]['zeng_state'] == 'recovery'
             sources[pid] = 'forced' if forced else 'human' if pid in self.pending else 'timeout_auto'
             if pid not in self.pending and (not forced or not m['connected']):
-                m['absence_count'] = min(3, m['absence_count'] + 1)
-            if pid in self.departing or m['absence_count'] >= 3:
+                limit = 4 if pid == self.host_id else 3
+                m['absence_count'] = min(limit, m['absence_count'] + 1)
+            if pid == self.host_id:
+                if m['absence_count'] >= 4 and not self.pending_close:
+                    self.close('HOST_ABSENT', at)
+                    return
+            elif pid in self.departing or m['absence_count'] >= 3:
                 forfeits.append(dict(player_id=pid, reason='voluntary_leave' if pid in self.departing else 'three_absences'))
-            if not forced and pid not in submissions:
+        for pid in self.free_ids():
+            if pid not in submissions:
                 legal = [o for o in list_options(self.state, pid) if o['available']]
-                submissions[pid] = ('Charge' if self.mode == 'multiplayer' else
+                submissions[pid] = ('Charge' if pid == self.host_id or self.mode == 'multiplayer' else
                     self.service.timeout_chooser(deepcopy(self.state), deepcopy(legal)))
                 require(any(o['entry_id'] == submissions[pid] for o in legal), 'INTERNAL_ERROR')
         tokens = {}
@@ -239,10 +273,6 @@ class Room:
                 tokens[pid] = self.tokens[pid]
         result = resolve_round(self.state, submissions, tokens)
         require(result['ok'], 'INTERNAL_ERROR')
-        # Host termination wins before any unpublished resolution is exposed.
-        if any(f['player_id'] == self.host_id for f in forfeits):
-            self.close('HOST_ABSENT', at)
-            return
         effective, transition = deepcopy(result['next_state']), deepcopy(result['transition'])
         removed = {f['player_id'] for f in forfeits}
         survivors = sorted(set(effective['active_ids']) - removed)
@@ -261,11 +291,11 @@ class Room:
                 effective = {**deepcopy(self.state), 'players': players, 'active_ids': survivors,
                              'status': 'finished', 'winner_id': winner}
                 transition = dict(kind='sole_survivor' if survivors else 'nobody_survives',
-                                  from_game_id=self.state['game_id'], to_game_id=None, winner_id=winner)
+                                  from_game_id=self.state['game_id'], to_game_id=effective['game_id'], winner_id=winner)
         for f in forfeits:
-            self.remove(f['player_id'])
+            self.remove(f['player_id'], 'three_absences' if f['reason'] == 'three_absences' else None)
         for pid, m in self.members.items():
-            if m['role'] == 'player':
+            if m['role'] == 'player' and pid not in self.departing:
                 m['participation'] = 'active' if pid in effective['active_ids'] else 'eliminated'
         # Validate the effective state through the public API before publishing it.
         list_options(effective, effective['roster'][0])
@@ -274,32 +304,47 @@ class Room:
         self.outcome = (dict(kind=transition['kind'], winner_id=transition['winner_id'],
                             reason='room_forfeit' if changed else 'rules')
                         if effective['status'] == 'finished' else None)
-        self.phase, self.deadline = 'revealing', at + self.policy['reveal_ms']
-        self.changed()
+        if self.pending_close:
+            self.outcome = None
+            self.close('HOST_LEFT', at)
+        else:
+            self.phase, self.deadline = 'revealing', at + self.policy['reveal_ms']
+            self.update_host_grace(at)
+            self.changed()
 
     def tick(self, now: int) -> None:
-        while self.deadline is not None and self.deadline <= now and self.phase != 'closed':
-            at = self.deadline
-            if self.phase == 'paused':
+        # Compare both deadlines before advancing a phase, including large manual-clock jumps.
+        while self.phase != 'closed':
+            deadlines = [d for d in (self.deadline, self.host_grace_deadline) if d is not None]
+            if not deadlines or min(deadlines) > now:
+                break
+            at = min(deadlines)
+            if self.host_grace_deadline == at:
                 self.close('HOST_TIMEOUT', at)
             elif self.phase == 'selecting':
                 self.settle(at)
             elif self.phase == 'revealing':
+                if self.pending_close:
+                    self.outcome = None
+                    self.close('HOST_LEFT', at)
+                    continue
                 self.state = deepcopy(self.last_turn['effective_state'])
                 if self.state['status'] == 'finished':
                     self.phase, self.deadline = 'result', None
                     self.pending, self.tokens = {}, {}
                 else:
                     self.prepare(at)
+                self.update_host_grace(at)
                 self.changed()
+        if self.phase == 'closed':
+            return
         for pid, m in list(self.members.items()):
             if pid == self.host_id or m['connected'] or pid in self.departing:
                 continue
             s = self.service.by_player[pid]
-            lobby = self.phase == 'lobby' or (self.phase == 'paused' and self.pause['resume_phase'] == 'lobby')
-            if (lobby or m['role'] == 'spectator') and s.disconnected_at is not None and now >= s.disconnected_at + 30000:
-                self.remove(pid)
-                self.changed()
+            no_round = self.phase in ('lobby', 'result') or m['participation'] in ('spectating', 'eliminated')
+            if no_round and s.disconnected_at is not None and now >= s.disconnected_at + 30000:
+                self.remove(pid, 'disconnect_grace_expired')
         if self.phase in ('lobby', 'result') and now >= self.last_activity + 7200000:
             self.close('ROOM_IDLE', now)
 
@@ -310,17 +355,27 @@ class Room:
         selecting = own and self.phase == 'selecting' and self.active(pid)
         options = list_options(self.state, pid) if selecting else []
         members = [dict(v) for key, v in self.members.items() if key not in self.departing]
-        kind = {'selecting': 'select', 'revealing': 'reveal', 'paused': 'host_grace'}.get(self.phase, 'none')
+        kind = {'selecting': 'select', 'revealing': 'reveal'}.get(self.phase, 'none')
         timer = dict(kind=kind, deadline_at_ms=None, remaining_ms=None)
         if self.deadline is not None:
             timer.update(deadline_at_ms=self.service.clock.wall_ms() + self.deadline - now,
                          remaining_ms=max(0, self.deadline - now))
+        host = self.members[self.host_id]
+        recovery = None
+        if not self.pending_close and self.host_can_play() and (not host['connected'] or host['absence_count']):
+            recovery = dict(kind='rounds', missing_count=host['absence_count'], close_at_count=4)
+        elif self.host_grace_deadline is not None:
+            recovery = dict(kind='grace', deadline_at_ms=self.service.clock.wall_ms() + self.host_grace_deadline - now,
+                            remaining_ms=max(0, self.host_grace_deadline - now))
         match = None if self.state is None else dict(match_id=self.state['match_id'], mode_at_start=self.mode,
             turn_id=turn_id(self.state), public_state=public_state(self.state), roster_profiles=deepcopy(self.profiles),
             last_turn=deepcopy(self.last_turn), effective_outcome=deepcopy(self.outcome))
         return dict(v=1, type='snapshot', room_id=self.id, seq=str(self.seq), server_time_ms=self.service.clock.wall_ms(),
             view=dict(source='online', room_code=self.code, host_id=self.host_id, phase=self.phase,
                 has_password=self.has_password, policy=dict(self.policy), members=members, match=match,
+                policy_revision=str(self.policy_revision),
+                current_turn_ms=self.current_turn_ms if self.phase in ('selecting', 'revealing') else None,
+                host_recovery=recovery, pending_close=deepcopy(self.pending_close),
                 self=dict(player_id=pid, role=m['role'], seat=m['seat'], options=options,
                           accepted_entry_id=self.pending.get(pid) if own and self.phase != 'closed' else None),
                 timer=timer, pause=deepcopy(self.pause), close_reason=self.close_reason))

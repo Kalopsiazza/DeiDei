@@ -12,12 +12,13 @@ def main() -> None:
     parser.add_argument('--host', choices=['127.0.0.1', '::1'], default='127.0.0.1')
     parser.add_argument('--port', type=int, default=8765)
     parser.add_argument('--policy', type=Path)
+    parser.add_argument('--host-leave-timing', choices=['after_turn', 'immediate'], default='after_turn')
     args = parser.parse_args()
     if not 0 <= args.port <= 65535:
         parser.error('port must be 0..65535')
     overrides = parse(args.policy.read_text()) if args.policy else None
     async def run():
-        service = RoomServer(overrides)
+        service = RoomServer(overrides, host_leave_timing=args.host_leave_timing)
         try:
             await service.start(args.host, args.port)
             print('Listening: ' + service.url, flush=True)

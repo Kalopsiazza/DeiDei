@@ -4,10 +4,10 @@ from .server import RoomServer
 
 
 class TestServer:
-    def __init__(self, policy=None, *, clock=None, new_match_factory=None, timeout_chooser=None, rng=None):
+    def __init__(self, policy=None, *, clock=None, new_match_factory=None, timeout_chooser=None, rng=None, host_leave_timing='after_turn'):
         self.clock = clock
         self.service = RoomServer(policy, clock=clock, new_match_factory=new_match_factory,
-                                  timeout_chooser=timeout_chooser, rng=rng)
+                                  timeout_chooser=timeout_chooser, rng=rng, host_leave_timing=host_leave_timing)
 
     async def __aenter__(self):
         await self.service.start(port=0)
@@ -36,6 +36,6 @@ class TestServer:
         await self.service.close()
 
 
-def create_test_server(policy=None, *, clock=None, new_match_factory=None, timeout_chooser=None, rng=None):
+def create_test_server(policy=None, *, clock=None, new_match_factory=None, timeout_chooser=None, rng=None, host_leave_timing='after_turn'):
     return TestServer(policy, clock=clock, new_match_factory=new_match_factory,
-                      timeout_chooser=timeout_chooser, rng=rng)
+                      timeout_chooser=timeout_chooser, rng=rng, host_leave_timing=host_leave_timing)

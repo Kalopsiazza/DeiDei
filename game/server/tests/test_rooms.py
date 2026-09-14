@@ -102,6 +102,8 @@ class SocketCase(unittest.IsolatedAsyncioTestCase):
             await server.close()
 
     async def server(self, **kwargs):
+        # Retain the a-suite's explicit 12-second scenarios; new default is tested in test_rooms_11.
+        kwargs['policy'] = {'turn_ms': 12000} | kwargs.get('policy', {})
         self.clock = kwargs.pop('clock', ManualClock())
         server = create_test_server(clock=self.clock, **kwargs)
         await server.__aenter__()
@@ -160,7 +162,7 @@ class Rooms(SocketCase):
         self.assertEqual(v['members'][0]['seat'], 0)
         self.assertFalse(v['members'][0]['ready'])
         self.assertTrue(v['has_password'])
-        self.assertEqual(v['policy'], DEFAULT_POLICY)
+        self.assertEqual(v['policy'], DEFAULT_POLICY | {'turn_ms': 12000})
         guest = await self.client(server)
         for room_code, password in [(code, '合成密码'), ('AAAAAAAA', ' 合成密码 ')]:
             self.error(await guest.command('room.join', dict(room_code=room_code, password=password, role='player')), 'ROOM_ACCESS_DENIED')
@@ -189,7 +191,7 @@ class Rooms(SocketCase):
         self.error(await host.command('room.start',dict(room_id=rid)), 'NOT_READY')
         self.error(await guest.command('room.start',dict(room_id=rid)), 'NOT_HOST')
         self.error(await viewers[0].command('room.ready',dict(room_id=rid,ready=True)), 'NOT_ACTIVE')
-        self.error(await host.command('room.role',dict(room_id=rid,role='spectator')), 'NOT_HOST')
+        self.error(await host.command('room.role',dict(room_id=rid,role='spectator')), 'HOST_ROLE_FIXED')
         self.ok(await host.command('room.ready',dict(room_id=rid,ready=True)))
         self.ok(await viewers[0].command('room.leave',dict(room_id=rid)))
         self.assertTrue((await host.sync(rid))['members'][0]['ready'])
@@ -485,42 +487,44 @@ class Rooms(SocketCase):
         self.assertEqual(end['match']['last_turn']['room_forfeits'],[{'player_id':players[2].identity['player_id'],'reason':'voluntary_leave'}])
 
     async def test_N26_host_leave_and_absence_close(self):
+        # NET1.1/P20/P22 replace immediate-default and third-host-absence expectations.
         for leave in (True,False):
             server=await self.server(timeout_chooser=lambda state,options:'Charge')
             players,_,rid,_=await self.room(server)
             await self.start(players,rid)
             if leave:
                 self.ok(await players[0].command('room.leave',dict(room_id=rid)))
+                self.assertEqual((await players[1].sync(rid))['pending_close']['after'],'current_turn')
+                await server.advance_ms(12000)
             else:
-                for n in range(3):
+                for n in range(4):
                     v=await players[1].sync(rid)
                     self.ok(await players[1].submit(rid,v,'Charge'))
                     await server.advance_ms(12000)
-                    if n<2: await server.advance_ms(1500)
+                    if n<3: await server.advance_ms(1500)
             end=await players[1].sync(rid)
             self.assertEqual(end['phase'],'closed')
             self.assertEqual(end['close_reason'],'HOST_LEFT' if leave else 'HOST_ABSENT')
             self.assertIsNone(end['match']['effective_outcome'])
 
-    async def test_N27_pause_resume_deadline_and_grace(self):
+    async def test_N27_recovery_without_pause_and_grace(self):
+        # P20 keeps selecting/revealing deadlines running; P21 reserves grace for no-round hosts.
         server=await self.server()
         players,_,rid,_=await self.room(server,options={'early_reveal':False})
         v=await self.start(players,rid)
         self.ok(await players[0].submit(rid,v,'Charge'))
         await server.advance_ms(2000)
         await players[0].ws.close(); await server.drain()
-        paused=await players[1].sync(rid)
-        self.assertEqual(paused['phase'],'paused')
-        self.assertEqual(paused['pause']['phase_remaining_ms'],10000)
-        await server.advance_ms(25000)
+        recovery=await players[1].sync(rid)
+        self.assertEqual(recovery['phase'],'selecting')
+        self.assertIsNone(recovery['pause'])
+        self.assertEqual(recovery['host_recovery']['kind'],'rounds')
+        await server.advance_ms(5000)
         host=await self.client(server,players[0].identity)
         v=await host.sync(rid)
-        self.assertEqual(v['timer']['remaining_ms'],10000)
+        self.assertEqual(v['timer']['remaining_ms'],5000)
         self.assertEqual(v['self']['accepted_entry_id'],'Charge')
-        await host.ws.close(); await server.drain()
-        await server.advance_ms(30000)
-        self.assertEqual((await players[1].sync(rid))['close_reason'],'HOST_TIMEOUT')
-        for grace in (0,60000):
+        for grace in (0,30000,60000):
             server=await self.server(policy={'host_disconnect_grace_ms':grace})
             players,_,rid,_=await self.room(server)
             await players[0].ws.close(); await server.drain()
