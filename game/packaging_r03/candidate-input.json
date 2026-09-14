@@ -1,5 +1,5 @@
 {
-  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
-  "status": "DIAGNOSTIC_BASELINE",
-  "candidate_receipt_sha": null
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "status": "CANDIDATE",
+  "candidate_receipt_sha": "db51a442d0f6640ce499ffbf4320c7098044cb92"
 }
