@@ -457,6 +457,7 @@ def build() -> list[dict]:
     for i in range(1, 65):
         alias = 'owner' + str(i); c.open(alias)
         c.command(alias, 'room.create', dict(password=None, options={k: c.data['policy'][k] for k in ('turn_ms', 'early_reveal', 'spectator_cap')}), error='SERVER_BUSY' if i == 64 else None)
+        c.add('disconnect', **{'as': alias})  # Keep 64 rooms while bounding live sockets to two.
     c.sync('h'); c.view('h', 'lobby', **{'members.length': 1})
 
     c = Case(34, 'C065_reward_replay', '自然奖励到账并消费后重放旧提交不再发奖', 'P04 P05 W04 W06 A02')

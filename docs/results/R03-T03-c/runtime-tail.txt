@@ -1,0 +1,14 @@
+test_bomb_exchange_absorb_has_no_dd_gain (test_summary.SummaryTests.test_bomb_exchange_absorb_has_no_dd_gain) ... ok
+test_cancelled_charge_cloud_and_absorb (test_summary.SummaryTests.test_cancelled_charge_cloud_and_absorb) ... ok
+test_charge_and_xiao_exact_signed_player_units (test_summary.SummaryTests.test_charge_and_xiao_exact_signed_player_units) ... ok
+test_half_and_large_clear_never_use_float_or_decimal_rounding (test_summary.SummaryTests.test_half_and_large_clear_never_use_float_or_decimal_rounding) ... ok
+test_non_dd_resources_maturity_and_reward_have_chinese_names (test_summary.SummaryTests.test_non_dd_resources_maturity_and_reward_have_chinese_names) ... ok
+test_other_unapplied_event_is_not_reported_as_a_gain (test_summary.SummaryTests.test_other_unapplied_event_is_not_reported_as_a_gain) ... ok
+test_restart_uses_pre_reset_ledger_then_explains_reset (test_summary.SummaryTests.test_restart_uses_pre_reset_ledger_then_explains_reset) ... ok
+test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain (test_summary.SummaryTests.test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.165s
+
+OK
+Fixed-seed actual rounds: [21, 2, 12, 1, 1, 6, 14, 1, 1, 2, 3, 1]

@@ -1,0 +1,208 @@
+{
+  "task": "R03-T03-c",
+  "delivery": "BASELINE_ONLY",
+  "product_status": "FAIL",
+  "input_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "tested_code_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
+  "input_zip_sha256": "f7225e78aa0c988a44d43f7b303f36e2a167189c78be7209d105dcceb5c284ad",
+  "branch": "codex/r03-t03-c-endurance",
+  "pr_base": "integration/r03-live",
+  "tool_source_commit": "1a9358b11e3f4b6905bb2fce6276309a30c5501e",
+  "protected_trees": {
+    "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+    "game/server": "dd9b56bdc7df4add9e603fc4ced4f29fffb27ff8",
+    "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
+    "game/desktop": "f33e71b7ef9bf7626f75e2a145a46f92e1f2e4b6",
+    "game/packaging": "49e0af03dc130d13742e7c0dcdae5d83cae50fd4"
+  },
+  "dependency_lock_sha256": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+  "candidate_versions_consumed": 0,
+  "candidate_checks": 3,
+  "original_case_ids": 160,
+  "original_fixture_change": "64 disconnect steps in N33/room_capacity only; all other JSON equal",
+  "validation": {
+    "original160": {
+      "PASS": 156,
+      "FAIL": 3,
+      "NOT_RUN": 1
+    },
+    "crosscheck": {
+      "PASS": 11
+    },
+    "faults": {
+      "PASS": 38,
+      "FAIL": 5
+    },
+    "seeds": {
+      "PASS": 100
+    },
+    "endurance": "FAIL",
+    "gui": "PASS_NATIVE_DIALOG_RESPONSE_SCRIPTED",
+    "mutations": {
+      "KILLED": 3,
+      "BASELINE_FAIL": 2
+    }
+  },
+  "tool_files": {
+    "tests/rooms_v1/__init__.py": "8583020c1b052894f7f56a286166724c13094bfedac70b903cb90a17a49c6f4a",
+    "tests/rooms_v1/author_cases.py": "974ae80bf4384fdfeac214d81dec45db3f9ca2e7ea81299eee4621ced1896627",
+    "tests/rooms_v1/cases.json": "ed7ec6afdf543ecdea6629585ebcd5e3dce60cfeb6b185647d87473e22fb40d1",
+    "tests/rooms_v1/client_membership_check.cjs": "12ca8f7770f4dd85ffab1f269d37fdcf3403b08cebb6c9994ad8ac8598b0d702",
+    "tests/rooms_v1/crosscheck.py": "4f2c29bb58cc0879047ba86ea0fde74849528c512a623dafceba14d398d8778d",
+    "tests/rooms_v1/decode_frames.cjs": "bd94d915fff7d29efd1be06f7b8039eec8643a4c3448286e2bacf7de7e9b980d",
+    "tests/rooms_v1/run_acceptance.py": "b43179792ae139c16eae65ba02fb7c3629370e650b622ad388b1003e6acb9b0f",
+    "tests/rooms_v1/test_harness.py": "3dccfaf69f7442fa713808b56fe47b0c5e680e543e16f35e87c1577357dfd705",
+    "tests/rooms_v1/validate.py": "167d7be1f7a5033d9173fe53897c48a774bf500021e25b3916e3ca1071a18600",
+    "tests/rooms_endurance/__init__.py": "91f086db8363deb5885f69650a76736f4879431e4dbcd4720c6b058e949834da",
+    "tests/rooms_endurance/candidate.py": "18ce1014deff8a731d1db0be54071497d3b50d470a175bd7a288948948d8dc6e",
+    "tests/rooms_endurance/faults.py": "92455a13c5ef59ebfeffd475677150e67d1a916693ee8e0924d104fc3f75f379",
+    "tests/rooms_endurance/gui.cjs": "5b5a91f75e92554504c68a07acba04d1b091049f91b9bd11a37e69a1fb24ab59",
+    "tests/rooms_endurance/mutations.py": "752a8629fb37222281b44e3583b0c817082f958da1060ec70fa46e7eea472967",
+    "tests/rooms_endurance/run.py": "191874a356bb28a3aa6a3340299fe8d7683918ebb296f9cf1367ae3d9a07b24f",
+    "tests/rooms_endurance/test_endurance.py": "126136ea5d7bf0a2ab010ff3c93c29035798196fa8e485f6499c690ed4978d20"
+  },
+  "files": {
+    "CHECKPOINT.md": {
+      "bytes": 547,
+      "sha256": "15c0ce38ed8a099826d0229bc8a39372388d13c0c581be608a682b667c663d36"
+    },
+    "COMMANDS.json": {
+      "bytes": 8584,
+      "sha256": "781d038f0f548bfa02cf45fda459ed6713cfb0c33a3d0dcad0d16134797bd434"
+    },
+    "FINDINGS.json": {
+      "bytes": 1155,
+      "sha256": "ed02484e368af5fc26d04d069b1d990d4b9bb09283fc92fe26eb2fe61c3db354"
+    },
+    "INPUT-PLAN-MANIFEST.json": {
+      "bytes": 2955,
+      "sha256": "56e0026a16a156813962c25cd9b73a163207efd7302f7a62ab2208891140a4bf"
+    },
+    "PR-BODY.md": {
+      "bytes": 2372,
+      "sha256": "40c681970e54f77d644150e772a69548e776103da2a63e3f379138896ec0f68f"
+    },
+    "PREVIOUS-CASE-MAP.md": {
+      "bytes": 19085,
+      "sha256": "f75daa37cc6229475a4a6d6bebf4dafe5484dbc450dbe2e336a84c0f7f1826fd"
+    },
+    "REPORT.md": {
+      "bytes": 7115,
+      "sha256": "025adb839ec950db0b5afdc84b75a742872e70cd7f91835c69144bf668b87fdf"
+    },
+    "TEST-MATRIX.md": {
+      "bytes": 4470,
+      "sha256": "164d376029c755c05d6f0590dd639830b3ea3d153863980873b035821a944e93"
+    },
+    "baseline-160-latest.json": {
+      "bytes": 52000,
+      "sha256": "8c6ee8edac46350f5ca774f52b5b6d715bf3e1351bbbcef188a56d9154e561ed"
+    },
+    "baseline-160.json": {
+      "bytes": 51999,
+      "sha256": "fe4cb758eed337f40b6c0df2557d71ee0033684722272c8125bf23eda490e764"
+    },
+    "baseline-cross.json": {
+      "bytes": 9471,
+      "sha256": "dcb50659da3a64fef6f280d632c1c36fa8d54b49c69eb7f475ce9559f46e897e"
+    },
+    "candidate-checks.json": {
+      "bytes": 413,
+      "sha256": "7922eb5191d90d3f1fa4bed95758afc7b52d527cca8c5e9dd87ff7a1757e6bb0"
+    },
+    "core-tail.txt": {
+      "bytes": 769,
+      "sha256": "a0778894d9780a0b4ef26351776e0afde0b02297fd26eabfed3cf4b5e27cd8e6"
+    },
+    "desktop-build-tail.txt": {
+      "bytes": 126,
+      "sha256": "c12acc7723dafe8475c8ddf612f61d876c037d6c3526016566fc31885bc7eb14"
+    },
+    "desktop-online-tail.txt": {
+      "bytes": 708,
+      "sha256": "2f99a53acacaeabe6f4cc8a2c9712baa56853d1d6a6723aa651dcc7fa7afe4e8"
+    },
+    "desktop-tail.txt": {
+      "bytes": 700,
+      "sha256": "47035954a4364ba5ecdde373ad57c4f4d189910c223c927f5c2ce5edd559c545"
+    },
+    "endurance-900.json": {
+      "bytes": 5504,
+      "sha256": "5a40a23522859a930fea0c3f9388d93b88fe3ef6703ef693cc2eb772922107dd"
+    },
+    "endurance-smoke-first.json": {
+      "bytes": 1270,
+      "sha256": "f5e6d6bd13c4b7184e01307f0fa55cab563aa73736a37e8947b00d379d821a79"
+    },
+    "faults-first.json": {
+      "bytes": 9522,
+      "sha256": "64a73f79c1fac97688d42e8d4f7fc85b913c98e3ce7cbbeec57e48888314d00e"
+    },
+    "faults-latest.json": {
+      "bytes": 9769,
+      "sha256": "31181bc9fce89e091d707e1b4b3e55370e19a000db142cef20b42848a659622b"
+    },
+    "gui-first-behavior.json": {
+      "bytes": 729,
+      "sha256": "1c47531fac836dda70a3a2b0e555381f153a01b72ab698205ff82b4c1de87d5f"
+    },
+    "gui.json": {
+      "bytes": 1036,
+      "sha256": "732203db9d31d5d451fd5743b46a8c525cba893dd572c669789ed536b080f2ea"
+    },
+    "harness-tail.txt": {
+      "bytes": 128,
+      "sha256": "fea4f2f09270890bd57ab2eeea1c1b0717bc2f3863385e63a5cf6a9824f65321"
+    },
+    "mutations.json": {
+      "bytes": 3646,
+      "sha256": "af1dbc6196e83e0e8679bf51cc6be765c6a7569c2c4e309e686bc490e81aaa81"
+    },
+    "q16-first.json": {
+      "bytes": 1069,
+      "sha256": "e49db073b162e7f9d26685d1f10050c562ad0669d6a0100f26927f9ccad777ba"
+    },
+    "real-host.png": {
+      "bytes": 198548,
+      "sha256": "182d7a752d27611f785b675dc5e63be879bc7f7c5e46bbec79859242fe5ada5f"
+    },
+    "real-observer.png": {
+      "bytes": 62389,
+      "sha256": "869e08c2f6026e6cf45bac7f8f69f3cc4300649c79f3dc8bff4e6d688ceeac43"
+    },
+    "real-player.png": {
+      "bytes": 197359,
+      "sha256": "d94d4e1b1a6c1f7dee5c282a70712cb42df0b18ccb6f31f34e1958a5c160330b"
+    },
+    "root-check-final-tail.txt": {
+      "bytes": 1200,
+      "sha256": "5a1ac4bbbc73affa4b9fee6a44687f3d36eba671a13eb802d16ade9b94d7deeb"
+    },
+    "rules-tail.txt": {
+      "bytes": 249,
+      "sha256": "6419402f46b1a72f6ef297571f9faca8c26fa6f2389635d3d1153f0e1a0a88f8"
+    },
+    "runtime-tail.txt": {
+      "bytes": 1283,
+      "sha256": "6f1d34898cb28f231de67d94e680e0201edba7f0452f53763b4ce8ceb88ddf37"
+    },
+    "seeds-100.json": {
+      "bytes": 10896,
+      "sha256": "781f8a733d11c6594717cfad95e4efca7bd23704bd7d2c09ab1be38e63f47aa4"
+    },
+    "seeds-smoke-first.json": {
+      "bytes": 1045,
+      "sha256": "f0b1603dacd3612468b96d9dc3cc0376896f23729aef47a54e57880c9e468f22"
+    },
+    "seeds-smoke-fixed.json": {
+      "bytes": 1006,
+      "sha256": "d282d0740c274f7a56d2077c58f15caa824dc8c7ec42ecc23dce4e51fbda1cd8"
+    },
+    "service-tail.txt": {
+      "bytes": 1048,
+      "sha256": "6837ee04a43f3a9fddda14cbef368a13b6ee061084f5482361c6cf1f7d1d9b84"
+    }
+  },
+  "hash_scope": "all delivered result files except this self-referential manifest; raw private/local debug logs excluded"
+}

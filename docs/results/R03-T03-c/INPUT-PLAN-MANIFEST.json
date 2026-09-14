@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "plan_version": "R03-live-batch-1.0",
+  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
+  "plan_ref": "plan/r03-live-v1",
+  "product_input_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "repository": "Kalopsiazza/DeiDei",
+  "result_pr_base": "integration/r03-live",
+  "tasks": [
+    "R03-T04-a",
+    "R03-T03-c",
+    "R03-T05-a"
+  ],
+  "status": "ISSUED_NOT_STARTED",
+  "files": [
+    {
+      "path": "CANDIDATE.schema.json",
+      "size": 2033,
+      "sha256": "5cf234d7795b567afa439c8a4a5177167b39d2b4581f40ccff2bd06fa09691d2"
+    },
+    {
+      "path": "DOCUMENT-CHECK.json",
+      "size": 519,
+      "sha256": "d7c3ccf8f0eb78fbfbfbc65d248adae6dbf071d364a8893e7bcd14f8617d689d"
+    },
+    {
+      "path": "REMOTE-BLOBS.json",
+      "size": 909,
+      "sha256": "a93303e5ce588c120809ff460890944fe8349c1214dcb6258cc7f87ea5da0ae7"
+    },
+    {
+      "path": "SOURCE-INPUTS.json",
+      "size": 1345,
+      "sha256": "a49f0522bb51fc981cdf10995c4cec106f6dc700d5cde36d826565a2e3b379cb"
+    },
+    {
+      "path": "START-CODEX.txt",
+      "size": 8836,
+      "sha256": "c47f780588f90aae807403f127b0e399a0d13bde7deb56b38a8db151062e5373"
+    },
+    {
+      "path": "WORK_START_HERE.md",
+      "size": 1125,
+      "sha256": "edf37265f5af1389858609c38586cdc574b59236d0f6858d8f072d312776e0d5"
+    },
+    {
+      "path": "docs/architecture/R03-AUTOMATED-v1.md",
+      "size": 12257,
+      "sha256": "1fef4745a5ec80e1b2066f3e5ce75cd502514f2ceba9bdde1ae591ac04a2c510"
+    },
+    {
+      "path": "docs/contracts/r03/AUTOMATED-CASES-v1.md",
+      "size": 3598,
+      "sha256": "012dc503f7681158b7d534d138d721e8cd5cada45add7b115451f1937b759e42"
+    },
+    {
+      "path": "docs/prd/R03-AUTOMATED-v1.md",
+      "size": 4365,
+      "sha256": "aee359ba4d3a01d29cca21cb71ad0a7aa356cb9c80a9b67fa85649c50976291b"
+    },
+    {
+      "path": "docs/production/R03-AUTOMATED-START.md",
+      "size": 5759,
+      "sha256": "b884401ef80d9dfadec04a0118403c03b85953ce5deae9e11d65d78d5d47c8ec"
+    },
+    {
+      "path": "docs/reviews/R03-B-REVIEW-20260915.md",
+      "size": 2720,
+      "sha256": "a9a5200a6b1209e05279a54d5b2f1ebd9c2afdaa7ef792fb2004f738780e74ab"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T03-c.md",
+      "size": 3582,
+      "sha256": "289c588b252107649bcd6ab064d4946ab8b8d265ed1b0ff175fc76d4ba3183c0"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T04-a.md",
+      "size": 3539,
+      "sha256": "05db7a22924401bd309657f5735f110ca6d3e30843ce812a0d59882b78bf92a7"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T05-a.md",
+      "size": 4298,
+      "sha256": "51f254a44d59bccd81902a55ac4d6befd8844bf8cbaff9abd889d798aa4b7136"
+    },
+    {
+      "path": "original-r03-b-input.zip",
+      "size": 121218,
+      "sha256": "0d1887d0cf0c1f7dfc9c7dac2ca39438f485d90b7456b4dd0bf1580f7cea27b4"
+    }
+  ],
+  "note": "Manifest excludes itself. Generated handoff contains documents and prior planning input, not a playable binary."
+}

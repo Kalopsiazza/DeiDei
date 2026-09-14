@@ -1,0 +1,40 @@
+{
+  "source": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "513070d1fedf85f78062d6dc0febe7b440e64d04aeae36c3f90da3367226e1d2",
+    "dirty": false
+  },
+  "core": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "d4a0ed8374601692843c9cb6a785ddb76ee80fac284cfb74951be923e0e73ebb",
+    "dirty": true
+  },
+  "scope": "real sockets + injected clock; seeds vary seats, observer count, order and replay fault",
+  "sequences": [
+    {
+      "seed": 0,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 92
+    },
+    {
+      "seed": 1,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 2,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    }
+  ],
+  "passed": 3,
+  "status": "PASS"
+}
