@@ -1,0 +1,94 @@
+{
+  "scope": "Real Electron window automation",
+  "phase": "after",
+  "source_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "checks": [
+    "Delayed success blocks native back/title clicks and restores navigation",
+    "Cancelled Charge/Cloud shows no gain and exact zero balance",
+    "Delayed failure unlocks back/title and allows retry and fresh start",
+    "Scene switching also blocks dialog/title navigation, then restores fixture controls"
+  ],
+  "screenshots": [
+    "F02-pending-success-after.png",
+    "F02-success-after.png",
+    "F01-cancelled-charge-after.png",
+    "F02-pending-failure-retry-after.png",
+    "F02-failure-recovered-retry-after.png",
+    "F02-pending-failure-back-after.png",
+    "F02-failure-recovered-back-after.png",
+    "F02-preview-pending-after.png",
+    "F02-preview-restored-after.png"
+  ],
+  "match_ids": [
+    "55ee7d61-e352-4069-8a73-afc0842126d6",
+    "123eb1cd-01b7-48a2-8601-55cf31fc8f4f",
+    "58fafab3-870b-4267-8f06-1e3fc0ed3dc8"
+  ],
+  "native": {
+    "bounds": {
+      "x": 172,
+      "y": 204,
+      "width": 1366,
+      "height": 768
+    },
+    "displays": [
+      {
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "scaleFactor": 2
+      }
+    ],
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    }
+  },
+  "pending_controls": {
+    "backDisabled": true,
+    "brandDisabled": true
+  },
+  "summary": [
+    "摘要验收：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。",
+    "临时随机对手：云（原招：云）；实付 0 DD。",
+    "摘要验收：本次攒未生效，DD没有增加。",
+    "临时随机对手：获得 +1 雷电。",
+    "双方仍在场，继续下一拍。",
+    "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用",
+    "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 1 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+  ],
+  "console_errors": [],
+  "status": "PASS"
+}

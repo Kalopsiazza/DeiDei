@@ -16,14 +16,14 @@
   "productName": "DeiDei R02",
   "version": "0.1.0",
   "private": true,
-  "description": "R02-T03-a clickable fixture prototype",
+  "description": "R02-T04-a local single-player source build",
   "author": "DeiDei contributors",
   "main": "main.cjs",
   "scripts": {
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && node build.cjs",
     "start": "npm run build && electron .",
-    "test": "npm run build && node --test test.cjs",
-    "smoke": "node smoke.cjs"
+    "test": "npm run build && node --test test.cjs test-live.cjs test-navigation.cjs",
+    "smoke": "node smoke-live.cjs"
   }
 }

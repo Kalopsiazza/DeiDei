@@ -1,0 +1,245 @@
+{
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "input": {
+    "A": "Charge",
+    "B": "Cloud"
+  },
+  "resolution": {
+    "ok": true,
+    "ledger": {
+      "match_id": "summary-repro",
+      "game_id": "summary-repro:g1",
+      "turn_index": "1",
+      "actions": {
+        "A": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "B": {
+          "entry_id": "Cloud",
+          "actual_move": "Cloud",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "600",
+            "comparison": "le",
+            "match_rule": "R13"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"summary-repro\",\"summary-repro:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "A",
+          "target_id": "A",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "suppressed",
+          "reason_code": "CHARGE_CANCELLED"
+        },
+        {
+          "event_id": "[\"summary-repro\",\"summary-repro:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"lightning\",null,\"cast\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "B",
+          "target_id": "B",
+          "amount6": null,
+          "resource": "lightning",
+          "resource_delta": "1",
+          "source_event_id": null,
+          "rule_ids": [
+            "R13"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"summary-repro\",\"summary-repro:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "A",
+          "target_id": "A",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"summary-repro\",\"summary-repro:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "B",
+          "target_id": "B",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "A": [],
+        "B": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "A": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "B": {
+          "dd6": "0",
+          "lightning": "1",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "1",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Cloud",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "summary-repro",
+      "game_id": "summary-repro:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "A",
+        "B"
+      ],
+      "active_ids": [
+        "A",
+        "B"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "A": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "B": {
+          "dd6": "0",
+          "lightning": "1",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "1",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Cloud",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "summary-repro:g1",
+      "to_game_id": "summary-repro:g1",
+      "winner_id": null
+    }
+  },
+  "summary": [
+    "玩家A：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。",
+    "玩家B：云（原招：云）；实付 0 DD。",
+    "玩家A：本次攒未生效，DD没有增加。",
+    "玩家B：获得 +1 雷电。",
+    "双方仍在场，继续下一拍。"
+  ],
+  "identical_resolution_before_and_after": true,
+  "canonical_resolution_sha256": "1703e5b38ad80369f5dbb5da505880ab168406826d6e5c9228d2b105df20ea7e"
+}
