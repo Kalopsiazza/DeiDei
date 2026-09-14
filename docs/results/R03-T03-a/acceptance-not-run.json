@@ -1,0 +1,399 @@
+{
+  "server_status": "NOT_RUN",
+  "fixture_status": "VALID",
+  "selected": 96,
+  "passed": 0,
+  "server": null,
+  "core": {
+    "sha": "23520350393ba43384c20b60bef7d6dbd89fc142",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "cases": [
+    {
+      "case_id": "N01/create",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N02/correct",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N02/wrong",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N02/missing",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N03/last_seat",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N04/cap_0",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N04/cap_6",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N04/cap_12",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N04/eliminated_keep_seat",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N05/room_ready",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N05/room_start",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N05/room_submit",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N05/forged",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N06/h",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N06/p",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N06/disconnected",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N07/player_join",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N07/player_leave",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N07/role",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N07/spectator_join_leave",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N07/host_role",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N08/mid_match",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N09/same",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N09/conflict",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N09/resume_retry",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N09/evicted",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N10/secret_Bi",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N10/secret_Def",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/5000_True",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/5000_False",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/12000_True",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/12000_False",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/30000_True",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N11/30000_False",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N12/before",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N12/at",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/illegal",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/missing",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/duplicate",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/nan",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/large",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/bool_number",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N13/extra",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N14/submit_replay",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N15/locked",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N16/fresh_old_turn",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N16/evicted",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N17/players_2",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N17/players_3",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N18/six_to_two",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N19/manual",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N19/illegal",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N19/resume",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N19/none",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N20/online",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N20/offline",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N21/C026_dead_reflector_returns",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N21/C050_cancelled_charge_still_kills",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N21/C043_dead_tian_clears",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N22/submitted_leave",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N22/three_absences",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N23/single_restart",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N24/winner_leaves",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N24/two_leave",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N25/continue",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N25/terminal",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N26/leave",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N26/absent",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/0_expire",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/30000_expire",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/30000_resume",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/60000_expire",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/60000_resume",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N27/reveal_resume",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N28/lobby",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N28/playing",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N28/replacement",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N29/correct",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N29/forged",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N29/removed",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N30/next_match",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N31/rooms",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N31/slow",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N32/set_state",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N32/debug",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N32/seed",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N32/forged_room",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N33/errors",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N33/burst_limit",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N33/room_capacity",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N34/C065_reward_replay",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N34/C074_core_full_reset",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N34/room_mode_absence_reset",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N35/electron_manual",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N36/six_players_three_matches",
+      "status": "NOT_RUN"
+    },
+    {
+      "case_id": "N36/real_clock",
+      "status": "NOT_RUN"
+    }
+  ],
+  "reason": "explicit server or core missing; no fallback"
+}
