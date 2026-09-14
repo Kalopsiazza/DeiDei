@@ -38,3 +38,7 @@ Windows job failure：包构建和最终ZIP核验、冻结服务真实hello通�
 基线已知N33/burst_limit、N36/real_clock、N48/real_clock未被T05修改；T05不接管产品修复。正式candidate仍需T04具名回执，消费后重新固定source_sha构建。任务04未交时不整夜等待，交BASELINE_ONLY和下一命令。真人/干净机、物理断网、公网/异地、收费证书和系统信任全部未验收。
 
 按vibe-engineering-workflow完成高风险构建路径的负例与重点自审。未调用Kimi（保持暂停）。没有合入、关闭旧PR、部署或发布Release。
+
+## 原始证据换行记录
+
+全增量git diff --check退出2，仅来自原生Windows CI导出的CRLF文本（commands/audit/signature），文件列表见DIFF-CHECK.json。原始证据保留字节，不通过改写原文隐藏告警；单独检查打包源码与具名CI退出0。最终仅记录证据的提交带skip ci，避免对未改工具和已知失败基线再发起无意义原生构建；受测工具仍为fabcb1d，最终文档不冒充新二进制测试。

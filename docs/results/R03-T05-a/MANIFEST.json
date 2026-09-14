@@ -165,6 +165,11 @@
       "sha256": "8fc92bd34f5d68939626af0a2e2c5e2390e4b7aaef68cd4a3037810a17061207"
     },
     {
+      "path": "docs/results/R03-T05-a/DIFF-CHECK.json",
+      "bytes": 515,
+      "sha256": "99f312ecc0f5c3b0cb5dd249171cd8b54a6056a4bd49c5bc7846c92499e2b77a"
+    },
+    {
       "path": "docs/results/R03-T05-a/DOWNLOADS.md",
       "bytes": 3083,
       "sha256": "253dd1ef9cc6adb1739f9fa936dc98339af3bbd48582ad3ae7bc4a5748000a83"
@@ -186,8 +191,8 @@
     },
     {
       "path": "docs/results/R03-T05-a/REPORT.md",
-      "bytes": 5560,
-      "sha256": "d17c51bc9185a8acc2a2aa2867810763797fae0a6dd92ebf70018d8c19b1c4d1"
+      "bytes": 6032,
+      "sha256": "b207d12d5c874a8c4e9d4591d9e1ad57751e6af225b926568acdf3994070f464"
     },
     {
       "path": "docs/results/R03-T05-a/TEST-MATRIX.md",
@@ -374,5 +379,17 @@
       "bytes": 814,
       "sha256": "34f2568c6ff1e020cf0bfc0dac723646198310b334a67a11e1dcaf9e204393eb"
     }
-  ]
+  ],
+  "diff_check": {
+    "full_diff_exit_code": 2,
+    "source_ci_diff_exit_code": 0,
+    "reason": "Native Windows CI text uses CRLF. Raw evidence preserved byte-for-byte; no source or license rewritten to hide warnings.",
+    "paths": [
+      "docs/results/R03-T05-a/ci-windows/commands.json",
+      "docs/results/R03-T05-a/ci-windows/npm-audit-runtime.json",
+      "docs/results/R03-T05-a/ci-windows/npm-audit.json",
+      "docs/results/R03-T05-a/ci-windows/python-audit.json",
+      "docs/results/R03-T05-a/ci-windows/windows-signatures.txt"
+    ]
+  }
 }
