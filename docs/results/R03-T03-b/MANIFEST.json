@@ -1,0 +1,43 @@
+{
+  "task": "R03-T03-b",
+  "input_sha": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+  "test_code_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d",
+  "plan_sha": null,
+  "plan_sha_reason": "No Git plan SHA supplied in transfer text; attachment manifest is authoritative.",
+  "attachment": {
+    "path": "/Users/zengchongtai/Downloads/deidei-r03-b-handoff-v1.zip",
+    "sha256": "0d1887d0cf0c1f7dfc9c7dac2ca39438f485d90b7456b4dd0bf1580f7cea27b4",
+    "manifest_sha256": "3b5f1fdf74e2c236768216d27edbd1bffa67bb57577c21c2b38504d6edac7d2c",
+    "verified_entries": 26
+  },
+  "a_candidates": {
+    "server": "0f114284492417ec61634895c485d73417ff1b49",
+    "desktop": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+    "tests": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90"
+  },
+  "b_candidates": {
+    "server": "c4b27b1b358a4823e65d92e0b035be3e18438c60",
+    "desktop": "1dbe1e4f8de28410dc42946efddffc011966cc3a"
+  },
+  "test_files_sha256": {
+    "tests/rooms_v1/README.md": "e9c235514622e58a3ccc62c82caf8b3a0dc397627682af026dfa54fdb3d5364f",
+    "tests/rooms_v1/__init__.py": "8583020c1b052894f7f56a286166724c13094bfedac70b903cb90a17a49c6f4a",
+    "tests/rooms_v1/author_cases.py": "4b9c8342a0af8146ff542b48a8c1b7b7ba169cb516b3f09d35abeff5474d7754",
+    "tests/rooms_v1/cases.json": "77dd9ceb01fbd19e3a44a1a53192d4da54fa2a571ab4f1bf154f824578fe29c0",
+    "tests/rooms_v1/client_membership_check.cjs": "12ca8f7770f4dd85ffab1f269d37fdcf3403b08cebb6c9994ad8ac8598b0d702",
+    "tests/rooms_v1/crosscheck.py": "4f2c29bb58cc0879047ba86ea0fde74849528c512a623dafceba14d398d8778d",
+    "tests/rooms_v1/decode_frames.cjs": "bd94d915fff7d29efd1be06f7b8039eec8643a4c3448286e2bacf7de7e9b980d",
+    "tests/rooms_v1/run_acceptance.py": "b43179792ae139c16eae65ba02fb7c3629370e650b622ad388b1003e6acb9b0f",
+    "tests/rooms_v1/test_harness.py": "3dccfaf69f7442fa713808b56fe47b0c5e680e543e16f35e87c1577357dfd705",
+    "tests/rooms_v1/validate.py": "167d7be1f7a5033d9173fe53897c48a774bf500021e25b3916e3ca1071a18600"
+  },
+  "kimi": "NOT_CALLED",
+  "allowed_paths": [
+    "tests/rooms_v1/**",
+    "docs/results/R03-T03-b/**"
+  ],
+  "product_sources_changed": false,
+  "verified_at": "2026-09-14T16:02:30.001735+00:00",
+  "post_test_change": "Only README confirmation-status wording and result documents; executable test code remains fe6163a.",
+  "candidate_heads_receipt": "CANDIDATE-HEADS.json"
+}

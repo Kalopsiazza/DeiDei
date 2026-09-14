@@ -1,0 +1,14 @@
+{
+  "name": "client-syntax",
+  "command": [
+    "node",
+    "--check",
+    "tests/rooms_v1/client_membership_check.cjs"
+  ],
+  "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+  "env": {},
+  "exit_code": 0,
+  "started_at": "2026-09-14T15:58:51.815168+00:00",
+  "finished_at": "2026-09-14T15:58:51.842495+00:00",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+}

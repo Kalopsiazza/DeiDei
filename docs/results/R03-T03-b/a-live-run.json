@@ -1,0 +1,27 @@
+{
+  "name": "a-live",
+  "command": [
+    "/tmp/deidei-r03-t03-b-candidates/venv/bin/python",
+    "tests/rooms_v1/crosscheck.py",
+    "--server-path",
+    "/tmp/deidei-r03-t03-b-candidates/service-a/game/server",
+    "--core-path",
+    "/tmp/deidei-r03-t03-b-candidates/service-a/game/core",
+    "--desktop-path",
+    "/tmp/deidei-r03-t03-b-candidates/desktop-a/game/desktop",
+    "--server-sha",
+    "0f114284492417ec61634895c485d73417ff1b49",
+    "--desktop-sha",
+    "72266fbc63e4982738ae83eee99e9001a6872d6f",
+    "--tests-sha",
+    "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+    "--output",
+    "/Users/zengchongtai/develop/DeiDei-r03-t03-b/docs/results/R03-T03-b/a-live-crosscheck.json"
+  ],
+  "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+  "env": {},
+  "exit_code": 1,
+  "started_at": "2026-09-14T15:58:44.903248+00:00",
+  "finished_at": "2026-09-14T15:58:47.458567+00:00",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+}

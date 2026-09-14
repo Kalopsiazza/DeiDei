@@ -1,0 +1,21 @@
+{
+  "command": [
+    "/tmp/deidei-r03-t03-b-candidates/venv/bin/python",
+    "/tmp/deidei-r03-t03-b-candidates/tests-a/tests/rooms_v1/run_acceptance.py",
+    "--server-path",
+    "/tmp/deidei-r03-t03-b-candidates/service-a/game/server",
+    "--core-path",
+    "/tmp/deidei-r03-t03-b-candidates/service-a/game/core",
+    "--tested-code-sha",
+    "0f114284492417ec61634895c485d73417ff1b49",
+    "--output",
+    "/Users/zengchongtai/develop/DeiDei-r03-t03-b/docs/results/R03-T03-b/a-original-acceptance.json"
+  ],
+  "cwd": "/tmp/deidei-r03-t03-b-candidates/tests-a",
+  "exit_code": 1,
+  "server_sha": "0f114284492417ec61634895c485d73417ff1b49",
+  "tests_sha": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+  "desktop_sha": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+  "desktop_status": "NOT_CALLED_BY_ORIGINAL_DRIVER",
+  "timestamp": "2026-09-14T15:20:41.568580+00:00"
+}

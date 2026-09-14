@@ -1,0 +1,29 @@
+{
+  "service_executed_sha": "c4b27b1b358a4823e65d92e0b035be3e18438c60",
+  "service_pr23_head_at_delivery": "b40996e833297e24817b9c24b7830ed2941d9c3d",
+  "server_package_git_trees": {
+    "c4b27b1b358a4823e65d92e0b035be3e18438c60": "d9961a035413e5c0f1a67fab397c1332ba01ee1d",
+    "b40996e833297e24817b9c24b7830ed2941d9c3d": "d9961a035413e5c0f1a67fab397c1332ba01ee1d"
+  },
+  "changes_after_executed_candidate": [
+    "docs/results/R03-T01-b/DECISIONS.md",
+    "docs/results/R03-T01-b/MANIFEST.json",
+    "docs/results/R03-T01-b/PR-BODY.md",
+    "docs/results/R03-T01-b/REPORT.md",
+    "docs/results/R03-T01-b/decisions.json",
+    "docs/results/R03-T01-b/policy-effective.json",
+    "game/server/README.md"
+  ],
+  "desktop_pr24_head": "1dbe1e4f8de28410dc42946efddffc011966cc3a",
+  "decision_source_sha": "b40996e833297e24817b9c24b7830ed2941d9c3d",
+  "decisions": {
+    "turn_ms": 10000,
+    "host_edit_during_match": true,
+    "eliminated_keeps_seat": true,
+    "submit_change_allowed": false,
+    "ordinary_absence": "third_after_turn",
+    "host_absence": "three_auto_fourth_close",
+    "host_leave_timing": "after_turn",
+    "early_reveal": true
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "name": "rules-acceptance",
+  "command": [
+    "python3",
+    "tests/rules_v1_001/run_acceptance.py",
+    "--core",
+    "/tmp/deidei-r03-t03-b-candidates/service-b/game/core"
+  ],
+  "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+  "env": {},
+  "exit_code": 0,
+  "started_at": "2026-09-14T15:58:50.572924+00:00",
+  "finished_at": "2026-09-14T15:58:51.588697+00:00",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+}

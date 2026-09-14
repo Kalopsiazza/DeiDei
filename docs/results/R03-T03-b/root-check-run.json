@@ -1,0 +1,13 @@
+{
+  "name": "root-check",
+  "command": [
+    "python3",
+    "scripts/check.py"
+  ],
+  "cwd": "/Users/zengchongtai/develop/DeiDei-r03-t03-b",
+  "env": {},
+  "exit_code": 0,
+  "started_at": "2026-09-14T15:58:47.459107+00:00",
+  "finished_at": "2026-09-14T15:58:50.813788+00:00",
+  "tests_sha": "fe6163ae52ed8e353b3a3ae51174a2a4f018b33d"
+}
