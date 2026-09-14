@@ -1,0 +1,38 @@
+
+> deidei-r02-desktop@0.1.0 test:online
+> npm run build && node --test tests-online/test-*.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ public amounts use ledger at reveal and new state only in next selecting phase (0.677125ms)
+✔ 33 option costs are live server values, big DD stays rational and catalog supplies only text (0.747ms)
+✔ spectator, eliminated, forced, disconnected, paused, pending and accepted never become editable (0.804583ms)
+✔ start requires two ready connected players and summary reports actual source, gains and outcomes (0.444584ms)
+✔ endpoint only accepts explicit loopback and rooms path; no URL credentials (1.204042ms)
+✔ credentials and local_id never enter any renderer state or broadcast (6.06075ms)
+✔ hello defaults drive client data, commands serialize, extra fields rejected (0.825542ms)
+✔ snapshot before create ack buffered, old sequence and unrelated room ignored (2.558541ms)
+✔ late submit ack does not restore an old turn; same turn ack confirms only own entry (4.805917ms)
+✔ disconnect retries exact pending intent after resume and ignores the old generation (0.905791ms)
+✔ ack timeout reconnects; sync serializes after resume and failed commands never auto retry (0.661917ms)
+✔ explicit disconnected leave cancels pending, timers and late snapshots (0.549916ms)
+✔ room leave ack revokes receiving old room; session replacement and server reboot terminate (1.190417ms)
+✔ monotonic estimate, paused phase freezes selection, cutoff blocks clicks (2.830167ms)
+✔ schema rejects unknown private nested fields, binary, duplicate keys and spectator options (4.816042ms)
+✔ other session snapshot cannot replace private self, recovery cannot manually submit (3.075459ms)
+✔ new session clears terminated room; invalid hello defaults never reach page (0.503ms)
+✔ preload only exposes named methods, strips IPC event and removes exact subscription (1.905ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 81.429709
