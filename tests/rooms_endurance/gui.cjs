@@ -15,7 +15,7 @@ const report={source_sha:sha,platform:process.platform,arch:process.arch,transpo
  assert.equal(execFileSync('git',['rev-parse','HEAD'],{cwd:product,encoding:'utf8'}).trim(),sha);
  assert.equal(execFileSync('git',['status','--porcelain','--','game/server','game/desktop','game/core'],{cwd:product,encoding:'utf8'}).trim(),'');
  const directory=await fs.mkdtemp(path.join(os.tmpdir(),'r03-c-gui-'));
- const apps=[],pages=[],errors=[],processes=[];let service,port;await fs.mkdir(output,{recursive:true});
+ const apps=[],pages=[],errors=[],processes=[],ownedChildren=new Set();let service,port;await fs.mkdir(output,{recursive:true});
  async function startService(){
   service=spawn(python,['-u','-m','deidei_server','--port',String(port||0)],{env:{...process.env,PYTHONPATH:[path.join(product,'game/core'),path.join(product,'game/server')].join(path.delimiter)},stdio:['ignore','pipe','ignore']});
   const lines=createInterface({input:service.stdout});
@@ -63,13 +63,21 @@ const report={source_sha:sha,platform:process.platform,arch:process.arch,transpo
   const profile=(await pages[1].evaluate(()=>window.desktop.profile.read())).data;
   const solo=await pages[1].evaluate(id=>window.desktop.port.startSolo(id),profile.local_id);assert.equal(solo.ok,true);assert.equal(solo.data.source,'live');
   report.checks.push('recovery creates distinct new room; offline real worker starts after restart');
+  // Observe descendants while they still have known owned parents; do not inspect unrelated apps.
+  const processRows=execFileSync('ps',['-axo','pid=,ppid='],{encoding:'utf8'}).trim().split('\n').map(l=>l.trim().split(/\s+/).map(Number));
+  const family=new Set(processes.map(p=>p.pid));
+  for(let pass=0;pass<8;pass++)for(const [pid,ppid] of processRows)if(family.has(ppid)&&!family.has(pid)){family.add(pid);ownedChildren.add(pid);}
   report.close_ms=[];
   for(const app of apps){
    const started=performance.now();const closed=app.waitForEvent('close',{timeout:5000});
    await app.evaluate(({dialog,BrowserWindow})=>{dialog.showMessageBox=async()=>({response:1});BrowserWindow.getAllWindows()[0].close();}).catch(()=>{});
    await closed;report.close_ms.push(Math.round(performance.now()-started));assert.ok(processes[apps.indexOf(app)].exitCode!==null||processes[apps.indexOf(app)].signalCode!==null);
   }
-  report.checks.push('three sequential closes exit owned Electron processes');assert.deepEqual(errors,[]);report.status='PASS';
+  const alive=pid=>{try{process.kill(pid,0);return true;}catch(e){if(e.code==='ESRCH')return false;throw e;}};
+  for(let i=0;i<40&&[...ownedChildren].some(alive);i++)await delay(50);
+  report.descendants_observed=ownedChildren.size;report.descendants_after=[...ownedChildren].filter(alive).length;
+  assert.equal(report.descendants_after,0);
+  report.checks.push('three sequential closes exit owned Electron processes and observed descendants');assert.deepEqual(errors,[]);report.status='PASS';
  }catch(e){report.status='FAIL';report.error=e.name;report.stage=report.checks.length;process.exitCode=1;}
  finally{
   for(const app of apps)if(processes[apps.indexOf(app)].exitCode===null&&processes[apps.indexOf(app)].signalCode===null){await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});}).catch(()=>{});await app.close().catch(()=>{});}
