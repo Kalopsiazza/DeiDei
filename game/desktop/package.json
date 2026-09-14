@@ -25,6 +25,8 @@
     "start": "npm run build && electron .",
     "test": "npm run build && node --test test.cjs test-live.cjs test-navigation.cjs test-packaging.cjs",
     "smoke": "node smoke-live.cjs",
+    "test:online": "npm run build && node --test tests-online/test-*.cjs",
+    "smoke:online": "npm run build && node tests-online/smoke.cjs",
     "package": "python ../packaging/build.py"
   }
 }

@@ -2,6 +2,8 @@ const { app, BrowserWindow, ipcMain, protocol, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs/promises');
 const { WorkerPort } = require('./worker-port.cjs');
+const { NetworkRoomPort } = require('./online/network-room-port.cjs');
+const online=new NetworkRoomPort({url:process.env.DEIDEI_ROOM_URL});
 const { ProfileStore, fields } = require('./profile.cjs');
 const { FixturePort, manual, scenes } = require('./build/fixture.cjs');
 protocol.registerSchemesAsPrivileged([{ scheme:'app', privileges:{ standard:true, secure:true, supportFetchAPI:true } }]);
@@ -14,8 +16,9 @@ app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore(
 let port=new FixturePort(), switching=false;
 async function replacePort(next, start) {
   if(switching)throw new Error('WORKER_BUSY');
+  if(online.isActive())throw new Error('ROOM_ACTIVE');
   switching=true;
-  try { if(port.close)await port.close();else await port.leave();port=next;const view=await start(next);window.setTitle(`叠叠 R02 · ${view.source==='live'?'本地单人':'演示数据'}`);return view; }
+  try { online.close();if(port.close)await port.close();else await port.leave();port=next;const view=await start(next);window.setTitle(`叠叠 R02 · ${view.source==='live'?'本地单人':'演示数据'}`);return view; }
   finally { switching=false; }
 }
 const files={ 'index.html':'text/html; charset=utf-8', 'renderer.js':'text/javascript', 'style.css':'text/css' };
@@ -50,22 +53,48 @@ app.whenReady().then(async()=>{
   expose('port.submit',p=>{fields(p,['view_id','entry_id']);if(!validString(p.view_id)||!validString(p.entry_id))throw new Error('INVALID_INPUT');return port.submit(p.view_id,p.entry_id);},true);
   expose('port.getView',()=>port.getView()); expose('port.leave',()=>port.leave());
   expose('fixture.preview',p=>{fields(p,['scene']);if(!scenes.includes(p.scene))throw new Error('INVALID_SCENE');return replacePort(new FixturePort(),next=>next.preview(p.scene));},true);
+  online.onChange(state=>{if(window&&!window.isDestroyed())window.webContents.send('online.change',state);});
+  expose('online.openLobby',async()=>{
+    if(switching)throw new Error('WORKER_BUSY');
+    if(port.isActive())throw new Error('SOLO_ACTIVE');
+    const profile=await store.read();if(!profile)throw new Error('INVALID_PROFILE');
+    if(switching||port.isActive())throw new Error('SOLO_ACTIVE');
+    return online.openLobby(profile);
+  });
+  for(const method of ['create','join','ready','start','changeRole','submit','returnLobby'])expose(`online.${method}`,p=>online[method](p),true);
+  expose('online.read',()=>online.read());
+  expose('online.leave',()=>online.leave());
   expose('manual.read',()=>manual);
   expose('app.quit',()=>{window.close();return null;});
   window.on('close',e=>{
-    if(allowClose||!port.isActive())return;
+    if(allowClose||(!port.isActive()&&!online.isActive()))return;
     e.preventDefault();
     if(closePending)return;closePending=true;
-    dialog.showMessageBox(window,{type:'question',buttons:['继续对局','退出'],defaultId:0,cancelId:0,message:'退出当前对局？',detail:'本次对局进度不会保存，本机档案和已保存的设置仍保留。'}).then(r=>{if(r.response===1){allowClose=true;window.close();}}).finally(()=>{closePending=false;});
+    dialog.showMessageBox(window,{type:'question',buttons:['继续对局','退出'],defaultId:0,cancelId:0,message:online.isActive()?'退出好友房？':'退出当前对局？',detail:online.isActive()?(online.snapshot?.view.host_id===online.snapshot?.view.self.player_id?'你是房主，退出将结束房间。':'退出后原席位由服务处理，本机档案保留。'):'本次对局进度不会保存，本机档案和已保存的设置仍保留。'}).then(async r=>{if(r.response===1){await exitOnline();allowClose=true;window.close();}}).finally(()=>{closePending=false;});
   });
   await window.loadURL('app://desktop/index.html');
   try{const p=await store.read();if(p)window.setFullScreen(p.settings.fullscreen);}catch{}
 });
+async function exitOnline() {
+  if(!online.isActive()){online.close();return;}
+  // Give the serialized leave its ack before closing the socket; never hang OS quit.
+  await new Promise(resolve=>{
+    let finishing=false,sent=false,unsubscribe;
+    const finish=()=>{if(finishing)return;finishing=true;clearTimeout(timeout);unsubscribe?.();online.close();resolve();};
+    const timeout=setTimeout(finish,3000);
+    const next=state=>{
+      if(!online.isActive()||state.status!=='connected'){finish();return;}
+      if(!state.pending){if(sent){finish();return;}sent=true;try{online.leave();}catch{finish();}}
+    };
+    unsubscribe=online.onChange(next);next(online.read());
+  });
+}
 let quitting=false;
 app.on('before-quit',event=>{
-  if(quitting||!port.close)return;
-  event.preventDefault();
-  if(port.isActive()&&!allowClose){window.close();return;}
-  quitting=true;void port.close().finally(()=>app.quit());
+  if(quitting)return;
+  if((port.isActive()||online.isActive())&&!allowClose){event.preventDefault();window.close();return;}
+  online.close();
+  if(!port.close)return;
+  event.preventDefault();quitting=true;void port.close().finally(()=>app.quit());
 });
 app.on('window-all-closed',()=>app.quit());
