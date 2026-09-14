@@ -53,7 +53,10 @@ def load_module(directory: Path, name: str, file: str) -> Any:
 
 def evidence(directory: Path) -> dict:
     proc = subprocess.run(['git', '-C', str(directory), 'rev-parse', 'HEAD'], capture_output=True, text=True)
-    files = sorted(p for p in directory.rglob('*.py') if '__pycache__' not in p.parts)
+    tracked = subprocess.run(['git', '-C', str(directory), 'ls-files', '-z', '--cached', '--others', '--exclude-standard', '--', '.'], capture_output=True)
+    files = sorted({directory / name.decode() for name in tracked.stdout.split(b'\0') if name
+                    and Path(name.decode()).suffix in {'.py', '.cjs', '.json', '.ts', '.tsx', '.css', '.in', '.lock'}})
+    files = [p for p in files if p.is_file()]
     digest = hashlib.sha256()
     for path in files:
         digest.update(str(path.relative_to(directory)).encode())
@@ -74,6 +77,8 @@ class Peer:
         self.fault: Exception | None = None
         self.closed = False
         self.raw_error: str | None = None
+        self.last_membership_end: dict | None = None
+        self.terminal_room: str | None = None
         self.task = asyncio.create_task(self.receive())
 
     async def receive(self) -> None:
@@ -88,7 +93,7 @@ class Peer:
                         check_ack(frame, {'request_id': rid}, {'ok': False, 'error': {'code': self.raw_error}})
                         continue
                     need(rid in self.pending, 'unsolicited ack')
-                    command, expected, future = self.pending.pop(rid)
+                    command, expected, future = self.pending[rid]
                     check_ack(frame, command, expected)
                     if frame['ok']:
                         data = frame['data']
@@ -104,18 +109,29 @@ class Peer:
                                 self.room_id = data['room_id']
                         elif op == 'room.leave':
                             self.room_id = None
+                    self.pending.pop(rid)
                     self.owner.completed.add(rid)
                     if not future.done():
                         future.set_result(frame)
+                elif frame.get('type') == 'membership.ended':
+                    check_membership_end(frame, self.owner.env[self.alias]['player_id'])
+                    if self.room_id is not None:
+                        need(frame['room_id'] == self.room_id, 'old membership event crossed into new room')
+                    elif self.last_membership_end is not None:
+                        need(frame == self.last_membership_end, 'resume changed membership receipt')
+                    self.last_membership_end = deepcopy(frame)
+                    self.room_id = None
+                    self.latest = None
                 elif frame.get('type') == 'snapshot':
-                    need(self.room_id is not None, 'snapshot delivered after membership revoked')
-                    check_snapshot(frame, self.owner.env[self.alias]['player_id'], self.room_id, self.owner.case['policy'])
+                    need(self.room_id is not None or (self.terminal_room == frame['room_id'] and frame['view']['phase'] == 'closed'), 'snapshot delivered after membership revoked')
+                    check_snapshot(frame, self.owner.env[self.alias]['player_id'], self.room_id or self.terminal_room, self.owner.policy_for(frame))
                     seq = int(frame['seq'])
-                    need(seq >= self.previous_seq.get(self.room_id, 0), 'snapshot seq went backwards')
-                    self.previous_seq[self.room_id] = seq
+                    need(seq >= self.previous_seq.get(frame['room_id'], 0), 'snapshot seq went backwards')
+                    self.previous_seq[frame['room_id']] = seq
                     self.latest = frame
                     self.owner.check_public_consistency(frame)
                     if frame['view']['phase'] == 'closed':
+                        self.terminal_room = frame['room_id']
                         self.room_id = None
                 else:
                     raise ValueError('unexpected server message after hello')
@@ -123,6 +139,9 @@ class Peer:
             # WebSocket close is observable separately; protocol assertion failures are fatal.
             if not type(error).__module__.startswith('websockets.exceptions'):
                 self.fault = error
+                for _, _, future in self.pending.values():
+                    if not future.done():
+                        future.set_exception(error)
             self.closed = True
         finally:
             self.closed = True
@@ -130,7 +149,7 @@ class Peer:
     async def command(self, message: dict, expected: dict) -> dict:
         future = asyncio.get_running_loop().create_future()
         self.pending[message['request_id']] = (message, expected, future)
-        await self.ws.send(json.dumps(message, ensure_ascii=False))
+        await self.ws.send(json.dumps(message, ensure_ascii=True))
         try:
             return await asyncio.wait_for(future, 3)
         except TimeoutError:
@@ -148,10 +167,23 @@ class Scenario:
         self.seq: dict[str, int] = {}
         self.public: dict[tuple[str, str], dict] = {}
         self.retired: list[Peer] = []
+        self.policy_versions: dict[tuple[str, str], dict] = {}
+        self.wire_saved: dict[str, dict] = {}
+        self.hellos: dict[str, dict] = {}
+        self.resolution_calls = 0
+        self.decoder_rows: list[dict] = []
+        self.desktop_path: Path | None = None
         self.factory_calls = 0
         self.chooser_calls = 0
         self.server = None
         self.stack = AsyncExitStack()
+
+    def policy_for(self, frame: dict) -> dict:
+        key = (frame['room_id'], frame['view']['policy_revision'])
+        if key[1] == '1' and key not in self.policy_versions:
+            self.policy_versions[key] = deepcopy(self.case['policy'])
+        need(key in self.policy_versions, 'unrequested policy revision')
+        return self.policy_versions[key]
 
     def expand(self, obj: Any) -> Any:
         if isinstance(obj, str) and obj.startswith('$'):
@@ -204,6 +236,8 @@ class Scenario:
         public = public_view(frame)
         # Sync can re-send the same seq with a fresher countdown.
         public['timer'].pop('remaining_ms')
+        if public.get('host_recovery') and public['host_recovery']['kind'] == 'grace':
+            public['host_recovery'].pop('remaining_ms')
         if key in self.public:
             need(self.public[key] == public, 'different public state for the same room seq')
         self.public[key] = public
@@ -253,15 +287,19 @@ class Scenario:
                 raise peer.fault
 
     async def open(self, alias: str, *, resume: bool = False, token: str | None = None,
-                   error: str | None = None) -> None:
+                   error: str | None = None, profile: dict | None = None, error_field: str | None = None) -> None:
         ws = await self.stack.enter_async_context(self.connect(
             self.server.url, subprotocols=['deidei.rooms.v1'], compression=None,
             max_size=1048576, open_timeout=3, close_timeout=1, proxy=None))
-        check_hello(strict_json(await asyncio.wait_for(ws.recv(), 3)))
+        hello = strict_json(await asyncio.wait_for(ws.recv(), 3))
+        check_hello(hello, self.case['policy'])
+        self.hellos[alias] = hello
         old = self.peers.get(alias)
         peer = Peer(self, alias, ws)
         if resume and old:
             peer.room_id = old.room_id
+            peer.last_membership_end = deepcopy(old.last_membership_end)
+            peer.terminal_room = old.terminal_room
         if old:
             self.retired.append(old)
         self.peers[alias] = peer
@@ -270,11 +308,13 @@ class Scenario:
                            resume_token=token or self.env[alias]['resume_token'])
             op = 'session.resume'
         else:
-            payload = dict(profile=self.case['people'][alias])
+            payload = dict(profile=self.case['people'][alias] if profile is None else profile)
             op = 'session.open'
-        message = dict(v=1, type='command', request_id=f'{alias}-auth-{len(self.completed)}',
+        message = dict(v=1, type='command', request_id=request_uuid(f'{alias}-auth-{len(self.completed)}'),
                        command_seq=None, op=op, payload=payload)
         expected = {'ok': False, 'error': {'code': error}} if error else {'ok': True}
+        if error_field is not None:
+            expected['error']['field'] = error_field
         await peer.command(message, expected)
         await self.flush()
 
@@ -284,6 +324,11 @@ class Scenario:
         self.seq[alias] = self.seq.get(alias, 0) + 1
         if message['command_seq'] == '@next':
             message['command_seq'] = str(self.seq[alias])
+        if message['op'] == 'room.set_turn_limit' and step['ack'].get('ok'):
+            payload = message['payload']
+            previous = self.policy_versions[(payload['room_id'], payload['expected_policy_revision'])]
+            revision = int(payload['expected_policy_revision']) + (payload['turn_ms'] != previous['turn_ms'])
+            self.policy_versions[(payload['room_id'], str(revision))] = {**previous, 'turn_ms': payload['turn_ms']}
         ack = await self.peers[alias].command(message, self.expand(step['ack']))
         self.history[message['request_id']] = (alias, deepcopy(message), deepcopy(step['ack']))
         if step.get('save') and ack['ok']:
@@ -293,7 +338,7 @@ class Scenario:
     async def execute(self, step: dict) -> None:
         action = step['do']
         if action == 'connect':
-            await self.open(step['as'])
+            await self.open(step['as'], profile=step.get('profile'), error=step.get('error'), error_field=step.get('error_field'))
         elif action == 'command':
             await self.send(step)
         elif action == 'parallel':
@@ -353,6 +398,47 @@ class Scenario:
                 targets.sort()
             ledger['events'].sort(key=lambda e: (e['phase'], e['actor_id'] or '', e['target_id'] or '', e['kind'], e['event_id']))
             check_result(result, step['expected'], step['input'])
+        elif action == 'receipt':
+            peer = self.peers[step['as']]
+            events = [f for f in peer.frames if f['type'] == 'membership.ended']
+            need(len(events) == step['count'], 'membership receipt count')
+            if events:
+                subset(self.normalize(events[-1]), step['expect'])
+                if step.get('save'):
+                    self.wire_saved[step['save']] = deepcopy(events[-1])
+                if step.get('same_as'):
+                    need(events[-1] == self.wire_saved[step['same_as']], 'resume must replay same receipt')
+        elif action == 'resolution_count':
+            need(self.resolution_calls == step['count'], 'core invocation count')
+        elif action == 'snapshot_count':
+            count = sum(f['type'] == 'snapshot' for f in self.peers[step['as']].frames)
+            if step.get('save'):
+                self.saved[step['save']] = count
+            else:
+                need(count - self.saved[step['name']] == step['delta'], 'unexpected snapshot publication')
+        elif action == 'wire':
+            peer = self.peers[step['as']]
+            if step.get('save'):
+                self.wire_saved[step['save']] = deepcopy(peer.latest)
+            if step.get('expect'):
+                expect_paths(peer.latest, step['expect'])
+            if step.get('same_as'):
+                need(at(peer.latest, step['path']) == at(self.wire_saved[step['same_as']], step['path']), 'wire value changed')
+        elif action == 'decoder':
+            if self.desktop_path is None:
+                raise FileNotFoundError('explicit desktop candidate required')
+            from tests.rooms_v1.crosscheck import decode
+            rows = [{'frame': self.peers[step['as']].latest}]
+            outcome = decode(rows, self.desktop_path)
+            need(outcome['exit_code'] == 0 and all(r['accepted'] for r in outcome['rows']), 'desktop rejected real server snapshot')
+            self.decoder_rows.extend(outcome['rows'])
+        elif action == 'client':
+            if self.desktop_path is None:
+                raise FileNotFoundError('explicit desktop candidate required')
+            packet = {'hello': self.hellos[step['as']], 'snapshot': self.wire_saved[step['snapshot']],
+                      'event': self.wire_saved[step['event']]}
+            result = subprocess.run(['node', str(HERE / 'client_membership_check.cjs'), str(self.desktop_path / 'online/network-room-port.cjs')], input=json.dumps(packet), text=True, capture_output=True, timeout=10)
+            need(result.returncode == 0, 'real client failed stale-message checks')
         elif action == 'raw':
             peer = self.peers[step['as']]
             before = len(peer.frames)
@@ -365,6 +451,10 @@ class Scenario:
             else:
                 need(any(f.get('type') == 'ack' and f.get('ok') is False
                          and f.get('error', {}).get('code') == step['error'] for f in frames), 'malformed request not safely rejected')
+            if 'ack' in step:
+                acks = [f for f in frames if f.get('type') == 'ack']
+                need(len(acks) == 1, 'raw input must receive exactly one ack')
+                subset(acks[0], step['ack'])
             peer.raw_error = None
         elif action == 'silence':
             peer = self.peers[step['as']]
@@ -391,9 +481,10 @@ class Scenario:
             alias = step['as']
             commands = []
             for i in range(45):
-                commands.append({'as': alias, 'message': dict(v=1, type='command', request_id=f'rate-{i}', command_seq='@next', op='room.sync', payload={'room_id': '$room.room_id'}),
+                commands.append({'as': alias, 'message': dict(v=1, type='command', request_id=request_uuid(f'rate-{i}'), command_seq='@next', op='room.sync', payload={'room_id': '$room.room_id'}),
                                  'ack': {'one_of': [{'ok': True}, {'ok': False, 'error': {'code': 'RATE_LIMITED'}}]}})
-            results = await asyncio.gather(*(self.send(command) for command in commands))
+            # Await each reply so this rate probe does not also overflow the writer queue.
+            results = [await self.send(command) for command in commands]
             need(any(not result['ok'] for result in results), 'burst limit not enforced')
         elif action == 'slow':
             peer = self.peers[step['as']]
@@ -408,9 +499,20 @@ class Scenario:
 
     async def run(self, create_test_server: Any) -> None:
         clock = ManualClock() if self.case['clock'] == 'manual' else None
+        previous_profile = sys.getprofile()
+        def profile(frame: Any, event: str, arg: Any) -> None:
+            if event == 'call' and self.api is not None and frame.f_code is self.api.resolve_round.__code__:
+                self.resolution_calls += 1
+            if previous_profile is not None:
+                previous_profile(frame, event, arg)
+        sys.setprofile(profile)
         try:
-            async with create_test_server(self.case['policy'], clock=clock,
-                    new_match_factory=self.factory, timeout_chooser=self.chooser, rng=random.Random(73)) as server:
+            config = {k: self.case['policy'][k] for k in ('turn_ms', 'early_reveal', 'spectator_cap', 'host_disconnect_grace_ms')}
+            if self.case['initial'].get('service_defaults'):
+                config = None
+            async with create_test_server(config, clock=clock,
+                    new_match_factory=self.factory, timeout_chooser=self.chooser, rng=random.Random(73),
+                    host_leave_timing=self.case['initial'].get('host_leave_timing', 'after_turn')) as server:
                 url = urlsplit(server.url)
                 need(url.scheme == 'ws' and url.hostname == '127.0.0.1' and url.path == '/rooms-v1'
                      and url.port and not url.username and not url.query and not url.fragment, 'A08 must bind real loopback URL')
@@ -425,12 +527,30 @@ class Scenario:
                     if peer.fault:
                         raise peer.fault
         finally:
+            sys.setprofile(previous_profile)
             for peer in list(self.peers.values()) + self.retired:
                 peer.task.cancel()
                 if peer.ws.transport.is_reading() is False:
                     peer.ws.transport.resume_reading()
             await asyncio.gather(*(p.task for p in list(self.peers.values()) + self.retired), return_exceptions=True)
             await self.stack.aclose()
+
+
+def failure_evidence(scenario: Scenario) -> dict:
+    """Keep diagnostic protocol facts, never credentials or unrevealed choices."""
+    result = {}
+    for alias, peer in scenario.peers.items():
+        frames = []
+        for frame in peer.frames[-6:]:
+            if frame.get('type') == 'ack':
+                frames.append({k: frame[k] for k in ('type', 'request_id', 'ok', 'error') if k in frame})
+            elif frame.get('type') == 'snapshot':
+                view = frame['view']
+                frames.append(dict(type='snapshot', seq=frame['seq'], phase=view['phase'],
+                    timer=view['timer'], host_recovery=view.get('host_recovery'),
+                    policy_revision=view.get('policy_revision'), current_turn_ms=view.get('current_turn_ms')))
+        result[alias] = dict(frames=frames, closed=peer.closed)
+    return result
 
 
 async def run(args: argparse.Namespace) -> tuple[dict, int]:
@@ -442,13 +562,18 @@ async def run(args: argparse.Namespace) -> tuple[dict, int]:
         chosen = [c for c in cases if c['case_id'] in ids or c['case_id'].startswith('N10/')]
     report = dict(server_status='NOT_RUN', fixture_status='VALID', selected=len(chosen), passed=0,
                   server=evidence(args.server_path) if args.server_path.is_dir() else None,
-                  core=evidence(args.core_path) if args.core_path.is_dir() else None, cases=[])
+                  core=evidence(args.core_path) if args.core_path.is_dir() else None,
+                  desktop=evidence(args.desktop_path) if args.desktop_path and args.desktop_path.is_dir() else None,
+                  tests=evidence(HERE), desktop_status='NOT_RUN', cases=[])
     if not (args.server_path / 'deidei_server/testing.py').is_file() or not (args.core_path / 'deidei_core/api.py').is_file():
         report['reason'] = 'explicit server or core missing; no fallback'
         report['cases'] = [dict(case_id=c['case_id'], status='NOT_RUN') for c in chosen]
         return report, 2
     if not args.tested_code_sha or report['server']['sha'] != args.tested_code_sha or report['server']['dirty'] or report['core']['dirty'] or report['core']['sha'] != args.tested_code_sha:
         report['reason'] = 'fixed clean service SHA required via --tested-code-sha'
+        return report, 2
+    if args.desktop_path and (not report['desktop'] or report['desktop']['sha'] != args.desktop_sha or report['desktop']['dirty']):
+        report['reason'] = 'fixed clean desktop SHA required'
         return report, 2
     api = load_module(args.core_path, 'deidei_core.api', 'deidei_core/api.py')
     service = load_module(args.server_path, 'deidei_server.testing', 'deidei_server/testing.py')
@@ -462,11 +587,20 @@ async def run(args: argparse.Namespace) -> tuple[dict, int]:
             report['cases'].append(dict(case_id=case['case_id'], status='NOT_RUN', reason='actual Electron requires integration package'))
             continue
         try:
-            await Scenario(case, api, connect, shared).run(service.create_test_server)
+            if any(s['do'] in {'decoder', 'client'} for s in case['steps']) and not args.desktop_path:
+                report['cases'].append(dict(case_id=case['case_id'], status='NOT_RUN', reason='explicit desktop candidate missing'))
+                continue
+            scenario = Scenario(case, api, connect, shared)
+            scenario.desktop_path = args.desktop_path
+            await scenario.run(service.create_test_server)
+            if scenario.decoder_rows:
+                report['desktop_status'] = 'RUN'
             report['cases'].append(dict(case_id=case['case_id'], status='PASS'))
             report['passed'] += 1
         except Exception as error:
-            report['cases'].append(dict(case_id=case['case_id'], status='FAIL', reason=str(error) if isinstance(error, ValueError) and str(error).startswith('step ') else type(error).__name__))
+            report['cases'].append(dict(case_id=case['case_id'], status='FAIL', reason=str(error) if isinstance(error, ValueError) and str(error).startswith('step ') else type(error).__name__,
+                observed=failure_evidence(scenario)))
+        print(case['case_id'] + ' ' + report['cases'][-1]['status'], file=sys.stderr, flush=True)
     failed = any(c['status'] == 'FAIL' for c in report['cases'])
     report['server_status'] = 'FAIL' if failed else 'SOCKET_CHECKS_PASS'
     return report, 1 if failed else (3 if not report['passed'] else 0)
@@ -477,6 +611,8 @@ def main() -> int:
     parser.add_argument('--server-path', required=True, type=Path)
     parser.add_argument('--core-path', required=True, type=Path)
     parser.add_argument('--tested-code-sha')
+    parser.add_argument('--desktop-path', type=Path)
+    parser.add_argument('--desktop-sha')
     parser.add_argument('--case', action='append')
     parser.add_argument('--output', type=Path)
     args = parser.parse_args()

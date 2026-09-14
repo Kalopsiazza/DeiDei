@@ -6,9 +6,9 @@ import json
 from pathlib import Path
 
 try:
-    from .validate import HERE, POLICY, ROOT
+    from .validate import HERE, POLICY, ROOT, request_uuid
 except ImportError:
-    from validate import HERE, POLICY, ROOT
+    from validate import HERE, POLICY, ROOT, request_uuid
 
 CASES = []
 
@@ -32,7 +32,7 @@ class Case:
                 save: str | None = None, rid: str | None = None, ack_data: dict | None = None) -> dict:
         self.number += 1
         message = dict(v=1, type='command', request_id=rid or f'cmd-{self.number}',
-                       command_seq='@next', op=op, payload=payload)
+                       command_seq=None if op.startswith('session.') else '@next', op=op, payload=payload)
         ack = dict(ok=False, error=dict(code=error)) if error else dict(ok=True)
         if ack_data is not None:
             ack['data'] = ack_data
@@ -156,7 +156,6 @@ def build() -> list[dict]:
         if op == 'forged': payload.update(ready=True, player_id='$h.player_id')
         error = 'INVALID_MESSAGE' if op == 'forged' else ('NOT_HOST' if op == 'room.start' else 'NOT_ACTIVE')
         step = c.command('s', 'room.ready' if op == 'forged' else op, payload, error=error)
-        if op == 'room.ready': step['ack']['error']['code'] = ['NOT_ACTIVE', 'WRONG_PHASE']
         c.view('h', 'selecting' if op == 'room.submit' else 'lobby', **{'members.h.ready': op == 'room.submit', 'self.accepted_entry_id': None})
 
     for who in ('h', 'p', 'disconnected'):
@@ -180,7 +179,7 @@ def build() -> list[dict]:
         elif change == 'player_leave': c.leave('p')
         elif change == 'role': c.command('p', 'room.role', dict(room_id='$room.room_id', role='spectator'))
         elif change == 'spectator_join_leave': c.open('s'); c.join('s', 'spectator'); c.leave('s')
-        else: c.command('h', 'room.role', dict(room_id='$room.room_id', role='spectator'), error='WRONG_PHASE')
+        else: c.command('h', 'room.role', dict(room_id='$room.room_id', role='spectator'), error='HOST_ROLE_FIXED')
         c.view('h', 'lobby', **{'members.h.ready': change in {'spectator_join_leave', 'host_role'}})
 
     c = Case(8, 'mid_match', '开场后只允许观众加入', 'P02 P07 W03')
@@ -208,7 +207,7 @@ def build() -> list[dict]:
             c.add('privacy', **{'as': observer}, key='select-' + observer, compare=entry == 'Def')
         c.add('resume', **{'as': 'p'}); c.sync('p'); c.view('p', 'selecting')
         c.add('privacy', **{'as': 'p'}, key='resume-p', compare=entry == 'Def')
-        c.submit('p', 'Pragon', error='UNAVAILABLE_MOVE'); c.view('p', 'selecting')
+        c.submit('p', 'Volvo', error='UNAVAILABLE_MOVE'); c.view('p', 'selecting')
         c.add('privacy', **{'as': 'p'}, key='failure-p', compare=entry == 'Def')
 
     for turn_ms in (5000, 12000, 30000):
@@ -223,7 +222,7 @@ def build() -> list[dict]:
 
     for delta in (-1, 0):
         c = Case(12, 'before' if delta < 0 else 'at', '截止之前1ms接受、恰好截止拒绝', 'P04 W04 A02', early_reveal=False)
-        c.room(); c.submit('h'); c.wait(12000 + delta)
+        c.room(); c.submit('h'); c.wait(POLICY['turn_ms'] + delta)
         c.submit('p', error='TURN_CLOSED' if delta == 0 else None)
         if delta == 0: c.data['steps'][-1]['ack']['error']['code'] = ['TURN_CLOSED', 'STALE_TURN']
         if delta < 0: c.wait(1)
@@ -233,7 +232,7 @@ def build() -> list[dict]:
     for variant in ('illegal', 'missing', 'duplicate', 'nan', 'large', 'bool_number', 'extra'):
         c = Case(13, variant, '坏消息拒绝且不改公开状态或影响其他连接', 'P04 W01 W07 A06')
         c.room(); c.same('h', 'state', 'match.public_state', remember=True)
-        if variant == 'illegal': c.submit('p', 'Pragon', error='UNAVAILABLE_MOVE')
+        if variant == 'illegal': c.submit('p', 'Volvo', error='UNAVAILABLE_MOVE')
         elif variant in ('missing', 'extra', 'bool_number'):
             payload = dict(room_id='$room.room_id', match_id='$match.match_id', turn_id='$match.turn_id', entry_id='Charge')
             if variant == 'missing': payload.pop('entry_id')
@@ -271,10 +270,10 @@ def build() -> list[dict]:
         c = Case(17, 'players_' + str(count), '双人注入合法代理、多人固定攒', 'P05 W06 A02 A08')
         c.data['initial']['timeout_entry'] = 'Def'
         players = ('h', 'p', 'q')[:count]
-        c.room(players); c.wait(12000)
+        c.room(players); c.wait(POLICY['turn_ms'])
         for alias in players:
-            c.view('h', 'revealing', **{f'match.last_turn.action_sources.{alias}': 'timeout_auto', f'match.last_turn.core_resolution.ledger.actions.{alias}.entry_id': 'Def' if count == 2 else 'Charge', f'members.{alias}.absence_count': 1})
-        c.add('chooser_count', count=2 if count == 2 else 0)
+            c.view('h', 'revealing', **{f'match.last_turn.action_sources.{alias}': 'timeout_auto', f'match.last_turn.core_resolution.ledger.actions.{alias}.entry_id': 'Def' if count == 2 and alias != 'h' else 'Charge', f'members.{alias}.absence_count': 1})
+        c.add('chooser_count', count=1 if count == 2 else 0)
 
     c = Case(18, 'six_to_two', '六人降到双人仍保持多人超时策略', 'P03 P05 P07 A05')
     c.data['initial']['players'] = {'h': {'dd6': '6'}, 'p': {'dd6': '6'}}
@@ -282,7 +281,7 @@ def build() -> list[dict]:
     c.submit('h', 'Bi'); c.submit('p', 'Bi')
     for alias in ('q', 'r', 't', 'u'): c.submit(alias)
     c.wait(300); c.view('h', 'revealing', **{'members.q.participation': 'eliminated', 'members.length': 6})
-    c.next(); c.wait(12000)
+    c.next(); c.wait(POLICY['turn_ms'])
     c.view('h', 'revealing', **{'match.mode_at_start': 'multiplayer', 'match.last_turn.core_resolution.ledger.actions.h.entry_id': 'Charge', 'match.last_turn.core_resolution.ledger.actions.p.entry_id': 'Charge'})
     c.add('chooser_count', count=0)
 
@@ -290,18 +289,18 @@ def build() -> list[dict]:
         c = Case(19, intervention, '连续缺席只由有效手动提交清零', 'P05 W03 W04')
         c.room(('h', 'p', 'q'))
         for turn in (1, 2):
-            c.submit('h'); c.submit('q'); c.wait(12000)
+            c.submit('h'); c.submit('q'); c.wait(POLICY['turn_ms'])
             c.view('h', 'revealing', **{'members.p.absence_count': turn}); c.next()
         if intervention == 'manual': c.submit('p')
-        elif intervention == 'illegal': c.submit('p', 'Pragon', error='UNAVAILABLE_MOVE')
+        elif intervention == 'illegal': c.submit('p', 'Volvo', error='UNAVAILABLE_MOVE')
         elif intervention == 'resume': c.add('disconnect', **{'as': 'p'}); c.add('resume', **{'as': 'p'})
-        c.submit('h'); c.submit('q'); c.wait(300 if intervention == 'manual' else 12000)
+        c.submit('h'); c.submit('q'); c.wait(300 if intervention == 'manual' else POLICY['turn_ms'])
         c.view('h', 'revealing', **({'members.p.absence_count': 0, 'match.last_turn.room_forfeits': []} if intervention == 'manual' else {'members.length': 2, 'match.last_turn.room_forfeits': [{'player_id': 'p', 'reason': 'three_absences'}], 'match.last_turn.effective_transition.kind': 'restart_survivors'}))
 
     for connected in (True, False):
         c = Case(20, 'online' if connected else 'offline', '强制休整在线不计不清、离线只计一次', 'P05 W03 W06')
         c.data['initial']['timeout_entry'] = 'ZengYi'
-        c.room(); c.submit('h'); c.wait(12000); c.next()
+        c.room(); c.submit('h'); c.wait(POLICY['turn_ms']); c.next()
         if not connected: c.add('disconnect', **{'as': 'p'})
         c.submit('h'); c.wait(300)
         c.view('h', 'revealing', **{'members.p.absence_count': 1 if connected else 2, 'match.last_turn.action_sources.p': 'forced', 'match.last_turn.core_resolution.ledger.actions.p.is_recovery': True})
@@ -314,10 +313,10 @@ def build() -> list[dict]:
         c.room(('h', 'p', 'q'))
         if third:
             for _ in range(2):
-                c.submit('h'); c.submit('q'); c.wait(12000); c.next()
+                c.submit('h'); c.submit('q'); c.wait(POLICY['turn_ms']); c.next()
         else:
             c.submit('p'); c.leave('p')
-        c.submit('h'); c.submit('q'); c.wait(12000 if third else 300)
+        c.submit('h'); c.submit('q'); c.wait(POLICY['turn_ms'] if third else 300)
         c.view('h', 'revealing', **{'match.last_turn.core_resolution.ledger.actions.p.entry_id': 'Charge', 'match.last_turn.core_resolution.ledger.kills.h': [], 'match.last_turn.room_forfeits': [{'player_id': 'p', 'reason': 'three_absences' if third else 'voluntary_leave'}], 'match.last_turn.effective_state.active_ids': ['h', 'q']})
 
     c = Case(23, 'single_restart', '规则重开和房间移除只增加一次局号', 'P06 W06 A05')
@@ -345,41 +344,43 @@ def build() -> list[dict]:
         c.leave('p'); c.sync('h'); c.same('h', 'revealed', 'match.last_turn')
         c.wait(1500); c.view('h', 'result' if terminal else 'selecting')
         if not terminal:
-            c.submit('h'); c.wait(12000); c.view('h', 'revealing', **{'match.last_turn.room_forfeits': [{'player_id': 'p', 'reason': 'voluntary_leave'}]})
+            c.submit('h'); c.wait(POLICY['turn_ms']); c.view('h', 'revealing', **{'match.last_turn.room_forfeits': [{'player_id': 'p', 'reason': 'voluntary_leave'}]})
 
     for reason in ('leave', 'absent'):
-        c = Case(26, reason, '房主离开或第三次缺席全房终止', 'P06 W07 A05')
+        c = Case(26, reason, '1.1房主当拍离开或第四次缺席关闭', 'P20 P22 W10 A12 A13')
         c.room(('h', 'p', 'q'))
-        if reason == 'leave': c.leave('h')
+        if reason == 'leave':
+            c.leave('h'); c.submit('p'); c.submit('q'); c.wait(POLICY['turn_ms'])
         else:
-            for i in range(3):
-                c.submit('p'); c.submit('q'); c.wait(12000)
-                if i < 2: c.next('p')
+            for i in range(4):
+                c.submit('p'); c.submit('q'); c.wait(POLICY['turn_ms'])
+                if i < 3: c.next('p')
         c.view('p', 'closed', **{'close_reason': 'HOST_LEFT' if reason == 'leave' else 'HOST_ABSENT', 'self.options': [], 'self.accepted_entry_id': None, 'match.effective_outcome': None})
+        c.add('resolution_count', count=1 if reason == 'leave' else 3)
 
     for grace in (0, 30000, 60000):
         for recover in (False, True):
             if grace == 0 and recover: continue
-            c = Case(27, f'{grace}_' + ('resume' if recover else 'expire'), '房主断线冻结剩余时长与已交牌', 'P08 W05 W07 A04', host_disconnect_grace_ms=grace)
-            c.room(); c.submit('p'); c.wait(1000); c.add('disconnect', **{'as': 'h'})
+            c = Case(27, f'{grace}_' + ('resume' if recover else 'expire'), '1.1无参战回合时的房主管理宽限', 'P21 W10 A12', host_disconnect_grace_ms=grace)
+            c.room(start=False); c.add('disconnect', **{'as': 'h'})
             if grace:
-                c.view('p', 'paused', **{'pause.phase_remaining_ms': 11000, 'pause.resume_phase': 'selecting', 'members.p.absence_count': 0})
+                c.view('p', 'lobby', **{'pause': None, 'host_recovery.kind': 'grace', 'host_recovery.remaining_ms': grace})
             if recover:
                 c.wait(grace - 1); c.add('resume', **{'as': 'h'})
-                c.view('p', 'selecting', **{'self.accepted_entry_id': 'Charge', 'timer.remaining_ms': 11000, 'members.p.absence_count': 0})
-                c.submit('h'); c.wait(300); c.view('p', 'revealing')
+                c.view('p', 'lobby', **{'host_recovery': None, 'members.h.connected': True})
             else:
                 if grace: c.wait(grace)
                 c.view('p', 'closed', **{'close_reason': 'HOST_TIMEOUT'})
+            c.add('resolution_count', count=0)
 
-    c = Case(27, 'reveal_resume', '揭晓暂停恢复剩余1000ms，不重新结算', 'P08 W05 A04')
+    c = Case(27, 'reveal_resume', '1.1揭晓期断线不暂停且不重新结算', 'P20 W10 A12')
     c.room(); c.submit('h'); c.submit('p'); c.wait(300)
     c.view('p', 'revealing'); c.same('p', 'revealed', 'match.last_turn', remember=True)
     c.wait(500); c.add('disconnect', **{'as': 'h'})
-    c.view('p', 'paused', **{'pause.phase_remaining_ms': 1000, 'pause.resume_phase': 'revealing'})
-    c.wait(29999); c.add('resume', **{'as': 'h'})
-    c.view('p', 'revealing', **{'timer.remaining_ms': 1000}); c.same('p', 'revealed', 'match.last_turn')
-    c.wait(999); c.view('p', 'revealing'); c.wait(1); c.view('p', 'selecting')
+    c.view('p', 'revealing', **{'pause': None, 'timer.remaining_ms': 1000})
+    c.wait(999); c.add('resume', **{'as': 'h'})
+    c.view('p', 'revealing', **{'timer.remaining_ms': 1}); c.same('p', 'revealed', 'match.last_turn')
+    c.wait(1); c.view('p', 'selecting'); c.add('resolution_count', count=1)
 
     for mode in ('lobby', 'playing', 'replacement'):
         c = Case(28, mode, '普通成员断线宽限与连接世代', 'P08 W02 A03 A04')
@@ -390,14 +391,14 @@ def build() -> list[dict]:
             c.add('disconnect', **{'as': 'p'}); c.wait(29999); c.view('h', 'lobby', **{'members.length': 2})
             c.wait(1); c.view('h', 'lobby', **{'members.length': 1})
         else:
-            c.add('disconnect', **{'as': 'p'}); c.submit('h'); c.wait(12000)
+            c.add('disconnect', **{'as': 'p'}); c.submit('h'); c.wait(POLICY['turn_ms'])
             c.view('h', 'revealing', **{'members.p.absence_count': 1})
 
     for variant in ('correct', 'forged', 'removed'):
         c = Case(29, variant, '恢复凭证不依赖昵称且退出不复活', 'P08 W02 W03 A03')
         c.room(); c.submit('p')
         if variant == 'removed': c.leave('p')
-        c.add('resume', **{'as': 'p'}, **({'token': 'synthetic-invalid-token', 'error': 'SESSION_EXPIRED'} if variant == 'forged' else {}))
+        c.add('resume', **{'as': 'p'}, **({'token': 'A' * 43, 'error': 'SESSION_EXPIRED'} if variant == 'forged' else {}))
         if variant == 'correct': c.view('p', 'selecting', **{'self.accepted_entry_id': 'Charge', 'self.seat': 1})
         elif variant == 'removed': c.sync('p', error='ROOM_NOT_MEMBER'); c.view('h', 'selecting', **{'members.length': 1})
         else: c.view('h', 'selecting', **{'members.p.submission_state': 'submitted'})
@@ -434,7 +435,7 @@ def build() -> list[dict]:
 
     c = Case(33, 'errors', '错误无堆栈和秘密，普通连接继续服务', 'P09 P13 W07 A06')
     c.room(); c.command('p', 'room.join', dict(room_code='AAAAAAAA', password='synthetic-password', role='player'), error='ALREADY_IN_ROOM')
-    c.submit('p', 'UnknownEntry', error='INVALID_MESSAGE'); c.sync('h')
+    c.submit('p', 12, error='INVALID_MESSAGE'); c.sync('h')
     c.view('h', 'selecting', **{'members.h.absence_count': 0, 'match.last_turn': None})
 
     c = Case(33, 'burst_limit', '单连接突发45条，正常连接继续工作', 'P13 W07 A06')
@@ -462,9 +463,9 @@ def build() -> list[dict]:
     core_case(34, 'C074')
 
     c = Case(34, 'room_mode_absence_reset', '规则重开保留房间模式和缺席次数', 'P05 P06 W06 A05')
-    c.room(('h', 'p', 'q')); c.submit('h'); c.submit('p'); c.wait(12000)
+    c.room(('h', 'p', 'q')); c.submit('h'); c.submit('p'); c.wait(POLICY['turn_ms'])
     c.view('h', 'revealing', **{'members.q.absence_count': 1}); c.next()
-    c.submit('h', 'Bi'); c.submit('p', 'Bi'); c.wait(12000)
+    c.submit('h', 'Bi'); c.submit('p', 'Bi'); c.wait(POLICY['turn_ms'])
     c.view('h', 'revealing', **{'match.mode_at_start': 'multiplayer', 'members.q.absence_count': 2, 'members.q.participation': 'eliminated', 'match.last_turn.effective_state.game_index': '2', 'match.last_turn.effective_state.players.h.dd6': '0'})
 
     c = Case(35, 'electron_manual', '网络失败返回菜单、晚到旧房快照与离线档案', 'P10 P12 W08 A07')
@@ -494,10 +495,274 @@ def build() -> list[dict]:
                     c.command('h', 'room.return_lobby', dict(room_id='$room.room_id'))
                     for alias in ('h', 'p', 'q', 'r', 't', 'u'): c.ready(alias)
                     c.command('h', 'room.start', dict(room_id='$room.room_id')); c.view('h', 'selecting')
-    return deepcopy(CASES)
+    extend_v1_1()
+    def materialize(value, key=''):
+        if isinstance(value, dict):
+            return {k: materialize(v, k) for k, v in value.items()}
+        if isinstance(value, list):
+            return [materialize(v) for v in value]
+        if key in {'request_id', 'fresh', 'old_request'} and isinstance(value, str):
+            return request_uuid(value)
+        return value
+    return materialize(deepcopy(CASES))
+
+
+def limit(c: Case, alias: str, ms: int, revision: str = '1', *, error: str | None = None,
+          rid: str | None = None, ack_revision: str | None = None) -> None:
+    c.command(alias, 'room.set_turn_limit', {'room_id': '$room.room_id', 'turn_ms': ms,
+        'expected_policy_revision': revision}, error=error, rid=rid,
+        ack_data=None if error else {'turn_ms': ms, 'policy_revision': ack_revision or str(int(revision) + 1), 'effective_from': 'next_select'})
+
+
+def extend_v1_1() -> None:
+    for ms in (10000, 12000):
+        c = Case(37, 'default' if ms == 10000 else 'legacy_12', '默认10秒与保留12秒配置', 'P19 W09 W10 A11', turn_ms=ms)
+        c.data['initial']['service_defaults'] = ms == 10000
+        c.room(); c.view('h', 'selecting', **{'policy.turn_ms': ms, 'current_turn_ms': ms,
+            'policy_revision': '1', 'timer.remaining_ms': ms, 'pause': None})
+
+    for initial, new in ((10000, 5000), (5000, 30000)):
+        c = Case(38, f'{initial}_to_{new}', '修改未来时限不改变本拍截止或选择', 'P19 W09 W10 A11', turn_ms=initial)
+        c.room(spectators=('s',)); c.submit('h'); c.wait(1000)
+        c.add('wire', **{'as': 'h'}, save='before')
+        limit(c, 'h', new)
+        for alias in ('h', 'p', 's'):
+            c.view(alias, 'selecting', **{'policy.turn_ms': new, 'policy_revision': '2', 'current_turn_ms': initial, 'timer.remaining_ms': initial - 1000})
+            c.add('wire', **{'as': alias}, same_as='before', path='view.timer.deadline_at_ms')
+        c.view('h', 'selecting', **{'self.accepted_entry_id': 'Charge'})
+        c.submit('p'); c.view('h', 'revealing', **{'current_turn_ms': initial})
+        c.next(); c.view('h', 'selecting', **{'current_turn_ms': new, 'timer.remaining_ms': new, 'policy_revision': '2'})
+        c.add('resolution_count', count=1)
+
+    for variant in ('permissions', 'stale', 'replay', 'same', 'deadline'):
+        c = Case(39, variant, '时限权限、版本、重放、同值和截止优先', 'P19 W04 W09 A11')
+        c.room(spectators=('s',)); c.submit('h')
+        if variant == 'permissions':
+            for alias in ('p', 's'): limit(c, alias, 5000, error='NOT_HOST')
+            c.view('h', 'selecting', **{'policy_revision': '1', 'policy.turn_ms': 10000, 'self.accepted_entry_id': 'Charge'})
+        elif variant == 'same':
+            c.add('snapshot_count', **{'as': 'p'}, save='before')
+            limit(c, 'h', 10000, ack_revision='1')
+            c.add('snapshot_count', **{'as': 'p'}, name='before', delta=0)
+            c.view('h', 'selecting', **{'policy_revision': '1', 'self.accepted_entry_id': 'Charge'})
+        elif variant == 'deadline':
+            c.wait(10000); limit(c, 'h', 5000)
+            c.view('h', 'revealing', **{'policy_revision': '2', 'policy.turn_ms': 5000, 'current_turn_ms': 10000, 'match.last_turn.action_sources.p': 'timeout_auto'})
+            c.add('resolution_count', count=1)
+        else:
+            limit(c, 'h', 5000, rid='set-first')
+            if variant == 'stale': limit(c, 'h', 30000, error='POLICY_STALE')
+            else:
+                limit(c, 'h', 30000, '2')
+                c.add('replay', request_id='set-first')
+            c.view('h', 'selecting', **{'policy_revision': '2' if variant == 'stale' else '3', 'policy.turn_ms': 5000 if variant == 'stale' else 30000, 'current_turn_ms': 10000, 'self.accepted_entry_id': 'Charge'})
+
+    for count in (2, 3):
+        c = Case(40, 'players_' + str(count), '房主前三次代攒，第四次不调用核心', 'P20 W10 A12')
+        players = ('h', 'p', 'q')[:count]; c.room(players)
+        for turn in range(1, 4):
+            for alias in players[1:]: c.submit(alias)
+            c.wait(10000)
+            c.view('p', 'revealing', **{'members.h.absence_count': turn,
+                'host_recovery': {'kind': 'rounds', 'missing_count': turn, 'close_at_count': 4},
+                'match.last_turn.action_sources.h': 'timeout_auto',
+                'match.last_turn.core_resolution.ledger.actions.h.entry_id': 'Charge',
+                'match.last_turn.core_resolution.ledger.post_turn_players.h.dd6': str(6 * turn)})
+            c.next('p')
+        c.same('p', 'third', 'match.last_turn', remember=True)
+        for alias in players[1:]: c.submit(alias)
+        c.wait(10000); c.view('p', 'closed', **{'close_reason': 'HOST_ABSENT', 'match.effective_outcome': None})
+        c.same('p', 'third', 'match.last_turn'); c.add('resolution_count', count=3)
+        c.add('chooser_count', count=0)
+
+    c = Case(40, 'host_charge_not_immune', '房主代攒仍受攻击且自然淘汰不散房', 'P20 W10 A12')
+    c.data['initial']['players'] = {a: {'dd6': '6'} for a in ('p', 'q')}
+    c.room(('h', 'p', 'q')); c.submit('p', 'Bi'); c.submit('q', 'Bi'); c.wait(10000)
+    c.view('p', 'revealing', **{'members.h.participation': 'eliminated', 'members.h.role': 'player', 'close_reason': None})
+    c.next('p'); c.view('p', 'selecting', **{'members.h.seat': 0, 'host_id': 'h'})
+
+    for variant in ('submitted_disconnect', 'resume_does_not_clear', 'forced_online', 'forced_offline'):
+        c = Case(41, variant, '房主掉线与手动/强制动作的缺席计数', 'P20 W10 A12')
+        c.room()
+        if variant == 'submitted_disconnect':
+            c.submit('h'); c.add('disconnect', **{'as': 'h'}); c.submit('p'); c.wait(300)
+            c.view('p', 'revealing', **{'members.h.absence_count': 0, 'match.last_turn.action_sources.h': 'human'})
+        elif variant == 'resume_does_not_clear':
+            c.submit('p'); c.wait(10000); c.next('p'); c.add('disconnect', **{'as': 'h'}); c.add('resume', **{'as': 'h'})
+            c.view('p', 'selecting', **{'members.h.absence_count': 1, 'host_recovery.missing_count': 1})
+            c.submit('h'); c.view('p', 'selecting', **{'members.h.absence_count': 0, 'host_recovery': None})
+        else:
+            c.submit('h', 'ZengYi'); c.submit('p'); c.wait(300); c.next('p')
+            if variant == 'forced_offline': c.add('disconnect', **{'as': 'h'})
+            c.submit('p'); c.wait(300)
+            c.view('p', 'revealing', **{'members.h.absence_count': 1 if variant == 'forced_offline' else 0,
+                'match.last_turn.action_sources.h': 'forced', 'match.last_turn.core_resolution.ledger.actions.h.is_recovery': True})
+
+    for phase in ('lobby', 'result', 'eliminated'):
+        for resume in (False, True):
+            c = Case(42, phase + ('_resume' if resume else '_expire'), '无房主可计数回合时截止只建立一次', 'P21 W10 A12')
+            if phase == 'lobby': c.room(start=False)
+            else:
+                players = ('h', 'p', 'q') if phase == 'eliminated' else ('h', 'p')
+                c.data['initial']['players'] = {a: {'dd6': '6'} for a in players[1:]}
+                c.room(players); c.submit('h')
+                for alias in players[1:]: c.submit(alias, 'Bi')
+                c.wait(300); c.wait(1500); c.view('p', 'selecting' if phase == 'eliminated' else 'result')
+            expected_phase = 'selecting' if phase == 'eliminated' else phase
+            c.add('disconnect', **{'as': 'h'})
+            c.view('p', expected_phase, **{'host_recovery.kind': 'grace', 'host_recovery.remaining_ms': 30000, 'pause': None})
+            c.add('wire', **{'as': 'p'}, save='grace')
+            c.wait(1000); c.sync('p'); c.wait(1000); c.sync('p')
+            c.add('wire', **{'as': 'p'}, same_as='grace', path='view.host_recovery.deadline_at_ms')
+            c.view('p', expected_phase, **{'host_recovery.remaining_ms': 28000})
+            if resume:
+                c.add('resume', **{'as': 'h'}); c.view('p', expected_phase, **{'host_recovery': None})
+            else:
+                c.wait(28000); c.view('p', 'closed', **{'close_reason': 'HOST_TIMEOUT'})
+
+    for timing in ('after_turn', 'immediate'):
+        for phase in ('lobby', 'selecting', 'revealing', 'result'):
+            c = Case(43, timing + '_' + phase, '房主主动离开阶段与两种批准范围内配置', 'P22 W10 A13 A17')
+            c.data['initial']['host_leave_timing'] = timing
+            if phase == 'result': c.data['initial']['players'] = {'h': {'dd6': '6'}}
+            c.room(start=phase != 'lobby')
+            if phase != 'lobby':
+                c.submit('h', 'Bi' if phase == 'result' else 'Charge'); c.submit('p')
+                if phase in ('revealing', 'result'):
+                    c.wait(300); c.view('p', 'revealing'); c.same('p', 'last', 'match.last_turn', remember=True)
+                if phase == 'result': c.wait(1500); c.view('p', 'result')
+            c.leave('h')
+            if timing == 'after_turn' and phase in ('selecting', 'revealing'):
+                c.view('p', phase, **{'pending_close.reason': 'HOST_LEFT', 'pending_close.after': 'current_turn' if phase == 'selecting' else 'current_reveal'})
+                c.open('x'); c.join('x', 'spectator', error='ROOM_CLOSING')
+                c.wait(300 if phase == 'selecting' else 1500)
+            c.view('p', 'closed', **{'close_reason': 'HOST_LEFT', 'self.options': [], 'self.accepted_entry_id': None})
+            if timing == 'after_turn' and phase in ('selecting', 'revealing'):
+                c.view('p', 'closed', **{'match.effective_outcome': None})
+            if phase == 'revealing': c.same('p', 'last', 'match.last_turn')
+            c.add('resolution_count', count=0 if phase == 'lobby' or (phase == 'selecting' and timing == 'immediate') else 1)
+
+    c = Case(43, 'after_turn_unsubmitted', '房主未交牌离开仍按一次Charge完成该拍', 'P22 W10 A13')
+    c.room(); c.leave('h'); c.submit('p'); c.wait(10000)
+    c.view('p', 'closed', **{'close_reason': 'HOST_LEFT', 'match.effective_outcome': None,
+        'match.last_turn.core_resolution.ledger.actions.h.entry_id': 'Charge'})
+    c.add('resolution_count', count=1)
+
+    for removal in ('leave', 'timeout'):
+        for survivors in (0, 1, 2):
+            c = Case(44, f'{removal}_{survivors}', '房间移除终局/重开保持核心账目和game_id', 'P06 P23 W12 A05 A15')
+            players = ('h', 'p', 'q', 'r') if survivors == 2 else ('h', 'p')
+            if removal == 'leave' and survivors == 0: c.data['initial']['players'] = {'p': {'dd6': '6'}}
+            c.room(players)
+            if removal == 'timeout':
+                for _ in range(2):
+                    c.submit('h')
+                    if survivors == 2: c.submit('r')
+                    c.wait(10000); c.next()
+            c.submit('h', 'SelfBi' if removal == 'timeout' and survivors == 0 else 'Charge')
+            if survivors == 2: c.submit('r')
+            if removal == 'leave':
+                c.submit('p', 'Bi' if survivors == 0 else 'Charge'); c.leave('p')
+                if survivors == 2: c.submit('q'); c.leave('q')
+            c.wait(10000 if removal == 'timeout' else 300)
+            kind = ['nobody_survives', 'sole_survivor', 'restart_survivors'][survivors]
+            expected = {'match.last_turn.effective_transition.kind': kind,
+                'match.last_turn.effective_state.active_ids': [] if survivors == 0 else ['h'] if survivors == 1 else ['h', 'r']}
+            if survivors == 2: expected['match.last_turn.effective_state.game_index'] = '2'
+            c.view('h', 'revealing', **expected)
+            c.add('decoder', **{'as': 'h'})
+            c.add('resolution_count', count=3 if removal == 'timeout' else 1)
+
+    for offline in (False, True):
+        c = Case(45, 'offline_resume' if offline else 'online', '自动移除定向通知与恢复重送，不复活原座', 'P23 W11 A14')
+        c.room(('h', 'p', 'q'))
+        if offline: c.add('disconnect', **{'as': 'p'})
+        for i in range(3):
+            c.submit('h'); c.submit('q'); c.wait(10000)
+            if i < 2: c.next()
+        c.view('h', 'revealing', **{'members.length': 2, 'match.last_turn.room_forfeits': [{'player_id': 'p', 'reason': 'three_absences'}]})
+        if offline: c.add('resume', **{'as': 'p'})
+        c.add('receipt', **{'as': 'p'}, count=1, expect={'reason': 'three_absences', 'player_id': 'p'}, save='removed')
+        c.add('receipt', **{'as': 'h'}, count=0, expect={})
+        c.sync('p', error='ROOM_NOT_MEMBER'); c.add('resume', **{'as': 'p'})
+        c.add('receipt', **{'as': 'p'}, count=1, expect={'reason': 'three_absences'}, same_as='removed')
+
+    c = Case(46, 'stale_event_ack_new_room', '真实客户端丢弃旧回执与旧ack，保留新房意图', 'P23 W11 A14')
+    c.room(('h', 'p', 'q')); c.add('wire', **{'as': 'p'}, save='old-select')
+    for i in range(3):
+        c.submit('h'); c.submit('q'); c.wait(10000)
+        if i < 2: c.next()
+    c.add('receipt', **{'as': 'p'}, count=1, expect={'reason': 'three_absences'}, save='ended')
+    c.add('client', **{'as': 'p'}, snapshot='old-select', event='ended')
+    c.command('p', 'room.create', dict(password=None, options={k: POLICY[k] for k in ('turn_ms', 'early_reveal', 'spectator_cap')}), save='newroom')
+    c.view('p', 'lobby', **{'members.length': 1}); c.add('resume', **{'as': 'p'})
+    c.add('receipt', **{'as': 'p'}, count=0, expect={}); c.view('p', 'lobby', **{'members.length': 1})
+
+    for target in ('player', 'spectator'):
+        c = Case(47, 'host_role_' + target, '房主任何role请求都精确拒绝HOST_ROLE_FIXED', 'P03 W12')
+        c.room(start=False); c.command('h', 'room.role', {'room_id': '$room.room_id', 'role': target}, error='HOST_ROLE_FIXED')
+        c.view('h', 'lobby', **{'members.h.role': 'player', 'members.h.seat': 0})
+    c = Case(47, 'null_id', '无UUID坏JSON返回空ID且不影响合法连接', 'W12 A15')
+    c.room(); c.add('raw', **{'as': 'p'}, text='{"v":1,"v":1}', error='INVALID_MESSAGE',
+        ack={'v': 1, 'type': 'ack', 'request_id': None, 'ok': False, 'error': {'code': 'INVALID_MESSAGE', 'field': None, 'retryable': False}})
+    c.sync('h'); c.view('h', 'selecting', **{'self.accepted_entry_id': None})
+
+    for real in (False, True):
+        c = Case(48, 'real_clock' if real else 'three_matches', '六玩家两观众动态时限与断线代理', 'P19 P20 P23 W09 W10 W11 A16', turn_ms=5000)
+        c.data['clock'] = 'real' if real else 'manual'
+        players = ('h', 'p', 'q', 'r', 't', 'u'); c.room(players, ('s', 's2'))
+        c.add('disconnect', **{'as': 'u'})
+        if real:
+            for alias in players[:-1]: c.submit(alias)
+            c.wait(5200); c.view('h', 'revealing', **{'match.last_turn.action_sources.u': 'timeout_auto'})
+        else:
+            for game in range(3):
+                if game == 0: limit(c, 'h', 10000)
+                for alias in players:
+                    if game == 0 and alias == 'u': continue
+                    c.submit(alias)
+                c.wait(5000 if game == 0 else 300); c.view('h', 'revealing')
+                if game == 0: c.add('resume', **{'as': 'u'})
+                c.next(); c.view('h', 'selecting', **{'current_turn_ms': 10000, 'policy_revision': '2'})
+                c.submit('h', 'Bi')
+                for alias in players[1:]: c.submit(alias)
+                c.wait(300)
+                for alias in players + ('s', 's2'):
+                    c.view(alias, 'revealing', **{'match.last_turn.effective_transition.winner_id': 'h'})
+                c.add('decoder', **{'as': 's'})
+                c.wait(1500); c.view('h', 'result')
+                if game < 2:
+                    c.command('h', 'room.return_lobby', {'room_id': '$room.room_id'})
+                    for alias in players: c.ready(alias)
+                    c.command('h', 'room.start', {'room_id': '$room.room_id'}); c.view('h', 'selecting')
+
+    for name, nickname, valid in [('spaces', '   ', False), ('format', '\u200b', False), ('newline', 'a\nb', False),
+                                  ('chinese', '测试昵称', True), ('emoji', '😀', True), ('max20', '测' * 20, True), ('over21', '测' * 21, False), ('surrogate', 'a\ud800', False),
+                                  ('emoji20', '😀' * 20, True), ('padded', ' 玩家 ', True)]:
+        c = Case(49, 'nickname_' + name, '资料校验从session.open到桌面读取', 'W13 A17')
+        c.room(('h',), start=False); c.open('p')
+        c.data['steps'][-1].update(profile={'nickname': nickname, 'avatar_id': 'leaf'}, **({} if valid else {'error': 'INVALID_MESSAGE', 'error_field': 'nickname'}))
+        if valid:
+            c.join('p'); c.view('h', 'lobby', **{'members.p.nickname': nickname, 'members.length': 2})
+            c.add('decoder', **{'as': 'h'})
+        else:
+            c.sync('h'); c.view('h', 'lobby', **{'members.length': 1})
+            c.add('decoder', **{'as': 'h'})
+
+    for name, password, valid in [('empty', '', True), ('spaces', '  ', True), ('max32', '密' * 32, True),
+                                  ('over33', '密' * 33, False), ('format', '\u200b', False), ('control', '\n', False), ('type', 12, False), ('surrogate', '\ud800', False), ('emoji32', '😀' * 32, True)]:
+        c = Case(49, 'password_' + name, '密码长度/类别与不trim合法空格', 'W13 A17')
+        c.room(('h',), start=False); c.open('p')
+        c.command('p', 'room.create', {'password': password, 'options': {k: POLICY[k] for k in ('turn_ms', 'early_reveal', 'spectator_cap')}}, error=None if valid else 'INVALID_MESSAGE', save='second' if valid else None)
+        if valid:
+            c.open('q'); c.join('q', password=password, room='second')
+            c.view('p', 'lobby', **{'members.length': 2})
+            c.add('decoder', **{'as': 'p'})
+        else:
+            c.view('h', 'lobby', **{'members.length': 1})
 
 
 if __name__ == '__main__':
     cases = build()
-    (HERE / 'cases.json').write_text(json.dumps(cases, ensure_ascii=False, indent=2) + '\n')
+    (HERE / 'cases.json').write_text(json.dumps(cases, ensure_ascii=False, indent=2) + '\n', errors='backslashreplace')
     print(f'Authored {len(cases)} samples; server NOT_RUN')
