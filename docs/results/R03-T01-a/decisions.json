@@ -1,0 +1,68 @@
+[
+  {
+    "decision_id": "R03-turn_ms",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": 12000,
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P04 / A04 / W05",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  },
+  {
+    "decision_id": "R03-early_reveal",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": true,
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P04 / A04 / W05",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  },
+  {
+    "decision_id": "R03-spectator_cap",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": 6,
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P02 / P13 / W05",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  },
+  {
+    "decision_id": "R03-host_disconnect_grace_ms",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": 30000,
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P08 / A04 / W05",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  },
+  {
+    "decision_id": "R03-submit_change_allowed",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": false,
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P04 / W03",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  },
+  {
+    "decision_id": "R03-leave_effective",
+    "quote": null,
+    "answered_at": null,
+    "context": "Asked once in R03-T01-a execution task; no answer received. Task request: 你完成任务 01",
+    "proposed": "after_turn",
+    "selected": null,
+    "status": "PROVISIONAL",
+    "affected_clause": "P05 / P06 / A05",
+    "implementation_action": "Implement and self-test proposed default; do not label approved."
+  }
+]
