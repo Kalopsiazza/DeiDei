@@ -292,6 +292,7 @@ async def endurance(service: object, connect: object, seconds: int, rooms: int) 
 
 async def main_async(args: argparse.Namespace) -> dict:
     source=evidence(args.product/'game/server');core=evidence(args.product/'game/core')
+    tool_source=evidence(ROOT/'tests/rooms_endurance')
     assert source['sha']==args.sha and core['sha']==args.sha and not source['dirty'] and not core['dirty']
     load_module(args.product/'game/core','deidei_core.api','deidei_core/api.py')
     service=load_module(args.product/'game/server','deidei_server.testing','deidei_server/testing.py')
@@ -304,14 +305,14 @@ async def main_async(args: argparse.Namespace) -> dict:
         from tests.rooms_endurance.faults import faults
         result=await faults(service,connect,args.product)
     assert evidence(args.product/'game/server')==source
-    return dict(source=source,core=core,tools=evidence(ROOT/'tests/rooms_endurance'),**result)
+    return dict(source=source,core=core,tools=tool_source,**result)
 
 
 def main() -> int:
     p=argparse.ArgumentParser(description=__doc__);p.add_argument('--product',type=Path,required=True);p.add_argument('--sha',required=True)
     p.add_argument('--mode',choices=['endurance','seeds','faults'],required=True);p.add_argument('--seconds',type=int,default=900)
     p.add_argument('--seed',type=int);p.add_argument('--rooms',type=int,default=4);p.add_argument('--seeds',type=int,default=100);p.add_argument('--output',type=Path,required=True)
-    a=p.parse_args();assert 1<=a.seconds<=900 and 1<=a.rooms<=4 and 1<=a.seeds<=100
+    a=p.parse_args();assert 1<=a.seconds<=900 and 1<=a.rooms<=4 and 1<=a.seeds<=100 and (a.seed is None or 0<=a.seed<100)
     try: result=asyncio.run(main_async(a))
     except Exception as e:result=dict(status='ERROR',error=type(e).__name__)
     a.output.write_text(json.dumps(result,indent=2)+'\n');return 0 if result['status']=='PASS' else 1
