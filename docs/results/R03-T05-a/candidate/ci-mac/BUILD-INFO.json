@@ -1,0 +1,51 @@
+{
+  "task_id": "R03-T05-a",
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+  "status": "CANDIDATE",
+  "platform": "darwin-arm64",
+  "plan_sha": "a1e01ee259c65d9241ad1c4daee7852faca366bf",
+  "rules_version": "classic-1.0.1",
+  "protocol": "rooms-1.1",
+  "trees": {
+    "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+    "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
+    "game/server": "e5fc195ae26d48b86558332dd15402e3dd00e24a",
+    "game/desktop": "47d0de87463fa13bebb753140c23a2beb5faf554"
+  },
+  "python": "3.11.16",
+  "python_tools": {
+    "pyinstaller": "6.22.3",
+    "pyinstaller-hooks-contrib": "2026.7",
+    "altgraph": "0.17.5",
+    "packaging": "26.3",
+    "setuptools": "84.0.0",
+    "websockets": "17.0.1",
+    "macholib": "1.16.4"
+  },
+  "electron": "44.3.0",
+  "packager": "20.3.0",
+  "node": "24.12.0",
+  "npm": "11.6.2",
+  "locks": {
+    "npm": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+    "python": "36b6dd5bffc4295e31222c9f8eda6bc5ca0b8c8a5fff794b4daa274c5cf73ef2"
+  },
+  "stage_sha256": {
+    "main.cjs": "fb2a606738b842316e38744afafc5b2a64aa9ff6eed0864484036b70f620a698",
+    "preload.cjs": "a775d849ce6dbe37d7ce7628db778c78207675a08366ce5b3416a9c4c4318752",
+    "profile.cjs": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2",
+    "worker-port.cjs": "76ef1ece6d91ce69f1d4d34d4482b1bb00202c2f4c74980d2f935e06d4767c50",
+    "worker-bridge.cjs": "d11a61bbed6689705b6c0463b07bc4edec5c27bcf041b539c2caaba935dcfbd4",
+    "worker-launch.cjs": "682d593e15021fa69d2bba8a1f4dd008ecc491d095546fb1a520b229c794b594",
+    "build/fixture.cjs": "dfea2243b6866863ca938f7813b07b712b5f1760cff3755eb5b9a558ce33abc1",
+    "build/ui/index.html": "d674acfc513eb74bc559ae1e4e9e5f272196c05aa6f0b4a31d6f873cb807ce7a",
+    "build/ui/renderer.js": "a03934308e58c50a15eda3d31a8f4e20df789a9b3bd84881ab7274b803741174",
+    "build/ui/style.css": "0d001a5a5943bd7cb9eac4cafadcb70fe1b5d40034953d305a7e95cfc7ea89d1",
+    "online/network-room-port.cjs": "9e97e20dc59a14f74387c6a0302c318ef67d0afa4f767debfde63a7126bca546",
+    "online/wire.cjs": "a39295fe05f5f6cc78287338d968d0e2ec4d32c312aa23754b27cd14da2252e8",
+    "catalog.json": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4"
+  },
+  "catalog_sha256": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4",
+  "entry_map_sha256": "326fee0497535b8451b92960705c135a2f50e1f82f277ee9eb13e5ad69ca547c"
+}

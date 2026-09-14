@@ -1,0 +1,2 @@
+<OUTPUT>/delivery/DeiDei R03 Diagnostic.app: accepted
+override=security disabled

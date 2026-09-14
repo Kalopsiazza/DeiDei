@@ -1,0 +1,16 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "archive_sha256": "a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16",
+  "platform": "win32",
+  "arch": "x64",
+  "status": "FAIL",
+  "headless": false,
+  "games": 0,
+  "cycles": 0,
+  "checks": [
+    "final ZIP frozen server starts without system Python; rooms-1.1 hello"
+  ],
+  "screenshots": [],
+  "error": "Expected values to be strictly equal:\n+ actual - expected\n\n+ 1789407238427\n- 1789407238434\n             ^\n"
+}

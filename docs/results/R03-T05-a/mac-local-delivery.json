@@ -1,0 +1,13 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "2e2007a61c4448d4131e9bde09d919be3fb37e54",
+  "status": "DIAGNOSTIC_BASELINE",
+  "platform": "darwin-arm64",
+  "filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip",
+  "sha256": "3e7fb351b0db1b832c4fdb7ad73721ed96b211cdc0362d02b373b3fc2a611b71",
+  "bytes": 148606717,
+  "inventory_sha256": "0ffdd72d0fbcc5bd4aafc30aa590bca4d50fc13bad657d78546827659eccd52f",
+  "signature": "ad-hoc; not notarized",
+  "packaged_automation": "NOT_RUN",
+  "human": "NOT_RUN"
+}

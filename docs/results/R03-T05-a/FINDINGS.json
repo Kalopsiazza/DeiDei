@@ -1,0 +1,41 @@
+{
+  "status": "PACKAGED_AUTOMATION_PASS",
+  "baseline_findings": {
+    "task_id": "R03-T05-a",
+    "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "run_id": 34875308825,
+    "findings": [
+      {
+        "id": "T05-F01",
+        "platform": "win32-x64",
+        "related": "F06/Q05",
+        "operation": "room.set_turn_limit 10000 -> 5000 during selecting",
+        "expected": "current deadline_at_ms unchanged",
+        "before": 1789407238434,
+        "after": 1789407238427,
+        "status": "FAIL_PRODUCT_BASELINE",
+        "product_modified": false
+      }
+    ],
+    "candidate_checks": [
+      "NO_CANDIDATE",
+      "NO_CANDIDATE",
+      "NO_CANDIDATE"
+    ]
+  },
+  "candidate_attempt_1": {
+    "run_id": 34908825587,
+    "windows": "EXIT_127_AFTER_FIVE_GAMES_TEN_CYCLES_BEFORE_DAMAGED_COPY_COMPLETE",
+    "raw_report_status": "RUNNING",
+    "accepted": false
+  },
+  "candidate_final": {
+    "run_id": 34909293225,
+    "macos": "PASS",
+    "windows": "PASS",
+    "tool_fix": "Windows damaged-copy uses existing Python shutil.copytree route",
+    "root_cause_limit": "No claim about internal Node/OS cause of exit 127"
+  },
+  "human": "NOT_RUN",
+  "system_trust": "MACOS_SPCTL_REJECTED_WINDOWS_UNSIGNED"
+}

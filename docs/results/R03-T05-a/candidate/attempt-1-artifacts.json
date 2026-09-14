@@ -1,0 +1,26 @@
+[
+  {
+    "id": 10373876338,
+    "name": "R03-T05-a-evidence-darwin-arm64-d6fea37637af543542c1f7f1218c24427f24707a",
+    "size_in_bytes": 1269164,
+    "digest": "sha256:5a3f8e99e2fdb5a17eba11a4c7e54ab62c1e099af965c28da2139420c53d8c86",
+    "expires_at": "2026-10-14T23:28:18Z",
+    "expired": false
+  },
+  {
+    "id": 10373766551,
+    "name": "R03-T05-a-CANDIDATE-darwin-arm64-d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "size_in_bytes": 149271485,
+    "digest": "sha256:fdd7a870c81d9c9fc3c4403430929510df26b50f0326e343fd20966078fb88c9",
+    "expires_at": "2026-10-14T23:28:11Z",
+    "expired": false
+  },
+  {
+    "id": 10373154318,
+    "name": "R03-T05-a-evidence-win32-x64-d6fea37637af543542c1f7f1218c24427f24707a",
+    "size_in_bytes": 739470,
+    "digest": "sha256:71d6b8c6d46d8fa90ab93a34331aafe9bd92c9e5e25a0162ea0d474ae7504449",
+    "expires_at": "2026-10-14T23:28:05Z",
+    "expired": false
+  }
+]
