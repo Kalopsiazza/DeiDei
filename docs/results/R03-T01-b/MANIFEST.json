@@ -1,0 +1,177 @@
+{
+  "task_id": "R03-T01-b",
+  "input_sha": "0f114284492417ec61634895c485d73417ff1b49",
+  "product_source_sha": "0f114284492417ec61634895c485d73417ff1b49",
+  "plan_sha": null,
+  "context_plan_sha": "7ed0c388149dcd8caa7436e4a4574f2343eff9c9",
+  "plan_manifest_sha256": "3b5f1fdf74e2c236768216d27edbd1bffa67bb57577c21c2b38504d6edac7d2c",
+  "planning_files_verified": 26,
+  "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc",
+  "branch": "codex/r03-t01-b-room-service",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python_version": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "run_at_utc": "2026-09-14T15:36:59Z",
+  "commands": [
+    {
+      "name": "server",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/server/tests",
+        "-v"
+      ],
+      "pythonpath": "game/core:game/server",
+      "exit_code": 0,
+      "elapsed_seconds": 65.227,
+      "log": "evidence/server.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "core",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "pythonpath": "game/core",
+      "exit_code": 0,
+      "elapsed_seconds": 0.968,
+      "log": "evidence/core.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "independent-core",
+      "command": [
+        "<venv>/bin/python",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "game/core"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 1.184,
+      "log": "evidence/independent-core.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "independent-tools",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 0.952,
+      "log": "evidence/independent-tools.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "runtime",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/runtime/tests",
+        "-v"
+      ],
+      "pythonpath": "game/core:game/runtime",
+      "exit_code": 0,
+      "elapsed_seconds": 0.272,
+      "log": "evidence/runtime.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "root",
+      "command": [
+        "<venv>/bin/python",
+        "scripts/check.py"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 1.185,
+      "log": "evidence/root.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 0.215,
+      "log": "evidence/pip-check.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    },
+    {
+      "name": "cli-help",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "deidei_server",
+        "--help"
+      ],
+      "pythonpath": "game/core:game/server",
+      "exit_code": 0,
+      "elapsed_seconds": 0.097,
+      "log": "evidence/cli-help.txt",
+      "tested_code_sha": "02c6c06f5a26149de31c17954f03657289ac23cc"
+    }
+  ],
+  "server_source_sha256": {
+    "game/server/.gitignore": "57a8ad0e62346f7b0f2e261d59a7b90f1310043424bcb9d229208f183f1940d9",
+    "game/server/README.md": "258b54f45ae5369eef712ebb68bbd3027db968ed712df3323629c6a8faa10fc6",
+    "game/server/deidei_server/__init__.py": "3e37e37e633d31ac8afad5970c7d57cf076583c0994997ec031b270a3e9bb32f",
+    "game/server/deidei_server/__main__.py": "f91c681d82c171bb104b120458d9e4e352d92b0cd218b8de6363ccb7773762d3",
+    "game/server/deidei_server/protocol.py": "97fc8e227c643916b859ffdba926da4aff4e030b9ffc98d58cf26ec1188616b4",
+    "game/server/deidei_server/room.py": "1cb8ff9cf965f68beb081e09f528a2d2d0cce757a7d547e047984384d067aa11",
+    "game/server/deidei_server/server.py": "97c77e1ce7604b8d6014719d75fa242cba0a16ab372851926bf58a6292d52f72",
+    "game/server/deidei_server/testing.py": "3a2e015dc5984c7ffcd3e7e82dd16150e67749c613ff4ef352ff7971434cb354",
+    "game/server/requirements.in": "4ea8680e057a628447fac60ad676a8c604442eced7c5dd09dfb21c8d49156a2f",
+    "game/server/requirements.lock": "4af019f4dd3a20e81db95e3cf20ffacc63a9ac1aea3a2f8db3a5d49076256b93",
+    "game/server/tests/test_boundaries.py": "237f75519a6482c385da02e34853ec9d5f6e49dcb25d65ac9357ed28da2030f4",
+    "game/server/tests/test_rooms.py": "b72057b8cc1cd82bd54ec4e60b7997a9f1a74f4187ec31a3c921836215504536",
+    "game/server/tests/test_rooms_11.py": "80ffedff49f550661cedec43e720a5e65516bfd8f7f4fc3a990151649da1d7ec"
+  },
+  "out_of_scope_diff": "",
+  "dependency_security": "Unchanged hash lock; see R03-T01-a/dependency-security.json for prior advisory snapshot",
+  "decisions_status": "APPROVED",
+  "desktop_baseline": "See desktop-validation.json; isolated copy of unchanged input, not rooms-1.1 decoder acceptance",
+  "independent_rooms": "NOT_RUN: T03 is a separate task",
+  "gui": "NOT_RUN: T01 is server-only",
+  "windows": "NOT_RUN",
+  "cross_machine": "NOT_RUN",
+  "human_play": "NOT_RUN",
+  "push": "COMPLETED: user-authorized draft PR; see PR-SUBMISSION.json",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/23",
+  "result_pr_base": "integration/r03",
+  "parameter_confirmation": {
+    "raw_quote": "按这个",
+    "answered_at": null,
+    "policy_file": "policy-effective.json",
+    "host_leave_timing": "after_turn",
+    "early_reveal": true,
+    "runtime_changed": false,
+    "note": "Original tested_code_sha and server_source_sha256 retain historical test inputs. Only README changed under game/server after testing; current README hash recorded here.",
+    "current_readme_sha256": "49348c56d65e11bc7bf7a6a12656b7cd4eaa4ad160e8c02997596fc19b282b10"
+  }
+}

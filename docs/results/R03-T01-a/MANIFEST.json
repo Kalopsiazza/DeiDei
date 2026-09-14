@@ -1,0 +1,149 @@
+{
+  "task_id": "R03-T01-a",
+  "input_sha": "23520350393ba43384c20b60bef7d6dbd89fc142",
+  "product_source_sha": "23520350393ba43384c20b60bef7d6dbd89fc142",
+  "plan_sha": null,
+  "context_plan_sha": "51432688cf1bbdb1765e59af3540342599a71bc4",
+  "plan_manifest_sha256": "4442d966b87b477c111f9b99ae9e3444ccfe94dd8338ab5a1910b4e3acd88684",
+  "planning_files_verified": 18,
+  "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6",
+  "branch": "codex/r03-t01-a-room-service",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python_version": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "run_at_utc": "2026-09-14T03:59:16Z",
+  "commands": [
+    {
+      "name": "server",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/server/tests",
+        "-v"
+      ],
+      "pythonpath": "game/core:game/server",
+      "exit_code": 0,
+      "elapsed_seconds": 35.299,
+      "log": "evidence/server.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "core",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "game/core/tests",
+        "-v"
+      ],
+      "pythonpath": "game/core",
+      "exit_code": 0,
+      "elapsed_seconds": 0.615,
+      "log": "evidence/core.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "independent-core",
+      "command": [
+        "<venv>/bin/python",
+        "tests/rules_v1_001/run_acceptance.py",
+        "--core",
+        "game/core"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 1.069,
+      "log": "evidence/independent-core.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "independent-tools",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "unittest",
+        "discover",
+        "-s",
+        "tests/rules_v1_001",
+        "-p",
+        "test_*.py",
+        "-v"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 1.046,
+      "log": "evidence/independent-tools.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "root",
+      "command": [
+        "<venv>/bin/python",
+        "scripts/check.py"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 1.078,
+      "log": "evidence/root.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "pip-check",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "pip",
+        "check"
+      ],
+      "pythonpath": "",
+      "exit_code": 0,
+      "elapsed_seconds": 0.198,
+      "log": "evidence/pip-check.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    },
+    {
+      "name": "cli-help",
+      "command": [
+        "<venv>/bin/python",
+        "-m",
+        "deidei_server",
+        "--help"
+      ],
+      "pythonpath": "game/core:game/server",
+      "exit_code": 0,
+      "elapsed_seconds": 0.092,
+      "log": "evidence/cli-help.txt",
+      "tested_code_sha": "417ae52f50fb806d1205381a4a148bc96117c7d6"
+    }
+  ],
+  "server_source_sha256": {
+    "game/server/.gitignore": "57a8ad0e62346f7b0f2e261d59a7b90f1310043424bcb9d229208f183f1940d9",
+    "game/server/README.md": "b95c150bde5e6a95970047a802fc1fbc2800283aef8001d5a8bc136aacc76f3f",
+    "game/server/deidei_server/__init__.py": "3e37e37e633d31ac8afad5970c7d57cf076583c0994997ec031b270a3e9bb32f",
+    "game/server/deidei_server/__main__.py": "61ba3fea65180ae6c1c2b00d9aefb9ad5e111fc755cdc66896ce46d14a972d0d",
+    "game/server/deidei_server/protocol.py": "b01edd23851e3f952de1656d06757d3884bdaae9b01f495e2704094aef84ff36",
+    "game/server/deidei_server/room.py": "d84a9a3c11ca6fb992ec6ede074a9dba0a8c4cae7db7e485861128c849775130",
+    "game/server/deidei_server/server.py": "eb04a4afc96d59f03fd0d64cced611251d8e108ee5f07163f9ae739d804d4f45",
+    "game/server/deidei_server/testing.py": "f05a3b1ee69e7ee07ba63c18c8e263814ea64e747ff0e9e204e84e206d771635",
+    "game/server/requirements.in": "4ea8680e057a628447fac60ad676a8c604442eced7c5dd09dfb21c8d49156a2f",
+    "game/server/requirements.lock": "4af019f4dd3a20e81db95e3cf20ffacc63a9ac1aea3a2f8db3a5d49076256b93",
+    "game/server/tests/test_boundaries.py": "9edbe25f4967d3f1e56dfaca26f7963cb8df83f63bbd558e99e71bb51600bffe",
+    "game/server/tests/test_rooms.py": "69a359a34d0075b37c9e4bef39175be3bab6555dcb6f6e99f757c5ce58ea50bf"
+  },
+  "out_of_scope_diff": "",
+  "dependency_security": "dependency-security.json",
+  "decisions_status": "PARTIALLY_APPROVED / CHANGE_REQUESTED",
+  "independent_rooms": "NOT_RUN: T03 is a separate task",
+  "gui": "NOT_RUN: T01 is server-only",
+  "windows": "NOT_RUN",
+  "cross_machine": "NOT_RUN",
+  "human_play": "NOT_RUN",
+  "push": "COMPLETED: user-authorized draft PR; see PR-SUBMISSION.json",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/22",
+  "result_pr_base": "integration/r03",
+  "decision_change_request": "CHANGE-REQUEST-FOR-PRO.md"
+}

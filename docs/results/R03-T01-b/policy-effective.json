@@ -1,0 +1,6 @@
+{
+  "turn_ms": 10000,
+  "early_reveal": true,
+  "spectator_cap": 6,
+  "host_disconnect_grace_ms": 30000
+}

@@ -1,0 +1,11 @@
+{
+  "baseRefName": "integration/r03",
+  "headRefName": "codex/r03-t01-b-room-service",
+  "headRefOid": "77776ab52189d3473e40133c7425e4a88df845f4",
+  "isDraft": true,
+  "mergeStateStatus": "CLEAN",
+  "state": "OPEN",
+  "url": "https://github.com/Kalopsiazza/DeiDei/pull/23",
+  "verified_source_sha": "02c6c06f5a26149de31c17954f03657289ac23cc",
+  "note": "PR creation readback. A following evidence-only commit records this result; server hashes unchanged."
+}
