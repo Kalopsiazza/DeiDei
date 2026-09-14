@@ -25,7 +25,7 @@ async function processWithAddress(args){
 async function stop(child){if(child.exitCode!==null||child.signalCode)return;child.kill('SIGINT');await until(()=>child.exitCode!==null||child.signalCode,'owned child exit',5000).catch(()=>{child.kill('SIGKILL');});}
 async function launch(name,url){
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-real-window-'));directories.push(dir);
- const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);
+ const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);app.__ownedProcess=app.process();
  const page=await app.firstWindow();page.setDefaultTimeout(12000);page.on('pageerror',e=>evidence.page_errors.push(e.message));
  await page.getByRole('textbox',{name:'昵称',exact:true}).fill(name);await page.getByRole('button',{name:'保存，进入课间 →',exact:true}).click();
  return {app,page,dir,name};
@@ -55,9 +55,11 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
   // Wrong password is surfaced by the ordinary rendered form, then corrected in the same session.
   let s=await join(guest,code,'player','wrong');assert.equal(s.error.code,'ROOM_ACCESS_DENIED');await shot(guest,'real-wrong-password');
   await guest.page.getByRole('textbox',{name:'房间密码',exact:true}).fill('synthetic test');await guest.page.getByRole('button',{name:'加入',exact:true}).click();await guest.page.locator('.lobby-seats').waitFor();
-  await join(viewer,code,'spectator','synthetic test');
   const players=[],watchers=[];
-  for(let i=0;i<9;i++){const p=await new Peer(service.url,`测试席${i}`).open();peers.push(p);await p.ok('room.join',{room_code:code,password:'synthetic test',role:i<4?'player':'spectator'});(i<4?players:watchers).push(p);}
+  for(let i=0;i<10;i++){const p=await new Peer(service.url,`测试席${i}`).open();peers.push(p);await p.ok('room.join',{room_code:code,password:'synthetic test',role:i<4?'player':'spectator'});(i<4?players:watchers).push(p);}
+  let full=await join(viewer,code,'player','synthetic test');assert.equal(full.error.code,'ROOM_FULL');await shot(viewer,'real-player-full');
+  await viewer.page.getByRole('combobox',{name:'加入身份',exact:true}).selectOption('spectator');await viewer.page.getByRole('button',{name:'加入',exact:true}).click();await until(async()=>!(await state(viewer)).pending,'full spectator reply');assert.equal((await state(viewer)).error.code,'SPECTATORS_FULL');await shot(viewer,'real-spectators-full');
+  const freed=watchers.pop();await freed.ok('room.leave',{room_id:rid});freed.close();await viewer.page.getByRole('button',{name:'加入',exact:true}).click();await viewer.page.locator('.lobby-seats').waitFor();
   await until(async()=>(await state(host)).snapshot.view.members.length===12,'6 plus 6');
   const extra=await new Peer(service.url,'满席验证').open();peers.push(extra);
   for(const [role,error] of [['player','ROOM_FULL'],['spectator','SPECTATORS_FULL']]){const a=await extra.command('room.join',{room_code:code,password:'synthetic test',role});assert.equal(a.error.code,error);}
@@ -130,12 +132,19 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
   // Active host disappears without a voluntary leave. The surviving real window observes all four deadlines.
   await online(host);await online(guest);await online(viewer);let r=await create(host);rid=r.room_id;code=r.view.room_code;await join(guest,code);await join(viewer,code,'spectator');
   await call(host,'setTurnLimit',{room_id:rid,turn_ms:5000,expected_policy_revision:'1'});await start(host,guest,[],rid);
-  const hostId=(await state(host)).snapshot.view.host_id;host.app.process().kill('SIGKILL');await until(()=>host.app.process().signalCode,'owned host process exit');
+  const hostId=(await state(host)).snapshot.view.host_id;host.app.__ownedProcess.kill('SIGKILL');await until(()=>host.app.__ownedProcess.signalCode,'owned host process exit');
   for(let n=1;n<=4;n++){
    await submit(guest,'Def');await until(async()=>['revealing','closed'].includes((await state(guest)).snapshot?.view.phase),'host missing deadline',10000);
    const v=(await state(guest)).snapshot.view;if(n<4){assert.equal(v.host_recovery.missing_count,n);assert.equal(v.match.last_turn.core_resolution.ledger.actions[hostId].entry_id,'Charge');await until(async()=>(await state(guest)).snapshot.view.phase==='selecting','host next missing turn');}else{assert.equal(v.close_reason,'HOST_ABSENT');await shot(guest,'real-host-fourth-close');}
   }
   pass('Q10','Real host process loss: three Charge turns observed, fourth deadline closes; no voluntary leave injected.');await leave(guest);await leave(viewer);
+  // Observe the automatic removal notice in an ordinary renderer without delaying its event.
+  await online(guest);await online(viewer);r=await create(guest);rid=r.room_id;code=r.view.room_code;await join(viewer,code,'player');
+  const third=await new Peer(service.url,'移除验证同伴').open();peers.push(third);await third.ok('room.join',{room_code:code,password:null,role:'player'});
+  await call(guest,'setTurnLimit',{room_id:rid,turn_ms:5000,expected_policy_revision:'1'});await start(guest,viewer,[third],rid);
+  for(let n=0;n<3;n++){await submit(guest,'Charge');await until(()=>third.view?.view.phase==='selecting','removal peer select');await third.submit('Charge');await until(async()=>(await state(guest)).snapshot.view.phase==='revealing','visible absence result',10000);await until(async()=>(await state(guest)).snapshot.view.phase==='selecting','visible absence next');}
+  await viewer.page.getByText('连续三拍缺席，已在当拍结算后移除。',{exact:false}).waitFor();assert.equal((await state(viewer)).snapshot,null);await shot(viewer,'real-membership-ended-notice');pass('Q11-visible','Ordinary renderer receives membership.ended without another command and presents the removal reason.');
+  await submit(guest,'Charge');await until(()=>third.view?.view.phase==='selecting','last reveal peer select');await third.submit('Charge');await until(async()=>(await state(guest)).snapshot.view.phase==='revealing','host leaves reveal');const published=structuredClone((await state(guest)).snapshot.view.match.last_turn);await leave(guest);await until(()=>third.view?.view.phase==='closed','reveal host close');assert.equal(third.view.view.close_reason,'HOST_LEFT');assert.deepEqual(third.view.view.match.last_turn,published);third.close();await leave(viewer);pass('Q09-reveal','Host exits during real reveal; closure retains exactly the existing ledger.');
   // Restart exactly the owned endpoint. Identity loss must not silently restore the old game.
   await online(guest);await create(guest);const port=new URL(service.url).port;await stop(service.child);service=await processWithAddress(['-u','-m','deidei_server','--port',port]);
   await until(async()=>(await state(guest)).error?.code==='SERVER_RESTART','server restart identity error',15000);await shot(guest,'real-server-restart');await leave(guest);
@@ -149,7 +158,7 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
  } catch(error){evidence.status='FAIL';evidence.error=error.message;for(let i=0;i<apps.length;i++){try{const page=await apps[i].firstWindow();await page.screenshot({path:path.join(output,`failure-window-${i}.png`),scale:'css'});}catch{}}throw error;}
  finally{
   for(const p of peers)p.close();
-  for(const app of apps){try{await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await app.close();}catch{app.process()?.kill('SIGKILL');}}
+  for(const app of apps){try{await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await app.close();}catch{app.__ownedProcess?.kill('SIGKILL');}}
   for(const child of children)await stop(child);
   await fs.writeFile(path.join(output,'gui.json'),JSON.stringify(evidence,null,2)+'\n');
   for(const dir of directories)await fs.rm(dir,{recursive:true,force:true});
