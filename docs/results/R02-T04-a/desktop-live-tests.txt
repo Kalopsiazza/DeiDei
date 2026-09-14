@@ -1,0 +1,17 @@
+✔ S09 old exit/stdout cannot settle or fail new process requests; stop waits close (12.915625ms)
+✔ transport frame bounds, pending cap, malformed UTF8 and timeout reject all pending (12.968208ms)
+✔ WorkerPort marks dead match interrupted, no implicit respawn; restart is explicit (0.521959ms)
+✔ S10 late response after leave/new scene cannot restore old active match (0.2965ms)
+✔ S10 renderer polls selecting and stops on rejected/failed getView with retry possible (36.044625ms)
+✔ S10 single in-flight read spans disposed and new scene; late data is discarded (66.414583ms)
+✔ BigInt sixths formatting covers fractions and integers beyond Number precision (0.383584ms)
+✔ real subprocess protocol starts live UUID match, retries once and leaves cleanly (60.717708ms)
+✔ idle real worker exit is detected before any read can respawn it (36.182792ms)
+ℹ tests 9
+ℹ suites 0
+ℹ pass 9
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 271.776625

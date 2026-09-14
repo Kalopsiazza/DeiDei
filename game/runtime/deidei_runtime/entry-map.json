@@ -1,0 +1,237 @@
+{
+  "version": "1",
+  "rules_version": "classic-1.0.1",
+  "entries": [
+    {
+      "doc_id": "E01",
+      "entry_id": "Charge",
+      "actual_move": "Charge",
+      "origin": "normal",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E02",
+      "entry_id": "Bi",
+      "actual_move": "Bi",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E03",
+      "entry_id": "Def",
+      "actual_move": "Def",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E04",
+      "entry_id": "Three",
+      "actual_move": "Three",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E05",
+      "entry_id": "ThreeDef",
+      "actual_move": "ThreeDef",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E06",
+      "entry_id": "BigBi",
+      "actual_move": "BigBi",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E07",
+      "entry_id": "Reflect",
+      "actual_move": "Reflect",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E08",
+      "entry_id": "SelfBi",
+      "actual_move": "SelfBi",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E09",
+      "entry_id": "Cloud",
+      "actual_move": "Cloud",
+      "origin": "normal",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E10",
+      "entry_id": "Bomb",
+      "actual_move": "Bomb",
+      "origin": "normal",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E11",
+      "entry_id": "Xiao",
+      "actual_move": "Xiao",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E12",
+      "entry_id": "Pragon",
+      "actual_move": "Pragon",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E13",
+      "entry_id": "PragonDef",
+      "actual_move": "PragonDef",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E14",
+      "entry_id": "Volvo",
+      "actual_move": "Volvo",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E15",
+      "entry_id": "VolvoDef",
+      "actual_move": "VolvoDef",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E16",
+      "entry_id": "RotateThree",
+      "actual_move": "RotateThree",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E17",
+      "entry_id": "XiaoBei",
+      "actual_move": "XiaoBei",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E18",
+      "entry_id": "FlipVolvo",
+      "actual_move": "FlipVolvo",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E19",
+      "entry_id": "Shell",
+      "actual_move": "Shell",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E20",
+      "entry_id": "Absorb",
+      "actual_move": "Absorb",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E21",
+      "entry_id": "NieXiang",
+      "actual_move": "NieXiang",
+      "origin": "normal",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E22",
+      "entry_id": "NieXiangDef",
+      "actual_move": "NieXiangDef",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E23",
+      "entry_id": "JuYan",
+      "actual_move": "JuYan",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E24",
+      "entry_id": "TianLiJun",
+      "actual_move": "TianLiJun",
+      "origin": "normal",
+      "ui_group": "defense"
+    },
+    {
+      "doc_id": "E25",
+      "entry_id": "ZhangXinWei",
+      "actual_move": "$latest_copyable",
+      "origin": "zhang",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E26",
+      "entry_id": "LiQiang",
+      "actual_move": "LiQiang",
+      "origin": "normal",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E27",
+      "entry_id": "BombPragon",
+      "actual_move": "Pragon",
+      "origin": "bomb",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E28",
+      "entry_id": "BombVolvo",
+      "actual_move": "Volvo",
+      "origin": "bomb",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E29",
+      "entry_id": "BombFlipVolvo",
+      "actual_move": "FlipVolvo",
+      "origin": "bomb",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E30",
+      "entry_id": "FreeThree",
+      "actual_move": "Three",
+      "origin": "lightning",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E31",
+      "entry_id": "FreeRotateThree",
+      "actual_move": "RotateThree",
+      "origin": "lightning",
+      "ui_group": "attack"
+    },
+    {
+      "doc_id": "E32",
+      "entry_id": "ZengYi",
+      "actual_move": "ZengYi",
+      "origin": "normal",
+      "ui_group": "skill"
+    },
+    {
+      "doc_id": "E33",
+      "entry_id": "ZengRewardBigBi",
+      "actual_move": "BigBi",
+      "origin": "zeng_reward",
+      "ui_group": "attack"
+    }
+  ]
+}

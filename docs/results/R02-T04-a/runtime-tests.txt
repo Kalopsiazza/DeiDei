@@ -1,0 +1,19 @@
+test_jsonl_unicode_duplicate_keys_size_and_stdout (test_runtime.ProtocolTests.test_jsonl_unicode_duplicate_keys_size_and_stdout) ... ok
+test_protocol_whitelist_lifecycle_and_invalid_shapes (test_runtime.ProtocolTests.test_protocol_whitelist_lifecycle_and_invalid_shapes) ... ok
+test_S01_same_id_returns_isolated_resolution_applies_once (test_runtime.SessionTests.test_S01_same_id_returns_isolated_resolution_applies_once) ... ok
+test_S02_conflict_and_rejected_move_can_reuse_id (test_runtime.SessionTests.test_S02_conflict_and_rejected_move_can_reuse_id) ... ok
+test_S03_fifo_eviction_does_not_reapply_old_turn (test_runtime.SessionTests.test_S03_fifo_eviction_does_not_reapply_old_turn) ... ok
+test_S04_C065_r5_reward_replay_after_r6_spend (test_runtime.SessionTests.test_S04_C065_r5_reward_replay_after_r6_spend) ... ok
+test_S05_C074_restart_keeps_context_and_eliminated_roster (test_runtime.SessionTests.test_S05_C074_restart_keeps_context_and_eliminated_roster) ... ok
+test_S06_close_and_new_match_reject_old_expected (test_runtime.SessionTests.test_S06_close_and_new_match_reject_old_expected) ... ok
+test_request_and_initial_state_validation (test_runtime.SessionTests.test_request_and_initial_state_validation) ... ok
+test_S07_preselection_retry_privacy_and_separate_randomness (test_runtime.SoloTests.test_S07_preselection_retry_privacy_and_separate_randomness) ... ok
+test_S08_recovery_one_or_both_actors_automatic_once (test_runtime.SoloTests.test_S08_recovery_one_or_both_actors_automatic_once) ... ok
+test_multiple_fixed_seed_matches_end_without_hidden_turn_cap (test_runtime.SoloTests.test_multiple_fixed_seed_matches_end_without_hidden_turn_cap) ... ok
+test_real_options_formats_copy_and_reveal_ledger (test_runtime.SoloTests.test_real_options_formats_copy_and_reveal_ledger) ... ok
+
+----------------------------------------------------------------------
+Ran 13 tests in 0.140s
+
+OK
+Fixed-seed actual rounds: [21, 2, 12, 1, 1, 6, 14, 1, 1, 2, 3, 1]
