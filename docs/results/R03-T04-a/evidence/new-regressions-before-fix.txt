@@ -1,0 +1,105 @@
+test_Q01_limited_uuid_has_no_business_effect_then_recovers (test_live_contract.LiveContract.test_Q01_limited_uuid_has_no_business_effect_then_recovers) ... ERROR
+test_Q02_bad_messages_stay_unidentified_when_limited (test_live_contract.LiveContract.test_Q02_bad_messages_stay_unidentified_when_limited) ... FAIL
+test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline (test_live_contract.LiveContract.test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline) ... FAIL
+test_Q04_grace_and_membership_use_same_anchor (test_live_contract.LiveContract.test_Q04_grace_and_membership_use_same_anchor) ... FAIL
+
+======================================================================
+ERROR: test_Q01_limited_uuid_has_no_business_effect_then_recovers (test_live_contract.LiveContract.test_Q01_limited_uuid_has_no_business_effect_then_recovers)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 507, in wait_for
+    return await fut
+           ^^^^^^^^^
+  File "/private/tmp/deidei-r03-t01-venv/lib/python3.13/site-packages/websockets/asyncio/connection.py", line 297, in recv
+    return await self.recv_messages.get(decode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/deidei-r03-t01-venv/lib/python3.13/site-packages/websockets/asyncio/messages.py", line 158, in get
+    frame = await self.frames.get(not self.closed)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/private/tmp/deidei-r03-t01-venv/lib/python3.13/site-packages/websockets/asyncio/messages.py", line 51, in get
+    await self.get_waiter
+asyncio.exceptions.CancelledError
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "<checkout>/game/server/tests/test_live_contract.py", line 26, in test_Q01_limited_uuid_has_no_business_effect_then_recovers
+    response = await client.send(message)
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<checkout>/game/server/tests/test_rooms.py", line 68, in send
+    value = json.loads(await asyncio.wait_for(self.ws.recv(), 3))
+                       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/tasks.py", line 506, in wait_for
+    async with timeouts.timeout(timeout):
+               ~~~~~~~~~~~~~~~~^^^^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/timeouts.py", line 116, in __aexit__
+    raise TimeoutError from exc_val
+TimeoutError
+
+======================================================================
+FAIL: test_Q02_bad_messages_stay_unidentified_when_limited (test_live_contract.LiveContract.test_Q02_bad_messages_stay_unidentified_when_limited)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "<checkout>/game/server/tests/test_live_contract.py", line 42, in test_Q02_bad_messages_stay_unidentified_when_limited
+    self.assertEqual(response, {'v': 1, 'type': 'ack', 'request_id': None, 'ok': False,
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+                               'error': {'code': 'INVALID_MESSAGE', 'field': None, 'retryable': False}})
+                               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: {'v':[61 chars]{'code': 'RATE_LIMITED', 'field': None, 'retryable': True}} != {'v':[61 chars]{'code': 'INVALID_MESSAGE', 'field': None, 'retryable': False}}
+- {'error': {'code': 'RATE_LIMITED', 'field': None, 'retryable': True},
+?                     ^ ---   -- ^                               ^^^
+
++ {'error': {'code': 'INVALID_MESSAGE', 'field': None, 'retryable': False},
+?                     ^^^   ++  ^^^^^                               ^^^^
+
+   'ok': False,
+   'request_id': None,
+   'type': 'ack',
+   'v': 1}
+
+======================================================================
+FAIL: test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline (test_live_contract.LiveContract.test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "<checkout>/game/server/tests/test_live_contract.py", line 58, in test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline
+    self.assertEqual(current['timer']['deadline_at_ms'], expected)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1800001012001 != 1800000012029
+
+======================================================================
+FAIL: test_Q04_grace_and_membership_use_same_anchor (test_live_contract.LiveContract.test_Q04_grace_and_membership_use_same_anchor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "<checkout>/game/server/tests/test_live_contract.py", line 82, in test_Q04_grace_and_membership_use_same_anchor
+    self.assertEqual((await viewers[0].sync(rid))['host_recovery']['deadline_at_ms'], deadline)
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 1800001030000 != 1800000030017
+
+----------------------------------------------------------------------
+Ran 4 tests in 3.612s
+
+FAILED (failures=3, errors=1)

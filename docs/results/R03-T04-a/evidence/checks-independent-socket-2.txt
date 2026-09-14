@@ -1,0 +1,829 @@
+N01/create PASS
+N02/correct PASS
+N02/wrong PASS
+N02/missing PASS
+N03/last_seat PASS
+N04/cap_0 PASS
+N04/cap_6 PASS
+N04/cap_12 PASS
+N04/eliminated_keep_seat PASS
+N05/room_ready PASS
+N05/room_start PASS
+N05/room_submit PASS
+N05/forged PASS
+N06/h PASS
+N06/p PASS
+N06/disconnected PASS
+N07/player_join PASS
+N07/player_leave PASS
+N07/role PASS
+N07/spectator_join_leave PASS
+N07/host_role PASS
+N08/mid_match PASS
+N09/same PASS
+N09/conflict PASS
+N09/resume_retry PASS
+N09/evicted PASS
+N10/secret_Bi PASS
+N10/secret_Def PASS
+N11/5000_True PASS
+N11/5000_False PASS
+N11/12000_True PASS
+N11/12000_False PASS
+N11/30000_True PASS
+N11/30000_False PASS
+N12/before PASS
+N12/at PASS
+N13/illegal PASS
+N13/missing PASS
+N13/duplicate PASS
+N13/nan PASS
+N13/large PASS
+N13/bool_number PASS
+N13/extra PASS
+N14/submit_replay PASS
+N15/locked PASS
+N16/fresh_old_turn PASS
+N16/evicted PASS
+N17/players_2 PASS
+N17/players_3 PASS
+N18/six_to_two PASS
+N19/manual PASS
+N19/illegal PASS
+N19/resume PASS
+N19/none PASS
+N20/online PASS
+N20/offline PASS
+N21/C026_dead_reflector_returns PASS
+N21/C050_cancelled_charge_still_kills PASS
+N21/C043_dead_tian_clears PASS
+N22/submitted_leave PASS
+N22/three_absences PASS
+N23/single_restart PASS
+N24/winner_leaves PASS
+N24/two_leave PASS
+N25/continue PASS
+N25/terminal PASS
+N26/leave PASS
+N26/absent PASS
+N27/0_expire PASS
+N27/30000_expire PASS
+N27/30000_resume PASS
+N27/60000_expire PASS
+N27/60000_resume PASS
+N27/reveal_resume PASS
+N28/lobby PASS
+N28/playing PASS
+N28/replacement PASS
+N29/correct PASS
+N29/forged PASS
+N29/removed PASS
+N30/next_match PASS
+N31/rooms PASS
+N31/slow PASS
+N32/set_state PASS
+N32/debug PASS
+N32/seed PASS
+N32/forged_room PASS
+N33/errors PASS
+N33/burst_limit PASS
+N33/room_capacity PASS
+N34/C065_reward_replay PASS
+N34/C074_core_full_reset PASS
+N34/room_mode_absence_reset PASS
+N36/six_players_three_matches PASS
+N36/real_clock PASS
+N37/default PASS
+N37/legacy_12 PASS
+N38/10000_to_5000 PASS
+N38/5000_to_30000 PASS
+N39/permissions PASS
+N39/stale PASS
+N39/replay PASS
+N39/same PASS
+N39/deadline PASS
+N40/players_2 PASS
+N40/players_3 PASS
+N40/host_charge_not_immune PASS
+N41/submitted_disconnect PASS
+N41/resume_does_not_clear PASS
+N41/forced_online PASS
+N41/forced_offline PASS
+N42/lobby_expire PASS
+N42/lobby_resume PASS
+N42/result_expire PASS
+N42/result_resume PASS
+N42/eliminated_expire PASS
+N42/eliminated_resume PASS
+N43/after_turn_lobby PASS
+N43/after_turn_selecting PASS
+N43/after_turn_revealing PASS
+N43/after_turn_result PASS
+N43/immediate_lobby PASS
+N43/immediate_selecting PASS
+N43/immediate_revealing PASS
+N43/immediate_result PASS
+N43/after_turn_unsubmitted PASS
+N44/leave_0 PASS
+N44/leave_1 PASS
+N44/leave_2 PASS
+N44/timeout_0 PASS
+N44/timeout_1 PASS
+N44/timeout_2 PASS
+N45/online PASS
+N45/offline_resume PASS
+N46/stale_event_ack_new_room PASS
+N47/host_role_player PASS
+N47/host_role_spectator PASS
+N47/null_id PASS
+N48/three_matches PASS
+N48/real_clock PASS
+N49/nickname_spaces PASS
+N49/nickname_format PASS
+N49/nickname_newline PASS
+N49/nickname_chinese PASS
+N49/nickname_emoji PASS
+N49/nickname_max20 PASS
+N49/nickname_over21 PASS
+N49/nickname_surrogate PASS
+N49/nickname_emoji20 PASS
+N49/nickname_padded PASS
+N49/password_empty PASS
+N49/password_spaces PASS
+N49/password_max32 PASS
+N49/password_over33 PASS
+N49/password_format PASS
+N49/password_control PASS
+N49/password_type PASS
+N49/password_surrogate PASS
+N49/password_emoji32 PASS
+{
+  "server_status": "SOCKET_CHECKS_PASS",
+  "fixture_status": "VALID",
+  "selected": 160,
+  "passed": 159,
+  "server": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "core": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "desktop": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "78ff33fee9947d92eb79213632ed9d1fa278adee3e929acc8fcd0b899d46600a",
+    "dirty": false
+  },
+  "tests": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "bb18124b7f048f045f55533e3a5ad09ca759ee7fc2eea937531f36fc88b31dc9",
+    "dirty": false
+  },
+  "desktop_status": "RUN",
+  "cases": [
+    {
+      "case_id": "N01/create",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N02/correct",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N02/wrong",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N02/missing",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N03/last_seat",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N04/cap_0",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N04/cap_6",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N04/cap_12",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N04/eliminated_keep_seat",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N05/room_ready",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N05/room_start",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N05/room_submit",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N05/forged",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N06/h",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N06/p",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N06/disconnected",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N07/player_join",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N07/player_leave",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N07/role",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N07/spectator_join_leave",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N07/host_role",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N08/mid_match",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N09/same",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N09/conflict",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N09/resume_retry",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N09/evicted",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N10/secret_Bi",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N10/secret_Def",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/5000_True",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/5000_False",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/12000_True",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/12000_False",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/30000_True",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N11/30000_False",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N12/before",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N12/at",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/illegal",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/missing",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/duplicate",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/nan",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/large",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/bool_number",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N13/extra",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N14/submit_replay",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N15/locked",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N16/fresh_old_turn",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N16/evicted",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N17/players_2",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N17/players_3",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N18/six_to_two",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N19/manual",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N19/illegal",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N19/resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N19/none",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N20/online",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N20/offline",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N21/C026_dead_reflector_returns",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N21/C050_cancelled_charge_still_kills",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N21/C043_dead_tian_clears",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N22/submitted_leave",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N22/three_absences",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N23/single_restart",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N24/winner_leaves",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N24/two_leave",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N25/continue",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N25/terminal",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N26/leave",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N26/absent",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/0_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/30000_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/30000_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/60000_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/60000_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N27/reveal_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N28/lobby",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N28/playing",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N28/replacement",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N29/correct",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N29/forged",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N29/removed",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N30/next_match",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N31/rooms",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N31/slow",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N32/set_state",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N32/debug",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N32/seed",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N32/forged_room",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N33/errors",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N33/burst_limit",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N33/room_capacity",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N34/C065_reward_replay",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N34/C074_core_full_reset",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N34/room_mode_absence_reset",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N35/electron_manual",
+      "status": "NOT_RUN",
+      "reason": "actual Electron requires integration package"
+    },
+    {
+      "case_id": "N36/six_players_three_matches",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N36/real_clock",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N37/default",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N37/legacy_12",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N38/10000_to_5000",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N38/5000_to_30000",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N39/permissions",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N39/stale",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N39/replay",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N39/same",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N39/deadline",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N40/players_2",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N40/players_3",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N40/host_charge_not_immune",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N41/submitted_disconnect",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N41/resume_does_not_clear",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N41/forced_online",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N41/forced_offline",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/lobby_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/lobby_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/result_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/result_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/eliminated_expire",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N42/eliminated_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/after_turn_lobby",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/after_turn_selecting",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/after_turn_revealing",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/after_turn_result",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/immediate_lobby",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/immediate_selecting",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/immediate_revealing",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/immediate_result",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N43/after_turn_unsubmitted",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/leave_0",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/leave_1",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/leave_2",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/timeout_0",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/timeout_1",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N44/timeout_2",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N45/online",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N45/offline_resume",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N46/stale_event_ack_new_room",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N47/host_role_player",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N47/host_role_spectator",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N47/null_id",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N48/three_matches",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N48/real_clock",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_spaces",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_format",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_newline",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_chinese",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_emoji",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_max20",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_over21",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_surrogate",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_emoji20",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/nickname_padded",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_empty",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_spaces",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_max32",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_over33",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_format",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_control",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_type",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_surrogate",
+      "status": "PASS"
+    },
+    {
+      "case_id": "N49/password_emoji32",
+      "status": "PASS"
+    }
+  ]
+}
