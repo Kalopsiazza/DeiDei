@@ -1,7 +1,7 @@
 # R03-T01-a 交付报告
 
-**本地实现完成，固定提交自测通过；交付状态 PARTIAL。** 参数答复仍为 PROVISIONAL，未推送分支或创建 PR。
-这两项不冒充已完成；不涉及公网、桌面集成或真人验收。
+**旧 a 包本地实现完成，固定提交自测通过；交付状态 PARTIAL。** 用户已答复并要求提 PR；10 秒、局中改时限和房主断线行为需规划修订，不能把现有实现当成符合最新要求。
+参数确认与变更分别记录在 DECISIONS 和 CHANGE-REQUEST-FOR-PRO；不涉及公网、桌面集成或真人验收。
 
 ## 输入与变更
 
@@ -56,8 +56,8 @@ N01—N36 的具体自测与未测项见 `TEST-MATRIX.md`。原 expectedFailure 
 
 ## 尚未完成/不在本包
 
-- 尚无房间参数答复：`DECISIONS.md` / `decisions.json` 保持 PROVISIONAL，未生成 confirmed-policy.json。
-- 未推送、未创建 PR；附件中的命令未当作用户额外 Git 授权。`PR-BODY.md` 已备好可审阅说明。
+- 已收到参数答复：部分选项 APPROVED，其余 USER_REQUESTED_PENDING_PLAN / NEEDS_CLARIFICATION；未生成整套 confirmed-policy.json。
+- 用户本次已明确要求提 PR；作为待规划修订的草稿交付，不合入。PR 的实际 URL/base/head/SHA 将回读记录在 PR-SUBMISSION.json。
 - 任务 03 独立房间验收 NOT_RUN；未读取其浮动分支，也未替其宣布通过。
 - Electron 集成、Windows、跨电脑、真实弱网、六真人、安装包、TLS/公网部署全部 NOT_RUN。
 - 慢消费者为真 socket + 阻塞 writer 注入；容量为注册表边界注入，未声称吞吐压力测试。

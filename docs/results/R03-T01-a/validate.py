@@ -52,10 +52,11 @@ def main() -> int:
         platform=platform.platform(), python_version=sys.version, run_at_utc=time.strftime('%Y-%m-%dT%H:%M:%SZ',time.gmtime()),
         commands=records, server_source_sha256=source_hashes,
         out_of_scope_diff=git('diff','--name-only',INPUT_SHA,'--','game/core','game/runtime','game/desktop','tests','scripts','packaging','.github'),
-        dependency_security='dependency-security.json', decisions_status='PROVISIONAL',
+        dependency_security='dependency-security.json', decisions_status=sorted({d['status'] for d in json.loads((OUT/'decisions.json').read_text())}),
         independent_rooms='NOT_RUN: T03 is a separate task', gui='NOT_RUN: T01 is server-only',
         windows='NOT_RUN', cross_machine='NOT_RUN', human_play='NOT_RUN',
-        push='NOT_RUN: no separate user authorization', pr_url=None, result_pr_base='integration/r03')
+        push='See PR-SUBMISSION.json for separately verified delivery',
+        pr_url=json.loads((OUT/'PR-SUBMISSION.json').read_text()).get('url') if (OUT/'PR-SUBMISSION.json').exists() else None, result_pr_base='integration/r03')
     (OUT/'MANIFEST.json').write_text(json.dumps(manifest, ensure_ascii=False, indent=2)+'\n')
     return int(any(r['exit_code'] for r in records) or bool(manifest['out_of_scope_diff']))
 

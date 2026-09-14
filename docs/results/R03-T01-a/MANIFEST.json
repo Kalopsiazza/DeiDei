@@ -136,13 +136,14 @@
   },
   "out_of_scope_diff": "",
   "dependency_security": "dependency-security.json",
-  "decisions_status": "PROVISIONAL",
+  "decisions_status": "PARTIALLY_APPROVED / CHANGE_REQUESTED",
   "independent_rooms": "NOT_RUN: T03 is a separate task",
   "gui": "NOT_RUN: T01 is server-only",
   "windows": "NOT_RUN",
   "cross_machine": "NOT_RUN",
   "human_play": "NOT_RUN",
-  "push": "NOT_RUN: no separate user authorization",
+  "push": "AUTHORIZED_BY_USER; pending execution",
   "pr_url": null,
-  "result_pr_base": "integration/r03"
+  "result_pr_base": "integration/r03",
+  "decision_change_request": "CHANGE-REQUEST-FOR-PRO.md"
 }
