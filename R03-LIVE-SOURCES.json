@@ -1,0 +1,20 @@
+{
+  "schema_version": 1,
+  "status": "ASSEMBLED_NOT_ACCEPTED",
+  "planning_parent": "7ed0c388149dcd8caa7436e4a4574f2343eff9c9",
+  "baseline_product": "23520350393ba43384c20b60bef7d6dbd89fc142",
+  "sources": {
+    "game/server": {"pr": 23, "commit": "b40996e833297e24817b9c24b7830ed2941d9c3d", "tree": "dd9b56bdc7df4add9e603fc4ced4f29fffb27ff8"},
+    "game/desktop": {"pr": 24, "commit": "1dbe1e4f8de28410dc42946efddffc011966cc3a", "tree": "f33e71b7ef9bf7626f75e2a145a46f92e1f2e4b6"},
+    "tests/rooms_v1": {"pr": 25, "commit": "8711e75a5710a92f5dcd2eb005b20c1de8da9ce0", "tree": "6d7c93352c2302667682fafff27f00fd951bd3b3"}
+  },
+  "unchanged": {
+    "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+    "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
+    "game/packaging": "49e0af03dc130d13742e7c0dcdae5d83cae50fd4",
+    "tests/rules_v1_001": "237a573d53b6182c6d15da2411e0aca33fa9ca85"
+  },
+  "known_failed_cases": ["N33/burst_limit", "N36/real_clock", "N48/real_clock"],
+  "not_run": ["N35 real Electron integration"],
+  "note": "Exact directory assembly for subsequent implementation and tests. No product source edits, PR merges, deployment, or release. User confirmed after_turn and early_reveal=true in PR23 DECISIONS.md."
+}

@@ -7,3 +7,5 @@ esbuild.buildSync({ entryPoints: ['fixture.ts'], bundle: true, outfile: 'build/f
 esbuild.buildSync({ entryPoints: ['interaction.ts'], bundle: true, outfile: 'build/interaction.cjs', platform: 'node', format: 'cjs' });
 
 esbuild.buildSync({ entryPoints: ['view-loop.ts'], bundle: true, outfile: 'build/view-loop.cjs', platform: 'node', format: 'cjs' });
+
+esbuild.buildSync({ entryPoints: ['online/model.ts'], bundle: true, outfile: 'build/online-model.cjs', platform: 'node', format: 'cjs' });
