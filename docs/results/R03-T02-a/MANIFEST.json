@@ -7,8 +7,8 @@
   "plan_manifest_sha256": "4442d966b87b477c111f9b99ae9e3444ccfe94dd8338ab5a1910b4e3acd88684",
   "branch": "codex/r03-t02-a-online-desktop",
   "pr_target": "integration/r03",
-  "pr_url": null,
-  "remote_submission": "AWAITING_EXPLICIT_PUSH_AUTHORIZATION",
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/21",
+  "remote_submission": "PR_CREATED_VERIFIED",
   "local_status": "PASS",
   "real_room_service": "NOT_RUN",
   "windows": "NOT_RUN",
@@ -110,8 +110,8 @@
     },
     {
       "path": "docs/results/R03-T02-a/REPORT.md",
-      "bytes": 5107,
-      "sha256": "3fd0ac2babbfed4dcc08a58751c2bb064f26ee1d72714dc12fec1a5de1db9417"
+      "bytes": 5205,
+      "sha256": "bcde2623e6a6e00d04ab73fec4f62416d06d068c7063f112e15e688702e1966e"
     },
     {
       "path": "docs/results/R03-T02-a/TEST-MATRIX.md",
@@ -120,8 +120,8 @@
     },
     {
       "path": "docs/results/R03-T02-a/USER-FEEDBACK.md",
-      "bytes": 623,
-      "sha256": "c27e0bcd6c73ab6b6a95dac67dd88e956e8c62b0779940d904c9de272cff76a8"
+      "bytes": 791,
+      "sha256": "09020c85ed31f5d3ba5893d28805c5e2144e85ea78d33f075976fcb2fb4b4d39"
     },
     {
       "path": "docs/results/R03-T02-a/desktop-baseline.txt",
@@ -323,5 +323,6 @@
       "bytes": 97,
       "sha256": "f4cedec022e1166153ca21960b32e9c8e1dd507946c040dda22fc78082855c12"
     }
-  ]
+  ],
+  "pr_head_sha_at_creation": "c9242a2afc377c833f6e4e04c4540132c59fb1ca"
 }

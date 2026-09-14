@@ -52,4 +52,4 @@
 
 已做聚焦自审：IPC/凭证边界、乱序/重试/退出、公开资源与单人兼容；Kimi 未调用（按技能停用要求）。没有外部审查结论。
 
-已形成本地代码提交与可审查 PR 正文。附件要求提交 PR，但项目用户指令第 7 条要求 Git push/外部提交明确授权；当前请求未单独明确授权 push，因此保留为待批准的远端步骤，不伪造 PR URL，不自动合入。
+用户后续明确回复「授权」，已推送任务分支并创建 [PR #21](https://github.com/Kalopsiazza/DeiDei/pull/21)。创建后回读确认：base=`integration/r03`，head=`codex/r03-t02-a-online-desktop`，初次 head SHA=`c9242a2afc377c833f6e4e04c4540132c59fb1ca`，状态 OPEN。此后只补充本次提交记录；受测产品代码不变。未合入。
