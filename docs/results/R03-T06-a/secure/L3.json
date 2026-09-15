@@ -1,0 +1,105 @@
+{
+  "layer": "L3",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "wrong-san: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "expired: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "unknown: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S02",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "valid root trusted only at process startup; actual authenticated secure connection"
+    },
+    {
+      "id": "S14",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "10 -> 5 seconds preserves current deadline and applies next selection"
+    },
+    {
+      "id": "S15",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "real connection dropped after selection; same identity/Def, exactly one +2 charge result"
+    },
+    {
+      "id": "S13",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied"
+    },
+    {
+      "id": "S16",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "host leaves after submission; current turn closes HOST_LEFT with no fabricated winner"
+    },
+    {
+      "id": "S15",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "same TLS endpoint restarts: SERVER_RESTART, no silent room restoration"
+    },
+    {
+      "id": "S17",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "service stays stopped; actual source offline worker starts"
+    },
+    {
+      "id": "S18",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "owned clients closed; temporary profiles removed; server/CA cleanup in Python evidence"
+    }
+  ],
+  "screenshots": [],
+  "page_errors": [],
+  "versions": {
+    "node": "24.12.0",
+    "acorn": "8.15.0",
+    "ada": "3.3.0",
+    "amaro": "1.1.5",
+    "ares": "1.34.5",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "137",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.67.1",
+    "openssl": "3.5.4",
+    "simdjson": "4.1.0",
+    "simdutf": "6.4.0",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "7.16.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "13.6.233.17-node.37",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "processes": [],
+  "profiles_removed": true
+}
