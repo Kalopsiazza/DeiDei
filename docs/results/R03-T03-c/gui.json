@@ -1,0 +1,29 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "platform": "darwin",
+  "arch": "arm64",
+  "transport": "ordinary main.cjs / real loopback CLI / real core",
+  "dialog_scope": "real HTML leave dialog; native OS callback responses scripted (no native dialog visual acceptance)",
+  "checks": [
+    "solo pre-start cancel returns to menu",
+    "three actual host/player/observer windows share real room; observer has no cards",
+    "real HTML host-leave cancellation and scripted native-close cancellation preserve live room",
+    "actual service restart hides all three old tables with SERVER_RESTART",
+    "recovery creates distinct new room; offline real worker starts after restart",
+    "three sequential closes exit owned Electron processes and observed descendants"
+  ],
+  "screenshots": [
+    "real-host.png",
+    "real-player.png",
+    "real-observer.png"
+  ],
+  "close_ms": [
+    257,
+    253,
+    147
+  ],
+  "descendants_observed": 10,
+  "descendants_after": 0,
+  "status": "PASS",
+  "owned_processes_after": 0
+}

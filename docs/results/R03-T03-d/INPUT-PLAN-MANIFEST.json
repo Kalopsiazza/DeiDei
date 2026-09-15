@@ -1,0 +1,81 @@
+{
+  "plan_version": "R03-NEXT-1.0",
+  "plan_sha": "3cf98c40c9ec3c607b702a12875ce4ec830da27d",
+  "tasks": [
+    "R03-T03-d",
+    "R03-T06-a"
+  ],
+  "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "files": [
+    {
+      "path": "DOCUMENT-CHECK.txt",
+      "bytes": 198,
+      "sha256": "3d7f9b8fdbd74982d236ebf7d9c86b340274520f45212cfdd536bd167eb5a88f"
+    },
+    {
+      "path": "README.txt",
+      "bytes": 301,
+      "sha256": "481ecf1699afa55ef0ab0c42ad17eb15577b164d78d63037816a51d1f45719e9"
+    },
+    {
+      "path": "START-CODEX.txt",
+      "bytes": 2633,
+      "sha256": "acbadfa612035b3eaf593213ac7a9e5a4aa0d127edb90dd9b51e5f07b6f71bf9"
+    },
+    {
+      "path": "docs/architecture/R03-NEXT-v1.md",
+      "bytes": 8651,
+      "sha256": "ed4d3bf7d9c236e5ed82821dcce8aeaefb2163c4413d6ec04d59fdbfa2f26a68"
+    },
+    {
+      "path": "docs/contracts/r03/NEXT-CASES-v1.md",
+      "bytes": 3271,
+      "sha256": "b141b9682230da662137fa4c5dea4840dcb1bce0a8bee099d75829c02e56fb86"
+    },
+    {
+      "path": "docs/prd/R03-NEXT-v1.md",
+      "bytes": 4192,
+      "sha256": "2e59c361082052d422c4f8bb258b08c50c05889c319b22621912643fa50147b2"
+    },
+    {
+      "path": "docs/production/R03-NEXT-START.md",
+      "bytes": 1835,
+      "sha256": "cde490df75417367845585b1361f977626a376c6a7e8f0e1c98253f6059ccf7c"
+    },
+    {
+      "path": "docs/reviews/R03-LONG-BATCH-20260915.md",
+      "bytes": 6664,
+      "sha256": "f75542f1cfdb5e8438f28a059308d7f2afe0f4447af308935ac73b93e1f7d436"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T03-d.md",
+      "bytes": 3350,
+      "sha256": "9a3926b116f772ce7095f3fa2fbb5966569222da2203f9bd802759870798e1a8"
+    },
+    {
+      "path": "docs/tasks/R03/R03-T06-a.md",
+      "bytes": 4746,
+      "sha256": "f43dfee2b231161311d879a8fe7d2d4ac3de8b9622f44425e583b08e6a9de1e5"
+    },
+    {
+      "path": "original-r03-long-batch.zip",
+      "bytes": 151451,
+      "sha256": "f7225e78aa0c988a44d43f7b303f36e2a167189c78be7209d105dcceb5c284ad"
+    },
+    {
+      "path": "review-evidence/final-product-endurance.json",
+      "bytes": 5466,
+      "sha256": "5ec7f2c1ed9aaf02d7b581203d8bf5c1cc6089839b11170533cbb4388f465938"
+    },
+    {
+      "path": "review-evidence/r03_rate_sequence.py",
+      "bytes": 4161,
+      "sha256": "cd052ae1df5904f798b4e0679e8ee4694e1363064c0cb61c7f6808f1b1682417"
+    },
+    {
+      "path": "review-evidence/rate-diagnostic.json",
+      "bytes": 710,
+      "sha256": "57fa7650df074215613ad1202d618b9068c2e32b8d865eda91a8e230bdfd4c6c"
+    }
+  ]
+}

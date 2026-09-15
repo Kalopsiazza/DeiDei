@@ -1,0 +1,622 @@
+{
+  "source": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "core": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+    "source_sha256": "0d789ad2321864eb1fe623e26d155fdab96cbbb73681089c67425c29edfd1199",
+    "dirty": false
+  },
+  "scope": "real sockets + injected clock; seeds vary seats, observer count, order and replay fault",
+  "sequences": [
+    {
+      "seed": 0,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 92
+    },
+    {
+      "seed": 1,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 2,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 3,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 4,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 5,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 6,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 7,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 8,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 9,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 10,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 11,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 12,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 13,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 14,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 15,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 16,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 17,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 18,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 19,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 20,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 21,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 22,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 23,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 24,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 25,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 26,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 27,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 28,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 29,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 30,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 31,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 32,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 33,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 34,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 35,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 36,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 37,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 38,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 39,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 40,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 41,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 42,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 43,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 44,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 45,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 46,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 47,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 48,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 49,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 50,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 51,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 52,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 53,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 54,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 55,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 56,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 57,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 58,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 59,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 60,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 61,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 62,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 63,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 64,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 65,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 66,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 67,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 68,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 69,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 70,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 71,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 72,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 73,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 74,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 75,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 76,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 77,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 78,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 79,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 80,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 81,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 82,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 83,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 84,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    },
+    {
+      "seed": 85,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 27
+    },
+    {
+      "seed": 86,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 41
+    },
+    {
+      "seed": 87,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 38
+    },
+    {
+      "seed": 88,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 54
+    },
+    {
+      "seed": 89,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 68
+    },
+    {
+      "seed": 90,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 20
+    },
+    {
+      "seed": 91,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 36
+    },
+    {
+      "seed": 92,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 50
+    },
+    {
+      "seed": 93,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 47
+    },
+    {
+      "seed": 94,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 63
+    },
+    {
+      "seed": 95,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 32
+    },
+    {
+      "seed": 96,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 29
+    },
+    {
+      "seed": 97,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 45
+    },
+    {
+      "seed": 98,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 59
+    },
+    {
+      "seed": 99,
+      "status": "PASS",
+      "stage": "finished",
+      "actions": 56
+    }
+  ],
+  "passed": 100,
+  "status": "PASS"
+}

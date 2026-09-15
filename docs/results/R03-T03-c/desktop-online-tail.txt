@@ -1,0 +1,14 @@
+✔ W10 independent grace timer does not freeze play or restart on duplicate snapshot (4.620041ms)
+✔ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (6.568417ms)
+✔ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (5.062125ms)
+✔ W12 null request ack is strictly checked and cannot complete pending command (1.507042ms)
+✔ W13 Unicode profile boundary and password spaces remain strict (0.353875ms)
+✔ W14 real Room/core reveal and full result DTOs decode without dropping last_turn (14.177541ms)
+ℹ tests 28
+ℹ suites 0
+ℹ pass 28
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 106.606

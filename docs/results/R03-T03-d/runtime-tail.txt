@@ -1,0 +1,9 @@
+test_other_unapplied_event_is_not_reported_as_a_gain (test_summary.SummaryTests.test_other_unapplied_event_is_not_reported_as_a_gain) ... ok
+test_restart_uses_pre_reset_ledger_then_explains_reset (test_summary.SummaryTests.test_restart_uses_pre_reset_ledger_then_explains_reset) ... ok
+test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain (test_summary.SummaryTests.test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain) ... ok
+
+----------------------------------------------------------------------
+Ran 23 tests in 0.217s
+
+OK
+Fixed-seed actual rounds: [21, 2, 12, 1, 1, 6, 14, 1, 1, 2, 3, 1]

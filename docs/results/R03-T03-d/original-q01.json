@@ -1,0 +1,17 @@
+{
+  "product": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "baeff0bf476e1efd91358e9c3bb6350208d8a647",
+    "source_sha256": "64ff73ca7a53d3862c8fb6da0bca7511ea77fbd56527723ed86eeab9d4346e99",
+    "dirty": false
+  },
+  "status": "FAIL",
+  "error": "AssertionError",
+  "file": "faults.py",
+  "line": 39,
+  "statement": "assert before['seq']==after['seq'] and before['view']['policy_revision']==after['view']['policy_revision']"
+}

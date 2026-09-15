@@ -1,0 +1,52 @@
+{
+  "source": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "core": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+    "source_sha256": "0d789ad2321864eb1fe623e26d155fdab96cbbb73681089c67425c29edfd1199",
+    "dirty": false
+  },
+  "status": "PASS",
+  "cases": [
+    {
+      "case_id": "Q01/rate",
+      "status": "PASS",
+      "evidence": {
+        "last_seq_unchanged": true,
+        "rejected_id_reusable": true,
+        "room_unchanged_in_each_sync_window": true,
+        "room_seq": {
+          "before": "5",
+          "after_rate": "5",
+          "after_disconnect": "6",
+          "after_resume": "7",
+          "after_replay": "7"
+        },
+        "connected": [
+          true,
+          false,
+          true
+        ],
+        "match_policy_and_exact_time_unchanged": true
+      }
+    }
+  ],
+  "not_run": [
+    {
+      "case_id": "Q17",
+      "reason": "real Electron lifecycle is separate"
+    },
+    {
+      "case_id": "Q18",
+      "reason": "100 seeds and 900-second run reported separately"
+    }
+  ]
+}
