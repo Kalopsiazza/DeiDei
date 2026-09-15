@@ -9,14 +9,10 @@ defaults:
   run:
     shell: bash
 jobs:
-  independent:
+  followup:
     if: github.head_ref == 'review/r03-deliveries-20260915' && github.event.pull_request.head.repo.full_name == 'Kalopsiazza/DeiDei'
     runs-on: ubuntu-24.04
-    timeout-minutes: 24
-    strategy:
-      fail-fast: false
-      matrix:
-        mode: [fast, endurance]
+    timeout-minutes: 12
     env:
       PYTHONDONTWRITEBYTECODE: '1'
       ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
@@ -32,10 +28,9 @@ jobs:
           path: independent
           persist-credentials: false
       - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
-        if: matrix.mode == 'fast'
         with:
-          ref: e3cd49439eb3e4319ed0c4f9d3cc20a36deff2bf
-          path: packaging
+          ref: 11328ac2db85a24ebbf7195acd74ace266b7cd63
+          path: auditor
           persist-credentials: false
       - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
         with:
@@ -43,65 +38,33 @@ jobs:
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:
           node-version: '24.12.0'
-      - name: Record exact input identities
+      - name: Record identities and fixed dependency
         run: |
           mkdir evidence
           git -C product rev-parse HEAD > evidence/product-sha.txt
           git -C independent rev-parse HEAD > evidence/test-sha.txt
-          git -C product ls-tree -r HEAD > evidence/product-tree.txt
-          git -C independent ls-tree -r HEAD > evidence/test-tree.txt
           python --version > evidence/python.txt
-          node --version > evidence/node.txt
-          npm --version > evidence/npm.txt
-      - name: Install only fixed server dependency
-        run: python -m pip install --require-hashes -r product/game/server/requirements.lock 2>&1 | tee evidence/pip.txt
-      - name: Independent fault scenarios against final product
-        if: matrix.mode == 'fast'
-        run: python independent/tests/rooms_endurance/run.py --product "$PWD/product" --sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --mode faults --output "$PWD/evidence/faults.json" 2>&1 | tee evidence/faults.txt
-      - name: Independent 100 fixed sequences
-        if: always() && matrix.mode == 'fast'
-        run: python independent/tests/rooms_endurance/run.py --product "$PWD/product" --sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --mode seeds --seeds 100 --output "$PWD/evidence/seeds.json" 2>&1 | tee evidence/seeds.txt
-      - name: Independent room suite
-        if: always() && matrix.mode == 'fast'
-        run: python independent/tests/rooms_v1/run_acceptance.py --server-path "$PWD/product/game/server" --core-path "$PWD/product/game/core" --tested-code-sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --output "$PWD/evidence/rooms.json" 2>&1 | tee evidence/rooms.txt
-      - name: Service tests
-        if: always() && matrix.mode == 'fast'
-        run: PYTHONPATH=product/game/core:product/game/server python -m unittest discover -s product/game/server/tests -v 2>&1 | tee evidence/server.txt
-      - name: Core and runtime tests
-        if: always() && matrix.mode == 'fast'
-        run: |
-          PYTHONPATH=product/game/core python -m unittest discover -s product/game/core/tests -v 2>&1 | tee evidence/core.txt
-          PYTHONPATH=product/game/core:product/game/runtime python -m unittest discover -s product/game/runtime/tests -v 2>&1 | tee evidence/runtime.txt
-      - name: Original independent core suite
-        if: always() && matrix.mode == 'fast'
-        run: python product/tests/rules_v1_001/run_acceptance.py --core product/game/core 2>&1 | tee evidence/rules.txt
-      - name: Desktop checks without launching a window
-        if: always() && matrix.mode == 'fast'
-        run: |
-          npm --prefix product/game/desktop ci --ignore-scripts --no-audit --no-fund 2>&1 | tee evidence/npm-ci.txt
-          npm --prefix product/game/desktop test 2>&1 | tee evidence/desktop.txt
-      - name: Independent real-clock 900-second run
-        if: matrix.mode == 'endurance'
-        run: python independent/tests/rooms_endurance/run.py --product "$PWD/product" --sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --mode endurance --seconds 900 --rooms 4 --output "$PWD/evidence/endurance.json" 2>&1 | tee evidence/endurance.txt
-      - name: Verify product and test inputs remain unchanged
+          python -m pip install --require-hashes -r product/game/server/requirements.lock 2>&1 | tee evidence/pip.txt
+      - name: Diagnose rate and reconnect revisions separately
+        run: python auditor/docs/reviews/probes/r03_rate_sequence.py 2>&1 | tee evidence/rate-diagnostic.txt
+      - name: Full independent room suite including exact desktop decoder
+        if: always()
+        run: python independent/tests/rooms_v1/run_acceptance.py --server-path "$PWD/product/game/server" --core-path "$PWD/product/game/core" --tested-code-sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --desktop-path "$PWD/product/game/desktop" --desktop-sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --output "$PWD/evidence/rooms-with-desktop.json" 2>&1 | tee evidence/rooms-with-desktop.txt
+      - name: Independent tool self-tests
+        if: always()
+        working-directory: independent
+        run: python -m unittest discover -s tests/rooms_endurance -p 'test_*.py' -v 2>&1 | tee ../evidence/endurance-tool-tests.txt
+      - name: Verify unchanged input files
         if: always()
         run: |
-          git -C product diff --exit-code 2>&1 | tee evidence/product-unchanged.txt
-          git -C independent diff --exit-code 2>&1 | tee evidence/tests-unchanged.txt
-      - name: Preserve test results and inspectable source
+          git -C product diff --exit-code > evidence/product-unchanged.txt
+          git -C independent diff --exit-code > evidence/tests-unchanged.txt
+      - name: Preserve follow-up evidence
         if: always()
         uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
         with:
-          name: r03-review-${{ matrix.mode }}-d0c96408
+          name: r03-review-followup-d0c96408
           retention-days: 14
           path: |
             evidence/
-            product/game/
-            !product/game/desktop/node_modules/**
-            !product/game/desktop/build/**
-            product/tests/
-            independent/tests/
-            independent/docs/results/R03-T03-c/
-            packaging/game/packaging_r03/
-            packaging/docs/results/R03-T05-a/
-            !**/__pycache__/**
+            auditor/docs/reviews/probes/r03_rate_sequence.py
