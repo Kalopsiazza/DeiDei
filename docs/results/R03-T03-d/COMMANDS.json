@@ -1,0 +1,164 @@
+{
+  "variables": {
+    "CHECKOUT": "this test worktree",
+    "PRODUCT": "separate clean d0 detached product",
+    "VENV": "isolated local venv",
+    "PY": "isolated venv Python3.13.7",
+    "OUT": "local evidence directory",
+    "PRODUCT_SHA": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "TOOL_SHA": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+    "ORIGINAL_TOOL": "clean checkout of baeff0bf476e1efd91358e9c3bb6350208d8a647"
+  },
+  "environment": {
+    "node": "24.12.0",
+    "websockets": "17.0.1",
+    "python": "3.13.7"
+  },
+  "commands": [
+    {
+      "name": "create-isolated-venv",
+      "command": "python3 -m venv \"$VENV\" && \"$VENV/bin/python\" -m pip install --require-hashes -r \"$PRODUCT/game/server/requirements.lock\"",
+      "exit_code": 0,
+      "output": "websockets17.0.1 installed from unchanged lock",
+      "tool_sha": "environment setup",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "original-q01",
+      "command": "\"$PY\" /tmp/r03-d-first.py",
+      "exit_code": 1,
+      "output": "original-q01.json",
+      "tool_sha": "baeff0bf476e1efd91358e9c3bb6350208d8a647",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "tool-precommit-selfcheck",
+      "command": "python3 -m unittest tests.rooms_endurance.test_endurance -v",
+      "exit_code": 0,
+      "output": "3 passed before commit",
+      "tool_sha": "development precheck; not candidate acceptance",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "q01",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$PRODUCT_SHA\" --mode faults --case Q01 --output \"$OUT/q01-fixed.json\"",
+      "exit_code": 0,
+      "output": "q01-fixed.json",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "faults43",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$PRODUCT_SHA\" --mode faults --output \"$OUT/faults-43.json\"",
+      "exit_code": 0,
+      "output": "faults-43.json",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "100seeds",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$PRODUCT_SHA\" --mode seeds --seeds 100 --output \"$OUT/seeds-100.json\"",
+      "exit_code": 0,
+      "output": "seeds-100.json",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "rooms160",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_v1/run_acceptance.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --tested-code-sha \"$PRODUCT_SHA\" --desktop-path \"$PRODUCT/game/desktop\" --desktop-sha \"$PRODUCT_SHA\" --output \"$OUT/rooms-160.json\"",
+      "exit_code": 0,
+      "output": "rooms-160.json",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "cross11",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_v1/crosscheck.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --desktop-path \"$PRODUCT/game/desktop\" --server-sha \"$PRODUCT_SHA\" --desktop-sha \"$PRODUCT_SHA\" --tests-sha \"$TOOL_SHA\" --output \"$OUT/cross-raw.json\"",
+      "exit_code": 0,
+      "output": "crosscheck-11.json; private frame/message content omitted",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "eight-mutations",
+      "command": "PYTHONPATH=\"$CHECKOUT\" \"$PY\" \"$CHECKOUT/tests/rooms_endurance/mutations.py\" --product \"$PRODUCT\" --sha \"$PRODUCT_SHA\" --output \"$OUT/mutations.json\"",
+      "exit_code": 0,
+      "output": "mutations.json",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "rules192",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rules_v1_001/run_acceptance.py\" --core \"$PRODUCT/game/core\"",
+      "exit_code": 0,
+      "output": "rules-tail.txt",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "root62",
+      "command": "cd \"$CHECKOUT\" && \"$PY\" scripts/check.py",
+      "exit_code": 0,
+      "output": "root-tail.txt",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "tools30",
+      "command": "cd \"$CHECKOUT\" && \"$PY\" -m unittest tests.rooms_v1.test_harness tests.rules_v1_001.test_harness tests.rooms_endurance.test_endurance -v",
+      "exit_code": 0,
+      "output": "tools-tail.txt",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "core174",
+      "command": "cd \"$PRODUCT\" && PYTHONPATH=game/core \"$PY\" -m unittest discover -s game/core/tests -v",
+      "exit_code": 0,
+      "output": "core-tail.txt",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "runtime23",
+      "command": "cd \"$PRODUCT\" && PYTHONPATH=game/core:game/runtime \"$PY\" -m unittest discover -s game/runtime/tests -v",
+      "exit_code": 0,
+      "output": "runtime-tail.txt",
+      "tool_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "reference-run",
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/runs/34931393604",
+      "exit_code": 0,
+      "output": "reference-verification.json",
+      "tool_sha": "read-only provenance check; not execution",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "reference-jobs",
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/runs/34931393604/jobs",
+      "exit_code": 0,
+      "output": "reference-verification.json",
+      "tool_sha": "read-only provenance check; not execution",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "reference-artifacts",
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/runs/34931393604/artifacts",
+      "exit_code": 0,
+      "output": "reference-verification.json",
+      "tool_sha": "read-only provenance check; not execution",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    },
+    {
+      "name": "reference-download",
+      "command": "gh api repos/Kalopsiazza/DeiDei/actions/artifacts/10382350926/zip > \"$OUT/reference-artifact.zip\"",
+      "exit_code": 0,
+      "output": "reference-verification.json",
+      "tool_sha": "read-only download; SHA256 matched attachment",
+      "product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7"
+    }
+  ],
+  "original_q01_reproduce": "\"$PY\" \"$ORIGINAL_TOOL/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$PRODUCT_SHA\" --mode faults --case Q01 --output \"$OUT/original-q01-recheck.json\""
+}
