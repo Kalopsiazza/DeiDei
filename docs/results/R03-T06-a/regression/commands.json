@@ -1,0 +1,110 @@
+[
+  {
+    "name": "server",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/server/tests",
+      "-v"
+    ],
+    "pythonpath": "game/core:game/server",
+    "elapsed_seconds": 67.951
+  },
+  {
+    "name": "core",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/core/tests",
+      "-v"
+    ],
+    "pythonpath": "game/core",
+    "elapsed_seconds": 0.619
+  },
+  {
+    "name": "runtime",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/runtime/tests",
+      "-v"
+    ],
+    "pythonpath": "game/core:game/runtime",
+    "elapsed_seconds": 0.243
+  },
+  {
+    "name": "classic",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "tests/rules_v1_001/run_acceptance.py",
+      "--core",
+      "game/core"
+    ],
+    "pythonpath": "",
+    "elapsed_seconds": 1.049
+  },
+  {
+    "name": "root",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "scripts/check.py"
+    ],
+    "pythonpath": "",
+    "elapsed_seconds": 3.49
+  },
+  {
+    "name": "desktop",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 1,
+    "command": [
+      "npm",
+      "--prefix",
+      "game/desktop",
+      "test"
+    ],
+    "pythonpath": "",
+    "elapsed_seconds": 1.043
+  },
+  {
+    "name": "rooms160",
+    "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "tests/rooms_v1/run_acceptance.py",
+      "--server-path",
+      "game/server",
+      "--core-path",
+      "game/core",
+      "--tested-code-sha",
+      "08a98748a0461274abe4411a3dcd88defd7de683",
+      "--desktop-path",
+      "game/desktop",
+      "--desktop-sha",
+      "08a98748a0461274abe4411a3dcd88defd7de683",
+      "--output",
+      "<evidence>/regression/rooms160.json"
+    ],
+    "pythonpath": "",
+    "elapsed_seconds": 201.039
+  }
+]

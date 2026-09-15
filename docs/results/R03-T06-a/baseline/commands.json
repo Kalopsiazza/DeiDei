@@ -1,0 +1,59 @@
+[
+  {
+    "name": "server",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/server/tests",
+      "-v"
+    ]
+  },
+  {
+    "name": "desktop",
+    "exit_code": 0,
+    "command": [
+      "npm",
+      "test"
+    ]
+  },
+  {
+    "name": "core",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/core/tests",
+      "-v"
+    ]
+  },
+  {
+    "name": "runtime",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "-m",
+      "unittest",
+      "discover",
+      "-s",
+      "game/runtime/tests",
+      "-v"
+    ]
+  },
+  {
+    "name": "classic",
+    "exit_code": 0,
+    "command": [
+      "<python>",
+      "tests/rules_v1_001/run_acceptance.py",
+      "--core",
+      "game/core"
+    ]
+  }
+]
