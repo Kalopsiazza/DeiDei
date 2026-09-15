@@ -1,4 +1,4 @@
-"""Five bounded fault injections in disposable copies; controls must pass first."""
+"""Five original and three rate-side-effect fault injections in disposable copies; controls must pass first."""
 import argparse
 import hashlib
 import json
@@ -31,14 +31,15 @@ def run(product: Path, selector: str) -> dict:
 def mutations(product: Path) -> list[dict]:
     rows=[]
     for name,selector in [('null_rate_id','Q01'),('recomputed_deadline','Q03'),('missing_membership','Q11/eliminated_grace'),
-                          ('repeat_application','Q12'),('observer_secret','Q15')]:
+                          ('repeat_application','Q12'),('observer_secret','Q15'),('rate_consumes_seq','Q01'),
+                          ('rate_caches_rejection','Q01'),('rate_changes_match','Q01')]:
         control=run(product,selector);row=dict(mutation=name,selector=selector,control=control);rows.append(row)
         if control['status']!='PASS':row['status']='BASELINE_FAIL';continue
         with tempfile.TemporaryDirectory(prefix='r03-c-mutant-') as td:
             copy=Path(td)
             for part in ('core','server','desktop'):
                 shutil.copytree(product/'game'/part,copy/'game'/part,ignore=shutil.ignore_patterns('node_modules','build','__pycache__','.venv'))
-            file=copy/'game/server/deidei_server'/('server.py' if name in ('null_rate_id','repeat_application') else 'room.py')
+            file=copy/'game/server/deidei_server'/('server.py' if name in ('null_rate_id','repeat_application','rate_consumes_seq','rate_caches_rejection','rate_changes_match') else 'room.py')
             source=file.read_text()
             if name=='missing_membership':old='            if reason:\n';new='            if False and reason:\n'
             elif name=='observer_secret':
@@ -48,11 +49,17 @@ def mutations(product: Path) -> list[dict]:
                 old="                require(original == fingerprint, 'REQUEST_CONFLICT')\n"
                 new=old+"                if msg['op']=='room.submit' and msg['payload']['entry_id']=='Charge':\n                    room=self.rooms[s.room_id];p=room.state['players'][s.player_id]\n                    p['dd6']=str(int(p['dd6'])+6)  # deliberate duplicate application fault\n"
             elif name=='null_rate_id':
-                # Candidate anchor resolved only within the dedicated RATE_LIMITED branch.
-                import re
-                matches=list(re.finditer(r'ack\(([^,\n]+), error=Rejected\(\x27RATE_LIMITED\x27',source))
-                if len(matches)!=1:row['status']='MUTATION_TARGET_UNAVAILABLE';continue
-                old=matches[0].group(0);new=old.replace(matches[0].group(1),'None',1)
+                old='                    c.put(ack(request_id, error=error))'
+                new="                    c.put(ack(None if error.code == 'RATE_LIMITED' else request_id, error=error))"
+            elif name.startswith('rate_'):
+                old="                    if c.limited():\n                        raise Rejected('RATE_LIMITED')"
+                if name=='rate_consumes_seq':
+                    fault="c.session.last_seq = int(msg['command_seq'])"
+                elif name=='rate_changes_match':
+                    fault="p = self.rooms[c.session.room_id].state['players'][c.session.player_id]; p['dd6'] = str(int(p['dd6']) + 6)"
+                else:
+                    fault="fingerprint = hashlib.sha256(json.dumps([msg['command_seq'], msg['op'], msg['payload']], sort_keys=True, separators=(',', ':')).encode('utf-8')).digest(); c.session.cache[request_id] = (fingerprint, ack(request_id, error=Rejected('RATE_LIMITED')))"
+                new="                    if c.limited():\n                        "+fault+"\n                        raise Rejected('RATE_LIMITED')"
             else:
                 import re
                 matches=list(re.finditer(r'deadline_at_ms=self\.service\.[a-z_]+\(self\.deadline\)',source))
@@ -74,4 +81,6 @@ if __name__=='__main__':
     from tests.rooms_v1.run_acceptance import evidence
     before=evidence(a.product/'game/server');assert before['sha']==a.sha and not before['dirty']
     rows=mutations(a.product);assert evidence(a.product/'game/server')==before
-    a.output.write_text(json.dumps(dict(source_sha=a.sha,cases=rows),indent=2)+'\n')
+    passed=all(row['status']=='KILLED' for row in rows)
+    a.output.write_text(json.dumps(dict(source_sha=a.sha,status='PASS' if passed else 'FAIL',cases=rows),indent=2)+'\n')
+    raise SystemExit(0 if passed else 1)

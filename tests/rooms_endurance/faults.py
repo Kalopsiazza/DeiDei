@@ -14,11 +14,28 @@ from tests.rooms_v1.run_acceptance import Scenario
 from tests.rooms_v1.validate import check_ack, load_cases
 
 
+def check_rate_state(before: dict, after: dict, member_id: str,
+                     connected: bool | None = None) -> None:
+    """Compare one causal window; the injected monotonic clock never advances here."""
+    assert before['room_id'] == after['room_id'], 'rate probe changed room'
+    expected = deepcopy(before['view']); expected.pop('self')
+    actual = deepcopy(after['view']); actual.pop('self')
+    if connected is None:
+        assert before['seq'] == after['seq'], 'sync/rate changed room seq'
+    else:
+        member = next(m for m in expected['members'] if m['player_id'] == member_id)
+        assert member['connected'] is not connected, 'connection transition missing'
+        member['connected'] = connected
+        assert int(after['seq']) > int(before['seq']), 'public connection change needs newer seq'
+    # Full match, members, policy and exact deadline stay covered, including during resume.
+    assert actual == expected, 'unexpected public change in rate observation window'
+
+
 async def rate(service: object, connect: object) -> dict:
     metrics={'violations':[]};peers=[]
     async with service.create_test_server(clock=SplitClock()) as server:
         try:
-            peers=await setup(server,connect,metrics,2,0);p=peers[1]
+            peers=await setup(server,connect,metrics,2,0);h,p=peers
             before=await p.sync();last_good=p.seq;rejected=None
             for _ in range(48):
                 msg=p.message('room.sync',{'room_id':p.room})
@@ -31,14 +48,25 @@ async def rate(service: object, connect: object) -> dict:
                     rejected=msg;break
                 check_ack(f,msg,{'ok':True});last_good=int(msg['command_seq'])
             assert rejected is not None,'bounded burst did not reach rate boundary'
-            await p.close();resumed=await p.open(resume=True)
+            # Observe rejection before introducing a real connected-state change.
+            after_rate=await h.sync();member_id=p.identity['player_id']
+            check_rate_state(before,after_rate,member_id)
+            await p.close();await server.drain()
+            after_disconnect=await h.sync()
+            check_rate_state(after_rate,after_disconnect,member_id,False)
+            resumed=await p.open(resume=True)
+            after_resume=await h.sync()
+            check_rate_state(after_disconnect,after_resume,member_id,True)
             assert resumed['data']['last_command_seq']==str(last_good),'rate consumed last_seq'
             # Same rejected ID can now succeed: no rejected business cache entry was written.
             await p.command('room.sync',rejected['payload'],message=rejected)
             after=await p.sync()
-            assert before['seq']==after['seq'] and before['view']['policy_revision']==after['view']['policy_revision']
-            assert before['view']['match']['public_state']==after['view']['match']['public_state']
-            return {'last_seq_unchanged':True,'rejected_id_reusable':True,'room_unchanged':True}
+            check_rate_state(after_resume,after,member_id)
+            assert not metrics['violations'], 'snapshot invariant violation'
+            return dict(last_seq_unchanged=True,rejected_id_reusable=True,room_unchanged_in_each_sync_window=True,
+                room_seq=dict(before=before['seq'],after_rate=after_rate['seq'],
+                    after_disconnect=after_disconnect['seq'],after_resume=after_resume['seq'],after_replay=after['seq']),
+                connected=[True,False,True],match_policy_and_exact_time_unchanged=True)
         finally:await asyncio.gather(*(p.close() for p in peers))
 
 
