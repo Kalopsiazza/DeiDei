@@ -15,9 +15,9 @@ function inRoom(phase='lobby'){
  const c=client();c.port.create({password:null,options:hello().policy_defaults && {turn_ms:12000,early_reveal:true,spectator_cap:6}});
  c.socket.ack(c.socket.sent.at(-1),{room_id:'room1',room_code:'ABCD2345'});c.socket.message(snapshot(phase));return c;
 }
-test('endpoint only accepts explicit loopback and rooms path; no URL credentials',()=>{
- for(const url of ['ws://127.0.0.1:8765/rooms-v1','ws://[::1]:8765/rooms-v1'])assert.equal(endpoint(url),url);
- for(const url of ['wss://example.com/rooms-v1','ws://localhost:1/rooms-v1','ws://127.0.0.1/rooms-v1','ws://u:p@127.0.0.1:1/rooms-v1','ws://127.0.0.1:1/rooms-v1?q=x','ws://127.0.0.1:1/rooms-v1#x'])assert.throws(()=>endpoint(url));
+test('endpoint accepts loopback ws and valid wss; rejects remote plaintext and URL credentials',()=>{
+ for(const url of ['ws://127.0.0.1:8765/rooms-v1','ws://[::1]:8765/rooms-v1','wss://example.com/rooms-v1'])assert.equal(endpoint(url),url);
+ for(const url of ['ws://example.com:8765/rooms-v1','ws://localhost:1/rooms-v1','ws://127.0.0.1/rooms-v1','ws://u:p@127.0.0.1:1/rooms-v1','ws://127.0.0.1:1/rooms-v1?q=x','ws://127.0.0.1:1/rooms-v1#x'])assert.throws(()=>endpoint(url));
  assert.throws(()=>endpoint(''),/SERVICE_NOT_CONFIGURED/);
 });
 test('credentials and local_id never enter any renderer state or broadcast',()=>{
