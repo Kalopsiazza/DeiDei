@@ -2,8 +2,8 @@ const { randomUUID } = require('node:crypto');
 const { readMessage, validateCommand, endpoint, parse } = require('./wire.cjs');
 
 class NetworkRoomPort {
-  constructor({url, socketFactory=typeof WebSocket==='function'?(address,protocol)=>new WebSocket(address,protocol):null, now=()=>performance.now(), schedule=setTimeout, cancel=clearTimeout, random=Math.random, source='online'}={}) {
-    this.url=url;this.socketFactory=socketFactory;this.now=now;this.schedule=schedule;this.cancel=cancel;this.random=random;
+  constructor({url, configurationError=null, socketFactory=typeof WebSocket==='function'?(address,protocol)=>new WebSocket(address,protocol):null, now=()=>performance.now(), schedule=setTimeout, cancel=clearTimeout, random=Math.random, source='online'}={}) {
+    this.url=url;this.configurationError=configurationError;this.socketFactory=socketFactory;this.now=now;this.schedule=schedule;this.cancel=cancel;this.random=random;
     this.source=source;this.listeners=new Set();this.generation=0;this.running=false;
     this.status='idle';this.room=null;this.snapshot=null;this.hello=null;this.identity=null;
     this.pending=null;this.handshake=null;this.commandSeq=0n;this.error=null;this.confirmed=null;this.retry=0;this.membershipEnd=null;this.lastMembershipEventId=null;
@@ -28,7 +28,7 @@ class NetworkRoomPort {
     validateCommand('session.open',{profile:{nickname:profile.nickname,avatar_id:profile.avatar_id}});
     this.profile={nickname:profile.nickname,avatar_id:profile.avatar_id};
     this.error=null;this.snapshot=null;this.confirmed=null;
-    try {this.address=endpoint(this.url);if(typeof this.socketFactory!=='function')throw new Error('WEBSOCKET_UNAVAILABLE');}
+    try {if(this.configurationError)throw new Error(this.configurationError);this.address=endpoint(this.url);if(typeof this.socketFactory!=='function')throw new Error('WEBSOCKET_UNAVAILABLE');}
     catch(e){this.status='unavailable';this.error={code:e.message,field:null,retryable:false};this.publish();return this.read();}
     this.running=true;this.connect();return this.read();
   }
@@ -57,6 +57,7 @@ class NetworkRoomPort {
     if(generation!==this.generation||!this.running)return;
     ++this.generation;this.cancel(this.timeout);this.authenticated=false;this.handshake=null;
     try{this.socket?.close();}catch{}
+    if(this.address?.startsWith('wss:'))this.error={code:'SECURE_CONNECTION_FAILED',field:null,retryable:true};
     this.status='reconnecting';this.publish();
     const delay=[1000,2000,4000,8000][Math.min(this.retry++,3)]*(0.8+0.4*this.random());
     this.cancel(this.reconnectTimer);this.reconnectTimer=this.schedule(()=>this.connect(),delay);

@@ -22,7 +22,7 @@ game/server/.venv/Scripts/python -m deidei_server
 ```
 
 端点 `ws://127.0.0.1:8765/rooms-v1`，子协议 `deidei.rooms.v1`，客户端不得发送网页 Origin。
-`--host` 仅接受 `127.0.0.1` 或 `::1`；`--port 0` 选择动态端口。
+`--host` 接受 IP 字面量，默认回环；非回环必须同时启用 TLS 与 `--allow-remote`。`--port 0` 选择动态端口。
 `--policy <JSON路径>` 仅接受 `turn_ms / early_reveal / spectator_cap / host_disconnect_grace_ms`
 四项覆盖，其余继承默认。仅在有用户明确答复时把生效配置放进结果目录并使用该参数。
 `--host-leave-timing after_turn|immediate` 是独立本地开关，不能放进 public policy。
@@ -79,3 +79,9 @@ timeout_chooser=None, rng=None, host_leave_timing='after_turn')` 返回异步上
 自测包含真实 socket；慢消费者使用真实 socket 加阻塞 writer 注入，可复现队列上限和隔离，
 不宣称实体网络故障或吞吐压测。独立 T03、桌面集成、跨电脑、Windows 和真人验收尚未运行。
 完整命令、退出码、版本、覆盖和限制见本任务结果目录。
+
+## 可选 TLS（R03-T06-a）
+
+`--tls-cert-file` 与 `--tls-key-file` 必须成对提供，启动前加载并检查匹配，最低 TLS 1.2。
+默认无新参数时仍保持原明文回环。非回环参数只完成无网络校验，未部署或实际对外监听。
+只读桌面配置、前台启动与临时 CA 联测命令见 [TLS 准备说明](../../docs/deployment/r03-secure/README.md)。
