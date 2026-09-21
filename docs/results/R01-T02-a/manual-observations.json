@@ -1,0 +1,18 @@
+{
+  "tested_code_sha": "6187c2366f3be282db0d6bad73dd025c27224a87",
+  "platform": "macOS 27.0 26A5425a, Apple M2 arm64",
+  "observer": "Codex CUA automation; not Teddy manual acceptance",
+  "launch_path_suffix": "out/中文 空格路径/DeiDei R01 Tech.app",
+  "observed": [
+    "Local app:// page and six seats plus 3 SVG images displayed",
+    "health ready",
+    "reflect_bi PlayerWin",
+    "invalid seed visible INVALID_SEED",
+    "shutdown stopping",
+    "health retry ready",
+    "Close button exits; process inventory has no experiment app/worker"
+  ],
+  "network": "connected; no physical offline test",
+  "screenshot": "macos-final-error.png",
+  "remaining_experiment_processes": 0
+}

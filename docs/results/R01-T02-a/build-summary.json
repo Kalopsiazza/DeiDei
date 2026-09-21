@@ -1,0 +1,47 @@
+{
+  "tested_code_sha": "6187c2366f3be282db0d6bad73dd025c27224a87",
+  "input_sha": "aeabaf681197eb110da919e310ad1f4833433bba",
+  "package_exit_code": 0,
+  "python_worker_build_exit_code": 0,
+  "platform": "darwin",
+  "arch": "arm64",
+  "app_logical_bytes": 320277535,
+  "tools": {
+    "node": "24.12.0",
+    "npm": "11.6.2",
+    "python": "3.11.15",
+    "uv": "uv 0.11.13 (Homebrew 2026-05-11 aarch64-apple-darwin)"
+  },
+  "npm_versions": {
+    "dependencies": {
+      "react": "19.3.0",
+      "react-dom": "19.3.0"
+    },
+    "devDependencies": {
+      "@electron-forge/cli": "7.11.2",
+      "@types/react": "19.3.0",
+      "@types/react-dom": "19.3.0",
+      "electron": "44.3.0",
+      "esbuild": "0.28.2",
+      "playwright-core": "1.63.0",
+      "typescript": "7.0.2"
+    },
+    "name": "deidei-r01-tech",
+    "productName": "DeiDei R01 Tech",
+    "version": "0.1.0",
+    "private": true,
+    "description": "R01-T02-a validation only",
+    "author": "DeiDei contributors",
+    "main": "main.cjs",
+    "scripts": {
+      "build": "tsc --noEmit && node build.cjs",
+      "package": "npm run build && electron-forge package",
+      "start": "npm run build && electron .",
+      "test": "node --test test-main.cjs"
+    },
+    "config": {
+      "forge": "./forge.config.cjs"
+    }
+  },
+  "signature": "linker ad-hoc only; no TeamIdentifier; resources unsealed; no notarization"
+}

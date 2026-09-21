@@ -1,0 +1,33 @@
+
+> deidei-r01-tech@0.1.0 package
+> npm run build && electron-forge package
+
+
+> deidei-r01-tech@0.1.0 build
+> tsc --noEmit && node build.cjs
+
+❯ Checking your system
+❯ Checking package manager version
+✔ Found npm@11.6.2
+✔ Checking your system
+❯ Preparing to package application
+✔ Preparing to package application
+❯ Running packaging hooks
+❯ Running generateAssets hook
+✔ Running generateAssets hook
+❯ Running prePackage hook
+✔ Running prePackage hook
+✔ Running packaging hooks
+❯ Packaging application
+› Determining targets...
+❯ Packaging for arm64 on darwin
+❯ Copying files
+❯ Preparing native dependencies
+❯ Finalizing package
+✔ Copying files
+✔ Preparing native dependencies
+✔ Finalizing package
+✔ Packaging for arm64 on darwin
+✔ Packaging application
+❯ Running postPackage hook
+✔ Running postPackage hook

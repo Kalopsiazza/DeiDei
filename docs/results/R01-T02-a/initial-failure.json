@@ -1,0 +1,8 @@
+{
+  "attempt_code_sha": "f4e065921f5f6350eb6e5e35d40eff2cfb9b723b",
+  "result": "FAIL",
+  "observation": "CUA observed chrome-error://chromewebdata/ in native window; packaged ASAR contained all expected assets",
+  "cause": "net.fetch(file://) used to fulfill app:// hit session network allowlist",
+  "fix_commit": "c703ffa",
+  "resolution": "Serve fixed local files with fs.readFile and fixed MIME; preserve renderer network restrictions. Final ten-cycle native smoke passes."
+}
