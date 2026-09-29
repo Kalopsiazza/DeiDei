@@ -1,0 +1,191 @@
+{
+  "variables": {
+    "PY": "existing venv Python3.13.7 with websockets17.0.1",
+    "CHECKOUT": "this committed worktree root",
+    "PRODUCT": "clean detached worktree at SHA",
+    "SHA": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "OUT": "new local output directory"
+  },
+  "commands": [
+    {
+      "name": "original160-interrupted",
+      "command": "\"$PY\" \"$PRODUCT/tests/rooms_v1/run_acceptance.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --tested-code-sha \"$SHA\" --desktop-path \"$PRODUCT/game/desktop\" --desktop-sha \"$SHA\"",
+      "exit_code": null,
+      "output": "No complete JSON; interrupt before N33 capacity; exit code not collected",
+      "scope": "unaltered baseline driver; stopped to enforce <=48 connection budget"
+    },
+    {
+      "name": "bounded160-first",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_v1/run_acceptance.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --tested-code-sha \"$SHA\" --desktop-path \"$PRODUCT/game/desktop\" --desktop-sha \"$SHA\" --output baseline-160.json",
+      "exit_code": 1,
+      "output": "baseline-160.json",
+      "scope": "initial bounded driver dirty=true; assertions retained"
+    },
+    {
+      "name": "bounded160-latest",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_v1/run_acceptance.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --tested-code-sha \"$SHA\" --desktop-path \"$PRODUCT/game/desktop\" --desktop-sha \"$SHA\" --output baseline-160-latest.json",
+      "exit_code": 1,
+      "output": "baseline-160-latest.json",
+      "scope": "final committed tool3ca2d32, dirty=false;156PASS/3FAIL/1NOT_RUN"
+    },
+    {
+      "name": "original11-cross",
+      "command": "\"$PY\" \"$PRODUCT/tests/rooms_v1/crosscheck.py\" --server-path \"$PRODUCT/game/server\" --core-path \"$PRODUCT/game/core\" --desktop-path \"$PRODUCT/game/desktop\" --server-sha \"$SHA\" --desktop-sha \"$SHA\" --tests-sha \"$SHA\" --output cross-raw.json",
+      "exit_code": 0,
+      "output": "baseline-cross.json",
+      "scope": "unaltered original driver; frames/messages omitted from shared summary"
+    },
+    {
+      "name": "seeds-smoke-initial",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode seeds --seeds 3 --output seeds-smoke-first.json",
+      "exit_code": 1,
+      "output": "seeds-smoke-first.json",
+      "scope": "manual polling wrongly consumed real rate quota; corrected manual clock wait"
+    },
+    {
+      "name": "seeds-smoke-fixed",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode seeds --seeds 3 --output seeds-smoke-fixed.json",
+      "exit_code": 0,
+      "output": "seeds-smoke-fixed.json",
+      "scope": "fixed baseline8a"
+    },
+    {
+      "name": "endurance-smoke",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode endurance --seconds 8 --rooms 1 --output endurance-smoke-first.json",
+      "exit_code": 1,
+      "output": "endurance-smoke-first.json",
+      "scope": "fixed baseline8a"
+    },
+    {
+      "name": "100-seeds",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode seeds --seeds 100 --output seeds-100.json",
+      "exit_code": 0,
+      "output": "seeds-100.json",
+      "scope": "tool26d54ed clean;100 fixed input sequences"
+    },
+    {
+      "name": "900-seconds",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode endurance --seconds 900 --rooms 4 --output endurance-900.json",
+      "exit_code": 1,
+      "output": "endurance-900.json",
+      "scope": "tool26d54ed clean; one full900s run only"
+    },
+    {
+      "name": "faults-first",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode faults --output faults-first.json",
+      "exit_code": 1,
+      "output": "faults-first.json",
+      "scope": "development tool; first grace delivery synchronization failure retained"
+    },
+    {
+      "name": "Q16-first",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode faults --case Q16 --case Q11/eliminated_grace --output q16-first.json",
+      "exit_code": 1,
+      "output": "q16-first.json",
+      "scope": "Q16 corrected fresh unauthenticated connection and W12 ROOM_ACCESS_DENIED"
+    },
+    {
+      "name": "faults-latest",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rooms_endurance/run.py\" --product \"$PRODUCT\" --sha \"$SHA\" --mode faults --output faults-latest.json",
+      "exit_code": 1,
+      "output": "faults-latest.json",
+      "scope": "tool3ca2d32 clean; 38PASS/5FAIL"
+    },
+    {
+      "name": "mutations",
+      "command": "PYTHONPATH=\"$CHECKOUT\" \"$PY\" \"$CHECKOUT/tests/rooms_endurance/mutations.py\" --product \"$PRODUCT\" --sha \"$SHA\" --output mutations.json",
+      "exit_code": 0,
+      "output": "mutations.json",
+      "scope": "completion exit0 is not 5/5 sensitivity PASS;3KILLED/2BASELINE_FAIL"
+    },
+    {
+      "name": "gui-initial",
+      "command": "node \"$CHECKOUT/tests/rooms_endurance/gui.cjs\" \"$PRODUCT\" \"$PY\" \"$OUT/gui-first\" \"$SHA\"",
+      "exit_code": 1,
+      "output": "gui-first-behavior.json",
+      "scope": "development: Playwright closed-process handle error, then extra cache-null expectation; local debug reports not shared"
+    },
+    {
+      "name": "gui-final",
+      "command": "node \"$CHECKOUT/tests/rooms_endurance/gui.cjs\" \"$PRODUCT\" \"$PY\" \"$OUT/gui-final\" \"$SHA\"",
+      "exit_code": 0,
+      "output": "gui.json",
+      "scope": "actual3Electron windows,10observed descendants exit; tool1a9358b; native callback scripted"
+    },
+    {
+      "name": "core",
+      "command": "cd \"$PRODUCT\" && PYTHONPATH=game/core \"$PY\" -m unittest discover -s game/core/tests -v",
+      "exit_code": 0,
+      "output": "core-tail.txt",
+      "scope": "fixed baseline8a"
+    },
+    {
+      "name": "runtime",
+      "command": "cd \"$PRODUCT\" && PYTHONPATH=game/core:game/runtime \"$PY\" -m unittest discover -s game/runtime/tests -v",
+      "exit_code": 0,
+      "output": "runtime-tail.txt",
+      "scope": "fixed baseline8a"
+    },
+    {
+      "name": "service",
+      "command": "cd \"$PRODUCT\" && PYTHONPATH=game/core:game/server \"$PY\" -m unittest discover -s game/server/tests -v",
+      "exit_code": 0,
+      "output": "service-tail.txt",
+      "scope": "fixed baseline8a"
+    },
+    {
+      "name": "rules",
+      "command": "\"$PY\" \"$CHECKOUT/tests/rules_v1_001/run_acceptance.py\" --core \"$PRODUCT/game/core\"",
+      "exit_code": 0,
+      "output": "rules-tail.txt",
+      "scope": "192 fixtures/469resolve calls;2legacy session cases NOT_RUN"
+    },
+    {
+      "name": "root-check",
+      "command": "cd \"$CHECKOUT\" && python3 scripts/check.py",
+      "exit_code": 0,
+      "output": "root-check-final-tail.txt",
+      "scope": "61 tests including1existingexpectedfailure"
+    },
+    {
+      "name": "harness",
+      "command": "cd \"$CHECKOUT\" && python3 -m unittest tests.rooms_v1.test_harness tests.rules_v1_001.test_harness tests.rooms_endurance.test_endurance",
+      "exit_code": 0,
+      "output": "harness-tail.txt",
+      "scope": "19rooms+8rules+2new=29"
+    },
+    {
+      "name": "desktop-build",
+      "command": "cd \"$PRODUCT/game/desktop\" && npm run build",
+      "exit_code": 0,
+      "output": "desktop-build-tail.txt",
+      "scope": "shared existing locked node_modules; no install or dependency change"
+    },
+    {
+      "name": "desktop-test",
+      "command": "cd \"$PRODUCT/game/desktop\" && npm run test",
+      "exit_code": 0,
+      "output": "desktop-tail.txt",
+      "scope": "shared existing locked node_modules; no install or dependency change"
+    },
+    {
+      "name": "desktop-test:online",
+      "command": "cd \"$PRODUCT/game/desktop\" && npm run test:online",
+      "exit_code": 0,
+      "output": "desktop-online-tail.txt",
+      "scope": "shared existing locked node_modules; no install or dependency change"
+    }
+  ],
+  "candidate_checks": {
+    "command": "python3 tests/rooms_endurance/candidate.py --root . --record docs/results/R03-T03-c/candidate-checks.json --stage STAGE",
+    "stages": [
+      "independent_complete",
+      "final_delivery"
+    ],
+    "exit_codes": [
+      0,
+      0
+    ],
+    "budget": "3 checks including original work_start; all BRANCH_ABSENT"
+  }
+}

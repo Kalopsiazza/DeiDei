@@ -1,0 +1,29 @@
+[
+  {
+    "issue_id": "F05",
+    "severity": "medium",
+    "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "expected": "Canonical request UUID retained for RATE_LIMITED; no last_seq/cache/business side effect",
+    "observed": "N33/burst_limit fails: ack request_id=null with RATE_LIMITED",
+    "reproduction": [
+      "Run rooms_v1/run_acceptance.py against fixed product with --case N33/burst_limit"
+    ],
+    "suggested_files": [
+      "game/server/deidei_server/server.py"
+    ]
+  },
+  {
+    "issue_id": "F06",
+    "severity": "medium",
+    "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "expected": "A03 fixed anchor projection; exact public deadline for same mono deadline",
+    "observed": "N36/N48 real_clock fail; Q03 and selecting/revealing/grace wall-jump probes fail. Full 900.057 s / 976 matches records SAME_SEQ_PUBLIC_CHANGED; cleanup succeeds.",
+    "reproduction": [
+      "Run rooms_v1/run_acceptance.py against fixed product with --case N36/real_clock --case N48/real_clock"
+    ],
+    "suggested_files": [
+      "game/server/deidei_server/server.py",
+      "game/server/deidei_server/room.py"
+    ]
+  }
+]

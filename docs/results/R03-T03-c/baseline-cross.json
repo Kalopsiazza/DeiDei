@@ -1,0 +1,345 @@
+{
+  "scope": "LIVE loopback sockets + exact Node readMessage; no Electron window",
+  "sources": {
+    "service": {
+      "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+      "source_sha256": "513070d1fedf85f78062d6dc0febe7b440e64d04aeae36c3f90da3367226e1d2",
+      "dirty": false
+    },
+    "core": {
+      "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+      "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+      "dirty": false
+    },
+    "desktop": {
+      "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+      "source_sha256": "5316fa1429559df822ba7d201616c8b6769d32ce0a5cc146cf75c1f9d0f22527",
+      "dirty": false
+    }
+  },
+  "input_tests_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "driver": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "bb18124b7f048f045f55533e3a5ad09ca759ee7fc2eea937531f36fc88b31dc9",
+    "dirty": false
+  },
+  "driver_sha256": "4f2c29bb58cc0879047ba86ea0fde74849528c512a623dafceba14d398d8778d",
+  "decoder_bridge_sha256": "bd94d915fff7d29efd1be06f7b8039eec8643a4c3448286e2bacf7de7e9b980d",
+  "source_unchanged": true,
+  "status": "PASS",
+  "records": [
+    {
+      "name": "lobby",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": null,
+      "effective_game_id": null,
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "ordinary_reveal",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "continue_game",
+        "from_game_id": "beb8fcf0-8e0a-4bb9-a3eb-fd5606968b3c:g1",
+        "to_game_id": "beb8fcf0-8e0a-4bb9-a3eb-fd5606968b3c:g1",
+        "winner_id": null
+      },
+      "effective_game_id": "beb8fcf0-8e0a-4bb9-a3eb-fd5606968b3c:g1",
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "ordinary_win",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "sole_survivor",
+        "from_game_id": "7c7c802a-f5a1-454d-acd9-96a797834833:g1",
+        "to_game_id": "7c7c802a-f5a1-454d-acd9-96a797834833:g1",
+        "winner_id": "00a7f8f9-4c3f-4d78-bad5-cfa3798ca0da"
+      },
+      "effective_game_id": "7c7c802a-f5a1-454d-acd9-96a797834833:g1",
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "voluntary_forfeit",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "sole_survivor",
+        "from_game_id": "70e9317f-8bd0-4cfc-9d11-beba94a32cba:g1",
+        "to_game_id": "70e9317f-8bd0-4cfc-9d11-beba94a32cba:g1",
+        "winner_id": "869234ba-ce13-4960-a0ce-ab30753c3983"
+      },
+      "effective_game_id": "70e9317f-8bd0-4cfc-9d11-beba94a32cba:g1",
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "timeout_forfeit",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "sole_survivor",
+        "from_game_id": "9ae39c6f-5974-4e3c-a830-272e3159a4d4:g1",
+        "to_game_id": "9ae39c6f-5974-4e3c-a830-272e3159a4d4:g1",
+        "winner_id": "68cd2831-dc40-4729-a614-aa8828aaddbf"
+      },
+      "effective_game_id": "9ae39c6f-5974-4e3c-a830-272e3159a4d4:g1",
+      "membership_events": 1,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "nobody_survives",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "nobody_survives",
+        "from_game_id": "6fe09233-b0ac-4365-9d6a-b7c6f8ac2da6:g1",
+        "to_game_id": "6fe09233-b0ac-4365-9d6a-b7c6f8ac2da6:g1",
+        "winner_id": null
+      },
+      "effective_game_id": "6fe09233-b0ac-4365-9d6a-b7c6f8ac2da6:g1",
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "forfeit_nobody",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 1,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          },
+          {
+            "index": 2,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": {
+        "kind": "nobody_survives",
+        "from_game_id": "fc716fc8-8ee2-44fc-98c7-09b6ca2c8d17:g1",
+        "to_game_id": "fc716fc8-8ee2-44fc-98c7-09b6ca2c8d17:g1",
+        "winner_id": null
+      },
+      "effective_game_id": "fc716fc8-8ee2-44fc-98c7-09b6ca2c8d17:g1",
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "nickname_spaces",
+      "status": "PROFILE_REJECTED",
+      "error": {
+        "code": "INVALID_MESSAGE",
+        "field": "nickname",
+        "retryable": false
+      },
+      "expected_1_1": "REJECT",
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "nickname_format",
+      "status": "PROFILE_REJECTED",
+      "error": {
+        "code": "INVALID_MESSAGE",
+        "field": "nickname",
+        "retryable": false
+      },
+      "expected_1_1": "REJECT",
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "nickname_chinese",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": null,
+      "effective_game_id": null,
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    },
+    {
+      "name": "nickname_emoji",
+      "status": "OBSERVED",
+      "decoder": {
+        "exit_code": 0,
+        "decoder": "$PRODUCT/game/desktop/online/wire.cjs",
+        "rows": [
+          {
+            "index": 0,
+            "type": "snapshot",
+            "accepted": true,
+            "ignored": false
+          }
+        ]
+      },
+      "expected_1_1": "ACCEPT",
+      "transition": null,
+      "effective_game_id": null,
+      "membership_events": 0,
+      "meets_1_1_expectation": true
+    }
+  ]
+}

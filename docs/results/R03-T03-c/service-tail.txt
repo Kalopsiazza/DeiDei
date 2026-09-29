@@ -1,0 +1,14 @@
+test_N47_invalid_uuid_and_role_errors (test_rooms_11.Rooms11.test_N47_invalid_uuid_and_role_errors) ... ok
+test_N48_six_players_two_spectators_three_matches_dynamic_timeout (test_rooms_11.Rooms11.test_N48_six_players_two_spectators_three_matches_dynamic_timeout) ... ok
+test_N49_profile_and_password_unicode_boundary (test_rooms_11.Rooms11.test_N49_profile_and_password_unicode_boundary) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 64.006s
+
+OK
+LOOPBACK N36 match=1 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK N36 match=2 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK N36 match=3 players=6 spectators=2 outcome=nobody_survives consistent=true
+LOOPBACK1.1 N48 match=1 players=6 spectators=2 dynamic_limit=5000 host_proxy=Charge consistent=true
+LOOPBACK1.1 N48 match=2 players=6 spectators=2 dynamic_limit=30000 host_proxy=Charge consistent=true
+LOOPBACK1.1 N48 match=3 players=6 spectators=2 dynamic_limit=8000 host_proxy=Charge consistent=true
