@@ -90,7 +90,7 @@ Minecraft 只用于理解现代游戏菜单的层级、可读性和背景氛围�
 - 复用当前 React 页面状态和按钮事件，只重写主菜单标记与样式。
 - `build.cjs` 复制受控素材目录；`app://desktop/` 只提供明确允许的静态文件与 MIME 类型，禁止路径穿越和远程资源。
 - CSP、权限拒绝、导航拦截和 worker / preload 接口保持不变。
-- 实现范围：`renderer.tsx`、`style.css`、`build.cjs`、`dev.cjs`、`main.cjs`、`test-packaging.cjs` 与 `assets/menu/`。
+- 实现范围：`renderer.tsx`、`style.css`、`build.cjs`、`dev.cjs`、`main.cjs`、`ui-assets.cjs`、`test-packaging.cjs`、`game/packaging/build.py` 与 `assets/menu/`。
 - 不引入 UI、动画或图像运行时依赖。
 
 ## 验收标准
