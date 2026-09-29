@@ -1,0 +1,47 @@
+{
+  "owned_process_readback": [
+    {
+      "pid": 24615,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24628,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24629,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24643,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24649,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24654,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24659,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24666,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24585,
+      "absent_at_final_readback": true
+    },
+    {
+      "pid": 24885,
+      "absent_at_final_readback": true
+    }
+  ],
+  "private_key_files": 0,
+  "credential_patterns_found": 0,
+  "readonly_git_diff_exit": 0
+}

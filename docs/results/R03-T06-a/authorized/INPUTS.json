@@ -1,0 +1,13 @@
+{
+  "authorized_test_sha": "dd6099a1d493c8da60ce6c5d2aac04a1f558e7f4",
+  "tls_product_and_tool_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+  "changed_game_files_since_tls_validation": [
+    "game/desktop/tests-online/test-network.cjs"
+  ],
+  "test_sha256": "e10a99872e8506ca66a70478682da89481c58b0abee56752041419ebf314a518",
+  "scope_authorization": "User explicitly allowed the legacy assertion update, branch push and PR creation; requested a dedicated question to ChatGPT Pro in the PR.",
+  "review_status": "ChatGPT Pro architecture confirmation pending; no Kimi invocation.",
+  "base_branch": "integration/r03-live",
+  "base_head_observed": "fad6ec301f47162bab58141e88125af13a33d567",
+  "merge_base": "8a6f8b29f517ab4c5a16466f0894e86995f8a852"
+}

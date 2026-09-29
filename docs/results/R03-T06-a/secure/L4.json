@@ -1,0 +1,220 @@
+{
+  "layer": "L4",
+  "status": "PASS",
+  "checks": [
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "wrong-san: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "expired: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "unknown: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S02",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "valid root trusted only at process startup; actual authenticated secure connection"
+    },
+    {
+      "id": "S14",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "10 -> 5 seconds preserves current deadline and applies next selection"
+    },
+    {
+      "id": "S15",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "real connection dropped after selection; same identity/Def, exactly one +2 charge result"
+    },
+    {
+      "id": "S13",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied"
+    },
+    {
+      "id": "S16",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "host leaves after submission; current turn closes HOST_LEFT with no fabricated winner"
+    },
+    {
+      "id": "S15",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "same TLS endpoint restarts: SERVER_RESTART, no silent room restoration"
+    },
+    {
+      "id": "S17",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "service stays stopped; actual source offline worker starts"
+    },
+    {
+      "id": "S18",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "owned clients closed; temporary profiles removed; server/CA cleanup in Python evidence"
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "tls-wrong-san",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-expired",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-unknown",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-current-next-limit",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-spectator-private",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-resumed",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-result-1",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-result-2",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-host-left",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-server-restart",
+      "source": "ordinary Electron main/preload, real TLS service"
+    },
+    {
+      "name": "tls-stopped-offline",
+      "source": "ordinary Electron main/preload, real TLS service"
+    }
+  ],
+  "page_errors": [],
+  "versions": {
+    "node": "24.12.0",
+    "acorn": "8.15.0",
+    "ada": "3.3.0",
+    "amaro": "1.1.5",
+    "ares": "1.34.5",
+    "brotli": "1.1.0",
+    "cjs_module_lexer": "2.1.0",
+    "cldr": "47.0",
+    "icu": "77.1",
+    "llhttp": "9.3.0",
+    "modules": "137",
+    "napi": "10",
+    "nbytes": "0.1.1",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.67.1",
+    "openssl": "3.5.4",
+    "simdjson": "4.1.0",
+    "simdutf": "6.4.0",
+    "sqlite": "3.50.4",
+    "tz": "2025b",
+    "undici": "7.16.0",
+    "unicode": "16.0",
+    "uv": "1.51.0",
+    "uvwasi": "0.0.23",
+    "v8": "13.6.233.17-node.37",
+    "zlib": "1.3.1-470d3a2",
+    "zstd": "1.5.7"
+  },
+  "electron": {
+    "node": "24.20.0",
+    "acorn": "8.18.0",
+    "ada": "4.0.0",
+    "amaro": "1.1.11",
+    "ares": "1.34.8",
+    "brotli": "1.2.0",
+    "cldr": "48.0",
+    "icu": "78.2",
+    "llhttp": "9.4.3",
+    "merve": "1.2.2",
+    "modules": "149",
+    "napi": "10",
+    "nbytes": "0.1.4",
+    "ncrypto": "0.0.1",
+    "nghttp2": "1.70.0",
+    "nghttp3": "",
+    "ngtcp2": "",
+    "openssl": "0.0.0",
+    "simdjson": "4.6.6",
+    "simdutf": "7.7.0",
+    "sqlite": "3.53.4",
+    "tz": "2025c",
+    "undici": "7.29.0",
+    "unicode": "17.0",
+    "uv": "1.52.1",
+    "uvwasi": "0.0.23",
+    "v8": "15.2.124.19-electron.0",
+    "zlib": "1.3.2.1-motley",
+    "zstd": "1.6.0",
+    "electron": "44.3.0",
+    "chrome": "152.0.7977.78"
+  },
+  "processes": [
+    {
+      "pid": 24629,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "pid": 24643,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "pid": 24649,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "pid": 24654,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "pid": 24659,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "pid": 24666,
+      "exit_code": 0,
+      "signal": null,
+      "exited": true
+    }
+  ],
+  "profiles_removed": true
+}

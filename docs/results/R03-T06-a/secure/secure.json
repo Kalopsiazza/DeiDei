@@ -1,0 +1,521 @@
+{
+  "tested_code_sha": "08a98748a0461274abe4411a3dcd88defd7de683",
+  "plan_sha": "3cf98c40c9ec3c607b702a12875ce4ec830da27d",
+  "platform": "macOS-27.0-arm64-arm-64bit-Mach-O",
+  "python": "3.13.7 (v3.13.7:bcee1c32211, Aug 14 2025, 19:10:51) [Clang 16.0.0 (clang-1600.0.26.6)]",
+  "checks": [
+    {
+      "id": "S08",
+      "layer": "L2",
+      "scenario": "wrong-san",
+      "verify_code": 64,
+      "session_open": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "S08",
+      "layer": "L2",
+      "scenario": "expired",
+      "verify_code": 10,
+      "session_open": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "S08",
+      "layer": "L2",
+      "scenario": "unknown",
+      "verify_code": 20,
+      "session_open": 0,
+      "status": "PASS"
+    },
+    {
+      "id": "S09",
+      "layer": "L2",
+      "status": "PASS",
+      "scenarios": [
+        "plaintext-to-TLS",
+        "wrong-path",
+        "browser-origin"
+      ],
+      "session_open": 0
+    },
+    {
+      "id": "S14",
+      "layer": "L2",
+      "status": "PASS",
+      "detail": "same UUID/command sequence replay returns original ACK, revision increments once, current deadline unchanged"
+    },
+    {
+      "id": "S02",
+      "layer": "L2",
+      "status": "PASS",
+      "detail": "verified TLS, rooms-1.1, real-core complete duel"
+    },
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "wrong-san: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "expired: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "unknown: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S02",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "valid root trusted only at process startup; actual authenticated secure connection"
+    },
+    {
+      "id": "S14",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "10 -> 5 seconds preserves current deadline and applies next selection"
+    },
+    {
+      "id": "S15",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "real connection dropped after selection; same identity/Def, exactly one +2 charge result"
+    },
+    {
+      "id": "S13",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied"
+    },
+    {
+      "id": "S16",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "host leaves after submission; current turn closes HOST_LEFT with no fabricated winner"
+    },
+    {
+      "id": "S15",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "same TLS endpoint restarts: SERVER_RESTART, no silent room restoration"
+    },
+    {
+      "id": "S17",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "service stays stopped; actual source offline worker starts"
+    },
+    {
+      "id": "S18",
+      "layer": "L3",
+      "status": "PASS",
+      "detail": "owned clients closed; temporary profiles removed; server/CA cleanup in Python evidence"
+    },
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "wrong-san: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "expired: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S08",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "unknown: no hello or identity; certificate validation retained"
+    },
+    {
+      "id": "S02",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "valid root trusted only at process startup; actual authenticated secure connection"
+    },
+    {
+      "id": "S14",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "10 -> 5 seconds preserves current deadline and applies next selection"
+    },
+    {
+      "id": "S15",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "real connection dropped after selection; same identity/Def, exactly one +2 charge result"
+    },
+    {
+      "id": "S13",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied"
+    },
+    {
+      "id": "S16",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "host leaves after submission; current turn closes HOST_LEFT with no fabricated winner"
+    },
+    {
+      "id": "S15",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "same TLS endpoint restarts: SERVER_RESTART, no silent room restoration"
+    },
+    {
+      "id": "S17",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "service stays stopped; actual source offline worker starts"
+    },
+    {
+      "id": "S18",
+      "layer": "L4",
+      "status": "PASS",
+      "detail": "owned clients closed; temporary profiles removed; server/CA cleanup in Python evidence"
+    }
+  ],
+  "children": [
+    {
+      "layer": "L3",
+      "pid": 24615,
+      "exit_code": 0,
+      "exited": true
+    },
+    {
+      "layer": "L4",
+      "pid": 24628,
+      "exit_code": 0,
+      "exited": true
+    }
+  ],
+  "status": "PASS",
+  "certificates": {
+    "openssl": "OpenSSL 3.6.3 9 Jun 2026 (Library: OpenSSL 3.6.3 9 Jun 2026)",
+    "commands": [
+      {
+        "command": [
+          "openssl",
+          "version"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-x509",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "ca.key",
+          "-out",
+          "ca.pem",
+          "-days",
+          "2",
+          "-subj",
+          "/CN=DeiDei temporary test root",
+          "-addext",
+          "basicConstraints=critical,CA:TRUE",
+          "-addext",
+          "keyUsage=critical,keyCertSign,cRLSign"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-x509",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "unknown-ca.key",
+          "-out",
+          "unknown-ca.pem",
+          "-days",
+          "2",
+          "-subj",
+          "/CN=DeiDei temporary test root",
+          "-addext",
+          "basicConstraints=critical,CA:TRUE",
+          "-addext",
+          "keyUsage=critical,keyCertSign,cRLSign"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-new",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "valid.key",
+          "-out",
+          "valid.csr",
+          "-subj",
+          "/CN=DeiDei valid test"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-req",
+          "-in",
+          "valid.csr",
+          "-CA",
+          "ca.pem",
+          "-CAkey",
+          "ca.key",
+          "-CAcreateserial",
+          "-out",
+          "valid.pem",
+          "-days",
+          "1",
+          "-sha256",
+          "-extfile",
+          "valid.ext",
+          "-extensions",
+          "leaf"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-in",
+          "valid.pem",
+          "-noout",
+          "-fingerprint",
+          "-sha256"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-new",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "wrong-san.key",
+          "-out",
+          "wrong-san.csr",
+          "-subj",
+          "/CN=DeiDei wrong-san test"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-req",
+          "-in",
+          "wrong-san.csr",
+          "-CA",
+          "ca.pem",
+          "-CAkey",
+          "ca.key",
+          "-CAcreateserial",
+          "-out",
+          "wrong-san.pem",
+          "-days",
+          "1",
+          "-sha256",
+          "-extfile",
+          "wrong-san.ext",
+          "-extensions",
+          "leaf"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-in",
+          "wrong-san.pem",
+          "-noout",
+          "-fingerprint",
+          "-sha256"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-new",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "expired.key",
+          "-out",
+          "expired.csr",
+          "-subj",
+          "/CN=DeiDei expired test"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "ca",
+          "-batch",
+          "-config",
+          "ca.cnf",
+          "-in",
+          "expired.csr",
+          "-out",
+          "expired.pem",
+          "-startdate",
+          "20000101000000Z",
+          "-enddate",
+          "20000102000000Z",
+          "-extfile",
+          "expired.ext",
+          "-extensions",
+          "leaf",
+          "-notext"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-in",
+          "expired.pem",
+          "-noout",
+          "-fingerprint",
+          "-sha256"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "req",
+          "-new",
+          "-newkey",
+          "rsa:2048",
+          "-nodes",
+          "-keyout",
+          "unknown.key",
+          "-out",
+          "unknown.csr",
+          "-subj",
+          "/CN=DeiDei unknown test"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-req",
+          "-in",
+          "unknown.csr",
+          "-CA",
+          "unknown-ca.pem",
+          "-CAkey",
+          "unknown-ca.key",
+          "-CAcreateserial",
+          "-out",
+          "unknown.pem",
+          "-days",
+          "1",
+          "-sha256",
+          "-extfile",
+          "unknown.ext",
+          "-extensions",
+          "leaf"
+        ],
+        "exit_code": 0
+      },
+      {
+        "command": [
+          "openssl",
+          "x509",
+          "-in",
+          "unknown.pem",
+          "-noout",
+          "-fingerprint",
+          "-sha256"
+        ],
+        "exit_code": 0
+      }
+    ],
+    "fingerprints": {
+      "valid": "sha256 Fingerprint=E1:7B:88:79:18:5B:B0:AB:FC:77:95:0E:22:44:4A:DD:CE:D0:71:7A:08:C0:0D:7F:D1:6B:E8:C7:D8:F5:73:8C",
+      "wrong-san": "sha256 Fingerprint=44:0B:EE:3E:76:76:88:54:76:28:C0:FE:24:68:D7:78:39:38:96:09:8F:EF:F4:FE:7B:7B:44:72:56:08:18:48",
+      "expired": "sha256 Fingerprint=5B:CD:1F:08:C4:66:25:A8:D6:5C:DF:47:A7:FA:65:10:5B:34:20:9F:B3:47:D6:EE:E9:1B:77:2C:6B:47:96:3B",
+      "unknown": "sha256 Fingerprint=83:19:00:E6:57:25:B7:2C:74:A6:F0:6D:A3:83:D8:85:0C:8B:40:5E:86:AB:73:04:73:E7:71:86:BC:9C:29:52"
+    }
+  },
+  "negative_session_opens": {
+    "wrong-san": 0,
+    "expired": 0,
+    "unknown": 0
+  },
+  "server_cleanup": [
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    },
+    {
+      "closed": true,
+      "connections": 0,
+      "tasks": 0
+    }
+  ],
+  "ports_closed": true,
+  "temporary_certificates_removed": true
+}

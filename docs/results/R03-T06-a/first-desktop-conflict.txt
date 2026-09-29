@@ -1,0 +1,97 @@
+
+> deidei-r02-desktop@0.1.0 test
+> npm run build && node --test test.cjs test-live.cjs test-navigation.cjs test-packaging.cjs tests-online/test-*.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ S09 old exit/stdout cannot settle or fail new process requests; stop waits close (13.798292ms)
+✔ transport frame bounds, pending cap, malformed UTF8 and timeout reject all pending (16.289ms)
+✔ WorkerPort marks dead match interrupted, no implicit respawn; restart is explicit (0.364542ms)
+✔ S10 late response after leave/new scene cannot restore old active match (0.180292ms)
+✔ S10 renderer polls selecting and stops on rejected/failed getView with retry possible (35.214542ms)
+✔ S10 single in-flight read spans disposed and new scene; late data is discarded (33.313459ms)
+✔ BigInt sixths formatting covers fractions and integers beyond Number precision (0.516167ms)
+✔ real subprocess protocol starts live UUID match, retries once and leaves cleanly (57.733042ms)
+✔ idle real worker exit is detected before any read can respawn it (34.262917ms)
+✔ F02 synchronous flag blocks navigation and duplicate start before React rerenders (1.936916ms)
+✔ F02 delayed failure keeps original page, unlocks navigation and allows a fresh start (1.084667ms)
+✔ F02 scene preview and synchronous action failure both release the flag (0.412959ms)
+✔ F02 existing generation protection discards stale success and error (0.638625ms)
+✔ P08 packaged launch ignores developer variables and preserves OS environment (8.687666ms)
+✔ P09 missing worker/catalog/map, wrong binary or no executable bit never falls back (8.636333ms)
+✔ P04 source launch retains module arguments and explicit developer Python (0.136541ms)
+✔ nickname Unicode boundary, exact fields, avatars and settings validation (1.137458ms)
+✔ atomic profile creation, stable identity, settings and restart read (17.890417ms)
+✔ write/rename failures preserve old bytes, input and remove temporary file (10.70275ms)
+✔ corruption never overwritten automatically, recovery backs up original only with confirmation (9.879417ms)
+✔ oversized and symbolic-link profiles rejected; concurrent writes cannot race (7.500458ms)
+✔ 33 unique static cards, categories 18/9/6, initial 12 and midgame 26 available (1.484459ms)
+✔ keyboard assignment stable, unique 1–0, blocked input and grey card rejection (10.658958ms)
+✔ script states, duplicate/stale submission, privacy and immutable snapshots (1.232292ms)
+✔ error preserves selection, retry works, draw and spectating keep real roster (1.598125ms)
+✔ public amounts use ledger at reveal and new state only in next selecting phase (1.061667ms)
+✔ 33 option costs are live server values, big DD stays rational and catalog supplies only text (1.442333ms)
+✔ spectator, eliminated, forced, disconnected, revealing, pending and accepted never become editable (0.739125ms)
+✔ start requires two ready connected players and summary reports actual source, gains and outcomes (0.481375ms)
+✔ host configuration includes natural elimination and recovery copy never pauses the table (0.267333ms)
+✖ endpoint only accepts explicit loopback and rooms path; no URL credentials (5.320584ms)
+✔ credentials and local_id never enter any renderer state or broadcast (6.489709ms)
+✔ hello defaults drive client data, commands serialize, extra fields rejected (1.355917ms)
+✔ snapshot before create ack buffered, old sequence and unrelated room ignored (3.619916ms)
+✔ late submit ack does not restore an old turn; same turn ack confirms only own entry (6.535416ms)
+✔ disconnect retries exact pending intent after resume and ignores the old generation (1.109292ms)
+✔ ack timeout reconnects; sync serializes after resume and failed commands never auto retry (1.977667ms)
+✔ explicit disconnected leave cancels pending, timers and late snapshots (1.073458ms)
+✔ room leave ack revokes receiving old room; session replacement and server reboot terminate (3.034875ms)
+✔ monotonic estimate continues during host absence and cutoff blocks clicks (4.020917ms)
+✔ schema rejects unknown private nested fields, binary, duplicate keys and spectator options (6.062916ms)
+✔ other session snapshot cannot replace private self, recovery cannot manually submit (8.233792ms)
+✔ new session clears terminated room; invalid hello defaults never reach page (1.06625ms)
+✔ preload only exposes named methods, strips IPC event and removes exact subscription (2.356958ms)
+✔ S06 rejects ambiguous, plaintext remote and non-target URLs before opening a socket (8.143542ms)
+✔ S07 exact secure endpoints, DNS/IP, 443 default and explicit ports (0.171542ms)
+✔ S10 fixed packaged file wins over environment (0.688917ms)
+✔ S11 null deliberately disables online; malformed files never fall back (0.401542ms)
+✔ S12 missing file allows only explicit loopback diagnostics (0.210292ms)
+✔ S11 actual bounded file read, exact byte limit and delayed configuration error (1.287042ms)
+✔ W09/W10 accept rooms-1.1 only, exact six time choices and new fields (3.615833ms)
+✔ W09 policy ack never overwrites snapshot or current deadline, failed change can be corrected (5.210625ms)
+✔ W09 host-only setting includes eliminated host; pending close blocks changes but not player submit (3.79175ms)
+✔ W10 independent grace timer does not freeze play or restart on duplicate snapshot (4.229125ms)
+✔ W11 removal cancels only old intent, preserves session, deduplicates and permits new room (4.220709ms)
+✔ W11 identity/room/seq checks reject unrelated receipt; resume receipt clears retained old command (2.74025ms)
+✔ W12 null request ack is strictly checked and cannot complete pending command (1.424416ms)
+✔ W13 Unicode profile boundary and password spaces remain strict (0.377292ms)
+✔ W14 real Room/core reveal and full result DTOs decode without dropping last_turn (12.438667ms)
+ℹ tests 59
+ℹ suites 0
+ℹ pass 58
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 253.977375
+
+✖ failing tests:
+
+test at tests-online/test-network.cjs:18:1
+✖ endpoint only accepts explicit loopback and rooms path; no URL credentials (5.320584ms)
+  AssertionError [ERR_ASSERTION]: Missing expected exception.
+      at TestContext.<anonymous> (<checkout>/game/desktop/tests-online/test-network.cjs:20:205)
+      at Test.runInAsyncScope (node:async_hooks:214:14)
+      at Test.run (node:internal/test_runner/test:1106:25)
+      at Test.start (node:internal/test_runner/test:1003:17)
+      at startSubtestAfterBootstrap (node:internal/test_runner/harness:358:17) {
+    generatedMessage: false,
+    code: 'ERR_ASSERTION',
+    actual: undefined,
+    expected: undefined,
+    operator: 'throws',
+    diff: 'simple'
+  }

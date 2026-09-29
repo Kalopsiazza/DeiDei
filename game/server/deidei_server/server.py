@@ -1,4 +1,4 @@
-"""Loopback-only WebSocket service with bounded transport and atomic transactions."""
+"""WebSocket service with explicit TLS/remote startup and bounded transactions."""
 import asyncio
 from collections import OrderedDict, deque
 from concurrent.futures import ThreadPoolExecutor
@@ -6,11 +6,11 @@ from contextlib import suppress
 from dataclasses import dataclass, field
 import hashlib
 import hmac
-import ipaddress
 import json
 import logging
 from random import Random, SystemRandom
 import secrets
+import ssl
 import time
 from uuid import uuid4
 
@@ -19,6 +19,7 @@ from websockets.exceptions import ConnectionClosed
 from deidei_core.api import new_match
 from .protocol import Rejected, ack, dumps, parse, policy as load_policy, require, validate, TURN_TIMES, request_uuid
 from .room import Room
+from .transport_tls import validate_bind
 
 LOGGER = logging.getLogger('deidei.rooms')
 
@@ -55,6 +56,8 @@ class Connection:
         self.session, self.generation = None, 0
         self.queue, self.queued_bytes = deque(), 0
         self.wake = asyncio.Event()
+        self.drained = asyncio.Event()
+        self.drained.set()
         self.tokens, self.rate_at, self.violations = 40., time.monotonic(), 0
         self.closing = False
         self.opened = service.clock.now_ms()
@@ -86,6 +89,7 @@ class Connection:
         if len(self.queue) >= 32 or self.queued_bytes + size > 2 * 1024 * 1024:
             self.stop(1008, 'SLOW_CONSUMER')
             return
+        self.drained.clear()
         self.queue.append((text, size, room_id))
         self.queued_bytes += size
         self.wake.set()
@@ -107,6 +111,7 @@ class Connection:
                         allowed = room_id is None or self.allowed(room_id)
                     if allowed:
                         await self.ws.send(text)
+                self.drained.set()
                 self.wake.clear()
         except ConnectionClosed:
             pass
@@ -133,6 +138,7 @@ class RoomServer:
         self.host_leave_timing = host_leave_timing
         self.policy = load_policy(policy)
         self.clock = clock if clock is not None else Clock()
+        self.anchor_mono, self.anchor_wall = self.clock.now_ms(), self.clock.wall_ms()
         self.new_match_factory = new_match_factory or new_match
         self.rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
         self.token_rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
@@ -148,25 +154,32 @@ class RoomServer:
         self.closed = False
         logging.getLogger('deidei.transport').disabled = True
 
+    def to_public(self, mono_ms: int) -> int:
+        """Project every public time from one fixed anchor; wall-clock edits cannot move deadlines."""
+        return self.anchor_wall + mono_ms - self.anchor_mono
+
     def background(self, awaitable) -> None:
         task = asyncio.create_task(awaitable)
         self.tasks.add(task)
         task.add_done_callback(self.tasks.discard)
 
-    async def start(self, host: str = '127.0.0.1', port: int = 8765) -> None:
-        if not ipaddress.ip_address(host).is_loopback:
-            raise ValueError('Only loopback listening is authorized')
+    async def start(self, host: str = '127.0.0.1', port: int = 8765, *,
+                    tls_context: ssl.SSLContext | None = None, allow_remote: bool = False) -> None:
+        validate_bind(host, port, tls_context=tls_context, allow_remote=allow_remote)
         def request(connection, request):
             if request.path != '/rooms-v1':
                 return connection.respond(404, 'NOT_FOUND\n')
             if len(self.connections) >= 1024:
                 return connection.respond(503, 'SERVER_BUSY\n')
+        tls_options = {'ssl': tls_context, 'ssl_handshake_timeout': 5} if tls_context else {}
         self.ws_server = await serve(self.handler, host, port, subprotocols=['deidei.rooms.v1'],
             origins=[None], process_request=request, compression=None, max_size=16384, max_queue=16,
             ping_interval=5, ping_timeout=10, open_timeout=5, close_timeout=3,
-            logger=logging.getLogger('deidei.transport'))
+            logger=logging.getLogger('deidei.transport'), **tls_options)
         actual_port = self.ws_server.sockets[0].getsockname()[1]
-        self.url = f'ws://[{host}]:{actual_port}/rooms-v1' if ':' in host else f'ws://{host}:{actual_port}/rooms-v1'
+        scheme = 'wss' if tls_context else 'ws'
+        target = f'[{host}]' if ':' in host else host
+        self.url = f'{scheme}://{target}:{actual_port}/rooms-v1'
         self.timer_task = asyncio.create_task(self.timer())
 
     async def timer(self) -> None:
@@ -383,7 +396,7 @@ class RoomServer:
         self.connections.add(c)
         writer = asyncio.create_task(c.writer())
         c.put(dict(v=1, type='hello', boot_id=self.boot_id, connection_id=c.id,
-            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.clock.wall_ms(),
+            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.to_public(self.clock.now_ms()),
             policy_defaults=dict(self.policy), capabilities=dict(max_players=6, allowed_turn_ms=TURN_TIMES,
                                                                 spectator_max=self.policy['spectator_cap'])))
         auth_deadline = time.monotonic() + 5
@@ -399,20 +412,23 @@ class RoomServer:
                     break
                 request_id = None
                 try:
-                    if c.limited():
-                        raise Rejected('RATE_LIMITED')
                     msg = parse(raw)
                     if isinstance(msg, dict) and request_uuid(msg.get('request_id')):
                         request_id = msg['request_id']
+                    if c.limited():
+                        raise Rejected('RATE_LIMITED')
                     await self.command(c, msg)
                 except (Rejected, UnicodeError) as exc:
                     error = exc if isinstance(exc, Rejected) else Rejected('INVALID_MESSAGE')
-                    if request_id is None and error.code != 'RATE_LIMITED':
+                    if request_id is None:
                         error = Rejected('INVALID_MESSAGE')
                     c.put(ack(request_id, error=error))
                     self.flush()
                     c.violations += 1
                     if c.violations >= 5:
+                        # The handler's finally cancels writer: send its terminal ACK first, bounded for slow peers.
+                        with suppress(asyncio.TimeoutError):
+                            await asyncio.wait_for(c.drained.wait(), 1)
                         c.stop(1008, 'INVALID_MESSAGE')
                         break
         except ConnectionClosed:

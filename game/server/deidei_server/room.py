@@ -197,7 +197,7 @@ class Room:
                 self.changed()
                 s.last_membership_end = dict(v=1, type='membership.ended', event_id=str(uuid4()),
                     room_id=self.id, player_id=pid, seq=str(self.seq),
-                    server_time_ms=self.service.clock.wall_ms(), reason=reason)
+                    server_time_ms=self.service.to_public(self.service.clock.now_ms()), reason=reason)
                 if s.connection:
                     self.service.membership_end(s.connection)
         if m and m['role'] == 'player' and self.phase == 'lobby':
@@ -358,19 +358,19 @@ class Room:
         kind = {'selecting': 'select', 'revealing': 'reveal'}.get(self.phase, 'none')
         timer = dict(kind=kind, deadline_at_ms=None, remaining_ms=None)
         if self.deadline is not None:
-            timer.update(deadline_at_ms=self.service.clock.wall_ms() + self.deadline - now,
+            timer.update(deadline_at_ms=self.service.to_public(self.deadline),
                          remaining_ms=max(0, self.deadline - now))
         host = self.members[self.host_id]
         recovery = None
         if not self.pending_close and self.host_can_play() and (not host['connected'] or host['absence_count']):
             recovery = dict(kind='rounds', missing_count=host['absence_count'], close_at_count=4)
         elif self.host_grace_deadline is not None:
-            recovery = dict(kind='grace', deadline_at_ms=self.service.clock.wall_ms() + self.host_grace_deadline - now,
+            recovery = dict(kind='grace', deadline_at_ms=self.service.to_public(self.host_grace_deadline),
                             remaining_ms=max(0, self.host_grace_deadline - now))
         match = None if self.state is None else dict(match_id=self.state['match_id'], mode_at_start=self.mode,
             turn_id=turn_id(self.state), public_state=public_state(self.state), roster_profiles=deepcopy(self.profiles),
             last_turn=deepcopy(self.last_turn), effective_outcome=deepcopy(self.outcome))
-        return dict(v=1, type='snapshot', room_id=self.id, seq=str(self.seq), server_time_ms=self.service.clock.wall_ms(),
+        return dict(v=1, type='snapshot', room_id=self.id, seq=str(self.seq), server_time_ms=self.service.to_public(now),
             view=dict(source='online', room_code=self.code, host_id=self.host_id, phase=self.phase,
                 has_password=self.has_password, policy=dict(self.policy), members=members, match=match,
                 policy_revision=str(self.policy_revision),
