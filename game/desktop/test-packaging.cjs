@@ -52,7 +52,7 @@ test('P04 source launch retains module arguments and explicit developer Python',
  assert.equal(workerLaunch({},{}).executable,'python3');
 });
 
-test('R04 menu assets use an exact local allowlist',()=>{
+test('R04 visual assets use an exact local allowlist',()=>{
  const modulePath=path.join(__dirname,'ui-assets.cjs');
  assert.ok(fs.existsSync(modulePath),'ui asset resolver must exist');
  const {UI_ASSETS,resolveUiAsset}=require(modulePath);
@@ -61,12 +61,14 @@ test('R04 menu assets use an exact local allowlist',()=>{
   'assets/menu/menu-character.png':'image/png',
   'assets/menu/menu-atmosphere.png':'image/png',
  };
+ const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
+ for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
  assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css',...Object.keys(expected)].sort());
  for(const [relativePath,contentType] of Object.entries(expected)){
   assert.equal(UI_ASSETS[relativePath],contentType);
   assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
  }
- for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png'])assert.equal(resolveUiAsset(name),null);
+ for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png'])assert.equal(resolveUiAsset(name),null);
 });
 
 test('R04 built UI contains the three bounded menu assets',()=>{
@@ -80,6 +82,16 @@ test('R04 built UI contains the three bounded menu assets',()=>{
   assert.ok(fs.existsSync(file),`${name} must be copied into build/ui`);
   const bytes=fs.statSync(file).size;
   assert.ok(bytes>0&&bytes<=maxBytes,`${name} must stay within its byte budget`);
+ }
+});
+
+test('R04 built UI contains the complete bounded move icon set',()=>{
+ const catalog=require('./catalog.json');
+ const folder=path.join(__dirname,'build/ui/assets/moves');
+ assert.deepEqual(fs.readdirSync(folder).sort(),catalog.entries.map(entry=>`${entry.entry_id}.png`).sort());
+ for(const entry of catalog.entries){
+  const bytes=fs.statSync(path.join(folder,`${entry.entry_id}.png`)).size;
+  assert.ok(bytes>0&&bytes<=750_000,`${entry.entry_id}.png must stay within its byte budget`);
  }
 });
 

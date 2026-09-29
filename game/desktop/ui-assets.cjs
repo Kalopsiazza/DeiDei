@@ -1,3 +1,4 @@
+const MOVE_ASSETS=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
 const UI_ASSETS=Object.freeze({
   'index.html':'text/html; charset=utf-8',
   'renderer.js':'text/javascript',
@@ -5,6 +6,7 @@ const UI_ASSETS=Object.freeze({
   'assets/menu/menu-environment.webp':'image/webp',
   'assets/menu/menu-character.png':'image/png',
   'assets/menu/menu-atmosphere.png':'image/png',
+  ...Object.fromEntries(MOVE_ASSETS.map(name=>[`assets/moves/${name}.png`,'image/png'])),
 });
 
 const resolveUiAsset=name=>Object.hasOwn(UI_ASSETS,name)
