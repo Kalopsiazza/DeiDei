@@ -18,6 +18,14 @@ Python 包只用标准库，无需 pip 安装。已有 Python 可以直接指定
 DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop start
 ```
 
+前端连续调整时使用开发监听：
+
+```sh
+DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop run dev
+```
+
+它沿用现有 esbuild 和 Electron，修改 renderer、样式、在线页面源码或 `assets/menu` 下的 PNG / WebP 后自动重新构建并刷新窗口。修改 `main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后重新启动；关闭 Electron 窗口会同时结束监听进程。
+
 Windows 源码步骤（本包未实机验证）：
 
 ```powershell
