@@ -76,7 +76,8 @@ app.whenReady().then(async()=>{
   await window.loadURL('app://desktop/index.html');
   if (!app.isPackaged && process.env.DEIDEI_DEV_RELOAD === '1') {
     let reloadTimer;
-    const watcher = fsNative.watch(path.join(__dirname, 'build/ui'), { recursive:true }, () => {
+    const watcher = fsNative.watch(path.join(__dirname, 'build/ui'), { recursive:true }, (_event, filename) => {
+      if (filename !== '.reload') return;
       clearTimeout(reloadTimer);
       reloadTimer=setTimeout(()=>{if(window&&!window.isDestroyed())window.webContents.reloadIgnoringCache();},100);
     });

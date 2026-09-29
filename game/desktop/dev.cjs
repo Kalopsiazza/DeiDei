@@ -4,7 +4,11 @@ const path = require('node:path');
 
 const root = __dirname;
 const uiSource = /^(index\.html|style\.css|renderer\.tsx|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|assets\/menu\/.*\.(?:png|webp))$/;
-const build = () => spawnSync(process.execPath, ['build.cjs'], { cwd: root, stdio: 'inherit' }).status === 0;
+const build = () => {
+  const ok = spawnSync(process.execPath, ['build.cjs'], { cwd: root, stdio: 'inherit' }).status === 0;
+  if (ok) fs.writeFileSync(path.join(root, 'build/ui/.reload'), String(Date.now()));
+  return ok;
+};
 
 if (!build()) process.exit(1);
 

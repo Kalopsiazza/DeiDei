@@ -82,3 +82,10 @@ test('R04 built UI contains the three bounded menu assets',()=>{
   assert.ok(bytes>0&&bytes<=maxBytes,`${name} must stay within its byte budget`);
  }
 });
+
+test('R04 dev reload waits for a completed build marker',()=>{
+ const dev=fs.readFileSync(path.join(__dirname,'dev.cjs'),'utf8');
+ const main=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
+ assert.match(dev,/build\/ui\/\.reload/);
+ assert.match(main,/filename !== '\.reload'/);
+});
