@@ -13,3 +13,4 @@
 - 背景动态仅用 CSS 完成慢速景深、光晕和粒子漂移；`prefers-reduced-motion` 下全部停用。主入口改为带斜切轮廓、编号和状态层级的卡片式按钮，保留原生 `button`、禁用态和键盘焦点。
 - 已在真实 Electron 的 1000×650、1366×768、1920×1080 内容区检查主菜单；五个入口均完整可见。当前 1366×768 热更新会话保留运行，供 Teddy 直接查看。
 - 本轮通过 `npm run typecheck`、`npm run build`、`node --test test-navigation.cjs test-packaging.cjs`（9/9）、完整 `npm test`（55/55）与 `git diff --check`。
+- 后续视觉微调移除右侧整块斜切蒙版与菜单总底板，只保留各按钮自身的切角；入口按钮间距增加，并用额外留白明确分开两个对局入口与三个功能入口。
