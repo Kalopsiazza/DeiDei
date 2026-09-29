@@ -1,0 +1,13 @@
+test_architecture (test_tools.Tools.test_architecture) ... ok
+test_changed_bytes_and_wrong_output_path (test_tools.Tools.test_changed_bytes_and_wrong_output_path) ... ok
+test_missing_online_and_resources (test_tools.Tools.test_missing_online_and_resources) ... ok
+test_receipt_and_protected_source (test_tools.Tools.test_receipt_and_protected_source) ... ok
+test_space_path_and_inventory (test_tools.Tools.test_space_path_and_inventory) ... ok
+test_symlink_escape_and_permission_drift (test_tools.Tools.test_symlink_escape_and_permission_drift) ... ok
+test_test_file_leak (test_tools.Tools.test_test_file_leak) ... ok
+test_wrong_sha_and_corrupt_manifest (test_tools.Tools.test_wrong_sha_and_corrupt_manifest) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 0.293s
+
+OK

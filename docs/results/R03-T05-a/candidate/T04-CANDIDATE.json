@@ -1,0 +1,18 @@
+{
+  "schema_version": 1,
+  "task_id": "R03-T04-a",
+  "base_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "core_tree": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+  "runtime_tree": "e37caf42f81f004345fc4917a61874167c18fb21",
+  "desktop_lock_sha256": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+  "stage": "integrated_local_pass",
+  "checks": {
+    "service": "PASS",
+    "core": "PASS",
+    "runtime": "PASS",
+    "desktop": "PASS",
+    "independent_socket": "PASS",
+    "real_gui": "PASS"
+  }
+}

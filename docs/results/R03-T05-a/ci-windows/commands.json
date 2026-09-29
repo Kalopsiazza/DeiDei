@@ -1,0 +1,84 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "commands": [
+    {
+      "name": "node-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"--version\"]",
+      "exit_code": 0,
+      "seconds": 0.02
+    },
+    {
+      "name": "npm-version",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"--version\"]",
+      "exit_code": 0,
+      "seconds": 0.14
+    },
+    {
+      "name": "npm-ci",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"ci\"]",
+      "exit_code": 0,
+      "seconds": 4.42
+    },
+    {
+      "name": "npm-audit",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\"]",
+      "exit_code": 0,
+      "seconds": 0.74
+    },
+    {
+      "name": "npm-audit-runtime",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"audit\", \"--json\", \"--omit=dev\"]",
+      "exit_code": 0,
+      "seconds": 0.73
+    },
+    {
+      "name": "desktop-build",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node_modules\\\\npm\\\\bin\\\\npm-cli.js\", \"run\", \"build\"]",
+      "exit_code": 0,
+      "seconds": 1.25
+    },
+    {
+      "name": "freeze-worker",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging_r03\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\frozen\", \"--workpath\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\freeze-worker\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging_r03\\\\freeze.spec\"]",
+      "exit_code": 0,
+      "seconds": 5.38
+    },
+    {
+      "name": "freeze-server",
+      "command": "[\"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging_r03\\\\.venv\\\\Scripts\\\\python.exe\", \"-m\", \"PyInstaller\", \"--noconfirm\", \"--clean\", \"--distpath\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\frozen\", \"--workpath\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\freeze-server\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging_r03\\\\freeze.spec\"]",
+      "exit_code": 0,
+      "seconds": 7.14
+    },
+    {
+      "name": "frozen-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\source\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\frozen\"]",
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "name": "packager",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\DeiDei\\\\DeiDei\\\\game\\\\packaging_r03\\\\pack.mjs\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\"]",
+      "exit_code": 0,
+      "seconds": 8.88
+    },
+    {
+      "name": "windows-signatures",
+      "command": "[\"powershell\", \"-NoProfile\", \"-Command\", \"Get-AuthenticodeSignature -LiteralPath $env:R03_CLIENT_EXE,$env:R03_SERVER_EXE | Select-Object Status,StatusMessage | ConvertTo-Json\"]",
+      "exit_code": 0,
+      "seconds": 7.08
+    },
+    {
+      "name": "unpacked-worker",
+      "command": "[\"C:\\\\hostedtoolcache\\\\windows\\\\node\\\\24.12.0\\\\x64\\\\node.EXE\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\source\\\\game\\\\packaging\\\\check-worker.cjs\", \"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\\\\DeiDei R03 Diagnostic-win32-x64\\\\resources\"]",
+      "exit_code": 0,
+      "seconds": 0.17
+    },
+    {
+      "name": "unpacked-server-cli",
+      "command": "[\"D:\\\\a\\\\_temp\\\\r03-diagnostic\\\\\\u4e2d\\u6587 \\u7a7a\\u683c \\u89e3\\u538b\\\\room-server\\\\deidei-room-server.exe\", \"--help\"]",
+      "exit_code": 0,
+      "seconds": 0.23
+    }
+  ]
+}

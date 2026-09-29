@@ -1,0 +1,2 @@
+<OUTPUT>/delivery/room-server/deidei-room-server: valid on disk
+<OUTPUT>/delivery/room-server/deidei-room-server: satisfies its Designated Requirement

@@ -1,0 +1,104 @@
+name: R03-T05 native diagnostics
+on:
+  pull_request:
+    branches: [integration/r03-live]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  package:
+    if: >-
+      (github.event_name == 'pull_request' && github.event.pull_request.head.repo.full_name == github.repository && github.event.pull_request.head.ref == 'codex/r03-t05-a-native-diagnostic') ||
+      (github.event_name == 'workflow_dispatch' && github.ref == 'refs/heads/codex/r03-t05-a-native-diagnostic')
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+            platform: darwin-arm64
+          - os: windows-2022
+            arch: x64
+            platform: win32-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 45
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - name: Preserve committed bytes
+        shell: bash
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.12.0
+          architecture: ${{ matrix.arch }}
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+        with:
+          version: 0.11.13
+          enable-cache: false
+      - name: Read only the committed source identity
+        id: input
+        shell: bash
+        run: |
+          node - <<'JS'
+          const fs=require('node:fs');
+          const v=JSON.parse(fs.readFileSync('game/packaging_r03/candidate-input.json'));
+          if(!/^[0-9a-f]{40}$/.test(v.source_sha)||!['DIAGNOSTIC_BASELINE','CANDIDATE'].includes(v.status))throw Error('INVALID_INPUT');
+          fs.appendFileSync(process.env.GITHUB_OUTPUT,`sha=${v.source_sha}\nstatus=${v.status}\n`);
+          JS
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          repository: Kalopsiazza/DeiDei
+          ref: ${{ steps.input.outputs.sha }}
+          path: product
+          fetch-depth: 0
+          persist-credentials: false
+      - name: Exact native environment and fixed-source validation
+        shell: bash
+        env:
+          TARGET_PLATFORM: ${{ matrix.platform }}
+        run: |
+          set -euo pipefail
+          uv python install --no-bin --python-downloads-json-url game/packaging/python-downloads.json 3.11.16
+          uv venv --python 3.11.16 game/packaging_r03/.venv
+          if [[ "$RUNNER_OS" == Windows ]]; then
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging_r03/.venv/Scripts/python.exe"
+          else
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging_r03/.venv/bin/python"
+          fi
+          echo "R03_PYTHON=$TASK_PYTHON" >> "$GITHUB_ENV"
+          echo "R03_OUTPUT=$RUNNER_TEMP/r03-diagnostic" >> "$GITHUB_ENV"
+          uv pip sync --python "$TASK_PYTHON" --require-hashes "game/packaging_r03/requirements-$TARGET_PLATFORM.lock"
+          "$TASK_PYTHON" game/packaging_r03/candidate.py --source product
+          "$TASK_PYTHON" -m unittest discover -s game/packaging_r03 -p test_tools.py -v
+      - name: Build and verify the final ZIP
+        id: build
+        shell: bash
+        run: '"$R03_PYTHON" game/packaging_r03/build.py --source product --output "$R03_OUTPUT"'
+      - name: Real packaged Electron and frozen service
+        id: gui
+        shell: bash
+        run: 'node game/packaging_r03/check-package.cjs "$R03_OUTPUT"'
+      - name: Internal diagnostic ZIP and manifest
+        if: always() && steps.build.outcome == 'success' && (steps.input.outputs.status == 'DIAGNOSTIC_BASELINE' || steps.gui.outcome == 'success')
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R03-T05-a-${{ steps.input.outputs.status }}-${{ matrix.platform }}-${{ steps.input.outputs.sha }}
+          path: |
+            ${{ runner.temp }}/r03-diagnostic/DeiDei-*.zip
+            ${{ runner.temp }}/r03-diagnostic/delivery-manifest.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Sanitized audits and native evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R03-T05-a-evidence-${{ matrix.platform }}-${{ github.event.pull_request.head.sha || github.sha }}
+          path: ${{ runner.temp }}/r03-diagnostic/evidence/
+          if-no-files-found: warn
+          retention-days: 30

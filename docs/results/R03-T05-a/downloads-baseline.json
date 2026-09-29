@@ -1,0 +1,34 @@
+[
+  {
+    "platform": "windows",
+    "artifact_id": 10361275991,
+    "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10361275991",
+    "outer_sha256": "cb129fb1864bee28c49c77f4dd6bfe8c9a038fd67fa364e1a2f87a13f0bdc40e",
+    "outer_bytes": 178427589,
+    "expires_at": "2026-10-14T17:33:48Z",
+    "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-win32-x64-8a6f8b2.zip",
+    "inner_sha256": "a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16",
+    "inner_bytes": 178843667,
+    "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+    "packaged_automation": "FAIL",
+    "download_verified": true,
+    "inventory_files": 250
+  },
+  {
+    "platform": "macos",
+    "artifact_id": 10360039450,
+    "artifact_url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/34875308825/artifacts/10360039450",
+    "outer_sha256": "ec34b265a17b1a0e8b9a8b323977df9878313b18d516e52994c13aac75fa6b28",
+    "outer_bytes": 149268378,
+    "expires_at": "2026-10-14T17:34:12Z",
+    "inner_filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-darwin-arm64-8a6f8b2.zip",
+    "inner_sha256": "364d1777f6527819e0521f13d0a4e259d5b23a0511cd7a554d80863825c23b47",
+    "inner_bytes": 149937221,
+    "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+    "packaged_automation": "DIAGNOSTIC_BASELINE_AUTOMATION_PASS",
+    "download_verified": true,
+    "inventory_files": 341
+  }
+]

@@ -1,0 +1,34 @@
+[
+  {
+    "id": 10373838219,
+    "name": "R03-T05-a-evidence-darwin-arm64-325006a2fd17f9beaa5ee68ae0142da01986806f",
+    "size_in_bytes": 1267549,
+    "digest": "sha256:07fb34eb164c80521ae23c1cc02dff9bb78b0abf2aa3b5e48a0a8a50819993d6",
+    "expires_at": "2026-10-14T23:34:01Z",
+    "expired": false
+  },
+  {
+    "id": 10373429643,
+    "name": "R03-T05-a-CANDIDATE-win32-x64-d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "size_in_bytes": 178430281,
+    "digest": "sha256:c567af38cdcef30ec8afd5b1cdbc7b3bba0ae98963e060e82b169ba97d72fb1a",
+    "expires_at": "2026-10-14T23:34:45Z",
+    "expired": false
+  },
+  {
+    "id": 10373269801,
+    "name": "R03-T05-a-CANDIDATE-darwin-arm64-d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "size_in_bytes": 149268540,
+    "digest": "sha256:66a42ccebe1d8ccdc963b3a07303911120f0db9aadbca99b9244b40423fdc18c",
+    "expires_at": "2026-10-14T23:33:55Z",
+    "expired": false
+  },
+  {
+    "id": 10373229896,
+    "name": "R03-T05-a-evidence-win32-x64-325006a2fd17f9beaa5ee68ae0142da01986806f",
+    "size_in_bytes": 824308,
+    "digest": "sha256:ab47746c92a8aeab4ac2bff3e092f501a377685337cdcc700fa8f57df2170115",
+    "expires_at": "2026-10-14T23:34:52Z",
+    "expired": false
+  }
+]

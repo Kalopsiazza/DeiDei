@@ -1,0 +1,20 @@
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (Plugin).app
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (GPU).app
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (Plugin).app
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (GPU).app
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current/.
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Squirrel.framework/Versions/Current/.
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Mantle.framework/Versions/Current/.
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Mantle.framework/Versions/Current/.
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper.app
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper.app
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (Renderer).app
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/DeiDei R03 Diagnostic Helper (Renderer).app
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.
+--prepared:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/Helpers/chrome_crashpad_handler
+--validated:<OUTPUT>/delivery/DeiDei R03 Diagnostic.app/Contents/Frameworks/Electron Framework.framework/Versions/Current/.
+<OUTPUT>/delivery/DeiDei R03 Diagnostic.app: valid on disk
+<OUTPUT>/delivery/DeiDei R03 Diagnostic.app: satisfies its Designated Requirement

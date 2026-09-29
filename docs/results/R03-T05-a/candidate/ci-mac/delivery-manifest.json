@@ -1,0 +1,13 @@
+{
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "packaging_sha": "325006a2fd17f9beaa5ee68ae0142da01986806f",
+  "status": "CANDIDATE",
+  "platform": "darwin-arm64",
+  "filename": "DeiDei-R03-T05-a-CANDIDATE-darwin-arm64-d0c9640.zip",
+  "sha256": "4409f0d016adb91405d4e367487e18fabc5cc5cd634d9abe2f40fa8102959d21",
+  "bytes": 149937759,
+  "inventory_sha256": "8378e12c15bbd130dddcdcb5841c0e5c0ee611ffd6e6972c570d1d34a3f679db",
+  "signature": "ad-hoc; not notarized",
+  "packaged_automation": "PACKAGED_AUTOMATION_PASS",
+  "human": "NOT_RUN"
+}

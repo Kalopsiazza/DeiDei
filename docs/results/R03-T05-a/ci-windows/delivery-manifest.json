@@ -1,0 +1,13 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "packaging_sha": "fabcb1d8438f05988d8eb64ac58ca0862ee92fb0",
+  "status": "DIAGNOSTIC_BASELINE",
+  "platform": "win32-x64",
+  "filename": "DeiDei-R03-T05-a-DIAGNOSTIC_BASELINE-win32-x64-8a6f8b2.zip",
+  "sha256": "a3552533f5c299ae69adcb868d477c42eb0e7770ee87283d258906a1dcff6b16",
+  "bytes": 178843667,
+  "inventory_sha256": "54e7ea36ce1190d0edb7207ccd9128567e5d1472b0ab0f95eb3e7650b79dafae",
+  "signature": "unsigned",
+  "packaged_automation": "FAIL",
+  "human": "NOT_RUN"
+}
