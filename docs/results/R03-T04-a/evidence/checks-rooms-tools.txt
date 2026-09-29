@@ -1,0 +1,25 @@
+test_explicit_baseline_core_oracles_and_identifier_mapping (tests.rooms_v1.test_harness.AsyncHarnessTests.test_explicit_baseline_core_oracles_and_identifier_mapping) ... ok
+test_grace_clock_ages_without_changing_seq_but_deadline_cannot (tests.rooms_v1.test_harness.AsyncHarnessTests.test_grace_clock_ages_without_changing_seq_but_deadline_cannot) ... ok
+test_privacy_differential_checks_entire_observer_json (tests.rooms_v1.test_harness.AsyncHarnessTests.test_privacy_differential_checks_entire_observer_json) ... ok
+test_real_peer_rejects_old_seq_and_revoked_broadcast (tests.rooms_v1.test_harness.AsyncHarnessTests.test_real_peer_rejects_old_seq_and_revoked_broadcast) ... ok
+test_same_seq_cannot_have_different_public_resources (tests.rooms_v1.test_harness.AsyncHarnessTests.test_same_seq_cannot_have_different_public_resources) ... ok
+test_scripted_n01_and_five_transport_mutations (tests.rooms_v1.test_harness.AsyncHarnessTests.test_scripted_n01_and_five_transport_mutations) ... Executing <Task pending name='Task-29' coro=<AsyncHarnessTests.test_scripted_n01_and_five_transport_mutations() running at <checkout>/tests/rooms_v1/test_harness.py:242> wait_for=<Future pending cb=[Task.task_wakeup()] created at /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py:459> cb=[_run_until_complete_cb() at /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py:181] created at /Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py:100> took 0.130 seconds
+ok
+test_ack_missing_wrong_identity_secret_and_types (tests.rooms_v1.test_harness.HarnessTests.test_ack_missing_wrong_identity_secret_and_types) ... ok
+test_all_core_oracles_have_complete_ledger_and_state (tests.rooms_v1.test_harness.HarnessTests.test_all_core_oracles_have_complete_ledger_and_state) ... ok
+test_authored_suite_is_reproducible (tests.rooms_v1.test_harness.HarnessTests.test_authored_suite_is_reproducible) ... ok
+test_bad_samples_missing_family_ack_policy_or_oracle (tests.rooms_v1.test_harness.HarnessTests.test_bad_samples_missing_family_ack_policy_or_oracle) ... ok
+test_clock_and_negative_time (tests.rooms_v1.test_harness.HarnessTests.test_clock_and_negative_time) ... ok
+test_empty_id_ack_cannot_complete_a_real_request (tests.rooms_v1.test_harness.HarnessTests.test_empty_id_ack_cannot_complete_a_real_request) ... ok
+test_every_authored_request_is_uuid_and_replays_bind (tests.rooms_v1.test_harness.HarnessTests.test_every_authored_request_is_uuid_and_replays_bind) ... ok
+test_import_does_not_reuse_cached_package (tests.rooms_v1.test_harness.HarnessTests.test_import_does_not_reuse_cached_package) ... ok
+test_json_rejects_duplicate_and_nonfinite (tests.rooms_v1.test_harness.HarnessTests.test_json_rejects_duplicate_and_nonfinite) ... ok
+test_missing_paths_are_non_success_no_fallback (tests.rooms_v1.test_harness.HarnessTests.test_missing_paths_are_non_success_no_fallback) ... ok
+test_old_turn_and_duplicate_reward_are_detected (tests.rooms_v1.test_harness.HarnessTests.test_old_turn_and_duplicate_reward_are_detected) ... ok
+test_room_1_1_schema_membership_and_unicode (tests.rooms_v1.test_harness.HarnessTests.test_room_1_1_schema_membership_and_unicode) ... ok
+test_snapshot_mutations (tests.rooms_v1.test_harness.HarnessTests.test_snapshot_mutations) ... ok
+
+----------------------------------------------------------------------
+Ran 19 tests in 2.413s
+
+OK

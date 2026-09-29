@@ -1,0 +1,10 @@
+{
+  "status": "ABORTED_SOURCE_SUPERSEDED",
+  "runtime_sha": "4342223",
+  "reason": "Final terminal-ACK fix changes service source. Stopped only owned soak/service PIDs before starting a complete 900-second run at final code_sha. Partial counters are not acceptance.",
+  "last_progress": [
+    "SOAK elapsed_s=601 matches=424 turns=1277",
+    "SOAK elapsed_s=661 matches=465 turns=1405",
+    "SOAK elapsed_s=721 matches=508 turns=1533"
+  ]
+}

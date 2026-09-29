@@ -1,0 +1,10 @@
+{
+  "baseRefName": "integration/r03-live",
+  "headRefName": "codex/r03-t04-a-live-integration",
+  "headRefOid": "d3ee35d9816acddccc9b826273a57fd3a9035832",
+  "isDraft": true,
+  "state": "OPEN",
+  "url": "https://github.com/Kalopsiazza/DeiDei/pull/28",
+  "code_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "note": "Verified published candidate before this final evidence-only commit. Final push and remote HEAD equality are checked after commit; source code remains code_sha."
+}

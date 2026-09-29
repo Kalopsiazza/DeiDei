@@ -1,0 +1,10 @@
+{
+  "branch": "codex/r03-t03-c-endurance",
+  "commit": "87433ce068494d40ad8866e0fd6383027827cfa8",
+  "read_once": true,
+  "findings": [
+    "F05: baseline rate UUID",
+    "F06: baseline stable deadline"
+  ],
+  "disposition": "Matches reproduced baseline failures; fixed and retested here. This is not an independent acceptance of the new candidate."
+}

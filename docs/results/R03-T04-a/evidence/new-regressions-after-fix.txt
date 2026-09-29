@@ -1,0 +1,9 @@
+test_Q01_limited_uuid_has_no_business_effect_then_recovers (test_live_contract.LiveContract.test_Q01_limited_uuid_has_no_business_effect_then_recovers) ... ok
+test_Q02_bad_messages_stay_unidentified_when_limited (test_live_contract.LiveContract.test_Q02_bad_messages_stay_unidentified_when_limited) ... ok
+test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline (test_live_contract.LiveContract.test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline) ... ok
+test_Q04_grace_and_membership_use_same_anchor (test_live_contract.LiveContract.test_Q04_grace_and_membership_use_same_anchor) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 1.024s
+
+OK

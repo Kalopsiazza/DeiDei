@@ -1,0 +1,669 @@
+{
+  "source": "online",
+  "transport": "real CLI WebSocket server; ordinary Electron main/preload; temporary synthetic profiles",
+  "platform": "darwin",
+  "arch": "arm64",
+  "checks": [
+    {
+      "id": "Q06/Q14",
+      "status": "PASS",
+      "detail": "Three actual Electron processes plus socket peers fill 6 player and 6 spectator places; wrong password, full capacities and spectator permission reject."
+    },
+    {
+      "id": "Q23",
+      "status": "PASS",
+      "detail": "33 cards, three rows, both specified viewports without overflow; actual service and renderer."
+    },
+    {
+      "id": "Q05/Q15",
+      "status": "PASS",
+      "detail": "In-flight timing and accepted card unchanged; next stage uses final 30s revision; spectator receives no private option or accepted entry."
+    },
+    {
+      "id": "Q12",
+      "status": "PASS",
+      "detail": "ACK dropped after real server acceptance; original pending submission resumed once, same entry and human source."
+    },
+    {
+      "id": "Q08",
+      "status": "PASS",
+      "detail": "Naturally eliminated host keeps seat and management rights, no selectable cards; other players continue."
+    },
+    {
+      "id": "Q07",
+      "status": "PASS",
+      "detail": "Three complete real-core matches, including Charge/Bi/Def, natural elimination, common outcomes and return to lobby/new match IDs."
+    },
+    {
+      "id": "Q11/Q13",
+      "status": "PASS",
+      "detail": "Third ordinary absence removes the member; delayed genuine snapshot/removal receipt released after a new room cannot revive or clear the old/new room."
+    },
+    {
+      "id": "Q09",
+      "status": "PASS",
+      "detail": "Host selecting-phase UI exit closes after the current turn with HOST_LEFT and no new outcome. Reveal-phase exact-once boundary covered by server regression."
+    },
+    {
+      "id": "Q10",
+      "status": "PASS",
+      "detail": "Real host process loss: three Charge turns observed, fourth deadline closes; no voluntary leave injected."
+    },
+    {
+      "id": "Q11-visible",
+      "status": "PASS",
+      "detail": "Ordinary renderer receives membership.ended without another command and presents the removal reason."
+    },
+    {
+      "id": "Q09-reveal",
+      "status": "PASS",
+      "detail": "Host exits during real reveal; closure retains exactly the existing ledger."
+    },
+    {
+      "id": "Q16/Q22",
+      "status": "PASS",
+      "detail": "Owned service restart is visible as SERVER_RESTART; original real offline worker still starts and persisted profile bytes survive."
+    },
+    {
+      "id": "Q17",
+      "status": "PASS",
+      "detail": "Existing native close confirmation cancelled then accepted; genuine leave ACK held by relay, exit finishes within bounded 3s wait. Dialog response automated, no transport mock."
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "real-wrong-password",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-player-full",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-spectators-full",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-online-1366x768",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-online-1920x1080",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1920,
+        "height": 1080
+      }
+    },
+    {
+      "name": "real-current-next-limit",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-spectator-private",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-resume-accepted",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-result-1",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-eliminated-host",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-result-2",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-result-3",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-host-left",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-host-fourth-close",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-membership-ended-notice",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-server-restart",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    },
+    {
+      "name": "real-offline-after-network-failure",
+      "source": "real service / real Electron",
+      "viewport": {
+        "width": 1366,
+        "height": 768
+      }
+    }
+  ],
+  "page_errors": [],
+  "electron": {
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "pid": 96061
+  },
+  "layout_1366": {
+    "size": [
+      1366,
+      768
+    ],
+    "scroll": [
+      1366,
+      768
+    ],
+    "cards": [
+      {
+        "x": 24,
+        "y": 381.5,
+        "right": 137.46875,
+        "bottom": 485.5
+      },
+      {
+        "x": 142.46875,
+        "y": 381.5,
+        "right": 255.9375,
+        "bottom": 485.5
+      },
+      {
+        "x": 260.9375,
+        "y": 381.5,
+        "right": 374.40625,
+        "bottom": 485.5
+      },
+      {
+        "x": 379.40625,
+        "y": 381.5,
+        "right": 492.875,
+        "bottom": 485.5
+      },
+      {
+        "x": 497.875,
+        "y": 381.5,
+        "right": 611.34375,
+        "bottom": 485.5
+      },
+      {
+        "x": 616.34375,
+        "y": 381.5,
+        "right": 729.8125,
+        "bottom": 485.5
+      },
+      {
+        "x": 24,
+        "y": 490.5,
+        "right": 137.46875,
+        "bottom": 594.5
+      },
+      {
+        "x": 142.46875,
+        "y": 490.5,
+        "right": 255.9375,
+        "bottom": 594.5
+      },
+      {
+        "x": 260.9375,
+        "y": 490.5,
+        "right": 374.40625,
+        "bottom": 594.5
+      },
+      {
+        "x": 379.40625,
+        "y": 490.5,
+        "right": 492.875,
+        "bottom": 594.5
+      },
+      {
+        "x": 497.875,
+        "y": 490.5,
+        "right": 611.34375,
+        "bottom": 594.5
+      },
+      {
+        "x": 616.34375,
+        "y": 490.5,
+        "right": 729.8125,
+        "bottom": 594.5
+      },
+      {
+        "x": 24,
+        "y": 599.5,
+        "right": 137.46875,
+        "bottom": 703.5
+      },
+      {
+        "x": 142.46875,
+        "y": 599.5,
+        "right": 255.9375,
+        "bottom": 703.5
+      },
+      {
+        "x": 260.9375,
+        "y": 599.5,
+        "right": 374.40625,
+        "bottom": 703.5
+      },
+      {
+        "x": 379.40625,
+        "y": 599.5,
+        "right": 492.875,
+        "bottom": 703.5
+      },
+      {
+        "x": 497.875,
+        "y": 599.5,
+        "right": 611.34375,
+        "bottom": 703.5
+      },
+      {
+        "x": 616.34375,
+        "y": 599.5,
+        "right": 729.8125,
+        "bottom": 703.5
+      },
+      {
+        "x": 741.8125,
+        "y": 381.5,
+        "right": 856.1171875,
+        "bottom": 485.5
+      },
+      {
+        "x": 861.1171875,
+        "y": 381.5,
+        "right": 975.421875,
+        "bottom": 485.5
+      },
+      {
+        "x": 980.421875,
+        "y": 381.5,
+        "right": 1094.7265625,
+        "bottom": 485.5
+      },
+      {
+        "x": 741.8125,
+        "y": 490.5,
+        "right": 856.1171875,
+        "bottom": 594.5
+      },
+      {
+        "x": 861.1171875,
+        "y": 490.5,
+        "right": 975.421875,
+        "bottom": 594.5
+      },
+      {
+        "x": 980.421875,
+        "y": 490.5,
+        "right": 1094.7265625,
+        "bottom": 594.5
+      },
+      {
+        "x": 741.8125,
+        "y": 599.5,
+        "right": 856.1171875,
+        "bottom": 703.5
+      },
+      {
+        "x": 861.1171875,
+        "y": 599.5,
+        "right": 975.421875,
+        "bottom": 703.5
+      },
+      {
+        "x": 980.421875,
+        "y": 599.5,
+        "right": 1094.7265625,
+        "bottom": 703.5
+      },
+      {
+        "x": 1106.7265625,
+        "y": 381.5,
+        "right": 1221.859375,
+        "bottom": 485.5
+      },
+      {
+        "x": 1226.859375,
+        "y": 381.5,
+        "right": 1341.9921875,
+        "bottom": 485.5
+      },
+      {
+        "x": 1106.7265625,
+        "y": 490.5,
+        "right": 1221.859375,
+        "bottom": 594.5
+      },
+      {
+        "x": 1226.859375,
+        "y": 490.5,
+        "right": 1341.9921875,
+        "bottom": 594.5
+      },
+      {
+        "x": 1106.7265625,
+        "y": 599.5,
+        "right": 1221.859375,
+        "bottom": 703.5
+      },
+      {
+        "x": 1226.859375,
+        "y": 599.5,
+        "right": 1341.9921875,
+        "bottom": 703.5
+      }
+    ]
+  },
+  "layout_1920": {
+    "size": [
+      1920,
+      1080
+    ],
+    "scroll": [
+      1920,
+      1080
+    ],
+    "cards": [
+      {
+        "x": 34,
+        "y": 549.5,
+        "right": 193.5078125,
+        "bottom": 694.5
+      },
+      {
+        "x": 201.5078125,
+        "y": 549.5,
+        "right": 361.0234375,
+        "bottom": 694.5
+      },
+      {
+        "x": 369.0234375,
+        "y": 549.5,
+        "right": 528.5390625,
+        "bottom": 694.5
+      },
+      {
+        "x": 536.5390625,
+        "y": 549.5,
+        "right": 696.0546875,
+        "bottom": 694.5
+      },
+      {
+        "x": 704.0546875,
+        "y": 549.5,
+        "right": 863.5703125,
+        "bottom": 694.5
+      },
+      {
+        "x": 871.5703125,
+        "y": 549.5,
+        "right": 1031.0859375,
+        "bottom": 694.5
+      },
+      {
+        "x": 34,
+        "y": 702.5,
+        "right": 193.5078125,
+        "bottom": 847.5
+      },
+      {
+        "x": 201.5078125,
+        "y": 702.5,
+        "right": 361.0234375,
+        "bottom": 847.5
+      },
+      {
+        "x": 369.0234375,
+        "y": 702.5,
+        "right": 528.5390625,
+        "bottom": 847.5
+      },
+      {
+        "x": 536.5390625,
+        "y": 702.5,
+        "right": 696.0546875,
+        "bottom": 847.5
+      },
+      {
+        "x": 704.0546875,
+        "y": 702.5,
+        "right": 863.5703125,
+        "bottom": 847.5
+      },
+      {
+        "x": 871.5703125,
+        "y": 702.5,
+        "right": 1031.0859375,
+        "bottom": 847.5
+      },
+      {
+        "x": 34,
+        "y": 855.5,
+        "right": 193.5078125,
+        "bottom": 1000.5
+      },
+      {
+        "x": 201.5078125,
+        "y": 855.5,
+        "right": 361.0234375,
+        "bottom": 1000.5
+      },
+      {
+        "x": 369.0234375,
+        "y": 855.5,
+        "right": 528.5390625,
+        "bottom": 1000.5
+      },
+      {
+        "x": 536.5390625,
+        "y": 855.5,
+        "right": 696.0546875,
+        "bottom": 1000.5
+      },
+      {
+        "x": 704.0546875,
+        "y": 855.5,
+        "right": 863.5703125,
+        "bottom": 1000.5
+      },
+      {
+        "x": 871.5703125,
+        "y": 855.5,
+        "right": 1031.0859375,
+        "bottom": 1000.5
+      },
+      {
+        "x": 1043.0859375,
+        "y": 549.5,
+        "right": 1203.9296875,
+        "bottom": 694.5
+      },
+      {
+        "x": 1211.9296875,
+        "y": 549.5,
+        "right": 1372.78125,
+        "bottom": 694.5
+      },
+      {
+        "x": 1380.78125,
+        "y": 549.5,
+        "right": 1541.625,
+        "bottom": 694.5
+      },
+      {
+        "x": 1043.0859375,
+        "y": 702.5,
+        "right": 1203.9296875,
+        "bottom": 847.5
+      },
+      {
+        "x": 1211.9296875,
+        "y": 702.5,
+        "right": 1372.78125,
+        "bottom": 847.5
+      },
+      {
+        "x": 1380.78125,
+        "y": 702.5,
+        "right": 1541.625,
+        "bottom": 847.5
+      },
+      {
+        "x": 1043.0859375,
+        "y": 855.5,
+        "right": 1203.9296875,
+        "bottom": 1000.5
+      },
+      {
+        "x": 1211.9296875,
+        "y": 855.5,
+        "right": 1372.78125,
+        "bottom": 1000.5
+      },
+      {
+        "x": 1380.78125,
+        "y": 855.5,
+        "right": 1541.625,
+        "bottom": 1000.5
+      },
+      {
+        "x": 1553.6328125,
+        "y": 549.5,
+        "right": 1715.8125,
+        "bottom": 694.5
+      },
+      {
+        "x": 1723.8125,
+        "y": 549.5,
+        "right": 1886,
+        "bottom": 694.5
+      },
+      {
+        "x": 1553.6328125,
+        "y": 702.5,
+        "right": 1715.8125,
+        "bottom": 847.5
+      },
+      {
+        "x": 1723.8125,
+        "y": 702.5,
+        "right": 1886,
+        "bottom": 847.5
+      },
+      {
+        "x": 1553.6328125,
+        "y": 855.5,
+        "right": 1715.8125,
+        "bottom": 1000.5
+      },
+      {
+        "x": 1723.8125,
+        "y": 855.5,
+        "right": 1886,
+        "bottom": 1000.5
+      }
+    ]
+  },
+  "status": "PASS"
+}

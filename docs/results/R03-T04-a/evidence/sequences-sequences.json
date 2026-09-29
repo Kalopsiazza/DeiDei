@@ -1,0 +1,707 @@
+{
+  "status": "PASS",
+  "requested": 100,
+  "transport": "real sockets; injected clock; fixed seed test inputs",
+  "sequences": [
+    {
+      "seed": 0,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 1,
+      "players": 3,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 2,
+      "players": 2,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 3,
+      "players": 3,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 4,
+      "players": 3,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 5,
+      "players": 6,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 6,
+      "players": 6,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 7,
+      "players": 4,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 8,
+      "players": 3,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 9,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 10,
+      "players": 6,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 11,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 12,
+      "players": 5,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 13,
+      "players": 4,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 14,
+      "players": 2,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 15,
+      "players": 3,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 16,
+      "players": 4,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 17,
+      "players": 6,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 18,
+      "players": 3,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 19,
+      "players": 2,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 20,
+      "players": 3,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 21,
+      "players": 3,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 22,
+      "players": 3,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 23,
+      "players": 4,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 24,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 25,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 26,
+      "players": 3,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 27,
+      "players": 5,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 28,
+      "players": 2,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 29,
+      "players": 6,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 30,
+      "players": 6,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 31,
+      "players": 2,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 32,
+      "players": 2,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 33,
+      "players": 6,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 34,
+      "players": 6,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 35,
+      "players": 6,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 36,
+      "players": 4,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 37,
+      "players": 6,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 38,
+      "players": 5,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 39,
+      "players": 3,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 40,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 41,
+      "players": 5,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 42,
+      "players": 2,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 43,
+      "players": 2,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 44,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 45,
+      "players": 4,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 46,
+      "players": 2,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 47,
+      "players": 4,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 48,
+      "players": 6,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 49,
+      "players": 2,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 50,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 51,
+      "players": 3,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 52,
+      "players": 4,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 53,
+      "players": 6,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 54,
+      "players": 3,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 55,
+      "players": 2,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 56,
+      "players": 6,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 57,
+      "players": 2,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 58,
+      "players": 6,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 59,
+      "players": 3,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 60,
+      "players": 4,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 61,
+      "players": 5,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 62,
+      "players": 6,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 63,
+      "players": 5,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 64,
+      "players": 5,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 65,
+      "players": 5,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 66,
+      "players": 2,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 67,
+      "players": 2,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 68,
+      "players": 5,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 69,
+      "players": 2,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 70,
+      "players": 2,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 71,
+      "players": 4,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 72,
+      "players": 2,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 73,
+      "players": 4,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 74,
+      "players": 6,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 75,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 76,
+      "players": 4,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 77,
+      "players": 4,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 78,
+      "players": 3,
+      "spectators": 0,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 79,
+      "players": 3,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 80,
+      "players": 4,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 81,
+      "players": 6,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 82,
+      "players": 3,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 83,
+      "players": 5,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 84,
+      "players": 4,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 85,
+      "players": 3,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 86,
+      "players": 2,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 87,
+      "players": 3,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 88,
+      "players": 5,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 89,
+      "players": 2,
+      "spectators": 6,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 90,
+      "players": 3,
+      "spectators": 5,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 91,
+      "players": 2,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 92,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 93,
+      "players": 5,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 94,
+      "players": 6,
+      "spectators": 1,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 95,
+      "players": 6,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 96,
+      "players": 4,
+      "spectators": 2,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 97,
+      "players": 3,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 98,
+      "players": 4,
+      "spectators": 4,
+      "result": "PASS",
+      "turns": 3
+    },
+    {
+      "seed": 99,
+      "players": 5,
+      "spectators": 3,
+      "result": "PASS",
+      "turns": 3
+    }
+  ]
+}

@@ -1,0 +1,33 @@
+{
+  "server_status": "SOCKET_CHECKS_PASS",
+  "fixture_status": "VALID",
+  "selected": 1,
+  "passed": 1,
+  "server": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "core": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "desktop": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "78ff33fee9947d92eb79213632ed9d1fa278adee3e929acc8fcd0b899d46600a",
+    "dirty": false
+  },
+  "tests": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "bb18124b7f048f045f55533e3a5ad09ca759ee7fc2eea937531f36fc88b31dc9",
+    "dirty": false
+  },
+  "desktop_status": "NOT_RUN",
+  "cases": [
+    {
+      "case_id": "N33/burst_limit",
+      "status": "PASS"
+    }
+  ]
+}

@@ -1,0 +1,24 @@
+test_Q01_limited_uuid_has_no_business_effect_then_recovers (test_live_contract.LiveContract.test_Q01_limited_uuid_has_no_business_effect_then_recovers) ... ok
+test_Q02_bad_messages_stay_unidentified_when_limited (test_live_contract.LiveContract.test_Q02_bad_messages_stay_unidentified_when_limited) ... ok
+test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline (test_live_contract.LiveContract.test_Q03_Q04_wall_jumps_do_not_change_any_public_deadline) ... ok
+test_Q04_grace_and_membership_use_same_anchor (test_live_contract.LiveContract.test_Q04_grace_and_membership_use_same_anchor) ... ERROR
+
+======================================================================
+ERROR: test_Q04_grace_and_membership_use_same_anchor (test_live_contract.LiveContract.test_Q04_grace_and_membership_use_same_anchor)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/runners.py", line 118, in run
+    return self._loop.run_until_complete(task)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^
+  File "/Library/Frameworks/Python.framework/Versions/3.13/lib/python3.13/asyncio/base_events.py", line 725, in run_until_complete
+    return future.result()
+           ~~~~~~~~~~~~~^^
+  File "<checkout>/game/server/tests/test_live_contract.py", line 91, in test_Q04_grace_and_membership_use_same_anchor
+    self.assertEqual(session.last_membership_end['server_time_ms'], anchor + clock.now_ms())
+                     ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^
+TypeError: 'NoneType' object is not subscriptable
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.995s
+
+FAILED (errors=1)
