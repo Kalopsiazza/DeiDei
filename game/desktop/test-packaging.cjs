@@ -51,3 +51,34 @@ test('P04 source launch retains module arguments and explicit developer Python',
  assert.equal(launch.env.PYTHONPATH,[path.resolve(__dirname,'../core'),path.resolve(__dirname,'../runtime')].join(path.delimiter));
  assert.equal(workerLaunch({},{}).executable,'python3');
 });
+
+test('R04 menu assets use an exact local allowlist',()=>{
+ const modulePath=path.join(__dirname,'ui-assets.cjs');
+ assert.ok(fs.existsSync(modulePath),'ui asset resolver must exist');
+ const {UI_ASSETS,resolveUiAsset}=require(modulePath);
+ const expected={
+  'assets/menu/menu-environment.webp':'image/webp',
+  'assets/menu/menu-character.png':'image/png',
+  'assets/menu/menu-atmosphere.png':'image/png',
+ };
+ assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css',...Object.keys(expected)].sort());
+ for(const [relativePath,contentType] of Object.entries(expected)){
+  assert.equal(UI_ASSETS[relativePath],contentType);
+  assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
+ }
+ for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png'])assert.equal(resolveUiAsset(name),null);
+});
+
+test('R04 built UI contains the three bounded menu assets',()=>{
+ const limits={
+  'menu-environment.webp':1_500_000,
+  'menu-character.png':2_500_000,
+  'menu-atmosphere.png':1_000_000,
+ };
+ for(const [name,maxBytes] of Object.entries(limits)){
+  const file=path.join(__dirname,'build/ui/assets/menu',name);
+  assert.ok(fs.existsSync(file),`${name} must be copied into build/ui`);
+  const bytes=fs.statSync(file).size;
+  assert.ok(bytes>0&&bytes<=maxBytes,`${name} must stay within its byte budget`);
+ }
+});

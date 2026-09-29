@@ -1,8 +1,10 @@
 const { app, BrowserWindow, ipcMain, protocol, dialog } = require('electron');
 const path = require('node:path');
 const fs = require('node:fs/promises');
+const fsNative = require('node:fs');
 const { WorkerPort } = require('./worker-port.cjs');
 const { NetworkRoomPort } = require('./online/network-room-port.cjs');
+const { resolveUiAsset } = require('./ui-assets.cjs');
 const online=new NetworkRoomPort({url:process.env.DEIDEI_ROOM_URL});
 const { ProfileStore, fields } = require('./profile.cjs');
 const { FixturePort, manual, scenes } = require('./build/fixture.cjs');
@@ -21,15 +23,14 @@ async function replacePort(next, start) {
   try { online.close();if(port.close)await port.close();else await port.leave();port=next;const view=await start(next);window.setTitle(`叠叠 R02 · ${view.source==='live'?'本地单人':'演示数据'}`);return view; }
   finally { switching=false; }
 }
-const files={ 'index.html':'text/html; charset=utf-8', 'renderer.js':'text/javascript', 'style.css':'text/css' };
 const validString=s=>typeof s==='string' && s.length>0 && s.length<=128;
 app.whenReady().then(async()=>{
   if(!ownsProfile)return;
   const store=new ProfileStore(path.join(app.getPath('userData'),'local-profile'));
   protocol.handle('app',async request=>{
-    const u=new URL(request.url), name=u.pathname.slice(1);
-    if((u.protocol!=='app:' || u.host!=='desktop') || u.search || u.hash || request.method!=='GET' || !Object.hasOwn(files,name)) return new Response('',{status:403});
-    try {return new Response(await fs.readFile(path.join(__dirname,'build/ui',name)),{headers:{'Content-Type':files[name]}});}
+    const u=new URL(request.url), asset=resolveUiAsset(u.pathname.slice(1));
+    if((u.protocol!=='app:' || u.host!=='desktop') || u.search || u.hash || request.method!=='GET' || !asset) return new Response('',{status:403});
+    try {return new Response(await fs.readFile(path.join(__dirname,'build/ui',asset.relativePath)),{headers:{'Content-Type':asset.contentType}});}
     catch{return new Response('Local asset unavailable',{status:404});}
   });
   window=new BrowserWindow({width:1366,height:768,useContentSize:true,minWidth:1000,minHeight:650,title:'叠叠 R02 · 本地单人',backgroundColor:'#f5f1e7',webPreferences:{preload:path.join(__dirname,'preload.cjs'),contextIsolation:true,sandbox:true,nodeIntegration:false,webSecurity:true}});
@@ -73,6 +74,14 @@ app.whenReady().then(async()=>{
     dialog.showMessageBox(window,{type:'question',buttons:['继续对局','退出'],defaultId:0,cancelId:0,message:online.isActive()?'退出好友房？':'退出当前对局？',detail:online.isActive()?(online.snapshot?.view.host_id===online.snapshot?.view.self.player_id?'你是房主，退出将结束房间。':'退出后原席位由服务处理，本机档案保留。'):'本次对局进度不会保存，本机档案和已保存的设置仍保留。'}).then(async r=>{if(r.response===1){await exitOnline();allowClose=true;window.close();}}).finally(()=>{closePending=false;});
   });
   await window.loadURL('app://desktop/index.html');
+  if (!app.isPackaged && process.env.DEIDEI_DEV_RELOAD === '1') {
+    let reloadTimer;
+    const watcher = fsNative.watch(path.join(__dirname, 'build/ui'), { recursive:true }, () => {
+      clearTimeout(reloadTimer);
+      reloadTimer=setTimeout(()=>{if(window&&!window.isDestroyed())window.webContents.reloadIgnoringCache();},100);
+    });
+    window.once('closed',()=>{clearTimeout(reloadTimer);watcher.close();});
+  }
   try{const p=await store.read();if(p)window.setFullScreen(p.settings.fullscreen);}catch{}
 });
 async function exitOnline() {
