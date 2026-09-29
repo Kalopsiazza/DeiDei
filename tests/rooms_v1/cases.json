@@ -30532,6 +30532,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner1"
+      },
+      {
         "do": "connect",
         "as": "owner2"
       },
@@ -30556,6 +30560,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner2"
       },
       {
         "do": "connect",
@@ -30584,6 +30592,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner3"
+      },
+      {
         "do": "connect",
         "as": "owner4"
       },
@@ -30608,6 +30620,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner4"
       },
       {
         "do": "connect",
@@ -30636,6 +30652,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner5"
+      },
+      {
         "do": "connect",
         "as": "owner6"
       },
@@ -30660,6 +30680,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner6"
       },
       {
         "do": "connect",
@@ -30688,6 +30712,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner7"
+      },
+      {
         "do": "connect",
         "as": "owner8"
       },
@@ -30712,6 +30740,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner8"
       },
       {
         "do": "connect",
@@ -30740,6 +30772,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner9"
+      },
+      {
         "do": "connect",
         "as": "owner10"
       },
@@ -30764,6 +30800,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner10"
       },
       {
         "do": "connect",
@@ -30792,6 +30832,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner11"
+      },
+      {
         "do": "connect",
         "as": "owner12"
       },
@@ -30816,6 +30860,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner12"
       },
       {
         "do": "connect",
@@ -30844,6 +30892,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner13"
+      },
+      {
         "do": "connect",
         "as": "owner14"
       },
@@ -30868,6 +30920,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner14"
       },
       {
         "do": "connect",
@@ -30896,6 +30952,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner15"
+      },
+      {
         "do": "connect",
         "as": "owner16"
       },
@@ -30920,6 +30980,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner16"
       },
       {
         "do": "connect",
@@ -30948,6 +31012,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner17"
+      },
+      {
         "do": "connect",
         "as": "owner18"
       },
@@ -30972,6 +31040,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner18"
       },
       {
         "do": "connect",
@@ -31000,6 +31072,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner19"
+      },
+      {
         "do": "connect",
         "as": "owner20"
       },
@@ -31024,6 +31100,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner20"
       },
       {
         "do": "connect",
@@ -31052,6 +31132,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner21"
+      },
+      {
         "do": "connect",
         "as": "owner22"
       },
@@ -31076,6 +31160,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner22"
       },
       {
         "do": "connect",
@@ -31104,6 +31192,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner23"
+      },
+      {
         "do": "connect",
         "as": "owner24"
       },
@@ -31128,6 +31220,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner24"
       },
       {
         "do": "connect",
@@ -31156,6 +31252,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner25"
+      },
+      {
         "do": "connect",
         "as": "owner26"
       },
@@ -31180,6 +31280,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner26"
       },
       {
         "do": "connect",
@@ -31208,6 +31312,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner27"
+      },
+      {
         "do": "connect",
         "as": "owner28"
       },
@@ -31232,6 +31340,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner28"
       },
       {
         "do": "connect",
@@ -31260,6 +31372,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner29"
+      },
+      {
         "do": "connect",
         "as": "owner30"
       },
@@ -31284,6 +31400,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner30"
       },
       {
         "do": "connect",
@@ -31312,6 +31432,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner31"
+      },
+      {
         "do": "connect",
         "as": "owner32"
       },
@@ -31336,6 +31460,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner32"
       },
       {
         "do": "connect",
@@ -31364,6 +31492,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner33"
+      },
+      {
         "do": "connect",
         "as": "owner34"
       },
@@ -31388,6 +31520,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner34"
       },
       {
         "do": "connect",
@@ -31416,6 +31552,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner35"
+      },
+      {
         "do": "connect",
         "as": "owner36"
       },
@@ -31440,6 +31580,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner36"
       },
       {
         "do": "connect",
@@ -31468,6 +31612,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner37"
+      },
+      {
         "do": "connect",
         "as": "owner38"
       },
@@ -31492,6 +31640,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner38"
       },
       {
         "do": "connect",
@@ -31520,6 +31672,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner39"
+      },
+      {
         "do": "connect",
         "as": "owner40"
       },
@@ -31544,6 +31700,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner40"
       },
       {
         "do": "connect",
@@ -31572,6 +31732,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner41"
+      },
+      {
         "do": "connect",
         "as": "owner42"
       },
@@ -31596,6 +31760,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner42"
       },
       {
         "do": "connect",
@@ -31624,6 +31792,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner43"
+      },
+      {
         "do": "connect",
         "as": "owner44"
       },
@@ -31648,6 +31820,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner44"
       },
       {
         "do": "connect",
@@ -31676,6 +31852,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner45"
+      },
+      {
         "do": "connect",
         "as": "owner46"
       },
@@ -31700,6 +31880,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner46"
       },
       {
         "do": "connect",
@@ -31728,6 +31912,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner47"
+      },
+      {
         "do": "connect",
         "as": "owner48"
       },
@@ -31752,6 +31940,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner48"
       },
       {
         "do": "connect",
@@ -31780,6 +31972,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner49"
+      },
+      {
         "do": "connect",
         "as": "owner50"
       },
@@ -31804,6 +32000,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner50"
       },
       {
         "do": "connect",
@@ -31832,6 +32032,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner51"
+      },
+      {
         "do": "connect",
         "as": "owner52"
       },
@@ -31856,6 +32060,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner52"
       },
       {
         "do": "connect",
@@ -31884,6 +32092,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner53"
+      },
+      {
         "do": "connect",
         "as": "owner54"
       },
@@ -31908,6 +32120,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner54"
       },
       {
         "do": "connect",
@@ -31936,6 +32152,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner55"
+      },
+      {
         "do": "connect",
         "as": "owner56"
       },
@@ -31960,6 +32180,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner56"
       },
       {
         "do": "connect",
@@ -31988,6 +32212,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner57"
+      },
+      {
         "do": "connect",
         "as": "owner58"
       },
@@ -32012,6 +32240,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner58"
       },
       {
         "do": "connect",
@@ -32040,6 +32272,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner59"
+      },
+      {
         "do": "connect",
         "as": "owner60"
       },
@@ -32064,6 +32300,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner60"
       },
       {
         "do": "connect",
@@ -32092,6 +32332,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner61"
+      },
+      {
         "do": "connect",
         "as": "owner62"
       },
@@ -32118,6 +32362,10 @@
         }
       },
       {
+        "do": "disconnect",
+        "as": "owner62"
+      },
+      {
         "do": "connect",
         "as": "owner63"
       },
@@ -32142,6 +32390,10 @@
         "ack": {
           "ok": true
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner63"
       },
       {
         "do": "connect",
@@ -32171,6 +32423,10 @@
             "code": "SERVER_BUSY"
           }
         }
+      },
+      {
+        "do": "disconnect",
+        "as": "owner64"
       },
       {
         "do": "command",

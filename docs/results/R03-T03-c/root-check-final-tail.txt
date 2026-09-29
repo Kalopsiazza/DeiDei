@@ -1,0 +1,14 @@
+test_admins_are_protected_and_force_push_is_disabled (test_maintainer_setup.ConfigurationTests.test_admins_are_protected_and_force_push_is_disabled) ... ok
+test_existing_protection_stops_before_any_write (test_maintainer_setup.ConfigurationTests.test_existing_protection_stops_before_any_write) ... ok
+test_preview_performs_reads_only (test_maintainer_setup.ConfigurationTests.test_preview_performs_reads_only) ... ok
+test_readback_accepts_expected_settings (test_maintainer_setup.ConfigurationTests.test_readback_accepts_expected_settings) ... ok
+test_readback_rejects_different_app (test_maintainer_setup.ConfigurationTests.test_readback_rejects_different_app) ... ok
+test_readback_rejects_missing_pr_requirement (test_maintainer_setup.ConfigurationTests.test_readback_rejects_missing_pr_requirement) ... ok
+test_single_maintainer_does_not_need_another_approver (test_maintainer_setup.ConfigurationTests.test_single_maintainer_does_not_need_another_approver) ... ok
+
+----------------------------------------------------------------------
+Ran 61 tests in 3.002s
+
+OK (expected failures=1)
+Tests run: 61; known expected failures: 1.
+GUI, model inference and online play are NOT covered by this check.

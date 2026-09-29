@@ -1,0 +1,9 @@
+test_transport_double_passes_only_harness_and_missing_outputs_fail (tests.rules_v1_001.test_harness.HarnessTests.test_transport_double_passes_only_harness_and_missing_outputs_fail) ... ok
+test_clock_has_independent_wall_and_monotonic_inputs (tests.rooms_endurance.test_endurance.HarnessChecks.test_clock_has_independent_wall_and_monotonic_inputs) ... ok
+test_rate_windows_accept_only_causal_connection_changes (tests.rooms_endurance.test_endurance.HarnessChecks.test_rate_windows_accept_only_causal_connection_changes) ... ok
+test_receipt_rejects_untrusted_execution_and_drift (tests.rooms_endurance.test_endurance.HarnessChecks.test_receipt_rejects_untrusted_execution_and_drift) ... ok
+
+----------------------------------------------------------------------
+Ran 30 tests in 3.097s
+
+OK

@@ -1,0 +1,9 @@
+test_readback_rejects_missing_pr_requirement (test_maintainer_setup.ConfigurationTests.test_readback_rejects_missing_pr_requirement) ... ok
+test_single_maintainer_does_not_need_another_approver (test_maintainer_setup.ConfigurationTests.test_single_maintainer_does_not_need_another_approver) ... ok
+
+----------------------------------------------------------------------
+Ran 62 tests in 3.072s
+
+OK (expected failures=1)
+Tests run: 62; known expected failures: 1.
+GUI, model inference and online play are NOT covered by this check.

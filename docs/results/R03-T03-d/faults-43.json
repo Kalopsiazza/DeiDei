@@ -1,0 +1,403 @@
+{
+  "source": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "3ea1a2dad603f523e284007f354beb469b62df915d7472456ef5775db3627908",
+    "dirty": false
+  },
+  "core": {
+    "sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+    "source_sha256": "0d789ad2321864eb1fe623e26d155fdab96cbbb73681089c67425c29edfd1199",
+    "dirty": false
+  },
+  "status": "PASS",
+  "cases": [
+    {
+      "case_id": "Q01/rate",
+      "status": "PASS",
+      "evidence": {
+        "last_seq_unchanged": true,
+        "rejected_id_reusable": true,
+        "room_unchanged_in_each_sync_window": true,
+        "room_seq": {
+          "before": "5",
+          "after_rate": "5",
+          "after_disconnect": "6",
+          "after_resume": "7",
+          "after_replay": "7"
+        },
+        "connected": [
+          true,
+          false,
+          true
+        ],
+        "match_policy_and_exact_time_unchanged": true
+      }
+    },
+    {
+      "case_id": "Q02/malformed",
+      "status": "PASS",
+      "evidence": {
+        "malformed_exact": true,
+        "oversize_close": 1009,
+        "other_connection_live": true
+      }
+    },
+    {
+      "case_id": "Q03/clock_reads",
+      "status": "PASS",
+      "evidence": {
+        "phase": "selecting",
+        "wall_jumps": 3,
+        "exact_deadline": true,
+        "mono_boundary": true
+      }
+    },
+    {
+      "case_id": "Q04/selecting",
+      "status": "PASS",
+      "evidence": {
+        "phase": "selecting",
+        "wall_jumps": 3,
+        "exact_deadline": true,
+        "mono_boundary": true
+      }
+    },
+    {
+      "case_id": "Q04/revealing",
+      "status": "PASS",
+      "evidence": {
+        "phase": "revealing",
+        "wall_jumps": 3,
+        "exact_deadline": true,
+        "mono_boundary": true
+      }
+    },
+    {
+      "case_id": "Q04/grace",
+      "status": "PASS",
+      "evidence": {
+        "phase": "grace",
+        "wall_jumps": 3,
+        "exact_deadline": true,
+        "mono_boundary": true
+      }
+    },
+    {
+      "case_id": "Q11/eliminated_grace",
+      "status": "PASS",
+      "evidence": {
+        "eliminated_kept_seat": true,
+        "expired_receipt": true
+      }
+    },
+    {
+      "case_id": "Q12/lost_ack",
+      "status": "PASS",
+      "evidence": {
+        "original_ack_not_read": true,
+        "charge_once": true,
+        "match_finished": true
+      }
+    },
+    {
+      "case_id": "Q16/restart",
+      "status": "PASS",
+      "evidence": {
+        "new_boot": true,
+        "old_identity": "SESSION_EXPIRED",
+        "old_room": "ROOM_ACCESS_DENIED",
+        "offline_live": true,
+        "owned_processes": 3
+      }
+    },
+    {
+      "case_id": "Q19/exact_writer",
+      "status": "PASS",
+      "evidence": {
+        "scope": "internal controlled writer; exact queued count/bytes, in-flight frame excluded",
+        "count": "PASS",
+        "bytes": "PASS",
+        "coalesce": "PASS"
+      }
+    },
+    {
+      "case_id": "Q05/N38/10000_to_5000",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N38/10000_to_5000",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N38/5000_to_30000",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N38/5000_to_30000",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N39/permissions",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N39/permissions",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N39/stale",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N39/stale",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N39/replay",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N39/replay",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N39/same",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N39/same",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q05/N39/deadline",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N39/deadline",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N40/players_2",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N40/players_2",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N40/players_3",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N40/players_3",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N40/host_charge_not_immune",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N40/host_charge_not_immune",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N41/submitted_disconnect",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N41/submitted_disconnect",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N41/resume_does_not_clear",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N41/resume_does_not_clear",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N41/forced_online",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N41/forced_online",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q10/N41/forced_offline",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N41/forced_offline",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q11/N28/lobby",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N28/lobby",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q11/N45/online",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N45/online",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q11/N45/offline_resume",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N45/offline_resume",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q13/N46/stale_event_ack_new_room",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N46/stale_event_ack_new_room",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N04/cap_6",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N04/cap_6",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N04/eliminated_keep_seat",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N04/eliminated_keep_seat",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N05/room_ready",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N05/room_ready",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N05/room_start",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N05/room_start",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N05/room_submit",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N05/room_submit",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N05/forged",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N05/forged",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N06/h",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N06/h",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N06/p",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N06/p",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q14/N06/disconnected",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N06/disconnected",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q15/N10/secret_Bi",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N10/secret_Bi",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q15/N10/secret_Def",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N10/secret_Def",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q19/N31/rooms",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N31/rooms",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q19/N31/slow",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N31/slow",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q20/N03/last_seat",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N03/last_seat",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    },
+    {
+      "case_id": "Q20/N28/replacement",
+      "status": "PASS",
+      "evidence": {
+        "source_case": "N28/replacement",
+        "scope": "real sockets; N46 also real client with scripted delivery"
+      }
+    }
+  ],
+  "not_run": [
+    {
+      "case_id": "Q17",
+      "reason": "real Electron lifecycle is separate"
+    },
+    {
+      "case_id": "Q18",
+      "reason": "100 seeds and 900-second run reported separately"
+    }
+  ]
+}

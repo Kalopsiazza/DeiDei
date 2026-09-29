@@ -1,0 +1,254 @@
+{
+  "source": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "513070d1fedf85f78062d6dc0febe7b440e64d04aeae36c3f90da3367226e1d2",
+    "dirty": false
+  },
+  "core": {
+    "sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+    "source_sha256": "03014fc56bd55342843bcabd1a4837eb69c9c9a565f29e6a2e9dbdf24248e2b4",
+    "dirty": false
+  },
+  "tools": {
+    "sha": "26d54ed3ad53e0816b7773ffd08d78d52c4e08d6",
+    "source_sha256": "5b8dcf9b9969e61929bf36fb664143f72a79e5f3d2bd9cc4022d9a82c7aa600f",
+    "dirty": false
+  },
+  "status": "FAIL",
+  "scope": "real clock, own in-process loopback service, 2 players + 1 observer per room",
+  "requested_seconds": 900,
+  "elapsed_seconds": 900.0574627500027,
+  "rooms": 4,
+  "completed_matches": [
+    244,
+    244,
+    244,
+    244
+  ],
+  "failures": [],
+  "violations": [
+    "SAME_SEQ_PUBLIC_CHANGED"
+  ],
+  "samples": [
+    {
+      "elapsed_s": 0.003,
+      "rss_kib": 34896,
+      "live_connections": 0,
+      "tasks": 6,
+      "completed_matches": 0
+    },
+    {
+      "elapsed_s": 30.022,
+      "rss_kib": 41392,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 32
+    },
+    {
+      "elapsed_s": 60.03,
+      "rss_kib": 41776,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 64
+    },
+    {
+      "elapsed_s": 90.037,
+      "rss_kib": 40848,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 96
+    },
+    {
+      "elapsed_s": 120.045,
+      "rss_kib": 41024,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 128
+    },
+    {
+      "elapsed_s": 150.053,
+      "rss_kib": 41152,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 160
+    },
+    {
+      "elapsed_s": 180.06,
+      "rss_kib": 38480,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 192
+    },
+    {
+      "elapsed_s": 210.064,
+      "rss_kib": 40624,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 225
+    },
+    {
+      "elapsed_s": 240.071,
+      "rss_kib": 41344,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 260
+    },
+    {
+      "elapsed_s": 270.079,
+      "rss_kib": 41328,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 292
+    },
+    {
+      "elapsed_s": 300.086,
+      "rss_kib": 41776,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 324
+    },
+    {
+      "elapsed_s": 330.092,
+      "rss_kib": 42112,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 356
+    },
+    {
+      "elapsed_s": 360.099,
+      "rss_kib": 42336,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 388
+    },
+    {
+      "elapsed_s": 390.107,
+      "rss_kib": 45664,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 421
+    },
+    {
+      "elapsed_s": 420.115,
+      "rss_kib": 41472,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 453
+    },
+    {
+      "elapsed_s": 450.123,
+      "rss_kib": 41360,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 488
+    },
+    {
+      "elapsed_s": 480.129,
+      "rss_kib": 41360,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 520
+    },
+    {
+      "elapsed_s": 510.136,
+      "rss_kib": 41472,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 552
+    },
+    {
+      "elapsed_s": 540.144,
+      "rss_kib": 41536,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 585
+    },
+    {
+      "elapsed_s": 570.151,
+      "rss_kib": 41760,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 617
+    },
+    {
+      "elapsed_s": 600.155,
+      "rss_kib": 42032,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 650
+    },
+    {
+      "elapsed_s": 630.162,
+      "rss_kib": 40288,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 684
+    },
+    {
+      "elapsed_s": 660.169,
+      "rss_kib": 40912,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 716
+    },
+    {
+      "elapsed_s": 690.175,
+      "rss_kib": 40832,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 748
+    },
+    {
+      "elapsed_s": 720.183,
+      "rss_kib": 40704,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 780
+    },
+    {
+      "elapsed_s": 750.191,
+      "rss_kib": 41200,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 813
+    },
+    {
+      "elapsed_s": 780.199,
+      "rss_kib": 41376,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 846
+    },
+    {
+      "elapsed_s": 810.205,
+      "rss_kib": 41168,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 879
+    },
+    {
+      "elapsed_s": 840.21,
+      "rss_kib": 41312,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 912
+    },
+    {
+      "elapsed_s": 870.216,
+      "rss_kib": 40720,
+      "live_connections": 12,
+      "tasks": 54,
+      "completed_matches": 944
+    }
+  ],
+  "latency": {
+    "count": 51057,
+    "p50_ms": 1.5293750038836151,
+    "p95_ms": 7.095707987900823,
+    "max_ms": 124.34295800630935
+  },
+  "peak_connections": 12,
+  "connections_after": 0,
+  "tasks_leaked": 0,
+  "subprocesses": "ps samples only; each awaited and exited"
+}

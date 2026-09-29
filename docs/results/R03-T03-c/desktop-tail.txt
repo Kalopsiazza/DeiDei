@@ -1,0 +1,14 @@
+✔ corruption never overwritten automatically, recovery backs up original only with confirmation (4.226417ms)
+✔ oversized and symbolic-link profiles rejected; concurrent writes cannot race (3.661708ms)
+✔ 33 unique static cards, categories 18/9/6, initial 12 and midgame 26 available (1.230625ms)
+✔ keyboard assignment stable, unique 1–0, blocked input and grey card rejection (9.292458ms)
+✔ script states, duplicate/stale submission, privacy and immutable snapshots (1.565208ms)
+✔ error preserves selection, retry works, draw and spectating keep real roster (1.331834ms)
+ℹ tests 25
+ℹ suites 0
+ℹ pass 25
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 220.15275

@@ -1,0 +1,9 @@
+test_C080_FreeRotateThree (test_rules.RulesCases.test_C080_FreeRotateThree) ... ok
+test_C080_RotateThree (test_rules.RulesCases.test_C080_RotateThree) ... ok
+test_C081_pure_reward_retry (test_rules.RulesCases.test_C081_pure_reward_retry) ... ok
+test_C082_main (test_rules.RulesCases.test_C082_main) ... ok
+
+----------------------------------------------------------------------
+Ran 174 tests in 0.641s
+
+OK

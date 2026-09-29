@@ -1,0 +1,342 @@
+{
+  "source_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "status": "PASS",
+  "cases": [
+    {
+      "mutation": "null_rate_id",
+      "selector": "Q01",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "PASS",
+            "evidence": {
+              "last_seq_unchanged": true,
+              "rejected_id_reusable": true,
+              "room_unchanged_in_each_sync_window": true,
+              "room_seq": {
+                "before": "5",
+                "after_rate": "5",
+                "after_disconnect": "6",
+                "after_resume": "7",
+                "after_replay": "7"
+              },
+              "connected": [
+                true,
+                false,
+                true
+              ],
+              "match_policy_and_exact_time_unchanged": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "cae82629cd49d333dffb29822fa6d41836e38fbfbd49f46011871e61b07ed4aa",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "FAIL",
+            "error": "ValueError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "recomputed_deadline",
+      "selector": "Q03",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q03/clock_reads",
+            "status": "PASS",
+            "evidence": {
+              "phase": "selecting",
+              "wall_jumps": 3,
+              "exact_deadline": true,
+              "mono_boundary": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "562b05aed6d2bc1957b264a4404c74ab4d1484fab91d77c8d2cf79b90abf7841",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q03/clock_reads",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "missing_membership",
+      "selector": "Q11/eliminated_grace",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q11/eliminated_grace",
+            "status": "PASS",
+            "evidence": {
+              "eliminated_kept_seat": true,
+              "expired_receipt": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "f06295ff470a9d3e5ab7f59d642a1a55cbe48cdf71c024a7d3719ce21ef7f5b7",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q11/eliminated_grace",
+            "status": "FAIL",
+            "error": "TimeoutError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "repeat_application",
+      "selector": "Q12",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q12/lost_ack",
+            "status": "PASS",
+            "evidence": {
+              "original_ack_not_read": true,
+              "charge_once": true,
+              "match_finished": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "17b1b53d8a6eafec58d6e9a1d35df1887224bdb96a8d16c7b36bbb156364ce6f",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q12/lost_ack",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "observer_secret",
+      "selector": "Q15",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q15/N10/secret_Bi",
+            "status": "PASS",
+            "evidence": {
+              "source_case": "N10/secret_Bi",
+              "scope": "real sockets; N46 also real client with scripted delivery"
+            }
+          },
+          {
+            "case_id": "Q15/N10/secret_Def",
+            "status": "PASS",
+            "evidence": {
+              "source_case": "N10/secret_Def",
+              "scope": "real sockets; N46 also real client with scripted delivery"
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "8ced013c8967813b1e2d6fd355a83c1dbfb26594ebc8950fc1dbdf0f69a1c4e5",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q15/N10/secret_Bi",
+            "status": "FAIL",
+            "error": "ValueError"
+          },
+          {
+            "case_id": "Q15/N10/secret_Def",
+            "status": "FAIL",
+            "error": "ValueError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "rate_consumes_seq",
+      "selector": "Q01",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "PASS",
+            "evidence": {
+              "last_seq_unchanged": true,
+              "rejected_id_reusable": true,
+              "room_unchanged_in_each_sync_window": true,
+              "room_seq": {
+                "before": "5",
+                "after_rate": "5",
+                "after_disconnect": "6",
+                "after_resume": "7",
+                "after_replay": "7"
+              },
+              "connected": [
+                true,
+                false,
+                true
+              ],
+              "match_policy_and_exact_time_unchanged": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "cc1ee8bbf71097fd6871c66703845381ba74f5a693292c7f5796dbf3be9ceed5",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "rate_caches_rejection",
+      "selector": "Q01",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "PASS",
+            "evidence": {
+              "last_seq_unchanged": true,
+              "rejected_id_reusable": true,
+              "room_unchanged_in_each_sync_window": true,
+              "room_seq": {
+                "before": "5",
+                "after_rate": "5",
+                "after_disconnect": "6",
+                "after_resume": "7",
+                "after_replay": "7"
+              },
+              "connected": [
+                true,
+                false,
+                true
+              ],
+              "match_policy_and_exact_time_unchanged": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "f9555f998ef0554a29d37a452fcae65a165b1cbac8f172d209cfb16c3269bf45",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "FAIL",
+            "error": "ValueError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "rate_changes_match",
+      "selector": "Q01",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "PASS",
+            "evidence": {
+              "last_seq_unchanged": true,
+              "rejected_id_reusable": true,
+              "room_unchanged_in_each_sync_window": true,
+              "room_seq": {
+                "before": "5",
+                "after_rate": "5",
+                "after_disconnect": "6",
+                "after_resume": "7",
+                "after_replay": "7"
+              },
+              "connected": [
+                true,
+                false,
+                true
+              ],
+              "match_policy_and_exact_time_unchanged": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "8cfbbce174a161860211db31ea1adc31f74c7bb36ff7783b11e122c4d94b9955",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    }
+  ]
+}

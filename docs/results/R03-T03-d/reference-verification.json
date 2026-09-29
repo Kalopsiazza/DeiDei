@@ -1,0 +1,12 @@
+{
+  "run_id": 34931393604,
+  "run_conclusion": "failure",
+  "job_id": 104260156404,
+  "job_name": "independent (endurance)",
+  "job_conclusion": "success",
+  "artifact_id": 10382350926,
+  "artifact_file": "evidence/endurance.json",
+  "evidence_sha256": "5ec7f2c1ed9aaf02d7b581203d8bf5c1cc6089839b11170533cbb4388f465938",
+  "attachment_equals_ci_artifact": true,
+  "scope": "referenced prior execution; not rerun by R03-T03-d"
+}

@@ -1,0 +1,150 @@
+{
+  "source_sha": "8a6f8b29f517ab4c5a16466f0894e86995f8a852",
+  "cases": [
+    {
+      "mutation": "null_rate_id",
+      "selector": "Q01",
+      "control": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q01/rate",
+            "status": "FAIL",
+            "error": "ValueError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "BASELINE_FAIL"
+    },
+    {
+      "mutation": "recomputed_deadline",
+      "selector": "Q03",
+      "control": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q03/clock_reads",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "BASELINE_FAIL"
+    },
+    {
+      "mutation": "missing_membership",
+      "selector": "Q11/eliminated_grace",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q11/eliminated_grace",
+            "status": "PASS",
+            "evidence": {
+              "eliminated_kept_seat": true,
+              "expired_receipt": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "d83ce1c96ea12d8d711a56edaadafd0ea2e89aa7be1c475982ff2bc9d6cebc4f",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q11/eliminated_grace",
+            "status": "FAIL",
+            "error": "TimeoutError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "repeat_application",
+      "selector": "Q12",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q12/lost_ack",
+            "status": "PASS",
+            "evidence": {
+              "original_ack_not_read": true,
+              "charge_once": true,
+              "match_finished": true
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "f32fbd4f99b6b0618116bf01353f5294f6c3a149e3a1933e2467accd38c92739",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q12/lost_ack",
+            "status": "FAIL",
+            "error": "AssertionError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    },
+    {
+      "mutation": "observer_secret",
+      "selector": "Q15",
+      "control": {
+        "status": "PASS",
+        "cases": [
+          {
+            "case_id": "Q15/N10/secret_Bi",
+            "status": "PASS",
+            "evidence": {
+              "source_case": "N10/secret_Bi",
+              "scope": "real sockets; N46 also real client with scripted delivery"
+            }
+          },
+          {
+            "case_id": "Q15/N10/secret_Def",
+            "status": "PASS",
+            "evidence": {
+              "source_case": "N10/secret_Def",
+              "scope": "real sockets; N46 also real client with scripted delivery"
+            }
+          }
+        ],
+        "exit": 0
+      },
+      "patch_sha256": "42d533c1e8bb231e919d3ba8707db58be3961b512da79fab4de81581424591da",
+      "syntax_exit": 0,
+      "import_exit": 0,
+      "mutant": {
+        "status": "FAIL",
+        "cases": [
+          {
+            "case_id": "Q15/N10/secret_Bi",
+            "status": "FAIL",
+            "error": "ValueError"
+          },
+          {
+            "case_id": "Q15/N10/secret_Def",
+            "status": "FAIL",
+            "error": "ValueError"
+          }
+        ],
+        "exit": 0
+      },
+      "status": "KILLED"
+    }
+  ]
+}

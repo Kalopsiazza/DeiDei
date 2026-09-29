@@ -1,0 +1,130 @@
+{
+  "task": "R03-T03-d",
+  "status": "PASS_EXECUTABLE_CHECKS_WITH_EXCLUSIONS",
+  "input_tools_sha": "baeff0bf476e1efd91358e9c3bb6350208d8a647",
+  "tested_tools_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+  "tested_product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "plan_sha": "3cf98c40c9ec3c607b702a12875ce4ec830da27d",
+  "actual": {
+    "original_q01": "FAIL@faults.py:39",
+    "fixed_q01": "PASS",
+    "room_seq": {
+      "before": "5",
+      "after_rate": "5",
+      "after_disconnect": "6",
+      "after_resume": "7",
+      "after_replay": "7"
+    },
+    "rooms": {
+      "PASS": 159,
+      "FAIL": 0,
+      "NOT_RUN": 1
+    },
+    "crosscheck": {
+      "PASS": 11
+    },
+    "faults": {
+      "PASS": 43
+    },
+    "seeds": {
+      "PASS": 100
+    },
+    "rules": {
+      "PASS": 192,
+      "resolve_calls": 469,
+      "session_placeholders_NOT_RUN": 2
+    },
+    "tools": {
+      "PASS": 30
+    },
+    "root": {
+      "total": 62,
+      "existing_expected_failures": 1
+    },
+    "core": {
+      "PASS": 174
+    },
+    "runtime": {
+      "PASS": 23
+    },
+    "mutations": [
+      {
+        "name": "null_rate_id",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "recomputed_deadline",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "missing_membership",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "repeat_application",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "observer_secret",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "rate_consumes_seq",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "rate_caches_rejection",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      },
+      {
+        "name": "rate_changes_match",
+        "control": "PASS",
+        "syntax_exit": 0,
+        "import_exit": 0,
+        "status": "KILLED"
+      }
+    ]
+  },
+  "referenced": {
+    "endurance": {
+      "file": "referenced-endurance-900.json",
+      "status": "PASS",
+      "seconds": 900.058196373,
+      "matches": 976,
+      "connections_after": 0,
+      "tasks_leaked": 0,
+      "verification": "reference-verification.json",
+      "executed_this_task": false
+    }
+  },
+  "exclusions": [
+    "Original N35/electron_manual",
+    "New GUI/Q17 lifecycle this task",
+    "Windows binaries",
+    "TLS/public deployment/cross-computer/human acceptance"
+  ],
+  "product_unchanged": true,
+  "historical_results_unchanged": true,
+  "kimi_called": false
+}

@@ -1,0 +1,142 @@
+{
+  "task": "R03-T03-d",
+  "input_tools_sha": "baeff0bf476e1efd91358e9c3bb6350208d8a647",
+  "tested_tools_sha": "b26c0634e27e96482388faf2c73ffa31fa2d3948",
+  "tested_product_sha": "d0c96408a3aa8c14174099da4247bcac953fb9f7",
+  "plan_sha": "3cf98c40c9ec3c607b702a12875ce4ec830da27d",
+  "input_zip_sha256": "df3b2e9adce6ef01e8005abfcdc365edf87da0b5624a1bff2bc620a68f17c318",
+  "plan_entries_verified": 14,
+  "branch": "codex/r03-t03-d-final-candidate",
+  "pr_base": "integration/r03-live",
+  "protected_objects": {
+    "game/core": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+    "game/runtime": "e37caf42f81f004345fc4917a61874167c18fb21",
+    "game/desktop/package-lock.json": "0de6b79b56721ddc900c1f48b7142ed4a7b2381c",
+    "game/server/requirements.lock": "fec91e77f3746912a4d5923ddca499c86d77439b",
+    "game/packaging": "49e0af03dc130d13742e7c0dcdae5d83cae50fd4"
+  },
+  "unchanged_vs_8a": {
+    "game/core": true,
+    "game/runtime": true,
+    "game/desktop/package-lock.json": true,
+    "game/server/requirements.lock": true,
+    "game/packaging": true
+  },
+  "lock_sha256": {
+    "game/desktop/package-lock.json": "11eb5d1c6d1f6d3da7bf50d99f8fdc1303c05fe3591b360441b2e6a2ee9981b8",
+    "game/server/requirements.lock": "4af019f4dd3a20e81db95e3cf20ffacc63a9ac1aea3a2f8db3a5d49076256b93"
+  },
+  "original_160_byte_identical": true,
+  "endurance_driver_byte_identical": true,
+  "historical_results_unchanged": true,
+  "product_tree_clean_after_tests": true,
+  "actual": [
+    "original-q01",
+    "q01-fixed",
+    "rooms-160",
+    "faults-43",
+    "seeds-100",
+    "crosscheck-11",
+    "mutations",
+    "core174",
+    "runtime23",
+    "rules192",
+    "tools30",
+    "root62"
+  ],
+  "referenced_only": [
+    "referenced-endurance-900.json"
+  ],
+  "tool_files": {
+    "tests/rooms_endurance/__init__.py": "91f086db8363deb5885f69650a76736f4879431e4dbcd4720c6b058e949834da",
+    "tests/rooms_endurance/candidate.py": "18ce1014deff8a731d1db0be54071497d3b50d470a175bd7a288948948d8dc6e",
+    "tests/rooms_endurance/faults.py": "9fcc5a71626343f9d2d2f2b374c7e67135b9af1cbff49b491f92aa187f2301c3",
+    "tests/rooms_endurance/gui.cjs": "5b5a91f75e92554504c68a07acba04d1b091049f91b9bd11a37e69a1fb24ab59",
+    "tests/rooms_endurance/mutations.py": "a291d5809224e1bd378ca59c5a856993e4e30f46f40c8e5cd978c4cfd4ee6278",
+    "tests/rooms_endurance/run.py": "191874a356bb28a3aa6a3340299fe8d7683918ebb296f9cf1367ae3d9a07b24f",
+    "tests/rooms_endurance/test_endurance.py": "a4b45a327d1a25b31e7901a7831476a76ab0818031c043b1f7f7b61397d19902"
+  },
+  "files": {
+    "COMMANDS.json": {
+      "bytes": 7428,
+      "sha256": "e026fcbf26990e24f35ecb3af5faab6f0ed0acc71f1c9ab87f6fd99f37ecec51"
+    },
+    "FIRST-FAILURES.md": {
+      "bytes": 1859,
+      "sha256": "133ee53f8de20fb65569327a3c30358d55a79d69d2f1e49b95fe48c5ae05b1ce"
+    },
+    "INPUT-PLAN-MANIFEST.json": {
+      "bytes": 2515,
+      "sha256": "7776ff11aee46794eea77b0892393d71ceb6a3bb956b3d2b30740b58730dccf3"
+    },
+    "PR-BODY.md": {
+      "bytes": 2096,
+      "sha256": "b75c8c722e52924d53e1a352e72729fb7eb03caa0d46753e23c39f0f50ea39b5"
+    },
+    "REPORT.md": {
+      "bytes": 4283,
+      "sha256": "a0e72acf53741766d26f2b3904e0f0a564c3c72d87cec54745e4a06a28686ab7"
+    },
+    "candidate-recheck.json": {
+      "bytes": 2980,
+      "sha256": "f99de4e73f9aa93589963c3c938aa2dac804dbaad1e3c050973814ba32b1aa50"
+    },
+    "core-tail.txt": {
+      "bytes": 406,
+      "sha256": "ab0323c722da4abbf2d077afbbfe5b9025786d1ddddd53d5e82eefbbe79a3fa0"
+    },
+    "crosscheck-11.json": {
+      "bytes": 9471,
+      "sha256": "3bb6898c86c46cdf5c2b493da5c2aa21c2fee167595f5f83c1c917c4ef11014a"
+    },
+    "faults-43.json": {
+      "bytes": 10662,
+      "sha256": "ebb51fcc3efbb2c9bc7ac5a0583e1b87f850b5422ed800cce2494d541f6b6da3"
+    },
+    "mutations.json": {
+      "bytes": 8798,
+      "sha256": "5ab3dc617ad51b779455565790ec4e779f9182cca96ad6fda6e042583b5302e4"
+    },
+    "original-q01.json": {
+      "bytes": 578,
+      "sha256": "03e8cafacf1e89b5f0381e0c5b8a438bcb5935e89a423f069aa3c4169d9dfa66"
+    },
+    "q01-fixed.json": {
+      "bytes": 1336,
+      "sha256": "14dfb0e826b0f001f6592ef67208e6f0f8a8135826dc05e33438b23399fb5b0f"
+    },
+    "reference-verification.json": {
+      "bytes": 428,
+      "sha256": "9dc8138ae96cf981fd48b0c9480bb7217fab4627bea6b3ac1f2a4329d87fe70c"
+    },
+    "referenced-endurance-900.json": {
+      "bytes": 5466,
+      "sha256": "5ec7f2c1ed9aaf02d7b581203d8bf5c1cc6089839b11170533cbb4388f465938"
+    },
+    "rooms-160.json": {
+      "bytes": 12515,
+      "sha256": "5ddf4775f5bfeff67f722fb939807890d5499ed543624386a6a8e401ac478710"
+    },
+    "root-tail.txt": {
+      "bytes": 530,
+      "sha256": "46ba9e20f435d7288256105672857d4c7233c3a615b856950d5904cd9ee46677"
+    },
+    "rules-tail.txt": {
+      "bytes": 249,
+      "sha256": "6419402f46b1a72f6ef297571f9faca8c26fa6f2389635d3d1153f0e1a0a88f8"
+    },
+    "runtime-tail.txt": {
+      "bytes": 608,
+      "sha256": "0232ad9446ce508fca43098c14575fc98d127f8223e0cd033b09ce07c67b93d4"
+    },
+    "seeds-100.json": {
+      "bytes": 10896,
+      "sha256": "91310d0d5287ae65d9f332a0ad2be4722ec61ff8dbdd0f5292fb0cadc8171722"
+    },
+    "tools-tail.txt": {
+      "bytes": 787,
+      "sha256": "311cb801c9227e4e4fe70af5d58df4c30f0708d6fe2303487967b2d2eb85353d"
+    }
+  },
+  "hash_scope": "all task result files except this manifest; source files additionally listed; no raw frames or private artifact payloads"
+}
