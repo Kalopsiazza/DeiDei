@@ -1,0 +1,70 @@
+name: R03 fixed delivery review
+on:
+  pull_request:
+    branches: [integration/r03-live]
+    paths: [.github/workflows/r03-delivery-review.yml]
+permissions:
+  contents: read
+defaults:
+  run:
+    shell: bash
+jobs:
+  followup:
+    if: github.head_ref == 'review/r03-deliveries-20260915' && github.event.pull_request.head.repo.full_name == 'Kalopsiazza/DeiDei'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 12
+    env:
+      PYTHONDONTWRITEBYTECODE: '1'
+      ELECTRON_SKIP_BINARY_DOWNLOAD: '1'
+    steps:
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: d0c96408a3aa8c14174099da4247bcac953fb9f7
+          path: product
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: baeff0bf476e1efd91358e9c3bb6350208d8a647
+          path: independent
+          persist-credentials: false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: 11328ac2db85a24ebbf7195acd74ace266b7cd63
+          path: auditor
+          persist-credentials: false
+      - uses: actions/setup-python@ece7cb06caefa5fff74198d8649806c4678c61a1
+        with:
+          python-version: '3.11'
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: '24.12.0'
+      - name: Record identities and fixed dependency
+        run: |
+          mkdir evidence
+          git -C product rev-parse HEAD > evidence/product-sha.txt
+          git -C independent rev-parse HEAD > evidence/test-sha.txt
+          python --version > evidence/python.txt
+          python -m pip install --require-hashes -r product/game/server/requirements.lock 2>&1 | tee evidence/pip.txt
+      - name: Diagnose rate and reconnect revisions separately
+        run: python auditor/docs/reviews/probes/r03_rate_sequence.py 2>&1 | tee evidence/rate-diagnostic.txt
+      - name: Full independent room suite including exact desktop decoder
+        if: always()
+        run: python independent/tests/rooms_v1/run_acceptance.py --server-path "$PWD/product/game/server" --core-path "$PWD/product/game/core" --tested-code-sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --desktop-path "$PWD/product/game/desktop" --desktop-sha d0c96408a3aa8c14174099da4247bcac953fb9f7 --output "$PWD/evidence/rooms-with-desktop.json" 2>&1 | tee evidence/rooms-with-desktop.txt
+      - name: Independent tool self-tests
+        if: always()
+        working-directory: independent
+        run: python -m unittest discover -s tests/rooms_endurance -p 'test_*.py' -v 2>&1 | tee ../evidence/endurance-tool-tests.txt
+      - name: Verify unchanged input files
+        if: always()
+        run: |
+          git -C product diff --exit-code > evidence/product-unchanged.txt
+          git -C independent diff --exit-code > evidence/tests-unchanged.txt
+      - name: Preserve follow-up evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: r03-review-followup-d0c96408
+          retention-days: 14
+          path: |
+            evidence/
+            auditor/docs/reviews/probes/r03_rate_sequence.py
