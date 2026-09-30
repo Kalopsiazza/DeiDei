@@ -72,7 +72,7 @@ test('script states, duplicate/stale submission, privacy and immutable snapshots
  assert.ok(v.participants.every(p=>!Object.hasOwn(p,'selected_entry_id')));
  const submitting=await p.submit(v.view_id,'Charge');assert.equal(submitting.phase,'submitting');
  await assert.rejects(p.submit(v.view_id,'Charge'),/ALREADY_SUBMITTED/);
- assert.deepEqual(submitting.options,v.options);now=1201;assert.equal((await p.getView()).phase,'revealed');now=5001;const done=await p.getView();assert.equal(done.phase,'result');assert.equal(done.outcome.winner_id,'local-test');assert.ok(!p.isActive());
+ assert.deepEqual(submitting.options,v.options);now=1201;assert.equal((await p.getView()).phase,'revealed');now=6199;assert.equal((await p.getView()).phase,'revealed');now=6200;const done=await p.getView();assert.equal(done.phase,'result');assert.equal(done.outcome.winner_id,'local-test');assert.ok(!p.isActive());
  done.participants[0].nickname='tampered';assert.notEqual((await p.getView()).participants[0].nickname,'tampered');
  await p.leave();await assert.rejects(p.submit(v.view_id,'Charge'),/STALE_VIEW/);now=9999;assert.equal((await p.getView()).phase,'selecting');
 });

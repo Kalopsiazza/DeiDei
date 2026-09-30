@@ -5,7 +5,7 @@ import unicodedata
 from uuid import UUID
 
 DEFAULT_POLICY = dict(turn_ms=10000, early_reveal=True, spectator_cap=6,
-                      host_disconnect_grace_ms=30000, reveal_ms=1500, min_select_ms=300)
+                      host_disconnect_grace_ms=30000, reveal_ms=5000, min_select_ms=300)
 TURN_TIMES = [5000, 8000, 10000, 12000, 20000, 30000]
 FIELDS = {
     'session.open': {'profile'}, 'session.resume': {'session_id', 'resume_token'},

@@ -3,6 +3,7 @@ import asyncio
 from copy import deepcopy
 import json
 import unittest
+from unittest.mock import patch
 from uuid import uuid4
 
 from websockets.asyncio.client import connect
@@ -103,9 +104,11 @@ class SocketCase(unittest.IsolatedAsyncioTestCase):
 
     async def server(self, **kwargs):
         # Retain the a-suite's explicit 12-second scenarios; new default is tested in test_rooms_11.
+        test_reveal_ms = kwargs.pop('test_reveal_ms', 1500)
         kwargs['policy'] = {'turn_ms': 12000} | kwargs.get('policy', {})
         self.clock = kwargs.pop('clock', ManualClock())
-        server = create_test_server(clock=self.clock, **kwargs)
+        with patch.dict(DEFAULT_POLICY, reveal_ms=test_reveal_ms):
+            server = create_test_server(clock=self.clock, **kwargs)
         await server.__aenter__()
         self.servers.append(server)
         return server
@@ -162,7 +165,7 @@ class Rooms(SocketCase):
         self.assertEqual(v['members'][0]['seat'], 0)
         self.assertFalse(v['members'][0]['ready'])
         self.assertTrue(v['has_password'])
-        self.assertEqual(v['policy'], DEFAULT_POLICY | {'turn_ms': 12000})
+        self.assertEqual(v['policy'], DEFAULT_POLICY | {'turn_ms': 12000, 'reveal_ms': 1500})
         guest = await self.client(server)
         for room_code, password in [(code, '合成密码'), ('AAAAAAAA', ' 合成密码 ')]:
             self.error(await guest.command('room.join', dict(room_code=room_code, password=password, role='player')), 'ROOM_ACCESS_DENIED')

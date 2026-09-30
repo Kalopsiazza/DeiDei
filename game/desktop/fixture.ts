@@ -79,7 +79,7 @@ export class FixturePort {
   async getView() {
     if (this.submittedAt !== null) {
       const elapsed=this.now()-this.submittedAt;
-      if (elapsed>=5000 && this.view.phase!=='result') this.finish();
+      if (elapsed>=6200 && this.view.phase!=='result') this.finish();
       else if (elapsed>=1200) {
         if (this.view.phase==='submitting') {
           const selfMove=this.view.options.find(o=>o.entry_id===this.view.selected_entry_id)?.name||'攒';
@@ -88,7 +88,7 @@ export class FixturePort {
           this.view.summary=this.view.participants.map((p,index)=>`${p.nickname}：${p.player_id===this.view.self_id?selfMove:demoMoves[index%demoMoves.length]}（演示出招）。`);
           this.view.summary.push('这是状态演示，未计算攻击、收益或胜负。');
         }
-        this.view.timer={mode:'reveal',remaining_ms:5000-elapsed,total_ms:3800};
+        this.view.timer={mode:'reveal',remaining_ms:6200-elapsed,total_ms:5000};
       }
     }
     return this.copy();

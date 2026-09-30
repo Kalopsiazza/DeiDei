@@ -14,7 +14,7 @@ from .view import options_view, participants_view, ledger_summary, progress, TRA
 class SoloGame:
     def __init__(self, profile: dict, *, session: MatchSession | None = None,
                  rng: Random | None = None, token_rng: Random | None = None,
-                 clock=time.monotonic, submit_delay: float = 0.2, reveal_delay: float = 3.0):
+                 clock=time.monotonic, submit_delay: float = 0.9, reveal_delay: float = 3.0):
         self.self_id = profile["profile_id"]
         self.profiles = {self.self_id: {k: profile[k] for k in ("nickname", "avatar_id")},
                          "bot_local": {"nickname": OPPONENT_NAME, "avatar_id": "sun"}}
