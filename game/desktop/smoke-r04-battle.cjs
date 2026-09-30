@@ -35,7 +35,7 @@ const path = require('node:path');
       const arena=document.querySelector('.battle-arena').getBoundingClientRect();
       const selection=document.querySelector('.selection-card').getBoundingClientRect();
       const identity=document.querySelector('.selection-identity').getBoundingClientRect();
-      const resources=document.querySelector('.battle-resources .resources');
+      const resources=document.querySelector('.battle-resources');
       return {
         body:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],
         viewport:[innerWidth,innerHeight],
@@ -45,13 +45,19 @@ const path = require('node:path');
         extra:document.querySelectorAll('.card-pick > :not(img):not(strong)').length,
         arenaHeight:arena.height,
         operationHeight:document.querySelector('.battle-operation').getBoundingClientRect().height,
-        resourceHeight:document.querySelector('.battle-resources').getBoundingClientRect().height,
-        resourceSingleLine:getComputedStyle(resources).flexWrap==='nowrap',
+        resourceHeight:resources.getBoundingClientRect().height,
+        resourceBackground:getComputedStyle(resources).backgroundImage,
+        resourceBorder:getComputedStyle(resources).borderTopWidth,
+        resourceTokens:resources.querySelectorAll('.resource-token').length,
+        resourceIcons:resources.querySelectorAll('.resource-token img').length,
         resourceAvatars:document.querySelectorAll('.battle-resources .avatar').length,
         tableLoaded:document.querySelector('.arena-surface img').naturalWidth>0,
         selectionCenterDelta:Math.abs(selection.x+selection.width/2-arena.x-arena.width/2),
         identityBelowCard:identity.top>=selection.bottom-2,
         identityCenterDelta:Math.abs(identity.x+identity.width/2-arena.x-arena.width/2),
+        identityBackground:getComputedStyle(document.querySelector('.selection-identity')).backgroundImage,
+        identityBorder:getComputedStyle(document.querySelector('.selection-identity')).borderLeftWidth,
+        identityChildren:document.querySelector('.selection-identity').children.length,
         identityTop:identity.top,
         selfProfileOpacity:Number(getComputedStyle(document.querySelector('.self-seat .seat-profile')).opacity),
         namesStaySingleLine:[...document.querySelectorAll('.card-name')].every(name=>getComputedStyle(name).whiteSpace==='nowrap'),
@@ -63,13 +69,16 @@ const path = require('node:path');
     assert.deepEqual([layout.cards,layout.icons,layout.extra,layout.rows],[33,33,0,3]);
     assert.ok(layout.arenaHeight>=320,'selection arena must retain room for the centered showcase');
     assert.ok(layout.operationHeight>=340,'the three-row card selection area must be taller');
-    assert.ok(layout.resourceHeight>=66,'the selecting resource strip must remain comfortably readable');
-    assert.equal(layout.resourceSingleLine,true,'resources must not wrap into a second row');
+    assert.ok(layout.resourceHeight>=60,'resource tokens must remain comfortably readable');
+    assert.deepEqual([layout.resourceTokens,layout.resourceIcons],[5,5]);
+    assert.equal(layout.resourceBackground,'none','resource tokens must not sit inside another large card');
+    assert.equal(layout.resourceBorder,'0px','resource tokens must not sit inside a bordered strip');
     assert.equal(layout.resourceAvatars,0,'identity belongs below the showcase card, not in the resource strip');
     assert.equal(layout.tableLoaded,true);
     assert.ok(layout.selectionCenterDelta<2,'selected showcase card must be centered in the arena');
     assert.equal(layout.identityBelowCard,true);
     assert.ok(layout.identityCenterDelta<2,'local identity must sit directly below the showcase card');
+    assert.deepEqual([layout.identityBackground,layout.identityBorder,layout.identityChildren],['none','0px',2],'selection identity must be avatar and name only');
     assert.equal(layout.selfProfileOpacity,0,'the destination identity must stay hidden until commit');
     assert.equal(layout.namesStaySingleLine,true);
     assert.deepEqual(layout.modifiers,['炸药','翻转']);
@@ -77,6 +86,18 @@ const path = require('node:path');
     await page.locator('.selection-card.empty').waitFor();
     await page.locator('.battle-resources').waitFor();
     await page.locator('.battle-turn').waitFor();
+
+    await page.getByRole('button',{name:'冻结',exact:true}).click();
+    assert.equal(await page.locator('.battle-table').getAttribute('data-suspended'),'true');
+    assert.equal(await page.getByRole('button',{name:'选择 自 bi',exact:true}).isDisabled(),true);
+    await page.getByRole('button',{name:'恢复',exact:true}).click();
+    await page.getByRole('button',{name:'暂停',exact:true}).click();
+    await page.getByRole('dialog',{name:'游戏暂停'}).waitFor();
+    await page.getByRole('button',{name:/继续游戏/}).click();
+    await page.getByRole('button',{name:'局势',exact:true}).click();
+    await page.getByRole('dialog',{name:'本局态势'}).waitFor();
+    assert.equal(await page.locator('.situation-player-list>article').count(),2);
+    await page.getByRole('button',{name:'关闭弹窗'}).click();
 
     await page.locator('[data-entry="Charge"] .card-pick').click();
     assert.match(await page.locator('.selection-card').innerText(),/攒/);
@@ -116,14 +137,19 @@ const path = require('node:path');
         bottomCardAboveIdentity:seats.filter(seat=>seat.dataset.seatEdge==='bottom').every(seat=>seat.querySelector('.move-card.current').getBoundingClientRect().bottom<=seat.querySelector('.seat-profile').getBoundingClientRect().top+1),
         socialButtons:document.querySelectorAll('.seat-social').length,
         disabledSocialButtons:document.querySelectorAll('.seat-social:disabled').length,
+        situationButtons:document.querySelectorAll('.seat-situation').length,
+        hardBorders:[...document.querySelectorAll('.seat-profile')].some(profile=>getComputedStyle(profile).borderLeftWidth!=='0px'),
+        fadedGlass:[...document.querySelectorAll('.seat-profile')].every(profile=>getComputedStyle(profile,'::before').backgroundImage!=='none'&&getComputedStyle(profile,'::before').backdropFilter.includes('blur')),
       };
     });
     assert.ok(revealLayout.card[0]>=90&&revealLayout.card[1]>=120,'revealed cards must be large enough to read across the table');
     assert.equal(revealLayout.cardsInside,true,'revealed cards must not be clipped by the arena');
     assert.equal(revealLayout.topIdentityAboveCard,true,'top players must place identity above their played card');
     assert.equal(revealLayout.bottomCardAboveIdentity,true,'the local played card must sit above the bottom identity strip');
-    assert.deepEqual([revealLayout.socialButtons,revealLayout.disabledSocialButtons],[2,2]);
-    assert.equal(await page.locator('.reveal-countdown').count(),0);
+    assert.deepEqual([revealLayout.socialButtons,revealLayout.disabledSocialButtons,revealLayout.situationButtons],[2,2,2]);
+    assert.equal(revealLayout.hardBorders,false,'seat identity glass must not have a hard rectangular border');
+    assert.equal(revealLayout.fadedGlass,true,'seat identity must use blurred fading glass');
+    assert.match(await page.locator('.battle-status').innerText(),/擂台结算[\s\S]*秒后进入第 2 回合/);
     await page.locator('.battle-table[data-phase="selecting"]').waitFor();
     assert.ok(Date.now()-revealedAt>=2700,'local reveal ended before its three-second hold');
     assert.equal(await page.locator('.selection-history > span').count(),1);
@@ -136,12 +162,22 @@ const path = require('node:path');
     assert.notEqual(hoveredHistory.transform,historyTransform);
     assert.equal(hoveredHistory.outline,'solid');
     assert.equal(await page.locator('.self-seat .move-card[data-turn="1"]').evaluate(node=>getComputedStyle(node).getPropertyValue('--stack-index').trim()),'1');
-    await page.getByRole('button',{name:'退出牌桌',exact:true}).click();
-    await page.getByRole('button',{name:'离开',exact:true}).click();
+    await page.getByRole('button',{name:'暂停',exact:true}).click();
+    await page.getByRole('button',{name:/退出游戏/}).click();
     await page.locator('.app[data-page="menu"]').waitFor();
     await page.getByRole('button',{name:'开发预览',exact:true}).click();
     await page.getByRole('button',{name:'P07 · 初始 A / 12 可用',exact:true}).click();
     await page.locator('.battle-arena[data-seat-count="6"]').waitFor();
+    assert.equal(await page.getByRole('button',{name:'冻结',exact:true}).isDisabled(),true);
+    await page.getByRole('button',{name:'暂停',exact:true}).click();
+    await page.getByRole('dialog',{name:'对局菜单'}).waitFor();
+    await page.getByRole('button',{name:/房间游戏设置/}).click();
+    await page.getByRole('dialog',{name:'房间游戏设置'}).waitFor();
+    await page.getByRole('button',{name:'返回对局菜单',exact:true}).click();
+    await page.getByRole('button',{name:/继续游戏/}).click();
+    await page.getByRole('button',{name:'局势',exact:true}).click();
+    assert.equal(await page.locator('.situation-player-list>article').count(),6);
+    await page.getByRole('button',{name:'关闭弹窗'}).click();
     await page.locator('[data-entry="Charge"] .card-pick').click();
     await page.getByRole('button',{name:'确认出招',exact:true}).click();
     await page.locator('.battle-table[data-phase="revealed"]').waitFor();
@@ -163,7 +199,7 @@ const path = require('node:path');
     assert.equal(sixSeatLayout.inside,true,'all six-player seat content must stay inside the arena');
     assert.equal(sixSeatLayout.separated,true,'six-player cards and identity strips must not overlap each other');
     assert.equal(sixSeatLayout.oriented,true,'every seat must face its card toward the arena center');
-    console.log('PASS taller selection; modifier chips; identity handoff; hover history; directional 2/6-player reveal seats; local reveal >=3s');
+    console.log('PASS token resources; pause/freeze/situation HUD; identity handoff; directional 2/6-player reveal seats; local reveal >=3s');
   } finally {
     if (app) app.process().kill('SIGKILL');
     await fs.rm(directory,{recursive:true,force:true});
