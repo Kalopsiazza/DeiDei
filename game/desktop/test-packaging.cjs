@@ -60,6 +60,7 @@ test('R04 visual assets use an exact local allowlist',()=>{
   'assets/menu/menu-environment.webp':'image/webp',
   'assets/menu/menu-character.png':'image/png',
   'assets/menu/menu-atmosphere.png':'image/png',
+  'assets/battle/battle-table-v1.webp':'image/webp',
  };
  const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
  for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
@@ -83,6 +84,13 @@ test('R04 built UI contains the three bounded menu assets',()=>{
   const bytes=fs.statSync(file).size;
   assert.ok(bytes>0&&bytes<=maxBytes,`${name} must stay within its byte budget`);
  }
+});
+
+test('R04 built UI contains the bounded raster battle table',()=>{
+ const file=path.join(__dirname,'build/ui/assets/battle/battle-table-v1.webp');
+ assert.ok(fs.existsSync(file),'battle table must be copied into build/ui');
+ const bytes=fs.statSync(file).size;
+ assert.ok(bytes>0&&bytes<=1_000_000,'battle table must stay within its byte budget');
 });
 
 test('R04 built UI contains the complete bounded move icon set',()=>{

@@ -38,9 +38,17 @@ const path = require('node:path');
       cards:document.querySelectorAll('.card').length,
       icons:document.querySelectorAll('.card-pick > img').length,
       extra:document.querySelectorAll('.card-pick > :not(img):not(strong)').length,
+      arenaHeight:document.querySelector('.battle-arena').getBoundingClientRect().height,
+      operationHeight:document.querySelector('.battle-operation').getBoundingClientRect().height,
+      tableLoaded:document.querySelector('.arena-surface img').naturalWidth>0,
+      selectionCenterDelta:Math.abs(document.querySelector('.selection-card').getBoundingClientRect().x+document.querySelector('.selection-card').getBoundingClientRect().width/2-document.querySelector('.battle-arena').getBoundingClientRect().x-document.querySelector('.battle-arena').getBoundingClientRect().width/2),
     }));
     assert.deepEqual(layout.body,layout.viewport);
     assert.deepEqual([layout.cards,layout.icons,layout.extra,layout.rows],[33,33,0,3]);
+    assert.ok(layout.arenaHeight>=390,'selection arena must take visual priority over the operation area');
+    assert.ok(layout.operationHeight<310,'operation area must remain compact');
+    assert.equal(layout.tableLoaded,true);
+    assert.ok(layout.selectionCenterDelta<2,'selected showcase card must be centered in the arena');
     await page.locator('.selection-card.empty').waitFor();
     await page.locator('.battle-resources').waitFor();
     await page.locator('.battle-turn').waitFor();
@@ -50,13 +58,24 @@ const path = require('node:path');
     assert.match(await page.locator('.self-seat .move-card.active').innerText(),/攒/);
     await page.getByRole('button',{name:'确认出招',exact:true}).click();
     await page.locator('.commit-flight').waitFor();
-    assert.equal(await page.locator('.battle-resources').count(),0);
-    assert.equal(await page.locator('.battle-turn').count(),0);
+    await page.waitForTimeout(450);
+    const exiting=await page.evaluate(()=>({
+      arenaHeight:document.querySelector('.battle-arena').getBoundingClientRect().height,
+      operationOpacity:Number(getComputedStyle(document.querySelector('.battle-operation')).opacity),
+      operationFilter:getComputedStyle(document.querySelector('.battle-operation')).filter,
+      operationHidden:document.querySelector('.battle-operation').getAttribute('aria-hidden'),
+    }));
+    assert.ok(exiting.arenaHeight>layout.arenaHeight+120,'arena must expand while the operation area leaves');
+    assert.ok(exiting.operationOpacity<.5,'operation area must fade as one unit');
+    assert.match(exiting.operationFilter,/blur/);
+    assert.equal(exiting.operationHidden,'true');
     await page.locator('.battle-table[data-phase="revealed"]').waitFor();
     const revealedAt=Date.now();
     await page.locator('.self-seat .move-card.current').waitFor();
     await page.locator('.opponent-seat .move-card.current').waitFor();
     assert.match(await page.locator('.self-seat .move-card.current').innerText(),/攒/);
+    const revealCard=await page.locator('.self-seat .move-card.current').evaluate(node=>({width:node.getBoundingClientRect().width,height:node.getBoundingClientRect().height}));
+    assert.ok(revealCard.width>=68&&revealCard.height>=82,'revealed cards must read as full card faces');
     assert.equal(await page.locator('.reveal-countdown').count(),0);
     await page.locator('.battle-table[data-phase="selecting"]').waitFor();
     assert.ok(Date.now()-revealedAt>=2700,'local reveal ended before its three-second hold');
@@ -65,7 +84,7 @@ const path = require('node:path');
     await page.getByRole('button',{name:'退出牌桌',exact:true}).click();
     await page.getByRole('button',{name:'离开',exact:true}).click();
     await page.locator('.app[data-page="menu"]').waitFor();
-    console.log('PASS 33 tactile cards; blurred selection stage; commit flight; hidden reveal timer; local reveal >=3s; history stacks left');
+    console.log('PASS generated raster arena; centered selection; compact operation exit; premium reveal cards; local reveal >=3s');
   } finally {
     if (app) await app.close();
     await fs.rm(directory,{recursive:true,force:true});
