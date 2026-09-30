@@ -40,6 +40,7 @@ const path = require('node:path');
       extra:document.querySelectorAll('.card-pick > :not(img):not(strong)').length,
       arenaHeight:document.querySelector('.battle-arena').getBoundingClientRect().height,
       operationHeight:document.querySelector('.battle-operation').getBoundingClientRect().height,
+      resourceHeight:document.querySelector('.battle-resources').getBoundingClientRect().height,
       tableLoaded:document.querySelector('.arena-surface img').naturalWidth>0,
       selectionCenterDelta:Math.abs(document.querySelector('.selection-card').getBoundingClientRect().x+document.querySelector('.selection-card').getBoundingClientRect().width/2-document.querySelector('.battle-arena').getBoundingClientRect().x-document.querySelector('.battle-arena').getBoundingClientRect().width/2),
     }));
@@ -47,6 +48,7 @@ const path = require('node:path');
     assert.deepEqual([layout.cards,layout.icons,layout.extra,layout.rows],[33,33,0,3]);
     assert.ok(layout.arenaHeight>=390,'selection arena must take visual priority over the operation area');
     assert.ok(layout.operationHeight<310,'operation area must remain compact');
+    assert.ok(layout.resourceHeight>=60,'the selecting resource strip must remain comfortably readable');
     assert.equal(layout.tableLoaded,true);
     assert.ok(layout.selectionCenterDelta<2,'selected showcase card must be centered in the arena');
     await page.locator('.selection-card.empty').waitFor();
@@ -74,8 +76,23 @@ const path = require('node:path');
     await page.locator('.self-seat .move-card.current').waitFor();
     await page.locator('.opponent-seat .move-card.current').waitFor();
     assert.match(await page.locator('.self-seat .move-card.current').innerText(),/攒/);
-    const revealCard=await page.locator('.self-seat .move-card.current').evaluate(node=>({width:node.getBoundingClientRect().width,height:node.getBoundingClientRect().height}));
-    assert.ok(revealCard.width>=68&&revealCard.height>=82,'revealed cards must read as full card faces');
+    const revealLayout=await page.evaluate(()=>{
+      const arena=document.querySelector('.battle-arena').getBoundingClientRect();
+      const seats=[...document.querySelectorAll('.arena-seat')];
+      const cards=[...document.querySelectorAll('.arena-seat .move-card.current')];
+      const selfCard=document.querySelector('.self-seat .move-card.current').getBoundingClientRect();
+      return {
+        card:[selfCard.width,selfCard.height],
+        cardsInside:cards.every(card=>{const rect=card.getBoundingClientRect();return rect.top>=arena.top-1&&rect.bottom<=arena.bottom+1;}),
+        cardsAboveIdentity:seats.every(seat=>{const card=seat.querySelector('.move-card.current');const profile=seat.querySelector('.seat-profile');return !card||card.getBoundingClientRect().bottom<=profile.getBoundingClientRect().top+1;}),
+        socialButtons:document.querySelectorAll('.seat-social').length,
+        disabledSocialButtons:document.querySelectorAll('.seat-social:disabled').length,
+      };
+    });
+    assert.ok(revealLayout.card[0]>=90&&revealLayout.card[1]>=120,'revealed cards must be large enough to read across the table');
+    assert.equal(revealLayout.cardsInside,true,'revealed cards must not be clipped by the arena');
+    assert.equal(revealLayout.cardsAboveIdentity,true,'played cards must sit above the bottom identity strip');
+    assert.deepEqual([revealLayout.socialButtons,revealLayout.disabledSocialButtons],[2,2]);
     assert.equal(await page.locator('.reveal-countdown').count(),0);
     await page.locator('.battle-table[data-phase="selecting"]').waitFor();
     assert.ok(Date.now()-revealedAt>=2700,'local reveal ended before its three-second hold');
@@ -84,7 +101,7 @@ const path = require('node:path');
     await page.getByRole('button',{name:'退出牌桌',exact:true}).click();
     await page.getByRole('button',{name:'离开',exact:true}).click();
     await page.locator('.app[data-page="menu"]').waitFor();
-    console.log('PASS generated raster arena; centered selection; compact operation exit; premium reveal cards; local reveal >=3s');
+    console.log('PASS generated raster arena; centered selection; readable resources; large unclipped reveal cards above seat identity; local reveal >=3s');
   } finally {
     if (app) await app.close();
     await fs.rm(directory,{recursive:true,force:true});
