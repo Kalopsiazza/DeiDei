@@ -43,12 +43,22 @@ const path = require('node:path');
     assert.deepEqual([layout.cards,layout.icons,layout.extra,layout.rows],[33,33,0,3]);
 
     await page.locator('[data-entry="Charge"] .card-pick').click();
-    assert.match(await page.locator('.self-action').innerText(),/攒/);
+    assert.match(await page.locator('.self-seat .move-card.active').innerText(),/攒/);
     await page.getByRole('button',{name:'确认出招',exact:true}).click();
     await page.locator('.battle-table[data-phase="revealed"]').waitFor();
-    assert.notEqual(await page.locator('.opponent-action > div > strong').innerText(),'尚未揭晓');
-    assert.match(await page.locator('.self-action > div > strong').innerText(),/攒/);
-    console.log('PASS difficulty and time selectors; 33 icon-name cards; revealed moves are prominent');
+    await page.locator('.self-seat .move-card.current').waitFor();
+    await page.locator('.opponent-seat .move-card.current').waitFor();
+    assert.match(await page.locator('.self-seat .move-card.current').innerText(),/攒/);
+    const first=Number(await page.locator('.reveal-countdown progress').getAttribute('value'));
+    await page.waitForTimeout(350);
+    const second=Number(await page.locator('.reveal-countdown progress').getAttribute('value'));
+    assert.ok(second<first,`reveal countdown did not move: ${first} -> ${second}`);
+    await page.locator('.battle-table[data-phase="selecting"]').waitFor();
+    assert.equal(await page.locator('.self-seat .move-card[data-turn="1"]').evaluate(node=>getComputedStyle(node).getPropertyValue('--stack-index').trim()),'1');
+    await page.getByRole('button',{name:'退出牌桌',exact:true}).click();
+    await page.getByRole('button',{name:'离开',exact:true}).click();
+    await page.locator('.app[data-page="menu"]').waitFor();
+    console.log('PASS 33 icon-name cards; seat moves reveal for >=3s; countdown moves; prior move stacks left');
   } finally {
     if (app) await app.close();
     await fs.rm(directory,{recursive:true,force:true});

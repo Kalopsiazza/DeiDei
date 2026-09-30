@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
-import type { DesktopView, Manual, Option, Profile, ProfileInput, Reply, Scene, Settings } from './types';
+import type { DesktopView, Manual, Option, Participant, Profile, ProfileInput, Reply, Scene, Settings } from './types';
 import { groups, orderedOptions, shortcutEntry } from './interaction';
 import { ddText, pollViews } from './view-loop';
 import { OnlineRoom } from './online/OnlineRoom';
@@ -13,6 +13,13 @@ const soloLevels=[
  {id:'pressure',name:'高压',tag:'主动争拍',icon:'Pragon',description:'目标：更主动争夺节奏，减少连续攒拍的空间。'},
 ] as const;
 const soloTurnTimes=[{id:'unlimited',label:'自由',value:'自由'},{id:'3',label:'3 秒',value:'3s'},{id:'10',label:'10 秒',value:'10s'},{id:'30',label:'30 秒',value:'30s'}] as const;
+type PlayedMove={turn:string;name:string;entryId:string};
+const arenaPositions:Record<number,[number,number][]>={
+ 1:[[50,9]],2:[[29,12],[71,12]],3:[[19,35],[50,8],[81,35]],
+ 4:[[13,43],[36,9],[64,9],[87,43]],5:[[9,46],[27,12],[50,6],[73,12],[91,46]],
+ 6:[[8,49],[23,14],[42,6],[58,6],[77,14],[92,49]],
+};
+const summaryMove=(summary:string[],nickname:string)=>{const prefix=`${nickname}：`;return summary.find(line=>line.startsWith(prefix))?.slice(prefix.length).split('（',1)[0].replace(/[。.]$/,'')||'';};
 const errors:Record<string,string>={PACKAGE_INCOMPLETE:'游戏文件不完整，请重新取得完整测试包。',INVALID_PROFILE:'昵称须为 1—20 个字，不能包含控制字符；请选择内置头像。',INVALID_INPUT:'输入格式无效，请检查后重试。',SAVE_FAILED:'保存失败，请检查本机目录权限后重试。输入和旧档案已保留。',PROFILE_BUSY:'正在保存，请稍后重试。',PROFILE_DAMAGED:'本机档案损坏，原文件已保留。',PROFILE_UNREADABLE:'暂时无法读取档案，请检查目录权限后重试。',UNAVAILABLE_MOVE:'这张牌暂不可用，请查看原因。',STALE_VIEW:'场景已更新，请重新选择。',ALREADY_SUBMITTED:'已经提交，请等待揭晓。',MATCH_INTERRUPTED:'本场中断，可重新开始。',GET_VIEW_FAILED:'读取对局失败，请重新读取或退出。',REQUEST_CONFLICT:'本拍已提交另一张牌，请重新读取。',SESSION_CLOSED:'本场已结束，请返回菜单重新开始。'};
 const reasons:Record<string,string>={INSUFFICIENT_DD:'DD 不足',INSUFFICIENT_LIGHTNING:'雷电不足',INSUFFICIENT_CHARGE:'充能不足',INSUFFICIENT_BOMBS:'成熟层不足',ALREADY_USED:'本局已用',NO_COPY_RECORD:'没有复制记录',NO_REWARD:'奖励未就绪',FORCED_RECOVERY:'正在休整',NOT_ACTIVE:'已不在场'};
 const message=(code:string)=>errors[code]||`操作未完成（${code}），请重试。`;
@@ -31,7 +38,9 @@ function App() {
  const [view,setView]=useState<DesktopView|null>(null),[manual,setManual]=useState<Manual|null>(null),[scene,setScene]=useState<Scene>('initial');
  const [modal,setModal]=useState(''),[detail,setDetail]=useState<Option|null>(null),[rule,setRule]=useState(''),[search,setSearch]=useState(''),[category,setCategory]=useState('all');
  const [settings,setSettings]=useState<Settings>({music:60,effects:70,fullscreen:false}),[settingsTab,setSettingsTab]=useState('声音'),[returnPage,setReturnPage]=useState('menu'),[soloLevel,setSoloLevel]=useState('standard'),[soloTurnTime,setSoloTurnTime]=useState('unlimited');
+ const [moveHistory,setMoveHistory]=useState<Record<string,PlayedMove[]>>({});
  const submitLock=useRef(false), generation=useRef(0), readSlot=useRef(false), sceneChangePending=useRef(false);
+ const historyMatch=useRef(''), historyTurn=useRef('');
  const [readError,setReadError]=useState(false),[readAttempt,setReadAttempt]=useState(0),[busy,setBusy]=useState(false),[resourcePlayer,setResourcePlayer]=useState('');
  const take=<T,>(r:Reply<T>):T=>{if(!r.ok)throw new Error(r.error);return r.data;};
  const run=async(action:()=>Promise<void>)=>{setError('');try{await action();}catch(e){setError(message((e as Error).message));}};
@@ -66,6 +75,21 @@ function App() {
     if(next.phase==='result')setPage('result');
   },code=>{if(token===generation.current){setReadError(true);setError(message(code));}});
  },[page,view?.match_id,view?.source,readError,readAttempt]);
+ useEffect(()=>{
+  if(!view||!manual)return;
+  const matchKey=`${view.match_id}/${view.game_id}`,turnKey=`${matchKey}/${view.turn_index}`;
+  const fresh=historyMatch.current!==matchKey;
+  if(fresh){historyMatch.current=matchKey;historyTurn.current='';}
+  if(!['revealed','result'].includes(view.phase)){if(fresh)setMoveHistory({});return;}
+  if(historyTurn.current===turnKey)return;
+  const moves=view.participants.flatMap(player=>{
+   const name=summaryMove(view.summary,player.nickname);
+   const entry=manual.entries.find(item=>name===item.name||name.startsWith(item.name));
+   return name&&entry?[{playerId:player.player_id,move:{turn:view.turn_index,name,entryId:entry.entry_id}}]:[];
+  });
+  historyTurn.current=turnKey;
+  setMoveHistory(previous=>moves.reduce<Record<string,PlayedMove[]>>((next,{playerId,move})=>({...next,[playerId]:[...(next[playerId]||[]),move].slice(-3)}),fresh?{}:previous));
+ },[view?.phase,view?.turn_index,view?.match_id,view?.game_id,view?.summary,manual]);
  const navigate=(action:()=>void)=>{if(!sceneChangePending.current)action();};
  const changeScene=async(action:()=>Promise<DesktopView>,nextPage:string)=>{
   if(sceneChangePending.current||busy)return;sceneChangePending.current=true;const token=++generation.current;setBusy(true);setError('');setReadError(false);
@@ -93,12 +117,18 @@ function App() {
  const self=view?.participants.find(p=>p.player_id===view.self_id);
  const currentSoloLevel=soloLevels.find(level=>level.id===soloLevel)!;
  const ordered=view?orderedOptions(view.options):[];
- const opponent=view?.participants.find(p=>p.player_id!==view.self_id);
- // ponytail: the current DTO exposes revealed actions in its stable public summary; replace this when it gains structured actions.
- const revealedMove=(nickname='')=>{const prefix=`${nickname}：`;return view?.summary.find(line=>line.startsWith(prefix))?.slice(prefix.length).split('（',1)[0]||'';};
- const selfMove=view&&['revealed','result'].includes(view.phase)?revealedMove(self?.nickname):selected?.name||'';
- const opponentMove=view&&['revealed','result'].includes(view.phase)?revealedMove(opponent?.nickname):'';
- const moveIcon=(name:string)=>manual?.entries.find(entry=>entry.name===name)?.entry_id;
+ const opponents=view?.participants.filter(p=>p.player_id!==view.self_id)||[];
+ const seatPosition=arenaPositions[opponents.length]||arenaPositions[6];
+ const moveTrail=(player:Participant)=>{
+  const history=(moveHistory[player.player_id]||[]).slice().reverse();
+  const showingCurrent=view?.phase==='revealed'&&history[0]?.turn===view.turn_index;
+  const pending=player.player_id===view?.self_id?selected:null;
+  return <div className="move-trail" aria-label={`${player.nickname}的出牌记录`}>
+   {history.map((move,index)=><span key={`${move.turn}-${move.entryId}`} className={`move-card ${showingCurrent&&index===0?'current':''}`} data-turn={move.turn} style={{'--stack-index':String(index+(showingCurrent?0:1))} as React.CSSProperties}><img src={`assets/moves/${move.entryId}.png`} alt=""/><strong>{move.name}</strong></span>)}
+   {!showingCurrent&&<span className={`move-card active ${pending?'pending':'hidden-move'}`} style={{'--stack-index':'0'} as React.CSSProperties}>{pending?<><img src={`assets/moves/${pending.entry_id}.png`} alt=""/><strong>{pending.name}</strong></>:<strong>{player.submission_state==='submitted'?'已锁定':'等待'}</strong>}</span>}
+  </div>;
+ };
+ const revealSeconds=view?.timer.mode==='reveal'&&view.timer.remaining_ms!==null?(view.timer.remaining_ms/1000).toFixed(1):'';
  const detailEntry=detail&&manual?.entries.find(o=>o.entry_id===detail.entry_id);
  const pageTitle:Record<string,string>={online:'好友房',profile:'初次见面',menu:'课间开始了',prepare:'单人准备',table:view?.options.length?(view.participants.length===2?'双人牌桌':'六人开发预览'):'观战开发预览',result:'整场结果',settings:'本机设置',manual:'经典手册',loading:'正在打开'};
  return <div className="app" data-page={page}>
@@ -113,11 +143,11 @@ function App() {
   {page==='prepare'&&profile&&<main className="prepare-screen"><button className="settings-back prepare-back" disabled={sceneChangePending.current||busy} onClick={()=>navigate(()=>setPage('menu'))}><span>返回主菜单</span></button><section className="prepare-overview"><header className="prepare-intro"><span>单人训练</span><h1>挑一个对手的手感。</h1><p>先决定这一局想承受多大的压力，再进入真实规则牌局。</p></header><section className="prepare-self" aria-label="本机玩家"><Avatar id={profile.avatar_id}/><span><small>本机席位</small><strong>{profile.nickname}</strong></span></section><section className="prepare-config" aria-label="练习设置"><section className="prepare-setting"><header><span>规则选择</span><small>01 / 01</small></header><div className="rule-choice" aria-label="当前规则：经典规则 1.0.1"><span><strong>经典规则</strong><small>CLASSIC</small></span><em>1.0.1</em></div></section><section className="prepare-setting prepare-time"><header><span>每回合时间</span><small>TURN LIMIT</small></header><div role="group" aria-label="选择每回合时间">{soloTurnTimes.map(time=><button key={time.id} type="button" aria-label={time.label} aria-pressed={soloTurnTime===time.id} onClick={()=>setSoloTurnTime(time.id)}><strong>{time.value}</strong></button>)}</div></section></section></section><section className="difficulty-console" data-level={soloLevel} aria-labelledby="difficulty-title"><header><span>AI 强度</span><h2 id="difficulty-title">训练对手</h2></header><div className="prepare-signal" data-level={soloLevel}><span aria-hidden="true"/><span aria-hidden="true"/><span aria-hidden="true"/><i aria-hidden="true"/><div className="difficulty-emblem" key={soloLevel} aria-hidden="true"><img src={`assets/moves/${currentSoloLevel.icon}.png`} alt=""/></div></div><div className="difficulty-selector" role="group" aria-label="选择 AI 强度">{soloLevels.map((level,index)=><button key={level.id} aria-label={`${level.name}：${level.tag}`} aria-pressed={soloLevel===level.id} onClick={()=>setSoloLevel(level.id)}><span className="difficulty-stop"><strong>{level.name}</strong><small>{String(index+1).padStart(2,'0')}</small></span></button>)}</div><div className="difficulty-readout" key={soloLevel}><span>{currentSoloLevel.tag}</span><p>{currentSoloLevel.description}</p></div></section><footer className="prepare-actions"><button className="prepare-start" disabled={busy} onClick={()=>void start()}><span>{busy?'正在开场':'开始对局'}</span><small>{busy?'LOADING':'ENTER MATCH'}</small></button></footer></main>}
   {page==='table'&&view&&<main className="table battle-table" data-phase={view.phase}>
    <header className="battle-hud"><button className="battle-leave" disabled={sceneChangePending.current} onClick={()=>navigate(()=>setModal('leave'))}>退出牌桌</button><span>ROUND {view.turn_index.padStart(2,'0')}</span><strong>{soloTurnTimes.find(time=>time.id===soloTurnTime)?.value}</strong></header>
-   <section className="battle-focus" aria-live="polite">
-    <article className="action-slot opponent-action"><header><span>对手出招</span><small>{opponent?.nickname}</small></header><div>{opponentMove&&moveIcon(opponentMove)&&<img src={`assets/moves/${moveIcon(opponentMove)}.png`} alt=""/>}<strong>{opponentMove||'尚未揭晓'}</strong></div>{opponent&&<button className="seat-resources" onClick={()=>setResourcePlayer(opponent.player_id)} aria-label={`${opponent.nickname}的公开资源`}>DD {ddText(opponent.resources.dd6)}<small>雷 {opponent.resources.lightning} · 充 {opponent.resources.nx_charge} · 弹 {opponent.resources.mature_bombs}</small></button>}</article>
-    <div className="battle-versus" aria-hidden="true"><span>VS</span><i/></div>
-    <article className="action-slot self-action"><header><span>我的出招</span><small>{self?.nickname}</small></header><div>{selfMove&&moveIcon(selfMove)&&<img src={`assets/moves/${moveIcon(selfMove)}.png`} alt=""/>}<strong>{selfMove||'选择一张牌'}</strong></div><small>{view.submitted?'已锁定，等待共同揭晓':selected?'再次点击其他牌可更换':'本拍尚未选择'}</small></article>
-    <section className="summary battle-summary"><span className="eyebrow">公开战况 · 第 {view.turn_index} 拍</span><p>{view.summary[0]}</p><details><summary>本拍记录</summary>{view.summary.slice(1).map((s,i)=><p key={i}>{s}</p>)}<small>局号：{view.game_id}</small></details></section>
+   <section className="battle-arena" aria-live="polite">
+    <div className="arena-surface" aria-hidden="true"/>
+    {opponents.map((player,index)=><article key={player.player_id} className={`arena-seat opponent-seat ${player.alive?'':'out'}`} style={{'--seat-x':`${seatPosition[index]?.[0]||50}%`,'--seat-y':`${seatPosition[index]?.[1]||9}%`} as React.CSSProperties}><header><Avatar id={player.avatar_id}/><span><strong>{player.nickname}</strong><small>{player.alive?(player.submission_state==='submitted'?'已出牌':'等待出牌'):'已淘汰'}</small></span></header>{moveTrail(player)}<button className="seat-resources" onClick={()=>setResourcePlayer(player.player_id)} aria-label={`${player.nickname}的公开资源`}>DD {ddText(player.resources.dd6)}<small>雷 {player.resources.lightning} · 充 {player.resources.nx_charge} · 弹 {player.resources.mature_bombs}</small></button></article>)}
+    {self&&<article className="arena-seat self-seat"><header><Avatar id={self.avatar_id}/><span><strong>{self.nickname}</strong><small>{view.submitted?'已出牌':'你的席位'}</small></span></header>{moveTrail(self)}</article>}
+    <section className="arena-center summary"><span className="eyebrow">第 {view.turn_index} 拍 · {view.phase==='revealed'?'共同揭晓':view.submitted?'等待揭晓':'选择出招'}</span>{view.timer.mode==='reveal'?<div className="reveal-countdown"><strong>{revealSeconds}s</strong><progress max={view.timer.total_ms||1} value={view.timer.remaining_ms||0}/><small>结算展示</small></div>:<p>{view.summary[0]}</p>}<details><summary>查看本拍记录</summary>{view.summary.map((s,i)=><p key={i}>{s}</p>)}<small>局号：{view.game_id}</small></details></section>
    </section>
    {self&&<section className="self-strip battle-resources"><Avatar id={self.avatar_id}/><div><b>{self.nickname}</b><small>{self.alive?'本机席位 · 仍在场':'已淘汰 · 等待下一场'}</small></div><div className="resources"><b title={`DD ${ddText(self.resources.dd6)}`}>DD <em>{ddText(self.resources.dd6)}</em></b><span>雷 {self.resources.lightning}</span><span>充 {self.resources.nx_charge}</span><span>弹 {self.resources.mature_bombs}</span><span>奖 {self.resources.reward_stock}</span><button className="resource-more" onClick={()=>setResourcePlayer(self.player_id)}>资源详情</button></div></section>}
    {!!view.options.length?<><div className="turn-strip battle-turn"><span>{soloTurnTimes.find(time=>time.id===soloTurnTime)?.value} 回合</span><progress max={view.timer.total_ms||1} value={view.timer.remaining_ms??1}/><span>{view.submitted?'已提交':selected?`已选 ${selected.name}`:'选择本拍招式'}</span></div><div className="card-groups battle-cards">{groups.map(group=><section className={`card-group ${group}`} key={group}><h3>{groupName[group]} <span>{view.options.filter(o=>o.ui_group===group).length}</span></h3><div className="cards">{ordered.filter(o=>o.ui_group===group).map(o=><article key={o.entry_id} className={`card ${o.available?'':'unavailable'} ${selected?.entry_id===o.entry_id?'selected':''}`} data-entry={o.entry_id}><button className="card-pick" disabled={!o.available||!editable} aria-pressed={selected?.entry_id===o.entry_id} aria-label={`${o.available?'选择':'不可用'} ${o.name}${o.available?'':`：${reasons[o.reason_code||'']||'条件不足'}`}`} onClick={()=>choose(o.entry_id)}><img src={`assets/moves/${o.entry_id}.png`} alt=""/><strong>{o.name}</strong></button></article>)}</div></section>)}</div><footer className="table-actions battle-actions"><small>数字键 1–0 选择 · Enter 提交</small><span>{ordered.filter(o=>o.available).length} / 33 可用</span><button className="primary" disabled={!editable||!selected} onClick={()=>void submit()}>{view.submitted?'已提交':view.phase==='error'?'重试提交':'确认出招'}</button></footer></>:<section className="spectating"><h2>{self?'你已淘汰，等待下一场。':'你正在观看公开演示。'}</h2><p>观战不显示手牌，也不接受选招快捷键。</p><button disabled={sceneChangePending.current} onClick={()=>void leave()}>退出观战</button></section>}

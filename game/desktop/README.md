@@ -41,7 +41,7 @@ npm --prefix game/desktop start
 
 ## 操作与验证
 
-先选牌，再点提交；数字键 1–0 选中，Enter 提交。对手在本拍开始、接收玩家输入前固定出招。双方揭晓后约 800ms 进入下一拍；曾义休整无需点灰牌。点击席位资源可读准确数量与进度，大数不会通过 Number 丢精度。档案和设置保存在 Electron userData 的 local-profile/profile.json，与 worker 生命周期独立。
+先选牌，再点提交；数字键 1–0 选中，Enter 提交。对手在本拍开始、接收玩家输入前固定出招。双方揭晓后保留 3 秒结算展示，进度条随真实剩余时间移动；出牌记录进入席位左侧的三拍堆叠，再进入下一拍。曾义休整无需点灰牌。点击席位资源可读准确数量与进度，大数不会通过 Number 丢精度。档案和设置保存在 Electron userData 的 local-profile/profile.json，与 worker 生命周期独立。
 
 从仓库根目录：
 
