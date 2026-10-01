@@ -4,7 +4,7 @@ import type { CorePlayer, Member, OnlineState, Role } from './types';
 import { canSelect, canSetTurnLimit, hostRecoveryText, describeError, onlineBattleView, optionsFor, publicPlayers, remainingAt, startReason, turnSummary } from './model';
 import { groups, orderedOptions, shortcutEntry } from '../interaction';
 import { ddText } from '../view-loop';
-import { BattleStage, SituationDialog, type ModalComponent, type PlayedMove } from '../BattleStage';
+import { BattleStage, MatchResult, SituationDialog, type ModalComponent, type PlayedMove } from '../BattleStage';
 const api=window.desktop.online;
 const initial:OnlineState={source:'online',status:'idle',hello:null,snapshot:null,pending:false,membership_end:null,host_remaining_ms:null,error:null,confirmed:null,remaining_ms:null,revision:0};
 const groupName={attack:'攻击',defense:'防御',skill:'技能'};
@@ -17,8 +17,9 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
  const [limitOpen,setLimitOpen]=useState(false),[limitMs,setLimitMs]=useState(10000),[limitRevision,setLimitRevision]=useState('1');
  const [selected,setSelected]=useState<string|null>(null),[detail,setDetail]=useState<Option|null>(null),[resource,setResource]=useState<Member|null>(null),[leaveConfirm,setLeaveConfirm]=useState(false),[notice,setNotice]=useState('');
  const [matchMenu,setMatchMenu]=useState(false),[situationOpen,setSituationOpen]=useState(false),[moveHistory,setMoveHistory]=useState<Record<string,PlayedMove[]>>({});
+ const [enteredMatch,setEnteredMatch]=useState(''),[arenaReady,setArenaReady]=useState(false),[resultLeaving,setResultLeaving]=useState(false);
  const [now,setNow]=useState(performance.now()),[busy,setBusy]=useState(false);
- const receipt=useRef(performance.now()),lock=useRef(false),alive=useRef(true),leaving=useRef(false),lastRevision=useRef(-1),lastPlayers=useRef(''),historyMatch=useRef(''),historyTurn=useRef('');
+ const receipt=useRef(performance.now()),lock=useRef(false),alive=useRef(true),leaving=useRef(false),lastRevision=useRef(-1),lastPlayers=useRef(''),historyMatch=useRef(''),historyTurn=useRef(''),resultTimer=useRef<number|null>(null);
  const snapshot=state.snapshot,v=snapshot?.view,me=v?.members.find(p=>p.player_id===v.self.player_id),host=!!v&&v.host_id===v.self.player_id;
  const hostRemaining=state.host_remaining_ms===null?null:Math.max(0,state.host_remaining_ms-Math.max(0,now-receipt.current));
  const remaining=remainingAt(state,receipt.current,now),editable=canSelect(state,remaining)&&!busy;
@@ -35,7 +36,7 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
   const unsub=api.onChange(accept);
   void api.openLobby().then(r=>{if(!alive.current)return;if(r.ok)accept(r.data);else setError(describeError(r.error));});
   const tick=setInterval(()=>setNow(performance.now()),100);
-  return()=>{alive.current=false;unsub();clearInterval(tick);};
+  return()=>{alive.current=false;unsub();clearInterval(tick);if(resultTimer.current!==null)window.clearTimeout(resultTimer.current);};
  },[]);
  useEffect(()=>{if(state.hello){setTurnMs(state.hello.policy_defaults.turn_ms);setEarly(state.hello.policy_defaults.early_reveal);setCap(state.hello.policy_defaults.spectator_cap);}},[state.hello?.policy_defaults.turn_ms,state.hello?.policy_defaults.early_reveal,state.hello?.policy_defaults.spectator_cap]);
  useEffect(()=>{if(state.membership_end){setForm('entry');setError('');setLimitOpen(false);setLeaveConfirm(false);}},[state.membership_end?.event_id]);
@@ -89,6 +90,26 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
    return name&&entry?{...next,[player.player_id]:[...(next[player.player_id]||[]),{turn:adapted.turn_index,name,entryId:entry.entry_id}].slice(-8)}:next;
   },fresh?{}:previous));
  },[adapted?.phase,adapted?.turn_index,adapted?.match_id,adapted?.game_id,adapted?.summary,manual]);
+ useEffect(()=>{
+  if(!adapted||adapted.phase==='result'||enteredMatch===adapted.match_id)return;
+  const delay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?150:2600;
+  const timer=window.setTimeout(()=>setEnteredMatch(adapted.match_id),delay);
+  return()=>window.clearTimeout(timer);
+ },[adapted?.match_id,adapted?.phase,enteredMatch]);
+ useEffect(()=>{
+  if(!adapted||enteredMatch!==adapted.match_id){setArenaReady(false);return;}
+  setArenaReady(false);
+  const delay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?30:650;
+  const timer=window.setTimeout(()=>setArenaReady(true),delay);
+  return()=>window.clearTimeout(timer);
+ },[adapted?.match_id,enteredMatch]);
+ useEffect(()=>{if(adapted?.phase==='result')setResultLeaving(false);},[adapted?.match_id,adapted?.phase]);
+ const transitionResult=(action:()=>void)=>{
+  if(resultLeaving)return;
+  setResultLeaving(true);
+  const delay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?150:720;
+  resultTimer.current=window.setTimeout(action,delay);
+ };
  if(!activeRoom){
   const allowed=state.hello?.capabilities.allowed_turn_ms||[turnMs],scene=form==='entry'?'front':form;
   const status=({idle:'尚未连接',connecting:'连接中…',connected:'已连接',reconnecting:'网络暂断 · 重连中…',unavailable:'服务不可用'})[state.status];
@@ -155,12 +176,15 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
   </main>;
  }
  if(v?.match&&snapshot&&battleView){
-  const canAdjust=canSetTurnLimit(state);
-  return <div className="online-match" data-source={state.source} data-room={v.room_code}>
-   <BattleStage view={battleView} manual={manual} moveHistory={moveHistory} mode="online" ready exiting={false} suspended={false} frozen={false} busy={blocked||(!editable&&battleView.phase==='selecting'&&!!battleView.options.length)} revealSeconds={Math.max(0,Math.ceil((remaining||0)/1000))} Avatar={Avatar} onSelect={setSelected} onSubmit={submit} onPause={()=>setMatchMenu(true)} onFreeze={()=>{}} onSituation={()=>setSituationOpen(true)}/>
+  const canAdjust=canSetTurnLimit(state),showIntro=battleView.phase!=='result'&&enteredMatch!==battleView.match_id;
+  return <div className="online-match" data-source={state.source} data-room={v.room_code} data-arena-ready={arenaReady}>
+   {showIntro
+    ?<main className="online-intro" data-player-count={battleView.participants.length} aria-label="多人对局入场"><div className="online-intro-world" aria-hidden="true"><span/></div><header><span>MULTIPLAYER MATCH</span><h1>进入擂台</h1><p>经典规则 · 每拍 {v.policy.turn_ms/1000} 秒 · {v.policy.early_reveal?'全员提交即揭晓':'到时揭晓'}</p></header><section className="online-intro-roster" aria-label="本场参战席位">{battleView.participants.map((player,index)=><article className="online-intro-player" key={player.player_id} data-seat={index} data-self={player.player_id===battleView.self_id} style={{'--intro-seat':String(index)} as React.CSSProperties}><Avatar id={player.avatar_id}/><span><small>{player.player_id===battleView.self_id?'你 · 本机席位':`席位 ${index+1}`}</small><strong>{player.nickname}</strong></span></article>)}</section><button className="cinematic-skip" onClick={()=>setEnteredMatch(battleView.match_id)}>立即入场 <small>SKIP</small></button></main>
+    :battleView.phase==='result'
+     ?<MatchResult view={battleView} moveHistory={moveHistory} leaving={resultLeaving} Avatar={Avatar} onReview={()=>setSituationOpen(true)} onPrimary={()=>transitionResult(()=>{void run(()=>api.returnLobby({room_id:snapshot.room_id}));})} onExit={()=>transitionResult(leave)} primaryLabel={host&&!v.pending_close?'准备下一局':'等待房主开启下一局'} primaryDisabled={!host||!!v.pending_close||blocked}/>
+     :<BattleStage view={battleView} manual={manual} moveHistory={moveHistory} mode="online" ready={arenaReady} exiting={false} suspended={false} frozen={false} busy={blocked||(!editable&&battleView.phase==='selecting'&&!!battleView.options.length)} revealSeconds={Math.max(0,Math.ceil((remaining||0)/1000))} Avatar={Avatar} onSelect={setSelected} onSubmit={submit} onPause={()=>setMatchMenu(true)} onFreeze={()=>{}} onSituation={()=>setSituationOpen(true)}/>}
    <aside className="online-match-controls" aria-label="联机房间状态"><span>房间 {v.room_code}</span><span>每拍 {v.policy.turn_ms/1000} 秒</span><span>{state.status==='reconnecting'?'网络暂断 · 重连中…':'房间已连接'}</span>{canAdjust&&<button type="button" disabled={blocked} onClick={()=>{setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>调整时限</button>}</aside>
    {(onlineError||recoveryText||closingText||futureText)&&<p className={onlineError?'online-match-notice is-error':'online-match-notice'} role={onlineError?'alert':'status'}>{onlineError||closingText||recoveryText} {futureText}</p>}
-   {v.phase==='result'&&<footer className="online-result-actions">{host&&!v.pending_close?<button type="button" className="primary" disabled={blocked} onClick={()=>void run(()=>api.returnLobby({room_id:snapshot.room_id}))}>准备下一场</button>:<span>等待房主开启下一场准备</span>}</footer>}
    {matchMenu&&<Modal className="battle-dialog pause-dialog" title="对局菜单" onClose={()=>setMatchMenu(false)}><section className="pause-state"><span>ONLINE MENU</span><h3>牌局仍在继续</h3><p>多人模式打开菜单不会暂停牌局，返回后以服务端当前状态为准。</p></section><div className="pause-actions"><button className="primary" onClick={()=>setMatchMenu(false)}>继续游戏<small>RESUME</small></button><button disabled={!canAdjust} onClick={()=>{setMatchMenu(false);setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>房间游戏设置<small>ROOM SETTINGS</small></button><button className="danger" onClick={()=>{setMatchMenu(false);setLeaveConfirm(true);}}>退出游戏<small>LEAVE MATCH</small></button></div></Modal>}
    {situationOpen&&<SituationDialog view={battleView} manual={manual} moveHistory={moveHistory} Modal={Modal} Avatar={Avatar} onClose={()=>setSituationOpen(false)}/>}
    {limitOpen&&canAdjust&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><p>{futureText||'从下一次选择阶段开始生效，本拍截止时间和已交牌保持不变。'}</p><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
