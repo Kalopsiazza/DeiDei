@@ -72,6 +72,44 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
  const onlineError=error||(state.error?describeError(state.error.code):'');
  const connected=state.status==='connected';
  const selfResources=me&&players[me.player_id];
+ if(!activeRoom){
+  const allowed=state.hello?.capabilities.allowed_turn_ms||[turnMs],scene=form==='entry'?'front':form;
+  const status=({idle:'尚未连接',connecting:'连接中…',connected:'已连接',reconnecting:'网络暂断 · 重连中…',unavailable:'服务不可用'})[state.status];
+  const nearestTurn=(value:number)=>allowed.reduce((best,next)=>Math.abs(next-value)<Math.abs(best-value)?next:best,allowed[0]);
+  return <main className="online online-portal" data-online-scene={scene} data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
+   <div className="online-portal-world" aria-hidden="true"/>
+   <nav className="online-portal-nav" aria-label="联机导航">
+    <button type="button" disabled={busy||(state.pending&&connected)} onClick={()=>form==='entry'?leave():(setForm('entry'),setError(''))}>{form==='entry'?'返回主菜单':'返回联机前厅'}</button>
+    <div><span className="online-signal" aria-hidden="true"/><span role="status">{status}{state.pending?' · 操作确认中…':''}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
+   </nav>
+   <section className="online-portal-copy">
+    <span className="eyebrow">{form==='entry'?'MULTIPLAYER / ATRIUM':form==='create'?'HOST / DEPLOY':'ACCESS / LINK'}</span>
+    <h1>{form==='entry'?'联机前厅':form==='create'?'房间部署':'房间接入'}</h1>
+    <p>{form==='entry'?'从同一个中庭出发：部署自己的房间，或凭房间号接入朋友的牌局。':form==='create'?'设定这一间房的节奏与开放程度，然后把房间号交给朋友。':'输入朋友给你的房间号；参战席位已满时，仍可转为观战接入。'}</p>
+   </section>
+   {onlineError&&<p className="online-portal-error" role="alert">{onlineError}</p>}
+   {state.membership_end&&<p className="online-portal-notice" role="status">已离开房间 {state.membership_end.room_code||state.membership_end.room_id}：{state.membership_end.reason==='three_absences'?'连续三拍缺席，已在当拍结算后移除。':'断线恢复时间已过，席位已释放。'}</p>}
+   {form==='entry'?<section className="online-front-actions" aria-label="选择联机方式">
+    <button type="button" className="online-route online-route-create" aria-label="创建房间" disabled={!connected||busy} onClick={()=>setForm('create')}><small>01 / HOST</small><strong>创建房间</strong><span>部署规则与开放席位</span></button>
+    <button type="button" className="online-route online-route-join" aria-label="加入房间" disabled={!connected||busy} onClick={()=>setForm('join')}><small>02 / JOIN</small><strong>加入房间</strong><span>用房间号接入牌局</span></button>
+    {(state.status==='unavailable'||state.status==='idle')&&<button type="button" className="online-retry" disabled={busy} onClick={()=>{leaving.current=false;void run(()=>api.openLobby());}}>重新连接</button>}
+   </section>:<form className={`online-deploy online-deploy-${form}`} onSubmit={e=>{e.preventDefault();if(blocked)return;if(form==='join')join(role);else void run(()=>api.create({password:password||null,options:{turn_ms:turnMs,early_reveal:early,spectator_cap:cap}}));}}>
+    <fieldset disabled={blocked}>
+     {form==='create'?<>
+      <label className="online-control online-turn"><span>每拍时间</span><b>{turnMs/1000} 秒</b><input type="range" aria-label="每拍时间" min={allowed[0]} max={allowed.at(-1)} step="1000" list="online-turn-values" value={turnMs} onChange={e=>setTurnMs(nearestTurn(Number(e.target.value)))}/><datalist id="online-turn-values">{allowed.map(ms=><option key={ms} value={ms}/>)}</datalist><small>{allowed.map(ms=>`${ms/1000}s`).join(' · ')}</small></label>
+      <label className="online-switch"><input type="checkbox" checked={early} onChange={e=>setEarly(e.target.checked)}/><span>全员提交后提前揭晓</span></label>
+      <label className="online-control"><span>观战容量</span><b>{cap} 人</b><input type="range" aria-label="观众容量" min="0" max={state.hello?.capabilities.spectator_max||0} value={cap} onChange={e=>setCap(Number(e.target.value))}/></label>
+     </>:<>
+      <label className="online-control online-code"><span>房间号</span><input aria-label="房间号" value={code} maxLength={16} onChange={e=>setCode(e.target.value)} autoComplete="off" placeholder="ABCD2345" required/></label>
+      <fieldset className="online-role"><legend>加入身份</legend><label><input type="radio" name="online-role" value="player" checked={role==='player'} onChange={()=>setRole('player')}/><span>参战</span></label><label><input type="radio" name="online-role" value="spectator" checked={role==='spectator'} onChange={()=>setRole('spectator')}/><span>观战</span></label></fieldset>
+     </>}
+     <label className="online-control online-password"><span>房间密码 <small>可选</small></span><input type="password" aria-label="房间密码" value={password} maxLength={64} onChange={e=>setPassword(e.target.value)} autoComplete="off"/></label>
+     {form==='join'&&['ROOM_FULL','MATCH_IN_PROGRESS'].includes(state.error?.code||'')&&<button type="button" className="online-spectate" onClick={()=>join('spectator')}>以观众身份尝试加入</button>}
+     <button type="submit" className="primary online-deploy-submit">{state.pending?'确认中…':form==='create'?'创建并进入':'加入房间'}</button>
+    </fieldset>
+   </form>}
+  </main>;
+ }
  return <main className={`online ${v?.match?'online-table':''}`} data-phase={v?.phase||'entry'} data-source={state.source}>
   <header className="online-header"><div><span className="eyebrow">{state.source==='fixture'?'开发预览 · MOCK · 脚本化 socket':'好友房 · 本机开发服务'}</span><h2>{activeRoom?`房间 ${v.room_code}`:'叫上朋友，一起出招。'}</h2></div><span role="status">{({idle:'尚未连接',connecting:'连接中…',connected:'已连接',reconnecting:'网络暂断 · 重连中…',unavailable:'服务不可用'})[state.status]}{state.pending?' · 操作确认中…':''}</span><button disabled={busy||(state.pending&&connected)} onClick={()=>activeRoom?setLeaveConfirm(true):leave()}>{activeRoom?'退出房间':'返回主菜单'}</button></header>
   {onlineError&&<p className="online-error" role="alert">{onlineError}</p>}

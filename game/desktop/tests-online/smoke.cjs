@@ -21,8 +21,11 @@ const output=process.env.DEIDEI_ONLINE_SMOKE_OUTPUT?path.resolve(process.env.DEI
   await page.getByRole('button',{name:'好友联机',exact:false}).click();await page.getByText('已连接',{exact:true}).waitFor();
   assert.equal(await page.evaluate(()=>typeof window.require),'undefined');
   assert.equal(await page.evaluate(async()=>JSON.stringify((await window.desktop.online.read()).data).includes('resume_token')),false);
-  await page.getByRole('button',{name:'创建房间',exact:true}).click();assert.equal(await page.getByRole('combobox',{name:'每拍时间'}).inputValue(),'10000');
-  await shot('mock-create');await page.getByRole('button',{name:'创建并进入',exact:true}).click();await page.locator('.lobby-seats').waitFor();
+  await page.locator('.online[data-online-scene="front"]').waitFor();assert.equal(await page.locator('.online-header,.online .paper').count(),0);await shot('mock-front');
+  await page.getByRole('button',{name:'创建房间',exact:true}).click();await page.locator('.online[data-online-scene="create"]').waitFor();
+  const turnScale=page.getByRole('slider',{name:'每拍时间'});assert.equal(await turnScale.inputValue(),'10000');assert.deepEqual(await page.locator('#online-turn-values option').evaluateAll(nodes=>nodes.map(node=>Number(node.getAttribute('value')))),[5000,8000,10000,12000,20000,30000]);
+  await page.getByRole('textbox',{name:'房间密码',exact:true}).fill('draft-secret');await page.getByRole('button',{name:'返回联机前厅',exact:true}).click();await page.locator('.online[data-online-scene="front"]').waitFor();await page.getByRole('button',{name:'创建房间',exact:true}).click();assert.equal(await page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'draft-secret');await page.getByRole('textbox',{name:'房间密码',exact:true}).fill('');
+  await shot('mock-create');await app.evaluate(()=>{const socket=global.__onlineTest.socket;socket.onSend=command=>setTimeout(()=>socket.respond(command),120);});const creating=page.getByRole('button',{name:'创建并进入',exact:true}).click();await page.waitForFunction(()=>!!document.querySelector('.online[data-pending="true"] .online-deploy-submit:disabled'));await creating;await page.locator('.lobby-seats').waitFor();await app.evaluate(()=>{const socket=global.__onlineTest.socket;socket.onSend=command=>setTimeout(()=>socket.respond(command),15);});
   assert.equal((await page.evaluate(()=>window.desktop.online.create({password:null,options:{turn_ms:12000,early_reveal:true,spectator_cap:6},url:'ws://example.com'}))).error,'INVALID_MESSAGE');
   assert.equal((await page.evaluate(()=>window.desktop.online.create({password:'x'.repeat(5000),options:{turn_ms:12000,early_reveal:true,spectator_cap:6}}))).error,'INVALID_INPUT');
   for(const [width,height] of [[1366,768],[1920,1080]]){await page.setViewportSize({width,height});await shot(`mock-lobby-${width}x${height}`);}
@@ -62,8 +65,8 @@ const output=process.env.DEIDEI_ONLINE_SMOKE_OUTPUT?path.resolve(process.env.DEI
   await page.getByRole('button',{name:'退出房间',exact:true}).click();await page.getByRole('dialog',{name:'结束整个房间？'}).waitFor();await shot('mock-host-leave');await page.getByRole('button',{name:'留在房间',exact:true}).click();
   await page.getByRole('button',{name:'退出房间',exact:true}).click();await page.getByRole('button',{name:'确认结束房间',exact:true}).click();await page.getByRole('button',{name:'好友联机',exact:false}).waitFor();
   await page.getByRole('button',{name:'好友联机',exact:false}).click();await page.getByText('已连接',{exact:true}).waitFor();await page.getByRole('button',{name:'加入房间',exact:true}).click();
-  await page.getByRole('textbox',{name:'房间号',exact:true}).fill('WRONG123');await page.getByRole('button',{name:'加入',exact:true}).click();await page.getByText('房间号或密码不正确。',{exact:true}).waitFor();await shot('mock-wrong-room');
-  await page.getByRole('textbox',{name:'房间号',exact:true}).fill(' abcd2345 ');await page.getByRole('button',{name:'加入',exact:true}).click();await page.getByRole('button',{name:'以观众身份尝试加入',exact:true}).waitFor();await shot('mock-full-room');
+  await page.getByRole('textbox',{name:'房间号',exact:true}).fill('WRONG123');await page.getByRole('textbox',{name:'房间密码',exact:true}).fill('kept-draft');await page.getByRole('button',{name:'加入房间',exact:true}).click();await page.getByText('房间号或密码不正确。',{exact:true}).waitFor();assert.equal(await page.getByRole('textbox',{name:'房间号',exact:true}).inputValue(),'WRONG123');assert.equal(await page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'kept-draft');await page.getByRole('button',{name:'返回联机前厅',exact:true}).click();await page.getByRole('button',{name:'加入房间',exact:true}).click();assert.equal(await page.getByRole('textbox',{name:'房间号',exact:true}).inputValue(),'WRONG123');assert.equal(await page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'kept-draft');await shot('mock-wrong-room');
+  await page.getByRole('textbox',{name:'房间号',exact:true}).fill(' abcd2345 ');await page.getByRole('button',{name:'加入房间',exact:true}).click();await page.getByRole('button',{name:'以观众身份尝试加入',exact:true}).waitFor();await shot('mock-full-room');
   await page.getByRole('button',{name:'以观众身份尝试加入',exact:true}).click();await page.locator('.lobby-seats').waitFor();assert.equal(await page.getByRole('button',{name:'准备',exact:true}).count(),0);
   await shot('mock-spectator-lobby');await page.getByRole('button',{name:'申请参战',exact:true}).click();await page.getByRole('button',{name:'转为观众',exact:true}).waitFor();await page.getByRole('button',{name:'转为观众',exact:true}).click();await page.getByRole('button',{name:'申请参战',exact:true}).waitFor();
   passed('Host leave confirmation, indistinguishable access error, explicit full-room spectator choice, lobby role buttons');
@@ -94,10 +97,10 @@ const output=process.env.DEIDEI_ONLINE_SMOKE_OUTPUT?path.resolve(process.env.DEI
   await real.getByRole('button',{name:'好友联机',exact:false}).click();await real.getByText('联机服务尚未配置。',{exact:true}).waitFor();
   assert.equal((await real.evaluate(()=>window.desktop.online.read())).data.source,'online');
   await real.screenshot({path:path.join(output,'unconfigured-real-main.png'),scale:'css'});
-  await real.getByRole('button',{name:'返回主菜单',exact:true}).click();await real.getByRole('button',{name:'单人对局',exact:false}).click();await real.getByRole('button',{name:'开始单人对局',exact:true}).click();
+  await real.getByRole('button',{name:'返回主菜单',exact:true}).click();await real.getByRole('button',{name:'单人对局',exact:false}).click();await real.getByRole('button',{name:'开始对局',exact:false}).click();
   await real.locator('.table[data-phase="selecting"]').waitFor();assert.equal((await real.evaluate(()=>window.desktop.port.getView())).data.source,'live');
   assert.equal((await real.evaluate(()=>window.desktop.online.openLobby())).error,'SOLO_ACTIVE');
-  await real.getByRole('button',{name:'离开牌桌',exact:true}).click();await real.getByRole('button',{name:'离开',exact:true}).click();
+  await real.getByRole('button',{name:'暂停',exact:true}).click();await real.getByRole('button',{name:/退出游戏/}).click();await real.getByRole('dialog',{name:'离开当前对局',exact:true}).getByRole('button',{name:'离开',exact:true}).click();
   passed('Ordinary main without endpoint reports unavailable; original offline worker starts, online switch rejects an active solo');
   evidence.status='PASS';
  }catch(e){evidence.status='FAIL';evidence.error=e.message;if(app){const page=await app.firstWindow();await page.screenshot({path:path.join(output,'mock-smoke-failure.png')}).catch(()=>{});}throw e;}
