@@ -110,6 +110,33 @@ export function OnlineRoom({manual,onExit,Avatar,Modal}:Props) {
    </form>}
   </main>;
  }
+ if(v?.phase==='lobby'&&snapshot&&me){
+  const roster=Array.from({length:6},(_,index)=>v.members.find(member=>member.role==='player'&&member.seat===index));
+  const spectators=v.members.filter(member=>member.role==='spectator'),reason=startReason(snapshot);
+  return <main className="online online-room" data-phase="lobby" data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
+   <div className="online-room-world" aria-hidden="true"/>
+   <nav className="online-room-nav" aria-label="房间操作">
+    <button type="button" disabled={blocked} onClick={()=>setLeaveConfirm(true)}>退出房间</button>
+    <div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'房间已连接'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
+   </nav>
+   <section className="online-lobby" data-player-count={roster.filter(Boolean).length} aria-label="六人参战席位">
+    <div className="online-beacon"><small>{v.has_password?'已加密房间':'开放房间'}</small><strong>{v.room_code}</strong><button type="button" onClick={()=>void navigator.clipboard.writeText(v.room_code).then(()=>setNotice('房间号已复制。')).catch(()=>setNotice(`请手动复制房间号：${v.room_code}`))}>复制房号</button></div>
+    {roster.map((member,index)=><article className="online-room-seat" key={index} data-seat={index} data-self={member?.player_id===v.self.player_id?'true':'false'} data-host={member?.player_id===v.host_id?'true':'false'} data-ready={member?.ready?'true':'false'} data-connected={member?.connected?'true':'false'}>
+     {member?<><Avatar id={member.avatar_id}/><div><strong title={member.nickname}>{member.nickname}</strong><span>{member.player_id===v.self.player_id?'本人 · ':''}{member.player_id===v.host_id?'房主 · ':''}{member.connected?(member.ready?'已准备':'未准备'):'掉线'}</span></div></>:<><i>{String(index+1).padStart(2,'0')}</i><span>等待接入</span></>}
+    </article>)}
+   </section>
+   <aside className="online-room-tools"><span>每拍 {v.policy.turn_ms/1000} 秒</span><span>{v.policy.early_reveal?'全员提交即揭晓':'到时揭晓'}</span>{canSetTurnLimit(state)&&<button type="button" disabled={blocked} onClick={()=>{setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>调整时限</button>}</aside>
+   <aside className="online-spectators"><small>观战席 {spectators.length} / {v.policy.spectator_cap}</small>{spectators.length?<ul>{spectators.map(member=><li key={member.player_id}><Avatar id={member.avatar_id}/><span title={member.nickname}>{member.nickname}</span>{!member.connected&&<small>掉线</small>}</li>)}</ul>:<span>暂无观众</span>}</aside>
+   {(onlineError||recoveryText||notice)&&<p className={onlineError?'online-room-message is-error':'online-room-message'} role={onlineError?'alert':'status'}>{onlineError||recoveryText||notice}</p>}
+   <footer className="online-room-actions">
+    {me.role==='player'&&<button type="button" disabled={blocked} onClick={()=>void run(()=>api.ready({room_id:snapshot.room_id,ready:!me.ready}))}>{me.ready?'取消准备':'准备'}</button>}
+    {!host&&<button type="button" disabled={blocked||(me.role==='spectator'?roster.filter(Boolean).length>=6:spectators.length>=v.policy.spectator_cap)} onClick={()=>void run(()=>api.changeRole({room_id:snapshot.room_id,role:me.role==='player'?'spectator':'player'}))}>{me.role==='player'?'转为观众':'申请参战'}</button>}
+    {host&&!v.pending_close&&<><button type="button" className="primary" disabled={blocked||!!reason} onClick={()=>void run(()=>api.start({room_id:snapshot.room_id}))}>开始对局</button><span>{reason||'全员就绪，可以开局。'}</span></>}
+   </footer>
+   {limitOpen&&canSetTurnLimit(state)&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
+   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)}><p>{host?'退出将结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" onClick={leave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
+  </main>;
+ }
  return <main className={`online ${v?.match?'online-table':''}`} data-phase={v?.phase||'entry'} data-source={state.source}>
   <header className="online-header"><div><span className="eyebrow">{state.source==='fixture'?'开发预览 · MOCK · 脚本化 socket':'好友房 · 本机开发服务'}</span><h2>{activeRoom?`房间 ${v.room_code}`:'叫上朋友，一起出招。'}</h2></div><span role="status">{({idle:'尚未连接',connecting:'连接中…',connected:'已连接',reconnecting:'网络暂断 · 重连中…',unavailable:'服务不可用'})[state.status]}{state.pending?' · 操作确认中…':''}</span><button disabled={busy||(state.pending&&connected)} onClick={()=>activeRoom?setLeaveConfirm(true):leave()}>{activeRoom?'退出房间':'返回主菜单'}</button></header>
   {onlineError&&<p className="online-error" role="alert">{onlineError}</p>}
