@@ -61,6 +61,11 @@ test('R04 visual assets use an exact local allowlist',()=>{
   'assets/menu/menu-character.png':'image/png',
   'assets/menu/menu-atmosphere.png':'image/png',
   'assets/battle/battle-table-v1.webp':'image/webp',
+  'assets/battle/battle-arena-approach-v1.webp':'image/webp',
+  'assets/online/online-atrium.webp':'image/webp',
+  'assets/online/online-atrium-left.webp':'image/webp',
+  'assets/online/online-atrium-right.webp':'image/webp',
+  'assets/online/online-atrium-deep.webp':'image/webp',
  };
  const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
  for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
@@ -69,7 +74,7 @@ test('R04 visual assets use an exact local allowlist',()=>{
   assert.equal(UI_ASSETS[relativePath],contentType);
   assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
  }
- for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png'])assert.equal(resolveUiAsset(name),null);
+ for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png','assets/online/unknown.webp'])assert.equal(resolveUiAsset(name),null);
 });
 
 test('R04 built UI contains the three bounded menu assets',()=>{
@@ -91,6 +96,15 @@ test('R04 built UI contains the bounded raster battle table',()=>{
  assert.ok(fs.existsSync(file),'battle table must be copied into build/ui');
  const bytes=fs.statSync(file).size;
  assert.ok(bytes>0&&bytes<=1_000_000,'battle table must stay within its byte budget');
+});
+
+test('R04 built UI contains the connected online scenes',()=>{
+ for(const name of ['online-atrium.webp','online-atrium-left.webp','online-atrium-right.webp','online-atrium-deep.webp']){
+  const file=path.join(__dirname,'build/ui/assets/online',name);
+  assert.ok(fs.existsSync(file),`${name} must be copied into build/ui`);
+  const bytes=fs.statSync(file).size;
+  assert.ok(bytes>0&&bytes<=1_500_000,`${name} must stay within its byte budget`);
+ }
 });
 
 test('R04 built UI contains the complete bounded move icon set',()=>{
