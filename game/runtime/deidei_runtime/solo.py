@@ -14,7 +14,7 @@ from .view import options_view, participants_view, ledger_summary, progress, TRA
 class SoloGame:
     def __init__(self, profile: dict, *, session: MatchSession | None = None,
                  rng: Random | None = None, token_rng: Random | None = None,
-                 clock=time.monotonic, submit_delay: float = 0.2, reveal_delay: float = 0.8):
+                 clock=time.monotonic, submit_delay: float = 0.9, reveal_delay: float = 3.0):
         self.self_id = profile["profile_id"]
         self.profiles = {self.self_id: {k: profile[k] for k in ("nickname", "avatar_id")},
                          "bot_local": {"nickname": OPPONENT_NAME, "avatar_id": "sun"}}
@@ -104,10 +104,16 @@ class SoloGame:
         if self.phase == "result":
             transition = self.resolution["transition"]
             outcome = {"winner_id": transition["winner_id"], "reason": TRANSITIONS[transition["kind"]]}
+        timer = {"mode": "untimed", "remaining_ms": None, "total_ms": None}
+        if self.phase == "revealed":
+            total_ms = round(self.reveal_delay * 1000)
+            timer = {"mode": "reveal",
+                     "remaining_ms": max(0, total_ms - round((self.clock() - self.phase_at) * 1000)),
+                     "total_ms": total_ms}
         return deepcopy({"source": "live", "view_id": self.view_id, **self.expected, "phase": self.phase,
                          "participants": participants_view(self.state, self.profiles, submitted, resolution),
                          "self_id": self.self_id, "options": self.options, "selected_entry_id": self.selected,
-                         "submitted": submitted, "timer": {"mode": "untimed", "remaining_ms": None, "total_ms": None},
+                         "submitted": submitted, "timer": timer,
                          "summary": summary, "outcome": outcome})
 
     def leave(self) -> dict:

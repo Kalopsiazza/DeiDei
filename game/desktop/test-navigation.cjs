@@ -11,9 +11,9 @@ const start=source.indexOf(' const navigate='), end=source.indexOf(' const start
 assert.ok(start>=0 && end>start,'Renderer navigation handlers must be present');
 const code=transformSync(source.slice(start,end)+'\nglobalThis.handlers={navigate,changeScene};',{loader:'ts'}).code;
 function renderer() {
- const state={page:'prepare',busy:false,error:'',readError:false,view:null,modal:'preview'};
+ const state={page:'prepare',busy:false,error:'',readError:false,view:null,modal:'preview',frozen:false,situationPlayer:''};
  const context={sceneChangePending:{current:false},generation:{current:0},busy:false,message:code=>code};
- for(const key of ['page','busy','error','readError','view','modal'])context['set'+key[0].toUpperCase()+key.slice(1)]=value=>{state[key]=value;};
+ for(const key of ['page','busy','error','readError','view','modal','frozen','situationPlayer','arenaExiting','pendingResult','welcomePreview'])context['set'+key[0].toUpperCase()+key.slice(1)]=value=>{state[key]=value;};
  vm.runInNewContext(code,context);
  return {state,...context};
 }

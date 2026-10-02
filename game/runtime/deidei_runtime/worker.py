@@ -5,10 +5,12 @@ import sys
 import unicodedata
 
 from .solo import SoloGame
+from .tutorial import TutorialGame
 from .opponent import ENTRY_MAP, OPPONENT_ID
 
 LIMIT = 1024 * 1024
 FIELDS = {"health": set(), "start_solo": {"profile_id", "nickname", "avatar_id"},
+          "start_tutorial": {"profile_id", "nickname", "avatar_id"}, "tutorial_next": {"view_id"},
           "submit": {"view_id", "entry_id"}, "get_view": set(), "leave": set(), "shutdown": set()}
 
 
@@ -37,13 +39,13 @@ class Worker:
                 raise ValueError("SESSION_CLOSED")
             if op == "health":
                 data = {"runtime": "r02-t04-a", "rules_version": "classic-1.0.1", "opponent": OPPONENT_ID}
-            elif op == "start_solo":
+            elif op in ("start_solo", "start_tutorial"):
                 if (not isinstance(payload["profile_id"], str)
                         or not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", payload["profile_id"])
                         or payload["profile_id"] == "bot_local" or not valid_text(payload["nickname"], 20)
                         or not payload["nickname"].strip() or payload["avatar_id"] not in ("leaf", "sun", "moon", "star")):
                     raise ValueError("INVALID_PROFILE")
-                new = self.solo_factory(payload)
+                new = TutorialGame(payload) if op == "start_tutorial" else self.solo_factory(payload)
                 if self.solo:
                     self.solo.leave()
                 self.solo = new
@@ -60,6 +62,10 @@ class Worker:
                             or payload["entry_id"] not in ENTRY_MAP):
                         raise ValueError("INVALID_REQUEST")
                     data = self.solo.submit(payload["view_id"], payload["entry_id"])
+                elif op == "tutorial_next":
+                    if not isinstance(self.solo, TutorialGame) or not valid_text(payload["view_id"], 128):
+                        raise ValueError("INVALID_REQUEST")
+                    data = self.solo.advance(payload["view_id"])
                 elif op == "get_view":
                     data = self.solo.get_view()
                 else:

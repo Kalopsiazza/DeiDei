@@ -1,4 +1,4 @@
-// Test-only transport injection. Product main never imports this launcher or a fake service.
+// Development/test transport injection. Product main never imports this launcher or a fake service.
 const {NetworkRoomPort}=require('../online/network-room-port.cjs');
 const {ScriptedSocket}=require('./fake.cjs');
 const controller={view:null};

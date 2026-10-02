@@ -21,9 +21,19 @@ DESKTOP = ROOT / 'game/desktop'
 INPUT = '3ce99f1cdd5f2f52c757ef61b696ecaade4877d0'
 PLAN_HASH = '84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc'
 PLATFORM = 'darwin-arm64' if sys.platform == 'darwin' else 'win32-x64'
-STAGE_FILES = ['main.cjs', 'preload.cjs', 'profile.cjs', 'worker-port.cjs',
+MOVE_ASSET_NAMES = ['Charge', 'Bi', 'Def', 'Three', 'ThreeDef', 'BigBi', 'Reflect',
+                    'SelfBi', 'Cloud', 'Bomb', 'Xiao', 'Pragon', 'PragonDef', 'Volvo',
+                    'VolvoDef', 'RotateThree', 'XiaoBei', 'FlipVolvo', 'Shell', 'Absorb',
+                    'NieXiang', 'NieXiangDef', 'JuYan', 'TianLiJun', 'ZhangXinWei',
+                    'LiQiang', 'BombPragon', 'BombVolvo', 'BombFlipVolvo', 'FreeThree',
+                    'FreeRotateThree', 'ZengYi', 'ZengRewardBigBi']
+STAGE_FILES = ['main.cjs', 'ui-assets.cjs', 'preload.cjs', 'profile.cjs', 'worker-port.cjs',
                'worker-bridge.cjs', 'worker-launch.cjs', 'build/fixture.cjs',
-               'build/ui/index.html', 'build/ui/renderer.js', 'build/ui/style.css']
+               'build/ui/index.html', 'build/ui/renderer.js', 'build/ui/style.css',
+               'build/ui/assets/menu/menu-environment.webp',
+               'build/ui/assets/menu/menu-character.png',
+               'build/ui/assets/menu/menu-atmosphere.png',
+               *[f'build/ui/assets/moves/{name}.png' for name in MOVE_ASSET_NAMES]]
 
 
 def sha(file: Path) -> str:

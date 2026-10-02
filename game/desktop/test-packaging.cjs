@@ -51,3 +51,78 @@ test('P04 source launch retains module arguments and explicit developer Python',
  assert.equal(launch.env.PYTHONPATH,[path.resolve(__dirname,'../core'),path.resolve(__dirname,'../runtime')].join(path.delimiter));
  assert.equal(workerLaunch({},{}).executable,'python3');
 });
+
+test('R04 visual assets use an exact local allowlist',()=>{
+ const modulePath=path.join(__dirname,'ui-assets.cjs');
+ assert.ok(fs.existsSync(modulePath),'ui asset resolver must exist');
+ const {UI_ASSETS,resolveUiAsset}=require(modulePath);
+ const expected={
+  'assets/menu/menu-environment.webp':'image/webp',
+  'assets/menu/menu-character.png':'image/png',
+  'assets/menu/menu-atmosphere.png':'image/png',
+  'assets/menu/welcome-card-back-v1.png':'image/png',
+  'assets/menu/welcome-opening-v1.mp4':'video/mp4',
+  'assets/battle/battle-table-v1.webp':'image/webp',
+  'assets/battle/battle-arena-approach-v1.webp':'image/webp',
+  'assets/online/online-atrium.webp':'image/webp',
+  'assets/online/online-atrium-left.webp':'image/webp',
+  'assets/online/online-atrium-right.webp':'image/webp',
+  'assets/online/online-atrium-deep.webp':'image/webp',
+ };
+ const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
+ for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
+ assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css','welcome.css',...Object.keys(expected)].sort());
+ for(const [relativePath,contentType] of Object.entries(expected)){
+  assert.equal(UI_ASSETS[relativePath],contentType);
+  assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
+ }
+ for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png','assets/online/unknown.webp'])assert.equal(resolveUiAsset(name),null);
+});
+
+test('R04 built UI contains the bounded menu assets and opening video',()=>{
+ const limits={
+  'menu-environment.webp':1_500_000,
+  'menu-character.png':2_500_000,
+  'menu-atmosphere.png':1_000_000,
+  'welcome-opening-v1.mp4':8_000_000,
+ };
+ for(const [name,maxBytes] of Object.entries(limits)){
+  const file=path.join(__dirname,'build/ui/assets/menu',name);
+  assert.ok(fs.existsSync(file),`${name} must be copied into build/ui`);
+  const bytes=fs.statSync(file).size;
+  assert.ok(bytes>0&&bytes<=maxBytes,`${name} must stay within its byte budget`);
+ }
+});
+
+test('R04 built UI contains the bounded raster battle table',()=>{
+ const file=path.join(__dirname,'build/ui/assets/battle/battle-table-v1.webp');
+ assert.ok(fs.existsSync(file),'battle table must be copied into build/ui');
+ const bytes=fs.statSync(file).size;
+ assert.ok(bytes>0&&bytes<=1_000_000,'battle table must stay within its byte budget');
+});
+
+test('R04 built UI contains the connected online scenes',()=>{
+ for(const name of ['online-atrium.webp','online-atrium-left.webp','online-atrium-right.webp','online-atrium-deep.webp']){
+  const file=path.join(__dirname,'build/ui/assets/online',name);
+  assert.ok(fs.existsSync(file),`${name} must be copied into build/ui`);
+  const bytes=fs.statSync(file).size;
+  assert.ok(bytes>0&&bytes<=1_500_000,`${name} must stay within its byte budget`);
+ }
+});
+
+test('R04 built UI contains the complete bounded move icon set',()=>{
+ const catalog=require('./catalog.json');
+ const folder=path.join(__dirname,'build/ui/assets/moves');
+ assert.deepEqual(fs.readdirSync(folder).sort(),catalog.entries.map(entry=>`${entry.entry_id}.png`).sort());
+ for(const entry of catalog.entries){
+  const bytes=fs.statSync(path.join(folder,`${entry.entry_id}.png`)).size;
+  assert.ok(bytes>0&&bytes<=750_000,`${entry.entry_id}.png must stay within its byte budget`);
+ }
+});
+
+test('R04 dev reload waits for a completed build marker',()=>{
+ const dev=fs.readFileSync(path.join(__dirname,'dev.cjs'),'utf8');
+ const main=fs.readFileSync(path.join(__dirname,'main.cjs'),'utf8');
+ assert.match(dev,/build\/ui\/\.reload/);
+ assert.match(main,/filename !== '\.reload'/);
+});

@@ -1,0 +1,1456 @@
+{
+  "source": "fixture",
+  "transport": "scripted fake socket in tests only; NOT a real room service",
+  "platform": "darwin",
+  "arch": "arm64",
+  "checks": [
+    "OnlineRoom has no legacy online-table fallback implementation",
+    "Actual Electron create, six-seat lobby, 2/6-player intro and 33 cards across all three target viewports",
+    "Future limits 10→5→30 preserve current deadline and accepted move; host absence keeps cards/timers; naturally eliminated host can configure",
+    "Submit confirmation lock, complete result last_turn, result-page settings, public reveal ledger and next-match lobby",
+    "Host leave confirmation, indistinguishable access error, explicit full-room spectator choice, lobby role buttons",
+    "Pending-close notice and hidden controls; directed removal navigates without a click, keeps identity, and late old event/snapshot do not restore old room",
+    "Named IPC rejects URL injection and oversized input; native host-close cancellation preserves connection and confirmation exits",
+    "Ordinary main without endpoint reports unavailable; original offline worker starts, online switch rejects an active solo"
+  ],
+  "screenshots": [
+    {
+      "name": "mock-front-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-front-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-front-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-create-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-create-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-create-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-lobby-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-lobby-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-lobby-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-2-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-2-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-2-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-6-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-6-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-intro-6-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-table-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-table-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-table-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-submitted",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-before",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-dialog",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-next5",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-limit-next30",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-continues",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-grace-continues",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-eliminated-host-setting",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-revealing-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-revealing-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-revealing-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-result-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-result-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-result-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-host-leave",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-join-1000x650",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-join-1366x768",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-join-1920x1080",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-wrong-room",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-full-room",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-spectator-lobby",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-spectating",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-pending-close",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-membership-ended",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-new-room-old-event",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "mock-reconnecting",
+      "source": "fixture",
+      "capture": "actual Electron development viewport",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    }
+  ],
+  "native": {
+    "content": {
+      "x": 172,
+      "y": 204,
+      "width": 1366,
+      "height": 768
+    },
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "WebSocket": "function"
+  },
+  "layout_1000": {
+    "size": [
+      1000,
+      650
+    ],
+    "scroll": [
+      1000,
+      650
+    ],
+    "regions": {
+      ".battle-table": {
+        "top": 0,
+        "bottom": 650,
+        "height": 650
+      },
+      ".battle-hud": {
+        "top": 7,
+        "bottom": 51,
+        "height": 44
+      },
+      ".battle-arena": {
+        "top": 55,
+        "bottom": 235,
+        "height": 180
+      },
+      ".battle-operation": {
+        "top": 239,
+        "bottom": 640,
+        "height": 401
+      },
+      ".battle-resources": {
+        "top": 239,
+        "bottom": 289,
+        "height": 50
+      },
+      ".battle-turn": {
+        "top": 293,
+        "bottom": 315,
+        "height": 22
+      },
+      ".battle-cards": {
+        "top": 319,
+        "bottom": 598,
+        "height": 279
+      },
+      ".battle-actions": {
+        "top": 602,
+        "bottom": 640,
+        "height": 38
+      }
+    },
+    "cards": [
+      {
+        "x": 24,
+        "y": 340,
+        "right": 105.390625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 109.390625,
+        "y": 340,
+        "right": 190.78125,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 194.78125,
+        "y": 340,
+        "right": 276.171875,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 280.171875,
+        "y": 340,
+        "right": 361.5703125,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 365.5703125,
+        "y": 340,
+        "right": 446.9609375,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 450.9609375,
+        "y": 340,
+        "right": 532.3515625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 24,
+        "y": 427.328125,
+        "right": 105.390625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 109.390625,
+        "y": 427.328125,
+        "right": 190.78125,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 194.78125,
+        "y": 427.328125,
+        "right": 276.171875,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 280.171875,
+        "y": 427.328125,
+        "right": 361.5703125,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 365.5703125,
+        "y": 427.328125,
+        "right": 446.9609375,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 450.9609375,
+        "y": 427.328125,
+        "right": 532.3515625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 24,
+        "y": 514.6640625,
+        "right": 105.390625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 109.390625,
+        "y": 514.6640625,
+        "right": 190.78125,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 194.78125,
+        "y": 514.6640625,
+        "right": 276.171875,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 280.171875,
+        "y": 514.6640625,
+        "right": 361.5703125,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 365.5703125,
+        "y": 514.6640625,
+        "right": 446.9609375,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 450.9609375,
+        "y": 514.6640625,
+        "right": 532.3515625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 542.359375,
+        "y": 340,
+        "right": 624.4140625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 628.4140625,
+        "y": 340,
+        "right": 710.4765625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 714.4765625,
+        "y": 340,
+        "right": 796.5390625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 542.359375,
+        "y": 427.328125,
+        "right": 624.4140625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 628.4140625,
+        "y": 427.328125,
+        "right": 710.4765625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 714.4765625,
+        "y": 427.328125,
+        "right": 796.5390625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 542.359375,
+        "y": 514.6640625,
+        "right": 624.4140625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 628.4140625,
+        "y": 514.6640625,
+        "right": 710.4765625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 714.4765625,
+        "y": 514.6640625,
+        "right": 796.5390625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 806.5390625,
+        "y": 340,
+        "right": 889.265625,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 893.265625,
+        "y": 340,
+        "right": 976,
+        "bottom": 423.328125,
+        "height": 83.328125,
+        "font": 16
+      },
+      {
+        "x": 806.5390625,
+        "y": 427.328125,
+        "right": 889.265625,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 893.265625,
+        "y": 427.328125,
+        "right": 976,
+        "bottom": 510.6640625,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 806.5390625,
+        "y": 514.6640625,
+        "right": 889.265625,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      },
+      {
+        "x": 893.265625,
+        "y": 514.6640625,
+        "right": 976,
+        "bottom": 598,
+        "height": 83.3359375,
+        "font": 16
+      }
+    ]
+  },
+  "layout_1366": {
+    "size": [
+      1366,
+      768
+    ],
+    "scroll": [
+      1366,
+      768
+    ],
+    "regions": {
+      ".battle-table": {
+        "top": 0,
+        "bottom": 768,
+        "height": 768
+      },
+      ".battle-hud": {
+        "top": 12,
+        "bottom": 70,
+        "height": 58
+      },
+      ".battle-arena": {
+        "top": 77,
+        "bottom": 407.234375,
+        "height": 330.234375
+      },
+      ".battle-operation": {
+        "top": 414.234375,
+        "bottom": 758,
+        "height": 343.765625
+      },
+      ".battle-resources": {
+        "top": 414.234375,
+        "bottom": 480.234375,
+        "height": 66
+      },
+      ".battle-turn": {
+        "top": 484.234375,
+        "bottom": 507.234375,
+        "height": 23
+      },
+      ".battle-cards": {
+        "top": 511.234375,
+        "bottom": 712,
+        "height": 200.765625
+      },
+      ".battle-actions": {
+        "top": 716,
+        "bottom": 758,
+        "height": 42
+      }
+    },
+    "cards": [
+      {
+        "x": 32.78125,
+        "y": 533.234375,
+        "right": 145.84375,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 149.84375,
+        "y": 533.234375,
+        "right": 262.9140625,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 266.9140625,
+        "y": 533.234375,
+        "right": 379.984375,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 383.984375,
+        "y": 533.234375,
+        "right": 497.0546875,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 501.0546875,
+        "y": 533.234375,
+        "right": 614.125,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 618.125,
+        "y": 533.234375,
+        "right": 731.1875,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 32.78125,
+        "y": 594.15625,
+        "right": 145.84375,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 149.84375,
+        "y": 594.15625,
+        "right": 262.9140625,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 266.9140625,
+        "y": 594.15625,
+        "right": 379.984375,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 383.984375,
+        "y": 594.15625,
+        "right": 497.0546875,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 501.0546875,
+        "y": 594.15625,
+        "right": 614.125,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 618.125,
+        "y": 594.15625,
+        "right": 731.1875,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 32.78125,
+        "y": 655.078125,
+        "right": 145.84375,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 149.84375,
+        "y": 655.078125,
+        "right": 262.9140625,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 266.9140625,
+        "y": 655.078125,
+        "right": 379.984375,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 383.984375,
+        "y": 655.078125,
+        "right": 497.0546875,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 501.0546875,
+        "y": 655.078125,
+        "right": 614.125,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 618.125,
+        "y": 655.078125,
+        "right": 731.1875,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 741.1953125,
+        "y": 533.234375,
+        "right": 854.9296875,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 858.9296875,
+        "y": 533.234375,
+        "right": 972.6640625,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 976.6640625,
+        "y": 533.234375,
+        "right": 1090.3984375,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 741.1953125,
+        "y": 594.15625,
+        "right": 854.9296875,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 858.9296875,
+        "y": 594.15625,
+        "right": 972.6640625,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 976.6640625,
+        "y": 594.15625,
+        "right": 1090.3984375,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 741.1953125,
+        "y": 655.078125,
+        "right": 854.9296875,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 858.9296875,
+        "y": 655.078125,
+        "right": 972.6640625,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 976.6640625,
+        "y": 655.078125,
+        "right": 1090.3984375,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1100.40625,
+        "y": 533.234375,
+        "right": 1214.8125,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1218.8125,
+        "y": 533.234375,
+        "right": 1333.21875,
+        "bottom": 590.15625,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1100.40625,
+        "y": 594.15625,
+        "right": 1214.8125,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1218.8125,
+        "y": 594.15625,
+        "right": 1333.21875,
+        "bottom": 651.078125,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1100.40625,
+        "y": 655.078125,
+        "right": 1214.8125,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      },
+      {
+        "x": 1218.8125,
+        "y": 655.078125,
+        "right": 1333.21875,
+        "bottom": 712,
+        "height": 56.921875,
+        "font": 16
+      }
+    ]
+  },
+  "layout_1920": {
+    "size": [
+      1920,
+      1080
+    ],
+    "scroll": [
+      1920,
+      1080
+    ],
+    "regions": {
+      ".battle-table": {
+        "top": 0,
+        "bottom": 1080,
+        "height": 1080
+      },
+      ".battle-hud": {
+        "top": 18,
+        "bottom": 76,
+        "height": 58
+      },
+      ".battle-arena": {
+        "top": 86,
+        "bottom": 516,
+        "height": 430
+      },
+      ".battle-operation": {
+        "top": 526,
+        "bottom": 1066,
+        "height": 540
+      },
+      ".battle-resources": {
+        "top": 526,
+        "bottom": 592,
+        "height": 66
+      },
+      ".battle-turn": {
+        "top": 596,
+        "bottom": 630,
+        "height": 34
+      },
+      ".battle-cards": {
+        "top": 634,
+        "bottom": 1008,
+        "height": 374
+      },
+      ".battle-actions": {
+        "top": 1012,
+        "bottom": 1066,
+        "height": 54
+      }
+    },
+    "cards": [
+      {
+        "x": 40,
+        "y": 663,
+        "right": 202.1171875,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 206.1171875,
+        "y": 663,
+        "right": 368.2421875,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 372.2421875,
+        "y": 663,
+        "right": 534.359375,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 538.359375,
+        "y": 663,
+        "right": 700.484375,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 704.484375,
+        "y": 663,
+        "right": 866.6015625,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 870.6015625,
+        "y": 663,
+        "right": 1032.7265625,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 40,
+        "y": 779.328125,
+        "right": 202.1171875,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 206.1171875,
+        "y": 779.328125,
+        "right": 368.2421875,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 372.2421875,
+        "y": 779.328125,
+        "right": 534.359375,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 538.359375,
+        "y": 779.328125,
+        "right": 700.484375,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 704.484375,
+        "y": 779.328125,
+        "right": 866.6015625,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 870.6015625,
+        "y": 779.328125,
+        "right": 1032.7265625,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 40,
+        "y": 895.6640625,
+        "right": 202.1171875,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 206.1171875,
+        "y": 895.6640625,
+        "right": 368.2421875,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 372.2421875,
+        "y": 895.6640625,
+        "right": 534.359375,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 538.359375,
+        "y": 895.6640625,
+        "right": 700.484375,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 704.484375,
+        "y": 895.6640625,
+        "right": 866.6015625,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 870.6015625,
+        "y": 895.6640625,
+        "right": 1032.7265625,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1042.7265625,
+        "y": 663,
+        "right": 1205.5078125,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 1209.5078125,
+        "y": 663,
+        "right": 1372.296875,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 1376.296875,
+        "y": 663,
+        "right": 1539.078125,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 1042.7265625,
+        "y": 779.328125,
+        "right": 1205.5078125,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1209.5078125,
+        "y": 779.328125,
+        "right": 1372.296875,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1376.296875,
+        "y": 779.328125,
+        "right": 1539.078125,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1042.7265625,
+        "y": 895.6640625,
+        "right": 1205.5078125,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1209.5078125,
+        "y": 895.6640625,
+        "right": 1372.296875,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1376.296875,
+        "y": 895.6640625,
+        "right": 1539.078125,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1549.0859375,
+        "y": 663,
+        "right": 1712.5390625,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 1716.5390625,
+        "y": 663,
+        "right": 1880,
+        "bottom": 775.328125,
+        "height": 112.328125,
+        "font": 16
+      },
+      {
+        "x": 1549.0859375,
+        "y": 779.328125,
+        "right": 1712.5390625,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1716.5390625,
+        "y": 779.328125,
+        "right": 1880,
+        "bottom": 891.6640625,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1549.0859375,
+        "y": 895.6640625,
+        "right": 1712.5390625,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      },
+      {
+        "x": 1716.5390625,
+        "y": 895.6640625,
+        "right": 1880,
+        "bottom": 1008,
+        "height": 112.3359375,
+        "font": 16
+      }
+    ]
+  },
+  "console_errors": [],
+  "status": "PASS"
+}

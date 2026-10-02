@@ -72,7 +72,7 @@ test('script states, duplicate/stale submission, privacy and immutable snapshots
  assert.ok(v.participants.every(p=>!Object.hasOwn(p,'selected_entry_id')));
  const submitting=await p.submit(v.view_id,'Charge');assert.equal(submitting.phase,'submitting');
  await assert.rejects(p.submit(v.view_id,'Charge'),/ALREADY_SUBMITTED/);
- assert.deepEqual(submitting.options,v.options);now=1201;assert.equal((await p.getView()).phase,'revealed');now=5001;const done=await p.getView();assert.equal(done.phase,'result');assert.equal(done.outcome.winner_id,'local-test');assert.ok(!p.isActive());
+ assert.deepEqual(submitting.options,v.options);now=1201;assert.equal((await p.getView()).phase,'revealed');now=6199;assert.equal((await p.getView()).phase,'revealed');now=6200;const done=await p.getView();assert.equal(done.phase,'result');assert.equal(done.outcome.winner_id,'local-test');assert.ok(!p.isActive());
  done.participants[0].nickname='tampered';assert.notEqual((await p.getView()).participants[0].nickname,'tampered');
  await p.leave();await assert.rejects(p.submit(v.view_id,'Charge'),/STALE_VIEW/);now=9999;assert.equal((await p.getView()).phase,'selecting');
 });
@@ -80,6 +80,7 @@ test('error preserves selection, retry works, draw and spectating keep real rost
  const p=new FixturePort();let v=await p.preview('invalid');v=await p.submit(v.view_id,'Bi');assert.equal(v.phase,'error');assert.equal(v.selected_entry_id,'Bi');assert.equal(v.submitted,false);
  assert.equal((await p.submit(v.view_id,'Bi')).phase,'submitting');
  v=await p.preview('draw');assert.equal(v.outcome.winner_id,null);assert.ok(v.participants.every(p=>!p.alive));
+ v=await p.preview('defeat');assert.equal(v.participants.length,2);assert.notEqual(v.outcome.winner_id,v.self_id);assert.match(v.summary.join(' '),/最后一拍被 Pragon 淘汰/);
  for(const scene of ['spectator','eliminated','restart']){v=await p.preview(scene);assert.deepEqual(v.options,[]);await assert.rejects(p.submit(v.view_id,'Charge'),/NOT_SELECTING/);}
  assert.equal(v.participants.length,6);assert.equal(v.participants.filter(p=>p.alive).length,4);assert.equal(v.participants[0].alive,false);assert.equal(v.participants[0].resources.dd6,'0');
  await assert.rejects(p.preview('made-up'),/INVALID_SCENE/);

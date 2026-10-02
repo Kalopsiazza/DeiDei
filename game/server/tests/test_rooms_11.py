@@ -28,6 +28,7 @@ class Rooms11(SocketCase):
                 return value
 
     async def test_N37_default_and_protocol(self):
+        self.assertEqual(DEFAULT_POLICY['reveal_ms'], 5000)
         s=await self.server()
         players,_,rid,_=await self.room(s)
         hello=players[0].hello
@@ -41,6 +42,19 @@ class Rooms11(SocketCase):
         self.assertIsNone(v['host_recovery'])
         self.assertIsNone(v['pending_close'])
         self.assertEqual(set(v['policy']),set(DEFAULT_POLICY))
+
+    async def test_N37_default_reveal_holds_for_five_seconds(self):
+        s=await self.server(test_reveal_ms=DEFAULT_POLICY['reveal_ms'])
+        players,_,rid,_=await self.room(s)
+        v=await self.start(players,rid)
+        for c in players:self.ok(await c.submit(rid,v,'Charge'))
+        await s.advance_ms(v['policy']['min_select_ms'])
+        v=await players[0].sync(rid)
+        self.assertEqual((v['phase'],v['timer']['remaining_ms']),('revealing',5000))
+        await s.advance_ms(4999)
+        self.assertEqual((await players[0].sync(rid))['phase'],'revealing')
+        await s.advance_ms(1)
+        self.assertEqual((await players[0].sync(rid))['phase'],'selecting')
 
     async def test_N38_N39_change_only_next_select_revision_and_noop(self):
         s=await self.server()
