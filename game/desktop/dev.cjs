@@ -3,7 +3,7 @@ const { spawn, spawnSync } = require('node:child_process');
 const path = require('node:path');
 
 const root = __dirname;
-const uiSource = /^(index\.html|style\.css|renderer\.tsx|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|assets\/menu\/.*\.(?:png|webp))$/;
+const uiSource = /^(index\.html|style\.css|welcome\.css|WelcomeEntrance\.tsx|renderer\.tsx|BattleStage\.tsx|ManualArchive\.tsx|TutorialCoach\.tsx|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|assets\/(?:menu|battle)\/.*\.(?:png|webp|mp4))$/;
 const build = () => {
   const ok = spawnSync(process.execPath, ['build.cjs'], { cwd: root, stdio: 'inherit' }).status === 0;
   if (ok) fs.writeFileSync(path.join(root, 'build/ui/.reload'), String(Date.now()));
@@ -12,7 +12,9 @@ const build = () => {
 
 if (!build()) process.exit(1);
 
-const electron = spawn(require('electron'), ['.'], {
+const electronEntry = process.env.DEIDEI_ROOM_URL ? '.' : path.join(root, 'tests-online/smoke-main.cjs');
+console.log(process.env.DEIDEI_ROOM_URL ? '[dev] 好友房连接真实开发服务。' : '[dev] 未配置房间服务，好友房使用脚本化 UI 演示。');
+const electron = spawn(require('electron'), [electronEntry], {
   cwd: root,
   env: { ...process.env, DEIDEI_DEV_RELOAD: '1' },
   stdio: 'inherit',

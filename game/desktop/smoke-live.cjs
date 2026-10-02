@@ -18,8 +18,9 @@ const output = process.env.DEIDEI_SMOKE_OUTPUT ? path.resolve(process.env.DEIDEI
     const errors=[];page.on('pageerror',e=>errors.push(e.message));
     evidence.native = await app.evaluate(({BrowserWindow,screen})=>({bounds:BrowserWindow.getAllWindows()[0].getContentBounds(),displays:screen.getAllDisplays().map(d=>({bounds:d.bounds,scaleFactor:d.scaleFactor})),versions:process.versions}));
     const shot = async name => {await page.screenshot({path:path.join(output,`${name}.png`),scale:'css'});evidence.screenshots.push({name,viewport:await page.evaluate(()=>({width:innerWidth,height:innerHeight,dpr:devicePixelRatio})),method:'Real Electron renderer screenshot; explicit development viewport'});};
-    await page.getByRole('textbox',{name:'昵称',exact:true}).fill('本机验收');
-    await page.getByRole('button',{name:'保存，进入课间 →'}).click();
+    await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
+  await page.getByRole('textbox',{name:'昵称',exact:true}).fill('本机验收');
+    await page.getByRole('button',{name:'确认名字',exact:true}).click();await page.getByRole('button',{name:'进入主菜单',exact:true}).click();
     await page.getByRole('button',{name:'设置',exact:true}).click();
     await page.getByRole('slider',{name:'音乐音量'}).fill('25');
     await page.getByRole('button',{name:'保存并关闭',exact:true}).click();

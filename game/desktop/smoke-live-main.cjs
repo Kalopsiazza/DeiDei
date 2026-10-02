@@ -12,4 +12,6 @@ WorkerBridge.prototype.start = function () {
 const { WorkerPort } = require('./worker-port.cjs');
 const startSolo = WorkerPort.prototype.startSolo;
 WorkerPort.prototype.startSolo = function (...args) { global.__testPort = this; return startSolo.apply(this,args); };
+const startTutorial = WorkerPort.prototype.startTutorial;
+WorkerPort.prototype.startTutorial = function (...args) { global.__testPort = this; return startTutorial.apply(this,args); };
 require('./main.cjs');

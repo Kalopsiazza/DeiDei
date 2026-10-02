@@ -11,11 +11,13 @@ const path = require('node:path');
   let app;
   try {
     app = await electron.launch({args:[path.join(__dirname,'smoke-live-main.cjs')],env});
-    const page = await app.firstWindow();
+    const page = await app.firstWindow();await app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].webContents.setBackgroundThrottling(false));
     page.setDefaultTimeout(10000);
+    await page.getByRole('button',{name:'跳过开场',exact:true}).click();
     await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
   await page.getByRole('textbox',{name:'昵称',exact:true}).fill('本机验收');
     await page.getByRole('button',{name:'确认名字',exact:true}).click();await page.getByRole('button',{name:'进入主菜单',exact:true}).click();
+    await page.waitForFunction(()=>document.querySelector('.app')?.getAttribute('data-page')==='menu');
     await page.getByRole('button',{name:'开发预览',exact:true}).click();
     await page.evaluate(() => {
       window.__firstResultFrame = new Promise(resolve => {
@@ -187,6 +189,7 @@ const path = require('node:path');
     await page.locator('.self-seat .move-card.current').waitFor();
     await page.waitForTimeout(700);
     await page.locator('.opponent-seat .move-card.current').waitFor();
+    await page.evaluate(()=>Promise.all([...document.querySelectorAll('.move-card.current')].flatMap(node=>node.getAnimations().map(animation=>animation.finished))));
     assert.match(await page.locator('.self-seat .move-card.current').innerText(),/攒/);
     const revealLayout=await page.evaluate(()=>{
       const arena=document.querySelector('.battle-arena').getBoundingClientRect();
@@ -236,6 +239,8 @@ const path = require('node:path');
     assert.ok(Date.now()-revealedAt>=2700,'local reveal ended before its three-second hold');
     assert.equal(await page.locator('.selection-history > span').count(),1);
     const historyCard=page.locator('.selection-history > span').first();
+    await page.mouse.move(10,10);
+    await historyCard.evaluate(node=>Promise.all(node.getAnimations().map(animation=>animation.finished)));
     const historyTransform=await historyCard.evaluate(node=>getComputedStyle(node).transform);
     assert.equal(await historyCard.getAttribute('tabindex'),'0');
     await historyCard.hover();
@@ -329,7 +334,7 @@ const path = require('node:path');
     const resultAvatar=page.locator('.result-players article').first();
     assert.equal(await resultAvatar.locator('strong').evaluate(node=>getComputedStyle(node).opacity),'0');
     await resultAvatar.hover();
-    await page.waitForTimeout(220);
+    await page.waitForFunction(()=>getComputedStyle(document.querySelector('.result-players article strong')).opacity==='1');
 	    const resultTooltip=await resultAvatar.evaluate(node=>{const avatar=node.querySelector('.avatar').getBoundingClientRect(),label=node.querySelector('strong'),rect=label.getBoundingClientRect(),style=getComputedStyle(label);return {opacity:style.opacity,below:rect.top>=avatar.bottom,gap:Math.round(rect.top-avatar.bottom),plain:style.backgroundColor==='rgba(0, 0, 0, 0)'&&style.borderTopWidth==='0px'&&style.paddingTop==='0px'};});
 	    assert.equal(resultTooltip.opacity,'1');
 	    assert.equal(resultTooltip.below,true);

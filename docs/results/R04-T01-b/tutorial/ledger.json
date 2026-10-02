@@ -1,0 +1,2214 @@
+[
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "turn_index": "1",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"1\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"1\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"1\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"1\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "to_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "winner_id": null
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "turn_index": "2",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Bi",
+          "actual_move": "Bi",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "6",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R06"
+          },
+          "defense_return": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R06"
+          }
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Def",
+          "actual_move": "Def",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R08"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P2\",\"attack\",\"bot_local\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P2",
+          "kind": "attack",
+          "actor_id": "bot_local",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": "6",
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R06",
+            "R08"
+          ],
+          "result": "blocked",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"nx_charge\",\"[\\\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\\\",\\\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\\\",\\\"2\\\",\\\"P2\\\",\\\"attack\\\",\\\"bot_local\\\",\\\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\\\",null,null,\\\"\\\"]\",\"\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "nx_charge",
+          "resource_delta": "1",
+          "source_event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P2\",\"attack\",\"bot_local\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "rule_ids": [
+            "R20"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"nx_charge\",null,\"base\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "nx_charge",
+          "resource_delta": "1",
+          "source_event_id": null,
+          "rule_ids": [
+            "R20"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P4\",\"resource_spend\",\"bot_local\",\"bot_local\",\"dd6\",null,\"\"]",
+          "phase": "P4",
+          "kind": "resource_spend",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "-6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R09"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"2\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Def",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "game_index": "1",
+      "turn_index": "3",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Def",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "to_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "winner_id": null
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "turn_index": "3",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Bi",
+          "actual_move": "Bi",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "6",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R06"
+          },
+          "defense_return": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R06"
+          }
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"3\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"3\",\"P2\",\"attack\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"bot_local\",null,null,\"\"]",
+          "phase": "P2",
+          "kind": "attack",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "bot_local",
+          "amount6": "6",
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R06",
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"3\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"3\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"de680758-2e7f-4825-8da2-6aa2e4bf37e3\",\"de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1\",\"3\",\"P4\",\"resource_spend\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"\"]",
+          "phase": "P4",
+          "kind": "resource_spend",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "-6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R09"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": [
+          "bot_local"
+        ]
+      },
+      "eliminated_ids": [
+        "bot_local"
+      ],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3",
+      "game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "game_index": "1",
+      "turn_index": "3",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "finished",
+      "winner_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "sole_survivor",
+      "from_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "to_game_id": "de680758-2e7f-4825-8da2-6aa2e4bf37e3:g1",
+      "winner_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1",
+      "game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "turn_index": "1",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"1\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"1\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"1\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"1\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1",
+      "game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "to_game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "winner_id": null
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1",
+      "game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "turn_index": "2",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Bi",
+          "actual_move": "Bi",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "6",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R06"
+          },
+          "defense_return": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R06"
+          }
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"2\",\"P2\",\"attack\",\"bot_local\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P2",
+          "kind": "attack",
+          "actor_id": "bot_local",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": "6",
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R06",
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"2\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"2\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"2\",\"P4\",\"resource_spend\",\"bot_local\",\"bot_local\",\"dd6\",null,\"\"]",
+          "phase": "P4",
+          "kind": "resource_spend",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "-6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R09"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"b317e108-5066-4ae9-8253-5b8cc177b9a1\",\"b317e108-5066-4ae9-8253-5b8cc177b9a1:g1\",\"2\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [
+          "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+        ],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "12",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1",
+      "game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local"
+      ],
+      "status": "finished",
+      "winner_id": "bot_local",
+      "players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "12",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "sole_survivor",
+      "from_game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "to_game_id": "b317e108-5066-4ae9-8253-5b8cc177b9a1:g1",
+      "winner_id": "bot_local"
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "turn_index": "1",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"1\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"1\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"1\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"1\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "to_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "winner_id": null
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "turn_index": "2",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Bi",
+          "actual_move": "Bi",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "6",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R06"
+          },
+          "defense_return": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R06"
+          }
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Def",
+          "actual_move": "Def",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R08"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P2\",\"attack\",\"bot_local\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P2",
+          "kind": "attack",
+          "actor_id": "bot_local",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": "6",
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R06",
+            "R08"
+          ],
+          "result": "blocked",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"nx_charge\",\"[\\\"94dbc525-d538-4771-a950-6cde34811c87\\\",\\\"94dbc525-d538-4771-a950-6cde34811c87:g1\\\",\\\"2\\\",\\\"P2\\\",\\\"attack\\\",\\\"bot_local\\\",\\\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\\\",null,null,\\\"\\\"]\",\"\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "nx_charge",
+          "resource_delta": "1",
+          "source_event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P2\",\"attack\",\"bot_local\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "rule_ids": [
+            "R20"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"nx_charge\",null,\"base\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "nx_charge",
+          "resource_delta": "1",
+          "source_event_id": null,
+          "rule_ids": [
+            "R20"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P4\",\"resource_spend\",\"bot_local\",\"bot_local\",\"dd6\",null,\"\"]",
+          "phase": "P4",
+          "kind": "resource_spend",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "-6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R09"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"2\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Def",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "game_index": "1",
+      "turn_index": "3",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Def",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "to_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "winner_id": null
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "turn_index": "3",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Bi",
+          "actual_move": "Bi",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "6",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "6",
+            "comparison": "le",
+            "match_rule": "R06"
+          },
+          "defense_return": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R06"
+          }
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"3\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"3\",\"P2\",\"attack\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"bot_local\",null,null,\"\"]",
+          "phase": "P2",
+          "kind": "attack",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "bot_local",
+          "amount6": "6",
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R06",
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"3\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"3\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"94dbc525-d538-4771-a950-6cde34811c87\",\"94dbc525-d538-4771-a950-6cde34811c87:g1\",\"3\",\"P4\",\"resource_spend\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"\"]",
+          "phase": "P4",
+          "kind": "resource_spend",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "-6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R09"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": [
+          "bot_local"
+        ]
+      },
+      "eliminated_ids": [
+        "bot_local"
+      ],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "94dbc525-d538-4771-a950-6cde34811c87",
+      "game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "game_index": "1",
+      "turn_index": "3",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "finished",
+      "winner_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "0",
+          "lightning": "0",
+          "nx_charge": "2",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Bi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "sole_survivor",
+      "from_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "to_game_id": "94dbc525-d538-4771-a950-6cde34811c87:g1",
+      "winner_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+    }
+  },
+  {
+    "ok": true,
+    "ledger": {
+      "match_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125",
+      "game_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125:g1",
+      "turn_index": "1",
+      "actions": {
+        "bot_local": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "origin": "normal",
+          "is_recovery": false,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "branch": null,
+          "condition": null,
+          "eligible_targets": [],
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "0",
+            "comparison": "le",
+            "match_rule": "R12"
+          },
+          "defense_return": null
+        }
+      },
+      "events": [
+        {
+          "event_id": "[\"9e431b80-4b0b-4b12-a01e-febf97cc5125\",\"9e431b80-4b0b-4b12-a01e-febf97cc5125:g1\",\"1\",\"P2\",\"resource_gain\",\"bot_local\",\"bot_local\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"9e431b80-4b0b-4b12-a01e-febf97cc5125\",\"9e431b80-4b0b-4b12-a01e-febf97cc5125:g1\",\"1\",\"P2\",\"resource_gain\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"dd6\",null,\"charge\"]",
+          "phase": "P2",
+          "kind": "resource_gain",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": "dd6",
+          "resource_delta": "6",
+          "source_event_id": null,
+          "rule_ids": [
+            "R12"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"9e431b80-4b0b-4b12-a01e-febf97cc5125\",\"9e431b80-4b0b-4b12-a01e-febf97cc5125:g1\",\"1\",\"P4\",\"history_updated\",\"bot_local\",\"bot_local\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "bot_local",
+          "target_id": "bot_local",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        },
+        {
+          "event_id": "[\"9e431b80-4b0b-4b12-a01e-febf97cc5125\",\"9e431b80-4b0b-4b12-a01e-febf97cc5125:g1\",\"1\",\"P4\",\"history_updated\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",\"c62804ec-6915-4c5f-a8cf-cfa5ca749ea3\",null,null,\"\"]",
+          "phase": "P4",
+          "kind": "history_updated",
+          "actor_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "target_id": "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3",
+          "amount6": null,
+          "resource": null,
+          "resource_delta": null,
+          "source_event_id": null,
+          "rule_ids": [
+            "R16",
+            "R17"
+          ],
+          "result": "applied",
+          "reason_code": null
+        }
+      ],
+      "kills": {
+        "bot_local": [],
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": []
+      },
+      "eliminated_ids": [],
+      "post_turn_players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "next_state": {
+      "schema_version": 1,
+      "rules_version": "classic-1.0.1",
+      "match_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125",
+      "game_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125:g1",
+      "game_index": "1",
+      "turn_index": "2",
+      "roster": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "active_ids": [
+        "bot_local",
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3"
+      ],
+      "status": "playing",
+      "winner_id": null,
+      "players": {
+        "bot_local": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "c62804ec-6915-4c5f-a8cf-cfa5ca749ea3": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "pending_bombs": [],
+          "last_actual_move": "Charge",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      }
+    },
+    "transition": {
+      "kind": "continue_game",
+      "from_game_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125:g1",
+      "to_game_id": "9e431b80-4b0b-4b12-a01e-febf97cc5125:g1",
+      "winner_id": null
+    }
+  }
+]

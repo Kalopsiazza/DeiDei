@@ -1,4 +1,4 @@
-// Scripted transport for tests only. It is not a room service or online acceptance.
+// Scripted transport for development UI preview and tests. It is not a room service or online acceptance.
 const samples=require('./core-samples.json');
 const policy={turn_ms:10000,early_reveal:true,spectator_cap:6,host_disconnect_grace_ms:30000,reveal_ms:5000,min_select_ms:300};
 const hello=()=>({v:1,type:'hello',boot_id:'boot1',connection_id:'connection1',protocol:'rooms-1.1',rules_version:'classic-1.0.1',server_time_ms:100000,policy_defaults:structuredClone(policy),capabilities:{max_players:6,allowed_turn_ms:[5000,8000,10000,12000,20000,30000],spectator_max:6}});

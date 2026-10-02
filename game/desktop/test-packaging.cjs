@@ -60,6 +60,8 @@ test('R04 visual assets use an exact local allowlist',()=>{
   'assets/menu/menu-environment.webp':'image/webp',
   'assets/menu/menu-character.png':'image/png',
   'assets/menu/menu-atmosphere.png':'image/png',
+  'assets/menu/welcome-card-back-v1.png':'image/png',
+  'assets/menu/welcome-opening-v1.mp4':'video/mp4',
   'assets/battle/battle-table-v1.webp':'image/webp',
   'assets/battle/battle-arena-approach-v1.webp':'image/webp',
   'assets/online/online-atrium.webp':'image/webp',
@@ -69,7 +71,7 @@ test('R04 visual assets use an exact local allowlist',()=>{
  };
  const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
  for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
- assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css',...Object.keys(expected)].sort());
+ assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css','welcome.css',...Object.keys(expected)].sort());
  for(const [relativePath,contentType] of Object.entries(expected)){
   assert.equal(UI_ASSETS[relativePath],contentType);
   assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
@@ -77,11 +79,12 @@ test('R04 visual assets use an exact local allowlist',()=>{
  for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png','assets/online/unknown.webp'])assert.equal(resolveUiAsset(name),null);
 });
 
-test('R04 built UI contains the three bounded menu assets',()=>{
+test('R04 built UI contains the bounded menu assets and opening video',()=>{
  const limits={
   'menu-environment.webp':1_500_000,
   'menu-character.png':2_500_000,
   'menu-atmosphere.png':1_000_000,
+  'welcome-opening-v1.mp4':8_000_000,
  };
  for(const [name,maxBytes] of Object.entries(limits)){
   const file=path.join(__dirname,'build/ui/assets/menu',name);

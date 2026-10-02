@@ -8,7 +8,7 @@ const { resolveUiAsset } = require('./ui-assets.cjs');
 const online=new NetworkRoomPort({url:process.env.DEIDEI_ROOM_URL});
 const { ProfileStore, fields } = require('./profile.cjs');
 const { FixturePort, manual, scenes } = require('./build/fixture.cjs');
-protocol.registerSchemesAsPrivileged([{ scheme:'app', privileges:{ standard:true, secure:true, supportFetchAPI:true } }]);
+protocol.registerSchemesAsPrivileged([{ scheme:'app', privileges:{ standard:true, secure:true, supportFetchAPI:true, stream:true } }]);
 // Test harness supplies a separate temporary OS profile before any Electron session exists.
 if (!app.isPackaged && process.env.DEIDEI_TEST_DATA_DIR) app.setPath('userData',process.env.DEIDEI_TEST_DATA_DIR);
 let window, allowClose=false, closePending=false;
@@ -51,6 +51,8 @@ app.whenReady().then(async()=>{
   for(const mode of ['create','update','recover']) expose(`profile.${mode}`,p=>store.save(mode,p),true);
   expose('settings.apply',async p=>{const profile=await store.save('settings',p);window.setFullScreen(profile.settings.fullscreen);return profile;},true);
   expose('port.startSolo',async p=>{fields(p,['profile_id']);const profile=await store.read();if(!profile||p.profile_id!==profile.local_id)throw new Error('INVALID_PROFILE');return replacePort(new WorkerPort(profile,undefined,{isPackaged:app.isPackaged,resourcesPath:process.resourcesPath,platform:process.platform}),next=>next.startSolo(p.profile_id));},true);
+  expose('port.startTutorial',async p=>{fields(p,['profile_id']);const profile=await store.read();if(!profile||p.profile_id!==profile.local_id)throw new Error('INVALID_PROFILE');return replacePort(new WorkerPort(profile,undefined,{isPackaged:app.isPackaged,resourcesPath:process.resourcesPath,platform:process.platform}),next=>next.startTutorial(p.profile_id));},true);
+  expose('port.tutorialNext',p=>{fields(p,['view_id']);if(!validString(p.view_id)||typeof port.tutorialNext!=='function')throw new Error('INVALID_INPUT');return port.tutorialNext(p.view_id);},true);
   expose('port.submit',p=>{fields(p,['view_id','entry_id']);if(!validString(p.view_id)||!validString(p.entry_id))throw new Error('INVALID_INPUT');return port.submit(p.view_id,p.entry_id);},true);
   expose('port.getView',()=>port.getView()); expose('port.leave',()=>port.leave());
   expose('fixture.preview',p=>{fields(p,['scene']);if(!scenes.includes(p.scene))throw new Error('INVALID_SCENE');return replacePort(new FixturePort(),next=>next.preview(p.scene));},true);

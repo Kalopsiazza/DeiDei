@@ -13,7 +13,7 @@ const code=transformSync(source.slice(start,end)+'\nglobalThis.handlers={navigat
 function renderer() {
  const state={page:'prepare',busy:false,error:'',readError:false,view:null,modal:'preview',frozen:false,situationPlayer:''};
  const context={sceneChangePending:{current:false},generation:{current:0},busy:false,message:code=>code};
- for(const key of ['page','busy','error','readError','view','modal','frozen','situationPlayer'])context['set'+key[0].toUpperCase()+key.slice(1)]=value=>{state[key]=value;};
+ for(const key of ['page','busy','error','readError','view','modal','frozen','situationPlayer','arenaExiting','pendingResult','welcomePreview'])context['set'+key[0].toUpperCase()+key.slice(1)]=value=>{state[key]=value;};
  vm.runInNewContext(code,context);
  return {state,...context};
 }

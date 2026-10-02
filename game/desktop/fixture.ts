@@ -3,7 +3,7 @@ import catalog from './catalog.json';
 import availability from './fixture-availability.json';
 export const manual = catalog as Manual;
 const zero = { dd6: '0', lightning: '0', nx_charge: '0', mature_bombs: '0', reward_stock: '0' };
-export const scenes: Scene[] = ['initial','midgame','spectator','eliminated','restart','winner','draw','invalid'];
+export const scenes: Scene[] = ['initial','midgame','spectator','eliminated','restart','winner','defeat','draw','invalid'];
 // ponytail: two authored snapshots only; replace FixturePort with WorkerPort at integration.
 function options(mid: boolean): Option[] {
   const list = structuredClone(manual.entries).map(({ description: _description, ...o }) => o);
@@ -38,8 +38,8 @@ export class FixturePort {
   constructor(private profile?: Profile, private now: () => number = Date.now) { this.reset('initial'); }
   private reset(scene: Scene, profile?: Profile): DesktopView {
     this.serial++; this.submittedAt = null; this.errorOnce = scene === 'invalid'; this.solo = !!profile;
-    const mid = ['midgame','winner','draw','invalid'].includes(scene);
-    const participants: Participant[] = Array.from({ length: profile ? 2 : 6 }, (_, i) => ({
+    const mid = ['midgame','winner','defeat','draw','invalid'].includes(scene);
+    const participants: Participant[] = Array.from({ length: profile || ['winner','defeat'].includes(scene) ? 2 : 6 }, (_, i) => ({
       player_id: i === 0 && profile ? profile.local_id : `player_${i+1}`, nickname: i === 0 && profile ? profile.nickname : profile ? '纸上同学 · 演示对手' : `玩家 ${String(i+1).padStart(2,'0')}`,
       avatar_id: i === 0 && profile ? profile.avatar_id : ['leaf','sun','moon','star'][i%4], alive: true,
       resources: { ...zero, enhanced_xiao: false, cloud_uses: '0', tian_uses: '0', bomb_placement_count: '0' }, submission_state: i % 2 ? 'submitted' : 'thinking'
@@ -50,16 +50,18 @@ export class FixturePort {
     this.progress = mid ? '本人进度：待成熟 0 · 炸药放置 3 次 · 云 / 田利军首次已用 · 张新伟未用，记录 Pragon · 历强已用 · 曾义奖励可用' : '本人进度：待成熟 0 · 炸药放置 0 次 · 云 / 田利军首次未用 · 张新伟未用，无记录 · 历强 / 曾义未用';
     const spectator = ['spectator','eliminated','restart'].includes(scene);
     this.view = { source:'fixture',view_id:`fixture:${this.serial}`,match_id:`demo:${this.serial}`,game_id:`demo:${this.serial}:g${scene==='restart'?'2':'1'}`,turn_index:mid?'6':'1',phase:'selecting',participants,self_id:scene==='spectator'?null:participants[0].player_id,options:spectator?[]:options(mid),selected_entry_id:null,submitted:false,timer:{ mode: profile ? 'untimed' : 'preview',remaining_ms:profile?null:8000,total_ms:profile?null:12000 },summary:[scene==='restart'?'脚本：上轮两人淘汰，其余四人新局归零，原淘汰席位仍保留。':spectator?'公开摘要：等待仍在场的玩家揭晓。':'等待共同揭晓；目前只显示公开提交状态。'],outcome:null };
-    if (scene==='winner' || scene==='draw') this.finish(scene==='draw');
+    if (scene==='winner' || scene==='defeat' || scene==='draw') this.finish(scene==='draw',scene==='defeat'?1:0,true);
     return this.copy();
   }
   private copy() { const v = structuredClone(this.view); if (v.self_id && v.options.length) v.summary.push(this.progress); return v; }
-  private finish(draw = false) {
+  private finish(draw = false, winnerIndex = 0, previewMoves = false) {
     this.view.phase = 'result';
-    const winner = draw ? null : this.view.participants[0].player_id;
+    const winner = draw ? null : this.view.participants[winnerIndex].player_id;
     this.view.outcome = { winner_id:winner,reason:draw?'全员淘汰，无人获胜':'唯一存活者' };
     for (const p of this.view.participants) { p.alive = p.player_id === winner; p.submission_state = p.alive ? 'submitted' : 'out'; }
-    this.view.summary = [draw?'脚本示例：全员同时淘汰。':'脚本示例：参赛者中仅一人存活。','结果由演示脚本预置，与本次选牌无关。'];
+    this.view.summary = previewMoves
+      ? [...this.view.participants.map((p,index)=>`${p.nickname}：${index===winnerIndex?'Pragon':'攒／DeiDei'}（演示出招）。`),draw?'脚本示例：全员同时淘汰。':winnerIndex===0?'脚本示例：参赛者中仅本人存活。':'脚本示例：本人在最后一拍被 Pragon 淘汰。','结果由演示脚本预置，与本次选牌无关。']
+      : [draw?'脚本示例：全员同时淘汰。':'脚本示例：参赛者中仅一人存活。','结果由演示脚本预置，与本次选牌无关。'];
   }
   async startSolo(profileId: string) { if (!this.profile || this.profile.local_id !== profileId) throw new Error('INVALID_PROFILE'); return this.reset('initial',this.profile); }
   async preview(scene: Scene) { if (!scenes.includes(scene)) throw new Error('INVALID_SCENE'); return this.reset(scene); }

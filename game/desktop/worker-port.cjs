@@ -13,7 +13,7 @@ class WorkerPort {
     this.active = false; this.interrupted = false; this.starting = false;
   }
   async call(op, payload = {}) {
-    if (op !== 'start_solo' && this.bridge.failure) this.interrupted = true;
+    if (!['start_solo','start_tutorial'].includes(op) && this.bridge.failure) this.interrupted = true;
     if (this.interrupted) { this.active = false; await this.bridge.stop(); throw new Error('MATCH_INTERRUPTED'); }
     const generation = this.generation;
     try {
@@ -31,17 +31,20 @@ class WorkerPort {
       throw error;
     }
   }
-  async startSolo(profileId) {
+  startSolo(profileId) { return this.start(profileId,'start_solo'); }
+  startTutorial(profileId) { return this.start(profileId,'start_tutorial'); }
+  async start(profileId,op) {
     if (profileId !== this.profile.local_id) throw new Error('INVALID_PROFILE');
     if (this.starting) throw new Error('WORKER_BUSY');
     this.starting = true; ++this.generation;
     try {
       await this.bridge.stop();
       this.interrupted = false;
-      return await this.call('start_solo', { profile_id: profileId, nickname: this.profile.nickname, avatar_id: this.profile.avatar_id });
+      return await this.call(op, { profile_id: profileId, nickname: this.profile.nickname, avatar_id: this.profile.avatar_id });
     } finally { this.starting = false; }
   }
   submit(view_id, entry_id) { return this.call('submit', { view_id, entry_id }); }
+  tutorialNext(view_id) { return this.call('tutorial_next', {view_id}); }
   getView() { return this.call('get_view'); }
   async leave() {
     ++this.generation; this.active = false;
