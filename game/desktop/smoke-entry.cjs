@@ -2,16 +2,18 @@
 const {_electron:electron}=require('playwright-core');
 const assert=require('node:assert/strict');
 const fs=require('node:fs/promises'),os=require('node:os'),path=require('node:path');
+const {sourceInput,captureDiagnostics}=require('./smoke-performance.cjs');
 (async()=>{
  const directory=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-entry-'));
- const output=path.resolve(__dirname,'../../docs/results/R04-T01-b/entry-ui');
+ const output=path.resolve(process.env.DEIDEI_SMOKE_OUTPUT||path.join(__dirname,'../../docs/results/R04-T01-b/entry-ui'));
+ const input=sourceInput();
  await fs.mkdir(output,{recursive:true});
  const env={...process.env,DEIDEI_TEST_DATA_DIR:directory};delete env.ELECTRON_RUN_AS_NODE;
- let app,checks=0;const errors=[];
+ let app,page,failure,lastState,checks=0;const errors=[];
  const check=(value,message)=>{assert.ok(value,message);checks++;};
  try{
   app=await electron.launch({args:[path.join(__dirname,'smoke-live-main.cjs')],env});
-  let page=await app.firstWindow();page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
+  page=await app.firstWindow();page.setDefaultTimeout(10000);page.on('pageerror',e=>errors.push(e.message));
   await page.locator('.welcome-scene[data-stage=opening]').waitFor();
   await page.waitForFunction(()=>document.querySelector('video')?.currentTime>1);
   const media=await page.locator('video').evaluate(v=>({width:v.videoWidth,height:v.videoHeight,error:v.error?.message,muted:v.muted}));
@@ -173,8 +175,13 @@ const fs=require('node:fs/promises'),os=require('node:os'),path=require('node:pa
   await page.locator('.app[data-page=menu]').waitFor();
   check((await page.evaluate(()=>window.desktop.profile.read())).data.nickname===longName,'returning entrance preserves full identity');
   check(errors.length===0,'returning renderer errors: '+errors.join(';'));
+  lastState=await captureDiagnostics(page);
   await app.close();app=null;
   await fs.writeFile(path.join(output,'checks.json'),JSON.stringify({checks,errors},null,2)+'\n');
   console.log(`PASS entry ${checks} checks; real first entry, safe preview, cancel/confirm quit and match leave`);
- }finally{if(app){await app.evaluate(async()=>{if(global.__testPort)await global.__testPort.close();}).catch(()=>{});await app.close();}await fs.rm(directory,{recursive:true,force:true});}
+ }catch(e){failure={message:e.message,stack:e.stack};throw e;}finally{
+  const state=await (page&&!page.isClosed()?captureDiagnostics(page):Promise.resolve(lastState||{unavailable:'window already closed'})).catch(e=>({unavailable:e.message}));
+  await fs.writeFile(path.join(output,'diagnostics.json'),JSON.stringify({input,finishedAt:new Date().toISOString(),checks,errors,failure,state},null,2)+'\n');
+  if(failure&&page&&!page.isClosed())await page.screenshot({path:path.join(output,'failure.png')}).catch(()=>{});
+  if(app){await app.evaluate(async()=>{if(global.__testPort)await global.__testPort.close();}).catch(()=>{});await app.close();}await fs.rm(directory,{recursive:true,force:true});}
 })().catch(e=>{console.error(e);process.exitCode=1;});
