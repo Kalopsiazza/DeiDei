@@ -129,7 +129,16 @@ if(require.main===module && process.argv[2]==='--self-check') (async()=>{
   if(mode==='timeout')assert.match(cleanup.errors[0].message,/Normal Electron close timed out/);
   if(mode!=='normal')assert.equal(cleanup.signal,'SIGKILL');else assert.equal(cleanup.exitCode,0);
  }
- console.log('PASS frame summary; real segment throw/timeout partial samples and inactive sampler; normal/forced close');
+ const source=fsSync.readFileSync(__filename,'utf8'),failSource=source.slice(source.indexOf(' const fail='),source.indexOf(' const metrics='));
+ const start=source.lastIndexOf('\n finally {')+'\n finally {'.length,finishSource=source.slice(start,source.indexOf('\n }\n console.log',start));
+ for(const original of [null,{stage:'scenario',message:'original scenario failure'}]){
+  const result={segments:[],failure:original||undefined},saved=[],process={exitCode:0};
+  const finish=vm.runInNewContext(`(async()=>{${failSource}${finishSource}})`,{result,process,path,output:'.',app:null,page:null,directory:null,assert,Date,errorDetails,frameSummary,bounded:async fn=>fn(),captureDiagnostics:async()=>({}),fs:{writeFile:async(_path,data)=>saved.push(JSON.parse(data)),readFile:async()=>{throw new Error('injected read-back EACCES');}}});
+  await finish();assert.equal(process.exitCode,1);assert.equal(saved.at(-1).status,'FAIL');
+  if(original){assert.equal(result.failure,original);assert.match(result.secondaryFailures[0].message,/EACCES/);}
+  else assert.match(result.failure.message,/EACCES/);
+ }
+ console.log('PASS frame summary; real segment throw/timeout partial samples and inactive sampler; normal/forced close; read-back failure persisted');
 })().catch(e=>{console.error(e);process.exitCode=1;});
 else if(require.main===module) (async()=>{
  const output=path.resolve(process.env.DEIDEI_PERF_OUTPUT||path.join(root,'.local-outputs/performance-baseline'));
@@ -212,7 +221,10 @@ else if(require.main===module) (async()=>{
    await bounded(persist,3000,'Final evidence write');const saved=JSON.parse(await fs.readFile(path.join(output,'performance.json'),'utf8'));
    for(const sample of saved.segments){const {frames,...summary}=frameSummary(sample.frameTimestamps);assert.equal(sample.frameCount,frames);for(const [key,value] of Object.entries(summary))assert.equal(sample[key],value);}
    result.evidenceReadBack={segments:saved.segments.length,frameCountsAndSummariesMatch:true};await bounded(persist,3000,'Read-back result write');
-  }catch(e){fail(e,'evidence-read-back');result.status='FAIL';}
+  }catch(e){
+   fail(e,'evidence-read-back');result.status='FAIL';
+   try{await bounded(persist,3000,'Failed read-back evidence write');}catch(writeError){fail(writeError,'failure-evidence-write');}
+  }
  }
  console.log(JSON.stringify({output,input:result.input,firstOperable:result.firstOperable,status:result.status,segments:result.segments.map(({name,p50,p95,p99,over50ms,frameCount,active,failed,viewport,dpr})=>({name,p50,p95,p99,over50ms,frameCount,active,failed,viewport,dpr})),failure:result.failure,secondaryFailures:result.secondaryFailures,cleanup:result.cleanup},null,2));
 })().catch(e=>{console.error(e);process.exitCode=1;});
