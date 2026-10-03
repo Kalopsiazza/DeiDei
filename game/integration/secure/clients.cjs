@@ -85,7 +85,9 @@ async function round(h,g,v,entries){
     await shot(guest,'tls-resumed');await until(async()=>(await state(guest)).snapshot?.view.phase==='selecting','next turn');pass('S15','real connection dropped after selection; same identity/Def, exactly one +2 charge result');
    }
    await round(host,guest,viewer,['SelfBi','SelfBi']);const result=(await state(guest)).snapshot.view;
-   assert.equal(result.phase,'result');assert.equal(result.match.effective_outcome.kind,'nobody_survives');await shot(guest,`tls-result-${game+1}`);
+   assert.equal(result.phase,'result');assert.equal(result.match.effective_outcome.kind,'nobody_survives');
+   if(gui){await guest.page.locator('.match-outro').waitFor();await guest.page.locator('.result-actions').evaluate(async node=>{await Promise.allSettled(node.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().iterations)).map(a=>a.finished));});}
+   await shot(guest,`tls-result-${game+1}`);
    await call(host,'returnLobby',{room_id:rid});await until(async()=>(await state(guest)).snapshot?.view.phase==='lobby','return lobby');
   }
   pass('S13','two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied');
