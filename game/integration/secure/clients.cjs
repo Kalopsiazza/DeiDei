@@ -38,7 +38,7 @@ async function close(c){
   finally{clearTimeout(timer);}
   try{await until(()=>c.process.exitCode!==null||c.process.signalCode,'owned Electron exit',5000);}catch(e){cleanup.wait_error=e.message;}
   cleanup.exit_code=c.process.exitCode;cleanup.signal=c.process.signalCode;cleanup.exited=c.process.exitCode!==null||!!c.process.signalCode;
-  cleanup.status=!cleanup.error&&!cleanup.forced&&cleanup.exit_code===0&&!cleanup.signal?'PASS':'FAIL';c.closed=cleanup.exited;
+  cleanup.status=!cleanup.error&&!cleanup.wait_error&&!cleanup.forced&&cleanup.exit_code===0&&!cleanup.signal?'PASS':'FAIL';c.closed=cleanup.exited;
  }
  if(c.cleanup)assert.equal(c.cleanup.status,'PASS','owned Electron did not exit normally');
 }

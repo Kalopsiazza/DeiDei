@@ -9,7 +9,7 @@ const assert=require('node:assert/strict');
 const {Peer,until,sleep}=require('./peer.cjs');
 const {enterHall,enterArena,leaveSolo,leaveOnlinePortal,assertTargets}=require('./gui-actions.cjs');
 const {execFileSync}=require('node:child_process');
-const {frameSummary}=require('../desktop/smoke-performance.cjs');
+const {frameSummary,closeApplication}=require('../desktop/smoke-performance.cjs');
 const root=path.resolve(__dirname,'../..'),desktop=path.join(root,'game/desktop');
 const output=path.resolve(process.env.DEIDEI_INTEGRATION_OUTPUT||path.join(os.tmpdir(),'deidei-live-gui'));
 const python=process.env.DEIDEI_PYTHON||'python3';
@@ -25,10 +25,31 @@ async function processWithAddress(args){
  const url=address.slice(11);assert.match(url,/^ws:\/\/127\.0\.0\.1:[0-9]+\/rooms-v1$/);
  return {child,url,received};
 }
-async function stop(child){if(child.exitCode!==null||child.signalCode)return;child.kill('SIGINT');await until(()=>child.exitCode!==null||child.signalCode,'owned child exit',5000).catch(()=>{child.kill('SIGKILL');});}
+async function stop(child){
+ const cleanup=child.__cleanup??={status:'FAIL',forced:false,interrupt_sent:false};
+ try{if(child.exitCode===null&&!child.signalCode){cleanup.interrupt_sent=true;child.kill('SIGINT');}await until(()=>child.exitCode!==null||child.signalCode,'owned child exit',5000);}
+ catch(e){cleanup.error=e.message;if(child.exitCode===null&&!child.signalCode){cleanup.forced=true;try{child.kill('SIGKILL');}catch(k){cleanup.kill_error=k.message;}}try{await until(()=>child.exitCode!==null||child.signalCode,'forced child exit',5000);}catch(w){cleanup.wait_error=w.message;}}
+ cleanup.exit_code=child.exitCode;cleanup.signal=child.signalCode;cleanup.exited=child.exitCode!==null||!!child.signalCode;
+ cleanup.status=!cleanup.error&&!cleanup.wait_error&&!cleanup.forced&&(cleanup.exit_code===0&&!cleanup.signal||cleanup.interrupt_sent&&cleanup.signal==='SIGINT')?'PASS':'FAIL';
+ assert.equal(cleanup.status,'PASS','owned service/relay did not exit normally');
+}
+async function closeApp(app){
+ const child=app.__ownedProcess;
+ if(app.__faultInjection?.case==='Q10'&&app.__faultInjection.expected_signal==='SIGKILL'){
+  const cleanup=app.__cleanup={pid:child.pid,normalExit:false,forced:false,errors:[],fault_injection:app.__faultInjection};
+  try{await until(()=>child.exitCode!==null||child.signalCode,'injected host process exit',5000);}catch(e){cleanup.errors.push({message:e.message});}
+  if(child.exitCode===null&&!child.signalCode){cleanup.forced=true;try{child.kill('SIGKILL');await until(()=>child.exitCode!==null||child.signalCode,'forced host exit',2000);}catch(e){cleanup.errors.push({message:e.message});}}
+  Object.assign(cleanup,{exitCode:child.exitCode,signal:child.signalCode,exited:child.exitCode!==null||!!child.signalCode});
+  cleanup.status=!cleanup.errors.length&&!cleanup.forced&&cleanup.signal==='SIGKILL'?'EXPECTED_FAULT':'FAIL';
+ }else{
+  const cleanup=app.__cleanup=await closeApplication(app);
+  cleanup.status=cleanup.normalExit&&!cleanup.errors.length&&!cleanup.forced&&cleanup.exitCode===0&&!cleanup.signal?'PASS':'FAIL';
+ }
+ assert.ok(app.__cleanup.status==='PASS'||app.__cleanup.status==='EXPECTED_FAULT','owned Electron did not exit normally or match Q10 fault injection');
+}
 async function launch(name,url){
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-real-window-'));directories.push(dir);
- const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);app.__ownedProcess=app.process();
+ const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);app.__ownedProcess=app.process();app.__ownedProfile=dir;
  const page=await app.firstWindow();page.setDefaultTimeout(12000);page.on('pageerror',e=>evidence.page_errors.push(e.message));
  await app.evaluate(({BrowserWindow})=>{const window=BrowserWindow.getAllWindows()[0];window.webContents.setBackgroundThrottling(false);window.focus();});
  await enterHall(page,name);
@@ -175,7 +196,7 @@ async function leave(c){
   // Active host disappears without a voluntary leave. The surviving real window observes all four deadlines.
   await online(host);await online(guest);await online(viewer);let r=await create(host);rid=r.room_id;code=r.view.room_code;await join(guest,code);await join(viewer,code,'spectator');
   await call(host,'setTurnLimit',{room_id:rid,turn_ms:5000,expected_policy_revision:'1'});await start(host,guest,[],rid);
-  const hostId=(await state(host)).snapshot.view.host_id;host.app.__ownedProcess.kill('SIGKILL');await until(()=>host.app.__ownedProcess.signalCode,'owned host process exit');
+  const hostId=(await state(host)).snapshot.view.host_id;host.app.__faultInjection={case:'Q10',expected_signal:'SIGKILL'};host.app.__ownedProcess.kill('SIGKILL');await until(()=>host.app.__ownedProcess.signalCode,'owned host process exit');assert.equal(host.app.__ownedProcess.signalCode,'SIGKILL');
   for(let n=1;n<=4;n++){
    const observe=async()=>{
    await submit(guest,'Def');await until(async()=>['revealing','closed'].includes((await state(guest)).snapshot?.view.phase),'host missing deadline',10000);
@@ -203,10 +224,14 @@ async function leave(c){
   assert.deepEqual(evidence.page_errors,[]);evidence.status='PASS';
  } catch(error){evidence.status='FAIL';evidence.error=error.stack||error.message;evidence.failureStates=[];for(const app of apps){try{const page=await app.firstWindow();evidence.failureStates.push({state:(await page.evaluate(()=>window.desktop.online.read())),dom:await page.evaluate(()=>({route:document.querySelector('.app')?.dataset.page,phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,selected:[...document.querySelectorAll('.card-pick[aria-pressed=true]')].map(n=>n.closest('.card')?.dataset.entry),confirm:document.querySelector('.battle-actions .primary')?.outerHTML}))});}catch{}}for(let i=0;i<apps.length;i++){try{const page=await apps[i].firstWindow();await page.screenshot({path:path.join(output,`failure-window-${i}.png`),scale:'css'});}catch{}}throw error;}
  finally{
-  for(const p of peers)p.close();
-  for(const app of apps){try{await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await app.close();}catch{app.__ownedProcess?.kill('SIGKILL');}}
-  for(const child of children)await stop(child);
-  await fs.writeFile(path.join(output,'gui.json'),JSON.stringify(evidence,null,2)+'\n');
-  for(const dir of directories)await fs.rm(dir,{recursive:true,force:true});
+  evidence.cleanup_errors=[];
+  const failed=e=>{evidence.cleanup_errors.push(e.stack||e.message);evidence.status='FAIL';process.exitCode=1;};
+  for(const p of peers)try{p.close();}catch(e){failed(e);}
+  for(const app of apps)try{await closeApp(app);}catch(e){failed(e);}
+  for(const child of children)try{await stop(child);}catch(e){failed(e);}
+  evidence.profiles_removed=true;
+  for(const dir of directories)try{const owner=apps.find(app=>app.__ownedProfile===dir)?.__ownedProcess;if(owner&&owner.exitCode===null&&!owner.signalCode)throw new Error('owned Electron still active; profile retained');await fs.rm(dir,{recursive:true,force:true});}catch(e){evidence.profiles_removed=false;failed(e);}
+  evidence.app_cleanup=apps.map(app=>({...app.__cleanup}));evidence.child_cleanup=children.map(child=>({...child.__cleanup}));
+  try{await fs.writeFile(path.join(output,'gui.json'),JSON.stringify(evidence,null,2)+'\n');}catch(e){failed(e);console.error(e.message);}
  }
 })().catch(error=>{console.error(error.message);process.exitCode=1;});

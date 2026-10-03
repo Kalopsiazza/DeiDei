@@ -15,6 +15,12 @@ test('app.close error still reclaims owned process but cannot pass',async()=>{
  await assert.rejects(close(c),/did not exit normally/);
  assert.equal(c.closed,true);assert.equal(c.cleanup.status,'FAIL');assert.equal(c.cleanup.forced,true);assert.equal(c.cleanup.signal,'SIGKILL');assert.match(c.cleanup.error,/injected close failure/);
 });
+test('exit0 after a wait deadline cannot erase the cleanup wait error',async()=>{
+ const {c}=harness();
+ const close=vm.runInNewContext(`(${closeSource.trim()})`,{assert,setTimeout,clearTimeout,until:async()=>{c.process.exitCode=0;throw new Error('injected exit wait deadline');}});
+ await assert.rejects(close(c),/did not exit normally/);
+ assert.equal(c.cleanup.status,'FAIL');assert.equal(c.cleanup.exit_code,0);assert.match(c.cleanup.wait_error,/injected exit wait deadline/);
+});
 test('cleanup failure preserves original test error and marks final evidence FAIL',async()=>{
  const {c,close}=harness(new Error('cleanup exception'));
  const evidence={status:'FAIL',error:'first test failure'},writes=[],process={exitCode:1};

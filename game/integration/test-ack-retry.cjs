@@ -3,7 +3,7 @@ const {test}=require('node:test'),assert=require('node:assert/strict'),path=requ
 const {NetworkRoomPort}=require('../desktop/online/network-room-port.cjs'),{until}=require('./peer.cjs');
 const root=path.resolve(__dirname,'../..');
 test('accepted ACK loss retries the same request and records one public action',{timeout:30000},async()=>{
- const children=[],ports=[];
+ const children=[],ports=[],cleanupErrors=[],cleanup=[];let firstError;
  const launch=async args=>{
   const child=spawn(process.env.DEIDEI_PYTHON||'python3',args,{cwd:root,env:{...process.env,PYTHONPATH:[path.join(root,'game/core'),path.join(root,'game/server')].join(path.delimiter),PYTHONDONTWRITEBYTECODE:'1'},stdio:['pipe','pipe','pipe']});children.push(child);
   const lines=[];readline.createInterface({input:child.stdout}).on('line',line=>lines.push(line));child.stderr.on('data',()=>{});
@@ -37,8 +37,25 @@ test('accepted ACK loss retries the same request and records one public action',
   assert.equal(turn.core_resolution.ledger.actions[id].entry_id,'Def');assert.equal(turn.action_sources[id],'human');
   assert.equal(turn.effective_state.players[id].nx_charge,'1','single Def base gain, no duplicate settlement');
   console.log('ACK retry comparison:',JSON.stringify(comparison),'; public Def settled once');
- }finally{
-  for(const p of ports)p.close();
-  for(const child of children){if(child.exitCode===null&&!child.signalCode)child.kill('SIGINT');try{await until(()=>child.exitCode!==null||child.signalCode,'owned child exit',5000);}catch{child.kill('SIGKILL');await until(()=>child.exitCode!==null||child.signalCode,'forced child exit',5000);assert.fail('owned service/relay required forced cleanup');}}
+ }catch(error){firstError=error;}
+ finally{
+  for(const p of ports)try{p.close();}catch(error){cleanupErrors.push(error.message);}
+  for(const child of children){
+   const result={forced:false,interrupt_sent:false};cleanup.push(result);
+   try{
+    if(child.exitCode===null&&!child.signalCode){result.interrupt_sent=true;child.kill('SIGINT');}
+    await until(()=>child.exitCode!==null||child.signalCode,'owned child exit',5000);
+   }catch(error){
+    result.error=error.message;
+    if(child.exitCode===null&&!child.signalCode){result.forced=true;try{child.kill('SIGKILL');}catch(k){result.kill_error=k.message;}}
+    try{await until(()=>child.exitCode!==null||child.signalCode,'forced child exit',5000);}catch(e){result.wait_error=e.message;}
+   }
+   result.exit_code=child.exitCode;result.signal=child.signalCode;
+   result.status=!result.error&&!result.wait_error&&!result.forced&&(result.exit_code===0&&!result.signal||result.interrupt_sent&&result.signal==='SIGINT')?'PASS':'FAIL';
+   if(result.status==='FAIL')cleanupErrors.push('owned service/relay did not exit normally');
+  }
+  if(cleanupErrors.length)console.error('ACK cleanup:',JSON.stringify({errors:cleanupErrors,processes:cleanup}));
  }
+ if(firstError)throw firstError;
+ assert.equal(cleanupErrors.length,0,'owned service/relay cleanup failed');
 });
