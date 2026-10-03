@@ -44,12 +44,12 @@ async function shot(c,name){await c.page.screenshot({path:path.join(output,`${na
 async function measureReveal(c,name,action){
  const before=await c.app.evaluate(({app})=>app.getAppMetrics());
  await c.page.evaluate(()=>{const sample=window.__realRoomFrames={active:true,frames:[]};function frame(t){sample.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase||'handoff'});if(sample.active)requestAnimationFrame(frame);}requestAnimationFrame(frame);});
- try{await action();}finally{
+ let completed=false;try{await action();completed=true;}finally{
   const sample=await c.page.evaluate(()=>{window.__realRoomFrames.active=false;return {frames:window.__realRoomFrames.frames,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio};});
   const after=await c.app.evaluate(({app})=>app.getAppMetrics());
   const reveal=sample.frames.filter(f=>f.phase==='revealed').map(f=>f.t);
   evidence.performance??=[];evidence.performance.push({name,source:'ordinary main / real loopback service; three synthetic Electron windows initially, two after host loss',...sample,reveal:frameSummary(reveal),metricsBefore:before,metricsAfter:after,gpu:'Electron GPU process CPU/RSS only; utilization/VRAM unavailable'});
-  assert.ok(reveal.length>0,`${name}: no real revealed UI frame sampled`);
+  if(completed)assert.ok(reveal.length>0,`${name}: no real revealed UI frame sampled`);
  }
 }
 async function submit(c,entry){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');}
