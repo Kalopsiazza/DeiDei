@@ -7,6 +7,8 @@ const {Peer,until,sleep}=require(path.join(root,'game/integration/peer.cjs'));
 const {enterHall,enterArena}=require(path.join(root,'game/integration/gui-actions.cjs'));
 const {sourceInput,captureDiagnostics,segment,frameSummary,closeApplication}=require(path.join(desktop,'smoke-performance.cjs'));
 const {checkBattle,armCommitFlight,finishCommitFlight}=require('./smoke-geometry.cjs');
+const {bounded,readTrace}=require('./smoke-archive-performance.cjs');
+const steadyOnly=process.argv.includes('--steady-only');assert.ok(process.argv.slice(2).every(a=>a==='--steady-only'),'unknown diagnostic argument');
 const output=path.resolve(process.env.DEIDEI_ONLINE_DYNAMIC_OUTPUT||path.join(root,'.local-outputs/r04-t03-a/online-dynamic-'+Date.now()));
 const python=process.env.DEIDEI_PYTHON||'python3',apps=[],peers=[],profiles=[];
 const report={input:sourceInput(),source:'ordinary main / real owned CLI service / synthetic socket peers',geometrySource:'continuous native setContentSize; not physical dragging or cross-display evidence',checks:[],geometry:[],targets:[],business:[],segments:[],screenshots:[],errors:[],cleanup:[]};
@@ -14,7 +16,7 @@ let service,host,viewer,outputOwned=false;
 const fail=e=>{report.status='FAIL';if(!report.failure)report.failure={message:e.message,stack:e.stack};else report.errors.push({stage:'secondary',message:e.message});process.exitCode=1;};
 async function state(c){const r=await c.page.evaluate(()=>window.desktop.online.read());assert.ok(r.ok,r.error);assert.equal(r.data.source,'online');return r.data;}
 async function geometry(c,label){
- const native=await c.app.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];return {outer:w.getBounds(),content:w.getContentBounds(),fullscreen:w.isFullScreen()};});
+ const native=await c.app.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];return {outer:w.getBounds(),content:w.getContentBounds(),fullscreen:w.isFullScreen(),focused:w.isFocused(),visible:w.isVisible(),minimized:w.isMinimized()};});
  const css=await c.page.evaluate(()=>({width:innerWidth,height:innerHeight,dpr:devicePixelRatio,page:document.querySelector('.app')?.dataset.page,phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,focus:document.hasFocus()}));
  report.geometry.push({label,app:c.name,pid:c.pid,at:Date.now(),native,css});return native.content;
 }
@@ -40,6 +42,19 @@ async function shot(c,name){await c.page.screenshot({path:path.join(output,name+
 async function business(c,label,action){
  await c.page.evaluate(()=>{window.__onlineBusiness=[];window.__onlineBusinessObserver=new MutationObserver(()=>{for(const n of document.querySelectorAll('.online-deploy-submit,.battle-actions .primary,dialog .primary'))window.__onlineBusiness.push({pending:document.querySelector('.online')?.dataset.pending,disabled:n.matches(':disabled'),text:n.textContent.trim(),phase:document.querySelector('.battle-table')?.dataset.phase});});window.__onlineBusinessObserver.observe(document.body,{subtree:true,attributes:true,childList:true});});
  try{await action();}finally{const samples=await c.page.evaluate(()=>{window.__onlineBusinessObserver.disconnect();return window.__onlineBusiness;});report.business.push({label,app:c.name,source:'natural React/IPC business state; no attributes synthesized',samples});}
+}
+async function profiled(c,label,action){
+ const record={label,before:await geometry(c,label+'-before'),errors:[]};(report.profiles||=[]).push(record);
+ const cdp=await c.page.context().newCDPSession(c.page);let profiling=false,tracing=false,ended,first;
+ try{await cdp.send('Profiler.enable');await cdp.send('Profiler.start');profiling=true;ended=new Promise(resolve=>cdp.once('Tracing.tracingComplete',resolve));await cdp.send('Tracing.start',{transferMode:'ReturnAsStream',traceConfig:{recordMode:'recordContinuously',includedCategories:['devtools.timeline','v8','blink','cc','gpu']}});tracing=true;await action();}
+ catch(e){first=e;record.failure={message:e.message,stack:e.stack};}
+ finally{
+  if(profiling)try{const {profile}=await bounded(()=>cdp.send('Profiler.stop'),3000,'stop online profile');record.cpuProfile=label+'-cpu-profile.json';await fs.writeFile(path.join(output,record.cpuProfile),JSON.stringify(profile));}catch(e){first??=e;record.errors.push({stage:'profile-stop/write',message:e.message});}
+  if(tracing)try{await bounded(async()=>{await cdp.send('Tracing.end');const {stream}=await ended;const content=await readTrace(cdp,stream);record.trace=label+'-trace.json';await fs.writeFile(path.join(output,record.trace),content);},7000,'stop/write online trace');}catch(e){first??=e;record.errors.push({stage:'trace-stop/write',message:e.message});if(e.partialTrace)await fs.writeFile(path.join(output,label+'-trace.partial'),e.partialTrace).catch(error=>record.errors.push({stage:'partial-write',message:error.message}));}
+  await bounded(()=>cdp.detach(),2000,'detach online CDP').catch(e=>{first??=e;record.errors.push({stage:'detach',message:e.message});});
+  await geometry(c,label+'-after').catch(e=>{first??=e;record.errors.push({stage:'after-geometry',message:e.message});});
+ }
+ if(first)throw first;
 }
 async function launch(name,url){
  const profile=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-online-dynamic-'));profiles.push(profile);
@@ -76,10 +91,11 @@ async function timing(c){
 async function reveal(c,roomPeers,n,full){
  await Promise.all(roomPeers.map(p=>p.submit('Charge')));await until(async()=>(await state(c)).snapshot.view.phase==='revealing','Charge public reveal');await c.page.locator('.battle-table[data-phase="revealed"]').waitFor();
  assert.equal(await c.page.locator('.arena-seat').count(),n);
- if(full)await route(c,'reveal-'+n,async()=>{await targets(c,'reveal-'+n,['.battle-pause','.battle-situation']);await sleep(500);await checkBattle(c.page,report,'reveal-min-'+n,{seats:n,names:(await state(c)).snapshot.view.match.roster_profiles.map(p=>p.nickname)});await c.page.getByRole('button',{name:'局势',exact:true}).click();},async()=>{await targets(c,'reveal-dialog-'+n,['dialog[open] .dialog-close']);await c.page.keyboard.press('Escape');await c.page.locator('dialog').waitFor({state:'detached'});});
+ if(!steadyOnly){if(full)await route(c,'reveal-'+n,async()=>{await targets(c,'reveal-'+n,['.battle-pause','.battle-situation']);await sleep(500);await checkBattle(c.page,report,'reveal-min-'+n,{seats:n,names:(await state(c)).snapshot.view.match.roster_profiles.map(p=>p.nickname)});await c.page.getByRole('button',{name:'局势',exact:true}).click();},async()=>{await targets(c,'reveal-dialog-'+n,['dialog[open] .dialog-close']);await c.page.keyboard.press('Escape');await c.page.locator('dialog').waitFor({state:'detached'});});
  else{await leg(c,'crowded-reveal-'+n,1000,650);await sleep(500);await checkBattle(c.page,report,'reveal-min-'+n,{seats:n,names:(await state(c)).snapshot.view.match.roster_profiles.map(p=>p.nickname)});await situation(c,'crowded-'+n);await shot(c,'crowded-reveal-'+n);}
+ }
  await until(async()=>(await state(c)).snapshot.view.phase==='selecting','next real select');await c.page.locator('.battle-table[data-phase="selecting"]').waitFor();
- const v=(await state(c)).snapshot.view;assert.equal(v.current_turn_ms,n===6?20000:30000);report.checks.push({name:'next-real-select-'+n,currentTurn:v.current_turn_ms,turn:v.match.turn_id,roster:v.match.roster_profiles.length});
+ const v=(await state(c)).snapshot.view;assert.equal(v.current_turn_ms,n===6&&!steadyOnly?20000:30000);report.checks.push({name:'next-real-select-'+n,currentTurn:v.current_turn_ms,turn:v.match.turn_id,roster:v.match.roster_profiles.length});
 }
 async function viewerRoute(c,n){
  await c.app.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];w.restore();w.show();w.focus();});
@@ -104,7 +120,7 @@ async function cleanupApp(c){
 (async()=>{
  try{
   await fs.mkdir(path.dirname(output),{recursive:true});await fs.mkdir(output,{recursive:false});outputOwned=true;
-  report.input.mainProcess='one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation';
+  report.mode=steadyOnly?'fixed original native window, no viewer/resize':'full dynamic route';report.input.mainProcess='one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation';
   report.displays=[];
   const env={...process.env,PYTHONPATH:[path.join(root,'game/core'),path.join(root,'game/server')].join(path.delimiter)};delete env.ELECTRON_RUN_AS_NODE;
   service=spawn(python,['-u','-m','deidei_server','--port','0'],{cwd:root,env,stdio:['ignore','pipe','pipe']});report.servicePid=service.pid;const lines=[],stderr=[];readline.createInterface({input:service.stdout}).on('line',s=>lines.push(s));service.stderr.on('data',s=>stderr.push(String(s)));report.serviceStderr=stderr;
@@ -112,37 +128,37 @@ async function cleanupApp(c){
   host=await launch('动态房主',url);report.hostPid=host.pid;report.displays=await host.app.evaluate(({screen})=>screen.getAllDisplays().map(d=>({label:d.label,bounds:d.bounds,workArea:d.workArea,scaleFactor:d.scaleFactor,internal:d.internal})));
   for(const n of [6,3,4,5,2]){
    await portal(host);
-   if(n===6)await route(host,'online-front',async()=>{await targets(host,'front-small',['.online-portal-nav button','.online-front-actions button']);await host.page.getByRole('button',{name:'加入房间',exact:true}).click();},async()=>{await host.page.getByRole('button',{name:'返回联机前厅',exact:true}).click();});
+   if(n===6&&!steadyOnly)await route(host,'online-front',async()=>{await targets(host,'front-small',['.online-portal-nav button','.online-front-actions button']);await host.page.getByRole('button',{name:'加入房间',exact:true}).click();},async()=>{await host.page.getByRole('button',{name:'返回联机前厅',exact:true}).click();});
    await host.page.getByRole('button',{name:'创建房间',exact:true}).click();await host.page.getByRole('textbox',{name:'房间密码',exact:true}).fill('synthetic-'+n);const slider=host.page.getByRole('slider',{name:'每拍时间',exact:true});await slider.focus();await host.page.keyboard.press('End');assert.equal(await slider.inputValue(),'30000');
-   if(n===6){await route(host,'online-create',async()=>{await targets(host,'create-small',['.online-portal-nav button','.online-deploy input:not([type=checkbox])','.online-switch','.online-deploy button']);await host.page.getByRole('slider',{name:'观众容量',exact:true}).focus();await host.page.keyboard.press('End');},async()=>{await host.page.locator('.online-switch input').uncheck();await host.page.locator('.online-switch input').check();});assert.equal(await host.page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'synthetic-'+n);}
+   if(n===6&&!steadyOnly){await route(host,'online-create',async()=>{await targets(host,'create-small',['.online-portal-nav button','.online-deploy input:not([type=checkbox])','.online-switch','.online-deploy button']);await host.page.getByRole('slider',{name:'观众容量',exact:true}).focus();await host.page.keyboard.press('End');},async()=>{await host.page.locator('.online-switch input').uncheck();await host.page.locator('.online-switch input').check();});assert.equal(await host.page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'synthetic-'+n);}
    await business(host,'create-'+n,async()=>{await host.page.getByRole('button',{name:'创建并进入',exact:true}).click();await host.page.locator('.online-lobby').waitFor();});
    const created=(await state(host)).snapshot,rid=created.room_id,code=created.view.room_code,roomPeers=[];
    for(let i=1;i<n;i++){const p=await new Peer(url,'动态同学'+i).open();peers.push(p);roomPeers.push(p);await p.ok('room.join',{room_code:code,password:'synthetic-'+n,role:'player'});}
-   if(n===6){
+   if(n===6&&!steadyOnly){
     viewer=await launch('动态观众',url);await portal(viewer);await viewer.page.getByRole('button',{name:'加入房间',exact:true}).click();await viewer.page.getByRole('textbox',{name:'房间号',exact:true}).fill(code);await viewer.page.getByRole('textbox',{name:'房间密码',exact:true}).fill('synthetic-'+n);await viewer.page.getByRole('radio',{name:'观战',exact:true}).check();
     await route(viewer,'online-join',async()=>{await targets(viewer,'join-small',['.online-portal-nav button','.online-deploy input:not([type=radio])','.online-role label','.online-deploy button']);await viewer.page.getByRole('radio',{name:'参战',exact:true}).check();},async()=>{await viewer.page.getByRole('radio',{name:'观战',exact:true}).check();});assert.equal(await viewer.page.getByRole('textbox',{name:'房间号',exact:true}).inputValue(),code);assert.equal(await viewer.page.getByRole('textbox',{name:'房间密码',exact:true}).inputValue(),'synthetic-'+n);
     await viewer.page.getByRole('button',{name:'加入房间',exact:true}).click();await viewer.page.locator('.online-lobby').waitFor();assert.equal((await state(viewer)).snapshot.view.self.role,'spectator');
    }
    await until(async()=>(await state(host)).snapshot.view.members.filter(m=>m.role==='player').length===n,'real roster '+n);assert.ok(await host.page.getByRole('button',{name:'开始对局',exact:true}).isDisabled());
-   if(n===6)await route(host,'online-lobby',async()=>{await targets(host,'lobby-small',['.online-room-nav button','.online-room-actions button','.online-room-tools button']);await host.page.getByRole('button',{name:'准备',exact:true}).click();},async()=>{await host.page.getByRole('button',{name:'复制房号',exact:true}).click();});else await host.page.getByRole('button',{name:'准备',exact:true}).click();
+   if(n===6&&!steadyOnly)await route(host,'online-lobby',async()=>{await targets(host,'lobby-small',['.online-room-nav button','.online-room-actions button','.online-room-tools button']);await host.page.getByRole('button',{name:'准备',exact:true}).click();},async()=>{await host.page.getByRole('button',{name:'复制房号',exact:true}).click();});else await host.page.getByRole('button',{name:'准备',exact:true}).click();
    await Promise.all(roomPeers.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot.view.phase==='selecting','start selecting');
-   if(n===6||n===2){await leg(host,'intro-'+n,1000,650);await enterArena(host.page);await leg(host,'intro-return-'+n,1366,768);}else await enterArena(host.page);
+   if((n===6||n===2)&&!steadyOnly){await leg(host,'intro-'+n,1000,650);await enterArena(host.page);await leg(host,'intro-return-'+n,1366,768);}else await enterArena(host.page);
    const match=(await state(host)).snapshot.view.match.match_id;assert.equal((await state(host)).snapshot.view.match.roster_profiles.length,n);
-   if(n===6){await enterArena(viewer.page);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
-   if(n===6||n===2)await route(host,'selecting-'+n,async()=>{await targets(host,'selecting-small-'+n,['.battle-hud-button','.battle-cards .card-pick','.battle-actions button']);await checkBattle(host.page,report,'33-min-'+n,{cards:33});await select(host,'Charge');await shot(host,'selecting-'+n);},async()=>{assert.equal(await host.page.locator('[data-entry="Charge"] .card-pick').getAttribute('aria-pressed'),'true');await checkBattle(host.page,report,'33-large-'+n,{cards:33});await armCommitFlight(host.page);await confirm(host);});else await submit(host,'Charge');
-   if(n===6||n===2)await finishCommitFlight(host.page,report,'resized-live-flight-'+n);assert.equal((await state(host)).snapshot.view.match.match_id,match);
-   if(n===6){await timing(host);await viewerRoute(viewer,n);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
+   if(n===6&&!steadyOnly){await enterArena(viewer.page);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
+   if((n===6||n===2)&&!steadyOnly)await route(host,'selecting-'+n,async()=>{await targets(host,'selecting-small-'+n,['.battle-hud-button','.battle-cards .card-pick','.battle-actions button']);await checkBattle(host.page,report,'33-min-'+n,{cards:33});await select(host,'Charge');await shot(host,'selecting-'+n);},async()=>{assert.equal(await host.page.locator('[data-entry="Charge"] .card-pick').getAttribute('aria-pressed'),'true');await checkBattle(host.page,report,'33-large-'+n,{cards:33});await armCommitFlight(host.page);await confirm(host);});else await submit(host,'Charge');
+   if((n===6||n===2)&&!steadyOnly)await finishCommitFlight(host.page,report,'resized-live-flight-'+n);assert.equal((await state(host)).snapshot.view.match.match_id,match);
+   if(n===6&&!steadyOnly){await timing(host);await viewerRoute(viewer,n);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
    if(n===2){
-    await host.page.evaluate(()=>{const s=window.__reusedReveal={active:true,frames:[]};function frame(t){if(!s.active)return;s.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase});requestAnimationFrame(frame);}requestAnimationFrame(frame);});
+    await host.page.evaluate(()=>{const s=window.__reusedReveal={active:true,frames:[]};function frame(t){if(!s.active)return;s.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase,focus:document.hasFocus(),visibility:document.visibilityState,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio});requestAnimationFrame(frame);}requestAnimationFrame(frame);});
     try{await segment(host.page,()=>host.app.evaluate(({app})=>app.getAppMetrics()),report.segments,'two-player-reused-host',()=>reveal(host,roomPeers,n,true));}
     finally{const sample=await host.page.evaluate(()=>{window.__reusedReveal.active=false;return window.__reusedReveal.frames;});report.reusedTwoPlayer={pid:host.pid,priorPlayerCounts:[6,3,4,5],source:'same ordinary main process reused; no claim that historical stall is fixed',phaseFrames:sample,summary:frameSummary(sample.filter(f=>f.phase==='revealed').map(f=>f.t))};}
    }else await reveal(host,roomPeers,n,n===6);
    if(n===2){
-    await submit(host,'Charge');await host.page.evaluate(()=>{const s=window.__steadyReveal={active:true,frames:[]};function frame(t){if(!s.active)return;s.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase});requestAnimationFrame(frame);}requestAnimationFrame(frame);});
-    try{await segment(host.page,()=>host.app.evaluate(({app})=>app.getAppMetrics()),report.segments,'two-player-reused-steady',async()=>{await Promise.all(roomPeers.map(p=>p.submit('Charge')));await until(async()=>(await state(host)).snapshot.view.phase==='revealing','steady real reveal');await host.page.locator('.battle-table[data-phase="revealed"]').waitFor();await checkBattle(host.page,report,'two-player-two-history',{seats:2,minHistory:2,names:(await state(host)).snapshot.view.match.roster_profiles.map(p=>p.nickname)});await until(async()=>(await state(host)).snapshot.view.phase==='selecting','steady next select');});}
-    finally{const frames=await host.page.evaluate(()=>{window.__steadyReveal.active=false;return window.__steadyReveal.frames;});report.reusedTwoPlayer.steady={viewport:await host.page.evaluate(()=>[innerWidth,innerHeight]),frames,summary:frameSummary(frames.filter(f=>f.phase==='revealed').map(f=>f.t)),condition:'same host after 6/3/4/5 and dynamic 2; no resizing in this reveal'};}
+    await submit(host,'Charge');await host.page.evaluate(()=>{const s=window.__steadyReveal={active:true,frames:[]};function frame(t){if(!s.active)return;s.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase,focus:document.hasFocus(),visibility:document.visibilityState,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio});requestAnimationFrame(frame);}requestAnimationFrame(frame);});
+    try{await profiled(host,'two-player-reused-steady',()=>segment(host.page,()=>host.app.evaluate(({app})=>app.getAppMetrics()),report.segments,'two-player-reused-steady',async()=>{await Promise.all(roomPeers.map(p=>p.submit('Charge')));await until(async()=>(await state(host)).snapshot.view.phase==='revealing','steady real reveal');await host.page.locator('.battle-table[data-phase="revealed"]').waitFor();await checkBattle(host.page,report,'two-player-two-history',{seats:2,minHistory:2,names:(await state(host)).snapshot.view.match.roster_profiles.map(p=>p.nickname)});await until(async()=>(await state(host)).snapshot.view.phase==='selecting','steady next select');await sleep(850);}));}
+    finally{const frames=await host.page.evaluate(()=>{window.__steadyReveal.active=false;return window.__steadyReveal.frames;});report.reusedTwoPlayer.steady={viewport:await host.page.evaluate(()=>[innerWidth,innerHeight]),frames,summary:frameSummary(frames.filter(f=>f.phase==='revealed').map(f=>f.t)),condition:steadyOnly?'same host after 6/3/4/5 and 2; original fixed native window':'same host after 6/3/4/5 and dynamic 2; no resizing in this reveal'};}
    }
-   await result(host,roomPeers,n,n===6||n===2);
+   await result(host,roomPeers,n,(n===6||n===2)&&!steadyOnly);
    if(viewer){await viewer.app.evaluate(({BrowserWindow})=>{const w=BrowserWindow.getAllWindows()[0];w.restore();w.focus();});await viewer.page.locator('.online-lobby').waitFor();await leaveRoom(viewer);await cleanupApp(viewer);viewer=null;}
    console.log('completed real room '+n);await leaveRoom(host);for(const p of roomPeers)await closePeer(p);report.checks.push({name:'room-complete-'+n,pid:host.pid,match});
   }

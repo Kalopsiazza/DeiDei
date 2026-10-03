@@ -124,4 +124,5 @@ async function selfCheck(){
  await assert.rejects(bounded(()=>new Promise(()=>{}),10,'probe'),/probe timed out/);
  console.log('PASS no-GUI trace chunks/IO cleanup/first-error preservation/bounded wait self-check');
 }
-(process.argv[2]==='--self-check'?selfCheck():main()).catch(e=>{console.error(e.stack||e.message);process.exitCode=1;});
+module.exports={bounded,readTrace};
+if(require.main===module)(process.argv[2]==='--self-check'?selfCheck():main()).catch(e=>{console.error(e.stack||e.message);process.exitCode=1;});

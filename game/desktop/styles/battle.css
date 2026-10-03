@@ -127,3 +127,7 @@ dialog.tech-dialog.situation-dialog{height:min(88vh,780px);max-height:none;displ
 @keyframes result-screen-out{to{opacity:0}}@keyframes result-return-camera{from{transform:none;filter:none}to{transform:scale(1.183) translateY(3%);filter:brightness(.35) saturate(.65)}}@keyframes result-content-out{from{opacity:1;transform:none}to{opacity:0;transform:translateY(18px) scale(.98)}}@keyframes result-centered-content-out{from{opacity:1;transform:translateX(-50%)}to{opacity:0;transform:translateX(-50%) translateY(18px) scale(.98)}}
 
 .situation-overview{display:flex;align-items:baseline;justify-content:space-between}
+
+/* ponytail: keep the dimming layer; remove the measured online full-table blur cost.
+   Foreground transition stalls still need diagnosis. */
+.app[data-page=online] .battle-table::before{backdrop-filter:none}
