@@ -11,10 +11,6 @@ const UI_ASSETS=Object.freeze({
   'assets/menu/menu-atmosphere.png':'image/png',
   'assets/battle/battle-table-v1.webp':'image/webp',
   'assets/battle/battle-arena-approach-v1.webp':'image/webp',
-  'assets/online/online-atrium.webp':'image/webp',
-  'assets/online/online-atrium-left.webp':'image/webp',
-  'assets/online/online-atrium-right.webp':'image/webp',
-  'assets/online/online-atrium-deep.webp':'image/webp',
   ...Object.fromEntries(MOVE_ASSETS.map(name=>[`assets/moves/${name}.png`,'image/png'])),
 });
 
