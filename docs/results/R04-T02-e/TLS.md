@@ -23,3 +23,10 @@ DEIDEI_PYTHON=/path/to/isolated/python DEIDEI_INTEGRATION_OUTPUT=.local-outputs/
 真实 GUI 工具沿用普通 main/preload/NetworkRoomPort/Python CLI、错误注入代理与原隐私/坏包断言，已更新欢迎、radio 加入角色、共享擂台、终场及退出定位。零匹配 selector 会失败并打印目标。序列按服务真实 reveal deadline 前进，不再假设 1500ms。旧 Room 样本保留；新采集拒绝 dirty service/core 输入并新增三人 `restart_survivors`，来源仍标注合成时钟/会话，不冒充 socket。
 
 最终证据及未测项见本目录 RESULT.md；跨设备真人需要受控服务、有效证书与两台设备，未由本机 TLS 推导通过。Kimi 未调用。
+
+
+## PR #34 复核补充（2026-10-03）
+
+R34-03只修检查清理判据：secure/clients.cjs的app.close异常、等待失败、强制终止、非零正常退出都会使最终FAIL；记录原异常／exit_code／signal，并把清理错误与首个测试失败分列。正常exit0才可PASS。实际源码VM含wait_error边界及首错保留通过；GUI工具也复用F有界close，自有子进程清理失败不能掩盖其他资源回收。
+
+源码产品3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8；本轮没有重跑TLS全套，原生WSS验证、坏CA/SAN/过期断言和敏感字段边界未改。跨设备／正式信任仍未验，原28组证据继续绑定原输入。[R34报告与证据](../R04-T02/R34-REPAIRS.md)。未调用Kimi。

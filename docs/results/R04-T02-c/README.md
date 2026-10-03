@@ -26,3 +26,10 @@ Avatar、Identity、native Modal与MatchResult共用；观众终场为“整场�
 真实服务发现已失成员后确认退出仍可能停留前厅：snapshot 已清空，但 ROOM_NOT_MEMBER/ROOM_GONE 与离房意图同时到达。`8a65b881e64a15c18a218e59ed3130fa48babe01` 仅将此确定失成员情况完成退出；普通拒绝仍恢复操作，不误导航。6项 hook 回归及独立 Codex 审查通过。
 
 集成工作区 `.worktrees/r04-t02-e`：真实房间 13 组通过（725ec1f），本地恢复 12 项通过（74fbf36），MOCK 恢复 5 组通过（8647ac5），完整旧擂台 smoke 通过（8647ac5）。本地六席 preview 的暂停/局势按明确 mode 核验，原淘汰记录栏断言移到真正 OnlineRoom 的 MOCK 情境，仍保留在线覆盖。真实网络退出/迟到回复和恢复见 E RESULT。证据分别为 `.local-outputs/recovery`、`.local-outputs/r04-t02/online-recovery-final`、`.local-outputs/r04-t02/battle-final.log`、`.local-outputs/r04-t02/real-gui/`。
+
+
+## PR #34 · R34-01（2026-10-03）
+
+追加主进程初始化生命周期取消，提交 acc0ed3300d7de0996a575355f382ddc6e20ffcc，进入最新源码产品3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8。退出／关闭／新初始化／port替换会失效旧档案读取；await后建连前核对，不对迟到回执无条件leave，因此新合法连接保留。sender与有界3秒离房未扩大或删除。
+
+执行实际main handler的受控回归：旧a46为3PASS/3FAIL、exit1，退出后仍开socket；新版6/6、exit0，旧连接副作用消失；相关51项在clean3006通过。FakeSocket/控制档案读取与时钟明确为无GUI探针；普通main的真实联机select与教程故障正常关闭另列。[完整提交／输入／关键证据](../R04-T02/R34-REPAIRS.md)。初轮未验事项保留，4.7预览ID和Modal键盘未扩大实现；未调用Kimi。

@@ -44,3 +44,14 @@ TLS 坏 SAN/过期/未知 CA 的 session_open 各0；正例两场、观众权限
 F 的一次真实两人有界 probe 在此固定输入中另核对：揭晓时两端 state/last_turn/core ledger 同为 g1:t1，玩家显示第1回合／擂台结算／本拍已揭晓，观众明确观战，存活玩家不被写为已淘汰。此为性能诊断里的附加读取，清理时测试 wrapper 有强制回收，不能记为新增完整 smoke 通过；原13/28组的完整退出证据另保留。
 
 未验：跨设备真人、受控公网服务、系统正式信任、Windows、干净机、物理跨DPI和长期资源泄漏。成包 GUI 的一次性 CI OS 账户边界由 A 记录。本轮未 push、合并、部署或发布。
+
+
+## PR #34 · R34-03 检查判据（2026-10-03）
+
+产品网络／TLS规则未改；最新源码产品3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8另含C/D修正，原0a37a89安装包未重建。故障代理在内存比较真正被接受但丢ACK的原请求与重发request_id/command_seq/payload，只输出相同布尔值；GUI额外要求error=null，原公开human账目断言保留。
+
+实际CLI＋relay＋两个NetworkRoomPort在clean4bdd定向1/1、exit0，四比较true、error=null、human Def仅结算一次；单改ID、seq、payload的三个反例各自拒绝。该检查及产品网络输入到3006未变；这是无Electron的真实socket定向，不替代历史13组GUI／28组TLS或跨设备。
+
+secure与GUI收尾区分正常／强制退出、exit_code/signal和wait_error，失败后继续各资源清理且保留首错；GUI复用F的有界正常关闭，Q10显式SIGKILL只记EXPECTED_FAULT、normalExit=false。实际源码VM9/9通过，相关Node51项在clean3006通过。新ACK测试的清理错误也不会中断其他子进程回收或覆盖首错。
+
+本轮没有重跑全13/28、900秒压力或再生成证书；原TLS和真实GUI输入／历史失败／未验事项保留。[新提交、命令、输入映射及精简证据](../R04-T02/R34-REPAIRS.md)。未部署、未绕过证书，未调用Kimi。

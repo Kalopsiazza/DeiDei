@@ -39,3 +39,16 @@
 早期 probe 的错误离开定位、选牌阶段模糊席位几何误用、多人禁止冻结、未改设置的保存按钮禁用、教程放大字号上限误用均保留日志与失败截图，随后按真实 UI／阶段归属修正 QA。首次旧 driver graceful close 挂起，仅终止确认的自有 PID35514/35585；新版先落证据再 bounded app.exit，仅作用于自己的测试进程。最终完整 driver 的 exit 0 独立核验，未把 stdout PASS 代替退出码。
 
 仍待验：物理 4K／跨屏切换／Windows／HDR／不同系统缩放，所有视频宽高比末帧的逐帧视觉接受，正式服务／跨设备真人。现暂停 CSS 主要暂停 animation，伪元素 transition 的完整暂停语义仍需另定位；未以此做性能优化。图鉴 1920 绘制慢没有因果定位，本包未改渲染、时序或 blur 强度。根集成后继续当前真实 GUI 与最终成包；本报告不宣称发行或真人视觉接受。
+
+
+## PR #34 · R34-02（2026-10-03）
+
+三处局部消费者修正：共享tech-dialog原生select提供dark表面／浅字／焦点／disabled；battle通用hover排除primary/danger；reduce准确命中standard扫描与intro article::before。13份职责CSS顺序、欢迎独立、两份运行样式、既有共用tokens保留。原72布局场景与10控件数据仍按上文原来源，不作为本轮重跑。
+
+真CLI＋普通main＋一个合成Peer，原生CUA方向键/Return操作大厅10→30s、战局30→20s；系统区域展开图已经本地Codex看图，实际policy确认，driver0、普通应用close0、服务SIGINT0、后代结束与profile删除。输入clean4bdd35df036e622d0cc3cdb53aa6849e7f003160；战局Dialog在selecting打开，服务持续，Apply时result，本轮没有重验当前deadline。
+
+自动targeted实际起点4739d6c8f6e9a19d51ec28370c6dfa92e68d78d5、仅F诊断脚本dirty：四个暂停按钮、两处select、三组motion通过，driver0、pageErrors=[]、layouts=0。所有9项D/main/生成输入与最终源码3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8字节一致。本地实际worker；在线为既有MOCK；disabled/busy属性是CSS合成取样，当前实际select无自然disabled状态。此脚本既有app.exit(0)仅测试退出，不当作正常关闭验收。
+
+首轮Home/End与CDP原生事件诊断、首次CUA控制等待超时均失败保留。自动脚本native PENDING/NOT_RUN由独立真实原生证据补充，没有伪改状态。0面积／缺卡名／缺席位部件／常驻阴影假焦点及缺类别反例均拒绝；类型构建exit0，reduce为none/1，恢复偏好为原infinite。
+
+[修正报告、截图、逐状态计算值与精确输入](../R04-T02/R34-REPAIRS.md)。全页面七态、动态resize／全屏序列／物理跨DPI／最小支持尺寸等上文未验事项原样保留；没有为了局部小修重做整个适配包。未调用Kimi。

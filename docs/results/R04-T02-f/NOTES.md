@@ -114,3 +114,16 @@ renderer CPU profile 8.911s/7253采样：idle7053ms、program1541ms，单个应�
 新原件仅位于 F `.local-outputs/final-performance/`：entry52/diagnostics/截图，native和dpr1 performance.json/CPU profile，真实two-player evidence.json/原始逐帧RAF/CPU profile/trace/analysis/截图、实际采样wrapper及日志。旧 `.local-outputs/performance-baseline/` 和 E 真实房间原件未覆盖。生产源码未修改，没有全面memo/cache、效果关闭、规则/依赖/计时改动；最终提交仅此文档。
 
 专用物理3840×2160或跨屏/系统缩放、Windows、跨设备、公网正式CA部署、GPU显存/利用率/实际呈现帧、长期泄漏、旧热更新main、历史人物失败均未验。真实 E13 和TLS28功能证据由根代理保留，本 F 样本不替代它们，也不晋升为发布验收。worktree `.worktrees/r04-t02-f` 保留，ignored证据未归档；未push/merge/release，未调用Kimi。
+
+
+## PR #34 · R34-03 故障留证（2026-10-03）
+
+最新源码产品3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8。segment在finally停止RAF、保存部分frameTimestamps／frameCount及原异常，后续指标／清理失败单列；正常关闭先走有界close/before-quit，强杀不能记正常PASS。读回失败另尽力有界回写FAIL；该路径的实际finally自检保留首错，最终文件FAIL。旧样本没有原始帧时间戳，不补造数据；frameSummary数字frames契约保留。
+
+普通main／真实WorkerPort tutorial已selecting/live后，clean3006独占GUI分别注入throw及150ms locator timeout：driver实际均exit1（预期）；9／18个部分帧、原Error／TimeoutError、active=false及读回重算一致。新完整帧样本见远端[CHECKS.json](../R04-T02/R34-evidence/CHECKS.json)，本机原件在E .local-outputs/r34-03-f/{throw,timeout}/performance.json及verification.json。
+
+throw首次可操作1473ms、1366×768原生DPR2，在CDP override前记录；其后失败段DPR1。timeout首次926ms、原生DPR2，失败段也为原生DPR2。未清OS缓存，不是冷磁盘启动、性能基线或GPU呈现帧时间。
+
+Electron93440／93546普通close正常exit0、signal=null、forced=false；真实worker93457／93560及全部自有后代OS PID不存在，临时profile删除，driver无强杀。worker自身退出码接口未暴露，不写为exit0。原异常优先，新的清理VM／读回自检及相关51项通过；旧读回PASS反例、首次自检匹配错误与普通修正提交保留。
+
+这是诊断工具可靠性修正，未优化生产渲染。1920图鉴长帧、旧两人停顿及欢迎历史偶发、物理屏幕／长期泄漏／GPU不可得指标和原强制回收记录继续保留。没有重跑旧性能矩阵、欢迎52或压力套件。[完整版本关系与命令](../R04-T02/R34-REPAIRS.md)。原0a37a89安装包不包含此轮C/D修正；未调用Kimi。

@@ -1,5 +1,34 @@
 # R04 A—F 版本与构建输入对照
 
+## PR #34 复核书后的新版源码
+
+**源码产品 SHA：`3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8`**。R34三组修正和本机定向验证已完成，草稿待最终源码确认；含最后文档的完整 head 由 PR 正文／`headRefOid` 回传。原 `a46b9112840d6b2c604f4c59f04102e67bf3de2a` 的36提交保留，本轮只追加。
+
+[R34-REPAIRS.md](R34-REPAIRS.md) 列出每组实现完整SHA、实际检查输入及相同输入的沿用关系；[R34-INPUT-DELTA.json](R34-INPUT-DELTA.json) 列新版完整207项路径和SHA256（新增1／删除0／已有变化6），另列7项范围外integration检查源码。图鉴JSON、lock、core/runtime/packaging字节保留；只改main、三份CSS及局部检查，不以旧206一致结论描述新版。
+
+旧ZIP产品仍是 `0a37a89d3ad5e0d1b7817831d3d94f5811e90346`，未重建／上传新版安装包。其原成包检查仅约束旧包。物理屏幕、全页面动态适配、跨设备真人、成包GUI及未定位长帧均未借本轮检查晋升。
+
+新版源码至最终文档head复核（包括docs图鉴JSON及integration差异）：
+
+```sh
+python3 - <<'PY'
+import hashlib, json, subprocess
+from pathlib import Path
+m = json.loads(Path('docs/results/R04-T02/R34-INPUT-DELTA.json').read_text())
+expected = m['current_input_files_sha256']
+for ref in [m['revised_source_product_sha'], 'HEAD']:
+    paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', ref, '--', *m['scope']]).decode().splitlines()
+    assert set(paths) == set(expected)
+    for path, sha in expected.items():
+        assert hashlib.sha256(subprocess.check_output(['git', 'show', f'{ref}:{path}'])).hexdigest() == sha, path
+    for item in m['review_to_revised_source_delta']:
+        assert hashlib.sha256(subprocess.check_output(['git', 'show', f"{ref}:{item['path']}"])).hexdigest() == item['after_sha256'], item['path']
+print('PASS: revised product and final document head inputs match, including manual JSON and changed integration checks')
+PY
+```
+
+## 以下是原包／原审查 head 的历史记录
+
 状态：**本机候选已交付，待源码验收**。分包报告是执行者检查记录；尚未获得六包源码／证据验收。原始大日志与包保留本机，需要时另行取用。
 
 ## 审查版本
@@ -59,7 +88,7 @@ m = json.loads(Path('docs/results/R04-T02/BUILD-INPUTS.json').read_text())
 expected = m['recorded_input_files_sha256']
 scopes = ['game/core', 'game/runtime', 'game/desktop', 'game/packaging',
           'docs/results/R04-T01-b/manual-content/content.json']
-for ref in [m['product_sha'], 'HEAD']:
+for ref in [m['product_sha'], 'a46b9112840d6b2c604f4c59f04102e67bf3de2a']:
     paths = subprocess.check_output(['git', 'ls-tree', '-r', '--name-only', ref, '--', *scopes]).decode().splitlines()
     assert set(paths) == set(expected), (ref, 'input list changed')
     for path, sha in expected.items():
@@ -67,7 +96,7 @@ for ref in [m['product_sha'], 'HEAD']:
         assert hashlib.sha256(data).hexdigest() == sha, (ref, path)
 assert hashlib.sha256(('\n'.join(sorted(expected)) + '\n').encode()).hexdigest() == m['list_sha256']
 assert hashlib.sha256(json.dumps(expected, sort_keys=True, separators=(',', ':'), ensure_ascii=False).encode()).hexdigest() == m['mapping_sha256']
-print('PASS: product and HEAD, 206 inputs identical including manual JSON')
+print('PASS: original package product and reviewed a46 head, 206 inputs identical including manual JSON')
 PY
 ```
 
