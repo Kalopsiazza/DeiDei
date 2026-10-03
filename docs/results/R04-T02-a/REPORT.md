@@ -1,5 +1,7 @@
 # R04-T02-a 分发输入与最终原生成包
 
+远端交付状态：**本机候选已交付，待源码验收**。以下为执行者检查记录，保留原检查输入／失败／未验事项；完整来源、集成提交和最终 head 的对应关系见 [VERSIONS.md](../R04-T02/VERSIONS.md)。本报告中的“未推送”指初轮记录时，后续由集成分支统一交付。
+
 A 实现提交 `1523ae5f8119af604008c72db5927d8fce2b39c3`，产品基线 `88185af2c9372b2f1d88707218cafee590b94018`。最终 **E 集成源码** `0a37a89d3ad5e0d1b7817831d3d94f5811e90346` 已完成 macOS arm64 原生成包，driver 实际退出 0。该 SHA 包含 B/C/D/E，不能以 A 分支替代成包输入。A 分支回补工具／文案的本地提交为 `07381319a876c2a725ca4eeb72b28ce9430f0b68`。成包 GUI、真人与物理环境验收仍未执行。
 
 继续开发路径 `.worktrees/r04-t02-a`／`codex/r04-t02-a-delivery`；保留、未归档。最终产品工作区 `.worktrees/r04-t02-e`；本次只按根任务授权修改工具补丁和交付文案，生成物位于其忽略的 build 目录。
@@ -39,7 +41,7 @@ E 原 `node_modules` 指向 `r04-t01-b`：先在忽略目录用修改后的锁�
 使用 A 专用 Python 3.11.16，按原 darwin-arm64 hash lock 安装六项工具；Node 24.12.0、npm 11.6.2、uv 0.11.13、Electron 44.3.0。R03 环境未修改。命令从 E 工作区执行：
 
 ```sh
-DEIDEI_EXPECTED_SHA=0a37a89d3ad5e0d1b7817831d3d94f5811e90346 /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-a/game/packaging/.venv/bin/python game/packaging/build.py > .local-outputs/r04-t02/native-build.log 2>&1
+DEIDEI_EXPECTED_SHA=0a37a89d3ad5e0d1b7817831d3d94f5811e90346 ../r04-t02-a/game/packaging/.venv/bin/python game/packaging/build.py > .local-outputs/r04-t02/native-build.log 2>&1
 ```
 
 完整记录见 [native-commands.json](native-commands.json)：31 命令各退出 0；driver 退出 0，输入干净且 code_sha 精确一致。实际检查包括：
@@ -56,7 +58,7 @@ DEIDEI_EXPECTED_SHA=0a37a89d3ad5e0d1b7817831d3d94f5811e90346 /Users/zengchongtai
 
 `spctl` 实际退出 0，但输出 **`accepted / override=security disabled`**，反映本机已有安全状态；本次未改系统设置，不能据此声明系统信任验收通过。正常环境再次执行 `node game/packaging/check-package.cjs` 实际退出 1，被既有 disposable CI OS 账户 guard 拒绝；未 fake GITHUB_ACTIONS、未隐藏源码、未写私人 profile、未开成包 GUI。
 
-ZIP 绝对路径：`/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/packaging/build/darwin-arm64-45803_11/DeiDei-R04-T02-a-macOS-arm64-0a37a89.zip`。大小 **162011579 bytes**，SHA256 **`5403f5c48d675cb8ab7839be446507046758fad1230fdae148f75a09005167c9`**。机器可读摘要见 [delivery-manifest.json](delivery-manifest.json)。
+ZIP 本机路径（`<E_WORKTREE>` 为项目 `.worktrees/r04-t02-e`；未上传，审查者尚未取得或核对摘要）：`<E_WORKTREE>/game/packaging/build/darwin-arm64-45803_11/DeiDei-R04-T02-a-macOS-arm64-0a37a89.zip`。大小 **162011579 bytes**，SHA256 **`5403f5c48d675cb8ab7839be446507046758fad1230fdae148f75a09005167c9`**。机器可读摘要见 [delivery-manifest.json](delivery-manifest.json)。
 
 同一输出目录保留 `delivery/`、`中文 空格 解压/`、`stage/build-info.json`（SHA256 `9bbf7053fb82cf3d390f097511d0859120138d7a95e62c947ade1e1cf5f31173`）、`delivery-manifest.json` 与 `evidence/commands.json`、`file-manifest.json`、完整 frozen/unpacked worker、签名、官方 checksum 证据。npm lock SHA256 `47d4ad6084037112463d8aabcc869dc76556c3bbe31e652bcd1e52178ac585e2`；编译图鉴内容 SHA256 `61d559c9a06fc285fff2d715233993b4228a63f7f339b0877686de8726de00ca`。完整 stdout 在 E `.local-outputs/r04-t02/native-build.log`。
 

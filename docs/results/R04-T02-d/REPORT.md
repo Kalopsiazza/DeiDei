@@ -1,5 +1,7 @@
 # R04-T02-d 结果
 
+远端交付状态：**本机候选已交付，待源码验收**。以下为执行者检查记录，保留原检查输入／失败／未验事项；完整来源、集成提交和最终 head 的对应关系见 [VERSIONS.md](../R04-T02/VERSIONS.md)。本报告中的“未推送”指初轮记录时，后续由集成分支统一交付。
+
 代码：`91c15b3850c10123023bc2afe56d0f9f0972f4e1`，基于 B `852a211cb3801b98fee9c39e5e58db23d29c3e17`。真实 Electron 固定代码检查开始时 Git 干净；后续只补本报告与 DESIGN 的“两至三行”准确表述。独立 worktree `.worktrees/r04-t02-d`、分支 `codex/r04-t02-d-shared-style` 保留，未归档、未 push/merge/PR。根执行者负责设计复核与集成。VEW 中风险前端流程；未调用 Kimi。
 
 ## 实现

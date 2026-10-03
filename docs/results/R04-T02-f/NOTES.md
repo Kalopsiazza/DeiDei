@@ -1,5 +1,7 @@
 # R04-T02-f · 欢迎可靠性与性能基线
 
+远端交付状态：**本机候选已交付，待源码验收**。以下为执行者检查记录，保留原检查输入／失败／未验事项；完整来源、集成提交和最终 head 的对应关系见 [VERSIONS.md](../R04-T02/VERSIONS.md)。本报告中的“未推送”指初轮记录时，后续由集成分支统一交付。
+
 输入产品：`88185af2c9372b2f1d88707218cafee590b94018`；本工作区 `codex/r04-t02-f-performance`。本次只新增诊断/取样脚本，未优化生产源码、改规则或服务器计时。使用 VEW，未调用 Kimi。
 
 ## 条件与预算
@@ -111,4 +113,4 @@ renderer CPU profile 8.911s/7253采样：idle7053ms、program1541ms，单个应�
 
 新原件仅位于 F `.local-outputs/final-performance/`：entry52/diagnostics/截图，native和dpr1 performance.json/CPU profile，真实two-player evidence.json/原始逐帧RAF/CPU profile/trace/analysis/截图、实际采样wrapper及日志。旧 `.local-outputs/performance-baseline/` 和 E 真实房间原件未覆盖。生产源码未修改，没有全面memo/cache、效果关闭、规则/依赖/计时改动；最终提交仅此文档。
 
-专用物理3840×2160或跨屏/系统缩放、Windows、跨设备、公网正式CA部署、GPU显存/利用率/实际呈现帧、长期泄漏、旧热更新main、历史人物失败均未验。真实 E13 和TLS28功能证据由根代理保留，本 F 样本不替代它们，也不晋升为发布验收。worktree `/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-f` 保留，ignored证据未归档；未push/merge/release，未调用Kimi。
+专用物理3840×2160或跨屏/系统缩放、Windows、跨设备、公网正式CA部署、GPU显存/利用率/实际呈现帧、长期泄漏、旧热更新main、历史人物失败均未验。真实 E13 和TLS28功能证据由根代理保留，本 F 样本不替代它们，也不晋升为发布验收。worktree `.worktrees/r04-t02-f` 保留，ignored证据未归档；未push/merge/release，未调用Kimi。
