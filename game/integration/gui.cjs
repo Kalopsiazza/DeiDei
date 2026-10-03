@@ -140,6 +140,10 @@ async function leave(c){
     await guest.page.locator('[data-entry="Def"] .card-pick').click();await guest.page.getByRole('button',{name:'确认出招',exact:true}).click();
     await until(async()=>(await state(guest)).status==='reconnecting','ACK loss disconnect');
     await until(async()=>{const x=await state(guest);return x.status==='connected'&&!x.pending&&x.snapshot?.view.self.accepted_entry_id==='Def';},'resume and identical submission',15000);
+    assert.equal((await state(guest)).error,null,'resumed submission must not be rejected');
+    const retryLines=proxy.received.length;await control({op:'retry_check'});
+    evidence.ackRetry=JSON.parse(proxy.received.slice(retryLines).find(line=>line.startsWith('Retry: ')).slice(7));
+    assert.deepEqual(evidence.ackRetry,{observed:true,request_id_same:true,command_seq_same:true,payload_same:true});
     await submit(host,'Bi');await Promise.all(players.map(p=>p.submit('Def')));
     await until(async()=>(await state(guest)).snapshot.view.phase==='revealing','after resumed submit');
     const revealed=(await state(guest)).snapshot.view.match.last_turn;const gid=(await state(guest)).snapshot.view.self.player_id;assert.equal(revealed.action_sources[gid],'human');assert.equal(revealed.core_resolution.ledger.actions[gid].entry_id,'Def');await shot(guest,'real-resume-accepted');

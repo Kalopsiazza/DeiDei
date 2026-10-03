@@ -31,9 +31,16 @@ async function call(c,method,payload){
 async function shot(c,name){if(!gui)return;await c.page.screenshot({path:path.join(output,name+'.png'),scale:'css'});evidence.screenshots.push({name,source:'ordinary Electron main/preload, real TLS service'});}
 async function close(c){
  c.port?.close();if(c.app&&!c.closed){
-  try{await c.app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await c.app.close();}catch{if(c.process.exitCode===null&&!c.process.signalCode)c.process.kill('SIGKILL');}
-  await until(()=>c.process.exitCode!==null||c.process.signalCode,'owned Electron exit',5000);c.closed=true;
+  const cleanup=c.cleanup={status:'FAIL',forced:false};let timer;
+  try{
+   await Promise.race([(async()=>{await c.app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await c.app.close();})(),new Promise((_,reject)=>{timer=setTimeout(()=>reject(new Error('owned Electron close timeout')),5000);})]);
+  }catch(e){cleanup.error=e.stack||e.message;if(c.process.exitCode===null&&!c.process.signalCode){cleanup.forced=true;try{c.process.kill('SIGKILL');}catch(k){cleanup.kill_error=k.message;}}}
+  finally{clearTimeout(timer);}
+  try{await until(()=>c.process.exitCode!==null||c.process.signalCode,'owned Electron exit',5000);}catch(e){cleanup.wait_error=e.message;}
+  cleanup.exit_code=c.process.exitCode;cleanup.signal=c.process.signalCode;cleanup.exited=c.process.exitCode!==null||!!c.process.signalCode;
+  cleanup.status=!cleanup.error&&!cleanup.forced&&cleanup.exit_code===0&&!cleanup.signal?'PASS':'FAIL';c.closed=cleanup.exited;
  }
+ if(c.cleanup)assert.equal(c.cleanup.status,'PASS','owned Electron did not exit normally');
 }
 async function select(c,entry,hostDeparture=false){
  const s=await state(c),m=s.snapshot.view.match;
@@ -104,9 +111,15 @@ async function round(h,g,v,entries){
   pass('S17','service stays stopped; actual source offline worker starts');assert.deepEqual(evidence.page_errors,[]);evidence.status='PASS';
  }catch(e){evidence.error=e.stack||e.message;process.exitCode=1;evidence.failureStates=[];for(const c of clients)if(c.page&&!c.closed)try{evidence.failureStates.push({name:c.name,state:await state(c)});await shot(c,'tls-failure-'+c.name);}catch{}}
  finally{
-  for(const c of clients)await close(c);for(const w of workers)await w.close();for(const dir of directories)await fs.rm(dir,{recursive:true,force:true});
-  evidence.processes=processes.map(p=>({pid:p.pid,exit_code:p.exitCode,signal:p.signalCode,exited:p.exitCode!==null||!!p.signalCode}));evidence.profiles_removed=true;
-  pass('S18','owned clients closed; temporary profiles removed; server/CA cleanup in Python evidence');
+  evidence.cleanup_errors=[];
+  const failed=e=>{evidence.cleanup_errors.push(e.stack||e.message);evidence.status='FAIL';process.exitCode=1;};
+  for(const c of clients)try{await close(c);}catch(e){failed(e);}
+  for(const w of workers)try{await w.close();}catch(e){failed(e);}
+  evidence.profiles_removed=true;
+  for(const dir of directories)try{const owner=clients.find(c=>c.dir===dir);if(owner?.process&&owner.process.exitCode===null&&!owner.process.signalCode)throw new Error('owned Electron still active; profile retained');await fs.rm(dir,{recursive:true,force:true});}catch(e){evidence.profiles_removed=false;failed(e);}
+  evidence.processes=processes.map(p=>({pid:p.pid,exit_code:p.exitCode,signal:p.signalCode,exited:p.exitCode!==null||!!p.signalCode}));
+  evidence.client_cleanup=clients.filter(c=>c.cleanup).map(c=>({name:c.name,...c.cleanup}));
+  if(!evidence.cleanup_errors.length)pass('S18','owned clients exited normally; temporary profiles removed; server/CA cleanup in Python evidence');
   await fs.writeFile(path.join(output,layer+'.json'),JSON.stringify(evidence,null,2)+'\n');input.close();
  }
 })().catch(e=>{process.stderr.write(e.message+'\n');process.exitCode=1;input.close();});
