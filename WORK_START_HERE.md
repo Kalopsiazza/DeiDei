@@ -1,3 +1,9 @@
+# R04-T03-a 当前收尾入口｜2026-10-04
+
+优先执行 [Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35) / [工作单](docs/tasks/R04/R04-T03-a.md)。精确起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；分支 `work/r04-t03-a-frontend-completion`；增量草稿 PR base `codex/r04-t02-e-real-rooms`。本包按三个里程碑实际实施，保持当前视觉方向。状态 RUNNING；[遗留与证据](docs/results/R04-T03-a/REMAINDERS.md)（路径相对仓库根）。旧工作/历史记录保留，尚未进入第二轮；Kimi未调用。
+
+---
+
 # DeiDei｜当前工作入口
 
 ChatGPT · 2026-09-29
