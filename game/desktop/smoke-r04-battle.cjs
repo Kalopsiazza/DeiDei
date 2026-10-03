@@ -273,7 +273,7 @@ const path = require('node:path');
     await previewPause.waitFor({state:'detached'});
     await page.getByRole('button',{name:'局势',exact:true}).click();
     assert.equal(await page.locator('.situation-player-list>article').count(),6);
-    assert.equal(await page.locator('.situation-resources > .elimination-log').count(),1,'multiplayer elimination history must share the resource column');
+    assert.equal(await page.locator('.situation-resources > .elimination-log').count(),0,'local preview must not infer a server room from six participants');
     await page.getByRole('button',{name:'关闭弹窗'}).click();
     await page.getByRole('dialog',{name:'本局态势'}).waitFor({state:'detached'});
     await page.locator('[data-entry="Charge"] .card-pick').click();
