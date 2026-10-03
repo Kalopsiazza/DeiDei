@@ -120,8 +120,10 @@ async function leave(c){
    if(game===0){
     assert.equal(s.snapshot.view.current_turn_ms,10000);
     for(const [width,height] of [[1366,768],[1920,1080]]){
-     await host.page.setViewportSize({width,height});await assertTargets(host.page,'.battle-table .card');const layout=await host.page.evaluate(()=>({size:[innerWidth,innerHeight],scroll:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};})}));
-     assert.equal(layout.cards.length,33);assert.equal(new Set(layout.cards.map(c=>Math.round(c.y))).size,3);assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height));assert.ok(layout.scroll[0]<=width&&layout.scroll[1]<=height);evidence[`layout_${width}`]=layout;await shot(host,`real-online-${width}x${height}`);
+     await host.page.setViewportSize({width,height});await host.page.mouse.move(0,0);
+     await host.page.locator('.battle-operation').evaluate(async node=>{await Promise.allSettled(node.getAnimations({subtree:true}).filter(a=>Number.isFinite(a.effect.getComputedTiming().iterations)).map(a=>a.finished));});
+     await assertTargets(host.page,'.battle-table .card');const layout=await host.page.evaluate(()=>({size:[innerWidth,innerHeight],scroll:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],rows:[...document.querySelectorAll('.battle-cards .cards')].map(e=>getComputedStyle(e).gridTemplateRows.trim().split(/\s+/).length),cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};})}));
+     assert.equal(layout.cards.length,33);assert.deepEqual(layout.rows,[3,3,3]);assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height));assert.ok(layout.scroll[0]<=width&&layout.scroll[1]<=height);evidence[`layout_${width}`]=layout;await shot(host,`real-online-${width}x${height}`);
     }
     await host.page.setViewportSize({width:1366,height:768});pass('Q23','33 cards, three rows, both specified viewports without overflow; actual service and renderer.');
     const before=(await state(host)).snapshot.view.timer.deadline_at_ms;
