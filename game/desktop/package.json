@@ -16,7 +16,7 @@
   "productName": "DeiDei R02",
   "version": "0.1.0",
   "private": true,
-  "description": "R02-T04-a local single-player source build",
+  "description": "R04 local desktop playtest with optional rooms-1.1",
   "author": "DeiDei contributors",
   "main": "main.cjs",
   "scripts": {
