@@ -32,20 +32,16 @@ const path = require('node:path');
     });
     await page.getByRole('button',{name:'P09 · 本人阵亡',exact:true}).click();
     assert.equal((await page.evaluate(() => window.__firstResultFrame)).loaded,true,'the first result frame must not render before its background is ready');
-    await page.getByRole('button',{name:/返回主菜单/}).click({force:true});
+    await page.getByRole('button',{name:/返回主菜单/}).click();
     await page.locator('.app[data-page="menu"]').waitFor();
     await page.getByRole('button',{name:'单人对局'}).click();
 
-    for (const name of ['见习：观察节奏','高压：主动争拍','练手：攻守均衡']) {
-      const button = page.getByRole('button',{name,exact:true});
-      await button.click();
-      assert.equal(await button.getAttribute('aria-pressed'),'true');
-    }
-    for (const name of ['3 秒','10 秒','30 秒','自由']) {
-      const button = page.getByRole('button',{name,exact:true});
-      await button.click();
-      assert.equal(await button.getAttribute('aria-pressed'),'true');
-    }
+    assert.equal(await page.locator('.difficulty-console h2').innerText(),'随机合法对手');
+    assert.equal(await page.locator('.difficulty-selector').count(),0,'solo preparation must not offer disconnected opponent strengths');
+    assert.equal(await page.locator('.prepare-time button').count(),1);
+    const unlimited = page.getByRole('button',{name:'不限时',exact:true});
+    assert.equal(await unlimited.isDisabled(),true,'the current solo turn limit is fixed');
+    assert.equal(await unlimited.getAttribute('aria-pressed'),'true','the fixed unlimited choice must remain selected');
     assert.match(await page.locator('.prepare-time').innerText(),/∞/,'unlimited time must use the infinity symbol');
 
     await page.setViewportSize({width:1366,height:768});
@@ -62,7 +58,7 @@ const path = require('node:path');
     }));
     assert.deepEqual([intro.players,intro.backgroundLoaded],[2,true]);
     for (const text of ['进入擂台','本机席位','训练对手']) assert.match(intro.copy,new RegExp(text));
-    assert.match(intro.copy,/经典规则 · ∞/);
+    assert.match(intro.copy,/经典规则 · 不限时/);
     assert.match(intro.button,/立即进入（5s）/);
     assert.equal(intro.genericPanels,false,'intro identities must not fall back to generic rectangular bars');
     assert.ok(intro.avatarSize>=78,'intro identities need a strong avatar focal point');
@@ -109,7 +105,17 @@ const path = require('node:path');
         selectionIdentity:document.querySelectorAll('.selection-identity').length,
         selectionExtraCopy:document.querySelectorAll('.selection-card footer small').length,
         selfProfileOpacity:Number(getComputedStyle(document.querySelector('.self-seat .seat-profile')).opacity),
-        namesStaySingleLine:[...document.querySelectorAll('.card-name')].every(name=>getComputedStyle(name).whiteSpace==='nowrap'),
+        names:[...document.querySelectorAll('.battle-cards .card-name')].map(name=>{
+          const copy=name.closest('strong').getBoundingClientRect();
+          const range=document.createRange();
+          range.selectNodeContents(name);
+          const text=range.getBoundingClientRect();
+          return {
+            name:name.textContent,
+            fontSize:parseFloat(getComputedStyle(name).fontSize),
+            complete:text.width>0&&text.height>0&&text.left>=copy.left-1&&text.right<=copy.right+1&&text.top>=copy.top-1&&text.bottom<=copy.bottom+1,
+          };
+        }),
         modifiers:[...document.querySelectorAll('[data-entry="BombFlipVolvo"] .card-tags em')].map(tag=>tag.textContent),
         rewardModifier:[...document.querySelectorAll('[data-entry="ZengRewardBigBi"] .card-tags em')].map(tag=>tag.textContent),
         readableType:[
@@ -137,10 +143,11 @@ const path = require('node:path');
     assert.ok(layout.selectionSize[0]>=156&&layout.selectionSize[1]>=210,'the central selection card must remain the arena focal point');
     assert.deepEqual([layout.selectionIdentity,layout.selectionExtraCopy],[0,0],'selection stage must not repeat local identity or card filler copy');
     assert.equal(layout.selfProfileOpacity,0,'the destination identity must stay hidden until commit');
-    assert.equal(layout.namesStaySingleLine,true);
+    assert.equal(layout.names.length,33,'all move names must be measured');
+    assert.ok(layout.names.every(name=>name.complete&&name.fontSize>=12),`move names must render completely at 12px or larger: ${JSON.stringify(layout.names.filter(name=>!name.complete||name.fontSize<12))}`);
     assert.deepEqual(layout.modifiers,['炸药','翻转']);
     assert.deepEqual(layout.rewardModifier,['赠送']);
-    assert.ok(layout.readableType.every((size,index)=>size>=[17,11,10,11,11][index]),`essential selection copy is too small: ${layout.readableType}`);
+    assert.ok(layout.readableType.every((size,index)=>size>=[17,11,10,12,11][index]),`essential selection copy is too small: ${layout.readableType}`);
     await page.locator('.selection-card.empty').waitFor();
     await page.locator('.battle-resources').waitFor();
     await page.locator('.battle-turn').waitFor();
