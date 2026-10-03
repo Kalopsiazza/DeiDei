@@ -31,6 +31,15 @@ test('delayed leave rejection and disconnect clear exit intent without silently 
   current.handlers.accept({...initial,status:'idle',snapshot:null,revision:3});assert.equal(current.result.exits,0);
  }
 });
+test('confirmed exit completes when the real port reports membership already gone',async()=>{
+ for(const code of ['ROOM_NOT_MEMBER','ROOM_GONE','DENIED']){
+  const current=session({leave:async()=>({ok:true,data:{...initial,pending:true,revision:1}})});
+  await current.handlers.leave();
+  current.handlers.accept({...initial,snapshot:null,error:{code},revision:2});
+  assert.equal(current.leaving.current,false);
+  assert.equal(current.result.exits,code==='DENIED'?0:1);
+ }
+});
 test('offline exit cancels a slow command; unmount/stale replies cannot revive the old room',async()=>{
  const old=deferred(),current=session({leave:async()=>({ok:true,data:{...initial,status:'idle',snapshot:null,revision:3}})});
  const pending=current.handlers.run(()=>old.promise);assert.equal(current.lock.current,true);

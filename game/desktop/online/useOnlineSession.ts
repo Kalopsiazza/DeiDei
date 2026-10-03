@@ -18,8 +18,9 @@ export function useOnlineSession(onExit:()=>void) {
  const accept=(next:OnlineState)=>{
   if(!alive.current||next.revision<lastRevision.current)return;
   lastRevision.current=next.revision;currentState.current=next;receipt.current=performance.now();setNow(receipt.current);setState(next);
-  if((next.error&&!next.pending)||next.status==='reconnecting'||next.status==='unavailable')leaving.current=false;
-  if(leaving.current&&!next.pending&&!next.snapshot){leaving.current=false;onExit();}
+  const departed=leaving.current&&!next.pending&&!next.snapshot&&(!next.error||['ROOM_NOT_MEMBER','ROOM_GONE'].includes(next.error.code));
+  if(departed){leaving.current=false;onExit();}
+  else if((next.error&&!next.pending)||next.status==='reconnecting'||next.status==='unavailable')leaving.current=false;
  };
  useEffect(()=>{
   alive.current=true;
