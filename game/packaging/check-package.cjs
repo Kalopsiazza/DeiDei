@@ -151,11 +151,12 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   pass('P08','invalid developer variables, OS-only PATH, Chinese space path, different cwd, isolated CI source tree hidden');
   if(process.platform==='darwin')pass('P10','read-only application successfully writes profile/settings to the unchanged userData; unprivileged CI uid '+os.userInfo().uid);
   else report.checks.push({id:'P10',status:'NOT_RUN',text:'Windows CI account privileges do not establish ordinary-user read-only install acceptance'});
+  // Current DESIGN.md essential copy is 12–16px; validate complete glyphs too.
   for(const [width,height] of [[1366,768],[1920,1080]]){
    await page.setViewportSize({width,height});
-   const layout=await page.evaluate(()=>({body:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,font:parseFloat(getComputedStyle(e.querySelector('strong')).fontSize)};})}));
+   const layout=await page.evaluate(()=>({body:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect(),label=e.querySelector('.card-name'),copy=e.querySelector('.card-pick strong').getBoundingClientRect(),range=document.createRange();range.selectNodeContents(label);const text=range.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,font:parseFloat(getComputedStyle(label).fontSize),nameFits:text.left>=copy.left-1&&text.right<=copy.right+1&&text.top>=copy.top-1&&text.bottom<=copy.bottom+1};})}));
    assert.equal(layout.cards.length,33);assert.equal(new Set(layout.cards.map(c=>Math.round(c.y))).size,3);
-   assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height&&c.font>=16));
+   assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height&&c.font>=12&&c.font<=16&&c.nameFits));
    assert.ok(layout.body[0]<=width&&layout.body[1]<=height);
    await shot(`packaged-${width}x${height}`);
   }
