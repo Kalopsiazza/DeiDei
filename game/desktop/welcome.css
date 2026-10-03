@@ -22,19 +22,17 @@
 .welcome-scene.export-frame .welcome-title,.welcome-scene.export-frame .welcome-tools,.welcome-scene.export-frame .welcome-preview-note{visibility:hidden}
 @media(max-height:710px){.welcome-card-front{padding:23px 26px}.welcome-card-front h2{font-size:28px;margin:16px 0 18px}.welcome-card-front .avatars{margin-bottom:20px}.welcome-card-front label{margin-bottom:12px}.welcome-card-front .label{margin-top:12px}.welcome-card-front input:not([type=checkbox]){height:48px}.welcome-card-front .welcome-action{min-height:46px}.welcome-card-front p{margin:10px 0}.welcome-card{height:78vh}.welcome-tools{top:20px}}
 @media(max-width:1100px){.welcome-title{left:9%;width:44%}.welcome-title h1{font-size:118px}.welcome-card{left:75%;width:310px}.welcome-title p{font-size:17px}.welcome-card-front{padding:24px}.welcome-card-front h2{font-size:27px}}
-@media(prefers-reduced-motion:reduce){.welcome-glass,.welcome-title,.welcome-card,.welcome-card-turn,.welcome-scene button,.welcome-scene input{transition:none!important}}
 
-.welcome-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;opacity:0;pointer-events:none;transition:opacity .4s ease-out}
+.welcome-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--welcome-focus);z-index:5;opacity:0;pointer-events:none;transition:opacity .4s ease-out}
 .welcome-scene[data-stage=opening] .welcome-film{opacity:1}.welcome-scene[data-stage=opening] .welcome-tools,.welcome-scene[data-stage=opening] .welcome-preview-note{visibility:hidden}
 .welcome-film-controls{position:absolute;right:38px;bottom:26px;z-index:6;display:flex;gap:10px}.welcome-film-controls button{border:1px solid #8ceaf34d;border-radius:0;background:linear-gradient(115deg,#253946bb,#08131ebb);color:#dceaf0;padding:10px 16px;font-size:13px;transition:border-color .2s,background .2s}.welcome-film-controls button:hover{border-color:#8ceaf3;background:linear-gradient(115deg,#41626dcc,#08131ecc)}
-@media(prefers-reduced-motion:reduce){.welcome-film{transition:none}}
 
 /* Keep the hall mounted through welcome and menu, so its camera never resets. */
 .app[data-page=profile]{--menu-red:#f13f52;--menu-cyan:#8ceaf3;--menu-white:#faf7f1;--menu-muted:#a9b3bd}
 .front-stage-profile .menu-copy,.front-stage-profile .scene-character,.front-stage-profile .scene-atmosphere,.front-stage-profile .menu-aura,.front-stage-profile .menu-particles,.front-stage-profile .menu-grid{opacity:0;pointer-events:none}
 .front-stage-profile .scene-character{transform:translateY(24px)}
 /* Match the exported video reference's centered 2% overscan and lighting. */
-.front-stage-profile .scene-world{transform:scale(1.04);transform-origin:center}
+.front-stage-profile .scene-world{transform:scale(1.04);transform-origin:var(--welcome-focus)}
 .front-stage-profile .menu-environment,.app[data-welcome-entering=true] .front-stage-menu .menu-environment{animation:none}
 .welcome-scene::before{content:'';position:absolute;inset:-2%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#030a12a6,transparent 58%,#020a1160),linear-gradient(0deg,#04091277,transparent 30%);transition:opacity .95s}
 .welcome-scene[data-stage=entering]::before{opacity:0}
@@ -50,7 +48,7 @@
 .app[data-welcome-entering=true]>.menu-layout{position:absolute;inset:0}
 .welcome-menu-entry .menu-rail{animation:menu-rail-in .8s .12s cubic-bezier(.18,.82,.2,1) both}
 /* Keep the camera pivot and resume ambient motion from the settled frame. */
-.app[data-welcome-entering=true] .scene-world,.app[data-page=menu]:has(>.welcome-menu-entry) .scene-world{transform-origin:center}
+.app[data-welcome-entering=true] .scene-world,.app[data-page=menu]:has(>.welcome-menu-entry) .scene-world{transform-origin:var(--welcome-focus)}
 .app[data-page=menu]:has(>.welcome-menu-entry) .menu-environment{animation-name:welcome-world-drift}
 @keyframes welcome-world-drift{from{transform:none}to{transform:scale(1.055) translate3d(.8%,-.7%,0)}}
 .welcome-menu-entry::before{animation:welcome-hall-veil .95s ease both}
@@ -58,4 +56,8 @@
 .app[data-welcome-entering=true] .front-stage-menu .scene-character{transition-delay:.1s}
 .app[data-welcome-entering=true] .front-stage-menu .menu-copy{transition-delay:.12s}
 .app[data-welcome-entering=true] .front-stage-menu .scene-atmosphere{transition-delay:.1s}
+
+/* Keep welcome preferences after its ordinary states. */
+@media(prefers-reduced-motion:reduce){.welcome-glass,.welcome-title,.welcome-card,.welcome-card-turn,.welcome-scene button,.welcome-scene input{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.welcome-film{transition:none}}
 @media(prefers-reduced-motion:reduce){.app[data-page=menu]:has(>.welcome-menu-entry) .menu-environment{animation:none}.welcome-card-content,.welcome-menu-entry::before,.welcome-menu-entry .menu-rail,.welcome-scene[data-stage=entering] .welcome-card{animation:none!important}.welcome-glass,.welcome-scene::before{transition:none!important}.app[data-welcome-entering=true] .scene-plane,.app[data-welcome-entering=true] .menu-copy{transition-delay:0s}}

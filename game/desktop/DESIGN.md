@@ -1,6 +1,6 @@
 # DeiDei 桌面端设计标准
 
-状态：R04-T01-b 桌面界面统一规范，2026-09-30 起作为当前前端视觉真源。
+状态：R04-T01-b 视觉规范；R04-T02-d 于 2026-10-03 落实字号、样式职责与内容尺寸规则。
 
 ## 1. 目的与边界
 
@@ -254,3 +254,26 @@
 ### DeiDei 首次进入（2026-10-01）
 
 使用主菜单原大厅与红黑金纹牌背。标题左、牌右，不先展示人物；点击进入后文字退场，同一张牌 1.4 秒内翻面并移到中央，微倾斜的牌面承载命名与去向选择。直角、红青渐变、正常／悬停／焦点状态沿用大厅语汇。减少动态时直接切到命名。真实流程用既有档案接口，预览只改内存；损坏档案保留确认备份。实战按钮调用既有教程。视频尾帧直接导出这个标题状态，不使用全屏牌遮挡转场。
+
+
+## R04-T02-d：实际样式入口与适配规则
+
+`style.css` 是源码导入入口；`styles/` 的顺序保留现有 cascade：foundation → stage → nonbattle-pages → prepare → battle（含共用 tech-dialog 控件）→ type → battle-identity → archive → tutorial → archive-dialogs → welcome-stage → online。拆分依据实际场景职责；后段补充具体场景细节，保留顺序以免同特异性的既有样式被重排。减少动态／透明度集中在最后的 preferences。`welcome.css` 继续独立输出，其偏好规则同样位于末尾。
+
+构建用既有 esbuild 展开源码导入，运行端仍只加载 `style.css` 与 `welcome.css`，不增加协议白名单或运行时 CSS 请求。改样式应编辑职责文件；生成的 `build/ui` 由构建覆盖。旧 `.online:not(.online-table)` 控件／容器皮肤和旧非牌桌 dialog 皮肤已退出；现代 menu-option、settings-back、prepare-start、tech-dialog 各自决定状态。通用 dialog hover 排除 primary/danger，两者保留红色语义与可见焦点，disabled 不响应按下位移。
+
+正文／操作／标签／元信息分别使用 `--type-body:15px`、`--type-control:14px`、`--type-label:12px`、`--type-meta:10px`；既有阅读基线规则消费这些值，展示标题保留各自比例。本地三行手牌名使用 `clamp(var(--type-label),1vw,14px)`，最小 12px；联机牌名保留其 16px 规则。密集手牌名原则上单行；较长名称允许自然换为两行，不通过省略或缩字号裁掉关键命名。选中展示和详情继续提供完整解释。
+
+内容布局按 CSS px 判定可达性，DPR 记录资源栅格密度和清晰度，物理像素／系统缩放另记设备信息。1366×768 内容尺寸或 DPR=2 模拟均不证明物理 4K。布局保留现有 grid/flex 和窄高断点，不添加整屏 transform 缩放。
+
+菜单、设置和准备页的常规横向安全边共用 `--page-safe-x`（42–84px）；联机导航共用 `--page-safe-compact-x`（28–72px）。窄／短窗口保留各职责的内容断点，文字和主动作必须留在内容区；装饰层允许出界并由舞台裁切。
+
+| 媒体 | 填充／焦点 | 可裁区域 |
+| --- | --- | --- |
+| 大厅环境 | cover，图片居中；世界层 pivot `--hall-anchor:46% 48%` | 画面四边装饰，内容 rail 不随背景裁切 |
+| 人物 | contain，`--portrait-focus:center bottom` | 既有底部延伸区域；不覆盖操作区 |
+| 竞技台 | cover，`--arena-focus:center 52%` | 场景边缘；席位和卡牌由独立内容容器布局 |
+| 入场／终场背景 | cover，`--cinematic-focus:center` | 边缘；身份与终场动作保留内容坐标 |
+| 欢迎视频与大厅交接 | cover，`--welcome-focus:center` | 保留原素材居中 2% overscan 与世界层 scale(1.04)，标题交接起终点共用此 pivot |
+
+`dev.cjs` 监视职责 CSS、SharedUI.tsx 和 useSoloSession.ts，重建后通知 UI reload。主进程、preload、协议白名单与 worker 改动仍须重启 Electron。`node game/desktop/smoke-style.cjs` 使用隔离档案采样六态、内容尺寸、原生全屏与偏好；联机入口为既有 MOCK，输出默认写入 ignored `.local-outputs/R04-T02-d/style-check`。双人揭晓使用界面既有“冻结”保持公开画面；六人揭晓使用既有 MOCK 公开快照，保留多人不可冻结的行为。这些检查不证明运行时时钟冻结，也不替代服务计时验收。

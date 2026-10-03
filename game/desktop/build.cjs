@@ -1,7 +1,8 @@
 const fs = require('node:fs');
 const esbuild = require('esbuild');
 fs.mkdirSync('build/ui', { recursive: true });
-for (const name of ['index.html', 'style.css', 'welcome.css']) fs.copyFileSync(name, `build/ui/${name}`);
+esbuild.buildSync({entryPoints:['style.css'],bundle:true,outfile:'build/ui/style.css',external:['./assets/*','assets/*']});
+for (const name of ['index.html', 'welcome.css']) fs.copyFileSync(name, `build/ui/${name}`);
 fs.cpSync('assets/menu','build/ui/assets/menu',{recursive:true,force:true});
 fs.cpSync('assets/moves','build/ui/assets/moves',{recursive:true,force:true});
 fs.cpSync('assets/battle','build/ui/assets/battle',{recursive:true,force:true});
