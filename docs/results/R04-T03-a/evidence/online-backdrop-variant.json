@@ -1,0 +1,6 @@
+{
+  "source": "compiled A/B override only; ambient baseline restored; source files unchanged",
+  "product": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
+  "rule": "\n/* Diagnostic A/B: only online full-table backdrop sampling. */\n.app[data-page=online] .battle-table::before{backdrop-filter:none}\n",
+  "compiledStyleHash": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9"
+}

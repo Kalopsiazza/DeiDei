@@ -7,6 +7,7 @@ export function Identity({nickname,avatar,onName,onAvatar,disabled=false}:{nickn
 }
 export function Modal({title,children,onClose,closeDisabled=false,className='',requestCloseRef}:{title:string;children:React.ReactNode;onClose:()=>void;closeDisabled?:boolean;className?:string;requestCloseRef?:React.RefObject<(()=>void)|null>}) {
  const ref=useRef<HTMLDialogElement>(null),timer=useRef<number|null>(null),closingRef=useRef(false);
+ const latest=useRef({onClose,closeDisabled});latest.current={onClose,closeDisabled};
  const [closing,setClosing]=useState(false);
  useEffect(()=>{
   const dialog=ref.current,previous=document.activeElement;
@@ -14,10 +15,14 @@ export function Modal({title,children,onClose,closeDisabled=false,className='',r
   return()=>{if(timer.current!==null)window.clearTimeout(timer.current);dialog?.close();if(previous instanceof HTMLElement&&previous.isConnected&&!document.querySelector('dialog[open]'))previous.focus();};
  },[]);
  const requestClose=()=>{
-  if(closeDisabled||closingRef.current)return;
-  closingRef.current=true;setClosing(true);
-  timer.current=window.setTimeout(()=>{ref.current?.close();onClose();},window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:240);
+  if(latest.current.closeDisabled||closingRef.current)return;
+  closingRef.current=true;if(ref.current)ref.current.inert=true;setClosing(true);
+  timer.current=window.setTimeout(()=>{
+   timer.current=null;
+   if(latest.current.closeDisabled){closingRef.current=false;if(ref.current)ref.current.inert=false;setClosing(false);return;}
+   ref.current?.close();latest.current.onClose();
+  },window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:240);
  };
  useEffect(()=>{if(requestCloseRef)requestCloseRef.current=requestClose;return()=>{if(requestCloseRef)requestCloseRef.current=null;};},[requestCloseRef,closeDisabled,onClose]);
- return <dialog ref={ref} className={`tech-dialog ${className}`.trim()} data-closing={closing} onCancel={e=>{e.preventDefault();requestClose();}} aria-label={title}><header className="dialog-head"><span className="dialog-index">SYSTEM // DIALOG</span><h2>{title}</h2><button className="dialog-close" disabled={closeDisabled||closing} onClick={requestClose} aria-label="关闭弹窗"><i/><i/><small>ESC</small></button></header>{children}</dialog>;
+ return <dialog ref={ref} className={`tech-dialog ${className}`.trim()} data-closing={closing} onKeyDownCapture={e=>{if(e.key==='Escape'||closingRef.current){e.preventDefault();e.stopPropagation();if(e.key==='Escape')requestClose();}}} onClickCapture={e=>{if(closingRef.current){e.preventDefault();e.stopPropagation();}}} onCancel={e=>{e.preventDefault();requestClose();}} aria-label={title}><header className="dialog-head"><span className="dialog-index">SYSTEM // DIALOG</span><h2>{title}</h2><button className="dialog-close" disabled={closeDisabled||closing} onClick={requestClose} aria-label="关闭弹窗"><i/><i/><small>ESC</small></button></header>{children}</dialog>;
 }

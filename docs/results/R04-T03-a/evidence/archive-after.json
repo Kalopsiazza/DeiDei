@@ -1,0 +1,2977 @@
+{
+  "evidenceNote": "Historical archive local fix with native focus true. Full CSS differs from final product; final strict repeat pending.",
+  "originalPath": "archive-static-backdrop/evidence.json",
+  "originalSha256": "e134de8c23a5ea99f4ab1a03b5ead5cd8846e08eae1e3d2f50f35d3ec1850f0e",
+  "input": {
+    "sha": "af5cd5214014bf68601abd95b89e8de8873b08a6",
+    "dirty": "M game/desktop/BattleStage.tsx\n M game/desktop/styles/archive.css\n M game/desktop/styles/battle-identity.css\n M game/desktop/styles/battle.css\n M game/desktop/styles/foundation.css\n M game/desktop/styles/online.css\n M game/desktop/styles/preferences.css\n M game/desktop/styles/welcome-stage.css\n M game/integration/gui-actions.cjs\n?? game/desktop/smoke-archive-performance.cjs\n?? game/desktop/smoke-dynamic.cjs\n?? game/desktop/smoke-online-dynamic.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "54b91d0ba0f903b8c51bb8c176844733e9f0ed1a650e9406fbf1fe152e87aef6",
+      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+    },
+    "startedAt": "2026-10-03T17:15:42.038Z",
+    "mainProcess": "fresh launch; no old hot-update process reused",
+    "wrapperSha256": "d7303e36fc54d44968ef4eac95828486f1ca72d92c4b8e9879b6211462344620"
+  },
+  "status": "PASS",
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-archive-perf-y78hFx",
+      "removed": true
+    },
+    "application": {
+      "pid": 30964,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 30965,
+        "ppid": 30964,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 30966,
+        "ppid": 30964,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 30967,
+        "ppid": 30964,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper (Renderer).app/Contents/MacOS/Electron Helper (Renderer)",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 30977,
+        "ppid": 30964,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 30994,
+        "ppid": 30964,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-03T17:15:57.287Z",
+  "evidenceReadBack": {
+    "frameCountsAndSummariesMatch": true,
+    "segments": 2
+  },
+  "host": {
+    "platform": "darwin",
+    "release": "27.0.0",
+    "cpu": "Apple M2",
+    "cpuCount": 8,
+    "memoryBytes": 17179869184
+  },
+  "protocol": {
+    "source": "ordinary main, temporary synthetic profile; no fixture transport",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "dpr": "native 2, no CDP emulation",
+    "backgroundThrottling": "ordinary main default, not overridden",
+    "focus": "native and document focus asserted before each region and after every wheel; separate RAF focus sampler",
+    "wheelCount": 8,
+    "deltaY": [
+      500,
+      500,
+      500,
+      500,
+      -500,
+      -500,
+      -500,
+      -500
+    ],
+    "wheelWaitMs": 180,
+    "profiling": "CPU profile plus bounded CDP trace in both regions; diagnostic overhead present",
+    "caveat": "fresh process short archive path; not the full old welcome/replay history or physical 1920 display; RAF callback intervals are not presentation times"
+  },
+  "segments": [
+    {
+      "name": "manual-stack-scroll",
+      "frameTimestamps": [
+        6452.232,
+        6468.8,
+        6502.2,
+        6518.9,
+        6552.2,
+        6568.7,
+        6585.6,
+        6601.5,
+        6618.7,
+        6635.1,
+        6651.8,
+        6668.9,
+        6685.6,
+        6702.3,
+        6718.6,
+        6735.6,
+        6752.3,
+        6768.7,
+        6785.6,
+        6802.3,
+        6818.9,
+        6834.8,
+        6851.4,
+        6868.8,
+        6885.4,
+        6901.7,
+        6918.9,
+        6935.6,
+        6969,
+        6985.6,
+        7001.8,
+        7019,
+        7035.7,
+        7052.3,
+        7068.5,
+        7085.7,
+        7102.3,
+        7118,
+        7135.7,
+        7152.2,
+        7185.5,
+        7201.6,
+        7219.1,
+        7235.7,
+        7251.5,
+        7269.1,
+        7284.8,
+        7301.6,
+        7319,
+        7335.8,
+        7352.4,
+        7369.1,
+        7385.8,
+        7402.4,
+        7419,
+        7435.8,
+        7451.5,
+        7469.1,
+        7485.8,
+        7502.5,
+        7519.1,
+        7535.8,
+        7552.5,
+        7569.2,
+        7585.8,
+        7602.1,
+        7618.6,
+        7635.8,
+        7652.6,
+        7669.1,
+        7685.9,
+        7702.5,
+        7719.2,
+        7735.9,
+        7752.5,
+        7769.2,
+        7785.9,
+        7802.5,
+        7819.2,
+        7835.9,
+        7852.1,
+        7868.9,
+        7885.5,
+        7902.5,
+        7919,
+        7935.5,
+        7951.8,
+        7969.2,
+        7985.9,
+        8002.6,
+        8019.2,
+        8036,
+        8052.6,
+        8068.6,
+        8086,
+        8102.6,
+        8119.3,
+        8136,
+        8152.6,
+        8169.1
+      ],
+      "active": false,
+      "errors": [],
+      "metricsBefore": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.112308,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30964,
+          "type": "Browser",
+          "creationTime": 1791047742047.155,
+          "memory": {
+            "workingSetSize": 228832,
+            "peakWorkingSetSize": 284832
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 2.032987,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30965,
+          "type": "GPU",
+          "creationTime": 1791047742212.188,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 147392,
+            "peakWorkingSetSize": 183184
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.084015,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30966,
+          "type": "Utility",
+          "creationTime": 1791047742213.867,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42544,
+            "peakWorkingSetSize": 49616
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.147656,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30967,
+          "type": "Tab",
+          "creationTime": 1791047742689.705,
+          "memory": {
+            "workingSetSize": 227312,
+            "peakWorkingSetSize": 237040
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.106437,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30977,
+          "type": "Utility",
+          "creationTime": 1791047743132.558,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 34224,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.068412,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30994,
+          "type": "Utility",
+          "creationTime": 1791047749111.52,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 36848,
+            "peakWorkingSetSize": 36848
+          },
+          "sandboxed": true
+        }
+      ],
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "metricsAfter": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.173138,
+            "percentCPUUsage": 0.43692053979043904,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 30964,
+          "type": "Browser",
+          "creationTime": 1791047742047.155,
+          "memory": {
+            "workingSetSize": 229680,
+            "peakWorkingSetSize": 284832
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 2.434598,
+            "percentCPUUsage": 2.88463914267655,
+            "idleWakeupsPerSecond": 190
+          },
+          "pid": 30965,
+          "type": "GPU",
+          "creationTime": 1791047742212.188,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 152064,
+            "peakWorkingSetSize": 183184
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.084015,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30966,
+          "type": "Utility",
+          "creationTime": 1791047742213.867,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42544,
+            "peakWorkingSetSize": 49616
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.644239,
+            "percentCPUUsage": 3.566791645118658,
+            "idleWakeupsPerSecond": 834
+          },
+          "pid": 30967,
+          "type": "Tab",
+          "creationTime": 1791047742689.705,
+          "memory": {
+            "workingSetSize": 274576,
+            "peakWorkingSetSize": 275888
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.106437,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30977,
+          "type": "Utility",
+          "creationTime": 1791047743132.558,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 34224,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.070471,
+            "percentCPUUsage": 0.014789082826908401,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30994,
+          "type": "Utility",
+          "creationTime": 1791047749111.52,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 41264,
+            "peakWorkingSetSize": 41264
+          },
+          "sandboxed": true
+        }
+      ],
+      "frameCount": 100,
+      "p50": 16.699999999999818,
+      "p95": 17.699999999999818,
+      "p99": 33.399999999999636,
+      "over50ms": 0,
+      "max": 33.399999999999636,
+      "durationMs": 1743,
+      "failed": false
+    },
+    {
+      "name": "manual-detail-scroll",
+      "frameTimestamps": [
+        9435.3,
+        9452.9,
+        9469.6,
+        9486.3,
+        9503,
+        9519.7,
+        9536.3,
+        9552.2,
+        9569.6,
+        9586.3,
+        9603,
+        9619.7,
+        9636.4,
+        9653,
+        9669.7,
+        9686.4,
+        9703,
+        9719.7,
+        9735.8,
+        9752.1,
+        9769.7,
+        9785.5,
+        9802.4,
+        9819.8,
+        9835.9,
+        9853.1,
+        9869.7,
+        9886.4,
+        9903.1,
+        9919.8,
+        9936.5,
+        9953.1,
+        9969.2,
+        9986.5,
+        10002.5,
+        10019.8,
+        10036.4,
+        10053.1,
+        10069.8,
+        10085.8,
+        10103.1,
+        10119.8,
+        10136.5,
+        10153.2,
+        10169.8,
+        10186.5,
+        10203.1,
+        10219.5,
+        10236.5,
+        10252.4,
+        10269.9,
+        10286.4,
+        10303,
+        10319,
+        10335.6,
+        10353.2,
+        10369.9,
+        10386.5,
+        10403.3,
+        10419.9,
+        10436.5,
+        10452.4,
+        10469.9,
+        10486.6,
+        10502.8,
+        10519.9,
+        10536.5,
+        10553.2,
+        10569.9,
+        10586.6,
+        10602.4,
+        10619.1,
+        10635.7,
+        10653.2,
+        10670,
+        10686.6,
+        10702.5,
+        10719.1,
+        10735.7,
+        10752.4,
+        10769.1,
+        10785.8,
+        10803.3,
+        10820,
+        10836.6,
+        10852.4,
+        10870,
+        10885.9,
+        10903.3,
+        10919.2,
+        10936.6,
+        10953.1,
+        10969.3,
+        10986.7,
+        11003.4,
+        11020,
+        11036.8,
+        11053.3,
+        11070.1,
+        11086.8,
+        11103.3
+      ],
+      "active": false,
+      "errors": [],
+      "metricsBefore": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.648319,
+            "percentCPUUsage": 4.750267113241619,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 30964,
+          "type": "Browser",
+          "creationTime": 1791047742047.155,
+          "memory": {
+            "workingSetSize": 210512,
+            "peakWorkingSetSize": 284832
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 2.552687,
+            "percentCPUUsage": 1.1804867457276593,
+            "idleWakeupsPerSecond": 102
+          },
+          "pid": 30965,
+          "type": "GPU",
+          "creationTime": 1791047742212.188,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 148832,
+            "peakWorkingSetSize": 183184
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.084015,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30966,
+          "type": "Utility",
+          "creationTime": 1791047742213.867,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42432,
+            "peakWorkingSetSize": 49616
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.760142,
+            "percentCPUUsage": 1.1585971481054678,
+            "idleWakeupsPerSecond": 79
+          },
+          "pid": 30967,
+          "type": "Tab",
+          "creationTime": 1791047742689.705,
+          "memory": {
+            "workingSetSize": 259376,
+            "peakWorkingSetSize": 275888
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.106437,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30977,
+          "type": "Utility",
+          "creationTime": 1791047743132.558,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 34192,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.639961,
+            "percentCPUUsage": 5.6926593692722545,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30994,
+          "type": "Utility",
+          "creationTime": 1791047749111.52,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 97488,
+            "peakWorkingSetSize": 103280
+          },
+          "sandboxed": true
+        }
+      ],
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "metricsAfter": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 1.719477,
+            "percentCPUUsage": 0.5283238861972025,
+            "idleWakeupsPerSecond": 5
+          },
+          "pid": 30964,
+          "type": "Browser",
+          "creationTime": 1791047742047.155,
+          "memory": {
+            "workingSetSize": 211920,
+            "peakWorkingSetSize": 284832
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 2.80839,
+            "percentCPUUsage": 1.898529009955095,
+            "idleWakeupsPerSecond": 122
+          },
+          "pid": 30965,
+          "type": "GPU",
+          "creationTime": 1791047742212.188,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 149280,
+            "peakWorkingSetSize": 183184
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.085272,
+            "percentCPUUsage": 0.009332995949613405,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 30966,
+          "type": "Utility",
+          "creationTime": 1791047742213.867,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42624,
+            "peakWorkingSetSize": 49616
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 2.031362,
+            "percentCPUUsage": 2.013766255211498,
+            "idleWakeupsPerSecond": 858
+          },
+          "pid": 30967,
+          "type": "Tab",
+          "creationTime": 1791047742689.705,
+          "memory": {
+            "workingSetSize": 261024,
+            "peakWorkingSetSize": 275888
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.106437,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 30977,
+          "type": "Utility",
+          "creationTime": 1791047743132.558,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 34192,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.641555,
+            "percentCPUUsage": 0.011835279051229384,
+            "idleWakeupsPerSecond": 2
+          },
+          "pid": 30994,
+          "type": "Utility",
+          "creationTime": 1791047749111.52,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 98528,
+            "peakWorkingSetSize": 103280
+          },
+          "sandboxed": true
+        }
+      ],
+      "frameCount": 101,
+      "p50": 16.69999999999891,
+      "p95": 17.5,
+      "p99": 17.600000000000364,
+      "over50ms": 0,
+      "max": 17.600000000000364,
+      "durationMs": 1686,
+      "failed": false
+    }
+  ],
+  "pageErrors": [],
+  "secondaryErrors": [],
+  "electron": {
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "displays": [
+      {
+        "id": 2,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2304,
+          "height": 1536
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 59.98380661010742
+      },
+      {
+        "id": 1,
+        "bounds": {
+          "x": -1710,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 60.00239944458008
+      }
+    ]
+  },
+  "regions": [
+    {
+      "name": "manual-stack-scroll",
+      "selector": ".archive-stack",
+      "wheels": [
+        {
+          "i": 0,
+          "deltaY": 500,
+          "before": {
+            "at": 6446.400000035763,
+            "top": 148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 6656.600000023842,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047749435,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 1,
+          "deltaY": 500,
+          "before": {
+            "at": 6662.200000047684,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 6874.100000023842,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047749654,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 2,
+          "deltaY": 500,
+          "before": {
+            "at": 6879.900000035763,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 7091.100000023842,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047749870,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 3,
+          "deltaY": 500,
+          "before": {
+            "at": 7096.5,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 7307.600000023842,
+            "top": 2148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047750087,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 4,
+          "deltaY": -500,
+          "before": {
+            "at": 7312.800000011921,
+            "top": 2148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 7524.200000047684,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047750303,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 5,
+          "deltaY": -500,
+          "before": {
+            "at": 7529.900000035763,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 7742.700000047684,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047750522,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 6,
+          "deltaY": -500,
+          "before": {
+            "at": 7748,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 7957.5,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047750737,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 7,
+          "deltaY": -500,
+          "before": {
+            "at": 7963.100000023842,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 8175.600000023842,
+            "top": 148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047750954,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        }
+      ],
+      "before": {
+        "at": 6254,
+        "top": 148,
+        "height": 5497,
+        "client": 761,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeBefore": {
+        "at": 1791047749036,
+        "focused": true,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": []
+      },
+      "focusSample": {
+        "active": false,
+        "frames": [
+          {
+            "t": 6452.232,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6468.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6502.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6518.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6552.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6568.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6585.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6601.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6618.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6635.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6651.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6668.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6685.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6702.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6718.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6735.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6752.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6768.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6785.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6802.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6818.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6834.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6851.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6868.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6885.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6901.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6918.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6935.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6969,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 6985.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7001.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7019,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7035.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7052.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7068.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7085.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7102.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7118,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7135.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7152.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7185.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7201.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7219.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7235.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7251.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7269.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7284.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7301.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7319,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7335.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7352.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7369.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7385.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7402.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7419,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7435.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7451.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7469.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7485.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7502.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7519.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7535.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7552.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7569.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7585.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7602.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7618.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7635.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7652.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7669.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7685.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7702.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7719.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7735.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7752.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7769.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7785.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7802.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7819.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7835.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7852.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7868.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7885.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7902.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7919,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7935.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7951.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7969.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 7985.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8002.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8019.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8036,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8052.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8068.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8086,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8102.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8119.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8136,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8152.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 8169.1,
+            "focused": true,
+            "visibility": "visible"
+          }
+        ]
+      },
+      "after": {
+        "at": 8190.800000011921,
+        "top": 148,
+        "height": 5497,
+        "client": 761,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeAfter": {
+        "at": 1791047750970,
+        "focused": true,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": []
+      },
+      "cpuProfile": "manual-stack-scroll-cpu-profile.json",
+      "trace": "manual-stack-scroll-trace.json"
+    },
+    {
+      "name": "manual-detail-scroll",
+      "selector": ".archive-detail-scroll",
+      "wheels": [
+        {
+          "i": 0,
+          "deltaY": 500,
+          "before": {
+            "at": 9441.5,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 9644.600000023842,
+            "top": 500,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047752424,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 1,
+          "deltaY": 500,
+          "before": {
+            "at": 9650.800000011921,
+            "top": 500,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 9842,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047752621,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 2,
+          "deltaY": 500,
+          "before": {
+            "at": 9848.100000023842,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 10042.600000023842,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047752822,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 3,
+          "deltaY": 500,
+          "before": {
+            "at": 10049.400000035763,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 10244.900000035763,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047753025,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 4,
+          "deltaY": -500,
+          "before": {
+            "at": 10251.700000047684,
+            "top": 806.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 10460.600000023842,
+            "top": 306.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047753240,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 5,
+          "deltaY": -500,
+          "before": {
+            "at": 10466.900000035763,
+            "top": 306.5,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 10676.400000035763,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047753456,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 6,
+          "deltaY": -500,
+          "before": {
+            "at": 10682.600000023842,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 10891.700000047684,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047753671,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        },
+        {
+          "i": 7,
+          "deltaY": -500,
+          "before": {
+            "at": 10897.400000035763,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 11108.900000035763,
+            "top": 0,
+            "height": 1689,
+            "client": 883,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791047753888,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 469,
+              "y": 384,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 469,
+              "y": 416,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": []
+          }
+        }
+      ],
+      "before": {
+        "at": 9399.600000023842,
+        "top": 0,
+        "height": 1689,
+        "client": 883,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeBefore": {
+        "at": 1791047752179,
+        "focused": true,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": []
+      },
+      "focusSample": {
+        "active": false,
+        "frames": [
+          {
+            "t": 9435.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9452.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9469.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9486.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9503,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9519.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9536.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9552.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9569.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9586.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9603,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9619.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9636.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9653,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9669.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9686.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9703,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9719.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9735.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9752.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9769.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9785.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9802.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9819.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9835.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9853.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9869.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9886.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9903.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9919.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9936.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9953.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9969.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 9986.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10002.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10019.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10036.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10053.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10069.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10085.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10103.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10119.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10136.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10153.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10169.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10186.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10203.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10219.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10236.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10252.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10269.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10286.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10303,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10319,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10335.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10353.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10369.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10386.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10403.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10419.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10436.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10452.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10469.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10486.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10502.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10519.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10536.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10553.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10569.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10586.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10602.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10619.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10635.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10653.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10670,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10686.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10702.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10719.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10735.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10752.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10769.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10785.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10803.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10820,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10836.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10852.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10870,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10885.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10903.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10919.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10936.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10953.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10969.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 10986.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11003.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11020,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11036.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11053.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11070.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11086.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 11103.3,
+            "focused": true,
+            "visibility": "visible"
+          }
+        ]
+      },
+      "after": {
+        "at": 11124.800000011921,
+        "top": 0,
+        "height": 1689,
+        "client": 883,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeAfter": {
+        "at": 1791047753904,
+        "focused": true,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": []
+      },
+      "cpuProfile": "manual-detail-scroll-cpu-profile.json",
+      "trace": "manual-detail-scroll-trace.json"
+    }
+  ]
+}

@@ -1,3 +1,11 @@
+# R04-T03-a 当前收尾入口｜2026-10-04
+
+[Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)，精确起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；分支 `work/r04-t03-a-frontend-completion`；草稿PR base `codex/r04-t02-e-real-rooms`。候选产品 `edbb85a664bde73bc74160f00bb38e15d5634908`。里程碑一完成，二／三未完成：Mac锁屏阻碍原生拖窗／全屏／双屏及最终聚焦图鉴；联机转场长帧和控件补测仍在。旧工作和失败保留，未进入第二轮；Kimi未调用。
+
+[工作单](../tasks/R04/R04-T03-a.md) · [实际报告](../results/R04-T03-a/REPORT.md) · [遗留终态](../results/R04-T03-a/REMAINDERS.md)
+
+---
+
 # 当前进度｜前端直接迭代，技术审阅并行
 
 ChatGPT · 2026-09-29。本次已重新读取 #30/#31、相关评论、固定规划及相应源码；R04-T01-b 已在 Teddy 本机启动真实 Electron，并验证新版主菜单与前端自动刷新。没有新跑 TLS、长时间测试或跨平台打包。

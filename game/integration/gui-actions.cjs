@@ -4,7 +4,7 @@ async function enterHall(page,name){
  await page.bringToFront();
  await page.locator('.welcome-scene').waitFor();
  const skip=page.getByRole('button',{name:'跳过开场',exact:false});
- if(await skip.count())await skip.click();
+ if(await skip.count())await skip.click({noWaitAfter:true});
  await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
  await page.getByRole('textbox',{name:'昵称',exact:true}).fill(name);
  await page.getByRole('button',{name:'确认名字',exact:true}).click();
@@ -15,7 +15,7 @@ async function enterArena(page){
  await page.bringToFront();
  await page.locator('.match-intro, .online-intro, .battle-table').waitFor();
  const skip=page.getByRole('button',{name:/立即进入|立即入场/});
- if(await skip.count())await skip.click();
+ if(await skip.count())await skip.click({noWaitAfter:true});
  await page.locator('.battle-table[data-ready="true"]').waitFor();
 }
 async function leaveSolo(page){
