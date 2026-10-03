@@ -1,4 +1,4 @@
-:root{--type-body:15px;--type-control:14px;--type-label:12px;--type-meta:10px;--page-safe-x:clamp(42px,5vw,84px);--page-safe-compact-x:clamp(28px,4vw,72px);--hall-anchor:46% 48%;--portrait-focus:center bottom;--arena-focus:center 52%;--cinematic-focus:center;--welcome-focus:center}
+:root{--type-body:15px;--type-control:14px;--type-label:12px;--type-meta:10px;--page-safe-x:clamp(42px,5vw,84px);--page-safe-compact-x:clamp(28px,4vw,72px);--arena-safe-x:clamp(18px,2.4vw,42px);--hall-anchor:46% 48%;--portrait-focus:center bottom;--arena-focus:center 52%;--cinematic-focus:center;--welcome-focus:center}
 /* Native selects share the dark dialog surface, including their platform popup. */
 .tech-dialog select,.tech-dialog select option{color:#e7f6f8;background:#0c1922;color-scheme:dark}
 .tech-dialog select{min-height:44px;border-color:#8ceaf35d}

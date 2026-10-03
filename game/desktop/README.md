@@ -151,3 +151,33 @@ PRD/分镜及实际截图、核心账目在 `docs/results/R04-T01-b/tutorial/`�
 原生 stage 由 `game/packaging/stage.cjs` 读取产品 `UI_ASSETS`，另列主进程运行模块；包括 `online/network-room-port.cjs`、`online/wire.cjs` 与 `catalog.json`，欢迎样式／视频／牌背与两张擂台图。缺文件或本地 require 未列入 stage 时，检查列出具体路径并失败。四张旧中庭图按现 PRD 保留源文件，不再进入正式白名单与分发。
 
 `ManualArchive.tsx` 引用的 `docs/results/R04-T01-b/manual-content/content.json` 属于真实编译输入：未提交时原生构建拒绝继续，其摘要进入 `build-info.json`。运行时使用编译后的 renderer，无需在包内携带 docs。原生验证和未测边界见 [任务 A 记录](../../docs/results/R04-T02-a/REPORT.md)。
+
+## R04-T03-a 定向复测
+
+从仓库根目录先构建，再运行；输出选择新的忽略目录，不覆盖旧失败证据。所有脚本使用临时档案，只关闭自己启动的进程。
+
+```sh
+npm --prefix game/desktop run build
+node game/desktop/smoke-completion.cjs              # 真实main四预览、Modal键盘/迟延/失败
+DEIDEI_PYTHON=/absolute/path/to/python3 node game/desktop/smoke-dynamic.cjs
+node game/desktop/smoke-style.cjs --self-check       # 五类无效样本拒绝
+node game/desktop/smoke-welcome-native.cjs           # dev入口重播/P01/实际刷新标记
+node game/desktop/smoke-welcome-native.cjs --native-only # 600秒观察窗，原生操作由操作者完成
+OUT=/absolute/new/ignored/directory node game/desktop/smoke-archive-performance.cjs
+```
+
+原生观察窗记录实际事件和显示器；操作者完成后在该输出目录创建 `native.done` 结束观察。自动 setContentSize、CDP 内容区／偏好样本和原生拖动证据分别记录，不能互相替代。Mac 需保持解锁；性能取样必须前台、焦点明确。
+
+真实服务需要额外的服务运行时依赖（worker 本身仍只用标准库）：
+
+```sh
+python3 -m venv game/server/.venv
+game/server/.venv/bin/python -m pip install -r game/server/requirements.lock
+PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m deidei_server --port 8765
+# 另一终端：普通main + 真实回环服务
+DEIDEI_PYTHON=/absolute/path/to/python3 DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
+# 有websockets依赖的Python；脚本自行启停真实回环服务和合成对手
+DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dynamic.cjs
+```
+
+本包源码、实际输入、失败与未验条件见 [结果](../../docs/results/R04-T03-a/REPORT.md)，不复用旧检查总数作为本轮结论。

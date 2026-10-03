@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useLayoutEffect,useRef} from 'react';
 import type { DesktopView, Manual, Option, Participant } from './types';
 import { groups, orderedOptions } from './interaction';
 import { ddText } from './view-loop';
@@ -35,6 +35,12 @@ export type BattleStageProps={
 };
 
 export function BattleStage({view,moveHistory,mode,ready,exiting,suspended,frozen,busy,revealSeconds,coach,Avatar,onSelect,onSubmit,onPause,onFreeze,onSituation}:BattleStageProps):React.JSX.Element {
+ const arenaRef=useRef<HTMLElement>(null);
+ useLayoutEffect(()=>{
+  const arena=arenaRef.current,target=arena?.querySelector<HTMLElement>('.self-seat .move-target');if(!arena||!target)return;
+  const update=()=>{const a=arena.getBoundingClientRect(),t=target.getBoundingClientRect();if(!a.width||!a.height)return;arena.style.setProperty('--commit-target-x',`${(t.left+t.width/2-a.left)/a.width*100}%`);arena.style.setProperty('--commit-target-y',`${(t.top+t.height/2-a.top)/a.height*100}%`);};
+  const observer=new ResizeObserver(update);observer.observe(arena);observer.observe(target);update();return()=>observer.disconnect();
+ },[view.self_id,view.participants.length]);
  const selected=view.options.find(option=>option.entry_id===view.selected_entry_id);
  const tutorial=view.tutorial,tutorialTarget=view.phase==='selecting'?tutorial?.target_entry_id:null;
  const self=view.participants.find(player=>player.player_id===view.self_id);
@@ -52,6 +58,7 @@ export function BattleStage({view,moveHistory,mode,ready,exiting,suspended,froze
   return <div className="move-trail" aria-label={`${player.nickname}的出牌记录`}>
    {history.map((move,index)=><span key={move.turnId} className={`move-card ${showingCurrent&&index===0?'current':''}`} data-turn={move.turn} style={{'--stack-index':String(index+(showingCurrent?0:1))} as React.CSSProperties}><span className="move-card-content"><img src={`assets/moves/${move.entryId}.png`} alt=""/><strong>{move.name}</strong></span></span>)}
    {!showingCurrent&&view.phase!=='submitting'&&<span className={`move-card active ${pending?'pending':'hidden-move'}`} style={{'--stack-index':'0'} as React.CSSProperties}>{pending?<span className="move-card-content"><img src={`assets/moves/${pending.entry_id}.png`} alt=""/><strong>{pending.name}</strong></span>:<strong>{player.submission_state==='submitted'?'已锁定':'等待'}</strong>}</span>}
+   <span className="move-target" aria-hidden="true"/>
   </div>;
  };
  const showcaseCard=(option:Option|undefined,className:string)=><article key={option?.entry_id||'empty'} className={`showcase-card ${className} ${option?.ui_group||'empty'}`}><header><span>{option?.doc_id||'--'}</span><em>{option?groupName[option.ui_group]:'待选'}</em></header><div className="showcase-art">{option?<img src={`assets/moves/${option.entry_id}.png`} alt=""/>:<span aria-hidden="true">?</span>}</div><footer><strong>{option?.name||'待选择'}</strong></footer></article>;
@@ -62,7 +69,7 @@ export function BattleStage({view,moveHistory,mode,ready,exiting,suspended,froze
    <nav className="battle-hud-actions" aria-label="牌局工具"><button className="battle-hud-button battle-freeze" aria-pressed={frozen} disabled={mode==='online'||view.participants.length>2} title={mode==='online'||view.participants.length>2?'多人对局不可冻结':'冻结或恢复整场画面'} onClick={onFreeze}><i aria-hidden="true">❄</i><b>{frozen?'恢复':'冻结'}</b></button><button className="battle-hud-button battle-situation" onClick={onSituation}><i aria-hidden="true">◎</i><b>局势</b></button></nav>
   </header>
   {coach}
-  <section className="battle-arena" data-seat-count={view.participants.length} aria-live="polite">
+  <section ref={arenaRef} className="battle-arena" data-seat-count={view.participants.length} aria-live="polite">
    <div className="arena-surface" aria-hidden="true"><img src="assets/battle/battle-table-v1.webp" alt=""/></div>
    {opponents.map((player,index)=>{const position=positions[index]||[50,3];const edge=position[0]<25?'left':position[0]>75?'right':'top';return <article key={player.player_id} className={`arena-seat opponent-seat seat-${edge} ${player.alive?'':'out'}`} data-seat-edge={edge} style={{'--seat-x':`${position[0]}%`,'--seat-y':`${position[1]}%`} as React.CSSProperties}>{moveTrail(player)}<footer className="seat-profile"><header><Avatar id={player.avatar_id}/><strong>{player.nickname}</strong></header></footer></article>;})}
    {self&&<article className="arena-seat self-seat seat-bottom" data-seat-edge="bottom">{moveTrail(self)}<footer className="seat-profile"><header><Avatar id={self.avatar_id}/><strong>{self.nickname}</strong></header></footer></article>}
