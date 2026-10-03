@@ -9,6 +9,7 @@ const assert=require('node:assert/strict');
 const {Peer,until,sleep}=require('./peer.cjs');
 const {enterHall,enterArena,leaveSolo,assertTargets}=require('./gui-actions.cjs');
 const {execFileSync}=require('node:child_process');
+const {frameSummary}=require('../desktop/smoke-performance.cjs');
 const root=path.resolve(__dirname,'../..'),desktop=path.join(root,'game/desktop');
 const output=path.resolve(process.env.DEIDEI_INTEGRATION_OUTPUT||path.join(os.tmpdir(),'deidei-live-gui'));
 const python=process.env.DEIDEI_PYTHON||'python3';
@@ -40,6 +41,17 @@ async function join(c,code,role='player',password=''){
  await c.page.getByRole('button',{name:'加入房间',exact:true}).click();await c.page.getByRole('textbox',{name:'房间号',exact:true}).fill(code);await c.page.getByRole('radio',{name:role==='player'?'参战':'观战',exact:true}).check();await c.page.getByRole('textbox',{name:'房间密码',exact:true}).fill(password);await c.page.getByRole('button',{name:'加入房间',exact:true}).click();await until(async()=>!(await state(c)).pending,'join response');return state(c);
 }
 async function shot(c,name){await c.page.screenshot({path:path.join(output,`${name}.png`),scale:'css'});evidence.screenshots.push({name,source:'real service / real Electron',viewport:await c.page.evaluate(()=>({width:innerWidth,height:innerHeight}))});}
+async function measureReveal(c,name,action){
+ const before=await c.app.evaluate(({app})=>app.getAppMetrics());
+ await c.page.evaluate(()=>{const sample=window.__realRoomFrames={active:true,frames:[]};function frame(t){sample.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase||'handoff'});if(sample.active)requestAnimationFrame(frame);}requestAnimationFrame(frame);});
+ try{await action();}finally{
+  const sample=await c.page.evaluate(()=>{window.__realRoomFrames.active=false;return {frames:window.__realRoomFrames.frames,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio};});
+  const after=await c.app.evaluate(({app})=>app.getAppMetrics());
+  const reveal=sample.frames.filter(f=>f.phase==='revealed').map(f=>f.t);
+  evidence.performance??=[];evidence.performance.push({name,source:'ordinary main / real loopback service; three synthetic Electron windows initially, two after host loss',...sample,reveal:frameSummary(reveal),metricsBefore:before,metricsAfter:after,gpu:'Electron GPU process CPU/RSS only; utilization/VRAM unavailable'});
+  assert.ok(reveal.length>0,`${name}: no real revealed UI frame sampled`);
+ }
+}
 async function submit(c,entry){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');}
 async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');for(const c of [host,guest])if(c)await enterArena(c.page);}
 async function leave(c){
@@ -87,6 +99,7 @@ async function leave(c){
    const result=(await state(guest)).snapshot.view.match.last_turn;
    await until(()=>allPeers.every(p=>p.view?.view.match?.last_turn?.turn_id===result.turn_id),'public ledger delivered');
    for(const p of allPeers)assert.deepEqual(p.view.view.match.last_turn,result);
+   await until(async()=>(await state(viewer)).snapshot?.view.match?.last_turn?.turn_id===result.turn_id,'viewer public ledger delivered');
    assert.deepEqual((await state(viewer)).snapshot.view.match.last_turn,result);
    await until(async()=>(await state(guest)).snapshot.view.phase!=='revealing','reveal complete');return result;
   }
@@ -105,7 +118,7 @@ async function leave(c){
     assert.equal((await state(host)).snapshot.view.policy_revision,'3');
     const other=await state(viewer);assert.equal(other.snapshot.view.self.accepted_entry_id,null);assert.deepEqual(other.snapshot.view.self.options,[]);assert.equal(JSON.stringify(other).includes('resume_token'),false);assert.equal(other.source,'online');
     await shot(host,'real-current-next-limit');await shot(viewer,'real-spectator-private');
-    await submit(guest,'Charge');await Promise.all(players.map(p=>p.submit('Charge')));await until(async()=>(await state(guest)).snapshot.view.phase==='revealing','initial reveal');await until(async()=>(await state(guest)).snapshot.view.phase==='selecting','next select');
+    await measureReveal(guest,'six-player-reveal',async()=>{await submit(guest,'Charge');await Promise.all(players.map(p=>p.submit('Charge')));await until(async()=>(await state(guest)).snapshot.view.phase==='revealing','initial reveal');await until(async()=>(await state(guest)).snapshot.view.phase==='selecting','next select');});
     assert.equal((await state(host)).snapshot.view.current_turn_ms,30000);pass('Q05/Q15','In-flight timing and accepted card unchanged; next stage uses final 30s revision; spectator receives no private option or accepted entry.');
     // The relay cuts only after the real service accepted submit and produced its ACK.
     await control({op:'drop_ack',command:'room.submit'});
@@ -145,8 +158,11 @@ async function leave(c){
   await call(host,'setTurnLimit',{room_id:rid,turn_ms:5000,expected_policy_revision:'1'});await start(host,guest,[],rid);
   const hostId=(await state(host)).snapshot.view.host_id;host.app.__ownedProcess.kill('SIGKILL');await until(()=>host.app.__ownedProcess.signalCode,'owned host process exit');
   for(let n=1;n<=4;n++){
+   const observe=async()=>{
    await submit(guest,'Def');await until(async()=>['revealing','closed'].includes((await state(guest)).snapshot?.view.phase),'host missing deadline',10000);
    const v=(await state(guest)).snapshot.view;if(n<4){assert.equal(v.host_recovery.missing_count,n);assert.equal(v.match.last_turn.core_resolution.ledger.actions[hostId].entry_id,'Charge');await until(async()=>(await state(guest)).snapshot.view.phase==='selecting','host next missing turn');}else{assert.equal(v.close_reason,'HOST_ABSENT');await shot(guest,'real-host-fourth-close');}
+  
+   };if(n===1)await measureReveal(guest,'two-player-reveal',observe);else await observe();
   }
   pass('Q10','Real host process loss: three Charge turns observed, fourth deadline closes; no voluntary leave injected.');await leave(guest);await leave(viewer);
   // Observe the automatic removal notice in an ordinary renderer without delaying its event.
