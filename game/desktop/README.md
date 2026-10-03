@@ -88,7 +88,7 @@ DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop run dev
 DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
 ```
 
-启动环境只接受 `ws://127.0.0.1:<port>/rooms-v1` 或 `ws://[::1]:<port>/rooms-v1`，拒绝用户名、查询、片段和公网地址。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
+源码启动环境接受回环 `ws://127.0.0.1:<port>/rooms-v1` / `ws://[::1]:<port>/rooms-v1` 和证书有效的 `wss://<host>[:port]/rooms-v1`，拒绝远端明文 ws、用户名、查询和片段。成包由固定的 `resources/service-config.json` 指定 WSS；配置无效不会回退至环境变量，配置缺失只允许显式回环诊断。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
 
 创建表单从服务 hello 读取默认和范围。房间选项及身份来自服务；33 项卡牌资格/费用来自 self.options，卡面文字来自本地 catalog。DD 使用整数分数字形，揭晓资源取 ledger，观众与淘汰者没有选牌区。准备、房主开始、满员后主动改观战、房主缺席提示、重连、结果/下一场和离房均有独立状态。
 

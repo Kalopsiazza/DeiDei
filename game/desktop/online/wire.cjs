@@ -143,9 +143,29 @@ function readMessage(raw, op) {
 }
 function validateCommand(op,payload) {check(Object.hasOwn(commandPayloads,op));validate(commandPayloads[op],payload);}
 function endpoint(value) {
-  if(!value)throw new Error('SERVICE_NOT_CONFIGURED');
-  let url;try{url=new URL(value);}catch{throw new Error('INVALID_ENDPOINT');}
-  if(url.protocol!=='ws:'||!['127.0.0.1','[::1]'].includes(url.hostname)||!url.port||url.username||url.password||url.search||url.hash||url.pathname!=='/rooms-v1')throw new Error('INVALID_ENDPOINT');
-  return url.href;
+  if(value===undefined||value===null||value==='')throw new Error('SERVICE_NOT_CONFIGURED');
+  const invalid=()=>{throw new Error('INVALID_ENDPOINT');};
+  if(typeof value!=='string'||value.length>2048||/[\s\p{Cc}\p{Cf}\p{Cs}]/u.test(value))invalid();
+  // Check raw structure too: URL normalizes dot paths, encoded hosts and numeric IPv4 aliases.
+  const parts=/^(ws|wss):\/\/(\[[0-9a-fA-F:.]+\]|[a-zA-Z0-9.-]+)(?::([0-9]+))?\/rooms-v1$/.exec(value);
+  if(!parts)invalid();
+  let url;try{url=new URL(value);}catch{invalid();}
+  const host=url.hostname;
+  if((!parts[2].startsWith('[')&&host!==parts[2].toLowerCase())||url.username||url.password||url.search||url.hash||url.pathname!=='/rooms-v1')invalid();
+  if(parts[3]!==undefined&&(!/^[0-9]{1,5}$/.test(parts[3])||Number(parts[3])<1||Number(parts[3])>65535))invalid();
+  if(url.protocol==='ws:') {
+    if(!['127.0.0.1','[::1]'].includes(host)||!parts[3])invalid();
+  } else {
+    const ip=require('node:net').isIP(host.replace(/^\[|\]$/g,''));
+    if(ip===4) {const first=Number(host.split('.')[0]);if(first===0||first>=224)invalid();}
+    else if(ip===6) {
+      if(host==='[::]'||host.startsWith('[ff'))invalid();
+      if(host.startsWith('[::ffff:')) {
+        const first=parseInt(host.slice(8).split(':')[0],16)>>8;
+        if(first===0||first>=224)invalid();
+      }
+    } else if(host.length>253||!host.replace(/\.$/,'').split('.').every(label=>/^[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?$/.test(label)))invalid();
+  }
+  return url.protocol==='ws:'?`ws://${host}:${Number(parts[3])}/rooms-v1`:url.href;
 }
 module.exports = {readMessage,validateCommand,endpoint,parse};

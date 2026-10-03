@@ -7,13 +7,15 @@ const path=require('node:path');
 const os=require('node:os');
 const assert=require('node:assert/strict');
 const {Peer,until,sleep}=require('./peer.cjs');
+const {enterHall,enterArena,leaveSolo,assertTargets}=require('./gui-actions.cjs');
+const {execFileSync}=require('node:child_process');
 const root=path.resolve(__dirname,'../..'),desktop=path.join(root,'game/desktop');
 const output=path.resolve(process.env.DEIDEI_INTEGRATION_OUTPUT||path.join(os.tmpdir(),'deidei-live-gui'));
 const python=process.env.DEIDEI_PYTHON||'python3';
 const env={...process.env,PYTHONPATH:[path.join(root,'game/core'),path.join(root,'game/server')].join(path.delimiter)};
 delete env.ELECTRON_RUN_AS_NODE;
 const apps=[],children=[],peers=[],directories=[];
-const evidence={source:'online',transport:'real CLI WebSocket server; ordinary Electron main/preload; temporary synthetic profiles',platform:process.platform,arch:process.arch,checks:[],screenshots:[],page_errors:[]};
+const evidence={code_sha:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain','--','game'],{cwd:root,encoding:'utf8'}).trim(),source:'online',transport:'real CLI WebSocket server; ordinary Electron main/preload; temporary synthetic profiles',platform:process.platform,arch:process.arch,checks:[],screenshots:[],page_errors:[]};
 const pass=(id,detail)=>{evidence.checks.push({id,status:'PASS',detail});console.log('PASS',id,detail);};
 async function processWithAddress(args){
  const child=spawn(python,args,{cwd:root,env,stdio:['pipe','pipe','pipe']});children.push(child);
@@ -27,20 +29,29 @@ async function launch(name,url){
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-real-window-'));directories.push(dir);
  const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);app.__ownedProcess=app.process();
  const page=await app.firstWindow();page.setDefaultTimeout(12000);page.on('pageerror',e=>evidence.page_errors.push(e.message));
- await page.getByRole('textbox',{name:'昵称',exact:true}).fill(name);await page.getByRole('button',{name:'保存，进入课间 →',exact:true}).click();
+ await enterHall(page,name);
  return {app,page,dir,name};
 }
 async function state(c){const r=await c.page.evaluate(()=>window.desktop.online.read());assert.ok(r.ok);return r.data;}
 async function call(c,method,payload){const r=await c.page.evaluate(async({method,payload})=>window.desktop.online[method](payload),{method,payload});assert.ok(r.ok,`${method}: ${r.error}`);await until(async()=>!(await state(c)).pending,`${method} acknowledged`);return state(c);}
 async function online(c){await c.page.getByRole('button',{name:'好友联机',exact:false}).click();await until(async()=>(await state(c)).status==='connected','connected');}
-async function create(c,password=null){await c.page.getByRole('button',{name:'创建房间',exact:true}).click();if(password)await c.page.getByRole('textbox',{name:'房间密码',exact:true}).fill(password);await c.page.getByRole('button',{name:'创建并进入',exact:true}).click();await c.page.locator('.lobby-seats').waitFor();return (await state(c)).snapshot;}
+async function create(c,password=null){await c.page.getByRole('button',{name:'创建房间',exact:true}).click();if(password)await c.page.getByRole('textbox',{name:'房间密码',exact:true}).fill(password);await c.page.getByRole('button',{name:'创建并进入',exact:true}).click();await c.page.locator('.online-lobby').waitFor();return (await state(c)).snapshot;}
 async function join(c,code,role='player',password=''){
- await c.page.getByRole('button',{name:'加入房间',exact:true}).click();await c.page.getByRole('textbox',{name:'房间号',exact:true}).fill(code);await c.page.getByRole('combobox',{name:'加入身份',exact:true}).selectOption(role);await c.page.getByRole('textbox',{name:'房间密码',exact:true}).fill(password);await c.page.getByRole('button',{name:'加入',exact:true}).click();await until(async()=>!(await state(c)).pending,'join response');return state(c);
+ await c.page.getByRole('button',{name:'加入房间',exact:true}).click();await c.page.getByRole('textbox',{name:'房间号',exact:true}).fill(code);await c.page.getByRole('radio',{name:role==='player'?'参战':'观战',exact:true}).check();await c.page.getByRole('textbox',{name:'房间密码',exact:true}).fill(password);await c.page.getByRole('button',{name:'加入房间',exact:true}).click();await until(async()=>!(await state(c)).pending,'join response');return state(c);
 }
 async function shot(c,name){await c.page.screenshot({path:path.join(output,`${name}.png`),scale:'css'});evidence.screenshots.push({name,source:'real service / real Electron',viewport:await c.page.evaluate(()=>({width:innerWidth,height:innerHeight}))});}
-async function submit(c,entry){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'提交所选',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');}
-async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await host.page.locator('.online[data-phase="selecting"]').waitFor();}
-async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.phase!=='closed'&&s.status!=='unavailable'){await c.page.getByRole('button',{name:'退出房间',exact:true}).click();await c.page.getByRole('button',{name:s.snapshot.view.host_id===s.snapshot.view.self.player_id?'确认结束房间':'确认退出房间',exact:true}).click();}else await c.page.getByRole('button',{name:'返回主菜单',exact:true}).click();await c.page.getByRole('button',{name:'好友联机',exact:false}).waitFor();}
+async function submit(c,entry){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');}
+async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');for(const c of [host,guest])if(c)await enterArena(c.page);}
+async function leave(c){
+ const s=await state(c),phase=s.snapshot?.view.phase;
+ if(s.snapshot&&phase!=='closed'&&s.status!=='unavailable'){
+  if(phase==='result')await c.page.getByRole('button',{name:/退出房间/}).click();
+  else if(['selecting','revealing'].includes(phase)){await enterArena(c.page);await c.page.getByRole('button',{name:'暂停',exact:true}).click();await c.page.getByRole('button',{name:'退出游戏 LEAVE MATCH',exact:true}).click();}
+  else await c.page.getByRole('button',{name:'退出房间',exact:true}).click();
+  await c.page.getByRole('button',{name:s.snapshot.view.host_id===s.snapshot.view.self.player_id?'确认结束房间':'确认退出房间',exact:true}).click();
+ }else await c.page.getByRole('button',{name:'返回主菜单',exact:true}).click();
+ await c.page.locator('.menu-layout').waitFor();
+}
 (async()=>{
  await fs.mkdir(output,{recursive:true});
  let service,proxy;
@@ -54,12 +65,12 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
   const created=await create(host,'synthetic test');let rid=created.room_id,code=created.view.room_code;
   // Wrong password is surfaced by the ordinary rendered form, then corrected in the same session.
   let s=await join(guest,code,'player','wrong');assert.equal(s.error.code,'ROOM_ACCESS_DENIED');await shot(guest,'real-wrong-password');
-  await guest.page.getByRole('textbox',{name:'房间密码',exact:true}).fill('synthetic test');await guest.page.getByRole('button',{name:'加入',exact:true}).click();await guest.page.locator('.lobby-seats').waitFor();
+  await guest.page.getByRole('textbox',{name:'房间密码',exact:true}).fill('synthetic test');await guest.page.getByRole('button',{name:'加入房间',exact:true}).click();await guest.page.locator('.online-lobby').waitFor();
   const players=[],watchers=[];
   for(let i=0;i<10;i++){const p=await new Peer(service.url,`测试席${i}`).open();peers.push(p);await p.ok('room.join',{room_code:code,password:'synthetic test',role:i<4?'player':'spectator'});(i<4?players:watchers).push(p);}
   let full=await join(viewer,code,'player','synthetic test');assert.equal(full.error.code,'ROOM_FULL');await shot(viewer,'real-player-full');
-  await viewer.page.getByRole('combobox',{name:'加入身份',exact:true}).selectOption('spectator');await viewer.page.getByRole('button',{name:'加入',exact:true}).click();await until(async()=>!(await state(viewer)).pending,'full spectator reply');assert.equal((await state(viewer)).error.code,'SPECTATORS_FULL');await shot(viewer,'real-spectators-full');
-  const freed=watchers.pop();await freed.ok('room.leave',{room_id:rid});freed.close();await viewer.page.getByRole('button',{name:'加入',exact:true}).click();await viewer.page.locator('.lobby-seats').waitFor();
+  await viewer.page.getByRole('radio',{name:'观战',exact:true}).check();await viewer.page.getByRole('button',{name:'加入房间',exact:true}).click();await until(async()=>!(await state(viewer)).pending,'full spectator reply');assert.equal((await state(viewer)).error.code,'SPECTATORS_FULL');await shot(viewer,'real-spectators-full');
+  const freed=watchers.pop();await freed.ok('room.leave',{room_id:rid});freed.close();await viewer.page.getByRole('button',{name:'加入房间',exact:true}).click();await viewer.page.locator('.online-lobby').waitFor();
   await until(async()=>(await state(host)).snapshot.view.members.length===12,'6 plus 6');
   const extra=await new Peer(service.url,'满席验证').open();peers.push(extra);
   for(const [role,error] of [['player','ROOM_FULL'],['spectator','SPECTATORS_FULL']]){const a=await extra.command('room.join',{room_code:code,password:'synthetic test',role});assert.equal(a.error.code,error);}
@@ -84,7 +95,7 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
    if(game===0){
     assert.equal(s.snapshot.view.current_turn_ms,10000);
     for(const [width,height] of [[1366,768],[1920,1080]]){
-     await host.page.setViewportSize({width,height});const layout=await host.page.evaluate(()=>({size:[innerWidth,innerHeight],scroll:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};})}));
+     await host.page.setViewportSize({width,height});await assertTargets(host.page,'.battle-table .card');const layout=await host.page.evaluate(()=>({size:[innerWidth,innerHeight],scroll:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom};})}));
      assert.equal(layout.cards.length,33);assert.equal(new Set(layout.cards.map(c=>Math.round(c.y))).size,3);assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height));assert.ok(layout.scroll[0]<=width&&layout.scroll[1]<=height);evidence[`layout_${width}`]=layout;await shot(host,`real-online-${width}x${height}`);
     }
     await host.page.setViewportSize({width:1366,height:768});pass('Q23','33 cards, three rows, both specified viewports without overflow; actual service and renderer.');
@@ -98,7 +109,7 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
     assert.equal((await state(host)).snapshot.view.current_turn_ms,30000);pass('Q05/Q15','In-flight timing and accepted card unchanged; next stage uses final 30s revision; spectator receives no private option or accepted entry.');
     // The relay cuts only after the real service accepted submit and produced its ACK.
     await control({op:'drop_ack',command:'room.submit'});
-    await guest.page.locator('[data-entry="Def"] .card-pick').click();await guest.page.getByRole('button',{name:'提交所选',exact:true}).click();
+    await guest.page.locator('[data-entry="Def"] .card-pick').click();await guest.page.getByRole('button',{name:'确认出招',exact:true}).click();
     await until(async()=>(await state(guest)).status==='reconnecting','ACK loss disconnect');
     await until(async()=>{const x=await state(guest);return x.status==='connected'&&!x.pending&&x.snapshot?.view.self.accepted_entry_id==='Def';},'resume and identical submission',15000);
     await submit(host,'Bi');await Promise.all(players.map(p=>p.submit('Def')));
@@ -110,8 +121,8 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
     await call(host,'setTurnLimit',{room_id:rid,turn_ms:5000,expected_policy_revision:v.policy_revision});await shot(host,'real-eliminated-host');pass('Q08','Naturally eliminated host keeps seat and management rights, no selectable cards; other players continue.');
    }else {await round(['Charge','Charge','Charge','Charge','Charge','Charge']);await round(['Bi','Def','Def','Def','Def','Def']);}
    await round(['SelfBi','SelfBi','SelfBi','SelfBi','SelfBi','SelfBi'],game!==1);
-   await guest.page.locator('.online[data-phase="result"]').waitFor();await shot(guest,`real-result-${game+1}`);
-   await host.page.getByRole('button',{name:'准备下一场',exact:true}).click();await host.page.locator('.lobby-seats').waitFor();
+   await guest.page.locator('.match-outro').waitFor();await shot(guest,`real-result-${game+1}`);
+   await host.page.getByRole('button',{name:/准备下一局/}).click();await host.page.locator('.online-lobby').waitFor();
   }
   pass('Q07','Three complete real-core matches, including Charge/Bi/Def, natural elimination, common outcomes and return to lobby/new match IDs.');
   // Delay a genuine old snapshot and automatic removal receipt; release after a fresh room exists.
@@ -149,8 +160,8 @@ async function leave(c){const s=await state(c);if(s.snapshot&&s.snapshot.view.ph
   await online(guest);await create(guest);const port=new URL(service.url).port;await stop(service.child);service=await processWithAddress(['-u','-m','deidei_server','--port',port]);
   await until(async()=>(await state(guest)).error?.code==='SERVER_RESTART','server restart identity error',15000);await shot(guest,'real-server-restart');await leave(guest);
   const profile=await fs.readFile(path.join(guest.dir,'local-profile/profile.json'));
-  await guest.page.getByRole('button',{name:'单人对局',exact:false}).click();await guest.page.getByRole('button',{name:'开始单人对局',exact:true}).click();await guest.page.locator('.table[data-phase="selecting"]').waitFor();assert.equal((await guest.page.evaluate(()=>window.desktop.port.getView())).data.source,'live');await shot(guest,'real-offline-after-network-failure');
-  await guest.page.getByRole('button',{name:'离开牌桌',exact:true}).click();await guest.page.getByRole('button',{name:'离开',exact:true}).click();assert.deepEqual(await fs.readFile(path.join(guest.dir,'local-profile/profile.json')),profile);pass('Q16/Q22','Owned service restart is visible as SERVER_RESTART; original real offline worker still starts and persisted profile bytes survive.');
+  await guest.page.getByRole('button',{name:'单人对局',exact:false}).click();await guest.page.getByRole('button',{name:/开始对局/}).click();await enterArena(guest.page);await guest.page.locator('.battle-table[data-phase="selecting"]').waitFor();assert.equal((await guest.page.evaluate(()=>window.desktop.port.getView())).data.source,'live');await shot(guest,'real-offline-after-network-failure');
+  await leaveSolo(guest.page);assert.deepEqual(await fs.readFile(path.join(guest.dir,'local-profile/profile.json')),profile);pass('Q16/Q22','Owned service restart is visible as SERVER_RESTART; original real offline worker still starts and persisted profile bytes survive.');
   await online(guest);await create(guest);
   await guest.app.evaluate(({dialog,BrowserWindow})=>{global.__closePrompts=[];dialog.showMessageBox=async(_w,o)=>{global.__closePrompts.push(o.message);return {response:0};};BrowserWindow.getAllWindows()[0].close();});await sleep(100);assert.equal(await guest.app.evaluate(()=>global.__closePrompts.length),1);assert.equal((await state(guest)).status,'connected');
   await control({op:'hold',types:['ack']});const began=Date.now();const closed=guest.app.waitForEvent('close');await guest.app.evaluate(({dialog,BrowserWindow})=>{dialog.showMessageBox=async()=>({response:1});BrowserWindow.getAllWindows()[0].close();});await closed;assert.ok(Date.now()-began<4500);pass('Q17','Existing native close confirmation cancelled then accepted; genuine leave ACK held by relay, exit finishes within bounded 3s wait. Dialog response automated, no transport mock.');

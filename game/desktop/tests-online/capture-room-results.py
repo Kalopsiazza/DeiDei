@@ -12,6 +12,8 @@ import subprocess
 import sys
 
 root = Path(sys.argv[1]).resolve()
+dirty = bool(subprocess.check_output(['git', 'status', '--porcelain', '--', 'game/server', 'game/core'], cwd=root, text=True).strip())
+assert not dirty, 'Commit service/core inputs before capture'
 files = sorted((root / 'game/server/deidei_server').glob('*.py')) + sorted((root / 'game/core/deidei_core').glob('*.py'))
 hashes = {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}
 sys.path[:0] = [str(root / 'game/server'), str(root / 'game/core')]
@@ -42,20 +44,24 @@ for name, moves, leave in [('ordinary', ['Charge', 'Charge'], False),
                           ('rules_winner', ['Bi', 'Charge'], False),
                           ('rules_nobody', ['SelfBi', 'SelfBi'], False),
                           ('forfeit_winner', ['Charge', 'Charge'], True),
-                          ('forfeit_nobody', ['SelfBi', 'Charge'], True)]:
+                          ('forfeit_nobody', ['SelfBi', 'Charge'], True),
+                          ('restart_survivors', ['Bi', 'Charge', 'Def'], False)]:
     clock = Clock()
     sessions = {pid: SimpleNamespace(player_id=pid, profile={'nickname': pid, 'avatar_id': 'leaf'},
                 room_id=None, closed_room=None, touched=0, disconnected_at=None, connection=None)
-                for pid in ['A', 'B', 'Z']}
+                for pid in ['A', 'B', 'C', 'Z']}
     service = SimpleNamespace(clock=clock, dirty=set(), by_player=sessions, token_rng=Random(100),
                 new_match_factory=funded, timeout_chooser=lambda state, options: 'Charge', host_leave_timing='after_turn')
     room = Room(service, sessions['A'], 'ABCD1234', DEFAULT_POLICY, None)
     room.add(sessions['B'], 'player')
+    ids = ['A', 'B', 'C'][:len(moves)]
+    if 'C' in ids:
+        room.add(sessions['C'], 'player')
     room.add(sessions['Z'], 'spectator')
-    for pid in ['A', 'B']:
+    for pid in ids:
         room.command(sessions[pid], 'room.ready', {'room_id': room.id, 'ready': True}, 0)
     room.command(sessions['A'], 'room.start', {'room_id': room.id}, 0)
-    for pid, entry in zip(['A', 'B'], moves):
+    for pid, entry in zip(ids, moves):
         room.command(sessions[pid], 'room.submit', dict(room_id=room.id, match_id=room.state['match_id'], turn_id=turn_id(room.state), entry_id=entry), 0)
     if leave:
         room.command(sessions['B'], 'room.leave', {'room_id': room.id}, 0)
@@ -65,9 +71,13 @@ for name, moves, leave in [('ordinary', ['Charge', 'Charge'], False),
     clock.t = room.deadline
     room.tick(clock.t)
     frames[name + '_next'] = room.snapshot(sessions['Z'], clock.t)
+    if name == 'restart_survivors':
+        assert frames[name + '_reveal']['match']['last_turn']['effective_transition']['kind'] == 'restart_survivors'
+        assert frames[name + '_next']['match']['public_state']['game_id'] == 'g2'
+        assert frames[name + '_next']['match']['public_state']['turn_index'] == '1'
 
 assert hashes == {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}, 'source changed during capture'
 print(json.dumps({'source': 'real Room + real core; synthetic clock/session container; no socket',
                   'service_head': subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip(),
-                  'service_dirty': bool(subprocess.check_output(['git', 'status', '--porcelain', '--', 'game/server', 'game/core'], cwd=root, text=True).strip()),
+                  'service_dirty': dirty, 'capture_sha256': hashlib.sha256(Path(__file__).read_bytes()).hexdigest(),
                   'source_sha256': hashes, 'frames': frames}, ensure_ascii=False, indent=2))
