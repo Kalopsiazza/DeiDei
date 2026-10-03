@@ -18,3 +18,9 @@ Avatar、Identity、native Modal与MatchResult共用；观众终场为“整场�
 - `node game/desktop/tests-online/smoke-recovery.cjs`：MOCK Electron 5组通过，明确拒绝/重试、房主成员确认/取消、断线slow IPC离房、旧timer失效、普通Enter和退场断线回退。
 
 证据分别在本worktree忽略目录 `.local-outputs/recovery` 和 `.local-outputs/r04-t02-c/online-recovery`，包含截图、受控失败与实际输入记录。前述smoke取样为B HEAD加明确dirty工作区；集成E的清洁提交真实网络另验。未把MOCK、类型构建或静态截图当作真实联机、动态跨屏或人类视觉验收。最初测试选择器误用和六人禁用freeze目标已经按实际源码修正，产品断言不删减。
+
+## 最终集成复验
+
+真实服务发现已失成员后确认退出仍可能停留前厅：snapshot 已清空，但 ROOM_NOT_MEMBER/ROOM_GONE 与离房意图同时到达。`8a65b881e64a15c18a218e59ed3130fa48babe01` 仅将此确定失成员情况完成退出；普通拒绝仍恢复操作，不误导航。6项 hook 回归及独立 Codex 审查通过。
+
+集成工作区 `.worktrees/r04-t02-e`：真实房间 13 组通过（725ec1f），本地恢复 12 项通过（74fbf36），MOCK 恢复 5 组通过（8647ac5），完整旧擂台 smoke 通过（8647ac5）。本地六席 preview 的暂停/局势按明确 mode 核验，原淘汰记录栏断言移到真正 OnlineRoom 的 MOCK 情境，仍保留在线覆盖。真实网络退出/迟到回复和恢复见 E RESULT。证据分别为 `.local-outputs/recovery`、`.local-outputs/r04-t02/online-recovery-final`、`.local-outputs/r04-t02/battle-final.log`、`.local-outputs/r04-t02/real-gui/`。
