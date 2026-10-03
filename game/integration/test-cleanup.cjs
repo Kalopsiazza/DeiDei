@@ -23,6 +23,7 @@ test('GUI normal exit0 persists PASS without force',async()=>{
  assert.equal(h.writes[0].status,'PASS');assert.equal(h.process.exitCode,0);assert.equal(h.writes[0].app_cleanup[0].normalExit,true);assert.equal(h.writes[0].app_cleanup[0].forced,false);
 });
 test('GUI close failure marks FAIL, continues cleanup, and retains original error',async()=>{
+ const passing=guiCleanup([app('throw')]);await passing.finish();assert.equal(passing.writes[0].status,'FAIL');assert.equal(passing.process.exitCode,1);
  const first=app('throw'),second=app(),h=guiCleanup([first,second],{status:'FAIL',error:'original test error'});await h.finish();
  assert.equal(h.writes[0].status,'FAIL');assert.equal(h.writes[0].error,'original test error');assert.equal(h.process.exitCode,1);
  assert.equal(first.__cleanup.forced,true);assert.equal(first.__cleanup.signal,'SIGKILL');assert.equal(second.__cleanup.status,'PASS');assert.equal(h.evidence.cleanup_errors.length,1);assert.equal(h.removed.length,2);
