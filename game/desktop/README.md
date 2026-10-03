@@ -178,6 +178,8 @@ PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m deidei_server -
 DEIDEI_PYTHON=/absolute/path/to/python3 DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
 # 有websockets依赖的Python；脚本自行启停真实回环服务和合成对手
 DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dynamic.cjs
+# 仅固定原窗口、同host按6/3/4/5/2复用的有界停顿调查（流程PASS不等于性能PASS）
+DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dynamic.cjs --steady-only
 ```
 
 本包源码、实际输入、失败与未验条件见 [结果](../../docs/results/R04-T03-a/REPORT.md)，不复用旧检查总数作为本轮结论。

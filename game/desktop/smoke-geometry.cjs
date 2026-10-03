@@ -64,13 +64,20 @@ async function armCommitFlight(page){
  });
 }
 
-async function finishCommitFlight(page,report,label,{required=true}={}){
+function settledCommitFlight(expectedViewport){
+ const frames=window.__r04CommitFlight.frames.slice(-3),last=frames.at(-1),viewport=[innerWidth,innerHeight];
+ if(document.querySelector('.battle-table')?.dataset.phase!=='submitting'||!document.querySelector('.commit-flight')||expectedViewport&&viewport.join()!==expectedViewport.join())return false;
+ return frames.length===3&&frames.every(f=>f.progress===1&&f.phase==='submitting'&&f.viewport.join()===viewport.join()&&f.roEpoch===last.roEpoch&&['cx','cy','width','height'].every(k=>Math.abs(f.target[k]-last.target[k])<.25&&Math.abs(f.arena[k]-last.arena[k])<.25));
+}
+
+async function finishCommitFlight(page,report,label,{required=true,expectedViewport}={}){
  let missing=false;
+ const current=await page.evaluate(()=>({viewport:[innerWidth,innerHeight],phase:document.querySelector('.battle-table')?.dataset.phase,hasFlight:!!document.querySelector('.commit-flight'),epoch:window.__r04CommitFlight.roEpoch,lastFrameAge:performance.now()-(window.__r04CommitFlight.frames.at(-1)?.t??performance.now())}));
  // RAF precedes ResizeObserver delivery. Wait for stable target geometry, never for a correct answer.
- try{await page.waitForFunction(()=>{const frames=window.__r04CommitFlight.frames.slice(-3),last=frames.at(-1);return frames.length===3&&frames.every(f=>f.progress===1&&f.phase==='submitting'&&f.viewport.join()===last.viewport.join()&&f.roEpoch===last.roEpoch&&['cx','cy','width','height'].every(k=>Math.abs(f.target[k]-last.target[k])<.25&&Math.abs(f.arena[k]-last.arena[k])<.25));},{},{timeout:5000});}catch(e){if(e.name!=='TimeoutError')throw e;missing=true;}
+ try{await page.waitForFunction(settledCommitFlight,expectedViewport??null,{timeout:5000});}catch(e){if(e.name!=='TimeoutError')throw e;missing=true;}
  const {frames,roFrames}=await page.evaluate(()=>{const s=window.__r04CommitFlight;s.active=false;s.observer.disconnect();return {frames:s.frames,roFrames:s.roFrames};});
  const final=frames.filter(f=>f.progress===1&&f.phase==='submitting'),last=final.slice(-3);
- (report.commitGeometry||= []).push({label,source:'actual CSSAnimation; stable completed frames asserted independently of center accuracy; pre-RO RAF and after-product RO recorded separately',missingFinal:missing,frames,roFrames,finalSamples:final.length});
+ (report.commitGeometry||= []).push({label,current,expectedViewport,source:'actual CSSAnimation; current submitting flight at intended endpoint; stability asserted independently of accuracy; pre-RO RAF and after-product RO separate',missingFinal:missing,frames,roFrames,finalSamples:final.length});
  if(!required&&missing)return {missingFinal:true,frames};
  assert.ok(!missing,label+' completed flight target settles within bounded observation');
  assert.ok(last.length===3,label+' three actual completed animation frames required');
@@ -79,3 +86,10 @@ async function finishCommitFlight(page,report,label,{required=true}={}){
 }
 
 module.exports={checkBattle,armCommitFlight,finishCommitFlight};
+
+if(require.main===module&&process.argv.includes('--self-check')){
+ const vm=require('node:vm'),box={cx:10,cy:20,width:30,height:40},frame={progress:1,phase:'submitting',viewport:[1366,768],roEpoch:1,target:box,arena:box};
+ const run=({phase='submitting',flight=true,expected=[1366,768],viewport=[1366,768],frames=[frame,frame,frame]}={})=>vm.runInNewContext('('+settledCommitFlight.toString()+')(expected)',{expected,innerWidth:viewport[0],innerHeight:viewport[1],window:{__r04CommitFlight:{frames}},document:{querySelector:s=>s==='.battle-table'?{dataset:{phase}}:flight?{}:null}});
+ assert.ok(run());assert.equal(run({phase:'revealed'}),false);assert.equal(run({flight:false}),false);assert.equal(run({expected:[1920,1080]}),false);assert.equal(run({viewport:[1920,1080]}),false);assert.equal(run({frames:[frame,{...frame,roEpoch:2},frame]}),false);
+ console.log('PASS current phase/flight/endpoint and stable geometry guards; stale history cannot pass');
+}

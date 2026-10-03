@@ -1,0 +1,5860 @@
+{
+  "evidenceNote": "P2 full route FAIL; card targets sampled during revealed after real deadline advanced. Not product selecting clipping evidence.",
+  "originalPath": "online-final-product/checks.json",
+  "originalSha256": "4e253c44c11420976f77975b61e77a6c4072636940f6f1e8bf8b62fc2ad601f7",
+  "input": {
+    "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n?? docs/results/R04-T03-a/CONTROL-STATES.md\n?? docs/results/R04-T03-a/evidence/",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
+      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+    },
+    "startedAt": "2026-10-03T18:49:49.000Z",
+    "mainProcess": "one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation"
+  },
+  "status": "FAIL",
+  "source": "ordinary main / real owned CLI service / synthetic socket peers",
+  "mode": "full dynamic route",
+  "geometry": [
+    {
+      "label": "online-front-small-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053395924,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396035,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396293,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396455,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396612,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396739,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396840,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-small-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396884,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396946,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053396995,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1153,
+          "height": 754
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1153,
+          "height": 722
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1153,
+        "height": 722,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397092,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1307,
+          "height": 825
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1307,
+          "height": 793
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1307,
+        "height": 793,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397243,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1460,
+          "height": 897
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1460,
+          "height": 865
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1460,
+        "height": 865,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397508,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1613,
+          "height": 969
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1613,
+          "height": 937
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1613,
+        "height": 937,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397713,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1767,
+          "height": 1040
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1767,
+          "height": 1008
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1767,
+        "height": 1008,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397867,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-large-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053397907,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053398118,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053398222,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1828,
+          "height": 1060
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1828,
+          "height": 1028
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1828,
+        "height": 1028,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053398592,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1735,
+          "height": 1008
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1735,
+          "height": 976
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1735,
+        "height": 976,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053398810,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1643,
+          "height": 956
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1643,
+          "height": 924
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1643,
+        "height": 924,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399044,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1551,
+          "height": 904
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1551,
+          "height": 872
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1551,
+        "height": 872,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399234,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1458,
+          "height": 852
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1458,
+          "height": 820
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1458,
+        "height": 820,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399431,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-front-return-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399443,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399784,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399853,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053399961,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400071,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400209,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400372,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400469,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-small-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400485,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400519,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400609,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1153,
+          "height": 754
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1153,
+          "height": 722
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1153,
+        "height": 722,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400690,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1307,
+          "height": 825
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1307,
+          "height": 793
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1307,
+        "height": 793,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053400858,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1460,
+          "height": 897
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1460,
+          "height": 865
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1460,
+        "height": 865,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401086,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1613,
+          "height": 969
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1613,
+          "height": 937
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1613,
+        "height": 937,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401262,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1767,
+          "height": 1040
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1767,
+          "height": 1008
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1767,
+        "height": 1008,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401491,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-large-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401507,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401833,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053401931,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1828,
+          "height": 1060
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1828,
+          "height": 1028
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1828,
+        "height": 1028,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402170,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1735,
+          "height": 1008
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1735,
+          "height": 976
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1735,
+        "height": 976,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402356,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1643,
+          "height": 956
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1643,
+          "height": 924
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1643,
+        "height": 924,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402570,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1551,
+          "height": 904
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1551,
+          "height": 872
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1551,
+        "height": 872,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402719,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1458,
+          "height": 852
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1458,
+          "height": 820
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1458,
+        "height": 820,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402837,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-create-return-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053402856,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053416701,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053416847,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417065,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417214,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417402,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417628,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417819,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-small-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053417892,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053418077,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053418189,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1153,
+          "height": 754
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1153,
+          "height": 722
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1153,
+        "height": 722,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053418398,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1307,
+          "height": 825
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1307,
+          "height": 793
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1307,
+        "height": 793,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053418663,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1460,
+          "height": 897
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1460,
+          "height": 865
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1460,
+        "height": 865,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053418892,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1613,
+          "height": 969
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1613,
+          "height": 937
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1613,
+        "height": 937,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053419159,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1767,
+          "height": 1040
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1767,
+          "height": 1008
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1767,
+        "height": 1008,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053419568,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-large-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053419773,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053419896,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053420100,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1828,
+          "height": 1060
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1828,
+          "height": 1028
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1828,
+        "height": 1028,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053420405,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1735,
+          "height": 1008
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1735,
+          "height": 976
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1735,
+        "height": 976,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053420902,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1643,
+          "height": 956
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1643,
+          "height": 924
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1643,
+        "height": 924,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053421090,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1551,
+          "height": 904
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1551,
+          "height": 872
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1551,
+        "height": 872,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053421299,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1458,
+          "height": 852
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1458,
+          "height": 820
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1458,
+        "height": 820,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053421494,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-join-return-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053421525,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053422081,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053422221,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053422552,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053422839,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053423083,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053423464,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053423625,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-small-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053423650,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053423903,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053424062,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1153,
+          "height": 754
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1153,
+          "height": 722
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1153,
+        "height": 722,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053424231,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1307,
+          "height": 825
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1307,
+          "height": 793
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1307,
+        "height": 793,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053424467,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1460,
+          "height": 897
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1460,
+          "height": 865
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1460,
+        "height": 865,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053424809,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1613,
+          "height": 969
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1613,
+          "height": 937
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1613,
+        "height": 937,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053425211,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1767,
+          "height": 1040
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1767,
+          "height": 1008
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1767,
+        "height": 1008,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053425636,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-large-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053425694,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053426138,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053426405,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1828,
+          "height": 1060
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1828,
+          "height": 1028
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1828,
+        "height": 1028,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053426802,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1735,
+          "height": 1008
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1735,
+          "height": 976
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1735,
+        "height": 976,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053427165,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1643,
+          "height": 956
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1643,
+          "height": 924
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1643,
+        "height": 924,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053427706,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1551,
+          "height": 904
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1551,
+          "height": 872
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1551,
+        "height": 872,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053427924,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1458,
+          "height": 852
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1458,
+          "height": 820
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1458,
+        "height": 820,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053428235,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "online-lobby-return-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053428261,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053429093,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053429209,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053429454,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053429671,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053429818,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053430124,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053430270,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-6-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053430305,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053431514,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053432134,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053432769,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053433501,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053433748,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053434335,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053435050,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "intro-return-6-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053435123,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053437061,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053437234,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053437885,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053438619,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053439238,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053439858,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053440263,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-small-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053440287,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053440481,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053440850,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1153,
+          "height": 754
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1153,
+          "height": 722
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1153,
+        "height": 722,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053441389,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1307,
+          "height": 825
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1307,
+          "height": 793
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1307,
+        "height": 793,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053441934,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1460,
+          "height": 897
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1460,
+          "height": 865
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1460,
+        "height": 865,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053442810,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1613,
+          "height": 969
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1613,
+          "height": 937
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1613,
+        "height": 937,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053443582,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1767,
+          "height": 1040
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1767,
+          "height": 1008
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1767,
+        "height": 1008,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053444705,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-large-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053444738,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-start",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053446692,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1920,
+          "height": 1112
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1920,
+          "height": 1080
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-1",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053447392,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1828,
+          "height": 1060
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1828,
+          "height": 1028
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1828,
+        "height": 1028,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-2",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053448292,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1735,
+          "height": 1008
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1735,
+          "height": 976
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1735,
+        "height": 976,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-3",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053449445,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1643,
+          "height": 956
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1643,
+          "height": 924
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1643,
+        "height": 924,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-4",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053450329,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1551,
+          "height": 904
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1551,
+          "height": 872
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1551,
+        "height": 872,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-5",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053450931,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1458,
+          "height": 852
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1458,
+          "height": 820
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1458,
+        "height": 820,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-6",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053452230,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "six-spectator-return-settled",
+      "app": "动态观众",
+      "pid": 43507,
+      "at": 1791053452967,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-start",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053457474,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-1",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053457892,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1305,
+          "height": 780
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1305,
+          "height": 748
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1305,
+        "height": 748,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-2",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053459639,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1244,
+          "height": 761
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1244,
+          "height": 729
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1244,
+        "height": 729,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-3",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053460518,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1183,
+          "height": 741
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1183,
+          "height": 709
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1183,
+        "height": 709,
+        "dpr": 2,
+        "page": "online",
+        "phase": "revealed",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-4",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053461106,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1122,
+          "height": 721
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1122,
+          "height": 689
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1122,
+        "height": 689,
+        "dpr": 2,
+        "page": "online",
+        "phase": "revealed",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-5",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053461922,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1061,
+          "height": 702
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1061,
+          "height": 670
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1061,
+        "height": 670,
+        "dpr": 2,
+        "page": "online",
+        "phase": "revealed",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-6",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053462946,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "revealed",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "selecting-6-small-settled",
+      "app": "动态房主",
+      "pid": 43482,
+      "at": 1791053463882,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1000,
+          "height": 682
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1000,
+          "height": 650
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1000,
+        "height": 650,
+        "dpr": 2,
+        "page": "online",
+        "phase": "revealed",
+        "ready": "true",
+        "focus": true
+      }
+    }
+  ],
+  "targets": [
+    {
+      "label": "front-small",
+      "app": "动态房主",
+      "values": [
+        {
+          "selector": ".online-portal-nav button",
+          "nodes": [
+            {
+              "text": "返回主菜单",
+              "box": {
+                "x": 40,
+                "y": 24,
+                "width": 120.703125,
+                "height": 46,
+                "right": 160.703125,
+                "bottom": 70
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-front-actions button",
+          "nodes": [
+            {
+              "text": "创建房间",
+              "box": {
+                "x": 600,
+                "y": 234,
+                "width": 340,
+                "height": 80,
+                "right": 940,
+                "bottom": 314
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "加入房间",
+              "box": {
+                "x": 600,
+                "y": 342,
+                "width": 340,
+                "height": 80,
+                "right": 940,
+                "bottom": 422
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "create-small",
+      "app": "动态房主",
+      "values": [
+        {
+          "selector": ".online-portal-nav button",
+          "nodes": [
+            {
+              "text": "返回联机前厅",
+              "box": {
+                "x": 40,
+                "y": 24,
+                "width": 135.703125,
+                "height": 46,
+                "right": 175.703125,
+                "bottom": 70
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-deploy input:not([type=checkbox])",
+          "nodes": [
+            {
+              "text": "每拍时间",
+              "box": {
+                "x": 492,
+                "y": 177.5,
+                "width": 440,
+                "height": 3,
+                "right": 932,
+                "bottom": 180.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": true
+            },
+            {
+              "text": "观众容量",
+              "box": {
+                "x": 492,
+                "y": 354.5,
+                "width": 440,
+                "height": 3,
+                "right": 932,
+                "bottom": 357.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "房间密码",
+              "box": {
+                "x": 490,
+                "y": 427,
+                "width": 440,
+                "height": 52,
+                "right": 930,
+                "bottom": 479
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-switch",
+          "nodes": [
+            {
+              "text": "全员提交后提前揭晓",
+              "box": {
+                "x": 490,
+                "y": 236,
+                "width": 440,
+                "height": 48,
+                "right": 930,
+                "bottom": 284
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-deploy button",
+          "nodes": [
+            {
+              "text": "创建并进入",
+              "box": {
+                "x": 692,
+                "y": 506,
+                "width": 238,
+                "height": 70,
+                "right": 930,
+                "bottom": 576
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "join-small",
+      "app": "动态观众",
+      "values": [
+        {
+          "selector": ".online-portal-nav button",
+          "nodes": [
+            {
+              "text": "返回联机前厅",
+              "box": {
+                "x": 40,
+                "y": 24,
+                "width": 135.703125,
+                "height": 46,
+                "right": 175.703125,
+                "bottom": 70
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-deploy input:not([type=radio])",
+          "nodes": [
+            {
+              "text": "房间号",
+              "box": {
+                "x": 490,
+                "y": 165.5,
+                "width": 440,
+                "height": 52,
+                "right": 930,
+                "bottom": 217.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "房间密码",
+              "box": {
+                "x": 490,
+                "y": 376.5,
+                "width": 440,
+                "height": 52,
+                "right": 930,
+                "bottom": 428.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-role label",
+          "nodes": [
+            {
+              "text": "参战",
+              "box": {
+                "x": 490,
+                "y": 269,
+                "width": 120,
+                "height": 49,
+                "right": 610,
+                "bottom": 318
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "观战",
+              "box": {
+                "x": 620,
+                "y": 269,
+                "width": 120,
+                "height": 49,
+                "right": 740,
+                "bottom": 318
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-deploy button",
+          "nodes": [
+            {
+              "text": "加入房间",
+              "box": {
+                "x": 692,
+                "y": 455.5,
+                "width": 238,
+                "height": 70,
+                "right": 930,
+                "bottom": 525.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "lobby-small",
+      "app": "动态房主",
+      "values": [
+        {
+          "selector": ".online-room-nav button",
+          "nodes": [
+            {
+              "text": "退出房间",
+              "box": {
+                "x": 40,
+                "y": 12,
+                "width": 105.703125,
+                "height": 46,
+                "right": 145.703125,
+                "bottom": 58
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-room-actions button",
+          "nodes": [
+            {
+              "text": "准备",
+              "box": {
+                "x": 607,
+                "y": 579.5,
+                "width": 68,
+                "height": 43,
+                "right": 675,
+                "bottom": 622.5
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "开始对局",
+              "box": {
+                "x": 685,
+                "y": 566,
+                "width": 210,
+                "height": 70,
+                "right": 895,
+                "bottom": 636
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": true,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".online-room-tools button",
+          "nodes": [
+            {
+              "text": "调整时限",
+              "box": {
+                "x": 890,
+                "y": 62,
+                "width": 86,
+                "height": 43,
+                "right": 976,
+                "bottom": 105
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "spectator-pause",
+      "app": "动态观众",
+      "values": [
+        {
+          "selector": ".battle-pause",
+          "nodes": [
+            {
+              "text": "暂停",
+              "box": {
+                "x": 24,
+                "y": 12,
+                "width": 76.8046875,
+                "height": 34,
+                "right": 100.8046875,
+                "bottom": 46
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".battle-situation",
+          "nodes": [
+            {
+              "text": "◎局势",
+              "box": {
+                "x": 899.1953125,
+                "y": 12,
+                "width": 76.8046875,
+                "height": 34,
+                "right": 976,
+                "bottom": 46
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "spectator-dialog",
+      "app": "动态观众",
+      "values": [
+        {
+          "selector": "dialog[open] .dialog-close",
+          "nodes": [
+            {
+              "text": "关闭弹窗",
+              "box": {
+                "x": 1196,
+                "y": 321.625,
+                "width": 58,
+                "height": 48,
+                "right": 1254,
+                "bottom": 369.625
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": "dialog[open] .primary",
+          "nodes": [
+            {
+              "text": "继续游戏RESUME",
+              "box": {
+                "x": 666,
+                "y": 569.375,
+                "width": 588,
+                "height": 56,
+                "right": 1254,
+                "bottom": 625.375
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "spectator-situation",
+      "app": "动态观众",
+      "values": [
+        {
+          "selector": "dialog[open] .dialog-close",
+          "nodes": [
+            {
+              "text": "关闭弹窗",
+              "box": {
+                "x": 1174,
+                "y": 74.078125,
+                "width": 58,
+                "height": 48,
+                "right": 1232,
+                "bottom": 122.078125
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "label": "selecting-small-6",
+      "app": "动态房主",
+      "values": [
+        {
+          "selector": ".battle-hud-button",
+          "nodes": [
+            {
+              "text": "暂停",
+              "box": {
+                "x": 24,
+                "y": 12,
+                "width": 76.8046875,
+                "height": 34,
+                "right": 100.8046875,
+                "bottom": 46
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            },
+            {
+              "text": "❄冻结",
+              "box": {
+                "x": 819.765625,
+                "y": 12,
+                "width": 72.4296875,
+                "height": 34,
+                "right": 892.1953125,
+                "bottom": 46
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "◎局势",
+              "box": {
+                "x": 899.1953125,
+                "y": 12,
+                "width": 76.8046875,
+                "height": 34,
+                "right": 976,
+                "bottom": 46
+              },
+              "visible": true,
+              "hit": true,
+              "disabled": false,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".battle-cards .card-pick",
+          "nodes": [
+            {
+              "text": "选择 bi",
+              "box": {
+                "x": 25,
+                "y": 729,
+                "width": 79.390625,
+                "height": 8,
+                "right": 104.390625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 自 bi",
+              "box": {
+                "x": 110.390625,
+                "y": 729,
+                "width": 79.390625,
+                "height": 8,
+                "right": 189.78125,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 削",
+              "box": {
+                "x": 195.78125,
+                "y": 729,
+                "width": 79.390625,
+                "height": 8,
+                "right": 275.171875,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 三雷：DD 不足",
+              "box": {
+                "x": 281.171875,
+                "y": 729,
+                "width": 79.3984375,
+                "height": 8,
+                "right": 360.5703125,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 大 bi：DD 不足",
+              "box": {
+                "x": 366.5703125,
+                "y": 729,
+                "width": 79.390625,
+                "height": 8,
+                "right": 445.9609375,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 Pragon：DD 不足",
+              "box": {
+                "x": 451.9609375,
+                "y": 729,
+                "width": 79.390625,
+                "height": 8,
+                "right": 531.3515625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 沃尔沃：DD 不足",
+              "box": {
+                "x": 25,
+                "y": 733,
+                "width": 79.390625,
+                "height": 8,
+                "right": 104.390625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 旋转三雷：DD 不足",
+              "box": {
+                "x": 110.390625,
+                "y": 733,
+                "width": 79.390625,
+                "height": 8,
+                "right": 189.78125,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 小贝：DD 不足",
+              "box": {
+                "x": 195.78125,
+                "y": 733,
+                "width": 79.390625,
+                "height": 8,
+                "right": 275.171875,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 翻转沃尔沃：DD 不足",
+              "box": {
+                "x": 281.171875,
+                "y": 733,
+                "width": 79.3984375,
+                "height": 8,
+                "right": 360.5703125,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 扇贝：DD 不足",
+              "box": {
+                "x": 366.5703125,
+                "y": 733,
+                "width": 79.390625,
+                "height": 8,
+                "right": 445.9609375,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 聂湘：充能不足",
+              "box": {
+                "x": 451.9609375,
+                "y": 733,
+                "width": 79.390625,
+                "height": 8,
+                "right": 531.3515625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 炸药·Pragon：成熟层不足",
+              "box": {
+                "x": 25,
+                "y": 737,
+                "width": 79.390625,
+                "height": 8,
+                "right": 104.390625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 炸药·沃尔沃：成熟层不足",
+              "box": {
+                "x": 110.390625,
+                "y": 737,
+                "width": 79.390625,
+                "height": 8,
+                "right": 189.78125,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 炸药·翻转沃尔沃：成熟层不足",
+              "box": {
+                "x": 195.78125,
+                "y": 737,
+                "width": 79.390625,
+                "height": 8,
+                "right": 275.171875,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 雷电·三雷：雷电不足",
+              "box": {
+                "x": 281.171875,
+                "y": 737,
+                "width": 79.3984375,
+                "height": 8,
+                "right": 360.5703125,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 雷电·旋转三雷：雷电不足",
+              "box": {
+                "x": 366.5703125,
+                "y": 737,
+                "width": 79.390625,
+                "height": 8,
+                "right": 445.9609375,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 曾义赠送·大 bi：奖励未就绪",
+              "box": {
+                "x": 451.9609375,
+                "y": 737,
+                "width": 79.390625,
+                "height": 8,
+                "right": 531.3515625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 普通防御",
+              "box": {
+                "x": 543.359375,
+                "y": 729,
+                "width": 80.0546875,
+                "height": 8,
+                "right": 623.4140625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 三雷防",
+              "box": {
+                "x": 629.4140625,
+                "y": 729,
+                "width": 80.0625,
+                "height": 8,
+                "right": 709.4765625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 反弹",
+              "box": {
+                "x": 715.4765625,
+                "y": 729,
+                "width": 80.0625,
+                "height": 8,
+                "right": 795.5390625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 Pragon 防",
+              "box": {
+                "x": 543.359375,
+                "y": 733,
+                "width": 80.0546875,
+                "height": 8,
+                "right": 623.4140625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 沃尔沃防",
+              "box": {
+                "x": 629.4140625,
+                "y": 733,
+                "width": 80.0625,
+                "height": 8,
+                "right": 709.4765625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 吸收",
+              "box": {
+                "x": 715.4765625,
+                "y": 733,
+                "width": 80.0625,
+                "height": 8,
+                "right": 795.5390625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 聂湘防",
+              "box": {
+                "x": 543.359375,
+                "y": 737,
+                "width": 80.0546875,
+                "height": 8,
+                "right": 623.4140625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 距喦",
+              "box": {
+                "x": 629.4140625,
+                "y": 737,
+                "width": 80.0625,
+                "height": 8,
+                "right": 709.4765625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 田利军",
+              "box": {
+                "x": 715.4765625,
+                "y": 737,
+                "width": 80.0625,
+                "height": 8,
+                "right": 795.5390625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 攒／DeiDei",
+              "box": {
+                "x": 807.5390625,
+                "y": 729,
+                "width": 80.7265625,
+                "height": 8,
+                "right": 888.265625,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 云",
+              "box": {
+                "x": 894.265625,
+                "y": 729,
+                "width": 80.734375,
+                "height": 8,
+                "right": 975,
+                "bottom": 737
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 炸药",
+              "box": {
+                "x": 807.5390625,
+                "y": 733,
+                "width": 80.7265625,
+                "height": 8,
+                "right": 888.265625,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 历强",
+              "box": {
+                "x": 894.265625,
+                "y": 733,
+                "width": 80.734375,
+                "height": 8,
+                "right": 975,
+                "bottom": 741
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "选择 曾义",
+              "box": {
+                "x": 807.5390625,
+                "y": 737,
+                "width": 80.7265625,
+                "height": 8,
+                "right": 888.265625,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": false,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            },
+            {
+              "text": "不可用 张新伟：没有复制记录",
+              "box": {
+                "x": 894.265625,
+                "y": 737,
+                "width": 80.734375,
+                "height": 8,
+                "right": 975,
+                "bottom": 745
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": "false",
+              "focusVisible": false
+            }
+          ]
+        },
+        {
+          "selector": ".battle-actions button",
+          "nodes": [
+            {
+              "text": "确认出招",
+              "box": {
+                "x": 806,
+                "y": 709.5,
+                "width": 170,
+                "height": 41,
+                "right": 976,
+                "bottom": 750.5
+              },
+              "visible": true,
+              "hit": false,
+              "disabled": true,
+              "busy": null,
+              "selected": null,
+              "focusVisible": false
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "business": [
+    {
+      "label": "create-6",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    }
+  ],
+  "checks": [
+    {
+      "name": "six-spectator",
+      "roster": 6,
+      "self": {
+        "player_id": "30af9ea9-83df-4422-8150-3a2296c8bfc9",
+        "role": "spectator",
+        "seat": null,
+        "options": [],
+        "accepted_entry_id": null
+      },
+      "noSelectionControls": true
+    }
+  ],
+  "failure": {
+    "message": "selecting-small-6 occluded center .battle-cards .card-pick 选择 bi",
+    "stack": "AssertionError [ERR_ASSERTION]: selecting-small-6 occluded center .battle-cards .card-pick 选择 bi\n    at targets (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:38:214)\n    at async /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:148:77\n    at async route (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:33:39)\n    at async /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:148:35"
+  },
+  "cleanup": [
+    {
+      "kind": "app",
+      "name": "动态房主",
+      "pid": 43482,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "kind": "app",
+      "name": "动态观众",
+      "pid": 43507,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "kind": "service",
+      "pid": 43481,
+      "forced": false,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "kind": "profile",
+      "removed": true
+    },
+    {
+      "kind": "profile",
+      "removed": true
+    }
+  ],
+  "errors": []
+}

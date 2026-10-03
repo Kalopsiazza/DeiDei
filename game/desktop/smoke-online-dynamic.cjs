@@ -20,6 +20,7 @@ async function geometry(c,label){
  const css=await c.page.evaluate(()=>({width:innerWidth,height:innerHeight,dpr:devicePixelRatio,page:document.querySelector('.app')?.dataset.page,phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,focus:document.hasFocus()}));
  report.geometry.push({label,app:c.name,pid:c.pid,at:Date.now(),native,css});return native.content;
 }
+async function flightTiming(c,label){const at=Date.now(),value=summary(await state(c));(report.flightTiming||=[]).push({label,at,...value,remainingClientMs:value.deadline==null?null:Number(value.deadline)-at});}
 async function leg(c,label,width,height){
  const from=await geometry(c,label+'-start');
  for(let step=1;step<=6;step++){
@@ -144,10 +145,10 @@ async function cleanupApp(c){
    await Promise.all(roomPeers.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot.view.phase==='selecting','start selecting');
    if((n===6||n===2)&&!steadyOnly){await leg(host,'intro-'+n,1000,650);await enterArena(host.page);await leg(host,'intro-return-'+n,1366,768);}else await enterArena(host.page);
    const match=(await state(host)).snapshot.view.match.match_id;assert.equal((await state(host)).snapshot.view.match.roster_profiles.length,n);
-   if(n===6&&!steadyOnly){await enterArena(viewer.page);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
-   if((n===6||n===2)&&!steadyOnly)await route(host,'selecting-'+n,async()=>{await targets(host,'selecting-small-'+n,['.battle-hud-button','.battle-cards .card-pick','.battle-actions button']);await checkBattle(host.page,report,'33-min-'+n,{cards:33});await select(host,'Charge');await shot(host,'selecting-'+n);},async()=>{assert.equal(await host.page.locator('[data-entry="Charge"] .card-pick').getAttribute('aria-pressed'),'true');await checkBattle(host.page,report,'33-large-'+n,{cards:33});await armCommitFlight(host.page);await confirm(host);});else await submit(host,'Charge');
-   if((n===6||n===2)&&!steadyOnly)await finishCommitFlight(host.page,report,'resized-live-flight-'+n);assert.equal((await state(host)).snapshot.view.match.match_id,match);
-   if(n===6&&!steadyOnly){await timing(host);await viewerRoute(viewer,n);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
+   if(n===6&&!steadyOnly){await enterArena(viewer.page);await viewerRoute(viewer,n);await viewer.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].minimize());}
+   if((n===6||n===2)&&!steadyOnly)await route(host,'selecting-'+n,async()=>{await host.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();assert.equal((await state(host)).snapshot.view.phase,'selecting');await targets(host,'selecting-small-'+n,['.battle-hud-button','.battle-cards .card-pick','.battle-actions button']);await checkBattle(host.page,report,'33-min-'+n,{cards:33});await select(host,'Charge');await shot(host,'selecting-'+n);},async()=>{assert.equal(await host.page.locator('[data-entry="Charge"] .card-pick').getAttribute('aria-pressed'),'true');await checkBattle(host.page,report,'33-large-'+n,{cards:33});await flightTiming(host,'before-arm-'+n);await armCommitFlight(host.page);await confirm(host);});else await submit(host,'Charge');
+   if((n===6||n===2)&&!steadyOnly){await flightTiming(host,'after-return-'+n);await finishCommitFlight(host.page,report,'resized-live-flight-'+n,{expectedViewport:[1366,768]});}assert.equal((await state(host)).snapshot.view.match.match_id,match);
+   if(n===6&&!steadyOnly)await timing(host);
    if(n===2){
     await host.page.evaluate(()=>{const s=window.__reusedReveal={active:true,frames:[]};function frame(t){if(!s.active)return;s.frames.push({t,phase:document.querySelector('.battle-table')?.dataset.phase,focus:document.hasFocus(),visibility:document.visibilityState,viewport:[innerWidth,innerHeight],dpr:devicePixelRatio});requestAnimationFrame(frame);}requestAnimationFrame(frame);});
     try{await segment(host.page,()=>host.app.evaluate(({app})=>app.getAppMetrics()),report.segments,'two-player-reused-host',()=>reveal(host,roomPeers,n,true));}

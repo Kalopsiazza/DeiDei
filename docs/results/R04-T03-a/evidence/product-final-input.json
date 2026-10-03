@@ -1,0 +1,30 @@
+{
+  "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
+  "dirty": "",
+  "sha256": {
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
+    "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+    "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+    "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+    "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+  },
+  "startedAt": "2026-10-03T18:38:31.554Z",
+  "mainProcess": "fresh launch; no old hot-update process reused",
+  "sourceSha256": {
+    "game/desktop/styles/battle.css": "9352721f324397c0d38c5d7f75003b7782b18cd392dc608a6c02be270ef17710",
+    "game/desktop/styles/archive.css": "16923307a393e811a252fb5cb26fd2ceeff316804f6e1a1f4673053b92ec1cc6",
+    "game/desktop/BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
+    "game/desktop/SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "game/desktop/fixture.ts": "a30bda5e7380e4d19c56d838360b3e2bf436034b49a180f356ddf21b6ae495ae",
+    "game/desktop/smoke-dynamic.cjs": "f4878f4e7b65b0e36fd95c3203e2015105e3b171b5c18830e5a50496607915a0",
+    "game/desktop/smoke-online-dynamic.cjs": "fdab1d0b92f5a3f63b1c21dc02a988dc66b3d9407cb2dcf476a16cd220faf534",
+    "game/desktop/smoke-geometry.cjs": "b95a8fa940b6a363b641328070334a02831c4876d1f63b50adc165479dc1d4d4",
+    "game/desktop/smoke-archive-performance.cjs": "27cb4fa2c6cd23ebac097ba696c14c894242f9304cabc97604bfd704cbb5f39c",
+    "game/desktop/smoke-welcome-native.cjs": "8fae5e37dd53ee430d3c37d7d7cd4f067bbb63ab580eefc336ce404871660f0a",
+    "game/desktop/smoke-completion.cjs": "12806da4e1a286cdbbb2637d925e16b62734bed5b74acfe8a150dbf2c6ede1fd"
+  }
+}

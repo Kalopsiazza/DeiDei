@@ -1,0 +1,284 @@
+{
+  "purpose": "viewable sanitized excerpts; original raw records stay unchanged in ignored output",
+  "product": "edbb85a664bde73bc74160f00bb38e15d5634908",
+  "milestones": {
+    "one": "complete",
+    "two": "incomplete",
+    "three": "incomplete"
+  },
+  "files": [
+    {
+      "name": "completion-product.json",
+      "source": "completion-product/checks.json",
+      "originalSha256": "d19e76c7a532dd29e229dd5c2def6e8dd3f2bc0572bdd4781a3a763dfe034cfc",
+      "publishedSha256": "b6045fa550b1ac5369239fc13e401e86a581c200514d19a2fdbeae09c0a19d7e",
+      "note": "Historical product 1b2b7a1 clean input; ordinary main and delayed IPC tests. 14 functional checks PASS. Final product changes only online CSS relative to this."
+    },
+    {
+      "name": "welcome-product.json",
+      "source": "welcome-product/welcome-native.json",
+      "originalSha256": "e724321db6da09d76c0eacf01ed8e8fc2c2087867fe6c6b6b6a12fc9e990ee55",
+      "publishedSha256": "e869107876f80ad6eb44b2dbd61e17f09037614aa87a0172ca178e4513c2c5a7",
+      "note": "Historical clean product 1b2b7a1; true dev watcher reload with explicit MOCK socket. 37 functional checks; not native focus performance or network acceptance."
+    },
+    {
+      "name": "archive-before.json",
+      "source": "archive-focused-before/evidence.json",
+      "originalSha256": "3f4ed15bf9c311371ce367a7883bdf3ddb9678febdad925b87c2414d5b811daa",
+      "publishedSha256": "f89b0822bb160363d7e7f7d7039828d7e4ba9f23e6d639afabe4cb9a633454cc",
+      "note": "Controlled historical CSS override restoring exact start archive.css; native focus true. Not a final product acceptance."
+    },
+    {
+      "name": "archive-after.json",
+      "source": "archive-static-backdrop/evidence.json",
+      "originalSha256": "e134de8c23a5ea99f4ab1a03b5ead5cd8846e08eae1e3d2f50f35d3ec1850f0e",
+      "publishedSha256": "b8933370e87629a30c43fb5864a1176d1224819f6523393f5fb96954248224d3",
+      "note": "Historical archive local fix with native focus true. Full CSS differs from final product; final strict repeat pending."
+    },
+    {
+      "name": "online-baseline.json",
+      "source": "online-steady-product-v2/checks.json",
+      "originalSha256": "5e5f5c78e6790d6f551e8ade07b1e785c00133f9e9be1a7d2aa1c77bf7e24fe6",
+      "publishedSha256": "43c78701700e5af796f9d178c8c69dc90608a344abd83a3fbe8cd6f41f447ddd",
+      "note": "Flow15 PASS; performance INCOMPLETE (p95117.6/max200.6). Fixed reused host. Native focused false/docfocus true."
+    },
+    {
+      "name": "online-ambient-ab.json",
+      "source": "online-ambient-ab/checks.json",
+      "originalSha256": "9a4be539c2b0f017719cc7c7b70f324de54dbd12f81be336e2efa7685e5842ed",
+      "publishedSha256": "088ce11735b2f0ab5cacf013c909fb7379c7f74901de7a85d494507e275a69b7",
+      "note": "Compiled-only four ambient loop pause, not retained. Flow15 PASS; performance INCOMPLETE."
+    },
+    {
+      "name": "online-backdrop-ab.json",
+      "source": "online-backdrop-ab/checks.json",
+      "originalSha256": "1b5e611910509c3a0d92db9456ed09e2a73e3999767b51d250368cdccf5e3684",
+      "publishedSha256": "7e9c675166c22fb8f6d81eb4b94fbdf02e68bc6d08cda4bb870329f3619f3688",
+      "note": "Isolated compiled-only whole table backdrop removal; final product has byte-identical CSS output. Flow15 PASS; late reveal improves but selecting stalls remain and native focus false."
+    },
+    {
+      "name": "online-dynamic-failure.json",
+      "source": "online-v7/checks.json",
+      "originalSha256": "00ea4d7589e84fbb0b6846b9caba631627f076556f526d72d2f108aaec421ca3",
+      "publishedSha256": "5ea986b4d02e470ca4b7a0a3996dd42bb0a371504aa8a4b181253916f3d495ad",
+      "note": "Whole run FAIL (Charge reveal timeout). Partial six-player glyph/timing/viewer evidence only; not all counts dynamic acceptance."
+    },
+    {
+      "name": "dynamic-product-failure.json",
+      "source": "dynamic-product/dynamic.json",
+      "originalSha256": "e4d838c4e3a6abbfc9fb4943436eb2c7dd74594106bdfe962c4281a06d5adbb6",
+      "publishedSha256": "57182bc945087c7081e5df3eb9e2f87707f84808ce2625f83f7ff0b38076bf36",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "dynamic-product-v2-failure.json",
+      "source": "dynamic-product-v2/dynamic.json",
+      "originalSha256": "1354ddb44cde068483c9b11653b0824a9e9b765cc20a36e2332fb0f910f817d7",
+      "publishedSha256": "92930464c29eeed809ab1f048773247042ab3779354a2dd93b762e7aff74f4e7",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "dynamic-final-product-failure.json",
+      "source": "dynamic-final-product/dynamic.json",
+      "originalSha256": "ed2f55b89448fe210de9e83667b8b76f9f7b846e0b72d4cf4ae5d800eb80b5d2",
+      "publishedSha256": "bf28014cd2664b26acb718ef4c568d395862e262c613ecce93b4c58c44f287bc",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "preview-defeat.png",
+      "source": "completion-product/preview-defeat.png",
+      "originalSha256": "97c070d9b74c300b7d38bc8c3b60200e913fdc339755c73488e79af0382f231c",
+      "publishedSha256": "97c070d9b74c300b7d38bc8c3b60200e913fdc339755c73488e79af0382f231c",
+      "note": "P1 fixture defeat during result handoff. Result/ledger correctness is in corresponding 14-check JSON."
+    },
+    {
+      "name": "welcome-menu.png",
+      "source": "welcome-product/returning-menu.png",
+      "originalSha256": "1217e96d11db8b2bdeb8c02e5eef3545d5737f60243f90732ee08446bda10442",
+      "publishedSha256": "1217e96d11db8b2bdeb8c02e5eef3545d5737f60243f90732ee08446bda10442",
+      "note": "P1 stable existing-profile menu after same-process reload; no user profile, only synthetic test data."
+    },
+    {
+      "name": "six-player-minimum.png",
+      "source": "online-v7/selecting-6.png",
+      "originalSha256": "97632925dc49de6bf6a2f2d14423d1db072adb4eb3c51ffe055c875ba1fcebe1",
+      "publishedSha256": "97632925dc49de6bf6a2f2d14423d1db072adb4eb3c51ffe055c875ba1fcebe1",
+      "note": "P1 compiled output, real service at1000x650. Whole online run failed later. Seat identities hidden in selection by existing rules; glyph validation in JSON."
+    },
+    {
+      "name": "archive-candidate.png",
+      "source": "archive-static-backdrop/final.png",
+      "originalSha256": "cb3ee7ecad380504ca677c9f55d9fce9677de45d9d0a3f599be939eabcb27d8f",
+      "publishedSha256": "cb3ee7ecad380504ca677c9f55d9fce9677de45d9d0a3f599be939eabcb27d8f",
+      "note": "Historical strict archive local-fix screenshot at1920x1080,DPR2; not final-product acceptance."
+    },
+    {
+      "name": "product-input.json",
+      "source": "product-input.json",
+      "originalSha256": "c7cf838ce5c0d28054240d2b8eae0e4c0d48c41e67c43eb49af85fbb6b4cd0a3",
+      "publishedSha256": "c7cf838ce5c0d28054240d2b8eae0e4c0d48c41e67c43eb49af85fbb6b4cd0a3",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "product-final-input.json",
+      "source": "product-final-input.json",
+      "originalSha256": "ddd9cd053f71b19cc34a384ac4018a217495480a8b3bba8c0d6abf1ea621a813",
+      "publishedSha256": "ddd9cd053f71b19cc34a384ac4018a217495480a8b3bba8c0d6abf1ea621a813",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "online-ambient-variant.json",
+      "source": "online-ambient-variant.json",
+      "originalSha256": "36d740b984aaea8b5e8a711fd4d7899e3eed276b79d4963e6bbd0350643973d6",
+      "publishedSha256": "dd1bdffedb30880418ec76daac597390d5aea28aa21d5bc7fe10074b88a6601a",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "online-backdrop-variant.json",
+      "source": "online-backdrop-variant.json",
+      "originalSha256": "77d8b8d5e5b2884a7e055529b8879ae00567e128e65331565de90c8f4dc530b1",
+      "publishedSha256": "665436bb2fda2dbada55608385001848c8a3b84cf9c7821d219cf10319734744",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "dynamic-product-v2-input.json",
+      "source": "dynamic-product-v2-input.json",
+      "originalSha256": "0b0f5cd866c6ae89c3a0065d3e2624d0d0dd0defdc8ecce3027d70b225e154b6",
+      "publishedSha256": "0b0f5cd866c6ae89c3a0065d3e2624d0d0dd0defdc8ecce3027d70b225e154b6",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "steady-run-source.json",
+      "source": "steady-run-source.json",
+      "originalSha256": "0c60fffce0dbd14cc4ac8361ee2d08472ddd8155dd0dd1a4bc3fdfc49ba3bdaf",
+      "publishedSha256": "0c60fffce0dbd14cc4ac8361ee2d08472ddd8155dd0dd1a4bc3fdfc49ba3bdaf",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "source": "archive-focused-before/manual-detail-scroll-cpu-profile.json",
+      "originalSha256": "1f18cbd3322118d0a6c901f14f2e2bf986da99420173e526db74099c2b4ea0e2",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-detail-scroll-trace.json",
+      "originalSha256": "0f89da5e9eefc87457ac369394785aba50c4ad93cbff6645404a089efb89b157",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-stack-scroll-cpu-profile.json",
+      "originalSha256": "6ccf4179505cf1a68b2a23ed64469d65e162ccab4568b90c872fd8f19f57b1fb",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-stack-scroll-trace.json",
+      "originalSha256": "e9ff9f2197e8916720e77988a5b304233dbd72cc2a443c408c03fa41556e44c4",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-detail-scroll-cpu-profile.json",
+      "originalSha256": "0dc42ded595e2d6180db733017be7d66b1998bca24cfb3c8f058024f52162528",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-detail-scroll-trace.json",
+      "originalSha256": "e089f289134d5daaa12a99c3721ae95c05a1ce54608eac2d340f21ffdde2b0f3",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-stack-scroll-cpu-profile.json",
+      "originalSha256": "235ef3ee247c0dc2cc487bd4361c95b7ed17c4136af02468f49da4caa4daca97",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-stack-scroll-trace.json",
+      "originalSha256": "cae58636ae00744def29d7cc959f330cf28a2273a6b80e227941280a85e81498",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-steady-product-v2/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "297147c0cea7d2f0a8457072cd3de5c17f8d2da5cf234d18165bed25b8a27fc7",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-steady-product-v2/two-player-reused-steady-trace.json",
+      "originalSha256": "2769daecb204098c5ccc3d8ef65bb1cd8e271ffd7d902ceca911c0afcb5c4bd9",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-ambient-ab/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "188e84906e3c6a3b657ca4b95c35d5de8b873fbecb07cbf3f23768dcb5b40a55",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-ambient-ab/two-player-reused-steady-trace.json",
+      "originalSha256": "d9e7488915f1c0537dc87fb1f794caac2cef40c07cddb431adcbb90e72104d53",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-backdrop-ab/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "e59de17d082a48f3380fce7ba1bcae1a4163f433761ab8b71e8f9e8a30ddca6e",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-backdrop-ab/two-player-reused-steady-trace.json",
+      "originalSha256": "e15e7cae68be59be743b57ed080520b2094aabd7685b53bad1a20a84f651df8d",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "name": "dynamic-final-product-v2.json",
+      "source": "dynamic-final-product-v2/dynamic.json",
+      "originalSha256": "9892fe2d927591f68d93341bc99801d971e7c14a1cd0c8e6f062af165f38829b",
+      "publishedSha256": "f07ad95c9786916e75a2770824e020c8676ddbd2f3a5927edfbe6cc47d49567d",
+      "note": "P2 product output. Full automatic10routes189recordsPASS; native motion evidence and intermittent earlier settings offset still incomplete."
+    },
+    {
+      "name": "online-final-product-failure.json",
+      "source": "online-final-product/checks.json",
+      "originalSha256": "4e253c44c11420976f77975b61e77a6c4072636940f6f1e8bf8b62fc2ad601f7",
+      "publishedSha256": "a2ac0022f1d7fc17111f9f993734c0c433429d4e8b30b7210eb972eeeb9013c6",
+      "note": "P2 full route FAIL; card targets sampled during revealed after real deadline advanced. Not product selecting clipping evidence."
+    },
+    {
+      "name": "online-final-product-v2-failure.json",
+      "source": "online-final-product-v2/checks.json",
+      "originalSha256": "842c2f7ba96a548b9ee4006c79b2afd9b70510f3d3c25e684a3474ef67da66fa",
+      "publishedSha256": "c5bbda963e4134642e2a37ed363649a02ea2f84745a5a53191e849e4bf357d63",
+      "note": "P2 full route FAIL; bounded flight geometry did not reach stable completion. Preserve raw records; no tolerance reduced."
+    },
+    {
+      "name": "final-qa-input.json",
+      "source": "final-qa-input.json",
+      "originalSha256": "3352076894b73ce5f1956a24db56f017fb7451a0634c4ea7dc820abcabcef09a",
+      "publishedSha256": "3352076894b73ce5f1956a24db56f017fb7451a0634c4ea7dc820abcabcef09a",
+      "note": "Driver/source map; per-run dirty retained."
+    },
+    {
+      "name": "completion-final-product.json",
+      "source": "completion-final-product/checks.json",
+      "originalSha256": "9d8665fb29bd109657b38884b8b76e410f444c607916ac246a7582bb6dd9c7a8",
+      "publishedSha256": "e9a6e2e507fd0a6ac64fdbaa6059f4f461ee361834fcad97887b8e071a58f015",
+      "note": "P2 final product runtime;14 actual functional checks PASS; dirty QA/docs recorded. Not native motion/performance acceptance."
+    },
+    {
+      "name": "solo-minimum-final.png",
+      "source": "dynamic-final-product-v2/solo-select-minimum.png",
+      "originalSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
+      "publishedSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
+      "note": "Current P2 runtime, real worker, 1000x650, selected Charge;10-route driverPASS."
+    }
+  ]
+}
