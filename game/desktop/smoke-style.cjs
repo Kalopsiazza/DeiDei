@@ -2,6 +2,41 @@
 const assert = require("node:assert/strict"), fs = require("node:fs"), path = require("node:path"), os = require("node:os");
 const { execFileSync } = require("node:child_process");
 const root = path.resolve(__dirname, "../.."), out = path.resolve(process.env.DEIDEI_STYLE_OUTPUT || path.join(root, ".local-outputs/R04-T02-d/style-check"));
+const positiveArea = (box) => Number.isFinite(box.left) && Number.isFinite(box.top) && Number.isFinite(box.right) && Number.isFinite(box.bottom) && box.right > box.left && box.bottom > box.top;
+const visibleFocus = (normal, focused) => {
+  const a = normal.style, b = focused.style;
+  const changedOutline = b.outlineStyle !== "none" && parseFloat(b.outlineWidth) > 0 && ["outlineStyle", "outlineWidth", "outlineColor"].some((key) => a[key] !== b[key]);
+  return focused.focusVisible === true && focused.box.width > 0 && focused.box.height > 0 && (changedOutline || b.boxShadow !== "none" && b.boxShadow !== a.boxShadow || b.borderColor !== a.borderColor);
+};
+const layoutVerdict = (value, { cards, seats, seatGeometry = false } = {}, width, height) => {
+  const parts = [...value.controls, ...(seats ? value.seatParts : [])];
+  const outside = parts.filter((r) => r.left < -1 || r.top < -1 || r.right > width + 1 || r.bottom > height + 1);
+  const invalidArea = parts.filter((r) => !positiveArea(r));
+  const controlsPresent = value.controlGroups.length > 0 && value.controlGroups.every((group) => group.count > 0);
+  const namesPresent = !cards || value.cardCount === cards && value.glyphs.length === cards && value.glyphs.every((g) => g.name.trim().length > 0);
+  const seatsPresent = !seats || value.seatCount === seats && value.seatParts.length === seats * 2 && Array.from({ length: seats }, (_, index) => ["profile", "move"].every((kind) => value.seatParts.filter((part) => part.index === index && part.kind === kind).length === 1)).every(Boolean);
+  const ok = value.controls.length > 0 && controlsPresent && namesPresent && seatsPresent && !invalidArea.length && !outside.length && (!seatGeometry || !value.overlaps) && value.glyphs.every((g) => g.font >= 12 && (cards !== 33 || g.font <= 16) && g.width > 0 && g.height > 0 && g.height + 0.5 >= g.inkHeight && g.nameFits) && value.scroll[0] <= width && value.scroll[1] <= height;
+  return { ok, outside, invalidArea, controlsPresent, namesPresent, seatsPresent };
+};
+const selfCheck = () => {
+  const options = { cards: 33, seats: 6, seatGeometry: true };
+  const box = { left: 10, top: 10, right: 50, bottom: 30 };
+  const valid = { controls: [box], controlGroups: [{ selector: "fixture", count: 1 }], glyphs: Array.from({ length: 33 }, () => ({ name: "招式", font: 14, width: 40, height: 16, inkHeight: 12, nameFits: true })), cardCount: 33, seatCount: 6, seatParts: Array.from({ length: 6 }, (_, index) => ["profile", "move"].map((kind) => ({ index, kind, ...box }))).flat(), overlaps: false, scroll: [800, 600] };
+  assert.equal(layoutVerdict(valid, options, 800, 600).ok, true, "complete positive-area fixture passes");
+  const cases = {
+    "zero-area control": { ...valid, controls: [{ ...box, right: box.left, bottom: box.top }] },
+    "33 cards without names": { ...valid, glyphs: [] },
+    "6 seats without parts": { ...valid, seatParts: [] },
+    "missing control category": { ...valid, controlGroups: [{ selector: "fixture", count: 0 }] },
+  };
+  for (const [name, value] of Object.entries(cases)) assert.equal(layoutVerdict(value, options, 800, 600).ok, false, name + " is rejected");
+  const normal = { style: { outlineStyle: "none", outlineWidth: "0px", outlineColor: "rgb(1, 2, 3)", boxShadow: "rgb(0, 0, 0) 0px 12px 24px", borderColor: "rgb(4, 5, 6)" }, box: { width: 40, height: 20 }, focusVisible: false };
+  assert.equal(visibleFocus(normal, { ...normal, focusVisible: true }), false, "constant decorative shadow is not focus");
+  assert.equal(visibleFocus(normal, { ...normal, focusVisible: true, style: { ...normal.style, outlineStyle: "solid", outlineWidth: "3px" } }), true, "dedicated focus outline passes");
+  assert.equal(visibleFocus(normal, { ...normal, focusVisible: true, style: { ...normal.style, boxShadow: "rgb(140, 234, 243) 0px 0px 0px 3px" } }), true, "focus shadow changed from default passes");
+  console.log(JSON.stringify({ status: "PASS", rejected: [...Object.keys(cases), "constant decorative shadow"], positive: ["complete layout", "focus outline", "changed focus shadow"] }));
+};
+if (process.argv.includes("--self-check")) { selfCheck(); return; }
 const { _electron: electron } = require(path.join(root, "game/desktop/node_modules/playwright-core"));
 (async () => {
   fs.mkdirSync(out, { recursive: true });
@@ -10,13 +45,14 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
   delete env.ELECTRON_RUN_AS_NODE;
   delete env.DEIDEI_ROOM_URL;
   const report = { code_sha: execFileSync("git", ["rev-parse", "HEAD"], { cwd: root, encoding: "utf8" }).trim(), dirty: execFileSync("git", ["status", "--porcelain"], { cwd: root, encoding: "utf8" }).trim(), kind: "actual Electron; online MOCK; six-state attrs synthesized for CSS sampling", elements: {}, layouts: [], failures: [] };
+  report.cssInputs = Object.fromEntries(["foundation", "battle", "prepare", "preferences"].map((name) => [name, require("node:crypto").createHash("sha256").update(fs.readFileSync(path.join(__dirname, "styles", name + ".css"))).digest("hex")]));
   let app, page;
   const sample = async (locator) => locator.evaluate((node) => {
     const s = getComputedStyle(node), r = node.getBoundingClientRect(), style = {};
-    for (const k of ["fontSize", "fontWeight", "color", "backgroundColor", "backgroundImage", "borderColor", "outlineColor", "outlineWidth", "outlineStyle", "boxShadow", "minHeight", "minWidth", "padding", "backdropFilter", "filter", "opacity", "clipPath", "transform", "transitionDuration", "animationName"]) style[k] = s[k];
+    for (const k of ["fontSize", "fontWeight", "color", "backgroundColor", "backgroundImage", "borderColor", "outlineColor", "outlineWidth", "outlineStyle", "boxShadow", "minHeight", "minWidth", "padding", "backdropFilter", "filter", "opacity", "clipPath", "transform", "transitionDuration", "animationName", "animationIterationCount", "colorScheme"]) style[k] = s[k];
     return { style, box: { x: r.x, y: r.y, right: r.right, bottom: r.bottom, width: r.width, height: r.height }, focusVisible: node.matches(":focus-visible"), disabled: node.matches(":disabled"), busy: node.getAttribute("aria-busy") };
   });
-  const states = async (name, selector) => {
+  const states = async (name, selector, { semantic = false, disabledClick = false } = {}) => {
     const l = page.locator(selector).first();
     await l.waitFor();
     await page.mouse.move(0, 0);
@@ -41,6 +77,14 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
     });
     await page.waitForTimeout(250);
     values.disabled = await sample(l);
+    if (disabledClick) {
+      await l.evaluate((n) => { n.dataset.styleClicks = "0"; n.addEventListener("click", () => { n.dataset.styleClicks = String(Number(n.dataset.styleClicks) + 1); }, { once: true }); });
+      const box = await l.boundingBox();
+      assert.ok(box && box.width > 0 && box.height > 0, name + " has a disabled pointer target");
+      await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      assert.equal(await l.getAttribute("data-style-clicks"), "0", name + " disabled pointer click has no action");
+      await l.evaluate((n) => delete n.dataset.styleClicks);
+    }
     await l.hover({ force: true });
     await page.mouse.down();
     await page.waitForTimeout(250);
@@ -61,12 +105,156 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
       else n.removeAttribute("aria-busy");
       delete n.dataset.savedBusy;
     });
-    report.elements[name] = { selector, states: values };
+    report.elements[name] = { selector, source: "actual component; disabled/aria-busy attributes synthesized for CSS sampling", states: values };
     assert.equal(values.focusVisible.focusVisible, true, name + " gets keyboard focus");
-    assert.ok(values.focusVisible.style.outlineStyle !== "none" && parseFloat(values.focusVisible.style.outlineWidth) > 0 || values.focusVisible.style.boxShadow !== "none" || values.focusVisible.style.borderColor !== values.default.style.borderColor, name + " retains a visible focus indicator");
+    assert.ok(visibleFocus(values.default, values.focusVisible), name + " has focus feedback distinct from its decorative default");
+    for (const [state, value] of Object.entries(values)) assert.ok(value.box.width > 0 && value.box.height > 0, name + " " + state + " has positive area");
+    if (semantic) for (const state of ["hover", "active", "focusVisible"]) for (const key of ["color", "backgroundImage", "borderColor"]) assert.equal(values[state].style[key], values.default.style[key], name + " " + state + " retains semantic " + key);
     assert.equal(values.disabledPressed.style.transform, values.disabled.style.transform, name + " disabled pointer press cannot activate transform");
+    return values;
   };
   const screenshot = async (name) => page.screenshot({ path: path.join(out, name + ".png"), scale: "css" });
+  // This entry samples only the reviewed consumers; it does not rerun or replace the historical 72 layouts.
+  const targeted = async () => {
+    report.kind = "R34-02 targeted actual Electron components; local worker and online MOCK; synthesized disabled attrs are CSS-only";
+    report.targeted = { selects: {}, pause: {}, motion: {}, nativePopupVisualAcceptance: "pending screenshot inspection" };
+    await page.setViewportSize({ width: 1366, height: 768 });
+    await app.evaluate(({ BrowserWindow }) => { const w = BrowserWindow.getAllWindows()[0]; w.show(); w.focus(); });
+    if (await page.getByRole("button", { name: "跳过开场", exact: true }).isVisible()) await page.getByRole("button", { name: "跳过开场", exact: true }).click();
+    await page.getByRole("button", { name: "进入牌厅", exact: true }).click();
+    await page.getByRole("textbox", { name: "昵称", exact: true }).fill("局部样式验收");
+    await page.getByRole("button", { name: "确认名字", exact: true }).click();
+    await page.getByRole("button", { name: "进入主菜单", exact: true }).click();
+    await page.locator(".app[data-page=menu]").waitFor();
+    const motion = async (name, selector, pseudo, count, expectedName) => {
+      const capture = () => page.locator(selector).evaluateAll((nodes, pseudo) => nodes.map((node) => {
+        const style = getComputedStyle(node, pseudo);
+        return { name: style.animationName, iterations: style.animationIterationCount, transform: style.transform, content: style.content };
+      }), pseudo);
+      const values = {};
+      for (const [state, preference] of [["normal", "no-preference"], ["reduced", "reduce"], ["restored", "no-preference"]]) {
+        await page.emulateMedia({ reducedMotion: preference });
+        values[state] = await capture();
+        assert.equal(values[state].length, count, name + " has all expected parts");
+        assert.ok(values[state].every((item) => item.name === (state === "reduced" ? "none" : expectedName)), name + " " + state + " animation selector applies");
+        if (state !== "reduced") assert.ok(values[state].every((item) => item.iterations === "infinite"), name + " restores ordinary loop");
+        await screenshot(name + "-" + state);
+      }
+      report.targeted.motion[name] = { source: "actual ordinary local preparation/intro", selector, pseudo, states: values };
+    };
+    await page.getByRole("button", { name: /^单人对局/ }).click();
+    await page.locator('.prepare-signal[data-level="standard"]').waitFor();
+    await motion("prepare-standard-scan", '.prepare-signal[data-level="standard"]>span', null, 3, "prepare-scan");
+    await motion("prepare-orbit", ".prepare-signal>i", null, 1, "prepare-orbit");
+    await page.getByRole("button", { name: /开始对局/ }).click();
+    await page.locator(".match-intro .intro-versus").waitFor();
+    await motion("intro-sigil", ".match-intro .intro-versus article", "::before", 2, "intro-sigil-pulse");
+    await page.locator(".cinematic-skip").click();
+    await page.locator(".battle-table[data-ready=true]").waitFor();
+    const pause = async (name, source) => {
+      await page.locator(".battle-pause").click();
+      await page.locator("dialog.battle-dialog.pause-dialog").waitFor();
+      await page.waitForTimeout(400);
+      for (const role of ["primary", "danger"]) {
+        const values = await states(name + "-" + role, ".pause-dialog button." + role, { semantic: true, disabledClick: true });
+        assert.equal(values.default.style.color, role === "primary" ? "rgb(7, 16, 24)" : "rgb(255, 155, 166)", name + " " + role + " semantic default");
+        report.targeted.pause[name + "-" + role] = { source, disabled: "attribute synthesized on actual button; physical pointer click generates no action" };
+        await page.locator(".pause-dialog button." + role).hover();
+        await page.waitForTimeout(250);
+        await screenshot(name + "-" + role + "-hover");
+      }
+      await page.locator(".pause-dialog .primary").click();
+      await page.locator(".pause-dialog").waitFor({ state: "detached" });
+      await page.locator(".battle-pause").click();
+      await page.locator(".pause-dialog .danger").click();
+      const confirm = page.getByRole("dialog", { name: name === "local-pause" ? "离开当前对局" : "结束整个房间？", exact: true });
+      await confirm.waitFor();
+      assert.equal(await confirm.locator("button.primary").isEnabled(), true, name + " exit confirmation is reachable by ordinary click");
+      await screenshot(name + "-exit-confirm-reachable");
+      report.targeted.pause[name + "-danger"].enabledClick = "actual enabled danger click reaches exit confirmation; cancel returns to the same battle";
+      await confirm.getByRole("button", { name: name === "local-pause" ? "继续对局" : "留在房间", exact: true }).click();
+      await confirm.waitFor({ state: "detached" });
+      await page.locator(".battle-table[data-ready=true]").waitFor();
+    };
+    await pause("local-pause", "ordinary local worker match");
+    await leave();
+    await page.getByRole("button", { name: /^好友联机/ }).click();
+    await page.getByText("已连接", { exact: true }).waitFor();
+    await page.getByRole("button", { name: "创建房间", exact: true }).click();
+    await page.locator(".online-deploy-submit").click();
+    await page.locator(".online-lobby").waitFor();
+    const contrast = (text, surface) => {
+      const luminance = (rgb) => {
+        const channels = rgb.match(/[\d.]+/g).slice(0, 3).map((x) => Number(x) / 255).map((x) => x <= 0.04045 ? x / 12.92 : ((x + 0.055) / 1.055) ** 2.4);
+        return channels[0] * 0.2126 + channels[1] * 0.7152 + channels[2] * 0.0722;
+      };
+      const a = luminance(text), b = luminance(surface);
+      return (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    };
+    const select = async (name) => {
+      await page.getByRole("button", { name: "调整时限", exact: true }).click();
+      const dialog = page.getByRole("dialog", { name: "调整之后每拍时限", exact: true }), control = dialog.getByRole("combobox", { name: "之后每拍时限", exact: true });
+      await control.waitFor();
+      await page.waitForTimeout(400);
+      const values = { source: "actual OnlineRoom consumer; online MOCK", default: await sample(control), originalValue: await control.inputValue() };
+      assert.ok(contrast(values.default.style.color, values.default.style.backgroundColor) >= 4.5, name + " closed select has readable contrast");
+      await page.keyboard.press("Tab");
+      await control.focus();
+      values.focusVisible = await sample(control);
+      assert.ok(visibleFocus(values.default, values.focusVisible), name + " keyboard select focus is distinct");
+      const keyboardKey = values.originalValue === "30000" ? "Home" : "End", keyboardTarget = keyboardKey === "Home" ? "5000" : "30000";
+      await page.keyboard.press(keyboardKey);
+      await page.keyboard.press("Enter");
+      values.keyboardValue = await control.inputValue();
+      assert.equal(values.keyboardValue, keyboardTarget, name + " keyboard selects an allowed endpoint time");
+      assert.notEqual(values.keyboardValue, values.originalValue, name + " keyboard changes the value");
+      values.options = await control.locator("option").evaluateAll((nodes) => nodes.map((node) => ({ value: node.value, text: node.textContent, color: getComputedStyle(node).color, background: getComputedStyle(node).backgroundColor })));
+      assert.equal(values.options.length, 6, name + " has the six advertised options");
+      assert.ok(values.options.every((option) => contrast(option.color, option.background) >= 4.5), name + " option DOM styles have readable contrast");
+      await screenshot(name + "-closed-focus");
+      await control.click();
+      values.openOperation = "physical click on the actual native select; renderer screenshot alone does not prove platform popup pixels";
+      await screenshot(name + "-expanded-renderer");
+      const helper = process.env.DEIDEI_STYLE_NATIVE_CAPTURE_HELPER;
+      if (helper) {
+        const bounds = await app.evaluate(({ BrowserWindow }) => { const w = BrowserWindow.getAllWindows()[0]; return { ...w.getBounds(), focused: w.isFocused(), visible: w.isVisible() }; });
+        assert.equal(bounds.focused, true, "capture is limited to the owned focused Electron window");
+        const capturePath = path.join(out, name + "-expanded-native.png");
+        execFileSync("python3", [helper, "--path", capturePath, "--region", [bounds.x, bounds.y, bounds.width, bounds.height].join(",")], { encoding: "utf8" });
+        values.nativePopupScreenshot = { path: capturePath, bounds, acceptance: "requires visual inspection" };
+      } else values.nativePopupScreenshot = { status: "NOT_RUN", reason: "no native capture helper; renderer image cannot establish native popup colors" };
+      await page.keyboard.press("Escape");
+      assert.equal(await dialog.isVisible(), true, name + " Escape closes the native popup while retaining its dialog");
+      await control.evaluate((node) => { node.disabled = true; });
+      values.disabled = { ...await sample(control), source: "disabled attribute synthesized for CSS-only sampling; current OnlineRoom does not disable this select" };
+      const before = await control.inputValue(), box = await control.boundingBox();
+      assert.ok(box && box.width > 0 && box.height > 0, name + " disabled select has positive area");
+      await page.mouse.click(box.x + box.width / 2, box.y + box.height / 2);
+      await page.keyboard.press("ArrowDown");
+      assert.equal(await control.inputValue(), before, name + " disabled select cannot change via pointer/keyboard");
+      assert.ok(contrast(values.disabled.style.color, values.disabled.style.backgroundColor) >= 4.5, name + " disabled select remains readable");
+      assert.notEqual(values.disabled.style.color, values.default.style.color, name + " disabled appearance is distinct");
+      await screenshot(name + "-disabled");
+      await control.evaluate((node) => { node.disabled = false; });
+      report.targeted.selects[name] = values;
+      await dialog.getByRole("button", { name: "应用到之后每拍", exact: true }).click();
+      await dialog.waitFor({ state: "detached" });
+      values.applied = await page.evaluate(async () => { const state = (await window.desktop.online.read()).data; return { source: state.source, phase: state.snapshot.view.phase, turn_ms: state.snapshot.view.policy.turn_ms }; });
+      assert.equal(values.applied.source, "fixture", name + " evidence retains MOCK source");
+      assert.equal(values.applied.turn_ms, Number(values.keyboardValue), name + " ordinary apply click uses the keyboard choice");
+    };
+    await select("lobby-limit");
+    await page.getByRole("button", { name: "准备", exact: true }).click();
+    await page.getByRole("button", { name: "取消准备", exact: true }).waitFor();
+    await page.getByRole("button", { name: "开始对局", exact: true }).click();
+    await page.locator(".online-intro").waitFor();
+    await page.locator(".online-intro .cinematic-skip").click();
+    await page.locator(".battle-table[data-mode=online][data-ready=true]").waitFor();
+    await select("battle-limit");
+    await pause("online-pause", "online MOCK transport; actual OnlineRoom pause menu");
+    assert.deepEqual(report.pageErrors, [], "targeted consumers have no renderer errors");
+    report.status = "PASS";
+  };
   const dimensions = [[1e3, 650], [1060, 650], [1366, 768], [1920, 1080], [1280, 800], [2560, 1080]];
   const layouts = async (name, selector, { cards, seats, seatGeometry = false } = {}) => {
     for (const [width, height] of dimensions) {
@@ -78,7 +266,8 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
           return { left: r.left, top: r.top, right: r.right, bottom: r.bottom };
         };
         const controls = [...document.querySelectorAll(selector2)].map((n) => ({ text: n.getAttribute("aria-label") || n.textContent.trim().slice(0, 40), ...box(n) }));
-        const seatParts = seats2 ? [...document.querySelectorAll(".arena-seat")].flatMap((n, index) => [n.querySelector(".seat-profile"), n.querySelector(".move-card.current,.move-card.active")].filter(Boolean).map((n2) => ({ index, ...box(n2) }))) : [];
+        const controlGroups = selector2.split(",").map((part) => ({ selector: part, count: document.querySelectorAll(part).length }));
+        const seatParts = seats2 ? [...document.querySelectorAll(".arena-seat")].flatMap((n, index) => [["profile", n.querySelector(".seat-profile")], ["move", n.querySelector(".move-card.current,.move-card.active")]].filter(([, node]) => node).map(([kind, n2]) => ({ index, kind, ...box(n2) }))) : [];
         const overlaps = seatParts.some((a, i) => seatParts.slice(i + 1).some((b) => a.index !== b.index && Math.min(a.right, b.right) - Math.max(a.left, b.left) > 4 && Math.min(a.bottom, b.bottom) - Math.max(a.top, b.top) > 4));
         const context = document.createElement("canvas").getContext("2d");
         const glyphs = cards2 ? [...document.querySelectorAll(".battle-cards .card-name")].map((n) => {
@@ -87,13 +276,12 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
           const m = context.measureText(n.textContent), copy = n.closest("strong").getBoundingClientRect(), range = document.createRange();
           range.selectNodeContents(n);
           const text = range.getBoundingClientRect();
-          return { nameFits: text.left >= copy.left - 1 && text.right <= copy.right + 1 && text.top >= copy.top - 1 && text.bottom <= copy.bottom + 1, name: n.textContent, font: parseFloat(style.fontSize), lineHeight: parseFloat(style.lineHeight), height: r.height, inkHeight: m.actualBoundingBoxAscent + m.actualBoundingBoxDescent, textOverflow: style.textOverflow };
+          return { nameFits: text.left >= copy.left - 1 && text.right <= copy.right + 1 && text.top >= copy.top - 1 && text.bottom <= copy.bottom + 1, name: n.textContent, font: parseFloat(style.fontSize), lineHeight: parseFloat(style.lineHeight), width: r.width, height: r.height, inkHeight: m.actualBoundingBoxAscent + m.actualBoundingBoxDescent, textOverflow: style.textOverflow };
         }) : [];
-        return { glyphs, viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, scroll: [document.documentElement.scrollWidth, document.documentElement.scrollHeight], controls, cardCount: cards2 ? document.querySelectorAll(".battle-cards .card").length : null, seatCount: seats2 ? document.querySelectorAll(".arena-seat").length : null, seatParts, overlaps };
+        return { glyphs, viewport: { width: innerWidth, height: innerHeight, dpr: devicePixelRatio }, scroll: [document.documentElement.scrollWidth, document.documentElement.scrollHeight], controls, controlGroups, cardCount: cards2 ? document.querySelectorAll(".battle-cards .card").length : null, seatCount: seats2 ? document.querySelectorAll(".arena-seat").length : null, seatParts, overlaps };
       }, { selector, cards, seats });
-      const outside = [...value.controls, ...seatGeometry ? value.seatParts : []].filter((r) => r.left < -1 || r.top < -1 || r.right > width + 1 || r.bottom > height + 1);
-      const ok = value.controls.length > 0 && !outside.length && (!seatGeometry || !value.overlaps) && value.glyphs.every((g) => g.font >= 12 && (cards !== 33 || g.font <= 16) && g.height + 0.5 >= g.inkHeight && g.nameFits) && (!cards || value.cardCount === cards) && (!seats || value.seatCount === seats) && value.scroll[0] <= width && value.scroll[1] <= height;
-      report.layouts.push({ name, method: "Electron renderer content-size simulation; DPR reported separately", seatGeometry, ok, outside, ...value });
+      const verdict = layoutVerdict(value, { cards, seats, seatGeometry }, width, height), { ok } = verdict;
+      report.layouts.push({ name, method: "Electron renderer content-size simulation; DPR reported separately", seatGeometry, ...verdict, ...value });
       if (!ok) report.failures.push(name + " " + width + "x" + height);
       if (width === 1e3 || width === 1920 || !ok) await screenshot(name + "-" + width + "x" + height);
     }
@@ -110,9 +298,12 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
     app = await electron.launch({ args: [path.join(root, "game/desktop/tests-online/smoke-main.cjs")], env });
     report.electron_pid = app.process().pid;
     page = await app.firstWindow();
+    report.pageErrors = [];
+    page.on("pageerror", (error) => report.pageErrors.push(error.message));
     page.setDefaultTimeout(12e3);
     await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.setBackgroundThrottling(false));
     report.displays = await app.evaluate(({ screen }) => screen.getAllDisplays().map((d) => ({ bounds: d.bounds, workArea: d.workArea, scaleFactor: d.scaleFactor, size: d.size, internal: d.internal, label: d.label })));
+    if (process.argv.includes("--targeted")) { await targeted(); console.log(JSON.stringify({ status: report.status, kind: report.kind, nativePopupVisualAcceptance: report.targeted.nativePopupVisualAcceptance })); return; }
     if (await page.getByRole("button", { name: "\u8DF3\u8FC7\u5F00\u573A", exact: true }).isVisible()) await page.getByRole("button", { name: "\u8DF3\u8FC7\u5F00\u573A", exact: true }).click();
     await states("title-primary", ".welcome-title .welcome-action");
     report.title = await sample(page.locator(".welcome-title h1"));
@@ -177,7 +368,7 @@ const { _electron: electron } = require(path.join(root, "game/desktop/node_modul
     await page.getByRole("button", { name: /^单人对局/ }).click();
     await states("prepare-start", ".prepare-start");
     await screenshot("prepare");
-    await layouts("prepare", ".prepare-start,.prepare-back,.prepare-config button,.difficulty-selector button");
+    await layouts("prepare", ".prepare-start,.prepare-back,.prepare-time button");
     await page.getByRole("button", { name: /开始对局/ }).click();
     await page.locator(".match-intro").waitFor();
     await page.locator(".cinematic-skip").click();
