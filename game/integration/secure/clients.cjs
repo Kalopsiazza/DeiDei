@@ -17,7 +17,7 @@ async function make(name,url){
   const {_electron}=require('../../desktop/node_modules/playwright-core');
   const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-tls-window-'));directories.push(dir);
   c.dir=dir;c.app=await _electron.launch({args:[path.join(desktop,'main.cjs')],env:{...process.env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url}});
-  c.process=c.app.process();processes.push(c.process);await c.app.evaluate(({BrowserWindow})=>{const window=BrowserWindow.getAllWindows()[0];window.webContents.setBackgroundThrottling(false);window.focus();});c.page=await c.app.firstWindow();c.page.setDefaultTimeout(10000);c.page.on('pageerror',e=>evidence.page_errors.push(e.message));
+  c.process=c.app.process();processes.push(c.process);c.page=await c.app.firstWindow();c.page.setDefaultTimeout(10000);c.page.on('pageerror',e=>evidence.page_errors.push(e.message));await c.app.evaluate(({BrowserWindow})=>{const window=BrowserWindow.getAllWindows()[0];window.webContents.setBackgroundThrottling(false);window.focus();});
   await enterHall(c.page,name);
   await c.page.getByRole('button',{name:'好友联机',exact:false}).click();evidence.electron=await c.app.evaluate(()=>process.versions);
  }else{c.port=new NetworkRoomPort({url});c.port.openLobby({nickname:name,avatar_id:'leaf'});}
