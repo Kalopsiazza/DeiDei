@@ -262,7 +262,7 @@
 
 构建用既有 esbuild 展开源码导入，运行端仍只加载 `style.css` 与 `welcome.css`，不增加协议白名单或运行时 CSS 请求。改样式应编辑职责文件；生成的 `build/ui` 由构建覆盖。旧 `.online:not(.online-table)` 控件／容器皮肤和旧非牌桌 dialog 皮肤已退出；现代 menu-option、settings-back、prepare-start、tech-dialog 各自决定状态。通用 dialog hover 排除 primary/danger，两者保留红色语义与可见焦点，disabled 不响应按下位移。
 
-正文／操作／标签／元信息分别使用 `--type-body:15px`、`--type-control:14px`、`--type-label:12px`、`--type-meta:10px`；既有阅读基线规则消费这些值，展示标题保留各自比例。本地三行手牌名使用 `clamp(var(--type-label),1vw,14px)`，最小 12px；联机牌名保留其 16px 规则。密集手牌名原则上单行；较长名称允许自然换为两行，不通过省略或缩字号裁掉关键命名。选中展示和详情继续提供完整解释。
+正文／操作／标签／元信息分别使用 `--type-body:15px`、`--type-control:14px`、`--type-label:12px`、`--type-meta:10px`；既有阅读基线规则消费这些值，展示标题保留各自比例。本地三行手牌名使用 `clamp(var(--type-label),1vw,14px)`，最小 12px；联机牌名保留其 16px 规则。密集手牌名原则上单行；较长名称在窄窗允许自然换为两至三行，不通过省略或缩字号裁掉关键命名。选中展示和详情继续提供完整解释。
 
 内容布局按 CSS px 判定可达性，DPR 记录资源栅格密度和清晰度，物理像素／系统缩放另记设备信息。1366×768 内容尺寸或 DPR=2 模拟均不证明物理 4K。布局保留现有 grid/flex 和窄高断点，不添加整屏 transform 缩放。
 
