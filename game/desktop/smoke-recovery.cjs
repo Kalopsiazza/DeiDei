@@ -32,6 +32,12 @@ const fs=require('node:fs/promises'),os=require('node:os'),path=require('node:pa
   }
   check(await page.locator('.battle-freeze').isDisabled(),'six-seat fixture keeps unsupported freeze disabled');
   check(await table.evaluate(n=>n===document.querySelector('.battle-table')),'pause keeps the same stage DOM');
+  for(const [width,height] of [[1366,768],[1920,1080]]){
+   await page.setViewportSize({width,height});
+   const copy=await page.evaluate(()=>[...document.querySelectorAll('.card')].map(e=>{const label=e.querySelector('.card-name'),strong=e.querySelector('.card-pick strong').getBoundingClientRect(),range=document.createRange();range.selectNodeContents(label);const text=range.getBoundingClientRect();return {font:parseFloat(getComputedStyle(label).fontSize),fits:text.left>=strong.left-1&&text.right<=strong.right+1&&text.top>=strong.top-1&&text.bottom<=strong.bottom+1};}));
+   check(copy.length===33&&copy.every(c=>c.font>=12&&c.font<=16&&c.fits),'all 33 complete card names follow DESIGN 12–16px at '+width+': '+JSON.stringify(copy));
+  }
+  await page.setViewportSize({width:1366,height:768});
   await page.screenshot({path:path.join(output,'local-table.png')});
   await page.locator('.battle-pause').click();
   check((await page.getByRole('dialog').innerText()).includes('运行时计时继续'),'pause honestly describes runtime clock');
