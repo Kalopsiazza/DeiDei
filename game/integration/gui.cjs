@@ -7,7 +7,7 @@ const path=require('node:path');
 const os=require('node:os');
 const assert=require('node:assert/strict');
 const {Peer,until,sleep}=require('./peer.cjs');
-const {enterHall,enterArena,leaveSolo,assertTargets}=require('./gui-actions.cjs');
+const {enterHall,enterArena,leaveSolo,leaveOnlinePortal,assertTargets}=require('./gui-actions.cjs');
 const {execFileSync}=require('node:child_process');
 const {frameSummary}=require('../desktop/smoke-performance.cjs');
 const root=path.resolve(__dirname,'../..'),desktop=path.join(root,'game/desktop');
@@ -67,13 +67,14 @@ async function submit(c,entry){
 }
 async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');await Promise.all([host,guest].filter(Boolean).map(c=>enterArena(c.page)));}
 async function leave(c){
+ await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());
  const s=await state(c),phase=s.snapshot?.view.phase;
  if(s.snapshot&&phase!=='closed'&&s.status!=='unavailable'){
   if(phase==='result')await c.page.getByRole('button',{name:/退出房间/}).click();
   else if(['selecting','revealing'].includes(phase)){await enterArena(c.page);await c.page.getByRole('button',{name:'暂停',exact:true}).click();await c.page.getByRole('button',{name:'退出游戏 LEAVE MATCH',exact:true}).click();}
   else await c.page.getByRole('button',{name:'退出房间',exact:true}).click();
   await c.page.getByRole('button',{name:s.snapshot.view.host_id===s.snapshot.view.self.player_id?'确认结束房间':'确认退出房间',exact:true}).click();
- }else await c.page.getByRole('button',{name:'返回主菜单',exact:true}).click();
+ }else await leaveOnlinePortal(c.page);
  await c.page.locator('.menu-layout').waitFor();
 }
 (async()=>{

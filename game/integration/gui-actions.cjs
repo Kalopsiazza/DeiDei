@@ -24,9 +24,15 @@ async function leaveSolo(page){
  await page.getByRole('dialog',{name:'离开当前对局',exact:true}).getByRole('button',{name:'离开',exact:true}).click();
  await page.locator('.menu-layout').waitFor();
 }
+async function leaveOnlinePortal(page){
+ const back=page.getByRole('button',{name:'返回联机前厅',exact:true});
+ if(await back.count())await back.click();
+ await page.getByRole('button',{name:'返回主菜单',exact:true}).click();
+ await page.locator('.menu-layout').waitFor();
+}
 async function assertTargets(page,selector){
  const count=await page.locator(selector).count();
  assert.ok(count>0,`No matching UI targets: ${selector}`);
  return count;
 }
-module.exports={enterHall,enterArena,leaveSolo,assertTargets};
+module.exports={enterHall,enterArena,leaveSolo,leaveOnlinePortal,assertTargets};

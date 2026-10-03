@@ -3,7 +3,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs/promises'),path=r
 const {NetworkRoomPort}=require('../../desktop/online/network-room-port.cjs');
 const {WorkerPort}=require('../../desktop/worker-port.cjs');
 const {until}=require('../peer.cjs');
-const {enterHall,enterArena,leaveSolo}=require('../gui-actions.cjs');
+const {enterHall,enterArena,leaveSolo,leaveOnlinePortal}=require('../gui-actions.cjs');
 const layer=process.env.DEIDEI_TLS_LAYER,gui=layer==='L4',output=process.env.DEIDEI_SECURE_OUTPUT,desktop=path.resolve(__dirname,'../../desktop');
 const clients=[],directories=[],workers=[],processes=[];
 const evidence={layer,backgroundThrottling:gui?false:null,status:'FAIL',checks:[],screenshots:[],page_errors:[],versions:process.versions};
@@ -95,7 +95,7 @@ async function round(h,g,v,entries){
   await control('restart');await until(async()=>(await state(guest)).error?.code==='SERVER_RESTART','old identity rejected');await shot(guest,'tls-server-restart');pass('S15','same TLS endpoint restarts: SERVER_RESTART, no silent room restoration');
   await control('stop');const profile=gui?await fs.readFile(path.join(guest.dir,'local-profile/profile.json')):null;
   if(gui){
-   await guest.page.getByRole('button',{name:'返回主菜单',exact:true}).click();await guest.page.getByRole('button',{name:'单人对局',exact:false}).click();await guest.page.getByRole('button',{name:/开始对局/}).click();
+   await leaveOnlinePortal(guest.page);await guest.page.getByRole('button',{name:'单人对局',exact:false}).click();await guest.page.getByRole('button',{name:/开始对局/}).click();
    await enterArena(guest.page);await guest.page.locator('.battle-table[data-phase="selecting"]').waitFor();assert.equal((await guest.page.evaluate(()=>window.desktop.port.getView())).data.source,'live');await shot(guest,'tls-stopped-offline');
    await leaveSolo(guest.page);assert.deepEqual(await fs.readFile(path.join(guest.dir,'local-profile/profile.json')),profile);
   }else{const profile={local_id:'tls-offline',nickname:'离线测试',avatar_id:'leaf'},worker=new WorkerPort(profile);workers.push(worker);const view=await worker.startSolo(profile.local_id);assert.equal(view.source,'live');assert.equal(view.phase,'selecting');await worker.close();}
