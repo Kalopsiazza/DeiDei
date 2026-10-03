@@ -50,7 +50,7 @@ for name, moves, leave in [('ordinary', ['Charge', 'Charge'], False),
     sessions = {pid: SimpleNamespace(player_id=pid, profile={'nickname': pid, 'avatar_id': 'leaf'},
                 room_id=None, closed_room=None, touched=0, disconnected_at=None, connection=None)
                 for pid in ['A', 'B', 'C', 'Z']}
-    service = SimpleNamespace(clock=clock, dirty=set(), by_player=sessions, token_rng=Random(100),
+    service = SimpleNamespace(clock=clock, to_public=lambda mono_ms: 1800000000000 + mono_ms, dirty=set(), by_player=sessions, token_rng=Random(100),
                 new_match_factory=funded, timeout_chooser=lambda state, options: 'Charge', host_leave_timing='after_turn')
     room = Room(service, sessions['A'], 'ABCD1234', DEFAULT_POLICY, None)
     room.add(sessions['B'], 'player')
