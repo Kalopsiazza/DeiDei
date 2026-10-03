@@ -73,7 +73,8 @@ for name, moves, leave in [('ordinary', ['Charge', 'Charge'], False),
     frames[name + '_next'] = room.snapshot(sessions['Z'], clock.t)
     if name == 'restart_survivors':
         assert frames[name + '_reveal']['view']['match']['last_turn']['effective_transition']['kind'] == 'restart_survivors'
-        assert frames[name + '_next']['view']['match']['public_state']['game_id'] == 'g2'
+        assert frames[name + '_next']['view']['match']['public_state']['game_index'] == '2'
+        assert frames[name + '_next']['view']['match']['public_state']['game_id'] != frames[name + '_reveal']['view']['match']['public_state']['game_id']
         assert frames[name + '_next']['view']['match']['public_state']['turn_index'] == '1'
 
 assert hashes == {str(p.relative_to(root)): hashlib.sha256(p.read_bytes()).hexdigest() for p in files}, 'source changed during capture'
