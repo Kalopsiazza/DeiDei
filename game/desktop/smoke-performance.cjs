@@ -129,7 +129,7 @@ if(require.main===module && process.argv[2]==='--self-check') (async()=>{
   if(mode==='timeout')assert.match(cleanup.errors[0].message,/Normal Electron close timed out/);
   if(mode!=='normal')assert.equal(cleanup.signal,'SIGKILL');else assert.equal(cleanup.exitCode,0);
  }
- const source=fsSync.readFileSync(__filename,'utf8'),failSource=source.slice(source.indexOf(' const fail='),source.indexOf(' const metrics='));
+ const source=fsSync.readFileSync(__filename,'utf8'),failSource=source.slice(source.lastIndexOf(' const fail='),source.lastIndexOf(' const metrics='));
  const start=source.lastIndexOf('\n finally {')+'\n finally {'.length,finishSource=source.slice(start,source.indexOf('\n }\n console.log',start));
  for(const original of [null,{stage:'scenario',message:'original scenario failure'}]){
   const result={segments:[],failure:original||undefined},saved=[],process={exitCode:0};
