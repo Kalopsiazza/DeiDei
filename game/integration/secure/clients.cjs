@@ -37,7 +37,7 @@ async function close(c){
 }
 async function select(c,entry){
  const s=await state(c),m=s.snapshot.view.match;
- if(gui){await c.page.bringToFront();await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');assert.equal((await state(c)).error,null);}
+ if(gui){await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());await c.page.bringToFront();await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');assert.equal((await state(c)).error,null);}
  else await call(c,'submit',{room_id:s.snapshot.room_id,match_id:m.match_id,turn_id:m.turn_id,entry_id:entry});
 }
 async function readyStart(h,g,rid){for(const c of [h,g])await call(c,'ready',{room_id:rid,ready:true});await call(h,'start',{room_id:rid});await until(async()=>(await state(g)).snapshot?.view.phase==='selecting','new selecting');if(gui)await Promise.all([h,g].map(c=>enterArena(c.page)));}

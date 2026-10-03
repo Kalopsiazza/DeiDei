@@ -54,10 +54,16 @@ async function measureReveal(c,name,action){
  }
 }
 async function submit(c,entry){
+ await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());
+ await c.page.bringToFront();
+ evidence.actions??=[];const action={name:c.name,entry,startedAt:new Date().toISOString(),steps:[]};evidence.actions.push(action);
+ const step=async name=>{const s=await state(c);action.steps.push({name,at:new Date().toISOString(),phase:s.snapshot?.view.phase,turn:s.snapshot?.view.match?.turn_id,remaining:s.snapshot?.view.timer.remaining_ms,pending:s.pending,dom:await c.page.evaluate(()=>({phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,focused:document.hasFocus(),selected:[...document.querySelectorAll('.card-pick[aria-pressed=true]')].map(n=>n.closest('.card')?.dataset.entry)}))});};
+ await step('requested');
  await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();
  const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);
- await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);
+ await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await step('selected');
  await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');
+ await step('acknowledged');
 }
 async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');await Promise.all([host,guest].filter(Boolean).map(c=>enterArena(c.page)));}
 async function leave(c){
