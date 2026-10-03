@@ -62,7 +62,8 @@ async def sequence(seed: int) -> dict:
                     assert current['match']['last_turn'] == ledger
                 if turn == 0:
                     assert all(p['dd6'] == '6' for p in ledger['effective_state']['players'].values())
-                clock.advance_ms(1500)
+                # Advance to this reveal's actual deadline, independent of the default hold.
+                clock.advance_ms(reveal['timer']['remaining_ms'])
                 await server.drain()
                 if turn < 2:
                     assert (await host.sync(rid))['current_turn_ms'] == future

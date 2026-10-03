@@ -13,7 +13,7 @@ export function optionsFor(snapshot:RoomSnapshot|null,manual:Manual):Option[] {
 }
 export function publicPlayers(snapshot:RoomSnapshot):Record<string,CorePlayer> {
  const m=snapshot.view.match;if(!m)return {};
- const revealing=snapshot.view.phase==='revealing';
+ const revealing=['revealing','result'].includes(snapshot.view.phase);
  return revealing&&m.last_turn ? {...m.public_state.players,...m.last_turn.core_resolution.ledger.post_turn_players} : m.public_state.players;
 }
 export function remainingAt(state:OnlineState,receivedAt:number,now:number):number|null {
@@ -63,13 +63,16 @@ export function onlineBattleView(state:OnlineState,manual:Manual,remainingMs:num
  const snapshot=state.snapshot,v=snapshot?.view,match=v?.match;
  if(!snapshot||!v||!match)return null;
  const revealed=v.phase==='revealing',result=v.phase==='result',last=revealed||result?match.last_turn:null;
- const visibleState=revealed&&last?last.effective_state:match.public_state,players=publicPlayers(snapshot);
+ const visibleState=last?last.effective_state:match.public_state,players=publicPlayers(snapshot);
+ const ledger=last?.core_resolution.ledger;
+ const publicRound=last&&ledger?{match_id:ledger.match_id,game_id:ledger.game_id,turn_index:ledger.turn_index,turn_id:last.turn_id,actions:Object.fromEntries(Object.entries(ledger.actions).map(([pid,action])=>[pid,{entry_id:action.entry_id,actual_move:action.actual_move,branch:action.branch,is_recovery:action.is_recovery}])),next_game_id:last.effective_state.game_id,next_turn_index:last.effective_state.turn_index}:null;
  const members=new Map(v.members.map(member=>[member.player_id,member]));
  const confirmed=state.confirmed?.room_id===snapshot.room_id&&state.confirmed.match_id===match.match_id&&state.confirmed.turn_id===match.turn_id?state.confirmed.entry_id:null;
  const selected=v.self.accepted_entry_id||confirmed,submitted=!!selected;
  const me=members.get(v.self.player_id),canSeeOptions=v.phase==='selecting'&&v.self.role==='player'&&me?.participation==='active';
  return {
-  source:'online',view_id:`online:${snapshot.room_id}:${snapshot.seq}`,match_id:match.match_id,game_id:visibleState.game_id,turn_index:visibleState.turn_index,
+  mode:'multiplayer',self_role:v.self.role,self_participation:v.self.role==='spectator'?'spectating':me?.participation==='departing'?'departing':visibleState.active_ids.includes(v.self.player_id)&&me?.participation==='active'?'active':'eliminated',public_round:publicRound,
+  source:'online',game_index:match.public_state.game_index,view_id:`online:${snapshot.room_id}:${snapshot.seq}`,match_id:match.match_id,game_id:publicRound?.game_id||visibleState.game_id,turn_index:publicRound?.turn_index||visibleState.turn_index,
   phase:result?'result':revealed?'revealed':submitted?'submitting':'selecting',
   participants:[...match.roster_profiles].sort((a,b)=>(a.seat??99)-(b.seat??99)).map(profile=>participant(profile,members.get(profile.player_id),players[profile.player_id],visibleState.active_ids)),
   self_id:v.self.role==='player'?v.self.player_id:null,options:canSeeOptions?optionsFor(snapshot,manual):[],selected_entry_id:selected,submitted,
@@ -77,5 +80,5 @@ export function onlineBattleView(state:OnlineState,manual:Manual,remainingMs:num
   summary:last?turnSummary(snapshot,manual):[],outcome:match.effective_outcome?{winner_id:match.effective_outcome.winner_id,reason:match.effective_outcome.reason}:null,
  };
 }
-export const errorText:Record<string,string>={SERVICE_NOT_CONFIGURED:'联机服务尚未配置。',INVALID_ENDPOINT:'开发服务配置无效。',WEBSOCKET_UNAVAILABLE:'当前运行时不支持联机连接。',INVALID_MESSAGE:'服务消息格式不兼容，请重新连接。',CONNECTION_REJECTED:'连接被服务拒绝，请重新连接。',ROOM_ACCESS_DENIED:'房间号或密码不正确。',ROOM_FULL:'参战席位已满，可以主动改为观战。',MATCH_IN_PROGRESS:'比赛已经开始，可以主动改为观战。',SPECTATORS_FULL:'观众席已满。',SPECTATORS_DISABLED:'这个房间不开放观战。',COMMAND_PENDING:'上一项操作正在确认，请稍候。',NOT_CONNECTED:'网络暂断，正在尝试重连。',UNSUPPORTED_PROTOCOL:'联机协议版本不兼容，需要 rooms-1.1 服务。',HOST_ROLE_FIXED:'房主必须保留参战席位角色。',POLICY_STALE:'时限设置已更新，请重新打开设置后重试。',ROOM_CLOSING:'房主已离开，房间将在本拍结束后关闭。',HOST_LEFT:'房主离开，房间已结束。',HOST_TIMEOUT:'房主未及时返回，房间已结束。',HOST_ABSENT:'房主连续第四拍缺席，房间已结束。',SERVER_RESTART:'服务已重启，原房间已结束，请重新创建或加入。',SESSION_EXPIRED:'临时身份已过期，请重新连接。',SESSION_REPLACED:'此临时身份已在另一连接恢复。',ROOM_GONE:'房间已结束。',ROOM_NOT_MEMBER:'你已离开此房间。',ROOM_IDLE:'房间长时间未操作，已结束。',NOT_READY:'需要所有参战者连线并准备。',STALE_TURN:'这一拍已结束，请等待最新牌桌。',TURN_CLOSED:'出牌时间已结束，等待服务揭晓。',ALREADY_SUBMITTED:'本拍已确认，不能更换。',UNAVAILABLE_MOVE:'这张牌当前不可用。',FORCED_RECOVERY:'本拍强制休整，无需提交。',RATE_LIMITED:'操作过快，请稍后重试。',SERVER_BUSY:'服务繁忙，请稍后重试。',REQUEST_CONFLICT:'请求已失效，请读取最新状态。',STALE_COMMAND:'旧操作已失效，请重新操作。',ROOM_STATE_TOO_LARGE:'房间数据超过限制，房间已结束。',INTERNAL_ERROR:'服务发生错误，房间无法继续。'};
+export const errorText:Record<string,string>={SERVICE_CONFIG_INVALID:'联机服务配置无效，请联系维护者。',SECURE_CONNECTION_FAILED:'安全连接未建立，请检查服务器证书或网络。',SERVICE_NOT_CONFIGURED:'联机服务尚未配置。',INVALID_ENDPOINT:'开发服务配置无效。',WEBSOCKET_UNAVAILABLE:'当前运行时不支持联机连接。',INVALID_MESSAGE:'服务消息格式不兼容，请重新连接。',CONNECTION_REJECTED:'连接被服务拒绝，请重新连接。',ROOM_ACCESS_DENIED:'房间号或密码不正确。',ROOM_FULL:'参战席位已满，可以主动改为观战。',MATCH_IN_PROGRESS:'比赛已经开始，可以主动改为观战。',SPECTATORS_FULL:'观众席已满。',SPECTATORS_DISABLED:'这个房间不开放观战。',COMMAND_PENDING:'上一项操作正在确认，请稍候。',NOT_CONNECTED:'网络暂断，正在尝试重连。',UNSUPPORTED_PROTOCOL:'联机协议版本不兼容，需要 rooms-1.1 服务。',HOST_ROLE_FIXED:'房主必须保留参战席位角色。',POLICY_STALE:'时限设置已更新，请重新打开设置后重试。',ROOM_CLOSING:'房主已离开，房间将在本拍结束后关闭。',HOST_LEFT:'房主离开，房间已结束。',HOST_TIMEOUT:'房主未及时返回，房间已结束。',HOST_ABSENT:'房主连续第四拍缺席，房间已结束。',SERVER_RESTART:'服务已重启，原房间已结束，请重新创建或加入。',SESSION_EXPIRED:'临时身份已过期，请重新连接。',SESSION_REPLACED:'此临时身份已在另一连接恢复。',ROOM_GONE:'房间已结束。',ROOM_NOT_MEMBER:'你已离开此房间。',ROOM_IDLE:'房间长时间未操作，已结束。',NOT_READY:'需要所有参战者连线并准备。',STALE_TURN:'这一拍已结束，请等待最新牌桌。',TURN_CLOSED:'出牌时间已结束，等待服务揭晓。',ALREADY_SUBMITTED:'本拍已确认，不能更换。',UNAVAILABLE_MOVE:'这张牌当前不可用。',FORCED_RECOVERY:'本拍强制休整，无需提交。',RATE_LIMITED:'操作过快，请稍后重试。',SERVER_BUSY:'服务繁忙，请稍后重试。',REQUEST_CONFLICT:'请求已失效，请读取最新状态。',STALE_COMMAND:'旧操作已失效，请重新操作。',ROOM_STATE_TOO_LARGE:'房间数据超过限制，房间已结束。',INTERNAL_ERROR:'服务发生错误，房间无法继续。'};
 export const describeError=(code:string)=>errorText[code]||`操作未完成（${code}）。`;

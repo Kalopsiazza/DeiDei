@@ -5,13 +5,15 @@ const fsNative = require('node:fs');
 const { WorkerPort } = require('./worker-port.cjs');
 const { NetworkRoomPort } = require('./online/network-room-port.cjs');
 const { resolveUiAsset } = require('./ui-assets.cjs');
-const online=new NetworkRoomPort({url:process.env.DEIDEI_ROOM_URL});
+const { loadServiceConfig } = require('./online/service-config.cjs');
+const serviceConfig=loadServiceConfig({isPackaged:app.isPackaged,resourcesPath:process.resourcesPath,env:process.env});
+const online=new NetworkRoomPort({url:serviceConfig.url,configurationError:serviceConfig.error});
 const { ProfileStore, fields } = require('./profile.cjs');
 const { FixturePort, manual, scenes } = require('./build/fixture.cjs');
 protocol.registerSchemesAsPrivileged([{ scheme:'app', privileges:{ standard:true, secure:true, supportFetchAPI:true, stream:true } }]);
 // Test harness supplies a separate temporary OS profile before any Electron session exists.
 if (!app.isPackaged && process.env.DEIDEI_TEST_DATA_DIR) app.setPath('userData',process.env.DEIDEI_TEST_DATA_DIR);
-let window, allowClose=false, closePending=false;
+let window, allowClose=false, closePending=false, onlineLifecycle=0;
 const ownsProfile=app.requestSingleInstanceLock();
 if(!ownsProfile)app.quit();
 app.on('second-instance',()=>{if(window){if(window.isMinimized())window.restore();window.focus();}});
@@ -19,6 +21,7 @@ let port=new FixturePort(), switching=false;
 async function replacePort(next, start) {
   if(switching)throw new Error('WORKER_BUSY');
   if(online.isActive())throw new Error('ROOM_ACTIVE');
+  ++onlineLifecycle;
   switching=true;
   try { online.close();if(port.close)await port.close();else await port.leave();port=next;const view=await start(next);window.setTitle(`叠叠 R02 · ${view.source==='live'?'本地单人':'演示数据'}`);return view; }
   finally { switching=false; }
@@ -60,17 +63,21 @@ app.whenReady().then(async()=>{
   expose('online.openLobby',async()=>{
     if(switching)throw new Error('WORKER_BUSY');
     if(port.isActive())throw new Error('SOLO_ACTIVE');
-    const profile=await store.read();if(!profile)throw new Error('INVALID_PROFILE');
+    const lifecycle=++onlineLifecycle;
+    const profile=await store.read();
+    // A late profile read must not revive an exited lobby or close a newer one.
+    if(lifecycle!==onlineLifecycle||window.isDestroyed())return online.read();
+    if(!profile)throw new Error('INVALID_PROFILE');
     if(switching||port.isActive())throw new Error('SOLO_ACTIVE');
     return online.openLobby(profile);
   });
   for(const method of ['create','join','ready','start','setTurnLimit','changeRole','submit','returnLobby'])expose(`online.${method}`,p=>online[method](p),true);
   expose('online.read',()=>online.read());
-  expose('online.leave',()=>online.leave());
+  expose('online.leave',()=>{++onlineLifecycle;return online.leave();});
   expose('manual.read',()=>manual);
   expose('app.quit',()=>{window.close();return null;});
   window.on('close',e=>{
-    if(allowClose||(!port.isActive()&&!online.isActive()))return;
+    if(allowClose||(!port.isActive()&&!online.isActive())){++onlineLifecycle;return;}
     e.preventDefault();
     if(closePending)return;closePending=true;
     dialog.showMessageBox(window,{type:'question',buttons:['继续对局','退出'],defaultId:0,cancelId:0,message:online.isActive()?'退出好友房？':'退出当前对局？',detail:online.isActive()?(online.snapshot?.view.host_id===online.snapshot?.view.self.player_id?'你是房主，退出将结束房间。':'退出后原席位由服务处理，本机档案保留。'):'本次对局进度不会保存，本机档案和已保存的设置仍保留。'}).then(async r=>{if(r.response===1){await exitOnline();allowClose=true;window.close();}}).finally(()=>{closePending=false;});
@@ -88,6 +95,7 @@ app.whenReady().then(async()=>{
   try{const p=await store.read();if(p)window.setFullScreen(p.settings.fullscreen);}catch{}
 });
 async function exitOnline() {
+  ++onlineLifecycle;
   if(!online.isActive()){online.close();return;}
   // Give the serialized leave its ack before closing the socket; never hang OS quit.
   await new Promise(resolve=>{
@@ -105,6 +113,7 @@ let quitting=false;
 app.on('before-quit',event=>{
   if(quitting)return;
   if((port.isActive()||online.isActive())&&!allowClose){event.preventDefault();window.close();return;}
+  ++onlineLifecycle;
   online.close();
   if(!port.close)return;
   event.preventDefault();quitting=true;void port.close().finally(()=>app.quit());

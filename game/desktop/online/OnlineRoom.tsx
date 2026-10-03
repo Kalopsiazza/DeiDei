@@ -1,56 +1,23 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { DesktopView, Manual } from '../types';
-import type { OnlineState, Role } from './types';
-import { canSelect, canSetTurnLimit, hostRecoveryText, describeError, onlineBattleView, optionsFor, remainingAt, startReason } from './model';
+import type { Role } from './types';
+import { useOnlineSession } from './useOnlineSession';
+import { canSelect, canSetTurnLimit, hostRecoveryText, describeError, onlineBattleView, optionsFor, startReason } from './model';
 import { shortcutEntry } from '../interaction';
-import { BattleStage, MatchResult, SituationDialog, type ModalComponent, type PlayedMove } from '../BattleStage';
+import { emptyHistory, historyGaps, recordPublicRound } from '../view-loop';
+import { BattleStage, MatchResult, SituationDialog, type ModalComponent } from '../BattleStage';
 const api=window.desktop.online;
-const initial:OnlineState={source:'online',status:'idle',hello:null,snapshot:null,pending:false,membership_end:null,host_remaining_ms:null,error:null,confirmed:null,remaining_ms:null,revision:0};
 type Props={manual:Manual;onExit:()=>void;onScene:(scene:string)=>void;Avatar:React.ComponentType<{id?:string}>;Modal:ModalComponent};
 export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
- const [state,setState]=useState(initial),[form,setForm]=useState<'entry'|'create'|'join'>('entry'),[error,setError]=useState('');
- const [code,setCode]=useState(''),[password,setPassword]=useState(''),[role,setRole]=useState<Role>('player');
- const [turnMs,setTurnMs]=useState(10000),[early,setEarly]=useState(true),[cap,setCap]=useState(6);
- const [limitOpen,setLimitOpen]=useState(false),[limitMs,setLimitMs]=useState(10000),[limitRevision,setLimitRevision]=useState('1');
- const [selected,setSelected]=useState<string|null>(null),[leaveConfirm,setLeaveConfirm]=useState(false),[notice,setNotice]=useState('');
- const [matchMenu,setMatchMenu]=useState(false),[situationOpen,setSituationOpen]=useState(false),[moveHistory,setMoveHistory]=useState<Record<string,PlayedMove[]>>({});
+ const {state,currentState,form,setForm,error,setError,code,setCode,password,setPassword,role,setRole,turnMs,setTurnMs,early,setEarly,cap,setCap,limitMs,setLimitMs,limitRevision,setLimitRevision,selected,setSelected,notice,setNotice,now,busy,activeRoom,connected,blocked,exitBlocked,run,leave:leaveRoom,reconnect,remaining,hostRemaining}=useOnlineSession(onExit);
+ const [limitOpen,setLimitOpen]=useState(false),[leaveConfirm,setLeaveConfirm]=useState(false);
+ const [matchMenu,setMatchMenu]=useState(false),[situationOpen,setSituationOpen]=useState(false),[history,setHistory]=useState(emptyHistory);
  const [enteredMatch,setEnteredMatch]=useState(''),[arenaReady,setArenaReady]=useState(false),[resultLeaving,setResultLeaving]=useState(false),[resultVisible,setResultVisible]=useState(''),[introUntil,setIntroUntil]=useState(0);
- const lastBattle=useRef<DesktopView|null>(null);
- const [now,setNow]=useState(performance.now()),[busy,setBusy]=useState(false);
- const receipt=useRef(performance.now()),lock=useRef(false),alive=useRef(true),leaving=useRef(false),lastRevision=useRef(-1),lastPlayers=useRef(''),historyMatch=useRef(''),historyTurn=useRef(''),resultTimer=useRef<number|null>(null);
+ const lastBattle=useRef<DesktopView|null>(null),resultTimer=useRef<number|null>(null),resultLock=useRef(false),resultAlive=useRef(true);
  const snapshot=state.snapshot,v=snapshot?.view,me=v?.members.find(p=>p.player_id===v.self.player_id),host=!!v&&v.host_id===v.self.player_id;
- const hostRemaining=state.host_remaining_ms===null?null:Math.max(0,state.host_remaining_ms-Math.max(0,now-receipt.current));
- const remaining=remainingAt(state,receipt.current,now),editable=canSelect(state,remaining)&&!busy&&arenaReady&&enteredMatch===v?.match?.match_id;
+ const editable=canSelect(state,remaining)&&!busy&&arenaReady&&enteredMatch===v?.match?.match_id;
  const options=optionsFor(snapshot,manual),picked=options.find(o=>o.entry_id===selected);
- const matchKey=snapshot?`${snapshot.room_id}/${v?.match?.match_id}/${v?.match?.turn_id}/${v?.self.role}/${me?.participation}`:'';
- const activeRoom=!!v&&v.phase!=='closed'&&state.status!=='unavailable',blocked=busy||state.pending||state.status!=='connected';
- const accept=(next:OnlineState)=>{
-  if(!alive.current||next.revision<lastRevision.current)return;
-  lastRevision.current=next.revision;receipt.current=performance.now();setNow(receipt.current);setState(next);
-  if(leaving.current&&!next.pending&&!next.snapshot){onExit();}
- };
- useEffect(()=>{
-  alive.current=true;
-  const unsub=api.onChange(accept);
-  void api.openLobby().then(r=>{if(!alive.current)return;if(r.ok)accept(r.data);else setError(describeError(r.error));});
-  const tick=setInterval(()=>setNow(performance.now()),100);
-  return()=>{alive.current=false;unsub();clearInterval(tick);if(resultTimer.current!==null)window.clearTimeout(resultTimer.current);};
- },[]);
- useEffect(()=>{if(state.hello){setTurnMs(state.hello.policy_defaults.turn_ms);setEarly(state.hello.policy_defaults.early_reveal);setCap(state.hello.policy_defaults.spectator_cap);}},[state.hello?.policy_defaults.turn_ms,state.hello?.policy_defaults.early_reveal,state.hello?.policy_defaults.spectator_cap]);
- useEffect(()=>{if(state.membership_end){setForm('entry');setError('');setLimitOpen(false);setLeaveConfirm(false);}},[state.membership_end?.event_id]);
- useEffect(()=>{setSelected(null);},[matchKey]);
- useEffect(()=>{if(activeRoom){setPassword('');setError('');}},[snapshot?.room_id]);
- useEffect(()=>{
-  const players=v?.members.filter(p=>p.role==='player').map(p=>p.player_id).sort().join(',')||'';
-  if(v?.phase==='lobby'&&lastPlayers.current&&players!==lastPlayers.current)setNotice('参战席位有变化，请大家重新准备。');
-  lastPlayers.current=players;
- },[v?.members]);
- const run=async(action:()=>ReturnType<typeof api.read>)=>{
-  if(lock.current)return;lock.current=true;setBusy(true);setError('');
-  try{const r=await action();if(alive.current){if(r.ok)accept(r.data);else setError(describeError(r.error));}}
-  catch{if(alive.current)setError('操作未完成，请重试。');}
-  finally{lock.current=false;if(alive.current)setBusy(false);}
- };
+ useEffect(()=>{if(state.membership_end){setLimitOpen(false);setLeaveConfirm(false);}},[state.membership_end?.event_id]);
  const submit=()=>{if(!snapshot||!v?.match||!picked?.available||!editable||picked.forced)return;void run(()=>api.submit({room_id:snapshot.room_id,match_id:v.match!.match_id,turn_id:v.match!.turn_id,entry_id:picked.entry_id}));};
  useEffect(()=>{
   const key=(e:KeyboardEvent)=>{
@@ -59,28 +26,17 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
   };
   window.addEventListener('keydown',key);return()=>window.removeEventListener('keydown',key);
  });
- const leave=()=>{leaving.current=true;void run(()=>api.leave());setLeaveConfirm(false);};
+ const leave=async()=>{setLeaveConfirm(false);return leaveRoom();};
+ const confirmLeave=()=>{setLeaveConfirm(false);if(v?.phase==='result'&&connected)transitionResult(leave);else void leave();};
  const join=(chosen:Role)=>{setRole(chosen);void run(()=>api.join({room_code:code.trim().toUpperCase(),password:password||null,role:chosen}));};
  const recoveryText=snapshot?hostRecoveryText(snapshot,hostRemaining):'';
  const closingText=v?.pending_close?`房主已离开，${v.pending_close.after==='current_turn'?'本拍结算后':'本拍揭晓结束后'}关闭房间。`:'';
  const futureText=v?.current_turn_ms&&v.current_turn_ms!==v.policy.turn_ms?`本拍按原时限 ${v.current_turn_ms/1000} 秒结束；之后每拍 ${v.policy.turn_ms/1000} 秒。`:'';
  const onlineError=error||(state.error?describeError(state.error.code):'');
- const connected=state.status==='connected';
+ const moveHistory=history.moves;
  const adapted=onlineBattleView(state,manual,remaining);
  const battleView=adapted?{...adapted,selected_entry_id:selected||adapted.selected_entry_id}:null;
- useEffect(()=>{
-  if(!adapted)return;
-  const currentMatch=`${adapted.match_id}/${adapted.game_id}`,turn=`${currentMatch}/${adapted.turn_index}`;
-  const fresh=historyMatch.current!==currentMatch;
-  if(fresh){historyMatch.current=currentMatch;historyTurn.current='';setMoveHistory({});}
-  if(!['revealed','result'].includes(adapted.phase)||historyTurn.current===turn)return;
-  historyTurn.current=turn;
-  setMoveHistory(previous=>adapted.participants.reduce<Record<string,PlayedMove[]>>((next,player)=>{
-   const prefix=`${player.nickname}：`,name=adapted.summary.find(line=>line.startsWith(prefix))?.slice(prefix.length).split(' → ',1)[0].replace(/[。.]$/,'')||'';
-   const entry=manual.entries.find(item=>name===item.name||name.startsWith(item.name));
-   return name&&entry?{...next,[player.player_id]:[...(next[player.player_id]||[]),{turn:adapted.turn_index,name,entryId:entry.entry_id}].slice(-8)}:next;
-  },fresh?{}:previous));
- },[adapted?.phase,adapted?.turn_index,adapted?.match_id,adapted?.game_id,adapted?.summary,manual]);
+ useEffect(()=>{if(adapted)setHistory(previous=>recordPublicRound(previous,adapted,manual));},[state.snapshot,manual]);
  const introMatch=adapted&&adapted.phase!=='result'?adapted.match_id:'';
  useEffect(()=>{
   if(!introMatch||enteredMatch===introMatch)return;
@@ -105,12 +61,23 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
   const timer=window.setTimeout(()=>setArenaReady(true),delay);
   return()=>window.clearTimeout(timer);
  },[adapted?.match_id,enteredMatch]);
- useEffect(()=>{if(adapted?.phase==='result')setResultLeaving(false);},[adapted?.match_id,adapted?.phase]);
- const transitionResult=(action:()=>void)=>{
-  if(resultLeaving)return;
-  setResultLeaving(true);
+ const resultKey=snapshot?`${snapshot.room_id}/${v?.match?.match_id}/${v?.phase}`:'';
+ const cancelResult=()=>{if(resultTimer.current!==null)window.clearTimeout(resultTimer.current);resultTimer.current=null;resultLock.current=false;setResultLeaving(false);};
+ useEffect(()=>{cancelResult();return()=>{if(resultTimer.current!==null)window.clearTimeout(resultTimer.current);resultTimer.current=null;resultLock.current=false;};},[resultKey]);
+ useEffect(()=>{resultAlive.current=true;return()=>{resultAlive.current=false;};},[]);
+ useEffect(()=>{if((state.error&&!state.pending)||state.status!=='connected')cancelResult();},[state.error,state.pending,state.status]);
+ const transitionResult=(action:()=>Promise<boolean>)=>{
+  if(resultLock.current||v?.phase!=='result'||!connected)return;
+  const key=resultKey;resultLock.current=true;setResultLeaving(true);
   const delay=window.matchMedia('(prefers-reduced-motion: reduce)').matches?150:720;
-  resultTimer.current=window.setTimeout(action,delay);
+  resultTimer.current=window.setTimeout(async()=>{
+   resultTimer.current=null;
+   const latest=currentState.current,s=latest.snapshot,currentKey=s?`${s.room_id}/${s.view.match?.match_id}/${s.view.phase}`:'';
+   if(!resultLock.current||currentKey!==key||latest.status!=='connected'){if(resultAlive.current)cancelResult();return;}
+   const ok=await action();
+   const after=currentState.current.snapshot,afterKey=after?`${after.room_id}/${after.view.match?.match_id}/${after.view.phase}`:'';
+   if(!ok&&resultAlive.current&&afterKey===key)cancelResult();
+  },delay);
  };
  if(!activeRoom){
   const allowed=state.hello?.capabilities.allowed_turn_ms||[turnMs],scene=form==='entry'?'front':form;
@@ -118,7 +85,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
   const nearestTurn=(value:number)=>allowed.reduce((best,next)=>Math.abs(next-value)<Math.abs(best-value)?next:best,allowed[0]);
   return <main className="online online-portal" data-online-scene={scene} data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
    <nav className="online-portal-nav" aria-label="联机导航">
-    <button type="button" className="settings-back" aria-label={form==='entry'?'返回主菜单':'返回联机前厅'} disabled={busy||(state.pending&&connected)} onClick={()=>form==='entry'?leave():(setForm('entry'),setError(''))}><span>{form==='entry'?'返回主菜单':'返回联机前厅'}</span></button>
+    <button type="button" className="settings-back" aria-label={form==='entry'?'返回主菜单':'返回联机前厅'} disabled={exitBlocked} onClick={()=>form==='entry'?leave():(setForm('entry'),setError(''))}><span>{form==='entry'?'返回主菜单':'返回联机前厅'}</span></button>
     <div><span className="online-signal" aria-hidden="true"/><span role="status">{status}{state.pending?' · 操作确认中…':''}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
    </nav>
    <section className="online-portal-copy">
@@ -131,7 +98,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
    {form==='entry'?<section className="online-front-actions" aria-label="选择联机方式">
     <button type="button" className="menu-option menu-option-primary" aria-label="创建房间" disabled={!connected||busy} onClick={()=>setForm('create')}><span><b>创建房间</b><small>部署规则与开放席位</small></span><em>01</em></button>
     <button type="button" className="menu-option menu-option-secondary" aria-label="加入房间" disabled={!connected||busy} onClick={()=>setForm('join')}><span><b>加入房间</b><small>用房间号接入牌局</small></span><em>02</em></button>
-    {(state.status==='unavailable'||state.status==='idle')&&<button type="button" className="settings-action online-retry" aria-label="重新连接" disabled={busy} onClick={()=>{leaving.current=false;void run(()=>api.openLobby());}}>重新连接</button>}
+    {(state.status==='unavailable'||state.status==='idle')&&<button type="button" className="settings-action online-retry" aria-label="重新连接" disabled={busy} onClick={reconnect}>重新连接</button>}
    </section>:<form className={`online-deploy online-deploy-${form}`} onSubmit={e=>{e.preventDefault();if(blocked)return;if(form==='join')join(role);else void run(()=>api.create({password:password||null,options:{turn_ms:turnMs,early_reveal:early,spectator_cap:cap}}));}}>
     <fieldset disabled={blocked}>
      {form==='create'?<>
@@ -154,7 +121,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
   const spectators=v.members.filter(member=>member.role==='spectator'),reason=startReason(snapshot);
   return <main className="online online-room" data-phase="lobby" data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
    <nav className="online-room-nav" aria-label="房间操作">
-    <button type="button" className="settings-back" aria-label="退出房间" disabled={blocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button>
+    <button type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button>
     <div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'房间已连接'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
    </nav>
    <section className="online-lobby" data-player-count={roster.filter(Boolean).length} aria-label="六人参战席位">
@@ -172,7 +139,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
     {host&&!v.pending_close&&<><button type="button" className="primary prepare-start" aria-label="开始对局" disabled={blocked||!!reason} onClick={()=>void run(()=>api.start({room_id:snapshot.room_id}))}><span>开始对局</span><small>ENTER MATCH</small></button><span>{reason||'全员就绪，可以开局。'}</span></>}
    </footer>
    {limitOpen&&canSetTurnLimit(state)&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
-   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)}><p>{host?'退出将结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" onClick={leave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
+   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
   </main>;
  }
  if(v?.match&&snapshot&&battleView){
@@ -181,19 +148,19 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
    {showIntro
     ?<main className="online-intro" data-player-count={battleView.participants.length} aria-label="多人对局入场"><header><span>MULTIPLAYER MATCH</span><h1>进入擂台</h1><p>经典规则 · 每拍 {v.policy.turn_ms/1000} 秒 · {v.policy.early_reveal?'全员提交即揭晓':'到时揭晓'}</p></header><section className="online-intro-roster" aria-label="本场参战席位">{battleView.participants.map((player,index)=><article className="online-intro-player" key={player.player_id} data-seat={index} data-self={player.player_id===battleView.self_id} style={{'--intro-seat':String(index)} as React.CSSProperties}><Avatar id={player.avatar_id}/><span><small>{player.player_id===battleView.self_id?'你 · 本机席位':`席位 ${index+1}`}</small><strong>{player.nickname}</strong></span></article>)}</section><button className="cinematic-skip" onClick={()=>setEnteredMatch(battleView.match_id)}>立即入场（{Math.max(0,Math.ceil((introUntil-now)/1000))}s） <small>SKIP</small></button></main>
     :battleView.phase==='result'&&resultVisible===battleView.match_id
-     ?<MatchResult view={battleView} moveHistory={moveHistory} leaving={resultLeaving} Avatar={Avatar} onReview={()=>setSituationOpen(true)} onPrimary={()=>transitionResult(()=>{void run(()=>api.returnLobby({room_id:snapshot.room_id}));})} onExit={()=>transitionResult(leave)} primaryLabel={host&&!v.pending_close?'准备下一局':'等待房主开启下一局'} primaryDisabled={!host||!!v.pending_close||blocked}/>
+     ?<MatchResult view={battleView} moveHistory={moveHistory} leaving={resultLeaving} Avatar={Avatar} onReview={()=>setSituationOpen(true)} onPrimary={()=>transitionResult(()=>run(()=>api.returnLobby({room_id:snapshot.room_id})))} onExit={()=>setLeaveConfirm(true)} exitDisabled={exitBlocked} primaryLabel={host&&!v.pending_close?'准备下一局':'等待房主开启下一局'} primaryDisabled={!host||!!v.pending_close||blocked}/>
      :<BattleStage view={battleView.phase==='result'&&lastBattle.current?.match_id===battleView.match_id?lastBattle.current:battleView} manual={manual} moveHistory={moveHistory} mode="online" ready={arenaReady} exiting={battleView.phase==='result'} suspended={false} frozen={false} busy={blocked||(!editable&&battleView.phase==='selecting'&&!!battleView.options.length)} revealSeconds={Math.max(0,Math.ceil((remaining||0)/1000))} Avatar={Avatar} onSelect={setSelected} onSubmit={submit} onPause={()=>setMatchMenu(true)} onFreeze={()=>{}} onSituation={()=>setSituationOpen(true)}/>}
    <aside className="online-match-controls" aria-label="联机房间状态"><span>房间 {v.room_code}</span><span>每拍 {v.policy.turn_ms/1000} 秒</span><span>{state.status==='reconnecting'?'网络暂断 · 重连中…':'房间已连接'}</span>{canAdjust&&<button type="button" className="settings-action" aria-label="调整时限" disabled={blocked} onClick={()=>{setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>调整时限</button>}</aside>
    {(onlineError||recoveryText||closingText||futureText)&&<p className={onlineError?'online-match-notice is-error':'online-match-notice'} role={onlineError?'alert':'status'}>{onlineError||closingText||recoveryText} {futureText}</p>}
    {matchMenu&&<Modal className="battle-dialog pause-dialog" title="对局菜单" onClose={()=>setMatchMenu(false)}><section className="pause-state"><span>ONLINE MENU</span><h3>牌局仍在继续</h3><p>多人模式打开菜单不会暂停牌局，返回后以服务端当前状态为准。</p></section><div className="pause-actions"><button className="primary" onClick={()=>setMatchMenu(false)}>继续游戏<small>RESUME</small></button><button disabled={!canAdjust} onClick={()=>{setMatchMenu(false);setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>房间游戏设置<small>ROOM SETTINGS</small></button><button className="danger" onClick={()=>{setMatchMenu(false);setLeaveConfirm(true);}}>退出游戏<small>LEAVE MATCH</small></button></div></Modal>}
-   {situationOpen&&<SituationDialog view={battleView} manual={manual} moveHistory={moveHistory} Modal={Modal} Avatar={Avatar} onClose={()=>setSituationOpen(false)}/>}
+   {situationOpen&&<SituationDialog view={battleView} manual={manual} moveHistory={moveHistory} gaps={historyGaps(history,battleView)} Modal={Modal} Avatar={Avatar} onClose={()=>setSituationOpen(false)}/>}
    {limitOpen&&canAdjust&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><p>{futureText||'从下一次选择阶段开始生效，本拍截止时间和已交牌保持不变。'}</p><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
-   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)}><p>{host?'退出将按服务策略在当前拍后或立即结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" onClick={leave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
+   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将按服务策略在当前拍后或立即结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
   </div>;
  }
  return <main className="online online-room" data-phase="syncing" data-source={state.source}>
-  <nav className="online-room-nav" aria-label="房间操作"><button type="button" className="settings-back" aria-label="退出房间" disabled={blocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button><div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'同步房间状态…'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div></nav>
+  <nav className="online-room-nav" aria-label="房间操作"><button type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button><div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'同步房间状态…'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div></nav>
   <p className="online-room-message is-error" role="alert">{onlineError||'房间状态尚未就绪，正在等待服务端同步。'}</p>
-  {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)}><p>{host?'退出将按服务策略结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" onClick={leave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
+  {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将按服务策略结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
  </main>;
 }

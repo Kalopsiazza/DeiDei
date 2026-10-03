@@ -6,6 +6,7 @@ const os=require('node:os');
 const {execFileSync}=require('node:child_process');
 const {_electron:electron}=require('../desktop/node_modules/playwright-core');
 const {createHash}=require('node:crypto');
+const {verifyStage}=require('./stage.cjs');
 const root=path.resolve(__dirname,'../..');
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -33,7 +34,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const env={...process.env,DEIDEI_PYTHON:'/nonexistent/python',PYTHONHOME:'/nonexistent/python',PYTHONPATH:'/nonexistent/source',
   DEIDEI_TEST_DATA_DIR:path.join(scratch,'must-be-ignored'),
   PATH:process.platform==='win32'?path.join(process.env.SystemRoot,'System32'):'/usr/bin:/bin'};
- delete env.ELECTRON_RUN_AS_NODE;
+ delete env.ELECTRON_RUN_AS_NODE;delete env.DEIDEI_ROOM_URL;
  function copyApplication(source,target) {
   if(process.platform==='darwin')execFileSync('ditto',[source,target]);
   else execFileSync(path.join(root,'game/packaging/.venv/Scripts/python.exe'),
@@ -66,10 +67,20 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
    resourcesPath:'<UNPACKED_APPLICATION>/'+path.relative(fs.realpathSync(base),fs.realpathSync(context.resourcesPath))};
   return context;
  }
+ async function welcome() {
+  await page.locator('.welcome-scene[data-stage=opening],.welcome-scene[data-stage=title]').waitFor();
+  if(await page.getByRole('button',{name:'跳过开场',exact:true}).isVisible())await page.getByRole('button',{name:'跳过开场',exact:true}).click();
+  await page.locator('.welcome-scene[data-stage=title]').waitFor();
+ }
+ async function enterExisting() {
+  await welcome();
+  await page.getByRole('button',{name:/^以.*身份进入牌厅$/}).click();
+  await page.locator('.app[data-page=menu]').waitFor();
+ }
  async function start() {
   await page.getByRole('button',{name:/^单人对局/}).click();
-  await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
-  await page.locator('.table[data-phase="selecting"]').waitFor();
+  await page.locator('.app[data-page=prepare]').getByRole('button',{name:/^开始对局/}).click();
+  await page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();
   const view=(await page.evaluate(()=>window.desktop.port.getView())).data;
   assert.equal(view.source,'live');
   const processes=children(mainPid);
@@ -101,30 +112,51 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   await app.close();app=null;
   report.progress='source closed; copying unpacked application';save();
   copyApplication(latest.unpacked_application,application);
+  verifyStage(path.join(resources(application),'app'));
   // Only the disposable CI checkout is hidden, never the user's working trees.
   for(const part of ['core','runtime'])fs.renameSync(path.join(root,'game',part),path.join(root,'game',part+'.t05-hidden'));
   hidden=true;
   if(process.platform==='darwin')execFileSync('chmod',['-R','a-w',application]);
   report.progress='launch real packaged executable';save();
   await launch();
+  await page.waitForFunction(()=>{const film=document.querySelector('.welcome-film');return film&&film.readyState>=2&&film.currentTime>0;});
+  await welcome();
+  await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
   await page.getByRole('textbox',{name:'昵称',exact:true}).fill('成包验收');
-  await page.getByRole('button',{name:'保存，进入课间 →',exact:true}).click();
-  await page.getByRole('button',{name:'设置',exact:true}).click();
+  await page.getByRole('button',{name:'确认名字',exact:true}).click();
+  await page.getByRole('button',{name:'进入主菜单',exact:true}).click();
+  await page.locator('.app[data-page=menu]').waitFor();
+  await page.getByRole('button',{name:/^设置(?:\s+S)?$/}).click();
   await page.getByRole('slider',{name:'音乐音量'}).fill('25');
   await page.getByRole('button',{name:'保存并关闭',exact:true}).click();
+  await page.getByRole('button',{name:/^好友联机/}).click();
+  await page.getByText('联机服务尚未配置',{exact:false}).waitFor();
+  await page.getByRole('button',{name:'返回主菜单',exact:true}).click();
+  await page.getByRole('button',{name:/^经典规则手册/}).click();
+  await page.locator('.archive-screen').waitFor();
+  await page.getByRole('button',{name:'新手实战',exact:true}).click();
+  await page.locator('.battle-table[data-tutorial="true"][data-ready="true"]').waitFor();
+  const tutorial=(await page.evaluate(()=>window.desktop.port.getView())).data;
+  assert.equal(tutorial.source,'live');assert.ok(tutorial.tutorial);
+  await page.getByRole('button',{name:'暂停',exact:true}).click();
+  await page.getByRole('button',{name:/^退出游戏/}).click();
+  await page.getByRole('dialog').getByRole('button',{name:'离开',exact:true}).click();
+  await page.locator('.app[data-page=menu]').waitFor();
   const manual=await page.evaluate(()=>window.desktop.manual());
   assert.equal(manual.ok,true);assert.equal(manual.data.entries.length,33);report.manual_entries=33;
   let view=await start();
-  pass('P06','live options contain all 33 entries; packaged manual read succeeds');
+  assert.equal(view.options.length,33);
+  pass('P06','welcome media, first profile, menu, live tutorial, archive and unconfigured online entry work; live options contain all 33 entries');
   pass('P07','final archive application isPackaged=true, real worker child belongs to bundled resources');
   pass('P08','invalid developer variables, OS-only PATH, Chinese space path, different cwd, isolated CI source tree hidden');
   if(process.platform==='darwin')pass('P10','read-only application successfully writes profile/settings to the unchanged userData; unprivileged CI uid '+os.userInfo().uid);
   else report.checks.push({id:'P10',status:'NOT_RUN',text:'Windows CI account privileges do not establish ordinary-user read-only install acceptance'});
+  // Current DESIGN.md essential copy is 12–16px; validate complete glyphs too.
   for(const [width,height] of [[1366,768],[1920,1080]]){
    await page.setViewportSize({width,height});
-   const layout=await page.evaluate(()=>({body:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,font:parseFloat(getComputedStyle(e.querySelector('strong')).fontSize)};})}));
+   const layout=await page.evaluate(()=>({body:[document.documentElement.scrollWidth,document.documentElement.scrollHeight],cards:[...document.querySelectorAll('.card')].map(e=>{const r=e.getBoundingClientRect(),label=e.querySelector('.card-name'),copy=e.querySelector('.card-pick strong').getBoundingClientRect(),range=document.createRange();range.selectNodeContents(label);const text=range.getBoundingClientRect();return {x:r.x,y:r.y,right:r.right,bottom:r.bottom,font:parseFloat(getComputedStyle(label).fontSize),nameFits:text.left>=copy.left-1&&text.right<=copy.right+1&&text.top>=copy.top-1&&text.bottom<=copy.bottom+1};})}));
    assert.equal(layout.cards.length,33);assert.equal(new Set(layout.cards.map(c=>Math.round(c.y))).size,3);
-   assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height&&c.font>=16));
+   assert.ok(layout.cards.every(c=>c.x>=0&&c.right<=width&&c.bottom<=height&&c.font>=12&&c.font<=16&&c.nameFits));
    assert.ok(layout.body[0]<=width&&layout.body[1]<=height);
    await shot(`packaged-${width}x${height}`);
   }
@@ -138,7 +170,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
     if(view.summary.some(s=>s.includes('自动休整')))recovery=true;
     if(!fraction&&view.phase!=='result'&&view.participants.some(p=>p.player_id===view.self_id&&BigInt(p.resources.dd6)%6n!==0n)){
      fraction=true;report.fraction_view={phase:view.phase,participants:view.participants,summary:view.summary};
-     await page.waitForFunction(()=>/DD\s+\S*\//.test(document.querySelector('.self-strip .resources b')?.textContent||''));
+     await page.waitForFunction(()=>/\//.test(document.querySelector('.battle-resources .resource-dd strong')?.textContent||''));
      await shot('packaged-fraction');
     }
     if(view.phase==='selecting'&&view.view_id!==lastView){
@@ -147,7 +179,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
      if(choice==='ZengYi')zengUsed=true;
      if(choice==='Xiao')xiaoUsed=true;
      await page.locator(`[data-entry="${choice}"] .card-pick`).click();
-     await page.getByRole('button',{name:'提交所选',exact:true}).click();
+     await page.getByRole('button',{name:'确认出招',exact:true}).click();
      lastView=view.view_id;turns.push({turn:view.turn_index,entry:choice});
     }
     await pause(150);
@@ -155,10 +187,10 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
     view=response.data;assert.equal(view.source,'live');
    }
    assert.equal(view.phase,'result','random legal matches exceeded test time budget');
-   await page.locator('.results').waitFor();await shot('packaged-result-'+(game+1));
+   await page.locator('.match-outro').waitFor();await shot('packaged-result-'+(game+1));
    report.games.push({match_id:match,turns,outcome:view.outcome,summary:view.summary});save();
-   await page.getByRole('button',{name:'再来一场',exact:true}).click();
-   await page.locator('.table[data-phase="selecting"]').waitFor();
+   await page.getByRole('button',{name:/^再来一场/}).click();
+   await page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();
    view=(await page.evaluate(()=>window.desktop.port.getView())).data;
    assert.notEqual(view.match_id,match);assert.equal(view.turn_index,'1');
    assert.ok(view.participants.every(p=>p.alive&&p.resources.dd6==='0'));
@@ -173,25 +205,31 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   const own=children(mainPid).find(p=>samePath(p.executable,workerPath));assert.ok(own);
   process.kill(own.pid,'SIGTERM');
   await page.getByText('本场中断，可重新开始。',{exact:false}).first().waitFor();await shot('packaged-worker-interrupted');
-  await page.getByRole('button',{name:'退出本场',exact:true}).click();await start();
+  await page.getByRole('button',{name:'退出本场',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();await start();
   pass('P12-error','actual bundled worker termination shows interruption and explicit restart succeeds');
   await close();
   for(let i=0;i<9;i++){
-   await launch();
+   await launch();await enterExisting();
    const profile=(await page.evaluate(()=>window.desktop.profile.read())).data;
    assert.equal(profile.nickname,'成包验收');assert.equal(profile.settings.music,25);
    await start();await close();
   }
   pass('P11','ten application open/start/leave/exit cycles; every observed own worker reaped');
   pass('P15','both renderer viewports verified; name/default userData unchanged; nickname and settings survive restart');
+  const damagedMedia=path.join(scratch,'missing-media',path.basename(application));fs.mkdirSync(path.dirname(damagedMedia));
+  copyApplication(application,damagedMedia);
+  if(process.platform==='darwin')execFileSync('chmod',['-R','u+w',damagedMedia]);
+  fs.unlinkSync(path.join(resources(damagedMedia),'app/build/ui/assets/menu/welcome-opening-v1.mp4'));
+  assert.throws(()=>verifyStage(path.join(resources(damagedMedia),'app')),/welcome-opening-v1\.mp4/);
+  pass('P09-media','missing welcome video fails the exact stage integrity check');
   for(const missing of ['worker','catalog']){
    const damaged=path.join(scratch,missing,path.basename(application));fs.mkdirSync(path.dirname(damaged));
    copyApplication(application,damaged);
    if(process.platform==='darwin')execFileSync('chmod',['-R','u+w',damaged]);
    const missingPath=path.join(resources(damaged),'worker',missing==='worker'?(process.platform==='darwin'?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json');
    fs.renameSync(missingPath,missingPath+'.removed');
-   await launch(damaged);
-   await page.getByRole('button',{name:/^单人对局/}).click();await page.getByRole('button',{name:'开始单人对局',exact:true}).click();
+   await launch(damaged);await enterExisting();
+   await page.getByRole('button',{name:/^单人对局/}).click();await page.locator('.app[data-page=prepare]').getByRole('button',{name:/^开始对局/}).click();
    await page.getByText('游戏文件不完整，请重新取得完整测试包',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);
    assert.ok(!children(mainPid).some(p=>/deidei-worker|python/i.test(p.executable)));
    await close();

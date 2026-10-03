@@ -18,22 +18,17 @@ import zipfile
 ROOT = Path(__file__).resolve().parents[2]
 HERE = ROOT / 'game/packaging'
 DESKTOP = ROOT / 'game/desktop'
-INPUT = '3ce99f1cdd5f2f52c757ef61b696ecaade4877d0'
+INPUT = '88185af2c9372b2f1d88707218cafee590b94018'
 PLAN_HASH = '84f621cc6a20739c6836a83bb5133659c8fbbcdebaef585a69033aa86fd498fc'
 PLATFORM = 'darwin-arm64' if sys.platform == 'darwin' else 'win32-x64'
-MOVE_ASSET_NAMES = ['Charge', 'Bi', 'Def', 'Three', 'ThreeDef', 'BigBi', 'Reflect',
-                    'SelfBi', 'Cloud', 'Bomb', 'Xiao', 'Pragon', 'PragonDef', 'Volvo',
-                    'VolvoDef', 'RotateThree', 'XiaoBei', 'FlipVolvo', 'Shell', 'Absorb',
-                    'NieXiang', 'NieXiangDef', 'JuYan', 'TianLiJun', 'ZhangXinWei',
-                    'LiQiang', 'BombPragon', 'BombVolvo', 'BombFlipVolvo', 'FreeThree',
-                    'FreeRotateThree', 'ZengYi', 'ZengRewardBigBi']
-STAGE_FILES = ['main.cjs', 'ui-assets.cjs', 'preload.cjs', 'profile.cjs', 'worker-port.cjs',
-               'worker-bridge.cjs', 'worker-launch.cjs', 'build/fixture.cjs',
-               'build/ui/index.html', 'build/ui/renderer.js', 'build/ui/style.css',
-               'build/ui/assets/menu/menu-environment.webp',
-               'build/ui/assets/menu/menu-character.png',
-               'build/ui/assets/menu/menu-atmosphere.png',
-               *[f'build/ui/assets/moves/{name}.png' for name in MOVE_ASSET_NAMES]]
+COMPILATION_INPUTS = ['docs/results/R04-T01-b/manual-content/content.json']
+
+
+def check_clean_inputs(root: Path) -> None:
+    dirty = subprocess.check_output(
+        ['git', 'status', '--porcelain', '--', 'game', '.github', *COMPILATION_INPUTS],
+        cwd=root, text=True).strip()
+    assert not dirty, f'commit build inputs before building:\n{dirty}'
 
 
 def sha(file: Path) -> str:
@@ -64,11 +59,12 @@ def main() -> None:
     npm_command = [node, str(npm_cli)]
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
     subprocess.run(['git', 'merge-base', '--is-ancestor', INPUT, head], cwd=ROOT, check=True)
-    assert not subprocess.check_output(['git', 'status', '--porcelain', '--', 'game', '.github'], cwd=ROOT, text=True).strip(), 'commit product and CI before building'
+    check_clean_inputs(ROOT)
     if os.environ.get('DEIDEI_EXPECTED_SHA'):
         assert head == os.environ['DEIDEI_EXPECTED_SHA']
     for relative in ['game/desktop/catalog.json', 'game/runtime/deidei_runtime/entry-map.json',
-                     'game/desktop/package-lock.json', f'game/packaging/requirements-{PLATFORM}.lock']:
+                     'game/desktop/package-lock.json', f'game/packaging/requirements-{PLATFORM}.lock',
+                     *COMPILATION_INPUTS]:
         committed = subprocess.check_output(['git', 'show', f'{head}:{relative}'], cwd=ROOT)
         assert (ROOT / relative).read_bytes() == committed, f'checkout changed committed bytes: {relative}'
     build = HERE / 'build'
@@ -141,17 +137,22 @@ def main() -> None:
         run('worker-signature-before', ['codesign', '--verify', '--deep', '--strict', '--verbose=2', str(worker / 'deidei-worker')])
         run('worker-identity-before', ['codesign', '--display', '--verbose=4', str(worker / 'deidei-worker')])
 
+    stage_files = json.loads(run('stage-files', [node, str(HERE / 'stage.cjs'), '--list']))
+    run('stage-input-check', [node, str(HERE / 'stage.cjs'), str(DESKTOP)])
     stage = out / 'stage'
     stage.mkdir()
-    for name in STAGE_FILES:
+    for name in stage_files:
         target = stage / name
         target.parent.mkdir(parents=True, exist_ok=True)
         shutil.copy2(DESKTOP / name, target)
+    run('stage-check', [node, str(HERE / 'stage.cjs'), str(stage)])
     package = json.loads((DESKTOP / 'package.json').read_text(encoding='utf-8'))
     write_json(stage / 'package.json', {key: package[key] for key in ['name', 'productName', 'version', 'main', 'author']})
-    inputs = subprocess.check_output(['git', 'ls-files', 'game/core', 'game/runtime', 'game/desktop', 'game/packaging'], cwd=ROOT, text=True).splitlines()
-    build_info = {'task_id': 'R02-T05-a', 'input_sha': INPUT, 'code_sha': head, 'plan_sha': None,
-                  'plan_manifest_sha256': PLAN_HASH, 'plan_version': '1.0', 'rules_version': 'classic-1.0.1',
+    inputs = subprocess.check_output(['git', 'ls-files', 'game/core', 'game/runtime', 'game/desktop', 'game/packaging', *COMPILATION_INPUTS], cwd=ROOT, text=True).splitlines()
+    build_info = {'task_id': 'R04-T02-a', 'input_sha': INPUT, 'code_sha': head, 'plan_sha': None,
+                  'legacy_plan_manifest_sha256': PLAN_HASH,
+                  'source_note': 'R04 product source; manual-content/content.json is compiled into renderer.js',
+                  'compilation_inputs': COMPILATION_INPUTS, 'rules_version': 'classic-1.0.1',
                   'opponent_id': 'random-legal-v1', 'platform': sys.platform, 'arch': platform.machine(),
                   'os': platform.platform(), 'python': platform.python_version(), 'python_source': 'Astral python-build-standalone 20260901; pinned python-downloads.json',
                   'electron': '44.3.0', 'node_build': '24.12.0', 'npm': '11.6.2', 'uv': '0.11.13',
@@ -184,7 +185,7 @@ def main() -> None:
             data = binary.read_bytes()
             pe = struct.unpack_from('<I', data, 0x3c)[0]
             assert data[:2] == b'MZ' and data[pe:pe+4] == b'PE\0\0' and struct.unpack_from('<H', data, pe+4)[0] == 0x8664
-    assert {p.relative_to(resources / 'app').as_posix() for p in (resources / 'app').rglob('*') if p.is_file()} == set(STAGE_FILES + ['package.json', 'build-info.json'])
+    assert {p.relative_to(resources / 'app').as_posix() for p in (resources / 'app').rglob('*') if p.is_file()} == set(stage_files + ['package.json', 'build-info.json'])
     assert sha(resources / 'worker/_internal/deidei_runtime/data/catalog.json') == sha(DESKTOP / 'catalog.json')
     assert sha(resources / 'worker/_internal/deidei_runtime/entry-map.json') == sha(ROOT / 'game/runtime/deidei_runtime/entry-map.json')
     assert not any(p.name.lower().endswith(('.pkl', '.pt', '.pth', '.ttf', '.otf')) or p.name == 'node_modules' for p in target.rglob('*'))
@@ -211,7 +212,7 @@ def main() -> None:
             if source.is_file():
                 shutil.copy2(source, notices / ('PyInstaller-' + source.name))
     assert (notices / 'Electron-LICENSE').is_file() and (notices / 'Electron-LICENSES.chromium.html').is_file()
-    filename = f'DeiDei-R02-T05-a-{"macOS-arm64" if sys.platform == "darwin" else "Windows-x64"}-{head[:7]}.zip'
+    filename = f'DeiDei-R04-T02-a-{"macOS-arm64" if sys.platform == "darwin" else "Windows-x64"}-{head[:7]}.zip'
     archive = out / filename
     if sys.platform == 'darwin':
         run('archive', ['ditto', '-c', '-k', '--sequesterRsrc', str(delivery), str(archive)])
@@ -243,7 +244,7 @@ def main() -> None:
                                         'mode': oct(stat.S_IMODE(file.stat().st_mode))}
     write_json(evidence / 'file-manifest.json', files)
     run('unpacked-worker', [node, str(HERE / 'check-worker.cjs'), str(unpacked / resources.relative_to(delivery))], cwd=out)
-    manifest = {'task_id': 'R02-T05-a', 'code_sha': head, 'platform': PLATFORM,
+    manifest = {'task_id': 'R04-T02-a', 'code_sha': head, 'platform': PLATFORM,
                 'filename': filename, 'bytes': archive.stat().st_size, 'sha256': sha(archive),
                 'build_info': (resources / 'app/build-info.json').relative_to(delivery).as_posix(),
                 'build_info_sha256': sha(stage / 'build-info.json'),

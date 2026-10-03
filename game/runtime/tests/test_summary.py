@@ -6,7 +6,7 @@ from pathlib import Path
 import unittest
 
 from deidei_core.api import new_match, resolve_round
-from deidei_runtime.view import ledger_summary
+from deidei_runtime.view import ledger_summary, public_round
 
 FIXTURES = Path(__file__).resolve().parents[3] / 'tests/rules_v1_001/fixtures'
 
@@ -89,6 +89,21 @@ class SummaryTests(unittest.TestCase):
         self.assertTrue(any('炸药成熟 +1 成熟层' in line for line in lines))
         self.assertTrue(any('消耗 -3 DD' in line for line in lines))
         self.assertEqual(lines[-1], '存活者进入新局，资源归零。')
+
+    def test_public_round_isolated_whitelist_and_restart_identity(self):
+        case = json.loads((FIXTURES / 'C074.json').read_text())[0]
+        resolution = resolve_round(**case['input'])
+        original = deepcopy(resolution)
+        shown = public_round(resolution, 'revealed-view')
+        self.assertEqual(set(shown), {'match_id', 'game_id', 'turn_index', 'turn_id', 'actions', 'next_game_id', 'next_turn_index'})
+        self.assertEqual(shown['game_id'], resolution['ledger']['game_id'])
+        self.assertNotEqual(shown['game_id'], resolution['next_state']['game_id'])
+        self.assertEqual(shown['turn_id'], 'revealed-view')
+        for pid, action in shown['actions'].items():
+            self.assertEqual(set(action), {'entry_id', 'actual_move', 'branch', 'is_recovery'})
+            self.assertEqual(action['entry_id'], resolution['ledger']['actions'][pid]['entry_id'])
+        shown['actions'][next(iter(shown['actions']))]['entry_id'] = 'changed'
+        self.assertEqual(resolution, original)
 
     def test_other_unapplied_event_is_not_reported_as_a_gain(self):
         # Formatter-only defensive case; the real core output remains untouched.

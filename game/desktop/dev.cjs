@@ -3,7 +3,7 @@ const { spawn, spawnSync } = require('node:child_process');
 const path = require('node:path');
 
 const root = __dirname;
-const uiSource = /^(index\.html|style\.css|welcome\.css|WelcomeEntrance\.tsx|renderer\.tsx|BattleStage\.tsx|ManualArchive\.tsx|TutorialCoach\.tsx|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|assets\/(?:menu|battle)\/.*\.(?:png|webp|mp4))$/;
+const uiSource = /^(index\.html|style\.css|welcome\.css|WelcomeEntrance\.tsx|renderer\.tsx|BattleStage\.tsx|ManualArchive\.tsx|TutorialCoach\.tsx|SharedUI\.tsx|useSoloSession\.ts|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|styles\/.*\.css|assets\/(?:menu|battle)\/.*\.(?:png|webp|mp4))$/;
 const build = () => {
   const ok = spawnSync(process.execPath, ['build.cjs'], { cwd: root, stdio: 'inherit' }).status === 0;
   if (ok) fs.writeFileSync(path.join(root, 'build/ui/.reload'), String(Date.now()));

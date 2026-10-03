@@ -1,0 +1,2429 @@
+{
+  "schema_version": 1,
+  "revised_source_product_sha": "3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8",
+  "records": "local executor observations; no human/package/cross-device acceptance",
+  "environment": {
+    "os": "macOS arm64",
+    "node": "24.12.0",
+    "npm": "11.6.2",
+    "electron": "44.3.0",
+    "servicePython": "3.12.11",
+    "websockets": "17.0.1"
+  },
+  "executions": [
+    {
+      "local_record": ".local-outputs/r34-review/product-3006/results.json",
+      "code_sha": "3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8",
+      "dirty": "",
+      "commands": [
+        {
+          "name": "focused",
+          "argv": [
+            "node",
+            "--test",
+            "game/desktop/tests-online/test-main-lifecycle.cjs",
+            "game/desktop/tests-online/test-session-recovery.cjs",
+            "game/desktop/tests-online/test-network.cjs",
+            "game/desktop/tests-online/test-preload.cjs",
+            "game/desktop/tests-online/test-v11.cjs",
+            "game/desktop/tests-online/test-service-config.cjs",
+            "game/integration/test-gui-actions.cjs",
+            "game/integration/test-cleanup.cjs",
+            "game/integration/secure/test-client-cleanup.cjs"
+          ],
+          "exit_code": 0
+        },
+        {
+          "name": "performance-self-check",
+          "argv": [
+            "node",
+            "game/desktop/smoke-performance.cjs",
+            "--self-check"
+          ],
+          "exit_code": 0
+        }
+      ]
+    },
+    {
+      "local_record": ".local-outputs/r34-review/final/root-check-result.json",
+      "code_sha": "4bdd35df036e622d0cc3cdb53aa6849e7f003160",
+      "argv": [
+        "python3",
+        "scripts/check.py"
+      ],
+      "exit_code": 0,
+      "seconds": 3.527
+    },
+    {
+      "local_record": ".local-outputs/r34-review/final/build-result.json",
+      "code_sha": "4bdd35df036e622d0cc3cdb53aa6849e7f003160",
+      "argv": [
+        "npm",
+        "--prefix",
+        "game/desktop",
+        "run",
+        "build"
+      ],
+      "exit_code": 0,
+      "seconds": 0.778
+    },
+    {
+      "local_record": ".local-outputs/r34-review/final/network-corrected/network-results.json",
+      "code_sha": "4bdd35df036e622d0cc3cdb53aa6849e7f003160",
+      "commands": [
+        {
+          "name": "proxy-comparison",
+          "argv": [
+            "<SERVICE_PYTHON>",
+            "game/integration/test_fault_proxy.py",
+            "-v"
+          ],
+          "exit_code": 0,
+          "seconds": 0.083
+        },
+        {
+          "name": "actual-ack",
+          "argv": [
+            "node",
+            "--test",
+            "game/integration/test-ack-retry.cjs"
+          ],
+          "exit_code": 0,
+          "seconds": 1.774
+        }
+      ]
+    }
+  ],
+  "C_regression": {
+    "old_head": "a46b9112840d6b2c604f4c59f04102e67bf3de2a",
+    "old_actual_main": {
+      "exit_code": 1,
+      "pass": 3,
+      "fail": 3,
+      "stale_sockets": 1
+    },
+    "new_actual_main": {
+      "pass": 6,
+      "fail": 0,
+      "stale_sockets": 0
+    },
+    "source": "actual main handler in VM; controlled profile read/close/clock; real NetworkRoomPort with existing FakeSocket; no GUI claim"
+  },
+  "D_native": {
+    "driver_exit": 0,
+    "status": "PASS",
+    "source": "real CLI WebSocket service; ordinary Electron main/preload; one synthetic Peer; no fixture transport",
+    "input": {
+      "sha": "4bdd35df036e622d0cc3cdb53aa6849e7f003160",
+      "dirty": "",
+      "files": {
+        "game/desktop/main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+        "game/desktop/preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+        "game/desktop/online/OnlineRoom.tsx": "6da90680f961b3f6c2475df38fdfecc6b79da036d46ed2e77633ad318c9b369d",
+        "game/desktop/styles/foundation.css": "cff327c630e226f43064fd656f7467a2d9ed6f476d30db79496705aef2b25c3e",
+        "game/desktop/styles/battle.css": "e3f759073935b97f9836c3699b8b14b266b68f45fe59cd2882f25e9d3934410c",
+        "game/desktop/styles/prepare.css": "a646e7c4ad34637a41f2964f1d24fc8f216082befbbdf69d08840b21ff241327",
+        "game/desktop/styles/preferences.css": "79d514305f7537bbd64bbbdc531aea235bf5cdbd8e4ec1ac7e1b517cdd1c9445",
+        "game/desktop/build/ui/style.css": "ddd512167adbae0b829995e847dd2e094f020242d1e6026b34d333366fabd11c",
+        "game/desktop/build/ui/renderer.js": "c6e863200c7c15cbd2f6d047a4c3916dd49e4da1c0299942f55ac1a4e58f87d2"
+      }
+    },
+    "original_file_sha256": "ac7e484b90275c3988a848a6611abfa24a683f1fef8db0a3b75d1ea65e54d3ea",
+    "driver_sha256": "f1d46d96dc159fd57245010bc2ca8330d7ee473b4f335ab354356cf1af0e1916",
+    "samples": [
+      {
+        "name": "real-lobby-limit",
+        "source": "actual OnlineRoom consumer / real service",
+        "states": {
+          "closed": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "none",
+              "3px",
+              "rgb(231, 246, 248)"
+            ],
+            "focusVisible": false,
+            "disabled": false,
+            "value": "10000",
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": false
+          },
+          "focus": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "solid",
+              "3px",
+              "rgb(140, 234, 243)"
+            ],
+            "focusVisible": true,
+            "disabled": false,
+            "value": "10000",
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": true
+          },
+          "keyboardChoice": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "solid",
+              "3px",
+              "rgb(140, 234, 243)"
+            ],
+            "focusVisible": true,
+            "disabled": false,
+            "value": "30000",
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": true
+          },
+          "disabled": {
+            "color": "rgb(137, 155, 165)",
+            "background": "rgb(16, 26, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(255, 255, 255, 0.17)",
+            "outline": [
+              "none",
+              "3px",
+              "rgb(137, 155, 165)"
+            ],
+            "focusVisible": false,
+            "disabled": true,
+            "value": "30000",
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": false,
+            "source": "disabled attribute synthesized on actual select for CSS-only sampling; consumer has no natural disabled select state"
+          }
+        },
+        "keys": [],
+        "options": [
+          {
+            "text": "5 秒",
+            "value": "5000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "8 秒",
+            "value": "8000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "10 秒",
+            "value": "10000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "12 秒",
+            "value": "12000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "20 秒",
+            "value": "20000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "30 秒",
+            "value": "30000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          }
+        ],
+        "nativeControl": {
+          "at": "2026-10-03T12:59:05.716587+00:00",
+          "source": "native cua_repl Electron app",
+          "operation": "AX popup button13 click then AX read",
+          "observedMenu": [
+            "5 秒",
+            "8 秒",
+            "10 秒",
+            "12 秒",
+            "20 秒",
+            "30 秒"
+          ],
+          "selectedBefore": "10 秒"
+        },
+        "nativeKeyboard": {
+          "at": "2026-10-03T13:05:10.518520+00:00",
+          "source": "native cua_repl Electron app",
+          "keys": [
+            "Down",
+            "Down",
+            "Down",
+            "Return"
+          ],
+          "observedAXValue": "30 秒",
+          "expectedValue": "30000"
+        },
+        "supportedKeyboard": "native CUA open and arrow/Return",
+        "nativeKeyboardEvents": [
+          {
+            "kind": "change",
+            "value": "30000"
+          }
+        ],
+        "applied": {
+          "source": "online",
+          "phase": "lobby",
+          "policyMs": 30000,
+          "currentTurnMs": null
+        }
+      },
+      {
+        "name": "real-battle-limit",
+        "source": "actual OnlineRoom consumer / real service",
+        "states": {
+          "closed": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "none",
+              "3px",
+              "rgb(231, 246, 248)"
+            ],
+            "focusVisible": false,
+            "disabled": false,
+            "value": "30000",
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": false
+          },
+          "focus": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "solid",
+              "3px",
+              "rgb(140, 234, 243)"
+            ],
+            "focusVisible": true,
+            "disabled": false,
+            "value": "30000",
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": true
+          },
+          "keyboardChoice": {
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(140, 234, 243, 0.365)",
+            "outline": [
+              "solid",
+              "3px",
+              "rgb(140, 234, 243)"
+            ],
+            "focusVisible": true,
+            "disabled": false,
+            "value": "20000",
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": true
+          },
+          "disabled": {
+            "color": "rgb(137, 155, 165)",
+            "background": "rgb(16, 26, 34)",
+            "colorScheme": "dark",
+            "border": "rgba(255, 255, 255, 0.17)",
+            "outline": [
+              "none",
+              "3px",
+              "rgb(137, 155, 165)"
+            ],
+            "focusVisible": false,
+            "disabled": true,
+            "value": "20000",
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "width": 84,
+              "height": 49
+            },
+            "documentFocus": true,
+            "activeSelect": false,
+            "source": "disabled attribute synthesized on actual select for CSS-only sampling; consumer has no natural disabled select state"
+          }
+        },
+        "keys": [],
+        "options": [
+          {
+            "text": "5 秒",
+            "value": "5000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "8 秒",
+            "value": "8000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "10 秒",
+            "value": "10000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "12 秒",
+            "value": "12000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "20 秒",
+            "value": "20000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          },
+          {
+            "text": "30 秒",
+            "value": "30000",
+            "color": "rgb(231, 246, 248)",
+            "background": "rgb(12, 25, 34)"
+          }
+        ],
+        "nativeControl": {
+          "at": "2026-10-03T13:09:41.545722+00:00",
+          "source": "native cua_repl Electron app",
+          "operation": "AX popup button35 click then AX read",
+          "observedMenu": [
+            "5 秒",
+            "8 秒",
+            "10 秒",
+            "12 秒",
+            "20 秒",
+            "30 秒"
+          ],
+          "selectedBefore": "30 秒"
+        },
+        "nativeKeyboard": {
+          "at": "2026-10-03T13:11:29.764234+00:00",
+          "source": "native cua_repl Electron app",
+          "keys": [
+            "Up",
+            "Return"
+          ],
+          "observedAXValue": "20 秒",
+          "expectedValue": "20000"
+        },
+        "supportedKeyboard": "native CUA open and arrow/Return",
+        "nativeKeyboardEvents": [
+          {
+            "kind": "change",
+            "value": "20000"
+          },
+          {
+            "kind": "change",
+            "value": "20000"
+          }
+        ],
+        "applied": {
+          "source": "online",
+          "phase": "result",
+          "policyMs": 20000,
+          "currentTurnMs": null
+        }
+      }
+    ],
+    "cleanup": {
+      "application": {
+        "pid": 88823,
+        "normalExit": true,
+        "forced": false,
+        "errors": [],
+        "exitCode": 0,
+        "signal": null,
+        "exited": true
+      },
+      "children": [
+        {
+          "pid": 88824,
+          "alive": false
+        },
+        {
+          "pid": 88825,
+          "alive": false
+        },
+        {
+          "pid": 88829,
+          "alive": false
+        },
+        {
+          "pid": 88835,
+          "alive": false
+        }
+      ],
+      "service": {
+        "pid": 88822,
+        "exitCode": 0,
+        "signal": null,
+        "forced": false
+      },
+      "peerClosed": true,
+      "profileRemoved": true
+    },
+    "same_D_inputs_at_revised_product": true,
+    "native_pixel_inspection": {
+      "status": "PASS",
+      "by": "local Codex inspection of own OS captures",
+      "detail": "six choices, selected item and text visibly legible; platform menu pixels inspected separately from DOM color values"
+    },
+    "limitation": "battle dialog opened while selecting; service continued during native UI control and apply reached result; current deadline was not revalidated"
+  },
+  "D_targeted": {
+    "status": "PASS",
+    "driver_exit": 0,
+    "code_sha": "4739d6c8f6e9a19d51ec28370c6dfa92e68d78d5",
+    "dirty": "M game/desktop/smoke-performance.cjs",
+    "source": "R34-02 targeted actual Electron components; local worker and online MOCK; synthesized disabled attrs are CSS-only",
+    "input_sha256": {
+      "game/desktop/smoke-style.cjs": "6de059f568bac9102bf6ecaf6db083e524293c467a9cafcae36f91bb70af826b",
+      "game/desktop/main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "game/desktop/styles/foundation.css": "cff327c630e226f43064fd656f7467a2d9ed6f476d30db79496705aef2b25c3e",
+      "game/desktop/styles/battle.css": "e3f759073935b97f9836c3699b8b14b266b68f45fe59cd2882f25e9d3934410c",
+      "game/desktop/styles/prepare.css": "a646e7c4ad34637a41f2964f1d24fc8f216082befbbdf69d08840b21ff241327",
+      "game/desktop/styles/preferences.css": "79d514305f7537bbd64bbbdc531aea235bf5cdbd8e4ec1ac7e1b517cdd1c9445",
+      "game/desktop/build/ui/style.css": "ddd512167adbae0b829995e847dd2e094f020242d1e6026b34d333366fabd11c",
+      "game/desktop/build/ui/renderer.js": "c6e863200c7c15cbd2f6d047a4c3916dd49e4da1c0299942f55ac1a4e58f87d2",
+      "game/desktop/build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921"
+    },
+    "same_D_inputs_at_revised_product": true,
+    "elements": {
+      "local-pause-primary": {
+        "selector": ".pause-dialog button.primary",
+        "source": "actual component; disabled/aria-busy attributes synthesized for CSS sampling",
+        "states": {
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "hover": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "active": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "matrix(0.98, 0, 0, 0.98, 0, 1)",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 394.8800048828125,
+              "y": 447.43499755859375,
+              "right": 971.1199951171875,
+              "bottom": 502.31500244140625,
+              "width": 576.239990234375,
+              "height": 54.8800048828125
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(82, 124, 152)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "0.5",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "disabledPressed": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "0.5",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "busy": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 445.875,
+              "right": 977,
+              "bottom": 501.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": "true"
+          }
+        }
+      },
+      "local-pause-danger": {
+        "selector": ".pause-dialog button.danger",
+        "source": "actual component; disabled/aria-busy attributes synthesized for CSS sampling",
+        "states": {
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "hover": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "active": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "matrix(0.98, 0, 0, 0.98, 0, 1)",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 394.8800048828125,
+              "y": 512.4349975585938,
+              "right": 971.1199951171875,
+              "bottom": 567.3150024414062,
+              "width": 576.239990234375,
+              "height": 54.8800048828125
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(82, 124, 152)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "disabledPressed": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "busy": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 510.875,
+              "right": 977,
+              "bottom": 566.875,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": "true"
+          }
+        }
+      },
+      "online-pause-primary": {
+        "selector": ".pause-dialog button.primary",
+        "source": "actual component; disabled/aria-busy attributes synthesized for CSS sampling",
+        "states": {
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "hover": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "active": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "matrix(0.98, 0, 0, 0.98, 0, 1)",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 394.8800048828125,
+              "y": 414.93499755859375,
+              "right": 971.1199951171875,
+              "bottom": 469.81500244140625,
+              "width": 576.239990234375,
+              "height": 54.8800048828125
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(82, 124, 152)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "0.5",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "disabledPressed": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "0.5",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "busy": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(7, 16, 24)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(105deg, rgb(239, 254, 255), rgb(140, 234, 243) 58%, rgb(78, 167, 187))",
+              "borderColor": "rgb(255, 255, 255)",
+              "outlineColor": "rgb(7, 16, 24)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(140, 234, 243, 0.204) 0px 0px 24px 0px",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 413.375,
+              "right": 977,
+              "bottom": 469.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": "true"
+          }
+        }
+      },
+      "online-pause-danger": {
+        "selector": ".pause-dialog button.danger",
+        "source": "actual component; disabled/aria-busy attributes synthesized for CSS sampling",
+        "states": {
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "hover": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "active": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "brightness(1.08)",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "matrix(0.98, 0, 0, 0.98, 0, 1)",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 394.8800048828125,
+              "y": 544.9349975585938,
+              "right": 971.1199951171875,
+              "bottom": 599.8150024414062,
+              "width": 576.239990234375,
+              "height": 54.8800048828125
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(82, 124, 152)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "disabledPressed": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null
+          },
+          "busy": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(255, 155, 166)",
+              "backgroundColor": "rgba(0, 0, 0, 0)",
+              "backgroundImage": "linear-gradient(120deg, rgba(50, 18, 29, 0.79), rgb(10, 17, 24))",
+              "borderColor": "rgba(255, 82, 101, 0.4)",
+              "outlineColor": "rgb(255, 155, 166)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "rgba(255, 255, 255, 0.063) 0px 1px 0px 0px inset",
+              "minHeight": "56px",
+              "minWidth": "auto",
+              "padding": "9px 16px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "polygon(0px 0px, 94% 0px, 100% 23%, 97% 100%, 6% 100%, 0px 75%)",
+              "transform": "none",
+              "transitionDuration": "0.2s, 0.2s, 0.2s, 0.2s, 0.2s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "normal"
+            },
+            "box": {
+              "x": 389,
+              "y": 543.375,
+              "right": 977,
+              "bottom": 599.375,
+              "width": 588,
+              "height": 56
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": "true"
+          }
+        }
+      }
+    },
+    "targeted": {
+      "selects": {
+        "lobby-limit": {
+          "source": "actual OnlineRoom consumer; online MOCK",
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(231, 246, 248)",
+              "backgroundColor": "rgb(12, 25, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(140, 234, 243, 0.365)",
+              "outlineColor": "rgb(231, 246, 248)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "right": 528,
+              "bottom": 421.75,
+              "width": 84,
+              "height": 49
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "originalValue": "10000",
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(231, 246, 248)",
+              "backgroundColor": "rgb(12, 25, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(140, 234, 243, 0.365)",
+              "outlineColor": "rgb(140, 234, 243)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "right": 528,
+              "bottom": 421.75,
+              "width": 84,
+              "height": 49
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "displayedValue": "10000",
+          "nativeKeyboardAcceptance": {
+            "status": "PENDING",
+            "reason": "DOM focus/style sampling cannot prove native popup operation or keyboard choice"
+          },
+          "options": [
+            {
+              "value": "5000",
+              "text": "5 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "8000",
+              "text": "8 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "10000",
+              "text": "10 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "12000",
+              "text": "12 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "20000",
+              "text": "20 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "30000",
+              "text": "30 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            }
+          ],
+          "nativePopupScreenshot": {
+            "status": "NOT_RUN",
+            "reason": "native platform popup requires actual CUA operation and OS screenshot; option DOM colors alone are insufficient"
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(137, 155, 165)",
+              "backgroundColor": "rgb(16, 26, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(255, 255, 255, 0.17)",
+              "outlineColor": "rgb(137, 155, 165)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444,
+              "y": 372.75,
+              "right": 528,
+              "bottom": 421.75,
+              "width": 84,
+              "height": 49
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null,
+            "source": "disabled attribute synthesized for CSS-only sampling; current OnlineRoom does not disable this select"
+          },
+          "applied": {
+            "source": "fixture",
+            "phase": "lobby",
+            "turn_ms": 10000
+          }
+        },
+        "battle-limit": {
+          "source": "actual OnlineRoom consumer; online MOCK",
+          "default": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(231, 246, 248)",
+              "backgroundColor": "rgb(12, 25, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(140, 234, 243, 0.365)",
+              "outlineColor": "rgb(231, 246, 248)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444.0003356933594,
+              "y": 396.875732421875,
+              "right": 528.000244140625,
+              "bottom": 445.87567138671875,
+              "width": 83.99990844726562,
+              "height": 48.99993896484375
+            },
+            "focusVisible": false,
+            "disabled": false,
+            "busy": null
+          },
+          "originalValue": "10000",
+          "focusVisible": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(231, 246, 248)",
+              "backgroundColor": "rgb(12, 25, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(140, 234, 243, 0.365)",
+              "outlineColor": "rgb(140, 234, 243)",
+              "outlineWidth": "3px",
+              "outlineStyle": "solid",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "right": 528,
+              "bottom": 445.875,
+              "width": 84,
+              "height": 49
+            },
+            "focusVisible": true,
+            "disabled": false,
+            "busy": null
+          },
+          "displayedValue": "10000",
+          "nativeKeyboardAcceptance": {
+            "status": "PENDING",
+            "reason": "DOM focus/style sampling cannot prove native popup operation or keyboard choice"
+          },
+          "options": [
+            {
+              "value": "5000",
+              "text": "5 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "8000",
+              "text": "8 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "10000",
+              "text": "10 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "12000",
+              "text": "12 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "20000",
+              "text": "20 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            },
+            {
+              "value": "30000",
+              "text": "30 秒",
+              "color": "rgb(231, 246, 248)",
+              "background": "rgb(12, 25, 34)"
+            }
+          ],
+          "nativePopupScreenshot": {
+            "status": "NOT_RUN",
+            "reason": "native platform popup requires actual CUA operation and OS screenshot; option DOM colors alone are insufficient"
+          },
+          "disabled": {
+            "style": {
+              "fontSize": "15px",
+              "fontWeight": "400",
+              "color": "rgb(137, 155, 165)",
+              "backgroundColor": "rgb(16, 26, 34)",
+              "backgroundImage": "none",
+              "borderColor": "rgba(255, 255, 255, 0.17)",
+              "outlineColor": "rgb(137, 155, 165)",
+              "outlineWidth": "3px",
+              "outlineStyle": "none",
+              "boxShadow": "none",
+              "minHeight": "44px",
+              "minWidth": "0px",
+              "padding": "12px",
+              "backdropFilter": "none",
+              "filter": "none",
+              "opacity": "1",
+              "clipPath": "none",
+              "transform": "none",
+              "transitionDuration": "0s",
+              "animationName": "none",
+              "animationIterationCount": "1",
+              "colorScheme": "dark"
+            },
+            "box": {
+              "x": 444,
+              "y": 396.875,
+              "right": 528,
+              "bottom": 445.875,
+              "width": 84,
+              "height": 49
+            },
+            "focusVisible": false,
+            "disabled": true,
+            "busy": null,
+            "source": "disabled attribute synthesized for CSS-only sampling; current OnlineRoom does not disable this select"
+          },
+          "applied": {
+            "source": "fixture",
+            "phase": "selecting",
+            "turn_ms": 10000
+          }
+        }
+      },
+      "pause": {
+        "local-pause-primary": {
+          "source": "ordinary local worker match",
+          "disabled": "attribute synthesized on actual button; physical pointer click generates no action"
+        },
+        "local-pause-danger": {
+          "source": "ordinary local worker match",
+          "disabled": "attribute synthesized on actual button; physical pointer click generates no action",
+          "enabledClick": "actual enabled danger click reaches exit confirmation; cancel returns to the same battle"
+        },
+        "online-pause-primary": {
+          "source": "online MOCK transport; actual OnlineRoom pause menu",
+          "disabled": "attribute synthesized on actual button; physical pointer click generates no action"
+        },
+        "online-pause-danger": {
+          "source": "online MOCK transport; actual OnlineRoom pause menu",
+          "disabled": "attribute synthesized on actual button; physical pointer click generates no action",
+          "enabledClick": "actual enabled danger click reaches exit confirmation; cancel returns to the same battle"
+        }
+      },
+      "motion": {
+        "prepare-standard-scan": {
+          "source": "actual ordinary local preparation/intro",
+          "selector": ".prepare-signal[data-level=\"standard\"]>span",
+          "pseudo": null,
+          "states": {
+            "normal": [
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(0.978148, 0.207912, -0.207912, 0.978148, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(-0.999446, 0.0332683, -0.0332683, -0.999446, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(0.470912, -0.88218, 0.88218, 0.470912, 0, 0)",
+                "content": "normal"
+              }
+            ],
+            "reduced": [
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "matrix(0.978148, 0.207912, -0.207912, 0.978148, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "matrix(-0.669131, 0.743145, -0.743145, -0.669131, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "matrix(-0.309017, -0.951057, 0.951057, -0.309017, 0, 0)",
+                "content": "normal"
+              }
+            ],
+            "restored": [
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(0.978148, 0.207912, -0.207912, 0.978148, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(-0.999446, 0.0332683, -0.0332683, -0.999446, 0, 0)",
+                "content": "normal"
+              },
+              {
+                "name": "prepare-scan",
+                "iterations": "infinite",
+                "transform": "matrix(0.470912, -0.88218, 0.88218, 0.470912, 0, 0)",
+                "content": "normal"
+              }
+            ]
+          }
+        },
+        "prepare-orbit": {
+          "source": "actual ordinary local preparation/intro",
+          "selector": ".prepare-signal>i",
+          "pseudo": null,
+          "states": {
+            "normal": [
+              {
+                "name": "prepare-orbit",
+                "iterations": "infinite",
+                "transform": "matrix(0.980774, 0.195146, -0.195146, 0.980774, 0, 0)",
+                "content": "normal"
+              }
+            ],
+            "reduced": [
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "none",
+                "content": "normal"
+              }
+            ],
+            "restored": [
+              {
+                "name": "prepare-orbit",
+                "iterations": "infinite",
+                "transform": "matrix(1, 0, 0, 1, 0, 0)",
+                "content": "normal"
+              }
+            ]
+          }
+        },
+        "intro-sigil": {
+          "source": "actual ordinary local preparation/intro",
+          "selector": ".match-intro .intro-versus article",
+          "pseudo": "::before",
+          "states": {
+            "normal": [
+              {
+                "name": "intro-sigil-pulse",
+                "iterations": "infinite",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              },
+              {
+                "name": "intro-sigil-pulse",
+                "iterations": "infinite",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              }
+            ],
+            "reduced": [
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              },
+              {
+                "name": "none",
+                "iterations": "1",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              }
+            ],
+            "restored": [
+              {
+                "name": "intro-sigil-pulse",
+                "iterations": "infinite",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              },
+              {
+                "name": "intro-sigil-pulse",
+                "iterations": "infinite",
+                "transform": "matrix(1, 0, 0, 1, 0, -52)",
+                "content": "\"\""
+              }
+            ]
+          }
+        }
+      },
+      "nativePopupVisualAcceptance": "pending screenshot inspection"
+    },
+    "layouts": [],
+    "pageErrors": [],
+    "cleanup": {
+      "shutdown": "legacy app.exit(0) test harness; not F normal-close evidence",
+      "remaining_exact_electron_or_worker_processes": [],
+      "profiles_after": []
+    },
+    "limitation": "native PENDING/NOT_RUN in automated style output is covered separately by D_native, not silently changed; only F diagnostic script was dirty at launch"
+  },
+  "F_failure_samples": [
+    {
+      "mode": "throw",
+      "driverExitCode": 1,
+      "code_sha": "3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8",
+      "dirty": "",
+      "original_file_sha256": "9691cdc67cb80bb1aa265abbc9310900d804c0adacd5879dd80d47efb9a5f007",
+      "source": "ordinary main / actual WorkerPort tutorial, selecting and live before injection",
+      "tutorial_state": {
+        "source": "live",
+        "mode": "tutorial",
+        "phase": "selecting"
+      },
+      "firstOperable": {
+        "elapsedMs": 1473,
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2,
+        "visibility": "visible",
+        "condition": "native startup before any DPR override"
+      },
+      "dprMode": "CDP emulation",
+      "segments": [
+        {
+          "name": "tutorial-injected-throw",
+          "frameTimestamps": [
+            6262.166,
+            6278.9,
+            6295.5,
+            6312.2,
+            6328.9,
+            6345.6,
+            6362.2,
+            6378.8,
+            6395.6
+          ],
+          "active": false,
+          "errors": [],
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 1,
+          "frameCount": 9,
+          "p50": 16.699999999999818,
+          "p95": 16.800000000000182,
+          "p99": 16.800000000000182,
+          "over50ms": 0,
+          "max": 16.800000000000182,
+          "durationMs": 161,
+          "failed": true,
+          "failure": {
+            "name": "Error",
+            "message": "INJECTED_SEGMENT_THROW",
+            "stack": "Error: INJECTED_SEGMENT_THROW\n    at <WORKTREE>/game/desktop/smoke-performance.cjs:167:125\n    at async segment (<WORKTREE>/game/desktop/smoke-performance.cjs:42:3)\n    at async <WORKTREE>/game/desktop/smoke-performance.cjs:167:4"
+          }
+        }
+      ],
+      "failure": {
+        "stage": "scenario",
+        "name": "Error",
+        "message": "INJECTED_SEGMENT_THROW",
+        "stack": "Error: INJECTED_SEGMENT_THROW\n    at <WORKTREE>/game/desktop/smoke-performance.cjs:167:125\n    at async segment (<WORKTREE>/game/desktop/smoke-performance.cjs:42:3)\n    at async <WORKTREE>/game/desktop/smoke-performance.cjs:167:4"
+      },
+      "evidenceReadBack": {
+        "segments": 1,
+        "frameCountsAndSummariesMatch": true
+      },
+      "cleanup": {
+        "application": {
+          "pid": 93440,
+          "normalExit": true,
+          "forced": false,
+          "errors": [],
+          "exitCode": 0,
+          "signal": null,
+          "exited": true
+        },
+        "children": [
+          {
+            "pid": 93442,
+            "ppid": 93440,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93443,
+            "ppid": 93440,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93444,
+            "ppid": 93440,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93447,
+            "ppid": 93440,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93457,
+            "ppid": 93440,
+            "kind": "worker",
+            "forced": false,
+            "alive": false
+          }
+        ],
+        "profileRemoved": true,
+        "workerExitCode": "not exposed; OS PID no longer present"
+      }
+    },
+    {
+      "mode": "timeout",
+      "driverExitCode": 1,
+      "code_sha": "3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8",
+      "dirty": "",
+      "original_file_sha256": "f1300c04b9332ed32a7b4c7ad6b72e7ef9027f9fd5497c81f5f1eb528fe52f9c",
+      "source": "ordinary main / actual WorkerPort tutorial, selecting and live before injection",
+      "tutorial_state": {
+        "source": "live",
+        "mode": "tutorial",
+        "phase": "selecting"
+      },
+      "firstOperable": {
+        "elapsedMs": 926,
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2,
+        "visibility": "visible",
+        "condition": "native startup before any DPR override"
+      },
+      "dprMode": "native",
+      "segments": [
+        {
+          "name": "tutorial-injected-timeout",
+          "frameTimestamps": [
+            6035.1,
+            6051.8,
+            6068.4,
+            6085.1,
+            6101.8,
+            6118.5,
+            6134.2,
+            6151.9,
+            6168.1,
+            6185.2,
+            6200.9,
+            6218.5,
+            6235.2,
+            6251.8,
+            6268.5,
+            6285.2,
+            6301.9,
+            6318.6
+          ],
+          "active": false,
+          "errors": [],
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2,
+          "frameCount": 18,
+          "p50": 16.699999999999818,
+          "p95": 17.699999999999818,
+          "p99": 17.699999999999818,
+          "over50ms": 0,
+          "max": 17.699999999999818,
+          "durationMs": 314,
+          "failed": true,
+          "failure": {
+            "name": "TimeoutError",
+            "message": "locator.waitFor: Timeout 150ms exceeded.\nCall log:\n  - waiting for locator('[data-r34-never-present]') to be visible\n",
+            "stack": "locator.waitFor: Timeout 150ms exceeded.\nCall log:\n  - waiting for locator('[data-r34-never-present]') to be visible\n\n    at <WORKTREE>/game/desktop/smoke-performance.cjs:167:208\n    at async segment (<WORKTREE>/game/desktop/smoke-performance.cjs:42:3)\n    at async <WORKTREE>/game/desktop/smoke-performance.cjs:167:4"
+          }
+        }
+      ],
+      "failure": {
+        "stage": "scenario",
+        "name": "TimeoutError",
+        "message": "locator.waitFor: Timeout 150ms exceeded.\nCall log:\n  - waiting for locator('[data-r34-never-present]') to be visible\n",
+        "stack": "locator.waitFor: Timeout 150ms exceeded.\nCall log:\n  - waiting for locator('[data-r34-never-present]') to be visible\n\n    at <WORKTREE>/game/desktop/smoke-performance.cjs:167:208\n    at async segment (<WORKTREE>/game/desktop/smoke-performance.cjs:42:3)\n    at async <WORKTREE>/game/desktop/smoke-performance.cjs:167:4"
+      },
+      "evidenceReadBack": {
+        "segments": 1,
+        "frameCountsAndSummariesMatch": true
+      },
+      "cleanup": {
+        "application": {
+          "pid": 93546,
+          "normalExit": true,
+          "forced": false,
+          "errors": [],
+          "exitCode": 0,
+          "signal": null,
+          "exited": true
+        },
+        "children": [
+          {
+            "pid": 93547,
+            "ppid": 93546,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93548,
+            "ppid": 93546,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93550,
+            "ppid": 93546,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93552,
+            "ppid": 93546,
+            "kind": "Electron child",
+            "forced": false,
+            "alive": false
+          },
+          {
+            "pid": 93560,
+            "ppid": 93546,
+            "kind": "worker",
+            "forced": false,
+            "alive": false
+          }
+        ],
+        "profileRemoved": true,
+        "workerExitCode": "not exposed; OS PID no longer present"
+      }
+    }
+  ],
+  "E_retry": {
+    "observed": true,
+    "request_id_same": true,
+    "command_seq_same": true,
+    "payload_same": true,
+    "error_is_null": true,
+    "public_Def_settled_once": true,
+    "negative_cases": [
+      "request_id differs",
+      "command_seq differs",
+      "payload differs"
+    ],
+    "private_request_output": false
+  },
+  "images": [
+    {
+      "path": "native-lobby.png",
+      "sha256": "727e0dd05fcc5c16ffba77a3b46be4fde8cceaaeaab6244c3562345617a0dd1d",
+      "bytes": 1122723
+    },
+    {
+      "path": "native-battle.png",
+      "sha256": "18231181d1a2f35e3559b602d5d522f562e91a772188ef377f0a7d9c303759f6",
+      "bytes": 1806185
+    },
+    {
+      "path": "select-disabled.png",
+      "sha256": "15b13a427690d547da03eaa3adb840c2831c74b07065c689222e70c14bf61fb1",
+      "bytes": 438205
+    },
+    {
+      "path": "local-pause-hover.png",
+      "sha256": "011979e1699b4d3c9d14c48810450bb4bbcf465ef25677de7438d5a975ab3059",
+      "bytes": 316635
+    },
+    {
+      "path": "online-pause-hover.png",
+      "sha256": "8bcbfa322288c27d9c218d15a252641dd78f2792e1599644502d03d7bee81283",
+      "bytes": 303015
+    },
+    {
+      "path": "prepare-reduced.png",
+      "sha256": "09167ad9802a0b19eb4926bbbfc5776e9c5850be91159ede30e27a5ecf0db750",
+      "bytes": 1031716
+    },
+    {
+      "path": "intro-reduced.png",
+      "sha256": "ddde3a39826fe51f9e8ca250897a5fe0eaa378fc3cd48c35fa69ed6be51007b9",
+      "bytes": 1143902
+    }
+  ]
+}

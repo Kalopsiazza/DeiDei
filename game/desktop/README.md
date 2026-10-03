@@ -1,10 +1,10 @@
-# R02 本地单人对局
+# DeiDei 本地桌面（R04）
 
 单人入口已连接本机 Python worker 与 classic-1.0.1 核心，对手标明为「临时随机对手」。33 张牌的资格、费用、胜负和曾义休整来自真实规则。开发预览仍为明确标注的 fixture 固定脚本；切换会结束当前场。
 
 ## 从源码运行
 
-需要本机 Python 3.11+、Node/npm；推荐沿用已经验证的 Node 24.12.0 / npm 11.6.2。没有免环境安装包。先在仓库根目录准备环境：
+需要本机 Python 3.11+、Node/npm；推荐沿用已经验证的 Node 24.12.0 / npm 11.6.2。本节为源码启动；原生分发沿用 [packaging](../packaging/README.md)，成包与系统信任单独验证。先在仓库根目录准备环境：
 
 ```sh
 python3 -m venv game/runtime/.venv
@@ -37,7 +37,7 @@ npm --prefix game/desktop start
 
 `DEIDEI_PYTHON` 仅由本机启动环境提供，renderer 不接收路径。未指定时尝试 PATH 中的 `python3`。缺运行时、超时或进程退出时显示「本场中断，可重新开始」，需自行退出本场并重开；不会恢复丢失的对局，也不会替换成演示数据。
 
-依赖和锁保持原版本：Electron 44.3.0、React 19.3.0、TypeScript 7.0.2、esbuild 0.28.2、Forge 7.11.2、Playwright-core 1.63.0。输入交付记录中的 **23 项开发工具链告警尚未处理**，没有执行 audit fix、Forge package/make 或发布。本包只验收本机源码运行。
+当前锁定依赖为 Electron 44.3.0、React 19.3.0、TypeScript 7.0.2、esbuild 0.28.2、@electron/packager 20.3.0、Playwright-core 1.63.0。R02 的 Forge／23 项告警属于旧交付记录；当前风险以本次实际 audit 为准，不执行 audit fix。源码检查、成包启动与系统信任分别记录。
 
 ## 操作与验证
 
@@ -46,12 +46,12 @@ npm --prefix game/desktop start
 从仓库根目录：
 
 ```sh
-npm --prefix game/desktop test                         # 类型检查、构建；桌面 9 + 通信 9 + 导航 4 项
-node game/desktop/smoke-live.cjs                       # 当前真实 Electron 验收
+npm --prefix game/desktop test                         # 类型检查、构建及当前桌面／联机单测
+node game/desktop/smoke-live.cjs                       # R02 历史脚本，旧定位需另核对
 PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -v
 ```
 
-窗口测试用独立临时档案和专用启动器 `smoke-live-main.cjs`，固定 Random(2) 与独立分支 Random(999)，仍调用真实核心；保存实际 ledger 和截图至 `docs/results/R02-T04-a`。它会终止自己启动的测试 worker 验证中断，不修改网络或系统权限。`npm --prefix game/desktop run smoke` 同样运行当前窗口验收。旧 `smoke.cjs` 保留为 T03 历史脚本，含已变更的演示按钮和固定结果预期；当前 UI 验收使用 `smoke-live.cjs`。
+窗口测试用独立临时档案和专用启动器 `smoke-live-main.cjs`，固定 Random(2) 与独立分支 Random(999)，仍调用真实核心；保存实际 ledger 和截图至 `docs/results/R02-T04-a`。它会终止自己启动的测试 worker 验证中断，不修改网络或系统权限。`npm --prefix game/desktop run smoke` 仍指向这份 R02 脚本；它与旧 `smoke.cjs` 都含已变更的页面定位，不能直接作为 R04 通过证据。R04 定向脚本为 `smoke-r04-battle.cjs`、`smoke-manual.cjs`、`smoke-tutorial.cjs`、`smoke-entry.cjs` 与 `tests-online/smoke.cjs`；实际运行结果按本次精确输入记录。
 
 R02-T04-b 开场和场景切换期间，返回、标题等导航暂时禁用，成功或失败后恢复。专项窗口复测与原回归可从根目录运行：
 
@@ -66,13 +66,13 @@ DEIDEI_SMOKE_OUTPUT=docs/results/R02-T04-b/regression node game/desktop/smoke-li
 
 输入集成 SHA `41029218df420985ec06c01f27d4620fd8f35a16`；桌面 tree 来自 `b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1`。新 `worker-bridge.cjs` 取自 `135b938fcfe0486895adfeea37fab73ee5f881dd:experiments/r01-t02-b/bridge.cjs`，改为 1MiB 帧并补 idle-exit 状态。署名仍归 DeiDei contributors，不新增许可证。
 
-renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。没有网络服务、旧模型、训练、正式动画、安装包、签名或部署。
+renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。真实好友房由独立服务判定，主进程负责连接；renderer 没有任意联网、文件或进程能力。本地 worker 不加载旧模型或训练。当前 R04 演出与原生分发不改变这些安全边界；成包、签名和部署各自记录。
 
 手绘纸色与三类 18/9/6、三排十一列沿用已交付原型。1920×1080 证据为开发视口，非该尺寸物理显示器；物理断网和 Windows 仍需真人复测，步骤见本包 TEST-MATRIX。
 
 ## R03-T02-b 好友房桌面客户端（rooms-1.1）
 
-主菜单的好友联机现已接入 `online/NetworkRoomPort`，通过主进程全局 WebSocket 连接开发服务。正式启动默认没有服务器地址；没有配置时显示「联机服务尚未配置」，原离线单人仍可用。连接只在进入好友房时建立，临时会话凭证仅留在主进程内存，退出不修改本机档案格式。
+主菜单的好友联机现已接入 `online/network-room-port.cjs` 的 `NetworkRoomPort`，通过主进程全局 WebSocket 连接开发服务。正式启动默认没有服务器地址；没有配置时显示「联机服务尚未配置」，原离线单人仍可用。连接只在进入好友房时建立，临时会话凭证仅留在主进程内存，退出不修改本机档案格式。
 
 热更新 `npm run dev` 在未配置 `DEIDEI_ROOM_URL` 时自动使用仓库已有的 scripted fake socket，可直接查看创建房间、加入房间、大厅和牌桌；界面会明确标记「开发预览 · MOCK · 脚本化 socket」。这只用于前端迭代，不代表真实联机。配置地址后，热更新会改走真实开发服务：
 
@@ -88,21 +88,21 @@ DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop run dev
 DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
 ```
 
-启动环境只接受 `ws://127.0.0.1:<port>/rooms-v1` 或 `ws://[::1]:<port>/rooms-v1`，拒绝用户名、查询、片段和公网地址。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
+源码启动环境接受回环 `ws://127.0.0.1:<port>/rooms-v1` / `ws://[::1]:<port>/rooms-v1` 和证书有效的 `wss://<host>[:port]/rooms-v1`，拒绝远端明文 ws、用户名、查询和片段。成包由固定的 `resources/service-config.json` 指定 WSS；配置无效不会回退至环境变量，配置缺失只允许显式回环诊断。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
 
 创建表单从服务 hello 读取默认和范围。房间选项及身份来自服务；33 项卡牌资格/费用来自 self.options，卡面文字来自本地 catalog。DD 使用整数分数字形，揭晓资源取 ledger，观众与淘汰者没有选牌区。准备、房主开始、满员后主动改观战、房主缺席提示、重连、结果/下一场和离房均有独立状态。
 
 每次只发一个待确认意图。断线后按 1/2/4/8 秒带抖动重连，resume 后保留原请求 ID/序号/内容重试；明确失败的操作不自动重发。收到旧连接或旧快照不会覆盖新状态。正常离房等确认后关闭连接；网络断开时主动离开会停止重连，原席位由服务的掉线策略处理。系统关窗确认后最多等待 3 秒发送/确认离房，网络无法确认时仍允许退出。
 
 ```sh
-npm --prefix game/desktop test          # 原有 25 项保留，包含构建与类型检查
+npm --prefix game/desktop test          # 当前桌面／联机单测，包含构建与类型检查
 npm --prefix game/desktop run test:online
 npm --prefix game/desktop run smoke:online
 ```
 
 开发热更新和新窗口测试通过 `tests-online/smoke-main.cjs` 注入 scripted fake socket，界面标记「开发预览 · MOCK」，截图不代表真实联网。`smoke:online` 另外启动普通 main 验证无配置提示和真实离线 worker。结果见 `docs/results/R03-T02-b/`，没有接入任务01服务、改变打包路线或进行公网部署。
 
-本任务使用输入锁定的 React 19.3.0、Electron 44.3.0、TypeScript 7.0.2、esbuild 0.28.2、Playwright-core 1.63.0 和 @electron/packager 20.3.0，未改直接依赖或 package-lock。上方 R02-T04-a 的 Forge/23 项告警文字是历史交付记录，不能当作本次依赖现状。
+本任务使用输入锁定的 React 19.3.0、Electron 44.3.0、TypeScript 7.0.2、esbuild 0.28.2、Playwright-core 1.63.0 和 @electron/packager 20.3.0，未改直接依赖或 package-lock。旧 R02-T04-a 的 Forge／23 项告警不能当作本次依赖现状。
 
 rooms-1.1 默认每拍 10 秒，可选 5/8/10/12/20/30 秒；旧版本 hello 显示明确不兼容。房主可在大厅、选择、揭晓、结果阶段调整之后每拍时限，自然淘汰后仍可调整。当前拍时限、截止时间与已交牌保留，只有新快照更新待生效设置。
 
@@ -144,3 +144,10 @@ PRD/分镜及实际截图、核心账目在 `docs/results/R04-T01-b/tutorial/`�
 ## R04 前端阶段交付（2026-10-02）
 
 完整阶段成果、源码阅读顺序、验证边界与待规划技术债见 [阶段交接](../../docs/results/R04-T01-b/STAGE-HANDOFF-2026-10-02.md)。读取本阶段时以草稿 PR 正文的完整 head SHA 为准，不以默认 main 或早期测试计数代表本阶段。
+
+
+## R04-T02-a 分发输入
+
+原生 stage 由 `game/packaging/stage.cjs` 读取产品 `UI_ASSETS`，另列主进程运行模块；包括 `online/network-room-port.cjs`、`online/wire.cjs` 与 `catalog.json`，欢迎样式／视频／牌背与两张擂台图。缺文件或本地 require 未列入 stage 时，检查列出具体路径并失败。四张旧中庭图按现 PRD 保留源文件，不再进入正式白名单与分发。
+
+`ManualArchive.tsx` 引用的 `docs/results/R04-T01-b/manual-content/content.json` 属于真实编译输入：未提交时原生构建拒绝继续，其摘要进入 `build-info.json`。运行时使用编译后的 renderer，无需在包内携带 docs。原生验证和未测边界见 [任务 A 记录](../../docs/results/R04-T02-a/REPORT.md)。

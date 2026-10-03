@@ -1,0 +1,7 @@
+/* Keep the current first-entry form and preview actions visible on a short window. */
+@media(max-height:780px){
+ .app[data-page=profile]>.center{padding:24px 40px}
+ .app[data-page=profile] .paper.profile{padding:24px 30px}
+ .app[data-page=profile] .profile label{margin:14px 0}
+ .app[data-page=profile] .profile>.primary{margin-top:14px}
+}

@@ -6,14 +6,18 @@ const vm=require('node:vm');
 const {transformSync}=require('esbuild');
 
 // Execute the renderer's actual handlers. Window smoke checks the JSX wiring.
-const source=fs.readFileSync(path.join(__dirname,'renderer.tsx'),'utf8');
-const start=source.indexOf(' const navigate='), end=source.indexOf(' const start=',start);
-assert.ok(start>=0 && end>start,'Renderer navigation handlers must be present');
-const code=transformSync(source.slice(start,end)+'\nglobalThis.handlers={navigate,changeScene};',{loader:'ts'}).code;
+const source=fs.readFileSync(path.join(__dirname,'useSoloSession.ts'),'utf8');
+const start=source.indexOf(' const navigate='), end=source.indexOf(' return {view',start);
+assert.ok(start>=0 && end>start,'Solo session navigation handlers must be present');
+const code=transformSync(source.slice(start,end)+'\nglobalThis.handlers={navigate,changeScene,leave};',{loader:'ts'}).code;
 function renderer() {
  const state={page:'prepare',busy:false,error:'',readError:false,view:null,modal:'preview',frozen:false,situationPlayer:''};
  const context={sceneChangePending:{current:false},generation:{current:0},busy:false,message:code=>code};
  for(const key of ['page','busy','error','readError','view','modal','frozen','situationPlayer','arenaExiting','pendingResult','welcomePreview'])context['set'+key[0].toUpperCase()+key.slice(1)]=value=>{state[key]=value;};
+ context.api={port:{leave:async()=>({ok:true,data:null})}};
+ context.take=reply=>{if(!reply.ok)throw new Error(reply.error);return reply.data;};
+ context.onLeave=()=>context.setPage('menu');
+ context.onViewReady=nextPage=>{context.setPage(nextPage);context.setModal('');context.setFrozen(false);};
  vm.runInNewContext(code,context);
  return {state,...context};
 }
@@ -66,4 +70,16 @@ test('F02 existing generation protection discards stale success and error',async
   assert.equal(r.state.page,'prepare');assert.equal(r.state.view,null);assert.equal(r.state.error,'');
   assert.equal(r.sceneChangePending.current,false);
  }
+});
+
+
+test('old leave failure cannot write an error into a newer match',async()=>{
+ const r=renderer(),pending=deferred();r.state.error='old error';
+ r.api.port.leave=()=>pending.promise;
+ const leaving=r.handlers.leave();assert.equal(r.state.page,'menu');assert.equal(r.state.error,'');
+ await r.handlers.changeScene(async()=>({match_id:'new'}),'intro');
+ pending.resolve({ok:false,error:'MATCH_INTERRUPTED'});await leaving;
+ assert.equal(r.state.page,'intro');assert.equal(r.state.view.match_id,'new');assert.equal(r.state.error,'');
+ r.api.port.leave=async()=>({ok:false,error:'SAVE_FAILED'});await r.handlers.leave();
+ assert.equal(r.state.error,'SAVE_FAILED');
 });

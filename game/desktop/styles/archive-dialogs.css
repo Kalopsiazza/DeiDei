@@ -1,0 +1,10 @@
+/* Archive guides keep their own focus and scroll, above the selected card. */
+dialog.tech-dialog.archive-dialog{width:min(1080px,calc(100vw - 64px));height:min(88vh,880px);max-height:none;display:flex;flex-direction:column;overflow:hidden;clip-path:none}
+.archive-dialog>.dialog-head{flex:none;margin-bottom:14px}
+.archive-dialog-scroll{flex:1;min-height:0;overflow:auto;overscroll-behavior:contain;padding:4px 12px 20px 4px;scrollbar-width:thin;scrollbar-color:#8ceaf359 transparent}
+.archive-dialog-scroll p,.archive-dialog-scroll li{font-size:15px;line-height:1.8}
+.archive-dialog .archive-dialog-scroll button{clip-path:none}
+.archive-dialog-scroll button[aria-pressed=true]{color:#fff;border-color:#8ceaf3;background:linear-gradient(110deg,#35606b90,#152b3880);box-shadow:inset 0 -2px #8ceaf3}
+.archive-heading button.archive-tutorial-entry{border-color:#8ceaf37a;background:linear-gradient(120deg,#3669789c,#112b3cc9);color:#eaffff}
+
+.app[data-page=manual] .archive-dialog button.archive-play{border-radius:50%}

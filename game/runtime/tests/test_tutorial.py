@@ -24,6 +24,7 @@ class TutorialTests(unittest.TestCase):
         self.now += 2
         revealed = self.game.get_view()
         self.assertEqual(revealed['phase'], 'revealed')
+        self.assertEqual(revealed['public_round']['actions']['learner']['entry_id'], entry)
         self.now += 100
         self.assertEqual(self.game.get_view()['phase'], 'revealed')
         return revealed
@@ -48,6 +49,8 @@ class TutorialTests(unittest.TestCase):
     def test_guided_and_independent_match_resolve_once_and_finish(self):
         first = self.game.get_view()
         self.assertEqual(first['source'], 'live')
+        self.assertEqual(first['mode'], 'tutorial')
+        self.assertIsNone(first['public_round'])
         self.assertEqual(len(first['options']), 3)
         snapshot = deepcopy(self.game.session.snapshot())
         for entry, error in [('Def', 'TUTORIAL_TRY_TARGET'), ('Reflect', 'UNAVAILABLE_MOVE')]:
