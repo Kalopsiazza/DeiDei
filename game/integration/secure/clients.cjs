@@ -35,9 +35,9 @@ async function close(c){
   await until(()=>c.process.exitCode!==null||c.process.signalCode,'owned Electron exit',5000);c.closed=true;
  }
 }
-async function select(c,entry){
+async function select(c,entry,hostDeparture=false){
  const s=await state(c),m=s.snapshot.view.match;
- if(gui){await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());await c.page.bringToFront();await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');assert.equal((await state(c)).error,null);}
+ if(gui){await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());await c.page.bringToFront();await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');const after=await state(c);assert.ok(after.error===null||(hostDeparture&&after.error?.code==='HOST_LEFT'&&after.snapshot?.view.phase==='closed'),'unexpected submit error');}
  else await call(c,'submit',{room_id:s.snapshot.room_id,match_id:m.match_id,turn_id:m.turn_id,entry_id:entry});
 }
 async function readyStart(h,g,rid){for(const c of [h,g])await call(c,'ready',{room_id:rid,ready:true});await call(h,'start',{room_id:rid});await until(async()=>(await state(g)).snapshot?.view.phase==='selecting','new selecting');if(gui)await Promise.all([h,g].map(c=>enterArena(c.page)));}
@@ -91,9 +91,9 @@ async function round(h,g,v,entries){
    await call(host,'returnLobby',{room_id:rid});await until(async()=>(await state(guest)).snapshot?.view.phase==='lobby','return lobby');
   }
   pass('S13','two full matches, two players + spectator, matching real-core ledgers, fresh IDs, private choices hidden, spectator submit denied');
-  await readyStart(host,guest,rid);await select(host,'Charge');await call(host,'leave');await select(guest,'Charge');
+  await readyStart(host,guest,rid);const guestId=(await state(guest)).snapshot.view.self.player_id;await select(host,'Charge');await call(host,'leave');await select(guest,'Charge',true);
   await until(async()=>(await state(viewer)).snapshot?.view.phase==='closed','host departure closes current turn',10000);
-  const closed=(await state(viewer)).snapshot.view;assert.equal(closed.close_reason,'HOST_LEFT');assert.equal(closed.match.effective_outcome,null);await shot(viewer,'tls-host-left');pass('S16','host leaves after submission; current turn closes HOST_LEFT with no fabricated winner');
+  const closed=(await state(viewer)).snapshot.view;assert.equal(closed.close_reason,'HOST_LEFT');assert.equal(closed.match.effective_outcome,null);assert.equal(closed.match.last_turn.core_resolution.ledger.actions[guestId].entry_id,'Charge');assert.equal(closed.match.last_turn.action_sources[guestId],'human');await shot(viewer,'tls-host-left');pass('S16','host leaves after submission; guest human Charge closes current turn HOST_LEFT with no fabricated winner');
   await control('restart');await until(async()=>(await state(guest)).error?.code==='SERVER_RESTART','old identity rejected');await shot(guest,'tls-server-restart');pass('S15','same TLS endpoint restarts: SERVER_RESTART, no silent room restoration');
   await control('stop');const profile=gui?await fs.readFile(path.join(guest.dir,'local-profile/profile.json')):null;
   if(gui){
@@ -102,7 +102,7 @@ async function round(h,g,v,entries){
    await leaveSolo(guest.page);assert.deepEqual(await fs.readFile(path.join(guest.dir,'local-profile/profile.json')),profile);
   }else{const profile={local_id:'tls-offline',nickname:'离线测试',avatar_id:'leaf'},worker=new WorkerPort(profile);workers.push(worker);const view=await worker.startSolo(profile.local_id);assert.equal(view.source,'live');assert.equal(view.phase,'selecting');await worker.close();}
   pass('S17','service stays stopped; actual source offline worker starts');assert.deepEqual(evidence.page_errors,[]);evidence.status='PASS';
- }catch(e){evidence.error=e.stack||e.message;process.exitCode=1;for(const c of clients)if(c.page&&!c.closed)try{await shot(c,'tls-failure-'+c.name);}catch{}}
+ }catch(e){evidence.error=e.stack||e.message;process.exitCode=1;evidence.failureStates=[];for(const c of clients)if(c.page&&!c.closed)try{evidence.failureStates.push({name:c.name,state:await state(c)});await shot(c,'tls-failure-'+c.name);}catch{}}
  finally{
   for(const c of clients)await close(c);for(const w of workers)await w.close();for(const dir of directories)await fs.rm(dir,{recursive:true,force:true});
   evidence.processes=processes.map(p=>({pid:p.pid,exit_code:p.exitCode,signal:p.signalCode,exited:p.exitCode!==null||!!p.signalCode}));evidence.profiles_removed=true;
