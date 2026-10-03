@@ -36,7 +36,7 @@
 | `completion-final-product/checks.json` | P2＋QA／文档dirty，产品编译与P2一致 | 最终候选再次14 PASS，普通exit0、无force。只声明此14项行为通过，不扩大成物理动态接受。 |
 | `dynamic-product/dynamic.json` | P1＋QA dirty；普通 main／真实 worker | FAIL，8路线117记录。图鉴纯resize保持 Bi／stack1248／detail0；随后键盘遍历把详情页签滚到视口外，驱动未显式导航。修的是该长详情导航，不改布局掩盖失败。 |
 | `dynamic-product-v2/dynamic.json` | P1＋QA dirty | FAIL，10路线188记录；教程、长规则、结果、偏好均已执行，末项560高空间已看到页尾关闭，却误点屏外页首返回。修为点击刚验证的页尾关闭。 |
-| `dynamic-final-product/dynamic.json` | P2＋QA dirty | FAIL，设置页第四停点1366×768整体偏移，返回按钮 `x204.203/y−78.156`，相对初次同尺寸移动 `−195.5/−143.5`。不是已确认的驱动误点。短路径诊断 `settings-diagnose.json` 未复现；新增祖先滚动采样，不猜 owner／不改CSS。 |
+| `dynamic-final-product/dynamic.json` | P2 clean | FAIL，设置页第四停点1366×768整体偏移，返回按钮 `x204.203/y−78.156`，相对初次同尺寸移动 `−195.5/−143.5`。不是已确认的驱动误点。短路径诊断 `settings-diagnose.json` 未复现；新增祖先滚动采样，不猜 owner／不改CSS。 |
 | `dynamic-final-product-v2/dynamic.json` | P2＋QA／文档 dirty；产品编译指纹与P2一致 | PASS，10路线189记录，普通exit0／无force。真实worker会话／选牌保持、图鉴选择／阅读位置保持、教程／本地结果／短长弹窗、三个高风险偏好与1000×560页尾关闭返回完成；上述设置偏移本次未再现，不能称根因已修。 |
 | `online-v7/checks.json` | af5＋dirty，renderer/CSS与P1匹配；普通 main＋实际 owned CLI 回环服务＋合成对手 | 整体FAIL：Charge public reveal超时。观战路线置于已提交后的当拍窗口，会占用服务时限；原件未存完整arm时钟，不把所有超时原因归定。六人最小33牌／姓名、观战、selecting时限Apply有部分正向证据。旧FAIL保留；后续driver把观战检查移到host提交前。 |
 | `online-final-product/checks.json` | P2＋QA／文档dirty | FAIL：名为selecting的停点实际已revealed，隐藏选牌的命中检查失败；不能当成选择阶段裁剪缺陷。驱动增加实际selecting前置条件。 |
@@ -47,7 +47,7 @@
 | `welcome-product/welcome-native.json` | P1 clean；真实dev watcher，scripted socket明确MOCK | 37 PASS／11分段：fresh、同进程跳过／自然重播、建档、设置返回、P01不写档、真实build后`.reload`触发reloadIgnoringCache、已有身份开场／重播／菜单。PID38275保持、document ID变化；无失败资产／page／console错误，普通exit0／children退出／profile删除。历史人物异常本轮未复现，不称已找到原因。 |
 | `archive-focused-before`／`archive-static-backdrop` | af5＋旧dirty／隔离CSS对照；1920×1080、native DPR2、native/document焦点均true | 旧严格对照局部改善成立，最终P2严格聚焦复测未完成。不能继承为最终产品PASS。 |
 
-自动动态路线每段12步连续 native setContentSize，四停点1366×768→1000×650→1920×1080→1366×768，并在两个停点实际操作。solo／archive另测1600×650、1000×1000、1920×1200、2560×1080；超显示器可用区逐样本标明 oversized，不能当物理超宽／4K。实际下限 outer1000×682、content／inner1000×650、DPR2。短空间1000×560为CDP内容模拟，不宣称移动端。native setContentSize、设置全屏checkbox、自动截图均不替代原生拖窗／全屏录屏。
+本地自动动态路线每段12步连续 native setContentSize，四停点1366×768→1000×650→1920×1080→1366×768，并在两个停点实际操作；联机动态每段6步。solo／archive另测1600×650、1000×1000、1920×1200、2560×1080；超显示器可用区逐样本标明 oversized，不能当物理超宽／4K。实际下限 outer1000×682、content／inner1000×650、DPR2。短空间1000×560为CDP内容模拟，不宣称移动端。native setContentSize、设置全屏checkbox、自动截图均不替代原生拖窗／全屏录屏。
 
 最后的QA guard另要求当前仍submitting、飞牌仍存在、DOM及采样均在预期终点；补有界观察前的当前phase／飞牌／frame age，以及之后运行的服务deadline记录。VM自检拒绝revealed、移除飞牌、错误终点和移动epoch的历史样本；该新guard未重新完成GUI整条联机，仍以上述FAIL为实际结果。pre-RO RAF与after-RO数据分开，不把前者暂态误差当永久呈现偏差，也不把后者部分命中冒充最终稳态。
 
