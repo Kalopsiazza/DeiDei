@@ -6,7 +6,7 @@ const {until}=require('../peer.cjs');
 const {enterHall,enterArena,leaveSolo}=require('../gui-actions.cjs');
 const layer=process.env.DEIDEI_TLS_LAYER,gui=layer==='L4',output=process.env.DEIDEI_SECURE_OUTPUT,desktop=path.resolve(__dirname,'../../desktop');
 const clients=[],directories=[],workers=[],processes=[];
-const evidence={layer,status:'FAIL',checks:[],screenshots:[],page_errors:[],versions:process.versions};
+const evidence={layer,backgroundThrottling:gui?false:null,status:'FAIL',checks:[],screenshots:[],page_errors:[],versions:process.versions};
 const input=readline.createInterface({input:process.stdin});let controlReply;
 input.on('line',line=>{assert.equal(line,'OK');controlReply?.();controlReply=null;});
 async function control(control,extra={}){const reply=new Promise(resolve=>{controlReply=resolve;});process.stdout.write(JSON.stringify({control,...extra})+'\n');await reply;}
@@ -17,7 +17,7 @@ async function make(name,url){
   const {_electron}=require('../../desktop/node_modules/playwright-core');
   const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-tls-window-'));directories.push(dir);
   c.dir=dir;c.app=await _electron.launch({args:[path.join(desktop,'main.cjs')],env:{...process.env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url}});
-  c.process=c.app.process();processes.push(c.process);c.page=await c.app.firstWindow();c.page.setDefaultTimeout(10000);c.page.on('pageerror',e=>evidence.page_errors.push(e.message));
+  c.process=c.app.process();processes.push(c.process);await c.app.evaluate(({BrowserWindow})=>{const window=BrowserWindow.getAllWindows()[0];window.webContents.setBackgroundThrottling(false);window.focus();});c.page=await c.app.firstWindow();c.page.setDefaultTimeout(10000);c.page.on('pageerror',e=>evidence.page_errors.push(e.message));
   await enterHall(c.page,name);
   await c.page.getByRole('button',{name:'好友联机',exact:false}).click();evidence.electron=await c.app.evaluate(()=>process.versions);
  }else{c.port=new NetworkRoomPort({url});c.port.openLobby({nickname:name,avatar_id:'leaf'});}
@@ -37,10 +37,10 @@ async function close(c){
 }
 async function select(c,entry){
  const s=await state(c),m=s.snapshot.view.match;
- if(gui){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');assert.equal((await state(c)).error,null);}
+ if(gui){await c.page.bringToFront();await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'UI submit ack');assert.equal((await state(c)).error,null);}
  else await call(c,'submit',{room_id:s.snapshot.room_id,match_id:m.match_id,turn_id:m.turn_id,entry_id:entry});
 }
-async function readyStart(h,g,rid){for(const c of [h,g])await call(c,'ready',{room_id:rid,ready:true});await call(h,'start',{room_id:rid});await until(async()=>(await state(g)).snapshot?.view.phase==='selecting','new selecting');if(gui)for(const c of [h,g])await enterArena(c.page);}
+async function readyStart(h,g,rid){for(const c of [h,g])await call(c,'ready',{room_id:rid,ready:true});await call(h,'start',{room_id:rid});await until(async()=>(await state(g)).snapshot?.view.phase==='selecting','new selecting');if(gui)await Promise.all([h,g].map(c=>enterArena(c.page)));}
 async function round(h,g,v,entries){
  const turn=(await state(h)).snapshot.view.match.turn_id;
  for(const c of [g,v])await until(async()=>(await state(c)).snapshot?.view.match.turn_id===turn,'same turn');
@@ -100,7 +100,7 @@ async function round(h,g,v,entries){
    await leaveSolo(guest.page);assert.deepEqual(await fs.readFile(path.join(guest.dir,'local-profile/profile.json')),profile);
   }else{const profile={local_id:'tls-offline',nickname:'离线测试',avatar_id:'leaf'},worker=new WorkerPort(profile);workers.push(worker);const view=await worker.startSolo(profile.local_id);assert.equal(view.source,'live');assert.equal(view.phase,'selecting');await worker.close();}
   pass('S17','service stays stopped; actual source offline worker starts');assert.deepEqual(evidence.page_errors,[]);evidence.status='PASS';
- }catch(e){evidence.error=e.message;process.exitCode=1;for(const c of clients)if(c.page&&!c.closed)try{await shot(c,'tls-failure-'+c.name);}catch{}}
+ }catch(e){evidence.error=e.stack||e.message;process.exitCode=1;for(const c of clients)if(c.page&&!c.closed)try{await shot(c,'tls-failure-'+c.name);}catch{}}
  finally{
   for(const c of clients)await close(c);for(const w of workers)await w.close();for(const dir of directories)await fs.rm(dir,{recursive:true,force:true});
   evidence.processes=processes.map(p=>({pid:p.pid,exit_code:p.exitCode,signal:p.signalCode,exited:p.exitCode!==null||!!p.signalCode}));evidence.profiles_removed=true;

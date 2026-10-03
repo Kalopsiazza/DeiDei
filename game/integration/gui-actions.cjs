@@ -1,6 +1,7 @@
 // Current public controls shared by the real socket and TLS Electron harnesses.
 const assert=require('node:assert/strict');
 async function enterHall(page,name){
+ await page.bringToFront();
  await page.locator('.welcome-scene').waitFor();
  const skip=page.getByRole('button',{name:'跳过开场',exact:false});
  if(await skip.count())await skip.click();
@@ -11,6 +12,7 @@ async function enterHall(page,name){
  await page.locator('.menu-layout').waitFor();
 }
 async function enterArena(page){
+ await page.bringToFront();
  await page.locator('.match-intro, .online-intro, .battle-table').waitFor();
  const skip=page.getByRole('button',{name:/立即进入|立即入场/});
  if(await skip.count())await skip.click();

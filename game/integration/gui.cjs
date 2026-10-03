@@ -16,7 +16,7 @@ const python=process.env.DEIDEI_PYTHON||'python3';
 const env={...process.env,PYTHONPATH:[path.join(root,'game/core'),path.join(root,'game/server')].join(path.delimiter)};
 delete env.ELECTRON_RUN_AS_NODE;
 const apps=[],children=[],peers=[],directories=[];
-const evidence={code_sha:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain','--','game'],{cwd:root,encoding:'utf8'}).trim(),source:'online',transport:'real CLI WebSocket server; ordinary Electron main/preload; temporary synthetic profiles',platform:process.platform,arch:process.arch,checks:[],screenshots:[],page_errors:[]};
+const evidence={code_sha:execFileSync('git',['rev-parse','HEAD'],{cwd:root,encoding:'utf8'}).trim(),dirty:!!execFileSync('git',['status','--porcelain','--','game'],{cwd:root,encoding:'utf8'}).trim(),source:'online',transport:'real CLI WebSocket server; ordinary Electron main/preload; temporary synthetic profiles',platform:process.platform,arch:process.arch,backgroundThrottling:false,checks:[],screenshots:[],page_errors:[]};
 const pass=(id,detail)=>{evidence.checks.push({id,status:'PASS',detail});console.log('PASS',id,detail);};
 async function processWithAddress(args){
  const child=spawn(python,args,{cwd:root,env,stdio:['pipe','pipe','pipe']});children.push(child);
@@ -29,6 +29,7 @@ async function stop(child){if(child.exitCode!==null||child.signalCode)return;chi
 async function launch(name,url){
  const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-real-window-'));directories.push(dir);
  const app=await electron.launch({args:[path.join(desktop,'main.cjs')],env:{...env,DEIDEI_TEST_DATA_DIR:dir,DEIDEI_ROOM_URL:url,DEIDEI_PYTHON:python}});apps.push(app);app.__ownedProcess=app.process();
+ await app.evaluate(({BrowserWindow})=>{const window=BrowserWindow.getAllWindows()[0];window.webContents.setBackgroundThrottling(false);window.focus();});
  const page=await app.firstWindow();page.setDefaultTimeout(12000);page.on('pageerror',e=>evidence.page_errors.push(e.message));
  await enterHall(page,name);
  return {app,page,dir,name};
