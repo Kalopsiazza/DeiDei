@@ -57,7 +57,7 @@ async function submit(c,entry){
  await c.app.evaluate(({BrowserWindow})=>BrowserWindow.getAllWindows()[0].focus());
  await c.page.bringToFront();
  evidence.actions??=[];const action={name:c.name,entry,startedAt:new Date().toISOString(),steps:[]};evidence.actions.push(action);
- const step=async name=>{const s=await state(c);action.steps.push({name,at:new Date().toISOString(),phase:s.snapshot?.view.phase,turn:s.snapshot?.view.match?.turn_id,remaining:s.snapshot?.view.timer.remaining_ms,pending:s.pending,dom:await c.page.evaluate(()=>({phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,focused:document.hasFocus(),selected:[...document.querySelectorAll('.card-pick[aria-pressed=true]')].map(n=>n.closest('.card')?.dataset.entry)}))});};
+ const step=async name=>{const s=await state(c);action.steps.push({name,at:new Date().toISOString(),monotonicMs:performance.now(),phase:s.snapshot?.view.phase,turn:s.snapshot?.view.match?.turn_id,deadline:s.snapshot?.view.timer.deadline_at_ms,remaining:s.snapshot?.view.timer.remaining_ms,pending:s.pending,dom:await c.page.evaluate(()=>({phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,focused:document.hasFocus(),selected:[...document.querySelectorAll('.card-pick[aria-pressed=true]')].map(n=>n.closest('.card')?.dataset.entry)}))});};
  await step('requested');
  await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();
  const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);
