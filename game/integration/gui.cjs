@@ -52,8 +52,13 @@ async function measureReveal(c,name,action){
   if(completed)assert.ok(reveal.length>0,`${name}: no real revealed UI frame sampled`);
  }
 }
-async function submit(c,entry){await c.page.locator(`[data-entry="${entry}"] .card-pick`).click();await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');}
-async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');for(const c of [host,guest])if(c)await enterArena(c.page);}
+async function submit(c,entry){
+ await c.page.locator('.battle-table[data-phase="selecting"][data-ready="true"]').waitFor();
+ const card=c.page.locator(`[data-entry="${entry}"] .card-pick`);
+ await card.click();await until(async()=>await card.getAttribute('aria-pressed')==='true',`selected ${entry}`);
+ await c.page.getByRole('button',{name:'确认出招',exact:true}).click();await until(async()=>!(await state(c)).pending,'submit ack');
+}
+async function start(host,guest,players,rid){for(const c of [host,guest]){if(c)await c.page.getByRole('button',{name:'准备',exact:true}).click();}await Promise.all(players.map(p=>p.ok('room.ready',{room_id:rid,ready:true})));await host.page.getByRole('button',{name:'开始对局',exact:true}).click();await until(async()=>(await state(host)).snapshot?.view.phase==='selecting','match starts');await Promise.all([host,guest].filter(Boolean).map(c=>enterArena(c.page)));}
 async function leave(c){
  const s=await state(c),phase=s.snapshot?.view.phase;
  if(s.snapshot&&phase!=='closed'&&s.status!=='unavailable'){
@@ -182,7 +187,7 @@ async function leave(c){
   await guest.app.evaluate(({dialog,BrowserWindow})=>{global.__closePrompts=[];dialog.showMessageBox=async(_w,o)=>{global.__closePrompts.push(o.message);return {response:0};};BrowserWindow.getAllWindows()[0].close();});await sleep(100);assert.equal(await guest.app.evaluate(()=>global.__closePrompts.length),1);assert.equal((await state(guest)).status,'connected');
   await control({op:'hold',types:['ack']});const began=Date.now();const closed=guest.app.waitForEvent('close');await guest.app.evaluate(({dialog,BrowserWindow})=>{dialog.showMessageBox=async()=>({response:1});BrowserWindow.getAllWindows()[0].close();});await closed;assert.ok(Date.now()-began<4500);pass('Q17','Existing native close confirmation cancelled then accepted; genuine leave ACK held by relay, exit finishes within bounded 3s wait. Dialog response automated, no transport mock.');
   assert.deepEqual(evidence.page_errors,[]);evidence.status='PASS';
- } catch(error){evidence.status='FAIL';evidence.error=error.message;for(let i=0;i<apps.length;i++){try{const page=await apps[i].firstWindow();await page.screenshot({path:path.join(output,`failure-window-${i}.png`),scale:'css'});}catch{}}throw error;}
+ } catch(error){evidence.status='FAIL';evidence.error=error.stack||error.message;evidence.failureStates=[];for(const app of apps){try{const page=await app.firstWindow();evidence.failureStates.push({state:(await page.evaluate(()=>window.desktop.online.read())),dom:await page.evaluate(()=>({route:document.querySelector('.app')?.dataset.page,phase:document.querySelector('.battle-table')?.dataset.phase,ready:document.querySelector('.battle-table')?.dataset.ready,selected:[...document.querySelectorAll('.card-pick[aria-pressed=true]')].map(n=>n.closest('.card')?.dataset.entry),confirm:document.querySelector('.battle-actions .primary')?.outerHTML}))});}catch{}}for(let i=0;i<apps.length;i++){try{const page=await apps[i].firstWindow();await page.screenshot({path:path.join(output,`failure-window-${i}.png`),scale:'css'});}catch{}}throw error;}
  finally{
   for(const p of peers)p.close();
   for(const app of apps){try{await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});await app.close();}catch{app.__ownedProcess?.kill('SIGKILL');}}
