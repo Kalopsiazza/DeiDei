@@ -5,7 +5,7 @@ const {createRequire}=require('node:module');
 const {UI_ASSETS}=require('../desktop/ui-assets.cjs');
 const RUNTIME_FILES=Object.freeze(['main.cjs','ui-assets.cjs','preload.cjs','profile.cjs',
  'worker-port.cjs','worker-bridge.cjs','worker-launch.cjs','online/network-room-port.cjs',
- 'online/wire.cjs','catalog.json','build/fixture.cjs']);
+ 'online/wire.cjs','online/service-config.cjs','catalog.json','build/fixture.cjs']);
 const STAGE_FILES=Object.freeze([...RUNTIME_FILES,...Object.keys(UI_ASSETS).map(name=>'build/ui/'+name)]);
 function verifyStage(directory) {
  directory=fs.realpathSync(directory);
