@@ -8,7 +8,7 @@ from uuid import uuid4
 from deidei_core.api import list_options, new_match
 from .opponent import choose_entry, needs_token, OPPONENT_NAME
 from .session import MatchSession, expected_turn
-from .view import options_view, participants_view, ledger_summary, progress, TRANSITIONS
+from .view import options_view, participants_view, ledger_summary, progress, public_round, TRANSITIONS
 
 
 class SoloGame:
@@ -110,7 +110,10 @@ class SoloGame:
             timer = {"mode": "reveal",
                      "remaining_ms": max(0, total_ms - round((self.clock() - self.phase_at) * 1000)),
                      "total_ms": total_ms}
-        return deepcopy({"source": "live", "view_id": self.view_id, **self.expected, "phase": self.phase,
+        return deepcopy({"mode": "solo", "self_role": "player",
+                         "self_participation": "active" if self.self_id in (resolution["next_state"]["active_ids"] if resolution else self.state["active_ids"]) else "eliminated",
+                         "public_round": public_round(resolution, self.view_id) if resolution else None,
+                         "source": "live", "game_index": self.state["game_index"], "view_id": self.view_id, **self.expected, "phase": self.phase,
                          "participants": participants_view(self.state, self.profiles, submitted, resolution),
                          "self_id": self.self_id, "options": self.options, "selected_entry_id": self.selected,
                          "submitted": submitted, "timer": timer,
@@ -120,4 +123,4 @@ class SoloGame:
         view = self._view()
         self.session.close()
         self.closed = True
-        return {**view, "phase": "error", "options": [], "summary": ["本场已结束。"], "outcome": None}
+        return {**view, "phase": "error", "public_round": None, "options": [], "summary": ["本场已结束。"], "outcome": None}

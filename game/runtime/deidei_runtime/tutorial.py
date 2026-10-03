@@ -72,6 +72,7 @@ class TutorialGame(SoloGame):
 
     def _view(self) -> dict:
         view = super()._view()
+        view['mode'] = 'tutorial'
         view['options'] = [option for option in view['options'] if option['entry_id'] in BASIC_ENTRIES]
         view['timer'] = {'mode': 'untimed', 'remaining_ms': None, 'total_ms': None}
         view['tutorial'] = {

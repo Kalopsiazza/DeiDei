@@ -99,3 +99,15 @@ def ledger_summary(resolution: dict, profiles: dict) -> list[str]:
                            f"{EVENT_RESOURCE_NAMES.get(event['resource'], '资源')}。")
     summary.append(TRANSITIONS[resolution["transition"]["kind"]])
     return summary
+
+
+def public_round(resolution: dict, turn_id: str) -> dict:
+    """Copy only the already revealed action/identity fields from the ledger."""
+    ledger = resolution["ledger"]
+    return {**{key: ledger[key] for key in ("match_id", "game_id", "turn_index")},
+            "turn_id": turn_id,
+            "actions": {pid: {key: action[key] for key in
+                         ("entry_id", "actual_move", "branch", "is_recovery")}
+                        for pid, action in ledger["actions"].items()},
+            "next_game_id": resolution["next_state"]["game_id"],
+            "next_turn_index": resolution["next_state"]["turn_index"]}

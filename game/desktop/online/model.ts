@@ -13,7 +13,7 @@ export function optionsFor(snapshot:RoomSnapshot|null,manual:Manual):Option[] {
 }
 export function publicPlayers(snapshot:RoomSnapshot):Record<string,CorePlayer> {
  const m=snapshot.view.match;if(!m)return {};
- const revealing=snapshot.view.phase==='revealing';
+ const revealing=['revealing','result'].includes(snapshot.view.phase);
  return revealing&&m.last_turn ? {...m.public_state.players,...m.last_turn.core_resolution.ledger.post_turn_players} : m.public_state.players;
 }
 export function remainingAt(state:OnlineState,receivedAt:number,now:number):number|null {
@@ -63,13 +63,16 @@ export function onlineBattleView(state:OnlineState,manual:Manual,remainingMs:num
  const snapshot=state.snapshot,v=snapshot?.view,match=v?.match;
  if(!snapshot||!v||!match)return null;
  const revealed=v.phase==='revealing',result=v.phase==='result',last=revealed||result?match.last_turn:null;
- const visibleState=revealed&&last?last.effective_state:match.public_state,players=publicPlayers(snapshot);
+ const visibleState=last?last.effective_state:match.public_state,players=publicPlayers(snapshot);
+ const ledger=last?.core_resolution.ledger;
+ const publicRound=last&&ledger?{match_id:ledger.match_id,game_id:ledger.game_id,turn_index:ledger.turn_index,turn_id:last.turn_id,actions:Object.fromEntries(Object.entries(ledger.actions).map(([pid,action])=>[pid,{entry_id:action.entry_id,actual_move:action.actual_move,branch:action.branch,is_recovery:action.is_recovery}])),next_game_id:last.effective_state.game_id,next_turn_index:last.effective_state.turn_index}:null;
  const members=new Map(v.members.map(member=>[member.player_id,member]));
  const confirmed=state.confirmed?.room_id===snapshot.room_id&&state.confirmed.match_id===match.match_id&&state.confirmed.turn_id===match.turn_id?state.confirmed.entry_id:null;
  const selected=v.self.accepted_entry_id||confirmed,submitted=!!selected;
  const me=members.get(v.self.player_id),canSeeOptions=v.phase==='selecting'&&v.self.role==='player'&&me?.participation==='active';
  return {
-  source:'online',view_id:`online:${snapshot.room_id}:${snapshot.seq}`,match_id:match.match_id,game_id:visibleState.game_id,turn_index:visibleState.turn_index,
+  mode:'multiplayer',self_role:v.self.role,self_participation:v.self.role==='spectator'?'spectating':me?.participation==='departing'?'departing':visibleState.active_ids.includes(v.self.player_id)&&me?.participation==='active'?'active':'eliminated',public_round:publicRound,
+  source:'online',game_index:match.public_state.game_index,view_id:`online:${snapshot.room_id}:${snapshot.seq}`,match_id:match.match_id,game_id:publicRound?.game_id||visibleState.game_id,turn_index:publicRound?.turn_index||visibleState.turn_index,
   phase:result?'result':revealed?'revealed':submitted?'submitting':'selecting',
   participants:[...match.roster_profiles].sort((a,b)=>(a.seat??99)-(b.seat??99)).map(profile=>participant(profile,members.get(profile.player_id),players[profile.player_id],visibleState.active_ids)),
   self_id:v.self.role==='player'?v.self.player_id:null,options:canSeeOptions?optionsFor(snapshot,manual):[],selected_entry_id:selected,submitted,

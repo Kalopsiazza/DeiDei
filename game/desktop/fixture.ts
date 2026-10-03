@@ -49,19 +49,25 @@ export class FixturePort {
     if (scene === 'restart') { participants[4].alive = false; participants[4].submission_state = 'out'; }
     this.progress = mid ? '本人进度：待成熟 0 · 炸药放置 3 次 · 云 / 田利军首次已用 · 张新伟未用，记录 Pragon · 历强已用 · 曾义奖励可用' : '本人进度：待成熟 0 · 炸药放置 0 次 · 云 / 田利军首次未用 · 张新伟未用，无记录 · 历强 / 曾义未用';
     const spectator = ['spectator','eliminated','restart'].includes(scene);
-    this.view = { source:'fixture',view_id:`fixture:${this.serial}`,match_id:`demo:${this.serial}`,game_id:`demo:${this.serial}:g${scene==='restart'?'2':'1'}`,turn_index:mid?'6':'1',phase:'selecting',participants,self_id:scene==='spectator'?null:participants[0].player_id,options:spectator?[]:options(mid),selected_entry_id:null,submitted:false,timer:{ mode: profile ? 'untimed' : 'preview',remaining_ms:profile?null:8000,total_ms:profile?null:12000 },summary:[scene==='restart'?'脚本：上轮两人淘汰，其余四人新局归零，原淘汰席位仍保留。':spectator?'公开摘要：等待仍在场的玩家揭晓。':'等待共同揭晓；目前只显示公开提交状态。'],outcome:null };
+    this.view = { mode:'preview',self_role:scene==='spectator'?'spectator':'player',self_participation:scene==='spectator'?'spectating':participants[0].alive?'active':'eliminated',public_round:null,game_index:scene==='restart'?'2':'1',source:'fixture',view_id:`fixture:${this.serial}`,match_id:`demo:${this.serial}`,game_id:`demo:${this.serial}:g${scene==='restart'?'2':'1'}`,turn_index:mid?'6':'1',phase:'selecting',participants,self_id:scene==='spectator'?null:participants[0].player_id,options:spectator?[]:options(mid),selected_entry_id:null,submitted:false,timer:{ mode: profile ? 'untimed' : 'preview',remaining_ms:profile?null:8000,total_ms:profile?null:12000 },summary:[scene==='restart'?'脚本：上轮两人淘汰，其余四人新局归零，原淘汰席位仍保留。':spectator?'公开摘要：等待仍在场的玩家揭晓。':'等待共同揭晓；目前只显示公开提交状态。'],outcome:null };
     if (scene==='winner' || scene==='defeat' || scene==='draw') this.finish(scene==='draw',scene==='defeat'?1:0,true);
     return this.copy();
   }
   private copy() { const v = structuredClone(this.view); if (v.self_id && v.options.length) v.summary.push(this.progress); return v; }
   private finish(draw = false, winnerIndex = 0, previewMoves = false) {
     this.view.phase = 'result';
+    if(!this.view.public_round)this.revealMoves(previewMoves?this.view.participants.map((_,index)=>index===winnerIndex?'Pragon':'Charge'):undefined);
     const winner = draw ? null : this.view.participants[winnerIndex].player_id;
     this.view.outcome = { winner_id:winner,reason:draw?'全员淘汰，无人获胜':'唯一存活者' };
     for (const p of this.view.participants) { p.alive = p.player_id === winner; p.submission_state = p.alive ? 'submitted' : 'out'; }
+    if(this.view.self_role==='player')this.view.self_participation=this.view.self_id===winner?'active':'eliminated';
     this.view.summary = previewMoves
       ? [...this.view.participants.map((p,index)=>`${p.nickname}：${index===winnerIndex?'Pragon':'攒／DeiDei'}（演示出招）。`),draw?'脚本示例：全员同时淘汰。':winnerIndex===0?'脚本示例：参赛者中仅本人存活。':'脚本示例：本人在最后一拍被 Pragon 淘汰。','结果由演示脚本预置，与本次选牌无关。']
       : [draw?'脚本示例：全员同时淘汰。':'脚本示例：参赛者中仅一人存活。','结果由演示脚本预置，与本次选牌无关。'];
+  }
+  private revealMoves(entries?:string[]) {
+    const demo=['Charge','Def','Reflect','PragonDef','Cloud','FreeThree'];
+    this.view.public_round={match_id:this.view.match_id,game_id:this.view.game_id,turn_index:this.view.turn_index,turn_id:this.view.view_id,next_game_id:this.view.game_id,next_turn_index:String(Number(this.view.turn_index)+1),actions:Object.fromEntries(this.view.participants.map((player,index)=>{const entry_id=entries?.[index]||(player.player_id===this.view.self_id?this.view.selected_entry_id:null)||demo[index%demo.length];return [player.player_id,{entry_id,actual_move:entry_id,branch:null,is_recovery:false}];}))};
   }
   async startSolo(profileId: string) { if (!this.profile || this.profile.local_id !== profileId) throw new Error('INVALID_PROFILE'); return this.reset('initial',this.profile); }
   async preview(scene: Scene) { if (!scenes.includes(scene)) throw new Error('INVALID_SCENE'); return this.reset(scene); }
@@ -87,6 +93,7 @@ export class FixturePort {
           const selfMove=this.view.options.find(o=>o.entry_id===this.view.selected_entry_id)?.name||'攒';
           const demoMoves=['攒','普通防御','反弹','Pragon 防','云','三雷'];
           this.view.phase='revealed';
+          this.revealMoves();
           this.view.summary=this.view.participants.map((p,index)=>`${p.nickname}：${p.player_id===this.view.self_id?selfMove:demoMoves[index%demoMoves.length]}（演示出招）。`);
           this.view.summary.push('这是状态演示，未计算攻击、收益或胜负。');
         }
