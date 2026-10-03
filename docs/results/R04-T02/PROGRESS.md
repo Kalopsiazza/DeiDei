@@ -4,12 +4,12 @@
 
 |包|状态|本次证据/下一步|
 |---|---|---|
-|A 交付与输入完整性|代码完成，待集成成包|62项初验和运行清单通过；C/D/E 已集成，锁定原生环境最终成包即将执行|
+|A 交付与输入完整性|原生成包完成；GUI未验|固定0a37a89：31构建步骤exit0、desktop79、stage56、独立冻结/解包worker通过；成包GUI需一次性CI系统账户|
 |B 公开牌局数据|完成|实现852a211；56 JS/27 runtime/类型构建通过，真实单人和MOCK目标画面通过（f8d4779）|
 |C 交互恢复与归属|完成|9162150／8a65b88；本地恢复12、MOCK恢复5组、完整擂台与真实房间退出通过；成员已失效退出边界6项通过|
 |D UI 与适配|完成代表性验收|91c15b3／2154b19；65检查、六态与72尺寸场景通过，共用CSS规则与两份运行样式；物理跨屏等未验|
 |E 真实联调与 TLS|本机完成|真实Electron13组、TLS28组、socket10种子、server71通过；坏证书身份计数0；跨设备未验|
-|F 性能与欢迎可靠性|基线完成，待最终对照|基线0f4f150；欢迎原52通过，偶发失败未复现；1920图鉴停顿可复现但JS根因未定位|
+|F 性能与欢迎可靠性|基线与最终诊断完成；长帧未定位|报告7f66b0d；固定0a37a89欢迎52通过；1920图鉴仍有长帧；fresh/focus/profile两人未复现旧停顿，不宣称修复|
 
 本机执行路径位于项目 `.worktrees/r04-t02-a`、`r04-t02-b`、`r04-t02-e`、`r04-t02-f`。C/D 已分别建立在 `.worktrees/r04-t02-c`、`r04-t02-d`。结果按包放 `docs/results/R04-T02-a` 至 `R04-T02-f`，大日志和生成包留忽略目录 `.local-outputs` / 原 `build`。
 
@@ -24,3 +24,15 @@
 - UI 覆盖清单包括欢迎、菜单、准备、单人/联机战局、大厅、图鉴、教程、设置、结算及各类弹窗；同职责控件覆盖默认、hover、active、focus、selected、disabled、busy，页面可保留各自构图。
 
 这些补充不记为已验收，随之后的适配/视觉验收逐项核对；当前仍按已确认 A—F 顺序执行。
+
+## 最终交付
+
+A—F 的实现和本机可执行检查已收口，外部验收与未定位性能问题保留上表状态。集成分支 `codex/r04-t02-e-real-rooms`；原生包固定产品输入 `0a37a89d3ad5e0d1b7817831d3d94f5811e90346`，之后仅提交结果文档，`game/` 无变化。不是完整发行验收。
+
+- [macOS arm64 测试包](/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/packaging/build/darwin-arm64-45803_11/DeiDei-R04-T02-a-macOS-arm64-0a37a89.zip)；162011579 bytes，SHA256 `5403f5c48d675cb8ab7839be446507046758fad1230fdae148f75a09005167c9`。
+- 分包结果：[A](../R04-T02-a/REPORT.md)、[B](../R04-T02-b/README.md)、[C](../R04-T02-c/README.md)、[D](../R04-T02-d/REPORT.md)、[E](../R04-T02-e/RESULT.md)、[F](../R04-T02-f/NOTES.md)。按仓库模板的交接说明见 [HANDOFF.md](HANDOFF.md)。
+- 分包保留提交：A `0a95a96`、B `f8d4779`、C `3e26191`、D `2154b19`、F `7f66b0d`；E 为最终集成工作区，具体证据的输入 SHA 各自记录。
+
+成包 GUI 被 `game/packaging/check-package.cjs` 的一次性 CI OS 账户 guard 限制，实际退出1；未伪造环境或动私人档案。ad-hoc 未公证，当前 Gatekeeper 输出含 `security disabled`，不能作来源信任通过。Windows、干净机、物理断网、跨设备真人与物理跨 DPI 尚未验；补充的动态尺寸／完整页面控件清单只登记，未晋升为本轮验收。
+
+所有自有 GUI／服务／构建进程已回收；F 有界 probe 的强制回收和退出码未记录分别披露，未冒充功能套件通过。六个工作区、忽略目录原始日志／失败／截图／包和旧用户实验保留，未归档；路径已登记项目开发入口。无 push、公共 merge、tag、release 或公网部署；Kimi 未调用。
