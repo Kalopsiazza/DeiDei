@@ -1,0 +1,4959 @@
+{
+  "evidenceNote": "Compiled-only four ambient loop pause, not retained. Flow15 PASS; performance INCOMPLETE.",
+  "originalPath": "online-ambient-ab/checks.json",
+  "originalSha256": "9a4be539c2b0f017719cc7c7b70f324de54dbd12f81be336e2efa7685e5842ed",
+  "input": {
+    "sha": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
+    "dirty": "M game/desktop/smoke-archive-performance.cjs\n M game/desktop/smoke-online-dynamic.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "6488067cc976d5030a49dd7da7b184bcf7c8592d991d8455cd4d8a875f0ba7d8",
+      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+    },
+    "startedAt": "2026-10-03T18:24:44.691Z",
+    "mainProcess": "one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation"
+  },
+  "source": "ordinary main / real owned CLI service / synthetic socket peers",
+  "status": "PASS",
+  "cleanup": [
+    {
+      "kind": "app",
+      "name": "动态房主",
+      "pid": 40541,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "kind": "service",
+      "pid": 40539,
+      "forced": false,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "kind": "profile",
+      "removed": true
+    }
+  ],
+  "errors": [],
+  "mode": "fixed original native window, no viewer/resize",
+  "geometrySource": "continuous native setContentSize; not physical dragging or cross-display evidence",
+  "checks": [
+    {
+      "name": "next-real-select-6",
+      "currentTurn": 30000,
+      "turn": "458012a5-9744-41e6-8f49-ffa1b4289947:g1:t2",
+      "roster": 6
+    },
+    {
+      "name": "result-return-6",
+      "pid": 40541
+    },
+    {
+      "name": "room-complete-6",
+      "pid": 40541,
+      "match": "458012a5-9744-41e6-8f49-ffa1b4289947"
+    },
+    {
+      "name": "next-real-select-3",
+      "currentTurn": 30000,
+      "turn": "640f7e72-fa21-4929-b758-ed98ef0ece5f:g1:t2",
+      "roster": 3
+    },
+    {
+      "name": "result-return-3",
+      "pid": 40541
+    },
+    {
+      "name": "room-complete-3",
+      "pid": 40541,
+      "match": "640f7e72-fa21-4929-b758-ed98ef0ece5f"
+    },
+    {
+      "name": "next-real-select-4",
+      "currentTurn": 30000,
+      "turn": "7a9322bf-01ab-4756-abcc-835b2d8b1097:g1:t2",
+      "roster": 4
+    },
+    {
+      "name": "result-return-4",
+      "pid": 40541
+    },
+    {
+      "name": "room-complete-4",
+      "pid": 40541,
+      "match": "7a9322bf-01ab-4756-abcc-835b2d8b1097"
+    },
+    {
+      "name": "next-real-select-5",
+      "currentTurn": 30000,
+      "turn": "01366c15-77e6-4e36-a7a7-61b0257ba45e:g1:t2",
+      "roster": 5
+    },
+    {
+      "name": "result-return-5",
+      "pid": 40541
+    },
+    {
+      "name": "room-complete-5",
+      "pid": 40541,
+      "match": "01366c15-77e6-4e36-a7a7-61b0257ba45e"
+    },
+    {
+      "name": "next-real-select-2",
+      "currentTurn": 30000,
+      "turn": "5faa0302-10b1-44fd-8a5e-12f6a9ce8085:g1:t2",
+      "roster": 2
+    },
+    {
+      "name": "result-return-2",
+      "pid": 40541
+    },
+    {
+      "name": "room-complete-2",
+      "pid": 40541,
+      "match": "5faa0302-10b1-44fd-8a5e-12f6a9ce8085"
+    }
+  ],
+  "geometry": [
+    {
+      "label": "two-player-reused-steady-before",
+      "app": "动态房主",
+      "pid": 40541,
+      "at": 1791051982934,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "submitting",
+        "ready": "true",
+        "focus": true
+      }
+    },
+    {
+      "label": "two-player-reused-steady-after",
+      "app": "动态房主",
+      "pid": 40541,
+      "at": 1791051990938,
+      "native": {
+        "outer": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "focused": false,
+        "visible": true,
+        "minimized": false
+      },
+      "css": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 2,
+        "page": "online",
+        "phase": "selecting",
+        "ready": "true",
+        "focus": true
+      }
+    }
+  ],
+  "targets": [],
+  "business": [
+    {
+      "label": "create-6",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "create-3",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "create-4",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "create-5",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "create-2",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "创建并进入CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "true",
+          "disabled": true,
+          "text": "确认中…CREATE ROOM"
+        },
+        {
+          "pending": "false",
+          "disabled": false,
+          "text": "创建并进入CREATE ROOM"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    },
+    {
+      "label": "submit",
+      "app": "动态房主",
+      "source": "natural React/IPC business state; no attributes synthesized",
+      "samples": [
+        {
+          "disabled": false,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "确认出招",
+          "phase": "selecting"
+        },
+        {
+          "disabled": true,
+          "text": "已提交",
+          "phase": "submitting"
+        }
+      ]
+    }
+  ],
+  "segments": [
+    {
+      "name": "two-player-reused-host",
+      "frameTimestamps": [
+        90454,
+        90552.1,
+        90602.5,
+        90687.4,
+        90804,
+        90902.6,
+        90952.5,
+        91020.8,
+        91104,
+        91219.2,
+        91337.6,
+        91452.7,
+        91552.8,
+        91837.7,
+        91887.7,
+        91986.1,
+        92070,
+        92104.4,
+        92136.7,
+        92185.8,
+        92237.8,
+        92254.4,
+        92302.9,
+        92336.8,
+        92386.2,
+        92419.6,
+        92454.6,
+        92504.5,
+        92536.6,
+        92587.8,
+        92637.9,
+        92654.6,
+        92687.6,
+        92752.8,
+        92787.9,
+        92821.3,
+        92871.3,
+        92904.6,
+        92938,
+        92971.4,
+        93004.6,
+        93054.7,
+        93086.1,
+        93120.9,
+        93171,
+        93204.7,
+        93254.7,
+        93288.1,
+        93319.7,
+        93353.7,
+        93386.9,
+        93438.1,
+        93471.6,
+        93503.4,
+        93536.6,
+        93570,
+        93620.8,
+        93653.2,
+        93686.3,
+        93719.6,
+        93770.5,
+        93803.5,
+        93837.9,
+        93888.2,
+        93920.4,
+        93953.3,
+        93988.2,
+        94021.1,
+        94055,
+        94103.7,
+        94136.6,
+        94170,
+        94204.9,
+        94236.4,
+        94286.6,
+        94302.9,
+        94337,
+        94388.3,
+        94421.4,
+        94470.7,
+        94505,
+        94554.6,
+        94587.5,
+        94637.8,
+        94670.6,
+        94703.3,
+        94736.8,
+        94788.2,
+        94836.8,
+        94870.5,
+        94903.9,
+        94953.7,
+        94987.9,
+        95037.4,
+        95087.2,
+        95138.5,
+        95169.9,
+        95205.2,
+        95271.6,
+        95286.6,
+        95321.6,
+        95355.2,
+        95405.2,
+        95454.3,
+        95488.6,
+        95521.9,
+        95555.3,
+        95605.3
+      ],
+      "active": false,
+      "errors": [],
+      "metricsBefore": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 5.421505,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40541,
+          "type": "Browser",
+          "creationTime": 1791051884828.267,
+          "memory": {
+            "workingSetSize": 231424,
+            "peakWorkingSetSize": 277168
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 30.517608,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40542,
+          "type": "GPU",
+          "creationTime": 1791051885021.294,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 231584,
+            "peakWorkingSetSize": 267056
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.095087,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40543,
+          "type": "Utility",
+          "creationTime": 1791051885022.616,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 41984,
+            "peakWorkingSetSize": 49520
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 17.392134,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40545,
+          "type": "Tab",
+          "creationTime": 1791051885973.049,
+          "memory": {
+            "workingSetSize": 278240,
+            "peakWorkingSetSize": 350736
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.089918,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40547,
+          "type": "Utility",
+          "creationTime": 1791051886282.996,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 32848,
+            "peakWorkingSetSize": 40928
+          },
+          "sandboxed": true
+        }
+      ],
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 2,
+      "metricsAfter": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 5.678484,
+            "percentCPUUsage": 0.6143962559027505,
+            "idleWakeupsPerSecond": 6
+          },
+          "pid": 40541,
+          "type": "Browser",
+          "creationTime": 1791051884828.267,
+          "memory": {
+            "workingSetSize": 196448,
+            "peakWorkingSetSize": 277168
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 31.92512,
+            "percentCPUUsage": 3.3650754669417804,
+            "idleWakeupsPerSecond": 617
+          },
+          "pid": 40542,
+          "type": "GPU",
+          "creationTime": 1791051885021.294,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 204288,
+            "peakWorkingSetSize": 267056
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.095266,
+            "percentCPUUsage": 0.00042794717898175924,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40543,
+          "type": "Utility",
+          "creationTime": 1791051885022.616,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 41872,
+            "peakWorkingSetSize": 49520
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 18.192898,
+            "percentCPUUsage": 1.914465267341943,
+            "idleWakeupsPerSecond": 68
+          },
+          "pid": 40545,
+          "type": "Tab",
+          "creationTime": 1791051885973.049,
+          "memory": {
+            "workingSetSize": 248112,
+            "peakWorkingSetSize": 350736
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.090096,
+            "percentCPUUsage": 0.00042557293593300697,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40547,
+          "type": "Utility",
+          "creationTime": 1791051886282.996,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 32896,
+            "peakWorkingSetSize": 40928
+          },
+          "sandboxed": true
+        }
+      ],
+      "frameCount": 108,
+      "p50": 34.89999999999418,
+      "p95": 100.10000000000582,
+      "p99": 118.40000000000873,
+      "over50ms": 30,
+      "max": 284.8999999999942,
+      "durationMs": 5234,
+      "failed": false
+    },
+    {
+      "name": "two-player-reused-steady",
+      "frameTimestamps": [
+        97370.8,
+        97488.7,
+        97605.1,
+        97722,
+        97820.8,
+        97987.8,
+        98137.4,
+        98256,
+        98388.3,
+        98521.1,
+        98672.2,
+        98721.4,
+        98770.9,
+        98806.1,
+        98854.3,
+        98889.4,
+        98921.1,
+        98972.1,
+        98987.8,
+        99039.5,
+        99072.5,
+        99105.6,
+        99139.5,
+        99189.2,
+        99222.9,
+        99254.6,
+        99304.3,
+        99339.6,
+        99388.8,
+        99422.9,
+        99455.4,
+        99505.6,
+        99555,
+        99588.3,
+        99621.4,
+        99655.4,
+        99704.7,
+        99739.7,
+        99788.1,
+        99821.4,
+        99856.4,
+        99906.1,
+        99938.8,
+        99972.4,
+        100006.4,
+        100056,
+        100089.7,
+        100137.8,
+        100189.1,
+        100223.2,
+        100254.8,
+        100289.3,
+        100323.1,
+        100389.9,
+        100404.9,
+        100455.8,
+        100489.2,
+        100522.4,
+        100572.5,
+        100605.7,
+        100656.6,
+        100689.5,
+        100722.1,
+        100771.4,
+        100823.3,
+        100854.8,
+        100905.7,
+        100956.6,
+        100990,
+        101023.3,
+        101055.6,
+        101105.1,
+        101155,
+        101189.9,
+        101221.8,
+        101271.8,
+        101306.4,
+        101356.8,
+        101390.1,
+        101423.5,
+        101488.2,
+        101521.8,
+        101556.6,
+        101606.7,
+        101656,
+        101688.4,
+        101721.9,
+        101789.2,
+        101822.8,
+        101872.4,
+        101905.3,
+        101940.3,
+        101989.6,
+        102023.6,
+        102089.8,
+        102122.9,
+        102155.4,
+        102188.3,
+        102238.7,
+        102290.4,
+        102323.7,
+        102372.1,
+        102423.8,
+        102473.7,
+        102488.8,
+        102523.6,
+        102557,
+        102606.4,
+        102740.4,
+        102789.2,
+        102923.1,
+        103055.9,
+        103257.3
+      ],
+      "active": false,
+      "errors": [],
+      "metricsBefore": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 5.776472,
+            "percentCPUUsage": 0.7138219853791354,
+            "idleWakeupsPerSecond": 4
+          },
+          "pid": 40541,
+          "type": "Browser",
+          "creationTime": 1791051884828.267,
+          "memory": {
+            "workingSetSize": 201104,
+            "peakWorkingSetSize": 277168
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 32.986687,
+            "percentCPUUsage": 7.733648536418341,
+            "idleWakeupsPerSecond": 147
+          },
+          "pid": 40542,
+          "type": "GPU",
+          "creationTime": 1791051885021.294,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 219520,
+            "peakWorkingSetSize": 267056
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.096411,
+            "percentCPUUsage": 0.008341696886193902,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40543,
+          "type": "Utility",
+          "creationTime": 1791051885022.616,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42608,
+            "peakWorkingSetSize": 49520
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 18.663885,
+            "percentCPUUsage": 3.4312932675439365,
+            "idleWakeupsPerSecond": 131
+          },
+          "pid": 40545,
+          "type": "Tab",
+          "creationTime": 1791051885973.049,
+          "memory": {
+            "workingSetSize": 266048,
+            "peakWorkingSetSize": 350736
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.091414,
+            "percentCPUUsage": 0.009602074864128455,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 40547,
+          "type": "Utility",
+          "creationTime": 1791051886282.996,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 33968,
+            "peakWorkingSetSize": 40928
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.127575,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40727,
+          "type": "Utility",
+          "creationTime": 1791051983103.447,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 36816,
+            "peakWorkingSetSize": 36816
+          },
+          "sandboxed": true
+        }
+      ],
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 2,
+      "metricsAfter": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 6.048624,
+            "percentCPUUsage": 0.5678196370220606,
+            "idleWakeupsPerSecond": 2
+          },
+          "pid": 40541,
+          "type": "Browser",
+          "creationTime": 1791051884828.267,
+          "memory": {
+            "workingSetSize": 202208,
+            "peakWorkingSetSize": 277168
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 34.666623,
+            "percentCPUUsage": 3.504997983714825,
+            "idleWakeupsPerSecond": 584
+          },
+          "pid": 40542,
+          "type": "GPU",
+          "creationTime": 1791051885021.294,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 223232,
+            "peakWorkingSetSize": 267056
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.096667,
+            "percentCPUUsage": 0.000534116526199584,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40543,
+          "type": "Utility",
+          "creationTime": 1791051885022.616,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 42624,
+            "peakWorkingSetSize": 49520
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 19.827703,
+            "percentCPUUsage": 2.428184193637496,
+            "idleWakeupsPerSecond": 549
+          },
+          "pid": 40545,
+          "type": "Tab",
+          "creationTime": 1791051885973.049,
+          "memory": {
+            "workingSetSize": 277936,
+            "peakWorkingSetSize": 350736
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.091808,
+            "percentCPUUsage": 0.000822040362599083,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40547,
+          "type": "Utility",
+          "creationTime": 1791051886282.996,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 34016,
+            "peakWorkingSetSize": 40928
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.133636,
+            "percentCPUUsage": 0.012651576785991011,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 40727,
+          "type": "Utility",
+          "creationTime": 1791051983103.447,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 41104,
+            "peakWorkingSetSize": 41152
+          },
+          "sandboxed": true
+        }
+      ],
+      "frameCount": 113,
+      "p50": 35.30000000000291,
+      "p95": 133.90000000000873,
+      "p99": 167,
+      "over50ms": 33,
+      "max": 201.40000000000873,
+      "durationMs": 5997,
+      "failed": false
+    }
+  ],
+  "screenshots": [],
+  "displays": [
+    {
+      "label": "MateStation X",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2304,
+        "height": 1536
+      },
+      "workArea": {
+        "x": 0,
+        "y": 30,
+        "width": 2304,
+        "height": 1447
+      },
+      "scaleFactor": 2,
+      "internal": false
+    },
+    {
+      "label": "内建视网膜显示器",
+      "bounds": {
+        "x": -1710,
+        "y": 0,
+        "width": 1710,
+        "height": 1112
+      },
+      "workArea": {
+        "x": -1710,
+        "y": 38,
+        "width": 1710,
+        "height": 1074
+      },
+      "scaleFactor": 2,
+      "internal": true
+    }
+  ],
+  "profiles": [
+    {
+      "label": "two-player-reused-steady",
+      "before": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "errors": [],
+      "cpuProfile": "two-player-reused-steady-cpu-profile.json",
+      "trace": "two-player-reused-steady-trace.json"
+    }
+  ],
+  "battleGeometry": [
+    {
+      "label": "two-player-two-history",
+      "phase": "revealed",
+      "ready": "true",
+      "viewport": {
+        "left": 0,
+        "top": 0,
+        "right": 1366,
+        "bottom": 768
+      },
+      "dpr": 2,
+      "arena": {
+        "left": 32.78125,
+        "top": 53,
+        "right": 1333.21875,
+        "bottom": 702.453125,
+        "width": 1300.4375,
+        "height": 649.453125
+      },
+      "deck": [],
+      "roster": [
+        {
+          "name": "动态同学1",
+          "copy": {
+            "text": "动态同学1",
+            "font": "16px",
+            "rects": [
+              {
+                "left": 673.33984375,
+                "top": 83.671875,
+                "right": 744.65234375,
+                "bottom": 106.171875,
+                "width": 71.3125,
+                "height": 22.5,
+                "visible": true
+              }
+            ],
+            "ok": true
+          },
+          "history": [
+            {
+              "turn": "2",
+              "name": "攒／DeiDei"
+            },
+            {
+              "turn": "1",
+              "name": "攒／DeiDei"
+            }
+          ],
+          "parts": [
+            {
+              "index": 0,
+              "kind": "profile",
+              "box": {
+                "left": 621.33984375,
+                "top": 73.421875,
+                "right": 744.65234375,
+                "bottom": 116.421875,
+                "width": 123.3125,
+                "height": 43
+              }
+            },
+            {
+              "index": 0,
+              "kind": "avatar",
+              "box": {
+                "left": 621.33984375,
+                "top": 73.421875,
+                "right": 664.33984375,
+                "bottom": 116.421875,
+                "width": 43,
+                "height": 43
+              }
+            },
+            {
+              "index": 0,
+              "kind": "history-2",
+              "box": {
+                "left": 691.0587158203125,
+                "top": 154.06875610351562,
+                "right": 786.9334716796875,
+                "bottom": 280.015625,
+                "width": 95.874755859375,
+                "height": 125.94686889648438
+              }
+            },
+            {
+              "index": 0,
+              "kind": "history-1",
+              "box": {
+                "left": 592.44482421875,
+                "top": 143.70936584472656,
+                "right": 705.54736328125,
+                "bottom": 285.015625,
+                "width": 113.1025390625,
+                "height": 141.30625915527344
+              }
+            }
+          ]
+        },
+        {
+          "name": "动态房主",
+          "copy": {
+            "text": "动态房主",
+            "font": "16px",
+            "rects": [
+              {
+                "left": 676.69921875,
+                "top": 624.8984375,
+                "right": 741.30078125,
+                "bottom": 647.3984375,
+                "width": 64.6015625,
+                "height": 22.5,
+                "visible": true
+              }
+            ],
+            "ok": true
+          },
+          "history": [
+            {
+              "turn": "2",
+              "name": "攒／DeiDei"
+            },
+            {
+              "turn": "1",
+              "name": "攒／DeiDei"
+            }
+          ],
+          "parts": [
+            {
+              "index": 1,
+              "kind": "profile",
+              "box": {
+                "left": 624.69921875,
+                "top": 614.6484375,
+                "right": 741.30078125,
+                "bottom": 657.6484375,
+                "width": 116.6015625,
+                "height": 43
+              }
+            },
+            {
+              "index": 1,
+              "kind": "avatar",
+              "box": {
+                "left": 624.69921875,
+                "top": 614.6484375,
+                "right": 667.69921875,
+                "bottom": 657.6484375,
+                "width": 43,
+                "height": 43
+              }
+            },
+            {
+              "index": 1,
+              "kind": "history-2",
+              "box": {
+                "left": 691.0587158203125,
+                "top": 478.7015686035156,
+                "right": 786.9334716796875,
+                "bottom": 604.6484375,
+                "width": 95.874755859375,
+                "height": 125.94686889648438
+              }
+            },
+            {
+              "index": 1,
+              "kind": "history-1",
+              "box": {
+                "left": 592.44482421875,
+                "top": 468.3421630859375,
+                "right": 705.54736328125,
+                "bottom": 609.6484375,
+                "width": 113.1025390625,
+                "height": 141.3062744140625
+              }
+            }
+          ]
+        }
+      ],
+      "overlaps": [],
+      "partsInside": true
+    }
+  ],
+  "reusedTwoPlayer": {
+    "pid": 40541,
+    "priorPlayerCounts": [
+      6,
+      3,
+      4,
+      5
+    ],
+    "source": "same ordinary main process reused; no claim that historical stall is fixed",
+    "phaseFrames": [
+      {
+        "t": 90404.028,
+        "phase": "submitting",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90454,
+        "phase": "submitting",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90552.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90602.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90687.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90804,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90902.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 90952.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91020.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91104,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91219.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91337.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91452.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91552.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91837.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91887.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 91986.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92070,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92104.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92136.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92185.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92237.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92254.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92302.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92336.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92386.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92419.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92454.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92504.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92536.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92587.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92637.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92654.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92687.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92752.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92787.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92821.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92871.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92904.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92938,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 92971.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93004.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93054.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93086.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93120.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93171,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93204.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93254.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93288.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93319.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93353.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93386.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93438.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93471.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93503.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93536.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93570,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93620.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93653.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93686.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93719.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93770.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93803.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93837.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93888.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93920.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93953.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 93988.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94021.1,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94055,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94103.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94136.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94170,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94204.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94236.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94286.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94302.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94337,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94388.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94421.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94470.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94505,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94554.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94587.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94637.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94670.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94703.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94736.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94788.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94836.8,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94870.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94903.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94953.7,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 94987.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95037.4,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95087.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95138.5,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95169.9,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95205.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95271.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95286.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95321.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95355.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95405.2,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95454.3,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95488.6,
+        "phase": "revealed",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95521.9,
+        "phase": "selecting",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95555.3,
+        "phase": "selecting",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      },
+      {
+        "t": 95605.3,
+        "phase": "selecting",
+        "focus": true,
+        "visibility": "visible",
+        "viewport": [
+          1366,
+          768
+        ],
+        "dpr": 2
+      }
+    ],
+    "summary": {
+      "frames": 104,
+      "p50": 34.89999999999418,
+      "p95": 100.10000000000582,
+      "p99": 118.40000000000873,
+      "over50ms": 29,
+      "max": 284.8999999999942
+    },
+    "steady": {
+      "viewport": [
+        1366,
+        768
+      ],
+      "frames": [
+        {
+          "t": 96971.458,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 96972.3,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97104.6,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97154.3,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97172,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97272.1,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97321.4,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97370.8,
+          "phase": "submitting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97488.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97605.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97722,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97820.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 97987.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98137.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98256,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98388.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98521.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98672.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98721.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98770.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98806.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98854.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98889.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98921.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98972.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 98987.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99039.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99072.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99105.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99139.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99189.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99222.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99254.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99304.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99339.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99388.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99422.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99455.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99505.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99555,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99588.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99621.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99655.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99704.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99739.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99788.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99821.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99856.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99906.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99938.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 99972.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100006.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100056,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100089.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100137.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100189.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100223.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100254.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100289.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100323.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100389.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100404.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100455.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100489.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100522.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100572.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100605.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100656.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100689.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100722.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100771.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100823.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100854.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100905.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100956.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 100990,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101023.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101055.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101105.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101155,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101189.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101221.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101271.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101306.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101356.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101390.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101423.5,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101488.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101521.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101556.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101606.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101656,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101688.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101721.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101789.2,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101822.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101872.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101905.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101940.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 101989.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102023.6,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102089.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102122.9,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102155.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102188.3,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102238.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102290.4,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102323.7,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102372.1,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102423.8,
+          "phase": "revealed",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102473.7,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102488.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102523.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102557,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102606.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102740.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102789.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 102923.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103055.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103257.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103406.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103538.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103707.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103872.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103922.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 103990.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104007.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104056.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104073.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104090.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104106.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104123.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104140.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104157.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104174.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104190.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104207.5,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104223.7,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104239.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104255.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104274.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104289.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104305.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104322.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104340.5,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104355.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104374.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104390.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104406.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104422.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104440.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104455.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104472.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104489.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104506.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104524.2,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104540.8,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104557.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104573.9,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104590,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104607.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104624.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104641,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104656.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104672.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104691,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104706.1,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104722.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104740.5,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104756.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104774.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104789.3,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104807.6,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104824.4,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104841,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        },
+        {
+          "t": 104855.7,
+          "phase": "selecting",
+          "focus": true,
+          "visibility": "visible",
+          "viewport": [
+            1366,
+            768
+          ],
+          "dpr": 2
+        }
+      ],
+      "summary": {
+        "frames": 102,
+        "p50": 35.09999999999127,
+        "p95": 118.60000000000582,
+        "p99": 151.09999999999127,
+        "over50ms": 28,
+        "max": 167
+      },
+      "condition": "same host after 6/3/4/5 and 2; original fixed native window"
+    }
+  }
+}

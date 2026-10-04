@@ -12,3 +12,11 @@
 /* A glass-depth handoff hides the background swap between arena and cinematics. */
 .battle-table::after{content:"";position:absolute;z-index:40;inset:0;pointer-events:none;opacity:0;background:radial-gradient(ellipse at 50% 46%,#dffcff0a,transparent 42%),linear-gradient(90deg,#02070b9e,#1026305c 48%,#090610a3);backdrop-filter:blur(22px) saturate(.68);-webkit-backdrop-filter:blur(22px) saturate(.68);transition:opacity .72s cubic-bezier(.4,0,.2,1);will-change:opacity}.battle-table[data-ready=false]::after{opacity:.96}.battle-table[data-exiting=true]::after{opacity:1;pointer-events:auto;transition-duration:.65s}.battle-table[data-exiting=true] .battle-arena{flex-basis:calc(100vh - 82px)}.battle-table[data-exiting=true] .battle-operation{opacity:0;filter:blur(14px) saturate(.55);transform:translate3d(0,115%,-180px) scale(.92);pointer-events:none}
 .match-outro::before{content:"";position:absolute;z-index:-1;inset:0;pointer-events:none;background:radial-gradient(ellipse at 50% 45%,#dffcff0d,transparent 40%),linear-gradient(90deg,#02070ba3,#10263068 48%,#090610a6);backdrop-filter:blur(22px) saturate(.68);-webkit-backdrop-filter:blur(22px) saturate(.68);animation:arena-glass-release 1.05s cubic-bezier(.16,.82,.2,1) both;will-change:opacity}@keyframes arena-glass-release{from{opacity:1}to{opacity:0}}
+
+@media(max-height:710px){.showcase-card{width:clamp(110px,13vw,160px);height:160px;padding:8px}}
+@media(max-width:1300px){.battle-cards .card-pick{grid-template-columns:1fr;grid-template-rows:minmax(20px,1fr) auto;gap:2px;padding:4px}.battle-cards .card-pick img{height:24px;max-height:28px;justify-self:center}.battle-cards .card-pick strong{height:auto;align-items:center;justify-content:center;text-align:center;font-size:12px}.battle-cards .card-tags{justify-content:center}}
+.move-card-content>strong{white-space:normal;overflow-wrap:anywhere;line-height:1.2}
+
+.battle-cards .card-name{line-height:1.45}
+/* Bottom anchoring includes the non-shrinking history and identity. */
+.battle-arena[data-seat-count] .self-seat{height:auto}

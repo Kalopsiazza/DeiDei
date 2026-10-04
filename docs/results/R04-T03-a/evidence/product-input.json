@@ -1,0 +1,30 @@
+{
+  "sha": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
+  "dirty": "",
+  "sha256": {
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "f001ad16e26878cbafe6beb8ff823cb9a7263aded1748fc42a75f4af4150dc3e",
+    "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+    "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+    "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+    "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+  },
+  "startedAt": "2026-10-03T18:07:40.738Z",
+  "mainProcess": "fresh launch; no old hot-update process reused",
+  "sourceSha256": {
+    "game/desktop/BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
+    "game/desktop/SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "game/desktop/fixture.ts": "a30bda5e7380e4d19c56d838360b3e2bf436034b49a180f356ddf21b6ae495ae",
+    "game/desktop/styles/archive.css": "16923307a393e811a252fb5cb26fd2ceeff316804f6e1a1f4673053b92ec1cc6",
+    "game/desktop/smoke-dynamic.cjs": "ff43a73bd685619d5f9fb2840d30db95cfd08112a30961681fc3b52eac1d5988",
+    "game/desktop/smoke-online-dynamic.cjs": "0b37e8e548f37ad6022d8b7a23011b3130b989c212629c0808f101156fa2ff1b",
+    "game/desktop/smoke-geometry.cjs": "b95a8fa940b6a363b641328070334a02831c4876d1f63b50adc165479dc1d4d4",
+    "docs/results/R04-T01-b/manual-content/content.json": "61d559c9a06fc285fff2d715233993b4228a63f7f339b0877686de8726de00ca",
+    "game/server/requirements.lock": "4af019f4dd3a20e81db95e3cf20ffacc63a9ac1aea3a2f8db3a5d49076256b93",
+    "game/desktop/package-lock.json": "47d4ad6084037112463d8aabcc869dc76556c3bbe31e652bcd1e52178ac585e2"
+  },
+  "tree": "4e7579b6f8210135816032e397aabcd93aba2475"
+}

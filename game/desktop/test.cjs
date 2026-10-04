@@ -85,3 +85,21 @@ test('error preserves selection, retry works, draw and spectating keep real rost
  assert.equal(v.participants.length,6);assert.equal(v.participants.filter(p=>p.alive).length,4);assert.equal(v.participants[0].alive,false);assert.equal(v.participants[0].resources.dd6,'0');
  await assert.rejects(p.preview('made-up'),/INVALID_SCENE/);
 });
+
+
+test('new-port previews have distinct identities and record only their own public round',async()=>{
+ const {emptyHistory,recordPublicRound}=require('./build/view-loop.cjs');
+ let history=emptyHistory;const ids=new Set();
+ for(const scene of ['winner','defeat','draw','winner']){
+  const view=await new FixturePort().preview(scene);
+  assert.ok(!ids.has(view.match_id));ids.add(view.match_id);
+  history=recordPublicRound(history,view,manual);
+  assert.deepEqual(history.turns,['6']);
+  assert.deepEqual(Object.keys(history.moves).sort(),Object.keys(view.public_round.actions).sort());
+  for(const [id,action] of Object.entries(view.public_round.actions)){
+   assert.equal(history.moves[id].length,1);
+   assert.equal(history.moves[id][0].entryId,action.entry_id);
+  }
+  assert.equal(recordPublicRound(history,view,manual),history,'same receipt stays deduplicated');
+ }
+});

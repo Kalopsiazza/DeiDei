@@ -4,6 +4,7 @@ import availability from './fixture-availability.json';
 export const manual = catalog as Manual;
 const zero = { dd6: '0', lightning: '0', nx_charge: '0', mature_bombs: '0', reward_stock: '0' };
 export const scenes: Scene[] = ['initial','midgame','spectator','eliminated','restart','winner','defeat','draw','invalid'];
+let fixtureSerial = 0;
 // ponytail: two authored snapshots only; replace FixturePort with WorkerPort at integration.
 function options(mid: boolean): Option[] {
   const list = structuredClone(manual.entries).map(({ description: _description, ...o }) => o);
@@ -37,7 +38,7 @@ export class FixturePort {
   private progress = '';
   constructor(private profile?: Profile, private now: () => number = Date.now) { this.reset('initial'); }
   private reset(scene: Scene, profile?: Profile): DesktopView {
-    this.serial++; this.submittedAt = null; this.errorOnce = scene === 'invalid'; this.solo = !!profile;
+    this.serial = ++fixtureSerial; this.submittedAt = null; this.errorOnce = scene === 'invalid'; this.solo = !!profile;
     const mid = ['midgame','winner','defeat','draw','invalid'].includes(scene);
     const participants: Participant[] = Array.from({ length: profile || ['winner','defeat'].includes(scene) ? 2 : 6 }, (_, i) => ({
       player_id: i === 0 && profile ? profile.local_id : `player_${i+1}`, nickname: i === 0 && profile ? profile.nickname : profile ? '纸上同学 · 演示对手' : `玩家 ${String(i+1).padStart(2,'0')}`,

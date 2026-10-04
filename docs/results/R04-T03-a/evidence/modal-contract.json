@@ -1,0 +1,1226 @@
+{
+  "input": {
+    "sha": "6eb652d088ffdf1f9e047bb14b9d48acf5037885",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-welcome-native.cjs\n M game/desktop/styles/stage.css\n?? game/desktop/smoke-modal-contract.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "54c0ae99b27edc8f7a2532ee50c9600ef95a06c77e11688b0ebf697f48757210",
+      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+    },
+    "startedAt": "2026-10-04T04:32:53.410Z",
+    "mainProcess": "fresh launch; no old hot-update process reused"
+  },
+  "source": "actual SharedUI export / test-only React parent props / ordinary main and original CSP/preload/sender guard / legal delayed profile.read",
+  "files": {
+    "parent": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/modal-contract-unlocked-v1/modal-contract-parent.tsx",
+    "bundle": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/modal-contract-unlocked-v1/modal-contract-renderer.js",
+    "wrapper": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/modal-contract-unlocked-v1/controlled-main.cjs"
+  },
+  "fingerprints": {
+    "driver": "af75a3d5d9bf76cecf23581ea30dddfd1aec41ae092d8b36e73b4654d7d30e57",
+    "parent": "d5f8ad118ee65635d85cc859f9201d59162c54b91707db63828e9db83d092222",
+    "bundle": "94579bbbbe9bf04d765540d23b66db5b451743079d4be2d1b183b0af91e30cd6",
+    "wrapper": "5197e36d1eb462e032765266d3af0671d06d1679814f4af21a14dd14d1042003",
+    "sharedUI": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "index": "6cab9148070d09bcf5572ba0a937513820ce2cb2dffcfe913779390b8128c699"
+  },
+  "cases": [
+    {
+      "name": "busy-change-during-240ms-cancels-close",
+      "id": "busy",
+      "nodeId": 1,
+      "before": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 0,
+            "events": []
+          }
+        },
+        "state": {
+          "caseId": "busy",
+          "open": true,
+          "disabled": false,
+          "version": "old",
+          "dialog": {
+            "nodeId": 1,
+            "open": true,
+            "inert": false,
+            "closing": "false",
+            "closeDisabled": false
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-action",
+            "text": "内部测试动作",
+            "insideDialog": true,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "closing": {
+        "caseId": "busy",
+        "open": true,
+        "disabled": false,
+        "version": "old",
+        "dialog": {
+          "nodeId": 1,
+          "open": true,
+          "inert": true,
+          "closing": "true",
+          "closeDisabled": true
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "contract-action",
+          "text": "内部测试动作",
+          "insideDialog": true,
+          "visible": true
+        },
+        "documentFocus": true,
+        "visibility": "visible",
+        "dpr": 2,
+        "reducedMotion": false
+      },
+      "propsChanged": {
+        "caseId": "busy",
+        "open": true,
+        "disabled": true,
+        "version": "old",
+        "dialog": {
+          "nodeId": 1,
+          "open": true,
+          "inert": true,
+          "closing": "true",
+          "closeDisabled": true
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": null,
+          "text": "打开测试弹窗SYSTEM // DIALOGSharedUI 合同验证ESC只验证真实 Modal 的关闭合同。内部测试动作",
+          "insideDialog": false,
+          "visible": true
+        },
+        "documentFocus": true,
+        "visibility": "visible",
+        "dpr": 2,
+        "reducedMotion": false
+      },
+      "propCommitDelayMs": 83.59999996423721,
+      "after240": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 1,
+            "events": [
+              {
+                "kind": "ipc-wrapper-start",
+                "t": 1791088374495,
+                "channel": "profile.read"
+              },
+              {
+                "kind": "ipc-wrapper-result",
+                "t": 1791088374578,
+                "channel": "profile.read",
+                "ok": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "caseId": "busy",
+          "open": true,
+          "disabled": true,
+          "version": "old",
+          "dialog": {
+            "nodeId": 1,
+            "open": true,
+            "inert": false,
+            "closing": "false",
+            "closeDisabled": true
+          },
+          "focus": {
+            "tag": "BODY",
+            "id": null,
+            "text": "打开测试弹窗SYSTEM // DIALOGSharedUI 合同验证ESC只验证真实 Modal 的关闭合同。内部测试动作",
+            "insideDialog": false,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "afterBusyCleared": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 1,
+            "events": [
+              {
+                "kind": "ipc-wrapper-start",
+                "t": 1791088374495,
+                "channel": "profile.read"
+              },
+              {
+                "kind": "ipc-wrapper-result",
+                "t": 1791088374578,
+                "channel": "profile.read",
+                "ok": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "caseId": "busy",
+          "open": true,
+          "disabled": false,
+          "version": "old",
+          "dialog": {
+            "nodeId": 1,
+            "open": true,
+            "inert": false,
+            "closing": "false",
+            "closeDisabled": false
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-action",
+            "text": "内部测试动作",
+            "insideDialog": true,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "final": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 1,
+            "events": [
+              {
+                "kind": "ipc-wrapper-start",
+                "t": 1791088374495,
+                "channel": "profile.read"
+              },
+              {
+                "kind": "ipc-wrapper-result",
+                "t": 1791088374578,
+                "channel": "profile.read",
+                "ok": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "caseId": "busy",
+          "open": false,
+          "disabled": false,
+          "version": "old",
+          "dialog": null,
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-trigger",
+            "text": "打开测试弹窗",
+            "insideDialog": false,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "events": [
+        {
+          "kind": "props",
+          "t": 286.39999997615814,
+          "caseId": "busy",
+          "open": false,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "open-click",
+          "t": 323,
+          "caseId": "busy"
+        },
+        {
+          "kind": "props",
+          "t": 324.89999997615814,
+          "caseId": "busy",
+          "open": true,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "key",
+          "t": 349.19999998807907,
+          "caseId": "busy",
+          "key": "Tab",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "armed",
+          "t": 382.89999997615814,
+          "caseId": "busy",
+          "transition": "busy"
+        },
+        {
+          "kind": "key",
+          "t": 383.80000001192093,
+          "caseId": "busy",
+          "key": "Escape",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "ipc-start",
+          "t": 383.80000001192093,
+          "caseId": "busy",
+          "transition": "busy"
+        },
+        {
+          "kind": "key",
+          "t": 388.39999997615814,
+          "caseId": "busy",
+          "key": "Enter",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "true",
+          "disabled": true
+        },
+        {
+          "kind": "ipc-result",
+          "t": 466.69999998807907,
+          "caseId": "busy",
+          "transition": "busy",
+          "ok": true
+        },
+        {
+          "kind": "props",
+          "t": 467.39999997615814,
+          "caseId": "busy",
+          "open": true,
+          "disabled": true,
+          "version": "old"
+        },
+        {
+          "kind": "props",
+          "t": 843.1999999880791,
+          "caseId": "busy",
+          "open": true,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "key",
+          "t": 847.0999999642372,
+          "caseId": "busy",
+          "key": "Tab",
+          "trusted": true,
+          "target": "BODY",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "key",
+          "t": 851,
+          "caseId": "busy",
+          "key": "Tab",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "key",
+          "t": 855.8000000119209,
+          "caseId": "busy",
+          "key": "Escape",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "callback",
+          "t": 1098.3999999761581,
+          "caseId": "busy",
+          "version": "old"
+        },
+        {
+          "kind": "props",
+          "t": 1099.300000011921,
+          "caseId": "busy",
+          "open": false,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "native-close",
+          "t": 1100,
+          "caseId": "busy",
+          "nodeId": 1,
+          "trusted": true,
+          "connected": false
+        }
+      ],
+      "status": "PASS"
+    },
+    {
+      "name": "latest-callback-on-same-dialog-node",
+      "id": "callback",
+      "nodeId": 2,
+      "before": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 0,
+            "events": []
+          }
+        },
+        "state": {
+          "caseId": "callback",
+          "open": true,
+          "disabled": false,
+          "version": "old",
+          "dialog": {
+            "nodeId": 2,
+            "open": true,
+            "inert": false,
+            "closing": "false",
+            "closeDisabled": false
+          },
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-action",
+            "text": "内部测试动作",
+            "insideDialog": true,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "closing": {
+        "caseId": "callback",
+        "open": true,
+        "disabled": false,
+        "version": "old",
+        "dialog": {
+          "nodeId": 2,
+          "open": true,
+          "inert": true,
+          "closing": "true",
+          "closeDisabled": true
+        },
+        "focus": {
+          "tag": "BUTTON",
+          "id": "contract-action",
+          "text": "内部测试动作",
+          "insideDialog": true,
+          "visible": true
+        },
+        "documentFocus": true,
+        "visibility": "visible",
+        "dpr": 2,
+        "reducedMotion": false
+      },
+      "propsChanged": {
+        "caseId": "callback",
+        "open": true,
+        "disabled": false,
+        "version": "new",
+        "dialog": {
+          "nodeId": 2,
+          "open": true,
+          "inert": true,
+          "closing": "true",
+          "closeDisabled": true
+        },
+        "focus": {
+          "tag": "BODY",
+          "id": null,
+          "text": "打开测试弹窗SYSTEM // DIALOGSharedUI 合同验证ESC只验证真实 Modal 的关闭合同。内部测试动作",
+          "insideDialog": false,
+          "visible": true
+        },
+        "documentFocus": true,
+        "visibility": "visible",
+        "dpr": 2,
+        "reducedMotion": false
+      },
+      "propCommitDelayMs": 82.30000001192093,
+      "after240": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 1,
+            "events": [
+              {
+                "kind": "ipc-wrapper-start",
+                "t": 1791088375358,
+                "channel": "profile.read"
+              },
+              {
+                "kind": "ipc-wrapper-result",
+                "t": 1791088375439,
+                "channel": "profile.read",
+                "ok": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "caseId": "callback",
+          "open": false,
+          "disabled": false,
+          "version": "new",
+          "dialog": null,
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-trigger",
+            "text": "打开测试弹窗",
+            "insideDialog": false,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "final": {
+        "native": {
+          "pid": 90399,
+          "bounds": {
+            "x": 469,
+            "y": 384,
+            "width": 1366,
+            "height": 800
+          },
+          "contentBounds": {
+            "x": 469,
+            "y": 416,
+            "width": 1366,
+            "height": 768
+          },
+          "focused": true,
+          "visible": true,
+          "minimized": false,
+          "fullscreen": false,
+          "display": {
+            "id": 2,
+            "scaleFactor": 2
+          },
+          "control": {
+            "channel": "profile.read",
+            "delay": 80,
+            "fail": false,
+            "calls": 1,
+            "events": [
+              {
+                "kind": "ipc-wrapper-start",
+                "t": 1791088375358,
+                "channel": "profile.read"
+              },
+              {
+                "kind": "ipc-wrapper-result",
+                "t": 1791088375439,
+                "channel": "profile.read",
+                "ok": true
+              }
+            ]
+          }
+        },
+        "state": {
+          "caseId": "callback",
+          "open": false,
+          "disabled": false,
+          "version": "new",
+          "dialog": null,
+          "focus": {
+            "tag": "BUTTON",
+            "id": "contract-trigger",
+            "text": "打开测试弹窗",
+            "insideDialog": false,
+            "visible": true
+          },
+          "documentFocus": true,
+          "visibility": "visible",
+          "dpr": 2,
+          "reducedMotion": false
+        }
+      },
+      "events": [
+        {
+          "kind": "props",
+          "t": 1208.699999988079,
+          "caseId": "callback",
+          "open": false,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "open-click",
+          "t": 1234,
+          "caseId": "callback"
+        },
+        {
+          "kind": "props",
+          "t": 1234.5999999642372,
+          "caseId": "callback",
+          "open": true,
+          "disabled": false,
+          "version": "old"
+        },
+        {
+          "kind": "key",
+          "t": 1241.300000011921,
+          "caseId": "callback",
+          "key": "Tab",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "armed",
+          "t": 1246.0999999642372,
+          "caseId": "callback",
+          "transition": "callback"
+        },
+        {
+          "kind": "key",
+          "t": 1246.3999999761581,
+          "caseId": "callback",
+          "key": "Escape",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false",
+          "disabled": false
+        },
+        {
+          "kind": "ipc-start",
+          "t": 1246.3999999761581,
+          "caseId": "callback",
+          "transition": "callback"
+        },
+        {
+          "kind": "key",
+          "t": 1248.699999988079,
+          "caseId": "callback",
+          "key": "Enter",
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "true",
+          "disabled": true
+        },
+        {
+          "kind": "ipc-result",
+          "t": 1328.0999999642372,
+          "caseId": "callback",
+          "transition": "callback",
+          "ok": true
+        },
+        {
+          "kind": "props",
+          "t": 1328.699999988079,
+          "caseId": "callback",
+          "open": true,
+          "disabled": false,
+          "version": "new"
+        },
+        {
+          "kind": "callback",
+          "t": 1488,
+          "caseId": "callback",
+          "version": "new"
+        },
+        {
+          "kind": "props",
+          "t": 1488.5999999642372,
+          "caseId": "callback",
+          "open": false,
+          "disabled": false,
+          "version": "new"
+        },
+        {
+          "kind": "native-close",
+          "t": 1500.3999999761581,
+          "caseId": "callback",
+          "nodeId": 2,
+          "trusted": true,
+          "connected": false
+        }
+      ],
+      "status": "PASS"
+    }
+  ],
+  "errors": [],
+  "assetEvents": [],
+  "initial": {
+    "native": {
+      "pid": 90399,
+      "bounds": {
+        "x": 469,
+        "y": 384,
+        "width": 1366,
+        "height": 800
+      },
+      "contentBounds": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "focused": true,
+      "visible": true,
+      "minimized": false,
+      "fullscreen": false,
+      "display": {
+        "id": 2,
+        "scaleFactor": 2
+      },
+      "control": {
+        "channel": "profile.read",
+        "delay": 80,
+        "fail": false,
+        "calls": 0,
+        "events": []
+      }
+    },
+    "state": {
+      "caseId": "unarmed",
+      "open": false,
+      "disabled": false,
+      "version": "old",
+      "dialog": null,
+      "focus": {
+        "tag": "BODY",
+        "id": null,
+        "text": "打开测试弹窗",
+        "insideDialog": false,
+        "visible": true
+      },
+      "documentFocus": true,
+      "visibility": "visible",
+      "dpr": 2,
+      "reducedMotion": false
+    }
+  },
+  "csp": "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; media-src 'self'; font-src 'self'; connect-src 'none'; base-uri 'none'; form-action 'none'",
+  "final": {
+    "native": {
+      "pid": 90399,
+      "bounds": {
+        "x": 469,
+        "y": 384,
+        "width": 1366,
+        "height": 800
+      },
+      "contentBounds": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "focused": true,
+      "visible": true,
+      "minimized": false,
+      "fullscreen": false,
+      "display": {
+        "id": 2,
+        "scaleFactor": 2
+      },
+      "control": {
+        "channel": "profile.read",
+        "delay": 80,
+        "fail": false,
+        "calls": 1,
+        "events": [
+          {
+            "kind": "ipc-wrapper-start",
+            "t": 1791088375358,
+            "channel": "profile.read"
+          },
+          {
+            "kind": "ipc-wrapper-result",
+            "t": 1791088375439,
+            "channel": "profile.read",
+            "ok": true
+          }
+        ]
+      }
+    },
+    "state": {
+      "caseId": "callback",
+      "open": false,
+      "disabled": false,
+      "version": "new",
+      "dialog": null,
+      "focus": {
+        "tag": "BUTTON",
+        "id": "contract-trigger",
+        "text": "打开测试弹窗",
+        "insideDialog": false,
+        "visible": true
+      },
+      "documentFocus": true,
+      "visibility": "visible",
+      "dpr": 2,
+      "reducedMotion": false
+    },
+    "events": [
+      {
+        "kind": "props",
+        "t": 189.5999999642372,
+        "caseId": "unarmed",
+        "open": false,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "props",
+        "t": 286.39999997615814,
+        "caseId": "busy",
+        "open": false,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "open-click",
+        "t": 323,
+        "caseId": "busy"
+      },
+      {
+        "kind": "props",
+        "t": 324.89999997615814,
+        "caseId": "busy",
+        "open": true,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "key",
+        "t": 349.19999998807907,
+        "caseId": "busy",
+        "key": "Tab",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "armed",
+        "t": 382.89999997615814,
+        "caseId": "busy",
+        "transition": "busy"
+      },
+      {
+        "kind": "key",
+        "t": 383.80000001192093,
+        "caseId": "busy",
+        "key": "Escape",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "ipc-start",
+        "t": 383.80000001192093,
+        "caseId": "busy",
+        "transition": "busy"
+      },
+      {
+        "kind": "key",
+        "t": 388.39999997615814,
+        "caseId": "busy",
+        "key": "Enter",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "true",
+        "disabled": true
+      },
+      {
+        "kind": "ipc-result",
+        "t": 466.69999998807907,
+        "caseId": "busy",
+        "transition": "busy",
+        "ok": true
+      },
+      {
+        "kind": "props",
+        "t": 467.39999997615814,
+        "caseId": "busy",
+        "open": true,
+        "disabled": true,
+        "version": "old"
+      },
+      {
+        "kind": "props",
+        "t": 843.1999999880791,
+        "caseId": "busy",
+        "open": true,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "key",
+        "t": 847.0999999642372,
+        "caseId": "busy",
+        "key": "Tab",
+        "trusted": true,
+        "target": "BODY",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "key",
+        "t": 851,
+        "caseId": "busy",
+        "key": "Tab",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "key",
+        "t": 855.8000000119209,
+        "caseId": "busy",
+        "key": "Escape",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "callback",
+        "t": 1098.3999999761581,
+        "caseId": "busy",
+        "version": "old"
+      },
+      {
+        "kind": "props",
+        "t": 1099.300000011921,
+        "caseId": "busy",
+        "open": false,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "native-close",
+        "t": 1100,
+        "caseId": "busy",
+        "nodeId": 1,
+        "trusted": true,
+        "connected": false
+      },
+      {
+        "kind": "props",
+        "t": 1208.699999988079,
+        "caseId": "callback",
+        "open": false,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "open-click",
+        "t": 1234,
+        "caseId": "callback"
+      },
+      {
+        "kind": "props",
+        "t": 1234.5999999642372,
+        "caseId": "callback",
+        "open": true,
+        "disabled": false,
+        "version": "old"
+      },
+      {
+        "kind": "key",
+        "t": 1241.300000011921,
+        "caseId": "callback",
+        "key": "Tab",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "armed",
+        "t": 1246.0999999642372,
+        "caseId": "callback",
+        "transition": "callback"
+      },
+      {
+        "kind": "key",
+        "t": 1246.3999999761581,
+        "caseId": "callback",
+        "key": "Escape",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "false",
+        "disabled": false
+      },
+      {
+        "kind": "ipc-start",
+        "t": 1246.3999999761581,
+        "caseId": "callback",
+        "transition": "callback"
+      },
+      {
+        "kind": "key",
+        "t": 1248.699999988079,
+        "caseId": "callback",
+        "key": "Enter",
+        "trusted": true,
+        "target": "BUTTON",
+        "closing": "true",
+        "disabled": true
+      },
+      {
+        "kind": "ipc-result",
+        "t": 1328.0999999642372,
+        "caseId": "callback",
+        "transition": "callback",
+        "ok": true
+      },
+      {
+        "kind": "props",
+        "t": 1328.699999988079,
+        "caseId": "callback",
+        "open": true,
+        "disabled": false,
+        "version": "new"
+      },
+      {
+        "kind": "callback",
+        "t": 1488,
+        "caseId": "callback",
+        "version": "new"
+      },
+      {
+        "kind": "props",
+        "t": 1488.5999999642372,
+        "caseId": "callback",
+        "open": false,
+        "disabled": false,
+        "version": "new"
+      },
+      {
+        "kind": "native-close",
+        "t": 1500.3999999761581,
+        "caseId": "callback",
+        "nodeId": 2,
+        "trusted": true,
+        "connected": false
+      }
+    ]
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-modal-contract-profile-HITBat",
+      "removed": true
+    },
+    "application": {
+      "pid": 90399,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 90400,
+        "ppid": 90399,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 90401,
+        "ppid": 90399,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 90402,
+        "ppid": 90399,
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T04:32:56.041Z",
+  "status": "PASS",
+  "evidenceReadBack": {
+    "cases": 2,
+    "statusMatches": true,
+    "fingerprintsMatch": true
+  }
+}

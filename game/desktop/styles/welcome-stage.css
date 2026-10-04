@@ -1,7 +1,5 @@
-/* Keep the current first-entry form and preview actions visible on a short window. */
-@media(max-height:780px){
- .app[data-page=profile]>.center{padding:24px 40px}
- .app[data-page=profile] .paper.profile{padding:24px 30px}
- .app[data-page=profile] .profile label{margin:14px 0}
- .app[data-page=profile] .profile>.primary{margin-top:14px}
-}
+/* The welcome scene uses the shared safe edge; short forms scroll inside the card. */
+.welcome-scene .welcome-tools{left:var(--page-safe-compact-x);right:var(--page-safe-compact-x)}
+.welcome-scene .welcome-film-controls{right:var(--page-safe-compact-x)}
+.welcome-scene .welcome-card-front{justify-content:safe center;overflow-y:auto;overscroll-behavior:contain}
+@media(max-height:600px){.welcome-scene .welcome-card{height:calc(100vh - 72px)}}

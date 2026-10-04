@@ -1,0 +1,1077 @@
+{
+  "batch": "loading",
+  "input": {
+    "sha": "98955894b432f1f12d4bdf36f0a4697cdf95aeb7",
+    "dirty": "M game/desktop/smoke-control-states.cjs\n M game/desktop/smoke-online-dynamic.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T06:14:39.229Z",
+    "mainProcess": "fresh launch; no old hot-update process reused"
+  },
+  "source": "ordinary main / original renderer and SharedUI / isolated real profile and worker / test-only legal IPC delay or explicit failure",
+  "fingerprints": {
+    "driver": "1e20c0b833d4163bb659d219b34ef3054ed71a500d88950483fff9e5415ef19c",
+    "wrapper": "71496c3b63e144b7b97918181b28b1bc859460f7e9412ac0b2bafc9598089fda",
+    "SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "renderer.tsx": "f9782c32dc2e40087106dadfac71a8b261298d12be9aef15a8064c88934065eb",
+    "WelcomeEntrance.tsx": "765dd7742e152ac5b7de7dcaef439dc376a3e7aba49bb2872ff052c08a4495e4",
+    "BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
+    "ManualArchive.tsx": "67b59e4d8c8934f3db21d4c0361f03747c48143f71ecaaa42f34d99ea1f942c6",
+    "TutorialCoach.tsx": "f945418699ef9f71975db3046ae6dcd05262cbf22d498933585a5c041f642c66",
+    "profile.cjs": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2"
+  },
+  "controls": [
+    {
+      "name": "loading/brand",
+      "state": "geometry",
+      "raw": {
+        "x": 24,
+        "y": 13,
+        "width": 103.2421875,
+        "height": 35
+      },
+      "explicitScroll": true,
+      "t": 357.30000001192093,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(250, 247, 241)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand",
+      "state": "default",
+      "t": 600.8000000119209,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(250, 247, 241)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand",
+      "state": "hover",
+      "t": 659.6000000238419,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(101, 119, 105)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand",
+      "state": "active",
+      "t": 758.9000000357628,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(101, 119, 105)",
+        "background": "none",
+        "backgroundColor": "rgba(236, 233, 220, 0.937)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 24,
+        "y": 13,
+        "width": 103.2421875,
+        "height": 35
+      },
+      "explicitScroll": true,
+      "t": 823.6999999880791,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(250, 247, 241)",
+        "background": "none",
+        "backgroundColor": "rgba(236, 233, 220, 0.28)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand",
+      "state": "focus-visible",
+      "t": 1055.800000011921,
+      "page": "loading",
+      "text": "叠叠DeiDei",
+      "tag": "BUTTON",
+      "box": {
+        "x": 24,
+        "y": 13,
+        "w": 103.2421875,
+        "h": 35,
+        "right": 127.2421875,
+        "bottom": 48
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(250, 247, 241)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(250, 247, 241)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "loading/brand",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 4259,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "profile.read",
+          "delay": 8000,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "profile.read",
+              "kind": "start",
+              "t": 1791094480107
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "business": [
+    {
+      "name": "initial-profile-read-brand-navigation",
+      "controlled": {
+        "channel": "profile.read",
+        "delay": 8000,
+        "fail": false
+      },
+      "before": {
+        "pid": 4259,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "profile.read",
+          "delay": 8000,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "profile.read",
+              "kind": "start",
+              "t": 1791094480107
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 4259,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "profile.read",
+          "delay": 8000,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "profile.read",
+              "kind": "start",
+              "t": 1791094480107
+            },
+            {
+              "channel": "profile.read",
+              "kind": "result",
+              "t": 1791094488109,
+              "ok": true
+            }
+          ]
+        }
+      },
+      "scope": "Actual loading brand has no independent busy UI; initial profile.read only is delayed, original reply and navigation are unchanged"
+    }
+  ],
+  "notes": [
+    {
+      "scope": "Each four-state group explicitly activates its owned native app and asserts native/document focus before and after input; final snapshot reactivates it after business waits. This is sampled control evidence, not continuous native focus proof. Seven-state applicability is source-defined; no selected/disabled/busy state was synthesized; online is outside this driver."
+    }
+  ],
+  "errors": [],
+  "initial": {
+    "native": {
+      "pid": 4259,
+      "focused": true,
+      "visible": true,
+      "bounds": {
+        "x": 469,
+        "y": 384,
+        "width": 1366,
+        "height": 800
+      },
+      "content": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "fullscreen": false,
+      "display": {
+        "id": 2,
+        "scaleFactor": 2
+      },
+      "control": {
+        "channel": "profile.read",
+        "delay": 8000,
+        "fail": false,
+        "error": "SAVE_FAILED",
+        "calls": 1,
+        "events": [
+          {
+            "channel": "profile.read",
+            "kind": "start",
+            "t": 1791094480107
+          }
+        ]
+      }
+    },
+    "renderer": {
+      "at": 203.10000002384186,
+      "route": "loading",
+      "url": "app://desktop/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 2,
+      "visibility": "visible",
+      "styles": [
+        {
+          "selector": "app",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "app",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "saturate(0.96)",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "ui-world-breathe",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        },
+        {
+          "selector": "app",
+          "pseudo": "::after",
+          "opacity": "0.3",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        }
+      ],
+      "animations": [
+        {
+          "type": "CSSAnimation",
+          "name": "ui-world-breathe",
+          "currentTime": 16.665999999999986,
+          "playState": "running",
+          "target": "app",
+          "pseudo": "::before"
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "ui-scan",
+          "currentTime": 16.665999999999986,
+          "playState": "running",
+          "target": "",
+          "pseudo": "::after"
+        }
+      ],
+      "media": []
+    }
+  },
+  "finalNative": {
+    "pid": 4259,
+    "focused": true,
+    "visible": true,
+    "bounds": {
+      "x": 469,
+      "y": 384,
+      "width": 1366,
+      "height": 800
+    },
+    "content": {
+      "x": 469,
+      "y": 416,
+      "width": 1366,
+      "height": 768
+    },
+    "fullscreen": false,
+    "display": {
+      "id": 2,
+      "scaleFactor": 2
+    },
+    "control": {
+      "channel": "",
+      "delay": 0,
+      "fail": false,
+      "error": "SAVE_FAILED",
+      "calls": 0,
+      "events": []
+    }
+  },
+  "keys": [
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 772.6000000238419,
+      "target": "BUTTON"
+    }
+  ],
+  "final": {
+    "at": 10109.699999988079,
+    "route": "profile",
+    "stage": "name",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "saturate(1.02994)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "ui-world-breathe",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "0.3",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "front-stage front-stage-profile",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-profile",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-profile",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1.1128, 0, 0, 1.1128, 0, 0)",
+        "filter": "blur(6px) saturate(0.92)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "0",
+        "transform": "matrix(1, 0, 0, 1, 0, 24)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "welcome-scene",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "welcome-scene",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "opacity 0.95s",
+        "content": "\"\""
+      },
+      {
+        "selector": "welcome-scene",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "welcome-card",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(0.996197, -0.052336, -0.0696609, 0, 0.0522085, 0.99863, -0.00365077, 0, 0.0697565, 0, 0.997564, 0, -198.066, -291.84, 0, 1)",
+        "filter": "drop-shadow(rgba(0, 0, 0, 0.533) 24px 26px 42px)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "left 1.4s cubic-bezier(0.18, 0.75, 0.25, 1), transform 1.4s cubic-bezier(0.18, 0.75, 0.25, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "welcome-card",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "welcome-card",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "welcome-card-turn",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(-1, 0, 0, 0, 0, 1, 0, 0, 0, 0, -1, 0, 0, 0, 0, 1)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "welcome-card-turn",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "welcome-card-turn",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSAnimation",
+        "name": "ui-world-breathe",
+        "currentTime": 9918.8,
+        "playState": "running",
+        "target": "app",
+        "pseudo": "::before"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 8018.825999972689,
+        "playState": "running",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 8018.825999972689,
+        "playState": "running",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 8018.825999972689,
+        "playState": "running",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "welcome-content-in",
+        "currentTime": 399.89999999999884,
+        "playState": "running",
+        "target": "welcome-card-content",
+        "pseudo": null
+      }
+    ],
+    "media": [
+      {
+        "src": "app://desktop/assets/menu/welcome-opening-v1.mp4",
+        "currentTime": 5.927337,
+        "readyState": 4,
+        "networkState": 1,
+        "paused": true,
+        "ended": false,
+        "muted": true,
+        "width": 1920,
+        "height": 1080,
+        "error": null,
+        "quality": {
+          "totalVideoFrames": 147,
+          "droppedVideoFrames": 0
+        }
+      }
+    ]
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-controls-profile-tkMSJP",
+      "removed": true
+    },
+    "application": {
+      "pid": 4259,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T06:14:50.917Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T06:14:50.917Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T06:14:50.917Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T06:14:51.110Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T06:14:51.110Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 4260,
+        "ppid": 4259,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 4261,
+        "ppid": 4259,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 4263,
+        "ppid": 4259,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 4269,
+        "ppid": 4259,
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T06:14:51.147Z",
+  "status": "PASS",
+  "readBack": {
+    "controls": 7,
+    "statusMatches": true
+  }
+}

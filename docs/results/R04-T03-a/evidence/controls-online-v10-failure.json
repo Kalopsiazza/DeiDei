@@ -1,0 +1,1321 @@
+{
+  "input": {
+    "sha": "2c5b0b896a31331d12627b471647a70d9223c8c0",
+    "dirty": "",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T06:19:31.504Z",
+    "mainProcess": "fresh host and guest original main via test-only named IPC delay wrapper; independent actual setup rounds, no dynamic flight/timing claim"
+  },
+  "source": "ordinary main / real owned CLI service / synthetic socket peers",
+  "geometrySource": "continuous native setContentSize; not physical dragging or cross-display evidence",
+  "checks": [],
+  "geometry": [],
+  "targets": [],
+  "business": [],
+  "segments": [],
+  "screenshots": [
+    {
+      "name": "failure",
+      "source": "real service / actual Electron",
+      "app": "动态房主"
+    }
+  ],
+  "errors": [],
+  "cleanup": [
+    {
+      "kind": "app",
+      "name": "动态房主",
+      "pid": 4928,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T06:19:41.052Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T06:19:41.053Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T06:19:41.053Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T06:19:41.335Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T06:19:41.335Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "kind": "service",
+      "pid": 4927,
+      "forced": false,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "kind": "profile",
+      "removed": true
+    }
+  ],
+  "mode": "isolated real online control-state setup, actual retry/capacity and documented IPC delays",
+  "displays": [
+    {
+      "label": "MateStation X",
+      "bounds": {
+        "x": 0,
+        "y": 0,
+        "width": 2304,
+        "height": 1536
+      },
+      "workArea": {
+        "x": 0,
+        "y": 30,
+        "width": 2304,
+        "height": 1448
+      },
+      "scaleFactor": 2,
+      "internal": false
+    },
+    {
+      "label": "内建视网膜显示器",
+      "bounds": {
+        "x": -1710,
+        "y": 0,
+        "width": 1710,
+        "height": 1112
+      },
+      "workArea": {
+        "x": -1710,
+        "y": 38,
+        "width": 1710,
+        "height": 1074
+      },
+      "scaleFactor": 2,
+      "internal": true
+    }
+  ],
+  "servicePid": 4927,
+  "serviceStderr": [],
+  "controlWrapper": {
+    "path": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/controls-online-final-v10/online-control-main.cjs",
+    "sha256": "c80a97886d568735d1231ed3cc36e29878c3b8ae40648c3af8ae4195d941102b",
+    "source": "Original main is required unchanged; only a named IPC handler is delayed; original sender/frame/argument guard and real protocol still run once. No synthetic error, payload, component or DOM attributes."
+  },
+  "hostPid": 4928,
+  "controlStateApplicability": {
+    "selectedNA": {
+      "reason": "Navigation/request/ready actions and text/range inputs have no aria-pressed/aria-selected/checked selected business state",
+      "source": "online/OnlineRoom.tsx:88-114,124-141,151-158; BattleStage.tsx:67-69,84,103"
+    },
+    "pauseSituation": {
+      "disabled": "NA: JSX has no disabled",
+      "busy": "NA: synchronous Dialog open",
+      "source": "BattleStage.tsx:67,69"
+    },
+    "onlineFreeze": {
+      "hoverActiveFocus": "NA: mode online always disabled; native disabled button is not a Tab action",
+      "selected": "aria-pressed exists but always false in online mode; no selected=true claim",
+      "busy": "NA: onFreeze is no-op",
+      "source": "BattleStage.tsx:69; online/OnlineRoom.tsx:152"
+    },
+    "copy": {
+      "disabled": "NA: JSX has no disabled",
+      "busy": "NA: clipboard Promise sets notice only, no lock/busy UI",
+      "source": "online/OnlineRoom.tsx:127"
+    },
+    "limitSelect": {
+      "disabled": "NA: no disabled or disabled fieldset",
+      "busy": "NA: synchronous local limitMs, Apply sends request",
+      "selected": "actual option value only; OS popup acceptance is separate",
+      "source": "online/OnlineRoom.tsx:141,157"
+    },
+    "guestWaiting": {
+      "hoverActiveFocus": "NA for this permanently disabled guest action: !host",
+      "busy": "NA: guest cannot invoke returnLobby",
+      "source": "online/OnlineRoom.tsx:151; BattleStage.tsx:103"
+    }
+  },
+  "controlStateGaps": [
+    "Native select OS popup/key acceptance needs root CUA review; optional --control-native-hold pauses solely in lobby. The continuation marker alone is not acceptance."
+  ],
+  "controlStates": [
+    {
+      "label": "创建房间",
+      "app": "动态房主",
+      "source": "real pointer down/up outside and keyboard Tab; no attributes synthesized",
+      "states": {
+        "default": {
+          "at": 1791094779566,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "创建房间",
+          "visual": "control",
+          "box": {
+            "x": 874.4519653320312,
+            "y": 276.4765625,
+            "right": 1297.905029296875,
+            "bottom": 372.4765625,
+            "w": 423.45306396484375,
+            "h": 96
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(32, 38, 48, 0.12)",
+            "backgroundImage": "linear-gradient(100deg, rgba(241, 72, 88, 0.96), rgba(189, 24, 54, 0.96) 82%)",
+            "borderColor": "rgb(255, 215, 220) rgb(255, 215, 220) rgb(255, 215, 220) rgb(255, 228, 231)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgba(143, 9, 46, 0.333) 10px 14px 30px 0px, rgba(255, 255, 255, 0.27) 0px 1px 0px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(1, 0, 0, 1, -6.1418, 0)"
+          }
+        },
+        "hover": {
+          "at": 1791094779647,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "创建房间",
+          "visual": "control",
+          "box": {
+            "x": 870.0629272460938,
+            "y": 276.4765625,
+            "right": 1293.51611328125,
+            "bottom": 372.4765625,
+            "w": 423.45318603515625,
+            "h": 96
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": true,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgb(249, 77, 96), rgb(201, 29, 60) 82%)",
+            "borderColor": "rgb(255, 224, 228)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgb(255, 206, 213) 0px 0px 0px 1px, rgba(241, 63, 82, 0.43) 0px 0px 28px 0px, rgba(255, 255, 255, 0.094) 0px 0px 30px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(1, 0, 0, 1, -7, 0)"
+          }
+        },
+        "active": {
+          "at": 1791094779830,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "创建房间",
+          "visual": "control",
+          "box": {
+            "x": 862.9981079101562,
+            "y": 276.71466064453125,
+            "right": 1284.3507080078125,
+            "bottom": 372.23846435546875,
+            "w": 421.35260009765625,
+            "h": 95.5238037109375
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": true,
+          "active": true,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgb(249, 77, 96), rgb(201, 29, 60) 82%)",
+            "borderColor": "rgb(255, 224, 228)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgb(255, 206, 213) 0px 0px 0px 1px, rgba(241, 63, 82, 0.43) 0px 0px 28px 0px, rgba(255, 255, 255, 0.094) 0px 0px 30px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(0.99504, 0, 0, 0.99504, -3.03165, 0)"
+          }
+        },
+        "focusVisible": {
+          "at": 1791094780184,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "创建房间",
+          "visual": "control",
+          "box": {
+            "x": 860.59375,
+            "y": 276.4765625,
+            "right": 1284.046875,
+            "bottom": 372.4765625,
+            "w": 423.453125,
+            "h": 96
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": true,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgba(241, 72, 88, 0.96), rgba(189, 24, 54, 0.96) 82%)",
+            "borderColor": "rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 255, 255)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgb(140, 234, 243) 0px 0px 0px 2px inset, rgb(7, 16, 25) 0px 0px 0px 2px, rgba(140, 234, 243, 0.42) 0px 0px 18px 0px",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "none"
+          }
+        }
+      },
+      "verified": true
+    },
+    {
+      "label": "加入房间",
+      "app": "动态房主",
+      "source": "real pointer down/up outside and keyboard Tab; no attributes synthesized",
+      "states": {
+        "default": {
+          "at": 1791094780235,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "加入房间",
+          "visual": "control",
+          "box": {
+            "x": 860.59375,
+            "y": 400.4765625,
+            "right": 1284.046875,
+            "bottom": 496.4765625,
+            "w": 423.453125,
+            "h": 96
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgba(23, 38, 50, 0.957), rgba(13, 21, 31, 0.94))",
+            "borderColor": "rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgb(140, 234, 243)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgba(255, 255, 255, 0.075) 0px 1px 0px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "none"
+          }
+        },
+        "hover": {
+          "at": 1791094780309,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "加入房间",
+          "visual": "control",
+          "box": {
+            "x": 855.906005859375,
+            "y": 400.4765625,
+            "right": 1279.359130859375,
+            "bottom": 496.4765625,
+            "w": 423.453125,
+            "h": 96
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": true,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgba(26, 40, 53, 0.98), rgba(10, 17, 26, 0.992))",
+            "borderColor": "rgba(148, 234, 243, 0.486) rgba(148, 234, 243, 0.486) rgba(148, 234, 243, 0.486) rgba(140, 234, 243, 0.757)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgba(140, 234, 243, 0.15) 0px 0px 0px 1px, rgba(140, 234, 243, 0.17) 0px 0px 24px 0px, rgba(140, 234, 243, 0.07) 0px 0px 28px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(1, 0, 0, 1, -4.68773, 0)"
+          }
+        },
+        "active": {
+          "at": 1791094780377,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "加入房间",
+          "visual": "control",
+          "box": {
+            "x": 857.74072265625,
+            "y": 400.63690185546875,
+            "right": 1279.7794189453125,
+            "bottom": 496.31622314453125,
+            "w": 422.0386962890625,
+            "h": 95.6793212890625
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": true,
+          "active": true,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgba(26, 40, 53, 0.98), rgba(10, 17, 26, 0.992))",
+            "borderColor": "rgba(141, 234, 243, 0.627) rgba(141, 234, 243, 0.627) rgba(141, 234, 243, 0.627) rgba(140, 234, 243, 0.65)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgba(140, 234, 243, 0.15) 0px 0px 0px 1px, rgba(140, 234, 243, 0.17) 0px 0px 24px 0px, rgba(140, 234, 243, 0.07) 0px 0px 28px 0px inset",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(0.99666, 0, 0, 0.99666, -3.56026, 0)"
+          }
+        },
+        "focusVisible": {
+          "at": 1791094780436,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "加入房间",
+          "visual": "control",
+          "box": {
+            "x": 858.7733154296875,
+            "y": 400.6149597167969,
+            "right": 1281.005615234375,
+            "bottom": 496.3381652832031,
+            "w": 422.2322998046875,
+            "h": 95.72320556640625
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": true,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(250, 247, 241)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(100deg, rgba(23, 38, 50, 0.957), rgba(13, 21, 31, 0.94))",
+            "borderColor": "rgba(142, 234, 243, 0.596) rgba(142, 234, 243, 0.596) rgba(142, 234, 243, 0.596) rgba(140, 234, 243, 0.74)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(250, 247, 241)",
+            "boxShadow": "rgba(255, 255, 255, 0.075) 0px 1px 0px 0px inset, rgba(0, 0, 0, 0) 0px 0px 0px 0px, rgba(0, 0, 0, 0) 0px 0px 0px 0px",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "flex",
+            "transform": "matrix(0.997117, 0, 0, 0.997117, -2.43084, 0)"
+          }
+        }
+      },
+      "verified": true
+    },
+    {
+      "label": "返回主菜单",
+      "app": "动态房主",
+      "source": "real pointer down/up outside and keyboard Tab; no attributes synthesized",
+      "states": {
+        "default": {
+          "at": 1791094780481,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "返回主菜单",
+          "visual": "control",
+          "box": {
+            "x": 54.6328125,
+            "y": 24,
+            "right": 175.3359375,
+            "bottom": 70,
+            "w": 120.703125,
+            "h": 46
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(212, 221, 225)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(125deg, rgba(23, 35, 45, 0.56), rgba(7, 16, 25, 0.41) 68%, rgba(140, 234, 243, 0.05))",
+            "borderColor": "rgba(255, 255, 255, 0.29) rgba(255, 255, 255, 0.157) rgba(255, 255, 255, 0.157)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(212, 221, 225)",
+            "boxShadow": "rgba(255, 255, 255, 0.07) 0px 1px 0px 0px inset, rgba(2, 7, 12, 0.26) 0px 9px 24px 0px",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "transform": "none"
+          }
+        },
+        "hover": {
+          "at": 1791094780559,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "返回主菜单",
+          "visual": "control",
+          "box": {
+            "x": 52.07621383666992,
+            "y": 23.14780044555664,
+            "right": 172.77933883666992,
+            "bottom": 69.14779663085938,
+            "w": 120.703125,
+            "h": 45.999996185302734
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": true,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(236, 237, 235)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(125deg, rgba(27, 45, 57, 0.65), rgba(8, 18, 28, 0.45) 70%, rgba(140, 234, 243, 0.1))",
+            "borderColor": "rgba(170, 240, 246, 0.408) rgba(159, 237, 245, 0.357) rgba(159, 237, 245, 0.357)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(236, 237, 235)",
+            "boxShadow": "rgba(255, 255, 255, 0.12) 0px 1px 0px 0px inset, rgba(49, 85, 91, 0.145) 0px 3.31686px 8.84496px 0.63146px, rgba(2, 7, 12, 0.227) 0px 6.3146px 17.6809px 0px",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "transform": "matrix(1, 0, 0, 1, -2.5566, -0.852199)"
+          }
+        },
+        "active": {
+          "at": 1791094780628,
+          "focused": true,
+          "tag": "BUTTON",
+          "type": "button",
+          "text": "返回主菜单",
+          "visual": "control",
+          "box": {
+            "x": 54.18359375,
+            "y": 24.560152053833008,
+            "right": 173.95303344726562,
+            "bottom": 70.20432472229004,
+            "w": 119.76943969726562,
+            "h": 45.64417266845703
+          },
+          "viewport": [
+            1366,
+            768
+          ],
+          "hit": true,
+          "hover": false,
+          "active": false,
+          "focusVisible": false,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "selected": null,
+          "checked": null,
+          "option": null,
+          "style": {
+            "color": "rgb(247, 245, 240)",
+            "backgroundColor": "rgba(0, 0, 0, 0)",
+            "backgroundImage": "linear-gradient(125deg, rgba(23, 35, 45, 0.56), rgba(7, 16, 25, 0.41) 68%, rgba(140, 234, 243, 0.05))",
+            "borderColor": "rgba(146, 235, 244, 0.46) rgba(143, 235, 243, 0.447) rgba(143, 235, 243, 0.447)",
+            "outlineStyle": "none",
+            "outlineWidth": "3px",
+            "outlineColor": "rgb(247, 245, 240)",
+            "boxShadow": "rgba(255, 255, 255, 0.14) 0px 1px 0px 0px inset, rgba(108, 181, 189, 0.094) 0px 0.764414px 2.03844px 0.915065px, rgba(2, 7, 12, 0.33) 0px 9.15065px 25.6218px 0px",
+            "opacity": "1",
+            "visibility": "visible",
+            "display": "block",
+            "transform": "matrix(0.992265, 0, 0, 0.992265, -0.916064, 0.382237)"
+          }
+        }
+      },
+      "verified": false
+    }
+  ],
+  "controlBusiness": [
+    {
+      "app": "动态房主",
+      "source": "Natural MutationObserver plus immediate public onChange sampling; named IPC delays are separately identified; no private payload or renderer synthesis",
+      "samples": [
+        {
+          "action": "",
+          "selector": ".online-portal-nav button",
+          "index": 0,
+          "type": "button",
+          "text": "返回主菜单",
+          "pending": false,
+          "domPending": "false",
+          "phase": null,
+          "status": null,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(212, 221, 225)",
+            "background": "linear-gradient(125deg, rgba(23, 35, 45, 0.56), rgba(7, 16, 25, 0.41) 68%, rgba(140, 234, 243, 0.05))",
+            "border": "rgba(255, 255, 255, 0.29) rgba(255, 255, 255, 0.157) rgba(255, 255, 255, 0.157)",
+            "outline": "rgb(212, 221, 225) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 0,
+          "type": "button",
+          "text": "创建房间",
+          "pending": false,
+          "domPending": "false",
+          "phase": null,
+          "status": null,
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 255, 255)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 1,
+          "type": "button",
+          "text": "加入房间",
+          "pending": false,
+          "domPending": "false",
+          "phase": null,
+          "status": null,
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgb(140, 234, 243)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 2,
+          "type": "button",
+          "text": "重新连接",
+          "pending": false,
+          "domPending": "false",
+          "phase": null,
+          "status": null,
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(223, 230, 232)",
+            "background": "linear-gradient(125deg, rgba(21, 34, 44, 0.6), rgba(7, 16, 25, 0.42))",
+            "border": "rgba(255, 255, 255, 0.32) rgba(255, 255, 255, 0.18) rgba(255, 255, 255, 0.18)",
+            "outline": "rgb(223, 230, 232) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-portal-nav button",
+          "index": 0,
+          "type": "button",
+          "text": "返回主菜单",
+          "pending": false,
+          "domPending": "false",
+          "status": "connecting",
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(212, 221, 225)",
+            "background": "linear-gradient(125deg, rgba(23, 35, 45, 0.56), rgba(7, 16, 25, 0.41) 68%, rgba(140, 234, 243, 0.05))",
+            "border": "rgba(255, 255, 255, 0.29) rgba(255, 255, 255, 0.157) rgba(255, 255, 255, 0.157)",
+            "outline": "rgb(212, 221, 225) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 0,
+          "type": "button",
+          "text": "创建房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connecting",
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 255, 255)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 1,
+          "type": "button",
+          "text": "加入房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connecting",
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgb(140, 234, 243)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-portal-nav button",
+          "index": 0,
+          "type": "button",
+          "text": "返回主菜单",
+          "pending": false,
+          "domPending": "false",
+          "status": "connected",
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(212, 221, 225)",
+            "background": "linear-gradient(125deg, rgba(23, 35, 45, 0.56), rgba(7, 16, 25, 0.41) 68%, rgba(140, 234, 243, 0.05))",
+            "border": "rgba(255, 255, 255, 0.29) rgba(255, 255, 255, 0.157) rgba(255, 255, 255, 0.157)",
+            "outline": "rgb(212, 221, 225) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 0,
+          "type": "button",
+          "text": "创建房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connected",
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 255, 255)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 1,
+          "type": "button",
+          "text": "加入房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connected",
+          "disabled": true,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "0.5",
+            "color": "rgb(197, 203, 208)",
+            "background": "none",
+            "border": "rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgb(140, 234, 243)",
+            "outline": "rgb(197, 203, 208) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 0,
+          "type": "button",
+          "text": "创建房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connected",
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(250, 247, 241)",
+            "background": "linear-gradient(100deg, rgb(249, 77, 96), rgb(201, 29, 60) 82%)",
+            "border": "rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 153, 164) rgb(255, 255, 255)",
+            "outline": "rgb(250, 247, 241) none 3px"
+          }
+        },
+        {
+          "action": "",
+          "selector": ".online-front-actions button",
+          "index": 1,
+          "type": "button",
+          "text": "加入房间",
+          "pending": false,
+          "domPending": "false",
+          "status": "connected",
+          "disabled": false,
+          "busy": null,
+          "pressed": null,
+          "checked": null,
+          "style": {
+            "opacity": "1",
+            "color": "rgb(250, 247, 241)",
+            "background": "linear-gradient(100deg, rgba(23, 38, 50, 0.957), rgba(13, 21, 31, 0.94))",
+            "border": "rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgba(204, 236, 241, 0.18) rgb(140, 234, 243)",
+            "outline": "rgb(250, 247, 241) none 3px"
+          }
+        }
+      ]
+    }
+  ],
+  "status": "FAIL",
+  "failure": {
+    "message": "返回主菜单 real pointer active",
+    "stack": "AssertionError [ERR_ASSERTION]: 返回主菜单 real pointer active\n    at controlStates (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:192:163)\n    at async runControlStates (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:213:84)\n    at async /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:248:25"
+  },
+  "diagnostics": {
+    "at": 8051.700000047684,
+    "route": "online",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-online",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-online",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-online",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(1.07984, 0, -0.0188486, 0, 0, 1.08, 0, 0, 0.0174524, 0, 0.999848, 0, -40.98, -15.36, 45, 1)",
+        "filter": "brightness(0.72) saturate(0.86)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1.02015, 0, 0, 1.02015, -8.27867, -0.0231813)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "menu-world-drift",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "0",
+        "transform": "matrix3d(1.08, 0, 0, 0, 0, 1.08, 0, 0, 0, 0, 1, 0, -355.16, 15.36, 80, 1)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-color",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-left-color",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-right-color",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-color",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "box-shadow",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "color",
+        "currentTime": 33.89999999999915,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 49.99999999999982,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "currentTime": 49.99999999999982,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": "::after"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 49.99999999999982,
+        "playState": "running",
+        "target": "settings-back",
+        "pseudo": "::after"
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-bottom-color",
+        "currentTime": 83.39999999999925,
+        "playState": "running",
+        "target": "menu-option menu-option-secondary",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-right-color",
+        "currentTime": 83.39999999999925,
+        "playState": "running",
+        "target": "menu-option menu-option-secondary",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "border-top-color",
+        "currentTime": 83.39999999999925,
+        "playState": "running",
+        "target": "menu-option menu-option-secondary",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "box-shadow",
+        "currentTime": 83.39999999999925,
+        "playState": "running",
+        "target": "menu-option menu-option-secondary",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 267.3339999999991,
+        "playState": "running",
+        "target": "menu-option menu-option-secondary",
+        "pseudo": "::before"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-world-drift",
+        "currentTime": 1216.9910000112836,
+        "playState": "running",
+        "target": "menu-layer menu-environment",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 7336.018999997712,
+        "playState": "running",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 7336.018999997712,
+        "playState": "running",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 7336.018999997712,
+        "playState": "running",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "settings-ui-in",
+        "currentTime": 550,
+        "playState": "finished",
+        "target": "online-portal-copy",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-rail-in",
+        "currentTime": 670,
+        "playState": "finished",
+        "target": "online-front-actions",
+        "pseudo": null
+      }
+    ],
+    "media": []
+  }
+}

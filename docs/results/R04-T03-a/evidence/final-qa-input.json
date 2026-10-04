@@ -1,0 +1,23 @@
+{
+  "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
+  "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n?? docs/results/R04-T03-a/CONTROL-STATES.md\n?? docs/results/R04-T03-a/evidence/",
+  "sha256": {
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
+    "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+    "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+    "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+    "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+  },
+  "startedAt": "2026-10-03T18:49:48.772Z",
+  "mainProcess": "fresh launch; no old hot-update process reused",
+  "driverSha256": {
+    "game/desktop/smoke-online-dynamic.cjs": "240a2ceb297fc443bcdcdbffb84bf936f0989fc709b6175fc7fbd077d3245862",
+    "game/desktop/smoke-dynamic.cjs": "4285e8f7b8a69bc77fc5e642279a4c8b5dea8b033fb5ff36a3edf83bd8cceeed",
+    "game/desktop/smoke-geometry.cjs": "b95a8fa940b6a363b641328070334a02831c4876d1f63b50adc165479dc1d4d4",
+    "game/desktop/smoke-archive-performance.cjs": "27cb4fa2c6cd23ebac097ba696c14c894242f9304cabc97604bfd704cbb5f39c"
+  }
+}

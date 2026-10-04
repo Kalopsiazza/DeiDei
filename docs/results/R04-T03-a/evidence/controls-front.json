@@ -1,0 +1,5096 @@
+{
+  "batch": "front",
+  "input": {
+    "sha": "ac012f979b7351ae2100b51731842b5b765020b3",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-performance.cjs\n M game/desktop/smoke-welcome-native.cjs\n M game/desktop/welcome.css\n?? game/desktop/smoke-control-states.cjs\n?? game/desktop/smoke-modal-contract.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T05:03:50.942Z",
+    "mainProcess": "fresh launch; no old hot-update process reused"
+  },
+  "source": "ordinary main / original renderer and SharedUI / isolated real profile and worker / test-only legal IPC delay or explicit failure",
+  "fingerprints": {
+    "driver": "019c8512b85a18bb1484d14a8eaee49cb9ed4010b64630920a518583ca50cce1",
+    "wrapper": "8bcc0d8f0dca510dc43aa235ee663b6320999bcdb4a11c4614d431e86c670a99",
+    "SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "renderer.tsx": "f9782c32dc2e40087106dadfac71a8b261298d12be9aef15a8064c88934065eb",
+    "WelcomeEntrance.tsx": "765dd7742e152ac5b7de7dcaef439dc376a3e7aba49bb2872ff052c08a4495e4",
+    "BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
+    "ManualArchive.tsx": "67b59e4d8c8934f3db21d4c0361f03747c48143f71ecaaa42f34d99ea1f942c6",
+    "TutorialCoach.tsx": "f945418699ef9f71975db3046ae6dcd05262cbf22d498933585a5c041f642c66",
+    "profile.cjs": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2"
+  },
+  "controls": [
+    {
+      "name": "welcome/sound",
+      "state": "geometry",
+      "raw": {
+        "x": 1157.5,
+        "y": 701.5,
+        "width": 40.53125,
+        "height": 40.5
+      },
+      "explicitScroll": true,
+      "t": 437.0999999642372,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "default",
+      "t": 465,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "hover",
+      "t": 516.5,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "active",
+      "t": 614.2999999523163,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.863)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1157.5,
+        "y": 701.5,
+        "width": 40.53125,
+        "height": 40.5
+      },
+      "explicitScroll": true,
+      "t": 680.8999999761581,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.616)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "focus-visible",
+      "t": 683.7999999523163,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.616)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/sound",
+      "state": "selected",
+      "t": 732.0999999642372,
+      "page": "profile",
+      "text": "♫",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1151.03125,
+        "y": 700.5,
+        "w": 47,
+        "h": 41.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "true",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgb(73, 108, 94) 0px 0px 0px 1px inset",
+        "border": "rgba(140, 234, 243, 0.435)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/sound",
+      "state": "unselected",
+      "t": 770.8999999761581,
+      "page": "profile",
+      "text": "♪",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1157.5,
+        "y": 701.5,
+        "w": 40.53125,
+        "h": 40.5,
+        "right": 1198.03125,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.61)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "geometry",
+      "raw": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "width": 103.3359375,
+        "height": 40.5
+      },
+      "explicitScroll": true,
+      "t": 814.7999999523163,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "default",
+      "t": 831.6999999880791,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "hover",
+      "t": 889.5999999642372,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "active",
+      "t": 990.0999999642372,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.863)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.8), rgba(8, 19, 30, 0.8))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "width": 103.3359375,
+        "height": 40.5
+      },
+      "explicitScroll": true,
+      "t": 1074.2999999523163,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.65)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "focus-visible",
+      "t": 1081,
+      "page": "profile",
+      "text": "跳过开场 →",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1208.03125,
+        "y": 701.5,
+        "w": 103.3359375,
+        "h": 40.5,
+        "right": 1311.3671875,
+        "bottom": 742
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.545)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.733), rgba(8, 19, 30, 0.733))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(220, 234, 240)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/skip",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/replay",
+      "state": "geometry",
+      "raw": {
+        "x": 1229.3671875,
+        "y": 26,
+        "width": 82,
+        "height": 38.5
+      },
+      "explicitScroll": true,
+      "t": 1165.199999988079,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay",
+      "state": "default",
+      "t": 1182.8999999761581,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay",
+      "state": "hover",
+      "t": 1235.0999999642372,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.467), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay",
+      "state": "active",
+      "t": 1333.5999999642372,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.54)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.467), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(242, 246, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1229.3671875,
+        "y": 26,
+        "width": 82,
+        "height": 38.5
+      },
+      "explicitScroll": true,
+      "t": 1398.699999988079,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.39)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(219, 230, 235)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay",
+      "state": "focus-visible",
+      "t": 1401.7999999523163,
+      "page": "profile",
+      "text": "重播开场",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.39)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(219, 230, 235)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/replay",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/title",
+      "state": "geometry",
+      "raw": {
+        "x": 157.40147399902344,
+        "y": 508.26171875,
+        "width": 156.00001525878906,
+        "height": 60
+      },
+      "explicitScroll": true,
+      "t": 1715.699999988079,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 508.26171875,
+        "w": 156,
+        "h": 60,
+        "right": 319.9140625,
+        "bottom": 568.26171875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title",
+      "state": "default",
+      "t": 1732.7999999523163,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 508.26171875,
+        "w": 156,
+        "h": 60,
+        "right": 319.9140625,
+        "bottom": 568.26171875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title",
+      "state": "hover",
+      "t": 1783.5999999642372,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 508.26171875,
+        "w": 156,
+        "h": 60,
+        "right": 319.9140625,
+        "bottom": 568.26171875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "brightness(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title",
+      "state": "active",
+      "t": 1884,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 507.1094055175781,
+        "w": 156,
+        "h": 59.999969482421875,
+        "right": 319.9140625,
+        "bottom": 567.109375
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, -1.15232)",
+        "filter": "brightness(1.04609)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 163.9140625,
+        "y": 507.0149230957031,
+        "width": 156,
+        "height": 59.999969482421875
+      },
+      "explicitScroll": true,
+      "t": 2165,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 508.26171875,
+        "w": 156,
+        "h": 60,
+        "right": 319.9140625,
+        "bottom": 568.26171875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title",
+      "state": "focus-visible",
+      "t": 2168,
+      "page": "profile",
+      "text": "进入牌厅→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 163.9140625,
+        "y": 508.26171875,
+        "w": 156,
+        "h": 60,
+        "right": 319.9140625,
+        "bottom": 568.26171875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/title",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "geometry",
+      "raw": {
+        "x": 510.71392822265625,
+        "y": 290.94268798828125,
+        "width": 321.0718994140625,
+        "height": 69.80819702148438
+      },
+      "explicitScroll": true,
+      "t": 4257.899999976158,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "default",
+      "t": 4288.5,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "hover",
+      "t": 4351.299999952316,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "active",
+      "t": 4450.099999964237,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "width": 321.0721130371094,
+        "height": 69.80624389648438
+      },
+      "explicitScroll": true,
+      "t": 4547.399999976158,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "focus-visible",
+      "t": 4550,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/nickname",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "geometry",
+      "raw": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "width": 48.7635498046875,
+        "height": 51.760040283203125
+      },
+      "explicitScroll": true,
+      "t": 4599.199999988079,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "default",
+      "t": 4617.799999952316,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "hover",
+      "t": 4664,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "active",
+      "t": 4762.299999952316,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5022583007812,
+        "y": 419.7259826660156,
+        "w": 48.7637939453125,
+        "h": 51.75787353515625,
+        "right": 624.2660522460938,
+        "bottom": 471.4838562011719
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(161, 238, 245, 0.42)",
+        "background": "none",
+        "backgroundColor": "rgba(34, 58, 69, 0.54)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "matrix(1, 0, 0, 1, 0, -1.14382)",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 575.54541015625,
+        "y": 420.5462646484375,
+        "width": 48.76361083984375,
+        "height": 51.759429931640625
+      },
+      "explicitScroll": true,
+      "t": 4933,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "focus-visible",
+      "t": 4936.699999988079,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/avatar",
+      "state": "selected",
+      "t": 4969.699999988079,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "true",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgb(140, 234, 243) 0px 0px 0px 1px inset, rgba(140, 234, 243, 0.24) 0px 0px 16px 0px",
+        "border": "rgba(255, 255, 255, 0.176)",
+        "background": "none",
+        "backgroundColor": "rgba(19, 35, 45, 0.55)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "geometry",
+      "raw": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "width": 50.1331787109375,
+        "height": 35.6058349609375
+      },
+      "explicitScroll": true,
+      "t": 5013.399999976158,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(139, 182, 197)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "default",
+      "t": 5034.199999988079,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(139, 182, 197)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "hover",
+      "t": 5083.099999964237,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(101, 119, 105)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "active",
+      "t": 5183.299999952316,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(101, 119, 105)",
+        "background": "none",
+        "backgroundColor": "rgba(236, 233, 220, 0.863)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "width": 50.1331787109375,
+        "height": 35.6058349609375
+      },
+      "explicitScroll": true,
+      "t": 5282.899999976158,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(139, 182, 197)",
+        "background": "none",
+        "backgroundColor": "rgba(236, 233, 220, 0.04)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "focus-visible",
+      "t": 5286.199999988079,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(139, 182, 197)",
+        "background": "none",
+        "backgroundColor": "rgba(236, 233, 220, 0.04)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/reload",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/create",
+      "state": "geometry",
+      "raw": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "width": 320.76959228515625,
+        "height": 72.61386108398438
+      },
+      "explicitScroll": true,
+      "t": 5330.5,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create",
+      "state": "default",
+      "t": 5350.099999964237,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create",
+      "state": "hover",
+      "t": 5400,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "brightness(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create",
+      "state": "active",
+      "t": 5499,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.911376953125,
+        "y": 481.63909912109375,
+        "w": 320.77142333984375,
+        "h": 72.5972900390625,
+        "right": 841.6828002929688,
+        "bottom": 554.2363891601562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, -1.1471)",
+        "filter": "brightness(1.04588)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 520.923828125,
+        "y": 481.87152099609375,
+        "width": 320.77099609375,
+        "height": 72.60064697265625
+      },
+      "explicitScroll": true,
+      "t": 5801,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create",
+      "state": "focus-visible",
+      "t": 5806.599999964237,
+      "page": "profile",
+      "text": "确认名字→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/create",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome-create/confirm",
+      "state": "busy-disabled",
+      "t": 5858,
+      "page": "profile",
+      "text": "保存中…→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.97216796875,
+        "y": 482.7760314941406,
+        "w": 320.76959228515625,
+        "h": 72.61386108398438,
+        "right": 841.7417602539062,
+        "bottom": 555.389892578125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.55",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome-create/input",
+      "state": "busy-disabled",
+      "t": 5866.5,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 510.7068176269531,
+        "y": 290.80963134765625,
+        "w": 321.0721130371094,
+        "h": 69.80624389648438,
+        "right": 831.7789306640625,
+        "bottom": 360.6158752441406
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "欢迎控件补测",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome-create/avatar",
+      "state": "busy-disabled",
+      "t": 5871.699999988079,
+      "page": "profile",
+      "text": "",
+      "tag": "BUTTON",
+      "box": {
+        "x": 575.5625610351562,
+        "y": 420.8714294433594,
+        "w": 48.7635498046875,
+        "h": 51.760040283203125,
+        "right": 624.3261108398438,
+        "bottom": 472.6314697265625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": "true",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgb(140, 234, 243) 0px 0px 0px 1px inset, rgba(140, 234, 243, 0.24) 0px 0px 16px 0px",
+        "border": "rgb(140, 234, 243)",
+        "background": "none",
+        "backgroundColor": "rgba(140, 234, 243, 0.11)",
+        "color": "rgb(234, 243, 245)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome-create/reload",
+      "state": "busy-disabled",
+      "t": 5876.199999988079,
+      "page": "profile",
+      "text": "重新读取",
+      "tag": "BUTTON",
+      "box": {
+        "x": 524.2576904296875,
+        "y": 560.5076293945312,
+        "w": 50.1331787109375,
+        "h": 35.6058349609375,
+        "right": 574.390869140625,
+        "bottom": 596.1134643554688
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(139, 182, 197)",
+        "background": "none",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(139, 182, 197)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/input-restored",
+      "state": "default",
+      "t": 8033.599999964237,
+      "page": "profile",
+      "text": "",
+      "tag": "INPUT",
+      "box": {
+        "x": 508.5953674316406,
+        "y": 251.3250274658203,
+        "w": 321.1343688964844,
+        "h": 69.22843933105469,
+        "right": 829.729736328125,
+        "bottom": 320.553466796875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": false,
+      "value": "欢迎控件补测",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(2, 7, 11, 0.63) 0px 1px 10px 0px inset",
+        "border": "rgba(255, 255, 255, 0.192)",
+        "background": "none",
+        "backgroundColor": "rgba(6, 16, 24, 0.533)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "geometry",
+      "raw": {
+        "x": 521.3009643554688,
+        "y": 488.9240417480469,
+        "width": 320.4512939453125,
+        "height": 66.67013549804688
+      },
+      "explicitScroll": true,
+      "t": 9025.5,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(54, 85, 102, 0.333), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "default",
+      "t": 9039.399999976158,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(54, 85, 102, 0.333), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "hover",
+      "t": 9085.399999976158,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(140, 234, 243)",
+        "background": "linear-gradient(115deg, rgba(71, 111, 122, 0.533), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "active",
+      "t": 9186.899999976158,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(140, 234, 243)",
+        "background": "linear-gradient(115deg, rgba(71, 111, 122, 0.533), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "width": 320.4793701171875,
+        "height": 66.40878295898438
+      },
+      "explicitScroll": true,
+      "t": 9250,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(54, 85, 102, 0.333), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "focus-visible",
+      "t": 9254.099999964237,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(54, 85, 102, 0.333), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-menu",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "geometry",
+      "raw": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "width": 320.89111328125,
+        "height": 71.48626708984375
+      },
+      "explicitScroll": true,
+      "t": 9300.399999976158,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "default",
+      "t": 9318.699999988079,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "hover",
+      "t": 9367.799999952316,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "brightness(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "active",
+      "t": 9469,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.7870483398438,
+        "y": 404.51153564453125,
+        "w": 320.89288330078125,
+        "h": 71.46954345703125,
+        "right": 837.679931640625,
+        "bottom": 475.9810791015625
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(248, 186, 196)",
+        "background": "linear-gradient(110deg, rgb(248, 83, 103), rgb(193, 53, 76) 65%, rgb(33, 77, 88))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "matrix(1, 0, 0, 1, 0, -1.15296)",
+        "filter": "brightness(1.04612)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 516.8170166015625,
+        "y": 405.0728454589844,
+        "width": 320.89202880859375,
+        "height": 71.47775268554688
+      },
+      "explicitScroll": true,
+      "t": 9618.5,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "focus-visible",
+      "t": 9623.299999952316,
+      "page": "profile",
+      "text": "开始新手实战→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/ready-tutorial",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "geometry",
+      "raw": {
+        "x": 1229.3671875,
+        "y": 26,
+        "width": 82,
+        "height": 38.5
+      },
+      "explicitScroll": true,
+      "t": 9667.599999964237,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "default",
+      "t": 9686,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "hover",
+      "t": 9737.199999988079,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.192)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.467), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(189, 209, 219)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "active",
+      "t": 9843.699999988079,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.54)",
+        "background": "linear-gradient(115deg, rgba(65, 98, 109, 0.467), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(242, 246, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1229.3671875,
+        "y": 26,
+        "width": 82,
+        "height": 38.5
+      },
+      "explicitScroll": true,
+      "t": 9917.099999964237,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.408)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(222, 232, 237)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "focus-visible",
+      "t": 9920.5,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.408)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(222, 232, 237)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome/tools-preview",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "welcome-tutorial/start",
+      "state": "busy-disabled",
+      "t": 9954.599999964237,
+      "page": "profile",
+      "text": "正在入场…→",
+      "tag": "BUTTON",
+      "box": {
+        "x": 516.84814453125,
+        "y": 405.6546936035156,
+        "w": 320.89111328125,
+        "h": 71.48626708984375,
+        "right": 837.7392578125,
+        "bottom": 477.1409606933594
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(214, 135, 148, 0.5)",
+        "background": "linear-gradient(110deg, rgb(236, 66, 88), rgb(170, 36, 62) 65%, rgb(22, 51, 62))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.55",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome-tutorial/menu",
+      "state": "busy-disabled",
+      "t": 9958.799999952316,
+      "page": "profile",
+      "text": "进入主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 520.346923828125,
+        "y": 471.0834655761719,
+        "w": 320.4793701171875,
+        "h": 66.40878295898438,
+        "right": 840.8262939453125,
+        "bottom": 537.4922485351562
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.3)",
+        "background": "linear-gradient(115deg, rgba(54, 85, 102, 0.333), rgba(9, 21, 30, 0.533))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(200, 219, 227)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "welcome-tutorial/tools",
+      "state": "busy-disabled",
+      "t": 9964.5,
+      "page": "profile",
+      "text": "开发预览",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1229.3671875,
+        "y": 26,
+        "w": 82,
+        "h": 38.5,
+        "right": 1311.3671875,
+        "bottom": 64.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.255)",
+        "background": "linear-gradient(115deg, rgba(37, 57, 70, 0.4), rgba(8, 19, 30, 0.267))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(199, 216, 224)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    }
+  ],
+  "business": [
+    {
+      "name": "welcome-create",
+      "controlled": {
+        "channel": "profile.create",
+        "delay": 1800,
+        "fail": true,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "profile.create",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "profile.create",
+              "kind": "start",
+              "t": 1791090237612
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "profile.create",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "profile.create",
+              "kind": "start",
+              "t": 1791090237612
+            },
+            {
+              "channel": "profile.create",
+              "kind": "controlled-error",
+              "t": 1791090239414,
+              "error": "SAVE_FAILED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "welcome-tutorial",
+      "controlled": {
+        "channel": "port.startTutorial",
+        "delay": 1800,
+        "fail": true,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startTutorial",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startTutorial",
+              "kind": "start",
+              "t": 1791090241712
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 94463,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startTutorial",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startTutorial",
+              "kind": "start",
+              "t": 1791090241712
+            },
+            {
+              "channel": "port.startTutorial",
+              "kind": "controlled-error",
+              "t": 1791090243514,
+              "error": "SAVE_FAILED"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "notes": [
+    {
+      "scope": "Seven-state applicability is source-defined; this batch proves only named observations. No selected/disabled/busy state was synthesized; online is outside this driver."
+    }
+  ],
+  "errors": [],
+  "initial": {
+    "native": {
+      "pid": 94463,
+      "focused": true,
+      "visible": true,
+      "bounds": {
+        "x": 469,
+        "y": 384,
+        "width": 1366,
+        "height": 800
+      },
+      "content": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "fullscreen": false,
+      "display": {
+        "id": 2,
+        "scaleFactor": 2
+      },
+      "control": {
+        "channel": "",
+        "delay": 0,
+        "fail": false,
+        "error": "SAVE_FAILED",
+        "calls": 0,
+        "events": []
+      }
+    },
+    "renderer": {
+      "at": 206.89999997615814,
+      "route": "loading",
+      "url": "app://desktop/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 2,
+      "visibility": "visible",
+      "styles": [
+        {
+          "selector": "app",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "app",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "saturate(0.96)",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "ui-world-breathe",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        },
+        {
+          "selector": "app",
+          "pseudo": "::after",
+          "opacity": "0.3",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        }
+      ],
+      "animations": [
+        {
+          "type": "CSSAnimation",
+          "name": "ui-world-breathe",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "app",
+          "pseudo": "::before"
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "ui-scan",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "",
+          "pseudo": "::after"
+        }
+      ],
+      "media": []
+    }
+  },
+  "finalNative": {
+    "pid": 94463,
+    "focused": true,
+    "visible": true,
+    "bounds": {
+      "x": 469,
+      "y": 384,
+      "width": 1366,
+      "height": 800
+    },
+    "content": {
+      "x": 469,
+      "y": 416,
+      "width": 1366,
+      "height": 768
+    },
+    "fullscreen": false,
+    "display": {
+      "id": 2,
+      "scaleFactor": 2
+    },
+    "control": {
+      "channel": "",
+      "delay": 0,
+      "fail": false,
+      "error": "SAVE_FAILED",
+      "calls": 0,
+      "events": []
+    }
+  },
+  "keys": [
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 631.3999999761581,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 635.7999999523163,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1014.5,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1018.1999999880791,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1347,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1350.699999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1898,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 1903.0999999642372,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4468.399999976158,
+      "target": "INPUT"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4476.799999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4483.799999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4488.099999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4496.299999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4500,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4504.099999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4780.099999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4786.299999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4790.799999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4796.699999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4800.5,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4804.5,
+      "target": "INPUT"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 4807.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5199.5,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5205,
+      "target": "INPUT"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5211.199999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5215.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5219.699999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5223.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5229.599999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5514.299999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5519.699999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5524.099999964237,
+      "target": "INPUT"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5530,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5533.799999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5536.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 5540.199999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 5877.299999952316,
+      "target": "BODY"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9199.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9206.199999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9212.5,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9482.299999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9488.399999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9493.299999952316,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9865.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9872.099999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 9876.699999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 9965.399999976158,
+      "target": "BODY"
+    }
+  ],
+  "final": {
+    "at": 13947.199999988079,
+    "route": "menu",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1.00002, 0, 0, 1.00002, 0.00416943, -0.00205114)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "welcome-world-drift",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "menu-rail-in",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSTransition",
+        "name": "filter",
+        "currentTime": 368.26499995466656,
+        "playState": "running",
+        "target": "menu-layer menu-character",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 368.26499995466656,
+        "playState": "running",
+        "target": "menu-layer menu-character",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "welcome-world-drift",
+        "currentTime": 368.26499995466656,
+        "playState": "running",
+        "target": "menu-layer menu-environment",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 13703.442999992225,
+        "playState": "running",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 13703.442999992225,
+        "playState": "running",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 13703.442999992225,
+        "playState": "running",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "welcome-hall-veil",
+        "currentTime": 950,
+        "playState": "finished",
+        "target": "menu-layout welcome-menu-entry",
+        "pseudo": "::before"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-rail-in",
+        "currentTime": 920,
+        "playState": "finished",
+        "target": "menu-rail",
+        "pseudo": null
+      }
+    ],
+    "media": []
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-controls-profile-UTjEI8",
+      "removed": true
+    },
+    "application": {
+      "pid": 94463,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T05:04:06.719Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T05:04:06.719Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T05:04:06.719Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T05:04:06.899Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T05:04:06.899Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 94464,
+        "ppid": 94463,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 94465,
+        "ppid": 94463,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 94467,
+        "ppid": 94463,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 94470,
+        "ppid": 94463,
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T05:04:06.905Z",
+  "status": "PASS",
+  "readBack": {
+    "controls": 88,
+    "statusMatches": true
+  }
+}

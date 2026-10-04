@@ -1,0 +1,15 @@
+{
+  "source": "Actual CUA native app screenshot and AX plus Up then Return",
+  "at": "2026-10-04T06:10:45.376Z",
+  "steps": [
+    "initial popup selected30",
+    "Up native highlighted20",
+    "Return popup closed with accepted20, parent dialog still open"
+  ],
+  "images": [
+    "native-popup-30.png",
+    "native-popup-highlight-20.png",
+    "native-popup-accepted-20.png"
+  ],
+  "scope": "Lobby only; driver resumes via marker and separately reads selected option; marker alone not evidence"
+}

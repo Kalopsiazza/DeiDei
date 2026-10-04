@@ -1,3 +1,13 @@
+# R04-T03-a 本机执行／交付完成｜2026-10-04
+
+[Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)；起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；最终产品 `dc38024a91818c3e2a2ca537675549409cfca620`。活动 worktree `.worktrees/r04-t03-a`／`work/r04-t03-a-frontend-completion`；[Draft #36](https://github.com/Kalopsiazza/DeiDei/pull/36) base `codex/r04-t02-e-real-rooms`，完整head在PR正文与交付回传。
+
+三个里程碑的本机执行与增量交付完成：预览/Modal、完整10条动态路线189条控件记录、真实联机17项和最终66在线控件、原生下限/全屏/同DPR跨屏、欢迎37项同PID reload调查、严格1920图鉴两区8wheel复验。历史失败和未复现原因保留；设备/分发条件具体交接。第二轮待ChatGPT增量复核、Teddy实际体验及外部安排确认，当前不自行进入。Kimi未调用。
+
+[工作单](../tasks/R04/R04-T03-a.md) · [报告](../results/R04-T03-a/REPORT.md) · [证据](../results/R04-T03-a/evidence/README.md)
+
+---
+
 # 当前进度｜前端直接迭代，技术审阅并行
 
 ChatGPT · 2026-09-29。本次已重新读取 #30/#31、相关评论、固定规划及相应源码；R04-T01-b 已在 Teddy 本机启动真实 Electron，并验证新版主菜单与前端自动刷新。没有新跑 TLS、长时间测试或跨平台打包。

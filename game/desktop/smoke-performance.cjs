@@ -63,12 +63,13 @@ async function waitForExit(child,ms) {
  while(child.exitCode===null&&!child.signalCode){if(Date.now()>=end)throw new Error('Owned Electron did not exit');await new Promise(r=>setTimeout(r,25));}
 }
 async function closeApplication(app,timeoutMs=6500) {
- const child=app.process(),record={pid:child.pid,normalExit:false,forced:false,errors:[]};
+ const child=app.process(),record={pid:child.pid,normalExit:false,forced:false,errors:[],stages:[]};
+ const stage=name=>record.stages.push({name,at:new Date().toISOString(),exitCode:child.exitCode,signal:child.signalCode});
  try {
   if(child.exitCode===null&&!child.signalCode)await bounded(async()=>{
    // Exercise ordinary close/before-quit, including active worker cleanup; no destroyed window.
-   await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});
-   await app.close();await waitForExit(child,1000);
+   stage('confirmation-handler-start');await app.evaluate(({dialog})=>{dialog.showMessageBox=async()=>({response:1});});stage('confirmation-handler-done');
+   stage('application-close-start');await app.close();stage('application-close-done');await waitForExit(child,1000);stage('process-exited');
   },timeoutMs,'Normal Electron close');
   record.normalExit=child.exitCode===0&&!child.signalCode;
   if(!record.normalExit)throw new Error('Owned Electron did not exit normally');
