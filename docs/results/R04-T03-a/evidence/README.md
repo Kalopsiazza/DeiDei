@@ -9,7 +9,7 @@
 | [最终在线控件](controls-online-final.json) | clean6349639，66verified／796natural，11请求busy、结果／WAITING／返厅／双leave；raw controlStatesComplete=false不改，原生接受另证 |
 | [原生select接受](native-select-accepted.json)／[初始30](native-select-popup-30.png)／[Up高亮20](native-select-popup-highlight-20.png)／[Return接受20](final-native-select-accepted.png) | 实际CUA，popup关闭、dialog仍开、driver option20000；[母运行整体FAIL](controls-online-v7-failure.json)保留，marker仅恢复收集器，20选值不等于政策已应用 |
 | [六批控件及适用性](../CONTROL-STATES.md)／[图鉴附加88](controls-archive-extra-final.json)／[loading7](controls-loading-final.json) | 真实pointer／down／Tab、原业务disabled/busy、合法IPC迟延失败及NA；不同consumer/class/fieldset，正常0；焦点离散采样不冒充等待全程native证明 |
-| [最终欢迎调查](welcome-final-p5.json) | clean2c5b0b896a31331d12627b471647a70d9223c8c0，37checks／11segments，fresh/同PID/P01/实际watcherreload，P5输入、正常清理；历史人物异常未复现，50–83ms及69 droppedVideoFrames保留 |
+| [最终欢迎调查](welcome-final-p5.json) | clean2c5b0b896a31331d12627b471647a70d9223c8c0，37checks／11segments，fresh/同PID/P01/实际watcherreload，P5输入、正常清理；历史人物异常未复现，返菜单max183.7ms、自然重播131个>50ms及checkpoint69 droppedVideoFrames保留 |
 | [最终严格图鉴](archive-final-p5.json)／[历史before](archive-before.json)／[历史after](archive-after.json) | native1920×1080/DPR2，两区8wheel。P5 list17.7/33.6/>50=0，detail17.6/17.7/>50=0；201focus配对/native无blur。负CPUdelta97/77、detail trace discarded16保留，非全产品性能结论 |
 | [图鉴偏移原FAIL](dynamic-final-p5-v1-failure.json)／[正常诊断](archive-scroll-diagnose.json)／[最小起步诊断](archive-scroll-diagnose-minimum.json) | 原1248→1314不改写；两诊断和最终full v2稳定baseline后仍1248。原66px原因未确认，无产品scroll reset或容差放宽；临时collector原文也已归档 |
 | [原生P5](native-explicit-p5.json)／[P4下限来源FAIL](native-p4-failure.json) | 实际全屏进退、同DPR双屏往返、选择/键盘及正常退出由P5证明；真实1000×650下限来自P4，源整体清理FAIL保留 |

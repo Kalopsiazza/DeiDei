@@ -220,7 +220,7 @@
   },
   "performanceLimits": [
     "Archive list/detail CPU negative delta97/77; utilization/React percentages invalid. Detailtrace trace_processor_stats.traced_chunks_discarded16 although bufferloss fields0; not lossless trace claim.",
-    "Welcome functional37 PASS retains samePID50–83ms long intervals; focus discrete snapshots, not strict everyRAF native proof.",
+    "Welcome functional37 PASS retains samePID natural replay p95=83.5ms/max150.2ms/131 intervals>50ms; returning-menu max183.7ms; replay checkpoint69 droppedVideoFrames; focus discrete snapshots, not strict everyRAF native proof.",
     "Reused two-player old200–267ms severe late reveal not reproduced;7 restoration51–83ms remain; no all-product performance claim."
   ],
   "history": {

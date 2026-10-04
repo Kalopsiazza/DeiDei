@@ -43,7 +43,7 @@
 
 原长帧已通过局部视觉处理和同机有效对照处理，最终P5未出现同量级停顿；不从短React handler推导GPU根因。v4 CPU timeDelta有97／77条负值，只作诊断，不算利用率或React占比；detail trace processor metadata `traced_chunks_discarded=16`，虽然两buffer loss字段为0，也不写trace完整无损。详情／列表操作和焦点协议保持原8wheel，未换轻场景或关闭全部效果。
 
-旧两人严重停顿按工作单做有限同host复用调查：此前6/3/4/5人历史，固定1366×768/DPR2；389phaseRAF／388独立focusRAF聚焦可见、native无blur，晚揭晓>1s的239间隔p95/max18.2/18.6ms、>50=0，旧200–267ms未复现。恢复选卡仍有7个51–83ms，保留未复现边界。最终欢迎调查亦保留50–83ms长间隔及同PID自然重播checkpoint的69个 droppedVideoFrames（返回/重播/reload），不能把37功能检查通过写成全产品性能通过。
+旧两人严重停顿按工作单做有限同host复用调查：此前6/3/4/5人历史，固定1366×768/DPR2；389phaseRAF／388独立focusRAF聚焦可见、native无blur，晚揭晓>1s的239间隔p95/max18.2/18.6ms、>50=0，旧200–267ms未复现。恢复选卡仍有7个51–83ms，保留未复现边界。最终欢迎调查保留同PID自然重播p95=83.5ms／max150.2ms／131个>50ms、返菜单max183.7ms及重播checkpoint的69个 droppedVideoFrames，不能把37功能检查通过写成全产品性能通过。
 
 [完整动态v1 FAIL](evidence/dynamic-final-p5-v1-failure.json) 的图鉴1248→1314偏移保留；[正常起步诊断](evidence/archive-scroll-diagnose.json)和[最小起步诊断](evidence/archive-scroll-diagnose-minimum.json)均1248不变，未定位原66px原因。最终full v2仅给mount/wheel建立500ms实际稳定baseline，保留原strict deepEqual和全部路线，不改产品scroll、不重置位置／放宽容差；本轮该偏移未复现。在线v7–v12的已卸载按钮、异步native focus及移动目标旧坐标等收集器失败原样保留；v13原hover/active/焦点／自然busy断言不降低。[严格图鉴v2 FAIL](evidence/archive-final-p5-v2-failure.json)有hold超时／6500ms强制退出；[v3 FAIL](evidence/archive-final-p5-v3-failure.json)有实际native失焦与317.4ms partial峰值，不用无效焦点数据冒充最终有效测量。所有raw失败、first error、非零driver、正常/强制清理均在R和manifest保留。
 

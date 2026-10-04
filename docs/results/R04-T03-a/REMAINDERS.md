@@ -18,7 +18,7 @@
 | N2/N6全动态、N3/4/5拥挤揭晓、N6viewer | 同host实际6→3→4→5→2及真实观众GUI | online-unlocked-bottom-auto17PASS、N3头像修正；sourceP3+dirtyP4与P5 renderer/style/main一致；普通双app/service正常退出 | 已修并验证 |
 | 时限当前拍／后拍 | 真实selectOption/Apply | OU actual selecting opening/Apply/after，当前30s deadline/accepted不变，下一拍20s；N7独立CUA Up→Return接受20，popup关闭/dialog仍开，母运行FAIL保留 | 已验证可用 |
 | 七态／业务锁／反例拒绝 | 原App不同class/fieldset、实际hover/down/Tab及合法IPC迟延失败 | 六批PASS；AE5图鉴88/LD2 loading7；cleanO13全部66verified/796natural、11请求busy、guestWAITING/结果/return/leave完成；原生接受N7另证；NA及共享复用见CONTROL-STATES | 已验证可用 |
-| 欢迎历史人物/视频/同dev刷新 | fresh/同PID重播/P01/returning/真实watcherreload | P5 clean2c5最终37checks/11segments，fresh/同PID/P01/replay/return/真实watcherreload，无人物媒体资源错误，normal0/childgone/profile删除；历史失败原因未定位，50–83ms长帧保留 | 本轮未复现 |
+| 欢迎历史人物/视频/同dev刷新 | fresh/同PID重播/P01/returning/真实watcherreload | P5 clean2c5最终37checks/11segments，fresh/同PID/P01/replay/return/真实watcherreload，无人物媒体资源错误，normal0/childgone/profile删除；历史失败原因未定位，返菜单max183.7ms及同PID自然重播131个>50ms保留 | 本轮未复现 |
 | 旧两人复用严重晚揭晓 | 普通聚焦同host依次多人后复用2人、固定1366×768/DPR2短profile | 389phaseRAF／388独立focusRAF全部聚焦可见、无nativeblur；晚揭晓239间隔p95/max18.2/18.6ms、>50=0，旧200–267ms峰值未复现；选卡恢复7个51–83ms仍保留，不宣称所有性能修复 | 本轮未复现 |
 | 1920图鉴固定8wheel长帧 | ordinarymain、native/docfocus、各区4×+500后4×−500、180ms | 历史同机有效before/after局部处理；最终P5严格两区各8wheel，list17.7/33.6/>50=0、detail17.6/17.7/>50=0，全201focus配对/native无blur，正常清理；负CPUdelta/trace discarded16保留 | 已修并验证 |
 | 不同DPI／物理4K／系统缩放 | 当前两屏确实均DPR2 | 需不同DPR屏/实际4K模式和缩放组合；原生往返、文字/焦点/选牌/飞行及短录像步骤见REPORT | 缺少具体条件 |
