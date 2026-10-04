@@ -120,12 +120,16 @@ test('R04 dev reload waits for a completed build marker',()=>{
 test('R04 release stage derives every UI asset and resolves runtime modules',()=>{
  const {UI_ASSETS}=require('./ui-assets.cjs');
  for(const name of Object.keys(UI_ASSETS))assert.ok(STAGE_FILES.includes('build/ui/'+name),name);
- for(const name of ['online/network-room-port.cjs','online/wire.cjs','catalog.json'])assert.ok(STAGE_FILES.includes(name),name);
+ for(const name of ['online/network-room-port.cjs','online/wire.cjs','catalog.json','graphics.cjs'])assert.ok(STAGE_FILES.includes(name),name);
+ assert.ok(!STAGE_FILES.includes('graphics.d.cts'),'declarations are not runtime input');
  assert.ok(!STAGE_FILES.some(name=>name.includes('online-atrium')),'retired source assets stay out of release');
  const directory=fs.mkdtempSync(path.join(os.tmpdir(),'deidei-stage-'));
  try{
   for(const name of STAGE_FILES){const target=path.join(directory,name);fs.mkdirSync(path.dirname(target),{recursive:true});fs.copyFileSync(path.join(__dirname,name),target);}
   assert.deepEqual(verifyStage(directory),{status:'PASS',files:STAGE_FILES.length});
+  fs.unlinkSync(path.join(directory,'graphics.cjs'));
+  assert.throws(()=>verifyStage(directory),error=>error.message.includes('graphics.cjs'));
+  fs.copyFileSync(path.join(__dirname,'graphics.cjs'),path.join(directory,'graphics.cjs'));
   const media='build/ui/assets/menu/welcome-opening-v1.mp4';
   fs.unlinkSync(path.join(directory,media));
   assert.throws(()=>verifyStage(directory),error=>error.message.includes(media));

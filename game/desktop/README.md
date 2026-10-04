@@ -24,7 +24,7 @@ DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop start
 DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop run dev
 ```
 
-它沿用现有 esbuild 和 Electron，修改 renderer、样式、在线页面源码或 `assets/menu` 下的 PNG / WebP 后自动重新构建并刷新窗口。修改 `fixture.ts`、`main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后完整构建并重新启动（fixture 在主进程加载，前端刷新不会替换已加载的端口）；关闭 Electron 窗口会同时结束监听进程。
+它沿用现有 esbuild 和 Electron，修改 renderer、样式、在线页面源码或 `assets/menu` 下的 PNG / WebP 后自动重新构建并刷新窗口。修改 `graphics.cjs` 的配置定义／校验、`fixture.ts`、`main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后完整构建并重新启动（fixture 在主进程加载，前端刷新不会替换已加载的端口）；关闭 Electron 窗口会同时结束监听进程。
 
 Windows 源码步骤（本包未实机验证）：
 
@@ -183,3 +183,20 @@ DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dyn
 ```
 
 本包源码、实际输入、失败与未验条件见 [结果](../../docs/results/R04-T03-a/REPORT.md)，不复用旧检查总数作为本轮结论。
+
+## 画面设置（R04-T04-a）
+
+设置增加“画面 / GRAPHICS”：高质量、均衡、流畅预设，以及动态、玻璃、装饰三个细项。手动组合自动显示“自定义”，调回完整组合后恢复预设名称。编辑即时预览，切换分类继续保留；放弃关闭恢复已保存效果，保存失败保留草稿供重试，保存中阻止重复操作与离开。效果覆盖大厅、设置、图鉴及其共享弹窗；系统减少动态／透明度继续优先，设置值不随系统偏好改写。
+
+新建和确认恢复的档案保存 v2＋均衡。合法旧 v1 只在内存转为 v2＋高质量，首次读取不改文件，下一次正常保存才迁移。严格拒绝未知字段与非法画面值，沿用同目录临时写入及 rename；界面没有新增文件、进程或网络权限。`graphics.cjs` 为主进程与 renderer 共用的纯模块，修改定义／校验后需完整重启 Electron；面板及职责 CSS 可以热更新。
+
+```sh
+npm --prefix game/desktop run build
+node --test game/desktop/test.cjs game/desktop/test-graphics.cjs game/desktop/test-navigation.cjs
+node --test --test-name-pattern="R04 release stage derives" game/desktop/test-packaging.cjs
+node game/desktop/smoke-graphics.cjs
+node game/desktop/smoke-graphics.cjs --measure
+node game/desktop/smoke-graphics.cjs --measure --settings-only # 只复测设置差异
+```
+
+脚本使用自己启动的普通 main、隔离合成档案及既有退出清理工具。功能模式仅对保存通路注入写盘前失败／迟延；`--measure` 独立执行三档短对照，记录原生显示器、DPR、焦点、实际滚动及 rAF 间隔。输出默认位于主仓库 ignored `.local-outputs/R04-T04-a/` 的新目录，`DEIDEI_GRAPHICS_OUTPUT` 可指定新目录。rAF 间隔不代表实际呈现 FPS；此检查不替代安装包、跨设备或物理 4K 验收。实际结果见 [报告](../../docs/results/R04-T04-a/REPORT.md)。
