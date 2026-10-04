@@ -1,0 +1,3947 @@
+{
+  "input": {
+    "sha": "2c5b0b896a31331d12627b471647a70d9223c8c0",
+    "dirty": "M game/desktop/smoke-archive-performance.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T06:38:23.273Z",
+    "mainProcess": "fresh launch; no old hot-update process reused",
+    "wrapperSha256": "9352b6f33b74392328c63c0db2e66d8063ebd5ecf015045f12e9648952352dda"
+  },
+  "host": {
+    "platform": "darwin",
+    "release": "27.0.0",
+    "cpu": "Apple M2",
+    "cpuCount": 8,
+    "memoryBytes": 17179869184
+  },
+  "protocol": {
+    "source": "ordinary main, temporary synthetic profile; no fixture transport",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "dpr": "native 2, no CDP emulation",
+    "backgroundThrottling": "ordinary main default, not overridden",
+    "focus": "native and document focus asserted before each region and after every wheel; separate RAF focus sampler",
+    "wheelCount": 8,
+    "deltaY": [
+      500,
+      500,
+      500,
+      500,
+      -500,
+      -500,
+      -500,
+      -500
+    ],
+    "wheelWaitMs": 180,
+    "profiling": "CPU profile plus bounded CDP trace in both regions; diagnostic overhead present",
+    "caveat": "fresh process short archive path; not the full old welcome/replay history or physical 1920 display; RAF callback intervals are not presentation times"
+  },
+  "segments": [
+    {
+      "name": "manual-stack-scroll",
+      "frameTimestamps": [
+        68199.1,
+        68216,
+        68232.1,
+        68249.6,
+        68266.2,
+        68282.8,
+        68365.7,
+        68382.4,
+        68415.3,
+        68516.3,
+        68532,
+        68549.4,
+        68566.3,
+        68599.6,
+        68615.5,
+        68648.7,
+        68682.8,
+        68748.7,
+        68833.1,
+        68865.5,
+        68883.1,
+        68899.4,
+        68932.2,
+        68966.4,
+        68999.8,
+        69016.4,
+        69333.8,
+        69349.8,
+        69366.1,
+        69382.7,
+        69399.8,
+        69416.5,
+        69433,
+        69449.8,
+        69466.5,
+        69483.2,
+        69499.4,
+        69516.6,
+        69532.8,
+        69549.9,
+        69583.2,
+        69599.9,
+        69616,
+        69633.2,
+        69649.5,
+        69666.6,
+        69683.2,
+        69699.9,
+        69716.5,
+        69733.3,
+        69749.9,
+        69766.6,
+        69816.1,
+        69833.2,
+        69849.9,
+        69866.6,
+        69883.3,
+        69900,
+        69932.5,
+        69965.8,
+        69983.3,
+        70016.7,
+        70049.9,
+        70083.4,
+        70100,
+        70116.7,
+        70133.3,
+        70150,
+        70166.4,
+        70183.3,
+        70200,
+        70215.9,
+        70233.4,
+        70250,
+        70265.9,
+        70283.4,
+        70300,
+        70316.7,
+        70333.3,
+        70350,
+        70366.5,
+        70383.4,
+        70399.6,
+        70416.8,
+        70466.5,
+        70500.1,
+        70516.2,
+        70533.4,
+        70549.9,
+        70583.5,
+        70601,
+        70616.8,
+        70632.6,
+        70666.6,
+        70682.7,
+        70716.4,
+        70733.5,
+        70749.9,
+        70766.4,
+        70783.5,
+        70800.2,
+        70816.8,
+        70833.5,
+        70849.9,
+        70866.8,
+        70882.8,
+        70933.5,
+        70950.3,
+        70966.9,
+        70983.6,
+        70999.5,
+        71016.1,
+        71033,
+        71050.3,
+        71067,
+        71083,
+        71100.2,
+        71116.9,
+        71150.3,
+        71166.8,
+        71183.5,
+        71200.2,
+        71216.9,
+        71233.3,
+        71249.9,
+        71266.3,
+        71283.6,
+        71300.3,
+        71316,
+        71333.7,
+        71350.3,
+        71367,
+        71383.6,
+        71399.9,
+        71417,
+        71467,
+        71650.4,
+        71683.7,
+        71716.7,
+        71733.4,
+        71749.7,
+        71767,
+        71783.8,
+        71800.4,
+        71817.1,
+        71833.7,
+        71850.5,
+        71867.1,
+        71882.8,
+        71900.5,
+        71917.2,
+        71933.2,
+        71950.4,
+        71983.8,
+        72017.1,
+        72050,
+        72083.1,
+        72150.1,
+        72183.6,
+        72216.8,
+        72250.4,
+        72283.3,
+        72333.7,
+        72383.2,
+        72417.3,
+        72483.9,
+        72517.2,
+        72533,
+        72650.6,
+        72683.4,
+        72717.3,
+        72767.2,
+        73034.1,
+        73050.7,
+        73067.4,
+        73084.1,
+        73100.8,
+        73117.5,
+        73134.1,
+        73150.8,
+        73167.5,
+        73184.1,
+        73200.8,
+        73217.4,
+        73233.7,
+        73250.8,
+        73267.5,
+        73284.1,
+        73300.8,
+        73317.5,
+        73334.2,
+        73350.8,
+        73367.5,
+        73400.9,
+        73417.5,
+        73434.3,
+        73467.5,
+        73500.8,
+        73517.6,
+        73534.2,
+        73550.8,
+        73567.6,
+        73583.9,
+        73601,
+        73617.6,
+        73634.3,
+        73650.9,
+        73667.6,
+        73684.3,
+        73700.4,
+        73834.3,
+        73850.9,
+        73867.6,
+        73883.5,
+        73900.7,
+        73917.2,
+        73933.5,
+        73950.7,
+        73967.7,
+        73983.8,
+        74001,
+        74017,
+        74034.3,
+        74051,
+        74084.4,
+        74101,
+        74117.7,
+        74134.4,
+        74151,
+        74167.7,
+        74184,
+        74201.1,
+        74217.7,
+        74417.7,
+        74434.5,
+        74451.1,
+        74467.5,
+        74484.5,
+        74501.1,
+        74517,
+        74534.5,
+        74551.1,
+        74567.8,
+        74584.5,
+        74601.2,
+        74617.8,
+        74634.6,
+        74651.2,
+        74667.8,
+        74684.5,
+        74701.2,
+        74717.9,
+        74734.5,
+        74751.1,
+        74767.9,
+        74784.5,
+        74801.2,
+        74817.9,
+        74834.6,
+        74851.3,
+        74867.9,
+        74884.6,
+        74900.3,
+        74917.9,
+        74934.6,
+        74951.2,
+        74967.9,
+        74984.6,
+        75001.3,
+        75017.3,
+        75033.9,
+        75051.4,
+        75067.9,
+        75084.6,
+        75101.2,
+        75117.7,
+        75134.6,
+        75151.3,
+        75167.9,
+        75184.5,
+        75201.3,
+        75218,
+        75234.6,
+        75251.3,
+        75267.8,
+        75284.7,
+        75301.4,
+        75318,
+        75334.7,
+        75351.3,
+        75368,
+        75384.6,
+        75401.4,
+        75417,
+        75434.7,
+        75518,
+        75534.7,
+        75551.4,
+        75568,
+        75584.8,
+        75601.4,
+        75618.1,
+        75634.8,
+        75651.4,
+        75668.1,
+        75684.8,
+        75701.5,
+        75718.1,
+        75734.8,
+        75751.4,
+        75768.1,
+        75784.8,
+        75801.4,
+        75817.8,
+        75834.8,
+        75918.1,
+        75934.8,
+        75951.5,
+        75967.4,
+        75984.9,
+        76001.5,
+        76018.2,
+        76034.8,
+        76051.5,
+        76084.8,
+        76101.2,
+        76117.6,
+        76134.9,
+        76151.1,
+        76168.2,
+        76184.9,
+        76201.5,
+        76218.3,
+        76234.9,
+        76251.6,
+        76268.2,
+        76284.9,
+        76301.6,
+        76318.2,
+        76334.9,
+        76351.6,
+        76368.3,
+        76384.9,
+        76401.5,
+        76417.3,
+        76434.9,
+        76450.7,
+        76468.3,
+        76485,
+        76501.6,
+        76518.3,
+        76535.1,
+        76551.7,
+        76568.3,
+        76584.4,
+        76601.6,
+        76618.3,
+        76634.5,
+        76650.7,
+        76667.6,
+        76685,
+        76701.3,
+        76785.1,
+        76801.8,
+        76817.7,
+        76835.1,
+        76868.4,
+        76884.5,
+        76901.7,
+        76918.4,
+        76935.1,
+        76951.7,
+        76968.4,
+        76985.1,
+        77001.4,
+        77085.1,
+        77101.6,
+        77118.4,
+        77134.1,
+        77151.9,
+        77168.4,
+        77184.8,
+        77201.4,
+        77218.2,
+        77235.2,
+        77251.8,
+        77267.9,
+        77301.8,
+        77318.5,
+        77334.4,
+        77351.1
+      ],
+      "active": false,
+      "errors": [],
+      "metricsBefore": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 5.612418,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8147,
+          "type": "Browser",
+          "creationTime": 1791095903299.158,
+          "memory": {
+            "workingSetSize": 135904,
+            "peakWorkingSetSize": 240176
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 10.348584,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8150,
+          "type": "GPU",
+          "creationTime": 1791095904886.228,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 94304,
+            "peakWorkingSetSize": 164496
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.222815,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8151,
+          "type": "Utility",
+          "creationTime": 1791095904932.621,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 33840,
+            "peakWorkingSetSize": 45296
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 6.528735,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8156,
+          "type": "Tab",
+          "creationTime": 1791095908598.131,
+          "memory": {
+            "workingSetSize": 134656,
+            "peakWorkingSetSize": 223104
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.219391,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8161,
+          "type": "Utility",
+          "creationTime": 1791095910332.994,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 28672,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.212179,
+            "percentCPUUsage": 0,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8312,
+          "type": "Utility",
+          "creationTime": 1791095976356.818,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 36736,
+            "peakWorkingSetSize": 36736
+          },
+          "sandboxed": true
+        }
+      ],
+      "viewport": [
+        1920,
+        1080
+      ],
+      "dpr": 2,
+      "metricsAfter": [
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 6.053437,
+            "percentCPUUsage": 0.5927809222338271,
+            "idleWakeupsPerSecond": 13
+          },
+          "pid": 8147,
+          "type": "Browser",
+          "creationTime": 1791095903299.158,
+          "memory": {
+            "workingSetSize": 126096,
+            "peakWorkingSetSize": 240176
+          },
+          "sandboxed": false
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 11.811885,
+            "percentCPUUsage": 1.9668626941793377,
+            "idleWakeupsPerSecond": 305
+          },
+          "pid": 8150,
+          "type": "GPU",
+          "creationTime": 1791095904886.228,
+          "serviceName": "GPU",
+          "memory": {
+            "workingSetSize": 85408,
+            "peakWorkingSetSize": 164496
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.223767,
+            "percentCPUUsage": 0.0012796157109711563,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 8151,
+          "type": "Utility",
+          "creationTime": 1791095904932.621,
+          "serviceName": "network.mojom.NetworkService",
+          "name": "Network Service",
+          "memory": {
+            "workingSetSize": 33168,
+            "peakWorkingSetSize": 45296
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 8.061956,
+            "percentCPUUsage": 2.06086113244408,
+            "idleWakeupsPerSecond": 114
+          },
+          "pid": 8156,
+          "type": "Tab",
+          "creationTime": 1791095908598.131,
+          "memory": {
+            "workingSetSize": 152528,
+            "peakWorkingSetSize": 223104
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.220051,
+            "percentCPUUsage": 0.0008871328318505849,
+            "idleWakeupsPerSecond": 1
+          },
+          "pid": 8161,
+          "type": "Utility",
+          "creationTime": 1791095910332.994,
+          "serviceName": "audio.mojom.AudioService",
+          "name": "Audio Service",
+          "memory": {
+            "workingSetSize": 28400,
+            "peakWorkingSetSize": 40944
+          },
+          "sandboxed": true
+        },
+        {
+          "cpu": {
+            "cumulativeCPUUsage": 0.224442,
+            "percentCPUUsage": 0.016483184436712477,
+            "idleWakeupsPerSecond": 0
+          },
+          "pid": 8312,
+          "type": "Utility",
+          "creationTime": 1791095976356.818,
+          "serviceName": "tracing.mojom.TracingService",
+          "name": "Tracing Service",
+          "memory": {
+            "workingSetSize": 38448,
+            "peakWorkingSetSize": 41600
+          },
+          "sandboxed": true
+        }
+      ],
+      "frameCount": 391,
+      "p50": 16.69999999999709,
+      "p95": 49.89999999999418,
+      "p99": 183.39999999999418,
+      "over50ms": 18,
+      "max": 317.40000000000873,
+      "durationMs": 9534,
+      "failed": true,
+      "failure": {
+        "name": "AssertionError",
+        "message": "archive wheel focus retained",
+        "stack": "AssertionError [ERR_ASSERTION]: archive wheel focus retained\n    at /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:70:148\n    at async segment (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-performance.cjs:42:3)\n    at async probe (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:66:4)\n    at async main (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:95:3)"
+      }
+    }
+  ],
+  "pageErrors": [],
+  "secondaryErrors": [],
+  "electron": {
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "displays": [
+      {
+        "id": 2,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2304,
+          "height": 1536
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 59.98380661010742
+      },
+      {
+        "id": 1,
+        "bounds": {
+          "x": -1710,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 60.00239944458008
+      }
+    ]
+  },
+  "nativeStart": {
+    "source": "Root CUA activation before measurement; marker only resumes, focus gates remain mandatory",
+    "pid": 8147,
+    "marker": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/archive-final-p5-v3/native.done"
+  },
+  "regions": [
+    {
+      "name": "manual-stack-scroll",
+      "selector": ".archive-stack",
+      "wheels": [
+        {
+          "i": 0,
+          "deltaY": 500,
+          "before": {
+            "at": 68220.19999998808,
+            "top": 148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 68469,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095977442,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 1,
+          "deltaY": 500,
+          "before": {
+            "at": 68528.5,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 68905.69999998808,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095977891,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 2,
+          "deltaY": 500,
+          "before": {
+            "at": 69721,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 69978.39999997616,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095978980,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 3,
+          "deltaY": 500,
+          "before": {
+            "at": 70213.69999998808,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 70988.69999998808,
+            "top": 2148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095979964,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 4,
+          "deltaY": -500,
+          "before": {
+            "at": 71222.69999998808,
+            "top": 2148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 71765.80000001192,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095980780,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 5,
+          "deltaY": -500,
+          "before": {
+            "at": 72310.89999997616,
+            "top": 1648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 73929.59999996424,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095982929,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              }
+            ]
+          }
+        },
+        {
+          "i": 6,
+          "deltaY": -500,
+          "before": {
+            "at": 73995.89999997616,
+            "top": 1148,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "after": {
+            "at": 76276.30000001192,
+            "top": 648,
+            "height": 5497,
+            "client": 761,
+            "viewport": [
+              1920,
+              1080
+            ],
+            "dpr": 2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          "native": {
+            "at": 1791095985935,
+            "focused": false,
+            "visible": true,
+            "minimized": false,
+            "bounds": {
+              "x": 73,
+              "y": 150,
+              "width": 1920,
+              "height": 1112
+            },
+            "contentBounds": {
+              "x": 73,
+              "y": 182,
+              "width": 1920,
+              "height": 1080
+            },
+            "display": {
+              "id": 2,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 2304,
+                "height": 1536
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 59.98380661010742
+            },
+            "events": [
+              {
+                "event": "blur",
+                "at": 1791095912174
+              },
+              {
+                "event": "focus",
+                "at": 1791095921774
+              },
+              {
+                "event": "blur",
+                "at": 1791095927087
+              },
+              {
+                "event": "hide",
+                "at": 1791095939983
+              },
+              {
+                "event": "show",
+                "at": 1791095954163
+              },
+              {
+                "event": "focus",
+                "at": 1791095975271
+              },
+              {
+                "event": "blur",
+                "at": 1791095983342
+              }
+            ]
+          }
+        }
+      ],
+      "before": {
+        "at": 67202.30000001192,
+        "top": 148,
+        "height": 5497,
+        "client": 761,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeBefore": {
+        "at": 1791095976178,
+        "focused": true,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 73,
+          "y": 150,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 73,
+          "y": 182,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": [
+          {
+            "event": "blur",
+            "at": 1791095912174
+          },
+          {
+            "event": "focus",
+            "at": 1791095921774
+          },
+          {
+            "event": "blur",
+            "at": 1791095927087
+          },
+          {
+            "event": "hide",
+            "at": 1791095939983
+          },
+          {
+            "event": "show",
+            "at": 1791095954163
+          },
+          {
+            "event": "focus",
+            "at": 1791095975271
+          }
+        ]
+      },
+      "focusSample": {
+        "active": false,
+        "frames": [
+          {
+            "t": 68199.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68216,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68232.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68249.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68266.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68282.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68365.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68382.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68415.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68516.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68532,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68549.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68566.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68599.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68615.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68648.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68682.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68748.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68833.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68865.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68883.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68899.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68932.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68966.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 68999.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69016.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69333.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69349.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69366.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69382.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69399.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69416.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69433,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69449.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69466.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69483.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69499.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69516.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69532.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69549.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69583.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69599.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69616,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69633.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69649.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69666.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69683.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69699.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69716.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69733.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69749.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69766.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69816.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69833.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69849.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69866.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69883.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69900,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69932.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69965.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 69983.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70016.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70049.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70083.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70100,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70116.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70133.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70150,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70166.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70183.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70200,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70215.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70233.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70250,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70265.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70283.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70300,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70316.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70333.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70350,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70366.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70383.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70399.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70416.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70466.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70500.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70516.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70533.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70549.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70583.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70601,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70616.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70632.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70666.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70682.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70716.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70733.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70749.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70766.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70783.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70800.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70816.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70833.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70849.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70866.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70882.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70933.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70950.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70966.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70983.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 70999.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71016.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71033,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71050.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71067,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71083,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71100.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71116.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71150.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71166.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71183.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71200.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71216.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71233.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71249.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71266.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71283.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71300.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71316,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71333.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71350.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71367,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71383.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71399.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71417,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71467,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71650.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71683.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71716.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71733.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71749.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71767,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71783.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71800.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71817.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71833.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71850.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71867.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71882.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71900.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71917.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71933.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71950.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 71983.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72017.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72050,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72083.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72150.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72183.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72216.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72250.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72283.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72333.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72383.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72417.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72483.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72517.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72533,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72650.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72683.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72717.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 72767.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73034.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73050.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73067.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73084.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73100.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73117.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73134.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73150.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73167.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73184.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73200.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73217.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73233.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73250.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73267.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73284.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73300.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73317.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73334.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73350.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73367.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73400.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73417.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73434.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73467.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73500.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73517.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73534.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73550.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73567.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73583.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73601,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73617.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73634.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73650.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73667.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73684.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73700.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73834.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73850.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73867.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73883.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73900.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73917.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73933.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73950.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73967.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 73983.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74001,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74017,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74034.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74051,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74084.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74101,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74117.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74134.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74151,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74167.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74184,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74201.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74217.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74417.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74434.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74451.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74467.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74484.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74501.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74517,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74534.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74551.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74567.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74584.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74601.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74617.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74634.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74651.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74667.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74684.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74701.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74717.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74734.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74751.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74767.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74784.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74801.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74817.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74834.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74851.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74867.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74884.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74900.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74917.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74934.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74951.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74967.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 74984.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75001.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75017.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75033.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75051.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75067.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75084.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75101.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75117.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75134.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75151.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75167.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75184.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75201.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75218,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75234.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75251.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75267.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75284.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75301.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75318,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75334.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75351.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75368,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75384.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75401.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75417,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75434.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75518,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75534.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75551.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75568,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75584.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75601.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75618.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75634.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75651.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75668.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75684.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75701.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75718.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75734.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75751.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75768.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75784.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75801.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75817.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75834.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75918.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75934.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75951.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75967.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 75984.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76001.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76018.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76034.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76051.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76084.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76101.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76117.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76134.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76151.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76168.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76184.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76201.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76218.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76234.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76251.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76268.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76284.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76301.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76318.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76334.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76351.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76368.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76384.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76401.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76417.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76434.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76450.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76468.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76485,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76501.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76518.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76535.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76551.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76568.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76584.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76601.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76618.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76634.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76650.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76667.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76685,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76701.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76785.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76801.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76817.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76835.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76868.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76884.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76901.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76918.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76935.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76951.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76968.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 76985.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77001.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77085.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77101.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77118.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77134.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77151.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77168.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77184.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77201.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77218.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77235.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77251.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77267.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77301.8,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77318.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77334.4,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77351.1,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77368.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77385.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77401.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77418.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77435.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77451.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77467.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77485.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77501.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77518.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77535.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77551.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77568.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77585.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77601.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77618.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77635.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77651.9,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77668.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77685.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77702,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77718.6,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77735.3,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77751.5,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77768.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77785,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77802,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77818.7,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77835.2,
+            "focused": true,
+            "visibility": "visible"
+          },
+          {
+            "t": 77852,
+            "focused": true,
+            "visibility": "visible"
+          }
+        ]
+      },
+      "after": {
+        "at": 78899.39999997616,
+        "top": 648,
+        "height": 5497,
+        "client": 761,
+        "viewport": [
+          1920,
+          1080
+        ],
+        "dpr": 2,
+        "focused": true,
+        "visibility": "visible"
+      },
+      "nativeAfter": {
+        "at": 1791095988089,
+        "focused": false,
+        "visible": true,
+        "minimized": false,
+        "bounds": {
+          "x": 73,
+          "y": 150,
+          "width": 1920,
+          "height": 1112
+        },
+        "contentBounds": {
+          "x": 73,
+          "y": 182,
+          "width": 1920,
+          "height": 1080
+        },
+        "display": {
+          "id": 2,
+          "bounds": {
+            "x": 0,
+            "y": 0,
+            "width": 2304,
+            "height": 1536
+          },
+          "scaleFactor": 2,
+          "displayFrequency": 59.98380661010742
+        },
+        "events": [
+          {
+            "event": "blur",
+            "at": 1791095912174
+          },
+          {
+            "event": "focus",
+            "at": 1791095921774
+          },
+          {
+            "event": "blur",
+            "at": 1791095927087
+          },
+          {
+            "event": "hide",
+            "at": 1791095939983
+          },
+          {
+            "event": "show",
+            "at": 1791095954163
+          },
+          {
+            "event": "focus",
+            "at": 1791095975271
+          },
+          {
+            "event": "blur",
+            "at": 1791095983342
+          }
+        ]
+      },
+      "cpuProfile": "manual-stack-scroll-cpu-profile.json",
+      "trace": "manual-stack-scroll-trace.json"
+    }
+  ],
+  "firstError": {
+    "stage": "manual-stack-scroll",
+    "name": "AssertionError",
+    "message": "archive wheel focus retained",
+    "stack": "AssertionError [ERR_ASSERTION]: archive wheel focus retained\n    at /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:70:148\n    at async segment (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-performance.cjs:42:3)\n    at async probe (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:66:4)\n    at async main (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:95:3)"
+  },
+  "final": {
+    "at": 85438.09999996424,
+    "route": "manual",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "ui-world-breathe",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "0.3",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(1.15, 0, 0, 0, 0, 1.15, 0, 0, 0, 0, 1, 0, -57.6, -21.6, 70, 1)",
+        "filter": "brightness(0.64)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "opacity 0.95s cubic-bezier(0.16, 0.78, 0.18, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1.02, 0, 0, 1.02, -11.7504, 0)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "menu-world-drift",
+        "animationPlayState": "paused",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "0.33",
+        "transform": "matrix3d(1.18, 0, 0, 0, 0, 1.18, 0, 0, 0, 0, 1, 0, -480, 0, 90, 1)",
+        "filter": "brightness(0.5)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "opacity 0.95s cubic-bezier(0.16, 0.78, 0.18, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSAnimation",
+        "name": "menu-world-drift",
+        "currentTime": 0,
+        "playState": "paused",
+        "target": "menu-layer menu-environment",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 9169.560999972222,
+        "playState": "paused",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 9169.560999972222,
+        "playState": "paused",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 9169.560999972222,
+        "playState": "paused",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "archive-enter",
+        "currentTime": 700,
+        "playState": "finished",
+        "target": "archive-screen",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "archive-card-glint",
+        "currentTime": 74852.39,
+        "playState": "running",
+        "target": "archive-stack-card attack",
+        "pseudo": "::after"
+      }
+    ],
+    "media": []
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-archive-perf-MgmQqb",
+      "removed": true
+    },
+    "application": {
+      "pid": 8147,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T06:39:57.432Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T06:39:57.437Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T06:39:57.437Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T06:40:00.612Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T06:40:00.612Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 8150,
+        "ppid": 8147,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 8151,
+        "ppid": 8147,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 8156,
+        "ppid": 8147,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper (Renderer).app/Contents/MacOS/Electron Helper (Renderer)",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 8161,
+        "ppid": 8147,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 8312,
+        "ppid": 8147,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T06:40:00.644Z",
+  "status": "FAIL",
+  "evidenceReadBack": {
+    "frameCountsAndSummariesMatch": true,
+    "segments": 1
+  }
+}

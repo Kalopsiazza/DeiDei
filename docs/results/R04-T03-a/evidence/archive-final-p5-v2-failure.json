@@ -1,0 +1,485 @@
+{
+  "input": {
+    "sha": "2c5b0b896a31331d12627b471647a70d9223c8c0",
+    "dirty": "M game/desktop/smoke-archive-performance.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T06:36:04.212Z",
+    "mainProcess": "fresh launch; no old hot-update process reused",
+    "wrapperSha256": "be810d59a0436463ded1291a3161e6b99fa6eda50c4ac1134d90058db0beda88"
+  },
+  "host": {
+    "platform": "darwin",
+    "release": "27.0.0",
+    "cpu": "Apple M2",
+    "cpuCount": 8,
+    "memoryBytes": 17179869184
+  },
+  "protocol": {
+    "source": "ordinary main, temporary synthetic profile; no fixture transport",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "dpr": "native 2, no CDP emulation",
+    "backgroundThrottling": "ordinary main default, not overridden",
+    "focus": "native and document focus asserted before each region and after every wheel; separate RAF focus sampler",
+    "wheelCount": 8,
+    "deltaY": [
+      500,
+      500,
+      500,
+      500,
+      -500,
+      -500,
+      -500,
+      -500
+    ],
+    "wheelWaitMs": 180,
+    "profiling": "CPU profile plus bounded CDP trace in both regions; diagnostic overhead present",
+    "caveat": "fresh process short archive path; not the full old welcome/replay history or physical 1920 display; RAF callback intervals are not presentation times"
+  },
+  "segments": [],
+  "pageErrors": [],
+  "secondaryErrors": [
+    {
+      "stage": "application-close",
+      "name": "Error",
+      "message": "Owned Electron did not exit normally",
+      "stack": "Error: Owned Electron did not exit normally\n    at main (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:105:110)"
+    },
+    {
+      "stage": "child-cleanup",
+      "name": "Error",
+      "message": "Owned child cleanup required force or left a live process",
+      "stack": "Error: Owned child cleanup required force or left a live process\n    at main (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:106:135)"
+    }
+  ],
+  "electron": {
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    },
+    "displays": [
+      {
+        "id": 2,
+        "bounds": {
+          "x": 0,
+          "y": 0,
+          "width": 2304,
+          "height": 1536
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 59.98380661010742
+      },
+      {
+        "id": 1,
+        "bounds": {
+          "x": -1710,
+          "y": 0,
+          "width": 1710,
+          "height": 1112
+        },
+        "scaleFactor": 2,
+        "displayFrequency": 60.00239944458008
+      }
+    ]
+  },
+  "nativeStart": {
+    "source": "Root CUA activation before measurement; marker only resumes, focus gates remain mandatory",
+    "pid": 7702,
+    "marker": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/archive-final-p5-v2/native.done"
+  },
+  "firstError": {
+    "stage": "scenario",
+    "name": "Error",
+    "message": "Root native activation timed out after 60000ms",
+    "stack": "Error: Root native activation timed out after 60000ms\n    at Timeout.<anonymous> (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-archive-performance.cjs:4:144)\n    at listOnTimeout (node:internal/timers:605:17)\n    at process.processTimers (node:internal/timers:541:7)"
+  },
+  "final": {
+    "at": 67991.69999998808,
+    "route": "manual",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1920,
+      1080
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "ui-world-breathe",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "0.3",
+        "transform": "none",
+        "filter": "none",
+        "display": "none",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "\"\""
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-manual",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(1.15, 0, 0, 0, 0, 1.15, 0, 0, 0, 0, 1, 0, -57.6, -21.6, 70, 1)",
+        "filter": "brightness(0.64)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "opacity 0.95s cubic-bezier(0.16, 0.78, 0.18, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1.02, 0, 0, 1.02, -11.7504, 0)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "menu-world-drift",
+        "animationPlayState": "paused",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "0.33",
+        "transform": "matrix3d(1.18, 0, 0, 0, 0, 1.18, 0, 0, 0, 0, 1, 0, -480, 0, 90, 1)",
+        "filter": "brightness(0.5)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "opacity 0.95s cubic-bezier(0.16, 0.78, 0.18, 1)",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSAnimation",
+        "name": "menu-world-drift",
+        "currentTime": 0,
+        "playState": "paused",
+        "target": "menu-layer menu-environment",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 6852.421000011578,
+        "playState": "paused",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 6852.421000011578,
+        "playState": "paused",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 6852.421000011578,
+        "playState": "paused",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "archive-enter",
+        "currentTime": 700,
+        "playState": "finished",
+        "target": "archive-screen",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "archive-card-glint",
+        "currentTime": 60632.263999999996,
+        "playState": "running",
+        "target": "archive-stack-card attack",
+        "pseudo": "::after"
+      }
+    ],
+    "media": []
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-archive-perf-hP4z9T",
+      "removed": true
+    },
+    "application": {
+      "pid": 7702,
+      "normalExit": false,
+      "forced": true,
+      "errors": [
+        {
+          "name": "Error",
+          "message": "Normal Electron close timed out after 6500ms",
+          "stack": "Error: Normal Electron close timed out after 6500ms\n    at Timeout.<anonymous> (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-performance.cjs:58:95)\n    at listOnTimeout (node:internal/timers:605:17)\n    at process.processTimers (node:internal/timers:541:7)"
+        }
+      ],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T06:37:18.454Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T06:37:18.473Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T06:37:18.473Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T06:37:27.255Z",
+          "exitCode": null,
+          "signal": "SIGKILL"
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T06:37:27.255Z",
+          "exitCode": null,
+          "signal": "SIGKILL"
+        }
+      ],
+      "exitCode": null,
+      "signal": "SIGKILL",
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 7704,
+        "ppid": 7702,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 7705,
+        "ppid": 7702,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": true,
+        "alive": false
+      },
+      {
+        "pid": 7739,
+        "ppid": 7702,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper (Renderer).app/Contents/MacOS/Electron Helper (Renderer)",
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 7745,
+        "ppid": 7702,
+        "command": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e/game/desktop/node_modules/electron/dist/Electron.app/Contents/Frameworks/Electron Helper.app/Contents/MacOS/Electron Helper",
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T06:37:27.312Z",
+  "status": "FAIL",
+  "evidenceReadBack": {
+    "frameCountsAndSummariesMatch": true,
+    "segments": 0
+  }
+}

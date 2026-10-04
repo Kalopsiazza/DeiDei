@@ -1,36 +1,37 @@
 # 可查看运行证据
 
-本目录是精选运行副本，均已回读并核对 [MANIFEST](MANIFEST.json) 中原件／副本 SHA256。当前产品 `dc38024a91818c3e2a2ca537675549409cfca620`；里程碑一完成，二／三未完成。实际输入、dirty collector、来源和失败边界见 [REPORT](../REPORT.md)。截图／录像仅有合成档案和本机测试房间；JSON凭据／HTML字段去除，大trace/CPU保留忽略目录原件及哈希，未冒充远端附件。
+当前产品 `dc38024a91818c3e2a2ca537675549409cfca620`。三个里程碑的本机执行与增量交付完成，第二轮待增量复核和 Teddy 实际体验／外部安排确认。以下是提交中的可查看副本；[MANIFEST](MANIFEST.json) 给原件／副本 SHA256、准确输入和大文件本机保留边界。JSON 凭据／HTML字段脱敏，截图与房间都是合成本机测试数据；dirty 输入、历史 FAIL 与正常／强制清理不改写。
 
-| 文件 | 实际范围 |
+| 可查看材料 | 实际范围 |
 |---|---|
-| [当前产品构建与检查](checks-p5.json) | P5 build、Node76、Python59/既有expected failure1、四guards均exit0；不是GUI接受 |
-| [真实联机动态](online-unlocked.json) | 普通main/owned CLI/合成peers，同host6→3→4→5→2＋六人viewer，17PASS；N2/N6完整路线／严格飞行及后拍时限。sourceP3+dirtyP4，renderer/style/main与P5同指纹 |
-| [Modal合同](modal-contract.json)／[设置动态](settings-unlocked.json) | actual SharedUI两propscase与实际设置offset0各PASS；明确旧HEAD+待提交产品/QA，未复制组件实现 |
-| [欢迎控件](controls-front.json)、[设置控件](controls-settings.json)、[恢复控件](controls-recover.json) | 88/141/55状态记录，原App真实pointer/down/Tab及合法IPC迟延/失败，normalexit0 |
-| [本地牌桌控件](controls-local.json)、[图鉴控件](controls-archive.json)、[教程控件](controls-tutorial.json) | 167/141/50记录、真实worker与实际业务锁／只读焦点，normalexit0；有限适用性见 [状态表](../CONTROL-STATES.md) |
-| [P5原生进程](native-explicit-p5.json) | 普通main实际全屏进退、同DPR双屏往返及Cloud选择，213聚焦samples；stop录像38.600s后close1.190s正常exit0。三次边缘拖动未达下限，不以此PASS替代P4下限证据 |
-| [P4原生过程及整体FAIL](native-p4-failure.json) | 实际CUA拖到1000×650、fullscreen/displayevents；录像尚未完成时app.close超时、main强回收，录像后来完成；安装依赖的停止链在quit之前，旧阻塞hook未直接量到；FAIL保留 |
-| [15.000秒全屏/入场片](native-fullscreen-entry.renderer.mp4) | P4连续源41–56s，renderer-only；原生frame/event须对照上述JSON，源整体FAIL不变 |
-| [25.040秒尺寸/跨屏三段剪辑](native-size-display-selection.renderer.montage.mp4) | P4源60–64.5/214.5–219/246.5–262.5s，THREE-CUT非连续；renderer-only1920×1080/25fps/H264/无音轨，灰边不等于window尺寸，末帧已选攒不是云 |
-| [P2解锁图鉴](archive-unlocked-p2.json)／[历史before](archive-before.json)／[历史after](archive-after.json) | 明确1920×1080/DPR2/两区8wheel的源输入／焦点与帧数据；P5最终严格复验尚未运行，未将旧结果继承为当前PASS |
-| [在线v5部分证据/FAIL](controls-online-v5-failure.json)／[v6原生焦点失败](controls-online-v6-failure.json) | v5已采35项和真实retry/create/join/role容量，原生popupUp20后Mac锁屏、未Return；v6checks0/nativefocusgate失败。整体FAIL原样保留，在线后半不计通过 |
-| [预览/关闭键盘14项](completion-product.json)／[旧欢迎37项](welcome-product.json) | P1 clean；普通main/真实trusted键盘或同PID watcher/明确MOCK socket。当前共享组件指纹相同，欢迎完整P5复验仍待 |
+| [最终动态](dynamic-final-p5.json) | clean63496395b59af71998a47a1e183e509c8472865b，普通main/真实worker，10路线／189控件／50聚焦停点，三高风险偏好和短空间；截图不能代替连续 resize 记录 |
+| [真实联机动态](online-unlocked.json) | 本机owned CLI／同host6→3→4→5→2＋六人viewer，17PASS；N2/N6完整路线／严格飞行、当前拍30s不变及下一拍20s。P3+dirtyP4，renderer/style/main与P5同指纹 |
+| [最终在线控件](controls-online-final.json) | clean6349639，66verified／796natural，11请求busy、结果／WAITING／返厅／双leave；raw controlStatesComplete=false不改，原生接受另证 |
+| [原生select接受](native-select-accepted.json)／[初始30](native-select-popup-30.png)／[Up高亮20](native-select-popup-highlight-20.png)／[Return接受20](final-native-select-accepted.png) | 实际CUA，popup关闭、dialog仍开、driver option20000；[母运行整体FAIL](controls-online-v7-failure.json)保留，marker仅恢复收集器，20选值不等于政策已应用 |
+| [六批控件及适用性](../CONTROL-STATES.md)／[图鉴附加88](controls-archive-extra-final.json)／[loading7](controls-loading-final.json) | 真实pointer／down／Tab、原业务disabled/busy、合法IPC迟延失败及NA；不同consumer/class/fieldset，正常0；焦点离散采样不冒充等待全程native证明 |
+| [最终欢迎调查](welcome-final-p5.json) | clean2c5b0b896a31331d12627b471647a70d9223c8c0，37checks／11segments，fresh/同PID/P01/实际watcherreload，P5输入、正常清理；历史人物异常未复现，50–83ms及69 droppedVideoFrames保留 |
+| [最终严格图鉴](archive-final-p5.json)／[历史before](archive-before.json)／[历史after](archive-after.json) | native1920×1080/DPR2，两区8wheel。P5 list17.7/33.6/>50=0，detail17.6/17.7/>50=0；201focus配对/native无blur。负CPUdelta97/77、detail trace discarded16保留，非全产品性能结论 |
+| [图鉴偏移原FAIL](dynamic-final-p5-v1-failure.json)／[正常诊断](archive-scroll-diagnose.json)／[最小起步诊断](archive-scroll-diagnose-minimum.json) | 原1248→1314不改写；两诊断和最终full v2稳定baseline后仍1248。原66px原因未确认，无产品scroll reset或容差放宽；临时collector原文也已归档 |
+| [原生P5](native-explicit-p5.json)／[P4下限来源FAIL](native-p4-failure.json) | 实际全屏进退、同DPR双屏往返、选择/键盘及正常退出由P5证明；真实1000×650下限来自P4，源整体清理FAIL保留 |
+| [15秒全屏/入场片](native-fullscreen-entry.renderer.mp4)／[25.040秒尺寸/跨屏片](native-size-display-selection.renderer.montage.mp4) | P4 renderer-only，前者连续41–56s，后者THREE-CUT；H2641920×1080/25fps/无音轨。原生frame/display和整体FAIL结合上行JSON读，灰边不等于window size |
+| [M1预览／关闭14项](completion-product.json)／[SharedUI两props合同](modal-contract.json) | actualApp/原main/真实键盘；SharedUI与P5一致，test parent只改props，无实现副本 |
+| [最终clean构建/守卫](checks-final-qa.json)／[P5 Node76/Python59](checks-p5.json)／[原21工作区保护](worktrees-completed-preservation.json) | build产物与P5相同，五guards0；未改核心/服务检查按精确P5输入继承。旧21 HEAD及完整status相同，不当GUI或CI证明 |
 
-P5原生全屏、跨屏返回后 Space 选「云」，内容1366×768/DPR2；图像须与原生事件和运行记录一起读：
+当前普通 main／真实 worker，在 1000×650 CSS 内容区选「攒」：
 
-![P5原生返回后的真实选牌](native-p5-returned.png)
+![最终单人最小尺寸](final-solo-minimum.png)
 
-P4实际拖到1000×650，PNG2000×1300/DPR2；对应原运行整体FAIL，正常退出由P5单独提供：
+实际本机联机来宾结果：WAITING 主动作禁用、回顾及退出可达：
 
-![P4真实原生下限](native-p4-minimum.png)
+![真实来宾WAITING](final-online-guest-waiting.png)
 
-历史真实六人1000×650选择停点；旧整次动态后来FAIL，当前完整动态来源另见online-unlocked.json：
+最终严格1920图鉴复验后的画面（DPR2原件3840×2160，不是物理4K验收）：
 
-![历史六人选择停点](six-player-minimum.png)
+![最终图鉴](final-archive.png)
 
-历史严格图鉴局部处理截图；不替代P5最终聚焦复验：
+实际欢迎最小内容区／P01人物交接：
 
-![历史图鉴局部处理样本](archive-candidate.png)
+![欢迎昵称最小尺寸](final-welcome-name-minimum.png)
+![同PID P01交接](final-p01-docking.png)
 
-原始目录为 `/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/`。历史JSON、失败首错、非零driver、强制与正常退出区分保持。当前两屏均DPR2；3840×2160截图不是物理4K、renderer录像没有原生边框/鼠标轨迹，不能据此宣布跨DPI或Windows接受。
+原件 R=`/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/`；大CPU／trace／完整录像仅本机保留并给精确哈希，不以绝对路径冒充远端附件。v7–v12在线 FAIL、图鉴v2强制清理和v3失焦317.4ms partial峰值均保留。[报告](../REPORT.md)说明输入链、性能限界及不同DPR/4K/Windows/干净机/真人/新包等具体条件；未 merge、发布、部署或进入第二轮，Kimi未调用。

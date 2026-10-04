@@ -1,66 +1,65 @@
-# R04-T03-a：恢复执行后的增量记录
+# R04-T03-a：本机执行与增量交付完成
 
-2026-10-04，继续执行 [Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35) 和 [工作单](../../tasks/R04/R04-T03-a.md)。里程碑一已完成；本次已补齐真实联机动态路线、原生全屏／同 DPR 双屏往返和原生 1000×650 下限操作，但二／三仍未完成：最后原生 select Return、图鉴额外控件、在线控件后半及当前产品完整动态／欢迎／严格图鉴复验未完成。Mac 再次锁屏，在线 v6 在原生焦点检查退出，未放宽断言。以下为当前状态；后面的旧交付记录仅保留历史输入和失败。
+2026-10-04，执行 [Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35) 和 [工作单](../../tasks/R04/R04-T03-a.md)。里程碑一、二及三的本机执行和交付已完成；第二轮仍待 ChatGPT 增量复核、Teddy 实际体验及外部条件安排确认。保留历史失败和未复现结论，不宣布所有性能、发行或跨设备验收通过。
 
-| 版本 | 完整 SHA／范围 |
+| 输入 | 完整 SHA／范围 |
 |---|---|
-| 精确起点 | `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；起点产品 `3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8` |
+| 精确起点／起点产品 | `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`／`3006f0a42bece4d702c5a7ba48af9d0d0fafbfc8` |
 | M1 | `af5cd5214014bf68601abd95b89e8de8873b08a6` |
 | P1／P2 | `1b2b7a182e53e7f61b563638f58622893c5fa4b1`／`edbb85a664bde73bc74160f00bb38e15d5634908` |
-| P3：设置装饰层不再是滚动容器 | `9b1d500b4fbd6166d6faa195b2d34e1e8d06a601` |
-| P4：本人席位按真实内容定高 | `ac012f979b7351ae2100b51731842b5b765020b3` |
-| P5：欢迎昵称键盘焦点 | `dc38024a91818c3e2a2ca537675549409cfca620`，当前产品 SHA |
-| 最终 head | PR 正文／最终交付给完整 head；P5 后仅 QA、文档和证据。报告不自嵌自身提交 SHA。 |
-| 增量 Draft PR | [#36](https://github.com/Kalopsiazza/DeiDei/pull/36)，`work/r04-t03-a-frontend-completion` → `codex/r04-t02-e-real-rooms`；base 保持精确起点 |
+| P3／P4 | `9b1d500b4fbd6166d6faa195b2d34e1e8d06a601`／`ac012f979b7351ae2100b51731842b5b765020b3` |
+| 最终产品 P5 | `dc38024a91818c3e2a2ca537675549409cfca620` |
+| 最后完整动态／在线输入 | clean `63496395b59af71998a47a1e183e509c8472865b`；P5之后仅 QA、文档、证据 |
+| 最终 head | PR 正文和交付回传给完整 head；本报告不自嵌自身提交 SHA |
+| 增量 Draft PR | [#36](https://github.com/Kalopsiazza/DeiDei/pull/36)，`work/r04-t03-a-frontend-completion` → `codex/r04-t02-e-real-rooms`；base 仍为精确起点 |
 
-三个新增产品修改均是局部 CSS：设置 `.settings-layout` 的 `overflow:hidden` 改为 `clip`，对应旧记录中实际 `scrollLeft=256/167` 的装饰容器；本人席位 `height:auto` 解决真实三人最小揭晓头像超出 arena 2px，保留 bottom anchor 与实际 ResizeObserver 飞行终点；欢迎昵称补 2px `focus-visible` outline，解决真实 Tab 没有可见反馈。没有改变玩法、DD、招式编号、胜负、ledger、计时／deadline、模型、协议、TLS、CSP、sender／frame检查、资源白名单或依赖。
+产品修改保持现有视觉方向：FixturePort 使用模块级唯一场次身份；SharedUI 同步关闭守卫、inert 与最新回调；布局使用共同安全边、实际 arena／独立目标 ResizeObserver；图鉴局部减轻重复滤镜／背景开销，保留文字和前景演出。P3 将设置装饰容器 overflow 改为 clip，对应旧实际 scrollLeft=256/167；P4 本人席位 height:auto 修复真实三人最小揭晓头像超出 arena 2px；P5 为欢迎昵称补 2px 键盘焦点 outline。没有改变规则、DD、招式编号、胜负、ledger、计时／deadline、模型、网络协议、TLS、CSP、sender／frame 检查、白名单或依赖。
 
-## 本次实际运行
+## 实际运行及可复查输入
 
-运行原件根目录 R 为 `/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/`。精选可查看副本、精确输入与原件／副本 SHA256 在 [evidence](evidence/README.md) 和 [MANIFEST](evidence/MANIFEST.json)。表中 PASS 只表示相应检查完成；历史失败仍原样保留。源码与运行时指纹相同的继承范围逐项注明，未把 dirty 输入写成 clean 提交已跑。
+运行原件根目录 R=`/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/`。下表链接是远端可查看的精选副本；[MANIFEST](evidence/MANIFEST.json) 同时给原件／副本 SHA256 和未发布大文件的精确来源。不同 dirty 输入没有合并成一个 clean 提交已跑。
 
-| 原始目录 | 实际结果与边界 |
+| 证据 | 结果与适用范围 |
 |---|---|
-| `settings-unlocked-before-v1`／`settings-unlocked-keyboard-before-v1` | P2 普通 main 真实 pointer／Tab／Space 短路线。本次旧偏移未重现；旧动态记录实际水平滚动仍保留，不声称垂直失败原因已找到。 |
-| `settings-unlocked-after-v1` | P2＋待提交 P3/QA，PASS 21 控件／1路线；实际四尺寸各停点 shell/content/app/body/html 滚动偏移均0，字段值保持，正常退出。 |
-| `modal-contract-unlocked-v1` | 实际 SharedUI export、test-only React parent、原 main/preload/CSP；PASS 两 case。Escape 后83.6ms更新 busy 取消 closing，240ms后仍同dialog open/callback0，解锁后可再关；82.3ms替换 callback 后只调用最新callback1。trusted Escape→Enter 期间 action0，正常退出。SharedUI 与 P5逐字节相同。 |
-| `online-unlocked-p3-v1` | FAIL：真实三人最小揭晓本人头像比 arena底部多2px；首错及截图保留。 |
-| `online-unlocked-bottom-auto-v1` | P3＋待提交 P4/QA，普通 main＋实际 owned CLI 本机服务，同 host 6→3→4→5→2、六人观众，PASS17。N2/N6完整动态路线与严格提交飞牌终点2px容差，N3/4/5最小拥挤揭晓全部身份可读且有界；30s当拍 opening/Apply/after均selecting、deadline/accepted不变，后拍20s；真实结果→返厅→退出。普通host/viewer/service exit0、profile删除。renderer/style/main 与当前P5相同，welcome.css旧版。 |
-| `controls-{front,settings,recover,local,archive,tutorial}-unlocked-*` | 六批原 App PASS：分别88/141/55/167/141/50条 controls，2/3/2/4/1/4条 business。真实hover/down/Tab，原生和document焦点、命中和面积断言；合法命名IPC迟延／失败，实际恢复／继续worker。不同class覆写、fieldsets禁用、只读焦点和NA原因见 [CONTROL-STATES](CONTROL-STATES.md)。 |
-| `controls-front-unlocked-v1` | FAIL欢迎nickname真实Tab缺反馈；P5单行修复后v2 PASS。archive-v1只采INPUT遗漏实际focus-within owner，local-v1只采ARTICLE遗漏真实avatar/tooltip反馈，settings-v1在menu背景取样；这些驱动失败保留，不称产品bug。 |
-| `controls-online-unlocked-v5` | 整体FAIL：原生popup marker180s超时。35条状态已采到大厅select，真实SERVER_RESTART／retry／connecting、create/join字段锁、两类容量满禁止IPC0、释放和role pending均有部分有效证据。CUA实际Up高亮20，Mac随后锁屏，未Return接受，不能写原生选值PASS。 |
-| `controls-online-nohold-v6` | FAIL，checks0：锁屏时原生focus required，正常owned清理。后半ready/start/Apply/HUD/结果/leave仍待运行。 |
-| `native-unlocked-p4-v1` | 原生CUA宽1366→1000、跨到内屏后高768→650、全屏一进一退、双屏往返；`native-builtin-selected.png`实际1000×650/DPR2。整体FAIL：自动录像停止前 app.close6500ms超时、main被强制回收，录像后完成；不重标正常退出。其他名含minimum图片实际1000×768。 |
-| `native-explicit-p5-v1` | P5普通main PASS7：实际全屏进退、两屏往返、保留Charge、Tab聚焦Cloud／Space选Cloud；213 hold samples全部聚焦可见、非最小化。3次边缘拖动没有缩到下限，因此下限证据仍引用P4。公开screencast stop38.600s后普通app.close1.190s/exit0/no force，owned Electron/worker/recorder全退出，profile删除。 |
-| `archive-unlocked-6eb652d-v1` | P2解锁严格1920×1080/DPR2、两区各8wheel、普通main，PASS；list p95/max/>50为32.5/49.0/0，detail17.5/17.6/0。独立焦点采样list首点未配对，CPU负timeDelta不能算利用率。最终P5同协议复验仍待运行。 |
-| `checks-p5-unlocked-v1` | P5 build exit0；Node76/76、fail0/skip0；Python67语法文件、59测试、既有expected failure1、exit0；四组取样／清理／反例guards exit0。没有把这些非GUI检查当动态接受。 |
+| [M1预览／关闭14项](evidence/completion-product.json)；[SharedUI两props合同](evidence/modal-contract.json) | winner→defeat→draw→winner 与同场去重；实际 App trusted Escape→Enter、迟延成功／失败。真实 SharedUI export 下83.6ms busy翻转取消closing、82.3ms替换callback只调用最新，action0；产品相关源码与P5一致。写盘失败仍执行owned清理的两种 EACCES 注入自检亦通过。 |
+| [最终完整动态](evidence/dynamic-final-p5.json) | clean6349639，PASS10路线／189条控件记录；欢迎视频／标题／昵称、菜单、设置、准备、真实worker单人、图鉴、教程、本地fixture结果。每段12步连续 native content resize，四停点；solo／archive另补宽矮、窄高、16:10、超宽，共50个停点均native/document聚焦可见。1000×650真实内容区、转场resize、三高风险减少动态／透明度、prepare伪元素及1000×560 CDP正文滚动／关闭均通过。停点焦点不是逐帧原生证明；超桌面和CDP来源明确标记，不宣称移动端／物理4K。 |
+| [实际联机17项](evidence/online-unlocked.json) | 普通main＋owned CLI本机服务，同host6→3→4→5→2及六人观众；N2/N6完整动态与提交飞牌2px容差，N3/4/5最小拥挤揭晓身份有界。30s当前拍opening／Apply／after均selecting，deadline／accepted不变；新policy20s/revision+1，下一拍20s。真实结果→返厅→退出，双app／service正常0。源P3＋待提交P4/QA；renderer/style/main与P5完全相同，welcome.css旧版。 |
+| [六批原App控件](CONTROL-STATES.md)；[图鉴附加](evidence/controls-archive-extra-final.json)；[initial loading](evidence/controls-loading-final.json) | 原六批88/141/55/167/141/50记录，补图鉴88／loading7；真实hover／down／Tab、业务disabled／busy、合法命名IPC迟延失败和NA原因。AE5/LD2是H989＋两QA dirty，运行产物同P5；组入口与结束有原生焦点断言，不冒充等待全程连续焦点。五类反例继续拒绝。 |
+| [最终在线控件](evidence/controls-online-final.json) | clean6349639，66/66 verified、796 natural样本；11类请求busy严格断言全部满足，host结果3动作／guest review和exit／guest WAITING disabled、返厅和双方leave真实完成。最后双方Charge以同一新turn＋原公开last_turn／Charge／human核验，避免查询已进入下一拍的旧按钮；无deadline重置。原JSON applicableOnlineDOMConsumersComplete=true、controlStatesComplete=false保持，原生接受另证。 |
+| [原生select接受](evidence/native-select-accepted.json)；[接受后画面](evidence/final-native-select-accepted.png)；[母运行FAIL](evidence/controls-online-v7-failure.json) | 实际CUA Up高亮20→Return，popup关闭、父dialog仍开，driver读option20000；marker仅恢复驱动。v7整体FAIL不变；该独立P5原生动作和v13 DOM控件联合关闭原生控件缺口。接受20不等于这次已应用policy20，当前拍语义由上方OU单独证明。 |
+| [最终欢迎调查](evidence/welcome-final-p5.json) | clean2c5b0b896a31331d12627b471647a70d9223c8c0，PASS37／11segments：新进程、同PID重播／P01／返菜单、实际dev watcher reload；profile前后不变、document身份更新、9指纹一致，视频1920×1080自然结束6.584s，无人物／媒体／资源错误。原main由明确MOCK socket测试wrapper加载，不当真实联机接受。正常0、owned childgone／profile删除。历史人物失败本轮未复现，未宣称找到原因。 |
+| [最终严格图鉴](evidence/archive-final-p5.json) | P5普通main、native1920×1080/DPR2；列表／详情各4×+500及4×−500 wheel、间隔180ms。101＋100 RAF全部有独立聚焦可见样本配对，native前后及每wheel聚焦、无blur；两区均0个>50ms，正常0／5childgone／profile删除。输入2c5＋两个QA dirty，default运行未使用native hold。 |
+| [原生P5过程](evidence/native-explicit-p5.json)；[P4真实下限](evidence/native-p4-minimum.png) | P5普通main PASS7，全屏一进一退、display2→1→2、Charge保持→Tab Cloud→Space Cloud，213hold samples聚焦可见；录像stop38.600s后close1.190s正常0。P4实际CUA拖到1000×650/DPR2，outer1000×682；P4整体录像清理FAIL明确保留。当前两屏都DPR2。 |
+| [最后clean构建／守卫](evidence/checks-final-qa.json)；[P5必要检查](evidence/checks-p5.json) | clean6349639 build及style/performance/archive/geometry/completion实际guard self-checks均0，产物字节与P5一致。未修改规则／服务的Node76 fail0/skip0、Python67语法／59测试／既有expectedFailure1沿用明确P5输入；没有套用旧206/207计数。远端CI0项记NOT_RUN。 |
 
-## 原生录像与性能限制
+## 性能结论与历史失败
 
-[15秒全屏／入场短片](evidence/native-fullscreen-entry.renderer.mp4) 是P4连续源41–56s；[25.040秒尺寸／跨屏三段剪辑](evidence/native-size-display-selection.renderer.montage.mp4) 来自60–64.5、214.5–219、246.5–262.5s，明确 THREE-CUT。两片为 renderer 内容、固定1920×1080/25fps/H.264、无音轨，灰边不等于窗口尺寸。原生frame、display与操作范围须结合 [P4原始状态副本](evidence/native-p4-failure.json)；原运行整体FAIL仍保留。末帧实际显示已选「攒」，不是已选云。当前P5原生正常退出与选择保持见 [独立记录](evidence/native-explicit-p5.json)，其完整webm原件12,647,496 B／SHA256 `116824269d75efaf97731720ea994f3c62cbeec9a7f5ea63d07f9204ce8eda97`保留在R。
+| 同机严格1920协议 | list p95／max／>50 | detail p95／max／>50 |
+|---|---|---|
+| 历史有效before | 265.8／266.6ms／12 | 250.6／266.8ms／6 |
+| 历史局部处理after | 17.7／33.4ms／0 | 17.5／17.6ms／0 |
+| P2解锁复验 | 32.5／49.0ms／0 | 17.5／17.6ms／0 |
+| 最终P5 v4 | 17.7／33.6ms／0（100间隔） | 17.6／17.7ms／0（99间隔） |
 
-真实复用两人的短调查仍是同一host、此前6/3/4/5人历史。首段含resize，66.7/115.5ms、>50ms15次不能当steady。第二段固定1366×768/DPR2，389条phase RAF和388条独立focus RAF全部聚焦可见且native无blur，profile p95/max34.1/83.4ms、>50ms7；揭晓超过1s的239间隔为18.2/18.6ms、>50ms0。本次没有复现旧200–267ms峰值和持续晚揭晓停顿，按工作单保留“本轮未复现”，不无限重跑。恢复选卡51–83ms间隔仍记录，后四次已在filter插值结束后，不能称filter唯一根因或全部性能PASS。CPU有315负timeDelta，trace无buffer-loss，原件／哈希与事件窗保留；不从负CPU数据构造React占比。
+原长帧已通过局部视觉处理和同机有效对照处理，最终P5未出现同量级停顿；不从短React handler推导GPU根因。v4 CPU timeDelta有97／77条负值，只作诊断，不算利用率或React占比；detail trace processor metadata `traced_chunks_discarded=16`，虽然两buffer loss字段为0，也不写trace完整无损。详情／列表操作和焦点协议保持原8wheel，未换轻场景或关闭全部效果。
 
-历史严格图鉴 before→after list p95/max/>50 265.8/266.6/12→17.7/33.4/0，detail250.6/266.8/6→17.5/17.6/0。P2解锁复验另有上表有效结果；当前P5完整CSS不同，最终严格复验不能由旧结果代替。
+旧两人严重停顿按工作单做有限同host复用调查：此前6/3/4/5人历史，固定1366×768/DPR2；389phaseRAF／388独立focusRAF聚焦可见、native无blur，晚揭晓>1s的239间隔p95/max18.2/18.6ms、>50=0，旧200–267ms未复现。恢复选卡仍有7个51–83ms，保留未复现边界。最终欢迎调查亦保留50–83ms长间隔及同PID自然重播checkpoint的69个 droppedVideoFrames（返回/重播/reload），不能把37功能检查通过写成全产品性能通过。
 
-## 当前待完成与交接
+[完整动态v1 FAIL](evidence/dynamic-final-p5-v1-failure.json) 的图鉴1248→1314偏移保留；[正常起步诊断](evidence/archive-scroll-diagnose.json)和[最小起步诊断](evidence/archive-scroll-diagnose-minimum.json)均1248不变，未定位原66px原因。最终full v2仅给mount/wheel建立500ms实际稳定baseline，保留原strict deepEqual和全部路线，不改产品scroll、不重置位置／放宽容差；本轮该偏移未复现。在线v7–v12的已卸载按钮、异步native focus及移动目标旧坐标等收集器失败原样保留；v13原hover/active/焦点／自然busy断言不降低。[严格图鉴v2 FAIL](evidence/archive-final-p5-v2-failure.json)有hold超时／6500ms强制退出；[v3 FAIL](evidence/archive-final-p5-v3-failure.json)有实际native失焦与317.4ms partial峰值，不用无效焦点数据冒充最终有效测量。所有raw失败、first error、非零driver、正常/强制清理均在R和manifest保留。
 
-Mac解锁后按唯一GUI操作者顺序：`smoke-control-states.cjs --batch=archive-extra`／`--batch=loading`、`smoke-online-dynamic.cjs --control-states-only --control-native-hold`（原生Up→Return另用CUA）、完整`smoke-dynamic.cjs`、`smoke-welcome-native.cjs`同PID watcher调查、`smoke-archive-performance.cjs <绝对desktop路径>`严格两区复验。每次新OUT、不覆写旧失败、不改变服务deadline、不把marker当接受。退出补测驱动已改为按实际modal卸载生命周期检查大厅禁用按钮；代码静态检查不代替该后半实际运行。
+[15秒全屏/入场片](evidence/native-fullscreen-entry.renderer.mp4)为P4连续41–56s；[25.040秒尺寸/跨屏片](evidence/native-size-display-selection.renderer.montage.mp4)为P4 THREE-CUT 60–64.5／214.5–219／246.5–262.5s。renderer-only H2641920×1080/25fps、无音轨、灰边不等于原生frame；来源整次FAIL及末帧Charge选择说明不变，须结合native原件。当前P5正常退出另有独立记录。
 
-现有内外屏均DPR2：外屏逻辑2304×1536，内屏1710×1112。不同DPR屏／物理4K和系统缩放组合、Windows图形host、干净机器/账户、初次玩家真人教程、新包/系统信任/物理断网/第二电脑公网TLS仍缺具体条件，按下方操作清单由Teddy安排；本机合成peer不是跨设备真人，3840×2160截图不是物理4K。旧ZIP `0a37a89d3ad5e0d1b7817831d3d94f5811e90346`不含本轮代码，未打新包、部署、merge、tag或release。远端CI按最终head回读，0项记NOT_RUN。
+## 工作位置和外部接受
 
-任务worktree `/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a`保持活动；R保留所有原FAIL、日志、CPU/trace及录像。2026-10-04复核原21个worktree的HEAD/完整status与初次快照一致，主目录HEAD `c9b79e2e2e5b22071feb7d10a64634806b67aeb0`且status为空；`.local-archive`未启用，未删/迁移旧目录。共享git info/exclude排除worktrees/outputs/archive；桌面构建和stage打包使用明确文件集合，未扩展依赖。Kimi继续暂停，未调用；本地审查使用code-review；发现completion证据写盘失败会跳过退出清理，已保证两次写盘错误仍执行owned close/profile删除，`--self-check`使用实际finally代码的两种EACCES注入均PASS；这不改变产品main。第二轮须ChatGPT增量复核＋Teddy真实体验/外部安排确认，当前不自行进入。
+保留原21个worktree HEAD与完整porcelain状态，主目录 `c9b79e2e2e5b22071feb7d10a64634806b67aeb0`／status空。任务树 `/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a`保持活动；原件R保持，未新增任务恢复归档或移动/删除旧目录，已有历史归档未改。git排除worktrees／outputs／archive，build／stage明确文件集合；未打新包、merge、main push、tag、release、部署或改CI设置。Kimi继续暂停，未调用；本地增量源码／证据复核使用code-review及只读子代理。
 
----
+普通开发入口：`DEIDEI_PYTHON=/Users/zengchongtai/develop/DeiDei/.venv/bin/python npm --prefix game/desktop run dev`（从本任务根运行）。无地址路径仍明确MOCK；真实本机服务命令及 `DEIDEI_ROOM_URL` 见 [desktop README](../../../game/desktop/README.md)。fixture先完整build/restart；main/preload/worker/白名单修改继续完整重启。
 
-## 历史记录与外部接受步骤
-
-[前次完整报告](https://github.com/Kalopsiazza/DeiDei/blob/6eb652d088ffdf1f9e047bb14b9d48acf5037885/docs/results/R04-T03-a/REPORT.md) 保持历史属性；所有前次失败 JSON 和原件仍在原目录／MANIFEST，不改状态。每次执行从明确完整 SHA 和实际 build 指纹开始，MOCK、真实 worker、本机服务与物理过程分开。
-
-| 缺少的具体条件 | 执行及接受点 |
+| 缺少的具体条件 | 交接操作与接受点 |
 |---|---|
-| 不同DPR屏／物理4K／系统缩放组合 | 记录显示器native像素、DPR、系统缩放、native content及inner size；菜单／牌桌跨屏往返、Tab/选牌保持、完整resize与提交飞行终点，保留实际原生短录像。当前两屏均DPR2，截图尺寸不代替设备。 |
-| Windows图形host、干净机器／账户、初次玩家真人 | 用本轮同SHA构建或独立获准新包；欢迎→建档→真实教程→普通单人／两人房。记录安装信任、首次规则理解、实际操作/文字/失败；Teddy安排人员，AI/合成peer不替代。 |
-| 新包／系统信任／物理断网／跨设备公网TLS | 产品封板后独立授权同SHA打包／成包GUI／资源白名单与信任；第二电脑／公网服务和证书、真实断网→恢复→再入场，核ACK、deadline与揭晓前保密。旧ZIP不可用于新代码接受。 |
-| 后续能力 | 单人AI强度／时限、多身份、音源等保留另行开发，不借遗留核对新增产品能力。 |
-| 第二轮 | ChatGPT增量代码/证据复核，Teddy真实体验和上述安排确认后，从最后确认完整产品SHA开始；当前不自行进入。 |
+| 不同DPR屏／物理4K／系统缩放组合 | 记录native像素、DPR／系统缩放、native content及inner；跨屏往返、Tab/选牌保持、resize/飞行终点及原生短录像。当前两屏均DPR2，截图尺寸不替代设备。 |
+| Windows图形host、干净设备/账户、初次真人玩家 | 同产品SHA构建或独立获准新包，欢迎→建档→真实教程→单人/两人房；记录规则理解、实际操作/文字/失败，由Teddy安排。 |
+| 新包/系统信任/物理断网/跨设备公网TLS | 独立发行验收用同SHA新包、第二电脑、公网服务/证书；实际断网恢复→再入场，核ACK/deadline及揭晓前保密。旧ZIP `0a37a89d3ad5e0d1b7817831d3d94f5811e90346`不代表本轮。 |
+| 新能力／第二轮 | AI强度/本地时限、多身份、音频另行开发。ChatGPT增量复核＋Teddy实际体验和外部安排确认后，再从最后确认SHA进入第二轮。 |
+
+[前次未完成交付](https://github.com/Kalopsiazza/DeiDei/blob/98955894b432f1f12d4bdf36f0a4697cdf95aeb7/docs/results/R04-T03-a/REPORT.md)和[更早记录](https://github.com/Kalopsiazza/DeiDei/blob/6eb652d088ffdf1f9e047bb14b9d48acf5037885/docs/results/R04-T03-a/REPORT.md)保持历史属性。[遗留终态](REMAINDERS.md)覆盖原要求，[控件表](CONTROL-STATES.md)给真实适用性；本包本机执行/交付完成，外部设备与进入第二轮确认仍待安排。

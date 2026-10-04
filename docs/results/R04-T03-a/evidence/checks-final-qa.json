@@ -1,0 +1,92 @@
+{
+  "input": {
+    "head": "63496395b59af71998a47a1e183e509c8472865b",
+    "dirty": ""
+  },
+  "product": "dc38024a91818c3e2a2ca537675549409cfca620",
+  "checks": [
+    {
+      "name": "build",
+      "command": [
+        "/usr/local/bin/npm",
+        "--prefix",
+        "game/desktop",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 739,
+      "logSha256": "3a5f8dde300bba16f661acdd85b3907655c378eed560ef686845c558c11b0708"
+    },
+    {
+      "name": "style",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-style.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 30,
+      "logSha256": "c712d6df12421028019acb8dacafdac40378db5c01020eb1402cd947426cb3cf"
+    },
+    {
+      "name": "performance",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-performance.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 225,
+      "logSha256": "0506452978e75b9e65106811b10afcec6e1124452ccf0a58e1eb7689ec6b0901"
+    },
+    {
+      "name": "archive",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-archive-performance.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 43,
+      "logSha256": "b224783f7eaa5606a63d5c2dca1a0583edd0d3f794fe89bc8580fcdd296b7248"
+    },
+    {
+      "name": "geometry",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-geometry.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 32,
+      "logSha256": "696f7755876c08b598f50adf5f8dfe34befdb49541a68104a2c35419c4934a20"
+    },
+    {
+      "name": "completion",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-completion.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 299,
+      "logSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175"
+    }
+  ],
+  "compiled": {
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+    "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+    "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81"
+  }
+}
