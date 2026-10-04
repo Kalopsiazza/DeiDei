@@ -9,6 +9,7 @@ import { WelcomeEntrance } from './WelcomeEntrance';
 import { BattleStage, MatchResult, SituationDialog } from './BattleStage';
 import { Avatar, Identity, Modal } from './SharedUI';
 import { useSoloSession } from './useSoloSession';
+import { graphicsForPreset } from './graphics.cjs';
 const api=window.desktop;
 const errors:Record<string,string>={TUTORIAL_TRY_TARGET:'先试一下提示中的招式；还没有提交，也不会扣资源。',NOT_REVEALED:'等双方揭晓后再继续。',PACKAGE_INCOMPLETE:'游戏文件不完整，请重新取得完整测试包。',INVALID_PROFILE:'昵称须为 1—20 个字，不能包含控制字符。',INVALID_INPUT:'输入格式无效，请检查后重试。',SAVE_FAILED:'保存失败，请检查本机目录权限后重试。输入和旧档案已保留。',PROFILE_BUSY:'正在保存，请稍后重试。',PROFILE_DAMAGED:'本机档案损坏，原文件已保留。',PROFILE_UNREADABLE:'暂时无法读取档案，请检查目录权限后重试。',UNAVAILABLE_MOVE:'这张牌暂不可用，请查看原因。',STALE_VIEW:'场景已更新，请重新选择。',ALREADY_SUBMITTED:'已经提交，请等待揭晓。',MATCH_INTERRUPTED:'本场中断，可重新开始。',GET_VIEW_FAILED:'读取对局失败，请重新读取或退出。',REQUEST_CONFLICT:'本拍已提交另一张牌，请重新读取。',SESSION_CLOSED:'本场已结束，请返回菜单重新开始。'};
 const message=(code:string)=>errors[code]||`操作未完成（${code}），请重试。`;
@@ -34,7 +35,7 @@ function App() {
  const [manual,setManual]=useState<Manual|null>(null),[scene,setScene]=useState<Scene>('initial');
  const [modal,setModal]=useState('');
  const modalClose=useRef<(()=>void)|null>(null);
- const [settings,setSettings]=useState<Settings>({music:60,effects:70,fullscreen:false}),[settingsTab,setSettingsTab]=useState('声音'),[returnPage,setReturnPage]=useState('menu');
+ const [settings,setSettings]=useState<Settings>({music:60,effects:70,fullscreen:false,graphics:graphicsForPreset('balanced')}),[settingsTab,setSettingsTab]=useState('声音'),[returnPage,setReturnPage]=useState('menu');
  const [history,setHistory]=useState(emptyHistory);
  const moveHistory=history.moves;
  const [frozen,setFrozen]=useState(false),[arenaReady,setArenaReady]=useState(false),[arenaExiting,setArenaExiting]=useState(false),[pendingResult,setPendingResult]=useState<DesktopView|null>(null),[introSeconds,setIntroSeconds]=useState(5),[resultLeaving,setResultLeaving]=useState(false),[quitBusy,setQuitBusy]=useState(false);

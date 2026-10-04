@@ -1,6 +1,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const { randomUUID } = require('node:crypto');
+const { graphicsForPreset, validateGraphics } = require('./graphics.cjs');
 const avatars = ['leaf', 'sun', 'moon', 'star'];
 const fail = code => { throw new Error(code); };
 function fields(p, keys) {
@@ -11,16 +12,24 @@ function validateInput(p) {
   if (typeof p.nickname !== 'string' || /[\p{Cc}\p{Cf}\p{Cs}]/u.test(p.nickname) || !p.nickname.trim() || [...p.nickname.trim()].length > 20 || !avatars.includes(p.avatar_id)) fail('INVALID_PROFILE');
   return { nickname: p.nickname.trim(), avatar_id: p.avatar_id };
 }
-function validateSettings(s) {
+function validateLegacySettings(s) {
   fields(s, ['music', 'effects', 'fullscreen']);
   if (![s.music, s.effects].every(n => Number.isInteger(n) && n >= 0 && n <= 100) || typeof s.fullscreen !== 'boolean') fail('INVALID_SETTINGS');
   return { ...s };
 }
+function validateSettings(s) {
+  fields(s, ['music', 'effects', 'fullscreen', 'graphics']);
+  const { graphics, ...legacy } = s;
+  return { ...validateLegacySettings(legacy), graphics: validateGraphics(graphics) };
+}
 function validateStored(p) {
   fields(p, ['profile_version', 'local_id', 'nickname', 'avatar_id', 'settings']);
-  if (p.profile_version !== 1 || typeof p.local_id !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(p.local_id)) fail('INVALID_PROFILE');
-  validateInput({ nickname: p.nickname, avatar_id: p.avatar_id }); validateSettings(p.settings);
-  return p;
+  if (![1, 2].includes(p.profile_version) || typeof p.local_id !== 'string' || !/^[a-f0-9]{8}-[a-f0-9]{4}-4[a-f0-9]{3}-[89ab][a-f0-9]{3}-[a-f0-9]{12}$/.test(p.local_id)) fail('INVALID_PROFILE');
+  validateInput({ nickname: p.nickname, avatar_id: p.avatar_id });
+  const settings = p.profile_version === 1
+    ? { ...validateLegacySettings(p.settings), graphics: graphicsForPreset('high') }
+    : validateSettings(p.settings);
+  return { ...p, profile_version: 2, settings };
 }
 class ProfileStore {
   constructor(directory, io = fs) { this.directory = directory; this.io = io; this.busy = false; this.file = path.join(directory, 'profile.json'); }
@@ -48,8 +57,8 @@ class ProfileStore {
       if (mode === 'recover' && old !== undefined) fail('RECOVERY_NOT_NEEDED');
       if (mode === 'create' && old) fail('PROFILE_EXISTS');
       if (['update', 'settings'].includes(mode) && !old) fail('PROFILE_MISSING');
-      const profile = { profile_version: 1, local_id: old?.local_id || randomUUID(), ...input,
-        settings: mode === 'settings' ? validateSettings(payload.settings) : old?.settings || { music: 60, effects: 70, fullscreen: false } };
+      const profile = { profile_version: 2, local_id: old?.local_id || randomUUID(), ...input,
+        settings: mode === 'settings' ? validateSettings(payload.settings) : old?.settings || { music: 60, effects: 70, fullscreen: false, graphics: graphicsForPreset('balanced') } };
       await this.io.mkdir(this.directory, { recursive: true, mode: 0o700 });
       if (mode === 'recover') {
         const stat = await this.io.lstat(this.file);
