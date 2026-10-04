@@ -4,6 +4,13 @@ const assert = require('node:assert/strict'), fs = require('node:fs/promises'), 
 const { enterHall, enterArena, leaveSolo } = require('../integration/gui-actions.cjs');
 const { sourceInput, captureDiagnostics, closeApplication } = require('./smoke-performance.cjs');
 const output = path.resolve(process.env.DEIDEI_COMPLETION_OUTPUT || path.join(__dirname, '../../.local-outputs/r04-t03-a/interaction'));
+if(process.argv.includes('--self-check')){
+ const source=require('node:fs').readFileSync(__filename,'utf8'),body=source.match(/ finally \{\n([\s\S]*)\n \}\n console\.log/)[1];
+ (async()=>{for(const failWrites of [1,2]){const report={status:'FAIL',failure:{message:'original GUI error'}},counts={write:0,close:0,remove:0},fakeProcess={exitCode:0};
+  await new (Object.getPrototypeOf(async function(){}).constructor)('report','page','app','profile','fs','path','output','captureDiagnostics','closeApplication','process',body)(report,null,{},'owned-profile',{writeFile:async()=>{if(++counts.write<=failWrites)throw Object.assign(new Error('denied'),{code:'EACCES'});},rm:async()=>{counts.remove++;}},path,'owned-output',null,async()=>{counts.close++;return {normalExit:true};},fakeProcess);
+  assert.deepEqual(counts,{write:2,close:1,remove:1});assert.equal(report.failure.message,'original GUI error');assert.equal(report.secondaryFailures.length,failWrites);assert.equal(fakeProcess.exitCode,1);
+ }console.log(JSON.stringify({status:'PASS',guiRun:false,cases:['first write denied','both writes denied'],scope:'actual finally block; owned close and profile removal survive evidence write errors'}));})().catch(e=>{console.error(e);process.exitCode=1;});return;
+}
 (async () => {
  const report = { input: sourceInput(), source: 'ordinary main / fixture preview and real worker / test-only IPC delay', consumerOverride:process.env.DEIDEI_CONSUMER_BASE||null, checks: [], errors: [] };
  let app, page, profile;
@@ -75,11 +82,12 @@ require(${JSON.stringify(path.join(__dirname,'main.cjs'))});
   assert.deepEqual(report.errors,[]);report.status='PASS';
  }catch(e){report.status='FAIL';report.failure={message:e.message,stack:e.stack};process.exitCode=1;}
  finally {
+  const cleanupFailure=(e,stage)=>{report.status='FAIL';process.exitCode=1;const value={stage,message:e.message,stack:e.stack};if(!report.failure)report.failure=value;else(report.secondaryFailures??=[]).push(value);};
   if(page&&!page.isClosed()){report.diagnostics=await captureDiagnostics(page).catch(e=>({error:e.message}));await page.screenshot({path:path.join(output,'final.png'),scale:'css'}).catch(()=>{});}
-  await fs.writeFile(path.join(output,'checks.json'),JSON.stringify(report,null,2));
-  if(app){report.cleanup=await closeApplication(app);if(!report.cleanup.normalExit){report.status='FAIL';process.exitCode=1;}}
-  if(profile)await fs.rm(profile,{recursive:true,force:true});
-  await fs.writeFile(path.join(output,'checks.json'),JSON.stringify(report,null,2));
+  await fs.writeFile(path.join(output,'checks.json'),JSON.stringify(report,null,2)).catch(e=>cleanupFailure(e,'evidence-before-cleanup'));
+  try{if(app){report.cleanup=await closeApplication(app);if(!report.cleanup.normalExit){report.status='FAIL';process.exitCode=1;}}}catch(e){cleanupFailure(e,'application-cleanup');}
+  if(profile)await fs.rm(profile,{recursive:true,force:true}).catch(e=>cleanupFailure(e,'profile-cleanup'));
+  await fs.writeFile(path.join(output,'checks.json'),JSON.stringify(report,null,2)).catch(e=>cleanupFailure(e,'evidence-after-cleanup'));
  }
- console.log(JSON.stringify({status:report.status,checks:report.checks.length,failure:report.failure,cleanup:report.cleanup}));
+ console.log(JSON.stringify({status:report.status,checks:report.checks.length,failure:report.failure,secondaryFailures:report.secondaryFailures,cleanup:report.cleanup}));
 })();

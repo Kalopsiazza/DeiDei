@@ -53,7 +53,7 @@ async function verifyChildren(children){
  const output=path.resolve(process.env.DEIDEI_WELCOME_NATIVE_OUTPUT||path.join(os.tmpdir(),`deidei-welcome-native-${Date.now()}`));
  await fs.mkdir(output,{recursive:false});
  const result={input:sourceInput(),driver:{path:__filename,sha256:createHash('sha256').update(fsSync.readFileSync(__filename)).digest('hex')},entry:nativeOnly?'main.cjs':'tests-online/smoke-main.cjs + DEIDEI_DEV_RELOAD=1',transport:nativeOnly?'ordinary offline main; no room URL':'scripted test socket; no real online acceptance',nativeManipulation:'Only external CUA actions during --native-hold can establish physical dragging/fullscreen evidence',segments:[],documents:[],checkpoints:[],assetEvents:[],rendererErrors:[],consoleErrors:[],nativeEvents:[],nativeSnapshots:[],checks:0};
- let app,page,directory,interrupted,nativeCursor=0;
+ let app,page,directory,interrupted,nativeCursor=0,recording=false,recorderChildren=[];
  const onSignal=signal=>{interrupted=signal;};
  process.on('SIGINT',onSignal);process.on('SIGTERM',onSignal);
  const fail=(e,stage)=>{const failure={stage,...details(e)};if(!result.failure)result.failure=failure;else(result.secondaryFailures??=[]).push(failure);process.exitCode=1;};
@@ -115,7 +115,11 @@ async function verifyChildren(children){
   directory=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-welcome-native-profile-'));
   const env={...process.env,DEIDEI_TEST_DATA_DIR:directory,DEIDEI_DEV_RELOAD:'1'};delete env.ELECTRON_RUN_AS_NODE;delete env.DEIDEI_ROOM_URL;
   const started=Date.now();app=await electron.launch({args:[path.join(desktop,nativeOnly?'main.cjs':'tests-online/smoke-main.cjs')],env,timeout:20000});page=await app.firstWindow();const mainPid=app.process().pid;result.nativeOnly=nativeOnly;
+  if(nativeOnly){result.videoStartedAt=new Date().toISOString();await page.screencast.start({path:path.join(output,'native-content.webm'),size:{width:1920,height:1080}});recording=true;recorderChildren=collectChildren(process.pid).filter(c=>/ffmpeg/i.test(c.command));}
+  if(nativeOnly)app.process().stderr.on('data',bytes=>{result.mainStderr=((result.mainStderr||'')+String(bytes)).slice(-6000);});
   page.setDefaultTimeout(12000);page.setDefaultNavigationTimeout(15000);
+  app.on('console',message=>{const text=message.text();if(text.startsWith('NATIVE_CLOSE '))(result.closeLifecycle??=[]).push({at:new Date().toISOString(),text});});
+  if(nativeOnly)await app.evaluate(({app,BrowserWindow})=>{for(const event of ['before-quit','will-quit','quit'])app.on(event,()=>console.log('NATIVE_CLOSE '+event));BrowserWindow.getAllWindows()[0].on('close',()=>console.log('NATIVE_CLOSE window-close'));});
   page.on('pageerror',e=>result.rendererErrors.push(details(e)));
   page.on('console',message=>{if(message.type()==='error')result.consoleErrors.push({text:message.text(),location:message.location()});});
   const assetName=url=>{try{const u=new URL(url);return u.protocol==='app:'&&u.host==='desktop'?u.pathname:null;}catch{return null;}};
@@ -125,7 +129,7 @@ async function verifyChildren(children){
   result.assetCollection='Playwright events from firstWindow attachment, plus initial and later document resource timing; early launch events may precede attachment';
   await app.evaluate(({BrowserWindow,screen})=>{
    const window=BrowserWindow.getAllWindows()[0];global.__r04WelcomeNativeEvents=[];
-   const record=type=>{if(window.isDestroyed())return;global.__r04WelcomeNativeEvents.push({type,at:new Date().toISOString(),bounds:window.getBounds(),contentBounds:window.getContentBounds(),fullscreen:window.isFullScreen(),focused:window.isFocused()});};
+   const record=type=>{if(window.isDestroyed())return;global.__r04WelcomeNativeEvents.push({type,at:new Date().toISOString(),bounds:window.getBounds(),contentBounds:window.getContentBounds(),fullscreen:window.isFullScreen(),focused:window.isFocused(),displayId:screen.getDisplayMatching(window.getBounds()).id});};
    for(const event of ['resize','move','enter-full-screen','leave-full-screen','focus','blur','show','hide','minimize','restore','maximize','unmaximize'])window.on(event,()=>record(event));record('attached');
   });
   result.electron=await app.evaluate(({screen})=>({pid:process.pid,versions:process.versions,displays:screen.getAllDisplays().map(d=>({id:d.id,bounds:d.bounds,workArea:d.workArea,scaleFactor:d.scaleFactor,displayFrequency:d.displayFrequency}))}));
@@ -199,12 +203,16 @@ async function verifyChildren(children){
    result.nativeHold={startedAt:new Date(start).toISOString(),deadline:new Date(deadline).toISOString(),samples:[],actions:'external CUA only; no programmatic resize/move/fullscreen'};
    console.log('NATIVE_HOLD_READY '+JSON.stringify({pid:mainPid,output,deadline:result.nativeHold.deadline}));
    await persist();
+   let lastCheckpoint='';
    while(Date.now()<deadline&&!fsSync.existsSync(path.join(output,'native.done'))){
     if(interrupted)throw new Error(`Interrupted by ${interrupted}`);
     assert.ok(!page.isClosed(),'owned native window remains open during hold');
     const state=await syncNative('native-hold');
     const renderer=await page.evaluate(()=>({viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,documentFocus:document.hasFocus(),route:document.querySelector('.app')?.dataset.page}));
-    result.nativeHold.samples.push({at:state.at,state:state.state,...renderer});await persist();await sleep(500);
+    result.nativeHold.samples.push({at:state.at,state:state.state,...renderer});
+    const marker=path.join(output,'native.checkpoint');
+    if(fsSync.existsSync(marker)){const label=(await fs.readFile(marker,'utf8')).trim();assert.match(label,/^[a-z0-9-]+$/);if(label!==lastCheckpoint){await checkpoint(label);lastCheckpoint=label;}}
+    await persist();await sleep(500);
    }
    result.nativeHold.finishedAt=new Date().toISOString();
    const since=result.nativeEvents.filter(e=>Date.parse(e.at)>=start);
@@ -221,13 +229,16 @@ async function verifyChildren(children){
  }catch(e){fail(e,'scenario');}
  finally{
   try{if(page&&!page.isClosed()){await drainDocument('final-partial');await checkpoint(result.failure?'failure':'final',true);}}catch(e){fail(e,'final-diagnostics');}
+  if(recording)try{recorderChildren=collectChildren(process.pid).filter(c=>/ffmpeg/i.test(c.command));const stopped=Date.now();await bounded(()=>page.screencast.stop(),60000,'Native recording stop');const file=path.join(output,'native-content.webm');result.video={path:path.basename(file),scope:'renderer content during CUA; native frame/fullscreen/display events separate',stopMs:Date.now()-stopped,sha256:createHash('sha256').update(await fs.readFile(file)).digest('hex')};}catch(e){fail(e,'video-stop');}
   try{await bounded(persist,3000,'Partial evidence write');}catch(e){fail(e,'partial-evidence-write');}
   result.cleanup={profile:{path:directory||null,removed:!directory}};let children=[];
   if(app){
    try{children=collectChildren(app.process().pid);}catch(e){fail(e,'owned-child-capture');}
-   try{result.cleanup.application=await closeApplication(app);if(!result.cleanup.application.normalExit||result.cleanup.application.forced)throw new Error('Owned application did not quit normally');}catch(e){fail(e,'application-quit');}
+   let stallProbe;const probeTimer=nativeOnly?setTimeout(()=>{if(alive(app.process().pid)){const file=path.join(output,'quit-stall.sample.txt');stallProbe=promisify(execFile)('/usr/bin/sample',[String(app.process().pid),'1','10','-file',file],{timeout:2000}).then(()=>{result.closeStallSample=path.basename(file);},e=>{result.closeStallSampleError=e.message;});}},4500):null;
+   try{result.cleanup.application=await closeApplication(app);if(!result.cleanup.application.normalExit||result.cleanup.application.forced)throw new Error('Owned application did not quit normally');}catch(e){fail(e,'application-quit');}finally{if(probeTimer)clearTimeout(probeTimer);if(stallProbe)await stallProbe;}
    try{result.cleanup.children=await verifyChildren(children);check(result.cleanup.children.every(c=>!c.forced&&!c.alive&&!c.error),'all owned children exit without force');}catch(e){fail(e,'child-cleanup');}
   }
+  if(recorderChildren.length)try{result.cleanup.recorders=await verifyChildren(recorderChildren);check(result.cleanup.recorders.every(c=>!c.forced&&!c.alive&&!c.error),'owned recorder exits without force');}catch(e){fail(e,'recorder-cleanup');}
   if(directory)try{await bounded(()=>fs.rm(directory,{recursive:true,force:true}),3000,'Temporary profile removal');result.cleanup.profile.removed=!fsSync.existsSync(directory);check(result.cleanup.profile.removed,'isolated temporary profile removed');}catch(e){fail(e,'profile-removal');}
   result.finishedAt=new Date().toISOString();result.status=result.failure?'FAIL':'PASS';
   try{
