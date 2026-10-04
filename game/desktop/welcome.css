@@ -58,6 +58,7 @@
 .app[data-welcome-entering=true] .front-stage-menu .scene-atmosphere{transition-delay:.1s}
 
 /* Keep welcome preferences after its ordinary states. */
+.welcome-scene .welcome-card-front input:focus-visible{outline:2px solid #8ceaf3;outline-offset:4px}
 @media(prefers-reduced-motion:reduce){.welcome-glass,.welcome-title,.welcome-card,.welcome-card-turn,.welcome-scene button,.welcome-scene input{transition:none!important}}
 @media(prefers-reduced-motion:reduce){.welcome-film{transition:none}}
 @media(prefers-reduced-motion:reduce){.app[data-page=menu]:has(>.welcome-menu-entry) .menu-environment{animation:none}.welcome-card-content,.welcome-menu-entry::before,.welcome-menu-entry .menu-rail,.welcome-scene[data-stage=entering] .welcome-card{animation:none!important}.welcome-glass,.welcome-scene::before{transition:none!important}.app[data-welcome-entering=true] .scene-plane,.app[data-welcome-entering=true] .menu-copy{transition-delay:0s}}
