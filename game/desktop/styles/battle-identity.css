@@ -18,3 +18,5 @@
 .move-card-content>strong{white-space:normal;overflow-wrap:anywhere;line-height:1.2}
 
 .battle-cards .card-name{line-height:1.45}
+/* Bottom anchoring includes the non-shrinking history and identity. */
+.battle-arena[data-seat-count] .self-seat{height:auto}
