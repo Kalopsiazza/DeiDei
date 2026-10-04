@@ -9,8 +9,11 @@ const { ProfileStore } = require('./profile.cjs');
 const root = path.resolve(__dirname, '../..');
 const mainRoot = path.resolve(root, execFileSync('git', ['rev-parse', '--git-common-dir'], {cwd: root, encoding: 'utf8'}).trim(), '..');
 const measuring = process.argv.includes('--measure');
-assert.ok(process.argv.slice(2).every(arg => ['--measure', '--self-check'].includes(arg)), 'Use --measure or --self-check');
-const output = path.resolve(process.env.DEIDEI_GRAPHICS_OUTPUT || path.join(mainRoot, '.local-outputs/R04-T04-a', `${measuring ? 'measure' : 'functional'}-${Date.now()}`));
+const settingsOnly = process.argv.includes('--settings-only');
+assert.ok(process.argv.slice(2).every(arg => ['--measure', '--settings-only', '--self-check'].includes(arg)), 'Use --measure [--settings-only] or --self-check');
+assert.ok(!settingsOnly || measuring, '--settings-only requires --measure');
+const mode = settingsOnly ? 'measure-settings-repeat' : measuring ? 'measure' : 'functional';
+const output = path.resolve(process.env.DEIDEI_GRAPHICS_OUTPUT || path.join(mainRoot, '.local-outputs/R04-T04-a', `${mode}-${Date.now()}`));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const stopped = style => style.animationName === 'none' || style.animationPlayState === 'paused';
 const offBackdrop = value => value === 'none' || value === 'blur(0px) saturate(1)';
@@ -18,11 +21,12 @@ const details = error => ({name: error.name, message: error.message, stack: erro
 
 async function main() {
   assert.ok(!fsSync.existsSync(path.join(output, 'checks.json')), 'Use a fresh evidence directory; previous checks.json is preserved');
-  const report = {input: {...sourceInput(), driverSha256: hash(fsSync.readFileSync(__filename))}, mode: measuring ? 'measure' : 'functional',
+  const report = {input: {...sourceInput(), driverSha256: hash(fsSync.readFileSync(__filename))}, mode,
     protocol: {entry: 'ordinary main, independent synthetic profile; default mode only wraps settings.apply before disk write',
       viewport: measuring ? [1920, 1080] : '1366×768 → 1000×650 → 1920×1080 → 1366×768 content resize',
       dpr: 'native, no DPR or refresh-rate emulation', backgroundThrottling: 'ordinary main default',
-      measurement: 'rAF callback intervals, not presentation FPS or a GPU diagnosis', nativePhysicalResize: false},
+      measurement: 'rAF callback intervals, not presentation FPS or a GPU diagnosis', nativePhysicalResize: false,
+      ...(settingsOnly ? {repeat: 'settings-only repeat of observed three-preset stable-settings difference; fresh ordinary main/profile; each preset saved, 1400ms settle then 1200ms sample; every result retained'} : {})},
     checks: [], snapshots: [], segments: [], rendererErrors: [], cleanup: []};
   let app, page, directory, cdp;
   const check = (condition, message, evidence) => {assert.ok(condition, message); report.checks.push({message, ...(evidence === undefined ? {} : {evidence})});};
@@ -216,21 +220,30 @@ async function main() {
       (report.welcome ??= []).push({name, video, processPid: app.process().pid});
       check(video.ended && video.paused && video.width === 1920 && video.height === 1080 && !video.error, `${name}: actual opening naturally ends`);
     };
-    await welcome('fresh-process-natural-welcome', false); await welcome('same-process-natural-replay', true); await enterStored('画面对照');
-    await page.getByRole('button', {name: '开发预览', exact: true}).click(); await page.getByRole('button', {name: 'P01 · 首次进入／欢迎建档', exact: true}).click();
-    await page.locator('.welcome-scene').waitFor(); await sample('p01-return', async () => {await page.getByRole('button', {name: '结束预览，返回主菜单', exact: true}).click(); await page.locator('.menu-layout').waitFor();});
-    check((await readProfile()).nickname === '画面对照', 'P01 return leaves saved configuration and identity');
+    if (!settingsOnly) {
+      await welcome('fresh-process-natural-welcome', false); await welcome('same-process-natural-replay', true);
+    }
+    await enterStored('画面对照');
+    if (!settingsOnly) {
+      await page.getByRole('button', {name: '开发预览', exact: true}).click(); await page.getByRole('button', {name: 'P01 · 首次进入／欢迎建档', exact: true}).click();
+      await page.locator('.welcome-scene').waitFor(); await sample('p01-return', async () => {await page.getByRole('button', {name: '结束预览，返回主菜单', exact: true}).click(); await page.locator('.menu-layout').waitFor();});
+      check((await readProfile()).nickname === '画面对照', 'P01 return leaves saved configuration and identity');
+    }
     for (const id of ['high', 'balanced', 'smooth']) {
       await openSettings(); await preset(id); if (await page.locator('.settings-save').isEnabled()) {await page.locator('.settings-save').click(); await page.locator('.menu-layout').waitFor();} else {await page.locator('.settings-back').click(); await page.locator('.menu-layout').waitFor();}
-      await page.mouse.move(0, 0); await page.waitForTimeout(1800); await snapshot(`hall-${id}`, true);
-      await sample(`hall-${id}-30s`, () => page.waitForTimeout(30000));
+      if (!settingsOnly) {
+        await page.mouse.move(0, 0); await page.waitForTimeout(1800); await snapshot(`hall-${id}`, true);
+        await sample(`hall-${id}-30s`, () => page.waitForTimeout(30000));
+      }
       await openSettings(); await page.mouse.move(0, 0); await page.waitForTimeout(1400); await snapshot(`stable-settings-${id}`, true);
       await sample(`settings-${id}-stable`, () => page.waitForTimeout(1200)); await page.locator('.settings-back').click(); await page.locator('.menu-layout').waitFor();
-      await page.getByRole('button', {name: '经典规则手册 R', exact: true}).click(); await page.locator('.archive-card-detail[data-entry=Bi]').waitFor();
-      await page.waitForTimeout(1000); await page.getByRole('tab', {name: '先看懂', exact: true}).click();
-      check(await page.locator('.archive-card-detail').getAttribute('data-entry') === 'Bi', `${id}: identical measured card and reading mode`);
-      await snapshot(`archive-${id}`, true); await wheelRegion(`archive-${id}-list`, '.archive-stack', true); await wheelRegion(`archive-${id}-detail`, '.archive-detail-scroll', true);
-      await page.getByRole('button', {name: /返回主菜单/}).click(); await page.locator('.menu-layout').waitFor();
+      if (!settingsOnly) {
+        await page.getByRole('button', {name: '经典规则手册 R', exact: true}).click(); await page.locator('.archive-card-detail[data-entry=Bi]').waitFor();
+        await page.waitForTimeout(1000); await page.getByRole('tab', {name: '先看懂', exact: true}).click();
+        check(await page.locator('.archive-card-detail').getAttribute('data-entry') === 'Bi', `${id}: identical measured card and reading mode`);
+        await snapshot(`archive-${id}`, true); await wheelRegion(`archive-${id}-list`, '.archive-stack', true); await wheelRegion(`archive-${id}-detail`, '.archive-detail-scroll', true);
+        await page.getByRole('button', {name: /返回主菜单/}).click(); await page.locator('.menu-layout').waitFor();
+      }
     }
     check(report.snapshots.every(state => state.viewport[0] === 1920 && state.viewport[1] === 1080), 'comparison uses actual 1920×1080 throughout');
     check(new Set(report.snapshots.map(state => state.native.display.id)).size === 1 && new Set(report.snapshots.map(state => state.dpr)).size === 1, 'comparison stays on one native display and DPR');
