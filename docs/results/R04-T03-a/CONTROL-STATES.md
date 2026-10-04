@@ -1,64 +1,171 @@
-# 实际控件七态适用性与现有证据
+# 实际控件状态与运行证据
 
-本表保留P1采样覆盖；最新P2自动动态10路线189记录PASS，14项completion再次PASS。新增联机整条路线两次仍FAIL，未补齐下表七态消费者，不把新样本数量直接相加。当前候选产品P2为 `edbb85a664bde73bc74160f00bb38e15d5634908`，增加在线全屏背景滤镜局部处理。最新路线结果见 [REPORT](REPORT.md)，本表适用性不等于七态全部通过。
+本表按实际 JSX、父级禁用条件和样式覆写划分消费者。六批实际 App 补测均 PASS；表中的“复用”明确说明代表控件、同一源码条件或同一 JSX，不把相同文案、共享 Modal 名称或一次路线通过当成所有消费者通过。此表不代替动态适配、原生窗口操作或严格前台性能验收。
 
-此表按当前 JSX 与已保存运行记录整理。产品输入为 `1b2b7a182e53e7f61b563638f58622893c5fa4b1`；当前三个 smoke driver 有未提交修改。表中的“已测”仅指对应记录确有状态、样式或行为证据，不代表全部页面七态完成，也不代表 M2／M3 已验收。Mac 当前锁屏；本次只读，不追加 GUI 样本。
+## 证据与输入
 
-证据代号：
+以下相对链接已归档并核对原件／副本SHA256；原始运行目录均在 `/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/`。QA driver不同版本和dirty输入保留，不写成统一collector已运行。
 
-- **C**：[completion-product/checks.json](evidence/completion-product.json)，整体 PASS，14条记录，产品 SHA `1b2b7a182e53e7f61b563638f58622893c5fa4b1`，dirty为空。真实主进程，只有 IPC 的700ms成功／失败迟延为测试控制。包括四预览、四组 trusted Escape→Enter、关闭时 calls=0、迟延动作 calls=1、父页面／焦点／正常退出。
-- **D**：[dynamic-product-v2/dynamic.json](evidence/dynamic-product-v2-failure.json)，整体 FAIL：最后1000×560短空间步骤已显式滚到footer关闭并确认可见／命中，却再去点击屏外header返回；两者共用closeSettings，属于驱动导航错误，改点已验证footer后的重跑待完成。10条路线、188项控件记录；产品 SHA `1b2b7a182e53e7f61b563638f58622893c5fa4b1`，dirty仅三个QA driver，renderer/style与C匹配。图鉴Bi／stack1248／detail0在resize保持，模式切换／精确属性／长规则关闭、教程提示层与本地P09结果路线、三类减少动态／透明度实际推进均已到达；solo/archive额外1600×650、1000×1000、1920×1200、2560×1080按记录标实际工作区内或oversized。真实四态8个代表，未增加全部消费者的七态覆盖。旧D9与dynamic-product失败保留。
-- **O**：[online-v7/checks.json](evidence/online-dynamic-failure.json)，普通 main＋实际本机服务，整体 FAIL：等待 Charge public reveal 超时。已完成六人前厅／部署／接入／大厅／选择与时限 Apply、六人观战，以及自然 create／submit／timing pending 采样。输入为 af5 加 dirty；renderer同D，style `f001ad16e26878cbafe6beb8ff823cb9a7263aded1748fc42a75f4af4150dc3e` 与 C 相同。不能延伸为后续人数、结果或旧两人停顿均通过。
+| 代号 | 归档链接／原始运行 | 实际结果及输入 |
+| --- | --- | --- |
+| F | [controls-front.json](evidence/controls-front.json)；`controls-front-unlocked-v2/checks.json` | PASS，88条 controls／2条 business。HEAD `ac012f979b7351ae2100b51731842b5b765020b3`＋QA dirty＋welcome 焦点单行修改；运行 welcome.css 为 W1。 |
+| S | [controls-settings.json](evidence/controls-settings.json)；`controls-settings-unlocked-v2/checks.json` | PASS，141／3。HEAD 同 F＋QA dirty；运行 welcome.css 为 W0，其余 renderer/style 同 F。 |
+| R | [controls-recover.json](evidence/controls-recover.json)；`controls-recover-unlocked-v1/checks.json` | PASS，55／2。HEAD `dc38024a91818c3e2a2ca537675549409cfca620`＋QA dirty；运行 welcome.css W1。只损坏隔离临时 profile，备份原文件 hash 实际核验。 |
+| L | [controls-local.json](evidence/controls-local.json)；`controls-local-unlocked-v2/checks.json` | PASS，167／4。HEAD 同 F＋QA dirty＋welcome 焦点单行；运行 W1。只读目标读真实子元素 `.avatar`／`strong` 样式，baseline 和实际 Tab 后各等220ms。 |
+| A | [controls-archive.json](evidence/controls-archive.json)；`controls-archive-unlocked-v2/checks.json` | PASS，141／1。HEAD 同 R＋QA dirty；运行 W1。搜索 focus-within 的真实 owner 边框／阴影一并采样。 |
+| T | [controls-tutorial.json](evidence/controls-tutorial.json)；`controls-tutorial-unlocked-v1/checks.json` | PASS，50／4。HEAD 同 R＋QA dirty；运行 W1。实际 worker 完成 guided、challenge失败／重试／胜出及进入普通单人。 |
+| MC | [modal-contract.json](evidence/modal-contract.json)；`modal-contract-unlocked-v1/checks.json` | PASS，两 case；HEAD `6eb652d088ffdf1f9e047bb14b9d48acf5037885`＋QA/stage.css dirty。实际 SharedUI export，测试 parent 只改变 props。 |
+| SU | [settings-unlocked.json](evidence/settings-unlocked.json)；`settings-unlocked-after-v1/dynamic.json` | PASS；HEAD 同 MC＋QA/stage.css dirty。设置昵称／头像／checkbox 三个真实四态代表，实际 Tab／Space、resize、native focused=true。style 是历史 `54c0ae99b27edc8f7a2532ee50c9600ef95a06c77e11688b0ebf697f48757210`。 |
+| OU | [online-unlocked.json](evidence/online-unlocked.json)；`online-unlocked-bottom-auto-v1/checks.json` | PASS，17项业务检查；HEAD `9b1d500b4fbd6166d6faa195b2d34e1e8d06a601`＋QA/battle-identity.css dirty。实际本机服务，同 owned host 依次6／3／4／5／2人；自然 create／submit／Apply pending，实际后拍及结果返厅。 |
+| O5 | [controls-online-v5-failure.json](evidence/controls-online-v5-failure.json)；`controls-online-unlocked-v5/checks.json` | **整体FAIL**：180秒native popup continuation marker超时。35条状态记录已到lobby select；retry／实际SERVER_RESTART离线、create/join字段集继承禁用、role容量满与释放、真实role pending均有证据。输入HEAD同R＋QA dirty；runtime renderer/style同六批。不要把后半未执行或marker当原生接受通过。 |
+| C | [completion-product.json](evidence/completion-product.json)；`completion-product/checks.json` | PASS，14项；产品 `1b2b7a182e53e7f61b563638f58622893c5fa4b1`，dirty为空。实际 App 预览／设置迟延成功与失败、trusted Escape→Enter、父页面／焦点／退出。 |
+| W | [welcome-product.json](evidence/welcome-product.json)；`welcome-product/welcome-native.json` | PASS，37项；产品同 C、dirty为空。首次／P01／returning 路径、P01建档不写真实已存 profile、同 PID watcher reload，运行 welcome.css W0。 |
+| D | 现有 dynamic 归档按原文件保留 | 只引用具体控件代表或实际结束预览行为；旧整次 FAIL／首错保持原状。最终动态重跑由独立动态证据更新，不在这里改写。 |
 
-“适用·未测”表示存在实际状态或应复核的消费者，但当前这些记录没有对应采样。“行为已做”表示实际操作成立，未完整采该状态外观。selected 对应业务 `aria-pressed`／`aria-selected`／checked／option值，不把文本选区或普通键盘焦点混成 selected。busy 可以体现为文字、父级 pending 或操作锁，不要求每个控件都有 `aria-busy`。
+F/S/R/L/A/T 的 renderer runtime SHA-256 均为 `02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90`，style 均为 `f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911`。W0=`530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921`；W1=`5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce`。当前源码 SharedUI hash 与 MC／六批一致：`5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d`。六批均 normal exit=0／无强杀／owned children消失／隔离 profile删除，所有记录到的 Tab／Escape／Enter 均 trusted；四态代表在真实Tab后逐项断言 native focused=true、documentFocus=true，保存其余默认／hover／active时的documentFocus。
 
-| 实际控件／职责 | default | hover | active | focus-visible | selected | disabled | busy |
+四态指真实默认、鼠标 hover、按下、Tab focus-visible，并保存样式及命中几何。输入／range／checkbox 的 active **实际断言为 true**，没有因浏览器差异跳过后改成业务 NA。`复用 X`指该消费者与 X 有同一 JSX／class／条件，实际业务路径另有命名证据；没有独立采样的部分仍明确标明。`NA`均带源码原因。busy 对输入等字段表示父级操作锁，字段本身不显示 spinner。纯只读 token／历史／结果玩家无动作 handler，active NA，不混成业务 selected。示例 playing 和 details expanded 与请求 busy 分开。
+
+## 欢迎、菜单与设置
+
+| 实际消费者／记录名 | default | hover | active | focus-visible | selected | disabled | busy |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| 欢迎：声音开关 | D有默认几何／命中 | 适用·未测 | 适用·未测 | 适用·未测 | **D测：aria-pressed false→true，关闭／开启声音真实操作** | NA：自身无disabled；离开opening即卸载 | NA：同步切muted，不承担异步请求 |
-| 欢迎：跳过／重播 | D有入口与实际点击 | 适用·未测 | 适用·未测 | 适用·未测 | NA：一次性阶段动作，不保持选择 | NA：JSX无disabled；非对应stage时卸载／不可用是阶段关系 | NA：同步setStage／pause，不显示请求忙碌 |
-| 欢迎：标题进入牌厅／返回身份入口 | **D测代表 `.welcome-title .welcome-action`** | **D真实hover样式** | **D mouse.down，active=true** | **D Tab可达，focusVisible=true、2px outline** | NA：进入动作不保持pressed | 适用：`disabled=saving||busy`；本记录未进入该禁用分支，进入动画另由inert锁定 | 适用：继承父级busy操作锁；独立标题busy外观未测 |
-| 欢迎：确认名字／重建／重新读取 | D确认名字入口和建档；C没有替代全部恢复入口 | 适用·未测 | 适用·未测 | 适用·未测 | NA：提交／读取动作 | 适用：`disabled=saving`；对应输入fieldset也锁；未专门采此组禁用 | 适用：确认按钮“保存中…”；当前记录未定向采欢迎saving，不套用C的settings |
-| 欢迎：ready新手实战／进入菜单／开发预览／结束预览 | D进入菜单已做；其他消费者需各自核 | 适用·未测 | 适用·未测 | 适用·未测 | NA：导航／请求动作 | 适用：ready按钮busy，tools按钮传入disabled；未完整采 | 适用：新手按钮“正在入场…”，tools继承busy；未完整采 |
-| Shared Identity：昵称输入（欢迎／设置） | D欢迎有实际输入、几何；**D设置四态采样** | **D设置采样；欢迎覆写未测** | **D设置active=true；欢迎未测** | **D设置Tab采样；欢迎输入也记录focusVisible=true** | NA：没有业务selected；文字选区不计 | **适用·未测：欢迎Identity disabled=saving；设置外层fieldset disabled=saving** | 输入不提交请求、无独立busy视觉；父saving使disabled，禁用期间输入保留需单列复核 |
-| Shared Identity：四个头像按钮（欢迎／设置） | **D设置代表太阳按钮**；欢迎各按钮实际点击 | **D设置已采；欢迎覆写未测** | **D设置active=true；欢迎未测** | **D设置Tab可达，3px outline** | 适用：aria-pressed；D点太阳／月亮／星星，**没有选中true后的完整样式采样** | 适用·未测：同上fieldset继承禁用，不是NA | 同步选择无独立busy；父saving锁定，未测该锁期间头像行为 |
-| 菜单：单人／好友／手册／设置／退出／开发预览 | **D单人代表四态；其余有部分入口** | **D单人代表已采**；不同minor/footer覆写待核 | **D单人active=true**；其他覆写待核 | **D单人Tab真实focusVisible及阴影变化**；菜单预览也曾focusVisible=true | NA：导航动作，不保持pressed | 适用：sceneChangePending；退出／预览另加busy；**不能由enabled样本当成禁用已测** | 适用：导航请求锁，退出quitBusy；当前只C覆盖预览动作busy，不覆盖所有菜单消费者 |
-| 设置：声音／窗口／昵称头像／关于页签 | D真实切昵称／窗口，内容保留 | 适用·未测 | 适用·未测 | 适用·未测 | 适用：aria-pressed；切换行为D已做，selected样式未完整采 | **NA：页签本身没有disabled，也不在saving字段集内** | NA：同步换页签；saving只锁内容／保存动作，不能称页签busy |
-| 设置：音乐／音效range、全屏checkbox | D窗口checkbox check／uncheck真实执行；声音保存另由既有欢迎调查使用，但本C/D/O不补全 | 适用·未测 | 适用·未测 | 适用·未测 | checkbox checked适用、D操作已做；range无业务selected，只有数值 | **适用·未测：外层fieldset disabled=saving** | 无独立busy视觉；继承saving禁用，不能误写input永远无disabled |
-| 设置：返回／关闭／保存并关闭 | **D保存代表四态；返回／关闭入口D已做** | **D保存已采**；返回／关闭覆写待核 | **D保存active=true** | **D保存Tab可达，2px outline** | NA：动作不保持选择 | **D测保存clean时disabled=true、dirty时false；C测保存关闭action保存期间disabled**；返回／关闭saving锁未逐个采 | **C真实settings.apply迟延成功／失败，calls=1、输入保持、失败可再操作**；D正常保存不等于busy视觉全套 |
-| 单人准备：开始／返回 | D有几何、两停点操作和实际worker启动 | 适用·未测 | 适用·未测 | D开始实际Shift+Tab→Tab回到按钮；记录focusVisible=true；反馈全套待核 | NA：一次性导航／启动 | 适用：开始busy；返回sceneChangePending||busy；未定向采启动busy禁用 | 适用：开始“正在开场／LOADING”；没有当前日志的迟延启动样式采样 |
-| 单人准备：固定不限时∞按钮 | 当前仅源码固定状态，本记录未采 | NA：固定disabled的说明控件，无可执行hover目标 | NA：固定disabled，不执行动作 | NA：原生disabled不进入Tab路径 | 适用：固定aria-pressed=true；不是可切换时限能力 | 适用：JSX固定disabled；本记录未专门采外观 | NA：没有接入时限请求 |
-| 单人／多人入场：立即进入／立即入场 | D/O真实跳过行为已做 | 适用·未测 | 适用·未测 | 适用·未测 | NA：一次性跳过 | NA：JSX无disabled；阶段结束即卸载 | NA：同步切已进入状态，不发新开局请求 |
-| BattleStage：可用／已选牌 `.card-pick` | D真实worker默认与selected牌；O六人33牌几何 | **D已选Charge代表采样**；未选牌／线上覆写待核 | **D Charge active=true** | **D Charge Tab可达、focusVisible=true、3px outline** | **D、O实际选Charge，aria-pressed=true；D resize仍保留match与选牌** | **D/O实际资源不足牌disabled；busy、ready、exiting、suspended、revealed、已提交也会使!editable，未全部逐态采** | **O自然submit中仍selecting时按钮disabled→submitting已提交**；单人全部busy外观待核；忙碌影响editable，不是牌自身spinner |
-| BattleStage：确认／重试提交 | D/O真实确认行为；D/O无选牌时disabled | 适用·未测 | 适用·未测 | 适用·未测 | NA：提交动作；已提交文本不是selected | **D/O无选牌disabled；O提交后disabled**；error重试分支本记录未采 | **O自然IPC：confirm disabled=false→true，同selecting→已提交/submitting**；无aria-busy，不能声称spinner验证 |
-| BattleStage：暂停／局势 | D/O实际可达、弹窗开关 | 适用·未测 | 适用·未测 | 适用·未测 | NA：打开dialog，不保持pressed | **NA：这两个button JSX没有disabled**；dialog打开期间背景inert是另一条关系 | NA：同步开Dialog，不发异步请求 |
-| BattleStage：冻结／恢复 | D单人freeze/resume真实操作；O线上固定禁用 | 适用·未测 | 适用·未测 | 适用·未测 | **D记录“恢复”aria-pressed=true** | **O测mode online时disabled=true；源码人数>2也禁用** | NA：本地同步切frozen，不暂停服务时钟；多人无冻结请求 |
-| Shared Modal：关闭／ESC | D短弹窗／长规则／局势与O时限／局势／观众菜单实际可达；C关闭行为 | 适用·未完整采关闭按钮hover | 适用·未完整采 | C在真实动作焦点上Esc→Enter并恢复触发项；**关闭按钮自身focus-visible样式未全采** | NA：关闭动作，不保持选择 | **C预览迟延期间close disabled；源码closeDisabled||closing**。C验证closing期间后续动作不执行 | **C成功／失败迟延保存/预览，busy时拒绝关；最新回调分支有源码处理，busy在240ms内改变的持久回归仍未补** |
-| Modal正文：继续编辑／保存关闭／预览场景／恢复／离开／退出 | **D“继续编辑”四态；C预览与保存关闭行为；O观众继续实际操作**；其他消费者不能全复用 | **D继续编辑已采**；primary/danger/battle-dialog覆写未全采 | **D继续编辑active=true**；其他覆写待核 | **D继续编辑Tab与3px outline**；C原生键盘动作焦点，非全套样式 | 预览场景aria-pressed适用·未采selected外观；其余动作NA（不保持选择） | **C预览/保存action busy disabled；恢复saving、离开pending、退出busy均适用·未完整测**；“继续编辑”等关闭动作经requestClose另受closing/inert控制 | **C preview/settings迟延成功+失败实际calls=1**；恢复/quit/离开忙碌消费者未因此自动通过 |
-| Online前厅：创建／加入／重连／返回 | O front-small实际可达和点击 | 适用·未测 | 适用·未测 | 适用·未测 | NA：进入表单／连接动作 | 适用：创建加入!connected||busy；retry busy；返回exitBlocked；O已连接enabled样本，不代表断连禁用全测 | 适用：session busy/连接；retry/reconnectbusy未采，不能复用create-submit的pending |
-| Online部署／接入：房号、密码、时限range、容量range | O真实输入/密码保留、End把时限改30000，create-small/join-small几何 | 适用·未测 | 适用·未测 | **O时限range focusVisible=true；其他输入未作同类样式采样** | range／文本NA（值不是selected）；输入内容保留O已查 | **适用：OnlineRoom fieldset disabled=blocked，blocked=busy||pending||!connected；O采提交button禁用，但没有逐个采字段disabled** | 字段无独立busy文字；同fieldset继承真实pending锁，逐字段业务拒绝未测 |
-| Online：early checkbox／参战观战radio | O实际check/uncheck、参战↔观战，观众加入结果已查 | 适用·未测 | 适用·未测 | 适用·未测 | checked适用；O真实切换与最终spectator身份成立，**checked样式七态未完整采** | **适用：继承外层fieldset blocked（嵌套role字段集也继承）**；未逐字段采禁用 | 无独立busy文字；继承表单pending禁用，不应记NA disabled |
-| Online：创建并进入／加入表单submit | O实际创建和观众加入 | 适用·未测 | 适用·未测 | 适用·未测 | NA：发送请求，不保持选择 | **O create-6自然disabled=true→false；由fieldset继承而非button自身disabled**；join忙碌未同样采 | **O create-6实际data-pending=true、确认中…、disabled=true，再pending=false恢复；不把它扩大为所有联机按钮busy外观** |
-| Online大厅：准备／角色转换／开始／复制房号／退出／调整时限 | O lobby-small、准备/复制/开局和时限实际入口 | 适用·未测 | 适用·未测 | 适用·未测 | 准备为标签“准备/取消准备”的动作，无aria-pressed，独立selected视觉NA；其余动作NA | **O未全员就绪时开始disabled=true**；准备blocked、角色容量/blocked、退出exitBlocked、调整blocked适用；复制按钮无disabled，NA | 准备/角色/start/退出/Apply可忙碌·未逐个采；复制为clipboard Promise，源码只notice，无busy锁或文字，NA独立busy |
-| Online时限：原生select | **O timing-open enabled、selectOption('20000')及选项值行为** | 适用·未测（OS popup另验） | 适用·未测（OS popup另验） | 适用·未测；未做原生键盘popup接受流程 | **O选值和policy 30000→20000、revision+1已验证；selectOption不等于OS原生菜单体验验收** | **NA：该select没有disabled，也不在disabled fieldset内；Modal closing的inert不可冒充select:disabled** | NA：select同步改limitMs，不发请求；Apply busy时select是否继续可操作未定向采 |
-| Online时限：Apply | **O真实打开/Apply/之后仍selecting；当拍deadline/accepted/turn不变** | 适用·未测 | 适用·未测 | 适用·未测 | NA：请求动作 | **O自然Apply disabled=false→true；JSX disabled=blocked** | **O timing-apply自然React/IPC状态，保持已提交内容**；后续揭晓超时，不能记后拍时限完整生效或整次PASS |
-| MatchResult：回顾／再来一场／准备下一局／退出 | **C本地preview结果/回顾/返回真实执行；D本地P09结果四停点／回顾／返回**；O本次未到联机结果 | 适用·未测 | 适用·未测 | 适用·未测 | NA：结果动作不保持选择；winner/out为展示状态 | 适用：leaving、primaryDisabled、exitDisabled；本记录未定向采离场和guest等待禁用 | 适用：开始新场或online resultLeaving锁；无独立aria-busy，当前记录未验证该busy家族 |
-| 图鉴：搜索／清空、卡牌图标切换 | D archive入口target几何；**切换按钮真实四态** | **D archive mode真实hover**；搜索待核 | **D archive mode active=true**；搜索待核 | **D archive mode真实Tab、focusVisible=true、2px outline**；搜索待核 | 搜索NA；view-toggle无aria-pressed，显示模式是data-mode/文案，**D在1000×650／1366×768／1920×1080真实切图标与卡牌** | NA：这些JSX没有disabled/禁用字段集；返回按钮例外见下 | NA：本地同步搜索/模式切换，无异步请求 |
-| 图鉴：分类／卡牌与图标／档案tab／场景／示例回合和播放／章节 | **D选Bi，纯resize后选项与两侧scrollTop保持**；D精确属性真实点击与长规则打开／滚动／关闭；其他场景／章节未定向采 | 适用·未测 | 适用·未测 | 适用·未测 | 适用：aria-pressed/aria-selected；D保留Bi；播放pressed=playing及其余选择外观未测 | 普通选择控件NA（无disabled）；入门“下一步”末步disabled适用·未测 | 同步本地选择/计时播放无请求busy，NA；playing是selected/演示状态，不把它混成busy |
-| 图鉴：返回／新手实战 | D进入新手实战与教程后退出已做；返回／新手动作独立四态与busy未完整采 | 适用·未测 | 适用·未测 | 适用·未测 | NA：导航动作 | 适用：返回leaving；新手busy||leaving | 适用：离场/启动请求锁；未测。**不能把共享settings-back代表搬成图鉴全部态** |
-| 教程：提示／明白继续／重试／普通单人／返回 | D真实教学worker／提示层／第一拍／继续与退出，四停点geometry可达；非完整新玩家教程效果 | 适用·未测 | 适用·未测 | 适用·未测 | 提示aria-pressed=hint适用；下一步等动作NA | 适用：busy||suspended；需实际guided/challenge/revealed/complete状态 | 适用：推进和startSolo请求锁；当前记录未测，不以共享牌桌代替教程层 |
-| 牌桌历史／资源token、结果玩家：tabIndex=0只读说明 | 源码有可聚焦展示；本次未定向采 | 适用：历史展开／资源hover；未测 | NA：无click/action handler，按压不是业务操作 | 适用：源码有focus样式／可聚焦；未测 | NA：展示数据不是选项 | NA：无disabled能力 | NA：不发请求／无忙碌动作 |
+| 欢迎声音 `welcome/sound` | F | F | F | F | F true→false | NA：无disabled prop | NA：同步 muted |
+| 欢迎跳过 `welcome/skip` | F | F | F | F | NA：阶段动作 | NA：无disabled，stage切换卸载 | NA：同步阶段切换 |
+| 欢迎重播 `welcome/replay` | F | F | F | F | NA：阶段动作 | NA：无disabled | NA：同步重播 |
+| 欢迎标题 `.welcome-title .welcome-action` | F `welcome/title`；W returning | F | F | F | NA：进入动作 | 条件为父saving/busy；visible-title禁用分支未到达，name/entering的inert另记 | visible-title无独立请求；W entering真实inert，不伪造标题busy |
+| 欢迎 nickname（含P01相同Identity） | F/R | F/R | F/R | F/R，W1新增2px outline实际通过 | NA：文字选区不是选项 | F创建、R恢复期间fieldset锁 | F/R父saving锁，失败后值保持／可再输入 |
+| 欢迎 avatar（太阳代表，共同button JSX） | F/R | F/R | F/R | F/R | F/R aria-pressed true | F/R真实fieldset锁 | F/R父saving锁；自身同步选择 |
+| 欢迎正常确认／P01仅预览确认 `.welcome-action` | F正常；W P01实际确认且profile不变 | F；P01复用同class | F；P01复用 | F；P01复用 | NA：提交动作 | F正常saving；P01同步校验不进入saving | F profile.create受控1800ms失败；P01不是异步保存 |
+| 欢迎损坏重建入口 `welcome/rebuild` | R | R | R | R | NA：开恢复dialog | 同saving，恢复dialog下背景按钮未逐个单采；共享welcome-action锁条件可复核 | 入口同步开dialog；实际恢复pending见R正文／背景Identity |
+| 欢迎重新读取 `welcome/reload` | F/R | F/R | F/R | F/R | NA：读取动作 | F创建时disabled | 自身load无busy文字／锁；父saving时F拒绝输入。读取功能不冒充保存busy |
+| ready主菜单 `.welcome-secondary` | F | F | F | F | NA：导航 | F教程启动期间disabled | F `welcome-tutorial/menu`父锁 |
+| ready教程 `.welcome-action` | F | F | F | F | NA：启动 | F | F “正在入场…”／startTutorial单IPC失败恢复 |
+| welcome-tools开发／结束预览同button JSX | F开发；D实际结束；W P01返回 | F开发代表复用 | F开发代表复用 | F开发代表复用 | NA：动作 | F开发实际父busy；结束预览同disabled传参 | F tools父锁；结束动作同步离开预览，不新增请求busy |
+| initial loading `.topbar .brand`（独立class） | **待loading批次** | 待 | 待 | 待 | NA：导航不保持selected | source sceneChangePending条件；initial loading通常false，未制造不可达锁 | NA独立busy：同步导航；合法profile.read仅延迟初始读取，不是brand busy |
+| menu primary `.menu-option-primary` | D单人代表 | D | D | D | NA：导航 | S `menu-preview/background-primary`真实prop，记录其处于native Modal背景 | S pending锁；普通导航同步，未把背景样本称前景操作 |
+| menu secondary `.menu-option-secondary` | S `menu/secondary` | S | S | S | NA：导航 | 同primary sceneChangePending；S父pending有证据，secondary未单独snap | 同pending条件复用；在线状态另外验证 |
+| menu minor（设置代表，手册／退出同class） | S `menu/minor` | S | S | S | NA：导航 | S背景设置；退出另加busy，S quit请求正文已测 | S父preview锁；退出打开dialog本身同步 |
+| menu footer `.menu-preview` | S `menu/footer` | S | S | S | NA：动作 | S背景footer实际disabled | S preview请求锁 |
+| 设置tab（窗口代表，其余同map JSX） | S `settings/tab` | S | S | S | S true，saving中实际切到其他tab | NA：不在saving fieldset、无disabled | NA：同步切页签；saving中仍可切 |
+| 设置音乐range | S `settings/range` | S | S active=true | S | NA：数值不是选择项 | S saving字段集disabled | S父saving锁 |
+| 设置音效range | 同音乐map JSX／CSS；S有字段实际值/锁 | 复用音乐代表 | 复用音乐代表 | 复用音乐代表 | NA：数值 | S `settings/音效音量`实际disabled | S同saving锁 |
+| 设置fullscreen checkbox | S，SU | S，SU | S true，SU | S，SU实际Tab＋Space | S checked true；SU切换/还原 | S saving字段集disabled | S父saving锁 |
+| 设置nickname | SU三态＋active；S真实输入 | SU | SU true | SU | NA：文字选区 | S `settings/nickname`disabled | S父saving，值保持、失败后enabled；SU不承担busy |
+| 设置avatar（太阳代表） | SU | SU | SU true | SU | S `settings/avatar`true | S真实disabled | S父saving锁 |
+| 设置header return | S | S | S | S | NA：导航 | S `settings/return` | S saving锁 |
+| 设置footer close | S | S | S | S | NA：关闭 | S `settings/close` | S saving锁 |
+| 设置footer save | S | S | S | S | NA：提交 | S clean disabled、dirty enabled、saving disabled | S aria-busy=true，实际settings.apply3000ms失败，Enter不重复IPC；随后真实保存成功 |
 
-## 引用与界限
+## Modal实际消费者、单人牌桌与终场
 
-实际源码位置：
+| 实际消费者／记录名 | default | hover | active | focus-visible | selected | disabled | busy |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Shared短Modal close：设置／退出／恢复／预览 | S设置／退出、R恢复 | S/R；预览复用同class | S/R | S/R | NA：关闭 | S quit/preview、Rrecover disabled；C App closing行为；MC false→true取消close | C实际saving/preview期间拒绝关，MC latest契约见下 |
+| 设置Modal continue | S `settings-modal/continue` | S | S | S | NA：关闭动作 | NA：无disabled；closing用inert；busy时requestClose guard | C保存期间守卫；正文“继续编辑”不是独立busy请求 |
+| 设置Modal discard | S | S | S | S | NA：动作 | saving条件存在；C保存分支实际到达，独立discard busy snap未保存 | 父saving锁，不能改NA；无需另外制造busy业务 |
+| 设置Modal primary save-close | S | S | S | S | NA：提交 | C保存期间disabled断言 | C实际迟延成功/失败、calls=1；S四态补当前class |
+| 退出Modal continue／danger | S各命名记录 | S各 | S各 | S各 | NA：动作 | S close/continue/danger全锁 | S实际app.quit1800ms失败、文案正在退出、calls1、失败后关闭正常 |
+| 恢复Modal continue／primary | R各 | R各 | R各 | R各 | NA：动作 | R正文及close全锁 | R profile.recover1800ms受控失败→实际成功；隔离损坏profile备份hash核验 |
+| preview scene-grid action（initial代表同map） | S `preview/action`；C四真实预览路径 | S代表 | S代表 | S代表 | S initial true | S实际action/close disabled | S受控fixture.preview失败calls1，C成功/失败及父场景恢复 |
+| pause battle-dialog close／primary／danger | L各命名记录 | L各 | L各 | L各 | NA：动作 | danger/close受sceneChangePending；正常pause未额外进入此禁用分支 | 本地resume／开leave dialog同步；不存在独立pause请求busy |
+| short leave primary | L `battle-leave/primary` | L | L | L | NA：动作 | source sceneChangePending；本地leave同步清view→菜单，pending已无可見dialog | 本地无可見leave busy；不复制联机leave语义 |
+| short leave continue | 同短Modal普通button／同dismissModal，C/S代表可复用 | 同左 | 同左 | 同左 | NA：关闭 | NA：无disabled；inert/close守卫另记 | 同步dismiss，无独立请求 |
+| situation battle-dialog close（结果中） | L `result/dialog-close` | L | L | L | NA：关闭 | NA独立closeDisabled；closing仍使disabled | 同步开关，closing契约MC/C覆盖 |
+| archive-dialog close | A `archive/start-close` | A | A | A | NA：关闭 | NA独立closeDisabled；closing仍使disabled | 同步开关，closing契约MC/C覆盖 |
+| prepare start | L | L | L | L | NA：启动 | L | L真实startSolo1800ms成功、LOADING、calls1 |
+| prepare back | L | L | L | L | NA：导航 | L start期间disabled | L父启动锁 |
+| prepare ∞固定说明button | L默认selected-disabled样本 | NA：原生disabled目标 | NA：固定disabled | NA：不进入Tab序列 | L pressed=true | L disabled=true | NA：未接入时限动作 |
+| local cinematic skip | L `intro/skip` | L | L | L | NA：阶段动作 | NA：无disabled | NA：同步切牌桌 |
+| Battle unselected card-pick（Charge代表） | L | L | L | L | L点选→true；D已选代表四态可复用同class | L frozen／submit；D资源不足；OU提交/观战由真实editable决定 | L实际submit1800ms失败，已选保持；OU自然submit锁 |
+| Battle confirm | L | L | L | L | NA：提交动作 | L submit锁；D无selected；OU自然已提交 | L单IPC失败并恢复；OU自然提交 |
+| Battle retry（同button，error文案） | L `battle/retry` | L | L | L | NA：提交动作 | 同confirm editable条件，L/OU父锁复用 | 同confirm业务路径；fixture错误四态不冒充真实网络失败 |
+| HUD pause | L | L | L | L | NA：开dialog | NA：无disabled | NA：同步开dialog |
+| HUD situation | L | L | L | L | NA：开dialog | NA：无disabled | NA：同步开dialog |
+| HUD freeze／resume（同button） | L | L | L | L | L pressed=true | OU线上固定disabled；source参与者>2也禁用 | NA：同步frozen，不发网络pause |
+| error-strip reload | L | L | L | L | NA：动作 | NA：无disabled | NA独立busy：清readError触发真实读取；L恢复选择，非额外saving锁 |
+| error-strip leave | L | L | L | L | NA：动作 | source sceneChangePending；本次只采enabled | 本地leave同步消失，无可見等待；不造背景busy |
+| error-strip dismiss | L | L | L | L | NA：动作 | NA：无disabled | NA：同步清error |
+| result review | L | L | L | L | NA：动作 | L resultLeaving实际disabled | L720ms离场父锁；开review本身同步 |
+| result primary | L | L | L | L | NA：动作 | L restart busy、leaving | L真实startSolo失败calls1／原结果保留；联机primary职责见后表 |
+| result exit | L | L | L | L | NA：动作 | L leaving实际disabled | L720ms离场父锁 |
+| resource-token只读li | L默认 | L | NA：无action handler | L实际Tab与CSS反馈 | NA：资源展示 | NA：无disabled能力 | NA：无请求 |
+| selection-history只读span | T默认 | T | NA：无action handler | T实际Tab与CSS反馈 | NA：历史展示 | NA：无disabled能力 | NA：无请求 |
+| result-player只读article | L默认 | L | NA：无action handler | L实际子元素avatar/tooltip反馈 | NA：赢家/离场是结果展示 | NA：无disabled能力 | NA：无请求 |
 
-- [renderer.tsx](../../../game/desktop/renderer.tsx#L101)：欢迎传参/Identity saving，menu、prepare、settings字段集与页签、结果、Modal各消费者（101—117）。
-- [WelcomeEntrance.tsx](../../../game/desktop/WelcomeEntrance.tsx#L31)：声音/跳过、重播、tools、标题disabled与stage inert（31—43）。
-- [SharedUI.tsx](../../../game/desktop/SharedUI.tsx#L5)：Identity字段集/头像aria-pressed；Modal latest/closing/inert/closeDisabled（5—27）。
-- [BattleStage.tsx](../../../game/desktop/BattleStage.tsx#L50)：editable、HUD、卡牌/确认按钮及result leaving禁用（50—103）。
-- [OnlineRoom.tsx](../../../game/desktop/online/OnlineRoom.tsx#L98)：前厅、表单fieldset、checkbox/radio/input、submit、room动作、两处select/Apply、result/spectator（98—158）。[useOnlineSession.ts](../../../game/desktop/online/useOnlineSession.ts#L16) 定义blocked／exitBlocked。
-- [ManualArchive.tsx](../../../game/desktop/ManualArchive.tsx#L129)：搜索/模式/卡牌/tabs/场景/章节，返回/教程及入门末步的不同禁用条件（129—173）。[TutorialCoach.tsx](../../../game/desktop/TutorialCoach.tsx#L28) 定义教程提示/下一步/完成入口。
+MC 使用原 SharedUI 组件，普通motion关闭延迟240ms：busy props在真实 Escape 后83.6ms提交，同node超过240ms仍open、closing/inert撤销、callback=0；解busy后真实Tab再关，close1／旧callback1／触发项恢复。callback替换在82.3ms提交，同node最终新callback1／旧0／native close1。两case Escape→Enter 均trusted，间隔4.6／2.3ms，closing期间无action。busy取消后的瞬间焦点实际在BODY，记录不声称自动回到dialog；随后真实Tab恢复内部动作可用。该合同覆盖SharedUI相同实现，不代替每个业务正文的busy语义。
 
-D 的真实四态代表只有 welcome action、menu option、settings avatar、settings input、dialog action、settings save、selected card。它使用真实hover、mouse.down、Tab并保存样式，未合成属性；共享组件在不同消费者有覆写，仍需按表补测。C的700ms控制为真正IPC业务迟延，不是CSS属性合成。O的自然pending保存原始MutationObserver记录，不为取得样本延迟ACK。
+## 图鉴与教程
 
-C只有当前14条定向记录通过；D/O整次仍FAIL且保留首错、非零退出、正常owned cleanup。这里不重复把已测数相加成“七态全部完成”，不把后续未执行的图鉴、教程、偏好、本地动态结果、联机结果／更多人数记成通过。输入/原生select后续的禁用与busy测试按真实父级条件进入；不靠添加伪disabled或降低原断言补齐。
+| 实际消费者／记录名 | default | hover | active | focus-visible | selected | disabled | busy |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| archive search input | A | A | A true | A真实input＋focus-within owner边框/阴影比较 | NA：文本 | NA：无disabled | NA：同步过滤 |
+| archive clear | A | A | A | A | NA：动作 | NA：无disabled | NA：同步清搜索 |
+| archive view-toggle | A | A | A | A | 模式data-mode/文案实际切换；无业务pressed | NA：无disabled | NA：同步换模式 |
+| archive category（攻击代表同map） | A | A | A | A | A true | NA：无disabled | NA：同步过滤 |
+| archive stack-item（攻击首牌代表） | A | A | A | A | A true | NA：无disabled；虚拟视觉不可见不叫disabled | NA：同步选卡 |
+| archive icon-tile（Charge代表） | A | A | A | A | A true | NA：无disabled | NA：同步选卡 |
+| archive list group | A列表/按键行为 | 滚动组非按钮，A真实滚动；不要求按钮hover视觉 | 无click动作；真实Arrow/Home/End已做，按压不另计业务state | A stack group实际Tab、Home/End/ArrowDown保留焦点；icon group不同class，仅同keydown JSX，真实focus/keys待archive-extra | NA：焦点不是选项，选项见牌/图标 | NA：无disabled | NA：同步浏览 |
+| archive depth tab（精确属性代表） | A | A | A | A | A aria-selected/pressed true | NA：无disabled | NA：同步切深度 |
+| archive scene picker | A | A | A | A | A true | NA：无disabled | NA：同步换示例 |
+| archive demo beats | A | A | A | A | A true | NA：无disabled | NA：同步选择演示阶段 |
+| archive demo rounds `.archive-rounds` | **待archive-extra** | 待 | 待 | 待 | 适用pressed；待 | NA：无disabled | NA：同步换回合，不当播放busy |
+| archive play | A | A | A | A | A playing=true；真实开始/暂停 | NA：无disabled | NA请求busy：playing是演示状态 |
+| archive terms summary | A | A | A | A | 原生details open，A actual expand | NA：无disabled | NA：原生展开 |
+| archive header reader（start/questions/rules同button JSX） | 各入口已实际点击；**四态待archive-extra questions代表** | 待 | 待 | 待 | aria-pressed=mode，待直接snapshot | NA：无disabled | NA：同步开阅读层 |
+| archive onboarding steps | A | A | A | A | A末step true | NA：无disabled | NA：同步换步骤 |
+| archive onboarding next | A末step禁用；**enabled四态待archive-extra** | 待enabled | 待enabled | 待enabled | NA：推进动作 | A末step disabled | NA：同步换步骤 |
+| archive think summary／native原条款 summary | A各消费者命名样本 | A各 | A各 | A各 | 原生details open，A各真实展开 | NA：无disabled | NA：原生展开 |
+| archive chapter button | A | A | A | A | A true | NA：无disabled | NA：同步切章节 |
+| archive FAQ summary（不同class覆写） | **待archive-extra** | 待 | 待 | 待 | details展开待 | NA：无disabled | NA：原生展开 |
+| archive guide-card link（FAQ/start/rules共同archive-guide-actions） | **待archive-extra FAQ代表** | 待 | 待 | 待 | NA：链接动作 | NA：普通卡链接无disabled；下一步单列 | NA：同步相关导航 |
+| archive relations／related-back | **待archive-extra各职责** | 待 | 待 | 待 | NA：相关导航动作 | NA：无disabled | NA：同步选卡/回退 |
+| archive more-relations summary | **待archive-extra** | 待 | 待 | 待 | details展开待 | NA：无disabled | NA：原生展开；其内relation与外部同class/handler |
+| archive rule-link | **待archive-extra** | 待 | 待 | 待 | NA：导航动作；对应rule details实际open待 | NA：无disabled | NA：同步开规则 |
+| archive egg toggle | **待archive-extra** | 待 | 待 | 待 | aria-expanded true/false待，不伪造aria-pressed | NA：无disabled | NA：同步便签开关 |
+| archive no-match reset | **待archive-extra** | 待 | 待 | 待 | NA：重置动作 | NA：无disabled | NA：同步清search/category |
+| archive back | A | A | A | A | NA：导航 | A leaving disabled | A实际380ms离场锁 |
+| archive tutorial-entry | A | A | A | A | NA：启动 | A leaving，T真实startTutorial busy disabled | T真实IPC迟延成功／calls1 |
+| Tutorial guided/challenge next primary（不同文字同一JSX） | T `guided-next`／`retry`；其它文案实际推进 | T代表复用同primary | T代表复用 | T代表复用 | NA：推进动作 | T guided冻结suspended、tutorialNext busy disabled；所有文案同busy/suspended表达式 | T真实tutorialNext迟延；guided→challenge，challenge失败→retry→获胜→complete均实际worker；不同text不需要独立虚构busy |
+| Tutorial hint | T | T | T | T | T true | T submit busy disabled | T真实submit受控失败后保持challenge/selecting／提示与确认恢复 |
+| Tutorial complete solo | T | T | T | T | NA：启动 | T startSolo busy disabled | T真实startSolo迟延成功 |
+| Tutorial complete back | T | T | T | T | NA：返回 | T同startSolo父busy disabled | T父锁；自身leave同步清view，不造教程退出pending |
+
+现有driver的 `--batch=loading` 与 `--batch=archive-extra` 均**尚未运行**；loading只延迟原profile.read8000ms、采实际brand四态和导航，原handler正常返回／calls1须通过。
+
+archive-extra 是**尚未运行的最小新增批次**，由 `smoke-control-states.cjs --batch=archive-extra` 执行，只复用现有原App驱动的四态、wrapper和cleanup。它以原 content 的真实多拍场景、相关卡、rule ID进入状态，不追加假属性。通过后仅替换对应命名行；保留旧 archive-v1 search owner采样失败和local-v1 ARTICLE采样失败原始日志，不把这些失败改写成产品bug或删去首错。
+
+## 联机职责与边界
+
+联机 OU 的业务已经通过。O5整体FAIL但保留到lobby原生select之前的真实35项状态：下面O5单元格只升级确有记录的部分，未执行后半仍为待。no-hold v6已在实际nativefocus gate失败，checks0；须解锁后继续，不能把锁屏运行当严格前台性能或原生Return接受。
+
+| 实际消费者／source | default | hover | active | focus-visible | selected | disabled | busy |
+| --- | --- | --- | --- | --- | --- | --- | --- |
+| Online entry create／join（menu primary/secondary覆写） | O5各实际代表 | O5各 | O5各true | O5各 | NA：导航 | O5实际connecting !connected禁用 | O5 retry父pending锁；入口本身同步换表单 |
+| Online retry reconnect | O5实际SERVER_RESTART入口 | O5 | O5true | O5 | NA：动作 | O5 Retry busy disabled | O5真实重新连接（online.openLobby迟延1800ms）；父connecting状态，两入口同步锁 |
+| Online entry/form back `.settings-back` | O5返回菜单／create back | O5 | O5true | O5 | NA：导航 | O5 create/join pending实际禁用；offline退出enabled | 表单返回同步，父请求锁O5；在线leave职责另列 |
+| Online turn/cap range（分别有online-turn覆写） | O5各 | O5各 | O5各true | O5各 | NA：数值不是selected | O5实际!connected及create pending逐字段disabled | O5真实create字段集pending锁，数值在reconnect保留 |
+| Online room code／password input（不同class） | O5 create password与join各字段 | O5各 | O5各true | O5各 | NA：文字 | O5 create/join真实逐字段disabled | O5真实父pending锁；字段本身无spinner |
+| Online early checkbox／role radio（各职责） | O5各 | O5各 | O5各true | O5各，radio读真实sibling视觉 | O5early／player／spectator checked样本 | O5create/join父pending逐字段disabled | O5真实父pending锁；不是无disabled输入 |
+| Online create submit | O5；OU各N业务 | O5 | O5true | O5 | NA：提交 | O5fieldset pending／!connected禁用；OUfalse→true→false | O5与OU自然pending／确认中…，不靠延迟ACK |
+| Online join submit／fallback spectator | O5 join四态；fallback仅同settings-action样式/同join handler复用，分支未专项 | O5 join；fallback共享样式 | 同左 | 同左 | NA：提交 | O5 join blocked逐字段；fallback同fieldset | O5实际join pending；fallback同join spectator职责，不能称其错误分支已独立执行 |
+| Online lobby ready／role change | O5 ready四态／两个role动作各四态 | O5各 | O5各true | O5各 | NA：没有pressed；取消准备文案不混selected | O5实际player六席/观众容量满disabled→释放enabled；真实role pending锁 | O5role-player/role-spectator自然pending；ready请求在marker之后，尚待后半 |
+| Online lobby start | O5未全员ready的disabled样本；OU各N开局业务 | enabled四态待后半 | 待enabled | 待enabled | NA：启动 | O5not-ready实disabled；blocked条件待后半start | 实际start请求存在，marker之后待；不把本次disabled-only的hover/active自动业务NA |
+| Online copy code | O5四态及实际复制；OUnotice业务 | O5 | O5true | O5 | NA：动作 | NA：无disabled | NA：clipboard Promise只notice，无busy锁/文字 |
+| Online timing-open／Apply | O5 timing-open四态；Apply四态待后半；OU政策业务 | O5 open；Apply待 | O5 open true；Apply待 | O5 open；Apply待 | NA：请求动作 | OUApply false→true；O5open enabled，blocked锁有source/role父条件 | OUApply自然pending/后拍政策；O5marker之后Apply尚未执行 |
+| Online native timing select | O5原生control默认 | O5hover=true | O5 pointer打开popup，raw active=false且标nativePopupRequiresCua；**不写active PASS或NA** | O5实际Tab／outline；原生Arrow＋Return接受仍未完成 | OUselectOption政策；CUA已见20秒高亮，未Return不叫接受 | NA：无disabled prop、不在disabled fieldset | NA：同步改limitMs；Apply busy不使select disabled |
+| Online pause/menu resume／room settings／leave（battle-dialog） | OU实际菜单行为；L同CSS pause代表 | L代表可复用；线上room-settings按钮独立待 | 同左 | 同左 | NA：动作 | room-settings !canAdjust实条件待；其余无disabled | 同步开关菜单，无独立请求；确认leave另列 |
+| Online leave-confirm primary／continue、close | OU room complete/退出行为；S/R短dialog同CSS | 共享短dialog代表可复用 | 同左 | 同左 | NA：动作 | primary exitBlocked、close busy&&connected源码条件；确认leave后Modal立即卸载，不虚造可见leave期间dialog锁；continue无disabled | 在线真正api.leave/close请求存在，pending未被本地同步leave覆盖 |
+| Online cinematic skip | OU真实立即入场 | L同cinematic-skip样式，online-intro覆写需核 | 同左 | 同左 | NA：阶段动作 | NA：无disabled | NA：同步setEnteredMatch |
+| Online result review／host primary／exit | OU各N真实结果返厅；L同MatchResult代表 | L共有样式可复用，online-result覆写需核 | 同左 | 同左 | NA：结果动作 | source leaving/blocked/exitBlocked；OU未定向逐项七态 | host returnLobby请求／结果transition锁存在；local startSolo不替代在线请求 |
+| Online guest result WAITING primary | source真实!host||pending_close，OU guest相关路径不能替代样本 | NA：原生disabled目标 | NA：disabled | NA：disabled不Tab | NA：不是selected | **适用，待真实guest结果disabled snapshot** | 本人无returnLobby请求；等待host是角色锁，不捏造guest发起busy |
+
+## 最小剩余执行范围与源码引用
+
+1. **短loading入口与图鉴**：执行现有loading批次的原App品牌按钮四态／导航；执行 archive-extra；约10个职责代表填上上表“待archive-extra”，不重复已通过141项。额外源码覆盖不是按按钮数量做笛卡尔积。
+2. **联机**：复用实际本机服务的一次host＋guest/viewer流程，在entry/create/join/lobby/selecting/result各停点复用四态sampler；同fieldset的一次真实pending逐字段采disabled，ready／role／start／leave的自然pending按真正请求进入。native select 用真正popup/Arrow＋Enter，勿用selectOption当OS验收。当前在线后半未执行的条件原样保留。
+3. **同源码复用**：教程不同next文字、欢迎returning标题/P01确认/结束预览已具相同JSX/class与真实业务证据，无需重复低风险文案四态。settings音效与音乐同map；Identity四头像同button JSX；ordinary Modal正文只有新增class或禁用条件不同才增样本。受控profile/settings/quit/fixture/solo失败使用真实IPC Reply `{ok:false,error:'SAVE_FAILED'}`，没有复制Modal实现或合成DOM属性。
+
+源码位置： [renderer.tsx](../../../game/desktop/renderer.tsx#L98)（错误／欢迎／菜单／prepare／设置／Modal，98–117）；[WelcomeEntrance.tsx](../../../game/desktop/WelcomeEntrance.tsx#L31)（stage inert、tools/title disabled、31–43）；[SharedUI.tsx](../../../game/desktop/SharedUI.tsx#L5)（Identity与Modal，5–27）；[BattleStage.tsx](../../../game/desktop/BattleStage.tsx#L65)（HUD／history/token/card/confirm、65–85；Situation与MatchResult、89–103）；[ManualArchive.tsx](../../../game/desktop/ManualArchive.tsx#L51)（Example rounds/playing，51–71；真实导航，114–125；搜索／图鉴／阅读层，129–174）；[TutorialCoach.tsx](../../../game/desktop/TutorialCoach.tsx#L30)（hint/next/complete条件，30–32）；[OnlineRoom.tsx](../../../game/desktop/online/OnlineRoom.tsx#L88)（不同联机消费者、blocked fieldset、原生select、结果，88–158）；[useOnlineSession.ts](../../../game/desktop/online/useOnlineSession.ts#L16)（blocked/exitBlocked来源）。
+
+本表不累计controls记录数为完整七态全部通过。控件代表／合法busy合同、动态路线／原生拖窗全屏跨屏、严格聚焦性能各自按实际证据判断；锁屏阻碍与缺少具体设备条件分开，M2/M3保持未完成。

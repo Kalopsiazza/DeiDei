@@ -1,264 +1,205 @@
 {
   "status": "INCOMPLETE",
-  "recordedAt": "2026-10-03T19:08:50.626Z",
+  "recordedAt": "2026-10-04T05:45:49.082781+00:00",
   "milestones": {
     "one": "complete",
     "two": "incomplete",
     "three": "incomplete"
   },
-  "product": "edbb85a664bde73bc74160f00bb38e15d5634908",
+  "product": "dc38024a91818c3e2a2ca537675549409cfca620",
+  "start": "1f30a2449dddbe98144b7e98e0dc0a8e76b977ca",
   "sourceInput": {
-    "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
-    "dirty": "",
-    "sha256": {
-      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-      "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
-      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-    },
-    "startedAt": "2026-10-03T18:38:31.554Z",
-    "mainProcess": "fresh launch; no old hot-update process reused",
-    "sourceSha256": {
-      "game/desktop/styles/battle.css": "9352721f324397c0d38c5d7f75003b7782b18cd392dc608a6c02be270ef17710",
-      "game/desktop/styles/archive.css": "16923307a393e811a252fb5cb26fd2ceeff316804f6e1a1f4673053b92ec1cc6",
-      "game/desktop/BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
-      "game/desktop/SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
-      "game/desktop/fixture.ts": "a30bda5e7380e4d19c56d838360b3e2bf436034b49a180f356ddf21b6ae495ae",
-      "game/desktop/smoke-dynamic.cjs": "f4878f4e7b65b0e36fd95c3203e2015105e3b171b5c18830e5a50496607915a0",
-      "game/desktop/smoke-online-dynamic.cjs": "fdab1d0b92f5a3f63b1c21dc02a988dc66b3d9407cb2dcf476a16cd220faf534",
-      "game/desktop/smoke-geometry.cjs": "b95a8fa940b6a363b641328070334a02831c4876d1f63b50adc165479dc1d4d4",
-      "game/desktop/smoke-archive-performance.cjs": "27cb4fa2c6cd23ebac097ba696c14c894242f9304cabc97604bfd704cbb5f39c",
-      "game/desktop/smoke-welcome-native.cjs": "8fae5e37dd53ee430d3c37d7d7cd4f067bbb63ab580eefc336ce404871660f0a",
-      "game/desktop/smoke-completion.cjs": "12806da4e1a286cdbbb2637d925e16b62734bed5b74acfe8a150dbf2c6ede1fd"
-    }
+    "sha": "dc38024a91818c3e2a2ca537675549409cfca620",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-performance.cjs\n M game/desktop/smoke-welcome-native.cjs\n?? game/desktop/smoke-control-states.cjs\n?? game/desktop/smoke-modal-contract.cjs"
+  },
+  "compiled": {
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+    "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81"
   },
   "cwd": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a",
-  "remoteCI": {
-    "scope": "Read final H after push; actual result is in draft PR body and final handoff. No local PASS substitutes for CI."
-  },
   "checks": [
     {
-      "command": "npm --prefix game/desktop run build",
-      "output": "build-online-local-fix.log",
+      "name": "build",
+      "command": [
+        "/usr/local/bin/npm",
+        "--prefix",
+        "game/desktop",
+        "run",
+        "build"
+      ],
       "exitCode": 0,
       "status": "PASS",
-      "note": "Product bytes committed as P2; final H build fingerprint recheck follows.",
-      "originalSha256": "3a5f8dde300bba16f661acdd85b3907655c378eed560ef686845c558c11b0708"
+      "durationMs": 4368,
+      "output": "build.log",
+      "sha256": "3a5f8dde300bba16f661acdd85b3907655c378eed560ef686845c558c11b0708"
     },
     {
-      "command": "node --test game/desktop/test.cjs game/desktop/test-live.cjs game/desktop/test-navigation.cjs game/desktop/tests-online/test-*.cjs",
-      "output": "node-final-product.log",
+      "name": "node",
+      "command": [
+        "/usr/local/bin/node",
+        "--test",
+        "game/desktop/test.cjs",
+        "game/desktop/test-live.cjs",
+        "game/desktop/test-navigation.cjs",
+        "game/desktop/tests-online/test-main-lifecycle.cjs",
+        "game/desktop/tests-online/test-model.cjs",
+        "game/desktop/tests-online/test-network.cjs",
+        "game/desktop/tests-online/test-preload.cjs",
+        "game/desktop/tests-online/test-service-config.cjs",
+        "game/desktop/tests-online/test-session-recovery.cjs",
+        "game/desktop/tests-online/test-v11.cjs",
+        "game/desktop/tests-online/test-view-adapter.cjs"
+      ],
       "exitCode": 0,
       "status": "PASS",
+      "durationMs": 2794,
+      "output": "node.log",
+      "sha256": "5b8ac56d6f69fae7e84b487cac44f5c3c80bfef44189b1d8ff58f4e6a080cfdd",
       "tests": 76,
       "failed": 0,
-      "skipped": 0,
-      "originalSha256": "9bb2d6c5ff185ffd997882d214569bc25271b06edb5c4f62b3c00f22e53a38a4"
+      "skipped": 0
     },
     {
-      "command": "/Users/zengchongtai/develop/DeiDei/.venv/bin/python scripts/check.py",
-      "output": "python-final-product.log",
+      "name": "python",
+      "command": [
+        "/Users/zengchongtai/develop/DeiDei/.venv/bin/python",
+        "scripts/check.py"
+      ],
       "exitCode": 0,
       "status": "PASS",
+      "durationMs": 15581,
+      "output": "python.log",
+      "sha256": "e53785154a44e9d668e54856a64d17e653e78d154508bd1c87fcd366642c332e",
       "syntaxFiles": 67,
       "tests": 59,
-      "knownExpectedFailures": 1,
-      "note": "Existing Issue1 expected failure unchanged; no GUI/online/model acceptance.",
-      "originalSha256": "531fc625b369b909ab51a6ac348d67b0f841484fd2b6604c2234400904d36bda"
+      "knownExpectedFailures": 1
     },
     {
-      "command": "node game/desktop/smoke-style.cjs --self-check",
-      "output": "style-guard-final.log",
+      "name": "style",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-style.cjs",
+        "--self-check"
+      ],
       "exitCode": 0,
       "status": "PASS",
-      "source": "VM/stub or no-GUI helper check; not live UI",
-      "originalSha256": "c712d6df12421028019acb8dacafdac40378db5c01020eb1402cd947426cb3cf"
+      "durationMs": 192,
+      "output": "style.log",
+      "sha256": "c712d6df12421028019acb8dacafdac40378db5c01020eb1402cd947426cb3cf"
     },
     {
-      "command": "node game/desktop/smoke-performance.cjs --self-check",
-      "output": "performance-guard-final.log",
+      "name": "performance",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-performance.cjs",
+        "--self-check"
+      ],
       "exitCode": 0,
       "status": "PASS",
-      "source": "VM/stub or no-GUI helper check; not live UI",
-      "originalSha256": "0506452978e75b9e65106811b10afcec6e1124452ccf0a58e1eb7689ec6b0901"
+      "durationMs": 3126,
+      "output": "performance.log",
+      "sha256": "0506452978e75b9e65106811b10afcec6e1124452ccf0a58e1eb7689ec6b0901"
     },
     {
-      "command": "node game/desktop/smoke-archive-performance.cjs --self-check",
-      "output": "archive-guard-final.log",
+      "name": "archive",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-archive-performance.cjs",
+        "--self-check"
+      ],
       "exitCode": 0,
       "status": "PASS",
-      "source": "VM/stub or no-GUI helper check; not live UI",
-      "originalSha256": "b224783f7eaa5606a63d5c2dca1a0583edd0d3f794fe89bc8580fcdd296b7248"
+      "durationMs": 242,
+      "output": "archive.log",
+      "sha256": "b224783f7eaa5606a63d5c2dca1a0583edd0d3f794fe89bc8580fcdd296b7248"
     },
     {
-      "command": "node game/desktop/smoke-geometry.cjs --self-check",
-      "output": "geometry-guard-final.log",
+      "name": "geometry",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-geometry.cjs",
+        "--self-check"
+      ],
       "exitCode": 0,
       "status": "PASS",
-      "source": "VM/stub or no-GUI helper check; not live UI",
-      "originalSha256": "696f7755876c08b598f50adf5f8dfe34befdb49541a68104a2c35419c4934a20"
+      "durationMs": 164,
+      "output": "geometry.log",
+      "sha256": "696f7755876c08b598f50adf5f8dfe34befdb49541a68104a2c35419c4934a20"
     },
     {
-      "command": "DEIDEI_PYTHON=/Users/zengchongtai/develop/DeiDei/.venv/bin/python DEIDEI_COMPLETION_OUTPUT=/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/completion-final-product node game/desktop/smoke-completion.cjs",
-      "output": "completion-final-product/checks.json",
-      "exitCode": 0,
+      "name": "completion-cleanup-write-failure",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-completion.cjs",
+        "--self-check"
+      ],
       "status": "PASS",
-      "checks": 14,
-      "originalSha256": "9d8665fb29bd109657b38884b8b76e410f444c607916ac246a7582bb6dd9c7a8",
-      "actualRunInput": {
-        "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
-        "dirty": "M WORK_START_HERE.md\n M docs/production/STATUS.md\n M docs/results/R04-T03-a/REMAINDERS.md\n M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n?? docs/results/R04-T03-a/CONTROL-STATES.md\n?? docs/results/R04-T03-a/REPORT.md\n?? docs/results/R04-T03-a/evidence/",
-        "sha256": {
-          "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-          "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-          "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-          "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-          "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
-          "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-          "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-          "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-          "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-        },
-        "startedAt": "2026-10-03T18:58:09.437Z",
-        "mainProcess": "fresh launch; no old hot-update process reused"
-      }
-    },
-    {
-      "command": "DEIDEI_PYTHON=/Users/zengchongtai/develop/DeiDei/.venv/bin/python DEIDEI_DYNAMIC_OUTPUT=/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/dynamic-final-product-v2 node game/desktop/smoke-dynamic.cjs",
-      "output": "dynamic-final-product-v2/dynamic.json",
       "exitCode": 0,
-      "status": "PASS",
-      "routes": 10,
-      "records": 189,
-      "note": "Continuous native content-size driver, not physical dragging/fullscreen/cross-screen; earlier settings offset remains unexplained.",
-      "originalSha256": "9892fe2d927591f68d93341bc99801d971e7c14a1cd0c8e6f062af165f38829b",
-      "actualRunInput": {
-        "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
-        "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs",
-        "sha256": {
-          "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-          "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-          "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-          "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-          "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
-          "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-          "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-          "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-          "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-        },
-        "startedAt": "2026-10-03T18:45:21.070Z",
-        "mainProcess": "fresh launch; no old hot-update process reused"
-      }
-    },
-    {
-      "command": "DEIDEI_PYTHON=/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t01-b/.local-outputs/stage-20261002/server-venv/bin/python DEIDEI_ONLINE_DYNAMIC_OUTPUT=/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/online-final-product-v2 node game/desktop/smoke-online-dynamic.cjs",
-      "output": "online-final-product-v2/checks.json",
-      "exitCode": 1,
-      "status": "FAIL",
-      "note": "Stable intended-endpoint submitting flight absent; no reduced accuracy/stability assertions. Later guard gets VM check, no subsequent full-GUI PASS.",
-      "originalSha256": "842c2f7ba96a548b9ee4006c79b2afd9b70510f3d3c25e684a3474ef67da66fa",
-      "actualRunInput": {
-        "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
-        "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n?? docs/results/R04-T03-a/CONTROL-STATES.md\n?? docs/results/R04-T03-a/REPORT.md\n?? docs/results/R04-T03-a/evidence/",
-        "sha256": {
-          "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-          "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-          "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-          "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-          "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
-          "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-          "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-          "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-          "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-        },
-        "startedAt": "2026-10-03T18:55:20.951Z",
-        "mainProcess": "one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation"
-      }
-    },
-    {
-      "command": "DEIDEI_PYTHON=/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t01-b/.local-outputs/stage-20261002/server-venv/bin/python DEIDEI_ONLINE_DYNAMIC_OUTPUT=/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/online-backdrop-ab node game/desktop/smoke-online-dynamic.cjs --steady-only",
-      "output": "online-backdrop-ab/checks.json",
-      "exitCode": 0,
-      "status": "FLOW_PASS_PERFORMANCE_INCOMPLETE",
-      "checks": 15,
-      "note": "Compiled CSS byte-identical to P2; native focus false, selecting long frames remain.",
-      "originalSha256": "1b5e611910509c3a0d92db9456ed09e2a73e3999767b51d250368cdccf5e3684",
-      "actualRunInput": {
-        "sha": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
-        "dirty": "M game/desktop/smoke-archive-performance.cjs\n M game/desktop/smoke-online-dynamic.cjs",
-        "sha256": {
-          "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-          "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-          "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-          "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-          "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
-          "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-          "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-          "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-          "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-        },
-        "startedAt": "2026-10-03T18:27:23.208Z",
-        "mainProcess": "one owned host reused for all N=[6,3,4,5,2]; final two-player sample is reused-process investigation"
-      }
-    },
-    {
-      "command": "DEIDEI_WELCOME_NATIVE_OUTPUT=/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/welcome-product node game/desktop/smoke-welcome-native.cjs",
-      "output": "welcome-product/welcome-native.json",
-      "exitCode": 0,
-      "status": "PASS",
-      "checks": 37,
-      "segments": 11,
-      "note": "P1 clean real dev watcher, MOCK transport; not P2 strict native performance.",
-      "originalSha256": "e724321db6da09d76c0eacf01ed8e8fc2c2087867fe6c6b6b6a12fc9e990ee55",
-      "actualRunInput": {
-        "sha": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
-        "dirty": "",
-        "sha256": {
-          "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
-          "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
-          "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
-          "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
-          "build/ui/style.css": "f001ad16e26878cbafe6beb8ff823cb9a7263aded1748fc42a75f4af4150dc3e",
-          "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
-          "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
-          "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
-          "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
-        },
-        "startedAt": "2026-10-03T18:05:47.339Z",
-        "mainProcess": "fresh launch; no old hot-update process reused"
-      }
+      "source": "actual finally body, pure stubs, no GUI",
+      "output": "completion-cleanup-self-check-v1.json",
+      "originalSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175"
     }
   ],
+  "runningEvidenceManifest": "evidence/MANIFEST.json",
+  "guiCurrentScope": {
+    "realOnlineFull": "online-unlocked-bottom-auto-v1/checks.json: PASS17, source P3+dirty P4; renderer/style/main identical currentP5",
+    "nativeP5": "native-explicit-p5-v1/welcome-native.json: PASS7, fullscreen/displayroundtrip/normalquit; no minimum drag in this run",
+    "nativeP4": "native-unlocked-p4-v1/welcome-native.json: FAILcleanup retained; actual CUA1000x650/fullscreen/crossscreen partial native facts",
+    "controls": [
+      "front88",
+      "settings141",
+      "recover55",
+      "local167",
+      "archive141",
+      "tutorial50"
+    ],
+    "nativeSelect": "v5 Up20 popup highlighted; Mac locked before Return; acceptance NOT_RUN",
+    "onlineControls": "v5 overallFAIL marker timeout, first35 partial valid; v6 FAILnativefocus, checks0; later business NOT_RUN",
+    "modal": "actual SharedUI two prop casesPASS; source6eb+dirty stage/QA, SharedUI unchangedP5",
+    "archive": "P2 unlocked strict list/detail0 >50; finalP5 repeatNOT_RUN",
+    "welcome": "P1 clean37 samePID watcher runPASS; finalP5 fullrepeatNOT_RUN",
+    "dynamic": "P2 full10 routes189PASS; finalP5 fullrepeatNOT_RUN"
+  },
   "unrun": [
-    {
-      "item": "Physical continuous drag / full enter-exit fullscreen / current dual-screen round trip / final focused archive repeat",
-      "reason": "Mac locked: CUA explicitly reported manual unlock required; no user unlock response. Both current screens physically available."
-    },
-    {
-      "item": "Remaining genuine consumer seven-state coverage and native select popup/key acceptance",
-      "reason": "Table documents applicable-but-unmeasured states; no blanket PASS."
-    },
-    {
-      "item": "DifferentDPI/physical4K, Windows, clean machine/new player, new package/trust/physical network/public cross-device",
-      "reason": "Specific equipment and handoff steps in REPORT; no release or old-package substitution."
-    }
+    "Mac unlock needed: archive-extra and initial-loading actual control batches",
+    "Online controls later ready/start/Apply/HUD/guestWAITING/result/leave and nativePopup ArrowUp/Return CUA",
+    "Current P5 complete dynamic ten page families/prefs, samePID welcome watcher, strict1920/DPR2 archive8wheel eachregion",
+    "Physical differentDPR/4K/systemscaling, Windows, cleanmachine/newplayer, newpackage/systemtrust/physicaldisconnect/crossdevicepublic; exact requirements inREPORT"
   ],
+  "remoteCI": {
+    "status": "NOT_RUN",
+    "observedHead": "6eb652d088ffdf1f9e047bb14b9d48acf5037885",
+    "checks": 0,
+    "note": "Read final pushed head again; zero is not PASS; no CI settings changed"
+  },
   "preservation": {
-    "previousWorktrees": 21,
-    "allHeadPreserved": true,
-    "allStatusPreserved": true,
-    "originalSha256": "48def92717ee766a47d81908620a109fe26a870e21b7ef1baa0def1c1143f1be",
-    "afterSha256": "d75dbf031bcd0b0f93e3f11515e698a2b220284f0c0e26d8c1bc004908edadc4"
+    "initialCount": 21,
+    "source": "worktrees-resumed-preservation-v1.json",
+    "sameHeadAndStatus": true,
+    "mainHead": "c9b79e2e2e5b22071feb7d10a64634806b67aeb0",
+    "taskWorktree": "active, not archived",
+    "localArchive": "not enabled; no directories removed/moved"
   },
   "driverSha256": {
-    "smoke-dynamic.cjs": "4285e8f7b8a69bc77fc5e642279a4c8b5dea8b033fb5ff36a3edf83bd8cceeed",
-    "smoke-online-dynamic.cjs": "9b9defc49ec24f3bbc05401808f47a667c1b15426bab5c0dabbc865c98b215cc",
+    "smoke-dynamic.cjs": "3e503fad5a302e5778ad41f6dd14df7b456e0bd369cde62eeadb9a3c26102308",
+    "smoke-online-dynamic.cjs": "e455d916ba04e5285211737ed911f90ccda6d5d8236313aca79d4126f1f86896",
+    "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0",
+    "smoke-welcome-native.cjs": "4c13489dde69412e269eccf7c3bbe1a0fc4c88d7a674409f8be3da56523dac89",
+    "smoke-completion.cjs": "8f019b08ceba889a8c62006b1a0e5dd41da22fd2fc04e61b4c1228bad9d2b6e4",
+    "smoke-control-states.cjs": "d5a49f2d84a227ec8dd8a34e70eee0ab9c88b9d321afa41a189e710db5694d2b",
+    "smoke-modal-contract.cjs": "af75a3d5d9bf76cecf23581ea30dddfd1aec41ae092d8b36e73b4654d7d30e57",
+    "smoke-style.cjs": "6de059f568bac9102bf6ecaf6db083e524293c467a9cafcae36f91bb70af826b",
     "smoke-geometry.cjs": "ac08e80c927906c6f557c6ffa63aa429d98be458811ae648560e91c3753faee7",
     "smoke-archive-performance.cjs": "27cb4fa2c6cd23ebac097ba696c14c894242f9304cabc97604bfd704cbb5f39c"
+  },
+  "priorDelivery": {
+    "head": "6eb652d088ffdf1f9e047bb14b9d48acf5037885",
+    "product": "edbb85a664bde73bc74160f00bb38e15d5634908",
+    "status": "INCOMPLETE",
+    "exactReport": "https://github.com/Kalopsiazza/DeiDei/blob/6eb652d088ffdf1f9e047bb14b9d48acf5037885/docs/results/R04-T03-a/REPORT.md"
   }
 }

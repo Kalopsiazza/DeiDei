@@ -1,26 +1,28 @@
 # R04-T03-a 遗留核对与实际终态
 
-2026-10-04。精确起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；候选产品 `edbb85a664bde73bc74160f00bb38e15d5634908`。里程碑一完成，二／三未完成。状态使用工作单规定的六种值；具体 run／输入／失败边界见 [REPORT](REPORT.md)。
+2026-10-04。起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；当前产品 `dc38024a91818c3e2a2ca537675549409cfca620`。里程碑一完成，二／三未完成。下表状态沿工作单六种值，输入／dirty／失败边界与可查看副本见 [REPORT](REPORT.md) 和 [CONTROL-STATES](CONTROL-STATES.md)。
 
-| 原要求 | 实际入口／当前实现 | 已有证据与本次处理 | 完成状态 |
+| 原要求 | 实际入口／当前实现 | 实际证据与本次处理 | 状态 |
 |---|---|---|---|
-| 预览身份与同场去重 | 普通main每次new FixturePort；模块级新场次序号，同场去重保留 | P1 clean completion14；winner→defeat→draw→winner及重复回执正确 | 已修并验证 |
-| Modal关闭竞态 | preview／未保存设置；同步closing／inert、最新callback | 真实GUI键盘与迟延成功／失败；14项通过。额外240ms内busy翻转回归仍待补 | 已修并验证 |
-| 开发监听／来源 | dev watcher；fixture仍加载于main，需完整build／restart | 实际MOCK dev与普通main运行，README给真实service命令及边界 | 已验证可用 |
-| 共用尺寸与动画终点 | arena实际marker＋ResizeObserver；共享安全边、实际welcome DOM | 最小33牌／连续resize／出牌终点有真实几何；物理过程缺口仍阻碍全包接受 | 未完成 |
-| 下限与更小空间 | native outer1000×682、content1000×650／DPR2；CDP1000×560 | P2自动10路线189记录PASS；页尾关闭可达并返回；不宣称移动端 | 已修并验证 |
-| 每家族持续resize／转场／原生过程 | 欢迎、菜单设置、prepare、solo、archive、tutorial、local-result、dialog均实际路径 | P2自动路线PASS；设置整页偏移曾FAIL，短路径／重跑未复现，owner未知；拖窗／全屏往返未完成 | 未完成 |
-| 真实worker／本机联机链路 | ordinarymain＋真实worker；owned CLI回环service＋合成peer | 单人实际运行；固定6/3/4/5/2每场下一拍／结果／返回15流程PASS；完整动态联机仍未验收 | 未完成 |
-| 2／6全动态、3／4／5拥挤揭晓、6观战 | 共享BattleStage／真实service | 旧partial六人／viewer及各人数固定流成立；最新完整动态按REPORT保留FAIL，不能合并成全覆盖 | 未完成 |
-| 房间时限当拍／后拍 | 真实select与Apply；current30s、accepted/deadline保持，policy20s／rev+1 | O7 opening／Apply／after均selecting，未到后拍；原生popup／键盘另验 | 未完成 |
-| 七态／反例拒绝 | 真实角色button／card／tabs／input／select／dialog，各控件按JSX适用 | 八代表四态＋真实业务pending、禁用；五反例自检仍拒绝；页面覆写及部分busy未补齐，见CONTROL-STATES | 未完成 |
-| 减少动态／透明度 | welcome／battle／dialog及prepare扫描 | P2自动路线真实CDP偏好与状态推进通过 | 已修并验证 |
-| 欢迎历史人物／视频交接 | fresh、同dev重播、P01、设置返回、真实reload | P1 clean37checks／11segments PASS，正常清理；历史偶发人物异常未复现，不称找到根因 | 本轮未复现 |
-| 旧两人复用严重停顿 | 同host按6/3/4/5后2固定窗口调查 | 有界RAF／trace复现长帧；P2移除局部全屏backdrop，晚揭晓改善但选卡仍重；native焦点false，解锁后继续 | 未完成 |
-| 1920图鉴固定滚动长帧 | ordinarymain，双区各8wheel±500／180ms，DPR2／native焦点true | 历史严格对照列表p95 265.8→17.7，详情250.6→17.5；处理进产品，最终P2严格聚焦重测未做 | 未完成 |
-| 当前双屏往返 | MateStation X与内建屏实际在线，均DPR2 | 硬件具备；Mac锁屏阻碍实际拖屏，不能归为缺设备；无完整录屏 | 未完成 |
-| 不同DPI／物理4K／缩放 | 当前双屏同DPR2 | 需不同DPR／实际4K模式及系统缩放实测；自动超大窗口单列模拟，见REPORT步骤 | 缺少具体条件 |
-| Windows／干净机／新玩家 | 当前可调用host是macOS本机 | 需Windows图形host、干净机器／账户及真人安排；具体短流程和接受点已给 | 缺少具体条件 |
-| 新包／成包GUI／信任／物理断网／跨设备公网 | 旧ZIP仍0a37a89，独立发行／设备验收 | 未打新包；需本轮同SHA新包、第二电脑及公网TLS条件，按REPORT交接 | 缺少具体条件 |
-| 最终build／checks／CI／增量PR／证据 | P2产品／最终H QA和文档；base #34源分支 | 实际build、76Node、59Python及guards，图片／JSON入库；CI按远端H读回，0项不是PASS；全包接受仍未完成 | 未完成 |
-| AI强度／本地时限、多身份、音源新增 | 现有产品能力边界 | 保留独立需求，本包无新增 | 另行开发 |
+| 预览身份及同场去重 | 普通main每次new FixturePort、模块级场次序号 | completion14 winner→defeat→draw→winner、同场回执去重通过；实现至P5一致 | 已修并验证 |
+| Modal关闭竞态 | 真实preview/未保存settings；同步closing/inert/latest callback | completion14真实trusted键盘／迟延成功失败；actual SharedUI两prop合同PASS，83ms内busy翻转取消关闭与替换callback只调用最新；scope不扩大为全页面新GUI | 已修并验证 |
+| 开发监听／来源及README旧句 | 实际dev watcher；fixture需完整build/restart | 同PID真实reload/P01记录；README给MOCK/ordinary真实服务、暂停不停止全部计时动态、真实后拍时限说明 | 已验证可用 |
+| 共用尺寸／实际消费者／飞行终点 | 实际arena/独立move-target ResizeObserver、共同安全边、welcome DOM与online作用域 | N2/N6严格动态飞牌2px容差PASS；P5完整本地10家族／偏好动态复验仍待 | 未完成 |
+| 真实1000×650及更小空间 | BrowserWindow content/inner、outer1000×682/DPR2；更小正文滚动 | P4 CUA真正宽高拖到1000×650、截图2000×1300；P4cleanupFAIL明确保留，P5正常退出另有证据；P2自动1000×560CDP页尾关闭完成，不宣称移动端 | 已修并验证 |
+| 设置偏移 | 装饰MAIN曾scrollLeft256/167；overflowclip保留窄/低阅读回退 | 未改变滚动offset的真实pointer/key基线本次未复现；P3后1route/21控件实际容器offset0、值保持。旧垂直偏移owner未确认，保留历史失败 | 已修并验证 |
+| 本人底部席位 | height:auto按history＋gap＋identity bottom锚定 | 旧真实N3最小2px越界FAIL；P4后N6/3/4/5/2最小身份与严格N2/N6飞行PASS17 | 已修并验证 |
+| 欢迎昵称键盘焦点 | 实际Welcome Identity input、范围内2px outline | front-v1真实Tab反馈缺失FAIL；P5前同指纹front-v2 PASS88/2business | 已修并验证 |
+| 每家族持续resize及偏好 | 欢迎/菜单设置/prepare/worker solo/manual/tutorial/result/dialog | P2旧完整10路线189及三高风险偏好PASS；新P5对应完整动态仍待，不能只套用旧计数 | 未完成 |
+| 当前原生全屏／双屏／转场 | CUA真实Ctrl+Cmd+F、Window跨屏、选择与Tab/Space | P4真实下限/fullscreen/跨屏及短renderer录像；P5普通main fullscreen一进一退、display2→1→2、选择保持、正常exit0；两屏均DPR2，物理边框由原生事件/观察补充 | 已验证可用 |
+| 真实worker／本机联机完整流 | ordinarymain＋真实worker/owned CLI loopback service | 当前local/tutorial batch实际worker；online17实际大厅→选择→揭晓→结果→返回/退出，无合成产品状态 | 已验证可用 |
+| N2/N6全动态、N3/4/5拥挤揭晓、N6viewer | 同host实际6→3→4→5→2及真实观众GUI | online-unlocked-bottom-auto17PASS、N3头像修正；sourceP3+dirtyP4与P5 renderer/style/main一致；普通双app/service正常退出 | 已修并验证 |
+| 时限当前拍／后拍 | 真实selectOption/Apply | 同selecting opening/Apply/after，当拍30s deadline/accepted/提交状态不变，policy20s/revision+1，下一拍20s实际PASS；原生popup高亮20但锁屏前未Return接受 | 未完成 |
+| 七态／业务锁／反例拒绝 | 原App不同class/fieldset、实际hover/down/Tab及合法IPC迟延失败 | 六批PASS及online-v5到select前35记录部分有效；额外图鉴、loading、在线后半/guestWAITING及原生Return仍待；五反例self-check保持拒绝 | 未完成 |
+| 欢迎历史人物/视频/同dev刷新 | fresh/同PID重播/P01/returning/真实watcherreload | 旧P1完整37checks/11segments PASS，历史异常未复现；P5完整该调查复验仍待。P5native普通进程媒体无错误只覆盖其有限入口 | 未完成 |
+| 旧两人复用严重晚揭晓 | 普通聚焦同host依次多人后复用2人、固定1366×768/DPR2短profile | 389phaseRAF／388独立focusRAF全部聚焦可见、无nativeblur；晚揭晓239间隔p95/max18.2/18.6ms、>50=0，旧200–267ms峰值未复现；选卡恢复7个51–83ms仍保留，不宣称所有性能修复 | 本轮未复现 |
+| 1920图鉴固定8wheel长帧 | ordinarymain、native/docfocus、各区4×+500后4×−500、180ms | 历史同机严格before/after局部处理成立；P2解锁list/detail0长帧；最终P5严格同协议复验仍待，未继承旧结果为最终PASS | 未完成 |
+| 不同DPI／物理4K／系统缩放 | 当前两屏确实均DPR2 | 需不同DPR屏/实际4K模式和缩放组合；原生往返、文字/焦点/选牌/飞行及短录像步骤见REPORT | 缺少具体条件 |
+| Windows／干净机／新玩家真人 | 当前可调用macOS本机 | 需Windows图形host、干净设备/账户和首次玩家；欢迎→教程→单人/两人实际短流程，由Teddy安排人员 | 缺少具体条件 |
+| 新包/成包GUI/信任/物理断网/跨设备公网 | 旧ZIP0a37a89不含本轮代码；独立发行/设备验收 | 需本轮同SHA新包、第二电脑及公网TLS证书、实际断网恢复；本轮未扩大成整套发行工程 | 缺少具体条件 |
+| 最终build／检查／CI／Draft／证据／保护原工作 | 当前P5与最终H，Draft36 base精确起点 | P5build/Node76/Python59/四guards通过，completion写盘异常实际finally自检通过；21worktreeHEAD/status一致；JSON/PNG/短片及manifest回读。GUI缺口阻碍全包关闭，CI0项记NOT_RUN | 未完成 |
+| AI强度/本地时限、多身份、音频新增能力 | 当前产品边界 | 保留独立需求，不新增规则/模型/协议/依赖 | 另行开发 |

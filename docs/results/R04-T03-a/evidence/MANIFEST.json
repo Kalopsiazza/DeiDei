@@ -1,6 +1,6 @@
 {
   "purpose": "viewable sanitized excerpts; original raw records stay unchanged in ignored output",
-  "product": "edbb85a664bde73bc74160f00bb38e15d5634908",
+  "product": "dc38024a91818c3e2a2ca537675549409cfca620",
   "milestones": {
     "one": "complete",
     "two": "incomplete",
@@ -12,7 +12,7 @@
       "source": "completion-product/checks.json",
       "originalSha256": "d19e76c7a532dd29e229dd5c2def6e8dd3f2bc0572bdd4781a3a763dfe034cfc",
       "publishedSha256": "b6045fa550b1ac5369239fc13e401e86a581c200514d19a2fdbeae09c0a19d7e",
-      "note": "Historical product 1b2b7a1 clean input; ordinary main and delayed IPC tests. 14 functional checks PASS. Final product changes only online CSS relative to this."
+      "note": "Historical clean P1 actual-main interaction14PASS. SharedUI/fixture interaction unchanged; later CSS product changes and final GUI limits inREPORT."
     },
     {
       "name": "welcome-product.json",
@@ -54,7 +54,7 @@
       "source": "online-backdrop-ab/checks.json",
       "originalSha256": "1b5e611910509c3a0d92db9456ed09e2a73e3999767b51d250368cdccf5e3684",
       "publishedSha256": "7e9c675166c22fb8f6d81eb4b94fbdf02e68bc6d08cda4bb870329f3619f3688",
-      "note": "Isolated compiled-only whole table backdrop removal; final product has byte-identical CSS output. Flow15 PASS; late reveal improves but selecting stalls remain and native focus false."
+      "note": "Historical isolated compiled-only online backdrop removal; P2 edbb85a664bde73bc74160f00bb38e15d5634908 had byte-identical CSS. Flow15PASS, nativefocusedfalse; P5 laterCSS differs, short unlocked reused-host investigation is separate."
     },
     {
       "name": "online-dynamic-failure.json",
@@ -279,6 +279,177 @@
       "originalSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
       "publishedSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
       "note": "Current P2 runtime, real worker, 1000x650, selected Charge;10-route driverPASS."
+    },
+    {
+      "name": "controls-front.json",
+      "source": "controls-front-unlocked-v2/checks.json",
+      "originalSha256": "054d90a6d286693ba8401f45ff422c8a24cf1686936d1e5e064e114f104b91bc",
+      "publishedSha256": "054d90a6d286693ba8401f45ff422c8a24cf1686936d1e5e064e114f104b91bc",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-settings.json",
+      "source": "controls-settings-unlocked-v2/checks.json",
+      "originalSha256": "20599a8f35eda1363b0cb477cd07a477b620e98a03ddc0bab5aeba7f8ca2f410",
+      "publishedSha256": "20599a8f35eda1363b0cb477cd07a477b620e98a03ddc0bab5aeba7f8ca2f410",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-recover.json",
+      "source": "controls-recover-unlocked-v1/checks.json",
+      "originalSha256": "bab96493f547f3a3f0b9f48491d5e4241e3d19f47005ca27916dac88795fb0eb",
+      "publishedSha256": "bab96493f547f3a3f0b9f48491d5e4241e3d19f47005ca27916dac88795fb0eb",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-local.json",
+      "source": "controls-local-unlocked-v2/checks.json",
+      "originalSha256": "12f651b3e131b64658c90f3fb657a5b60569994328f72a1a1313957389bcf6da",
+      "publishedSha256": "12f651b3e131b64658c90f3fb657a5b60569994328f72a1a1313957389bcf6da",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-archive.json",
+      "source": "controls-archive-unlocked-v2/checks.json",
+      "originalSha256": "3380899a0af58bee2a5371c1008b65d1026a7a41532b8a6a21e88ace4c505c0d",
+      "publishedSha256": "3380899a0af58bee2a5371c1008b65d1026a7a41532b8a6a21e88ace4c505c0d",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-tutorial.json",
+      "source": "controls-tutorial-unlocked-v1/checks.json",
+      "originalSha256": "548492bccd85b2e7a24e296a77601076f93e5a0b467108bb1ffbc1a748c00d8b",
+      "publishedSha256": "548492bccd85b2e7a24e296a77601076f93e5a0b467108bb1ffbc1a748c00d8b",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "modal-contract.json",
+      "source": "modal-contract-unlocked-v1/checks.json",
+      "originalSha256": "731d44201e86522f903e9a9afd8ffac3243c3ebc35c346d8b8adba1ba685c75f",
+      "publishedSha256": "731d44201e86522f903e9a9afd8ffac3243c3ebc35c346d8b8adba1ba685c75f",
+      "note": "Two actual SharedUI prop-change cases PASS, ordinary main/CSP/preload and test-only parent; SharedUI unchanged in current product."
+    },
+    {
+      "name": "settings-unlocked.json",
+      "source": "settings-unlocked-after-v1/dynamic.json",
+      "originalSha256": "97d1f7c51b2411284d36312ff1074ff537f02cd705f47e49e08921cde2efd5c5",
+      "publishedSha256": "ae49f1e6f334cd44e9810f071cad198ecd9dc5f8808beac7260aff5cf3208c9e",
+      "note": "Actual keyboard/continuous resize after overflow clip, PASS; runtime stage change not yet committed at collection."
+    },
+    {
+      "name": "online-unlocked.json",
+      "source": "online-unlocked-bottom-auto-v1/checks.json",
+      "originalSha256": "ebcc3127b2bd87946805410c470c57627399568163cf0c1dff217cb1c5b31ffa",
+      "publishedSha256": "e83f6e738dfbebf42d77e9d2b4aa0f4125cef9d0374c92094495a0622bb0aef2",
+      "note": "Full real local service N=6/3/4/5/2 and six-player viewer PASS17. Native-focused short reused-two investigation did not reproduce old severe late reveal stalls; 7 restoration long intervals remain; exact P3+dirty autoheight input recorded."
+    },
+    {
+      "name": "archive-unlocked-p2.json",
+      "source": "archive-unlocked-6eb652d-v1/evidence.json",
+      "originalSha256": "fca87c1f5246d6ceafb6b3ff4b479661b9b21e808a7ce6d91059706d60828d21",
+      "publishedSha256": "fca87c1f5246d6ceafb6b3ff4b479661b9b21e808a7ce6d91059706d60828d21",
+      "note": "P2 unlocked strict 1920/DPR2 protocol PASS; final P5 repeat still pending. Separate focus RAF first list sample unpaired; not asserted every-RAF proof."
+    },
+    {
+      "name": "native-explicit-p5.json",
+      "source": "native-explicit-p5-v1/welcome-native.json",
+      "originalSha256": "d24cf60ecd44fb2a1f0ed6900e7fa816d7820a761545a10903ae81cb6ed3da67",
+      "publishedSha256": "d24cf60ecd44fb2a1f0ed6900e7fa816d7820a761545a10903ae81cb6ed3da67",
+      "note": "Current P5 ordinary main PASS7, real CUA fullscreen/display2→1→2/selected focus, explicit recorder stop38.600s then normal close1.190s/exit0; attempted border drags did not reach minimum here."
+    },
+    {
+      "name": "checks-p5.json",
+      "source": "checks-p5-unlocked-v1/checks.json",
+      "originalSha256": "2e714bb74851112ee715b540916ec30ef0633461831ab74889bd40a4fada8f69",
+      "publishedSha256": "2e714bb74851112ee715b540916ec30ef0633461831ab74889bd40a4fada8f69",
+      "note": "P5 final build, Node76/Python59 unchanged expected failure1 and four guards exit0; exact commands and output hashes. GUI not part of these commands."
+    },
+    {
+      "name": "controls-online-v5-failure.json",
+      "source": "controls-online-unlocked-v5/checks.json",
+      "originalSha256": "431142c76f1d34d5e2fda6ad3fdac4fb1a3c046f4670090d644687ddce3d1111",
+      "publishedSha256": "431142c76f1d34d5e2fda6ad3fdac4fb1a3c046f4670090d644687ddce3d1111",
+      "note": "Overall FAIL native popup continuation180s timeout due Mac locked before Return. First35 actual controls and capacity evidence partial only; later controls not run."
+    },
+    {
+      "name": "controls-online-v6-failure.json",
+      "source": "controls-online-nohold-v6/checks.json",
+      "originalSha256": "860a6d986b73db30c310e355664ae76fbba0bc7f7400b0de9444185d54833f28",
+      "publishedSha256": "860a6d986b73db30c310e355664ae76fbba0bc7f7400b0de9444185d54833f28",
+      "note": "Overall FAIL at original native focus gate under locked Mac; zero controls; no lowered focus assertions; owned cleanup recorded."
+    },
+    {
+      "name": "native-p4-failure.json",
+      "source": "native-unlocked-p4-v1/welcome-native.json",
+      "originalSha256": "e8c96583a6e862073aeff34843f38e8ff0b3161e9a3278564cb4bcaead5631f3",
+      "publishedSha256": "e8c96583a6e862073aeff34843f38e8ff0b3161e9a3278564cb4bcaead5631f3",
+      "note": "Overall FAIL automatic recording finalization/app.close6500ms exceeded; actual CUA1000x650 and fullscreen/display events remain partial native evidence; not normal-quit PASS."
+    },
+    {
+      "name": "native-p4-minimum.png",
+      "source": "native-unlocked-p4-v1/native-builtin-selected.png",
+      "originalSha256": "18f559ae56145648412f09c7de10bdc7022863924484dca43d74c42c31c41489",
+      "publishedSha256": "18f559ae56145648412f09c7de10bdc7022863924484dca43d74c42c31c41489",
+      "note": "Actual native1000x650/DPR2; P4 runtime main/renderer/style same asP5, welcome.css earlier. Overall source runFAIL retained."
+    },
+    {
+      "name": "native-p5-returned.png",
+      "source": "native-explicit-p5-v1/native-hold-final.png",
+      "originalSha256": "de72f3c98de9cfdada45973472670426bddc80b5d62d3b3fa91c8f95243c1ddd",
+      "publishedSha256": "de72f3c98de9cfdada45973472670426bddc80b5d62d3b3fa91c8f95243c1ddd",
+      "note": "P5 actual native1366x768/DPR2 after CUA fullscreen and cross-display return, selected Cloud; static frame must be paired with events."
+    },
+    {
+      "name": "native-fullscreen-entry.renderer.mp4",
+      "source": "native-unlocked-p4-v1/short-clips/native-fullscreen-entry.renderer.mp4",
+      "originalSha256": "2c8236d0b6a2759fb2c6505aa9dcee0c5c612a61e37e475b04049b6fa86305ac",
+      "publishedSha256": "2c8236d0b6a2759fb2c6505aa9dcee0c5c612a61e37e475b04049b6fa86305ac",
+      "note": "P4 source overallFAIL retained. Renderer-only continuous nominal source41–56s, 15.000s H2641920x1080/25fps; pair native events/CUA; frame/border not recorded."
+    },
+    {
+      "name": "native-size-display-selection.renderer.montage.mp4",
+      "source": "native-unlocked-p4-v1/short-clips/native-size-display-selection.renderer.montage.mp4",
+      "originalSha256": "ec6fa9eadf9cb46e7dc1e86e11f8f9ea7026cef0ae1cb065f0000122a279df56",
+      "publishedSha256": "ec6fa9eadf9cb46e7dc1e86e11f8f9ea7026cef0ae1cb065f0000122a279df56",
+      "note": "P4 source overallFAIL retained. Renderer-only THREE-CUT nominal60–64.5/214.5–219/246.5–262.5s, actual25.040s H2641920x1080/25fps; Charge selected visible, Cloud focus not Cloud selected; physical geometry from original native samples."
+    },
+    {
+      "name": "completion-cleanup-self-check.json",
+      "source": "completion-cleanup-self-check-v1.json",
+      "originalSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175",
+      "publishedSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175",
+      "note": "No GUI, actual finally body write EACCES first/both; closes once and removes owned profile once; original failure retained."
+    },
+    {
+      "name": "worktrees-preservation-resumed.json",
+      "source": "worktrees-resumed-preservation-v1.json",
+      "originalSha256": "49427b8af65eac1019f4a848205872d8b490e15316e4861e0c04777f87e9ef1a",
+      "publishedSha256": "49427b8af65eac1019f4a848205872d8b490e15316e4861e0c04777f87e9ef1a",
+      "note": "Original21worktrees sameHEAD and fullstatus; main unchanged; task worktree remains active."
+    },
+    {
+      "source": "native-explicit-p5-v1/native-content.webm",
+      "originalSha256": "116824269d75efaf97731720ea994f3c62cbeec9a7f5ea63d07f9204ce8eda97",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "native-unlocked-p4-v1/native-content.webm",
+      "originalSha256": "dad38356e4ae2ffdd120a7e5e29cce5e95178b76eb2c0f56ae61e34bb23180c5",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "online-unlocked-bottom-auto-v1/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "55b881f829647f492d046575e022f442f424e446d34c485f7c98218db8cff78f",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "online-unlocked-bottom-auto-v1/two-player-reused-steady-trace.json",
+      "originalSha256": "72c61ead614067c0f2bde9d98b8a5f58240b9308039a2c8b3fdfc8aad3e4d807",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
     }
   ]
 }

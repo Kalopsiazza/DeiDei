@@ -1,8 +1,10 @@
 # R04-T03-a 当前收尾入口｜2026-10-04
 
-[Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)，精确起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；分支 `work/r04-t03-a-frontend-completion`；草稿PR base `codex/r04-t02-e-real-rooms`。候选产品 `edbb85a664bde73bc74160f00bb38e15d5634908`。里程碑一完成，二／三未完成：Mac锁屏阻碍原生拖窗／全屏／双屏及最终聚焦图鉴；联机转场长帧和控件补测仍在。旧工作和失败保留，未进入第二轮；Kimi未调用。
+[Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)；起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；产品 `dc38024a91818c3e2a2ca537675549409cfca620`。活动 worktree `.worktrees/r04-t03-a`／`work/r04-t03-a-frontend-completion`；[Draft #36](https://github.com/Kalopsiazza/DeiDei/pull/36) base `codex/r04-t02-e-real-rooms`。
 
-[工作单](../tasks/R04/R04-T03-a.md) · [实际报告](../results/R04-T03-a/REPORT.md) · [遗留终态](../results/R04-T03-a/REMAINDERS.md)
+里程碑一完成。已完成本机真实N6/3/4/5/2＋viewer动态、原生全屏和同DPR双屏往返／1000×650、六批控件及Modal合同；二／三仍未完成：额外控件与在线后半、原生select Return、P5完整动态／欢迎／严格聚焦图鉴复验。Mac再次锁屏，焦点检查失败原样保留；旧两人严重晚揭晓本次短调查未复现，恢复选卡长间隔仍记录。未进入第二轮，Kimi未调用。
+
+[工作单](../tasks/R04/R04-T03-a.md) · [报告](../results/R04-T03-a/REPORT.md) · [遗留](../results/R04-T03-a/REMAINDERS.md)
 
 ---
 
