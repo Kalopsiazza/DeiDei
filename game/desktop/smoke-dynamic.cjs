@@ -36,13 +36,14 @@ const output=path.resolve(process.env.DEIDEI_DYNAMIC_OUTPUT||path.join(__dirname
   record.verified=true;
  };
  const route=async(name,selectors,actions=[])=>{
+  await app.evaluate(({app,BrowserWindow})=>{app.focus({steal:true});BrowserWindow.getAllWindows()[0].focus();});await page.waitForFunction(()=>document.hasFocus());
   const r={name,samples:[]};report.routes.push(r);
   const sizes=[[1366,768],[1000,650],[1920,1080],[1366,768]];
   if(['solo-select','archive'].includes(name))sizes.push([1600,650],[1000,1000],[1920,1200],[2560,1080],[1366,768]);
   for(const [index,size]of sizes.entries()){
    await resize(...size);await page.waitForTimeout(180);
-   const sample={requested:size,native:await bounds(),dom:await page.evaluate(()=>({viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,route:document.querySelector('.app')?.dataset.page,stage:document.querySelector('.welcome-scene')?.dataset.stage,focus:document.activeElement?.outerHTML?.slice(0,160)}))};r.samples.push(sample);
-   assert.deepEqual(sample.dom.viewport,size,'actual CSS content matches request');
+   const sample={requested:size,native:await bounds(),dom:await page.evaluate(()=>({viewport:[innerWidth,innerHeight],dpr:devicePixelRatio,route:document.querySelector('.app')?.dataset.page,stage:document.querySelector('.welcome-scene')?.dataset.stage,documentFocus:document.hasFocus(),visibility:document.visibilityState,focus:document.activeElement?.outerHTML?.slice(0,160)}))};r.samples.push(sample);
+   assert.deepEqual(sample.dom.viewport,size,'actual CSS content matches request');assert.ok(sample.native.focused&&sample.dom.documentFocus&&sample.dom.visibility==='visible','route stop remains actually focused and visible');
    const area=sample.native.display.workArea,outer=sample.native.outer;
    sample.physicalCoverage=outer.x>=area.x&&outer.y>=area.y&&outer.x+outer.width<=area.x+area.width&&outer.y+outer.height<=area.y+area.height?'within display work area':'oversized native content sample; not physical ultrawide/4K evidence';
    if(name==='settings')await settingsOffsets(index===3?'final-resize':'resize-'+size.join('x'));
@@ -82,7 +83,9 @@ const output=path.resolve(process.env.DEIDEI_DYNAMIC_OUTPUT||path.join(__dirname
   await states('selected card',page.locator('[data-entry=Charge] .card-pick'));
   const locked=page.locator('.card-pick:disabled').first();await target('unavailable card',locked);await click('确认出招');await resize(1000,650);await page.waitForFunction(()=>['selecting','result'].includes(document.querySelector('.battle-table')?.dataset.phase)||!!document.querySelector('.match-outro'));report.soloAfter=(await page.evaluate(()=>window.desktop.port.getView())).data;assert.equal(report.soloAfter.source,'live');assert.equal(report.soloAfter.match_id,initial.match_id);if(report.soloAfter.phase==='result'){await click('返回主菜单 EXIT');await hall();await click(/^单人对局/);await click('start',page.locator('.prepare-start'));await enterArena(page);}await target('solo restored pause',page.locator('.battle-pause'));
   await click('暂停');await click(/继续游戏/);await page.locator('dialog').waitFor({state:'detached'});await click('冻结');await click('恢复');await leaveSolo(page);await hall();
-  await click('经典规则手册 R');const scrollBeforeWheel=await page.locator('.archive-stack').evaluate(n=>n.scrollTop);await page.locator('.archive-stack').hover();await page.mouse.wheel(0,1100);await page.waitForFunction(before=>document.querySelector('.archive-stack').scrollTop>=before+1099,scrollBeforeWheel);
+  await click('经典规则手册 R');await page.locator('.archive-stack').waitFor();
+  const archiveSettled=async label=>{await page.waitForFunction(()=>{const n=document.querySelector('.archive-stack'),key=JSON.stringify([n.scrollTop,n.clientHeight,n.scrollHeight,document.querySelector('.archive-stack-list')?.style.height]);const now=performance.now(),p=window.__r04ArchiveSettle;if(!p||p.key!==key){window.__r04ArchiveSettle={key,at:now};return false;}return now-p.at>=500;},null,{timeout:4000});const sample=await page.locator('.archive-stack').evaluate(n=>({top:n.scrollTop,clientHeight:n.clientHeight,scrollHeight:n.scrollHeight,listHeight:document.querySelector('.archive-stack-list')?.style.height}));(report.archiveSettled||=[]).push({label,...sample});};
+  await archiveSettled('mount');const scrollBeforeWheel=await page.locator('.archive-stack').evaluate(n=>n.scrollTop);await page.locator('.archive-stack').hover();await page.mouse.wheel(0,1100);await page.waitForFunction(before=>document.querySelector('.archive-stack').scrollTop>=before+1099,scrollBeforeWheel);await archiveSettled('wheel');
   report.archiveBefore=await page.evaluate(()=>({selected:document.querySelector('.archive-card-detail')?.dataset.entry,stack:document.querySelector('.archive-stack')?.scrollTop,detail:document.querySelector('.archive-detail-scroll')?.scrollTop}));
   await route('archive',['.archive-search input','.archive-view-toggle']);report.archiveAfterResize=await page.evaluate(()=>({selected:document.querySelector('.archive-card-detail')?.dataset.entry,stack:document.querySelector('.archive-stack')?.scrollTop,detail:document.querySelector('.archive-detail-scroll')?.scrollTop}));assert.deepEqual(report.archiveAfterResize,report.archiveBefore,'pure resize retains archive selection and scroll');await click('切换为图标显示');await click('切换为卡牌显示');
   await resize(1000,650);await click('切换为图标显示');await resize(1920,1080);await click('切换为卡牌显示');await resize(1366,768);await states('archive mode',page.locator('.archive-view-toggle'));

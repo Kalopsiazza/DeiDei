@@ -91,6 +91,7 @@ async function main(){
   await app.evaluate(({BrowserWindow,app})=>{const w=BrowserWindow.getAllWindows()[0];globalThis.__archiveNativeEvents=[];for(const event of ['focus','blur','show','hide','minimize','restore'])w.on(event,()=>globalThis.__archiveNativeEvents.push({event,at:Date.now()}));w.setContentSize(1920,1080);app.focus({steal:true});w.show();w.focus();});
   await enterHall(page,'图鉴性能样本');await page.locator('.app[data-page="menu"]').waitFor();await page.waitForTimeout(800);
   await page.getByRole('button',{name:'经典规则手册 R',exact:true}).click();await page.locator('.app[data-page="manual"]').waitFor();
+  if(process.argv.includes('--native-focus-hold')){const marker=path.join(output,'native.done');result.nativeStart={source:'Root CUA activation before measurement; marker only resumes, focus gates remain mandatory',pid:app.process().pid,marker};console.log('NATIVE_READY '+marker);await bounded(async()=>{while(!nativeFs.existsSync(marker))await new Promise(r=>setTimeout(r,100));},180000,'Root native activation');}
   await probe('manual-stack-scroll','.archive-stack');await probe('manual-detail-scroll','.archive-detail-scroll');
   assert.equal(result.pageErrors.length,0,JSON.stringify(result.pageErrors));
  }catch(e){if(!result.firstError)fail(e,'scenario');}
