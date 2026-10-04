@@ -23,3 +23,6 @@
 @media(prefers-reduced-transparency:reduce){.welcome-scene .welcome-card-front{background:#0c1925}.welcome-scene .welcome-glass{background:#0c1925}.battle-table::before,.battle-table::after,.battle-table[data-phase] .battle-arena::after,.arena-center,.match-outro::before,dialog.tech-dialog,dialog.tech-dialog::backdrop{backdrop-filter:none;-webkit-backdrop-filter:none}dialog.tech-dialog{background:#0c1925}.battle-table::before{background:linear-gradient(#071019,#050a10)}dialog.tech-dialog::backdrop{background:#02070be8}}
 
 @media(max-height:600px){.app:is([data-page=menu],[data-page=settings],[data-page=prepare],[data-page=table],[data-page=online]){height:auto;overflow-y:auto}.menu-layout,.settings-layout,.prepare-screen{min-height:650px}.battle-table{height:650px}.online-match{overflow-y:auto}}
+
+@media(prefers-reduced-motion:reduce){.ui-input-field,.ui-input-field::after,.ui-input-field>i,.ui-input-field input::placeholder{transition:none!important}}
+@media(prefers-reduced-transparency:reduce){.ui-input-field{background:#0c1925}}

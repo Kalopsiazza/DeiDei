@@ -1,3 +1,18 @@
+# 二轮前端迭代｜2026-10-04
+
+Teddy 已明确要求从 PR #36 当前版本新建二轮分支并打开游戏；本段取代下方历史记录中的“暂不进入第二轮”。
+
+- 活动路径：`/Users/zengchongtai/develop/DeiDei/.worktrees/frontend-round2`；分支 `codex/frontend-round2-20261004`；起点 `e78edb305f9b785b89bb3aa3e2e592c2dc64fd5b`。
+- 已使用 `npm --prefix game/desktop run dev` 打开真实 Electron 欢迎页，保留热更新；本轮未归档。
+- 首个修正：欢迎卡片右下装饰向外伸 1px 导致双轴滚动条，`welcome.css` 收回装饰至卡片内。构建／类型检查通过；独立普通 main 实测 1366×768、1000×650、1920×1080、1000×560 无滚动溢出，1000×400 保留所需纵向滚动及底部按钮键盘可达。脚本和截图在主仓库 `.local-outputs/frontend-round2/`。
+- 二轮欢迎页已统一图鉴／昵称输入，精简两页文案、就近纯文字错误提示、文字式重新读取、放大新手指引。调查与验证见 `docs/results/frontend-round2/NOTES.md`；随后按用户指定改为新手／熟悉／高手三档：真实 Electron 65 项／Node 15 项／普通 main 五尺寸检查通过；Python 基础59项通过（1项已知预期失败），构建与类型检查通过。
+- 图鉴景深／滚动条／四个二级页面进出只读调查见 `docs/results/frontend-round2/NAVIGATION-AUDIT.md`；退场失效与规范冲突尚未修复。
+- 用户随后指定先完成全站滚动条并阶段提交、推送：统一冰青细线／透明轨道，按悬停、聚焦、滚动及拖动显隐，原生滚动行为保留；真实 Electron 55 项通过，相关检查为 `game/desktop/smoke-scrollbars.cjs`。提交包含本轮欢迎页及共享输入改动；视频设置另行推进，景深／边缘虚化与进出动画先不动。
+- 先读 `game/desktop/DESIGN.md`、桌面 README、协作 WORKFLOW 与联机连续镜头 PRD。沿用职责 CSS、共享舞台／弹窗与已有规则和网络行为。
+- 档案隔离在主仓库 `.local-outputs/frontend-round2/user-data`，通过 `DEIDEI_TEST_DATA_DIR` 指定；`DEIDEI_PYTHON` 使用本机 Python 3.13。未配置 `DEIDEI_ROOM_URL` 时联机为明确标注的 MOCK，单人沿用真实 worker。
+
+---
+
 # R04-T03-a 本机执行／交付完成｜2026-10-04
 
 [Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)；起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；最终产品 `dc38024a91818c3e2a2ca537675549409cfca620`。活动 worktree `.worktrees/r04-t03-a`／`work/r04-t03-a-frontend-completion`；[Draft #36](https://github.com/Kalopsiazza/DeiDei/pull/36) base `codex/r04-t02-e-real-rooms`，完整head在PR正文与交付回传。

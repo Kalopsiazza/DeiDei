@@ -36,11 +36,11 @@ export function WelcomeEntrance({children,ready,preview,identityName,entering=fa
   <section className="welcome-title" inert={stage!=='title'} aria-label="进入牌厅">
    <h1>DeiDei</h1><i/><p>攒一拍，再出招。</p><button className="welcome-action" aria-label={identityName?`以${identityName}身份进入牌厅`:undefined} disabled={disabled} onClick={()=>identityName?onEnter():setStage('flip')}><span>{identityName?`以 ${shortName} 身份进入牌厅`:'进入牌厅'}</span><b aria-hidden="true">→</b></button>
   </section>
-  <section className="welcome-card" aria-label={stage==='title'?'悬浮卡牌':'你的第一张牌'} inert={stage!=='name'}>
+  <section className="welcome-card" aria-label={stage==='title'?'悬浮卡牌':'玩家档案'} inert={stage!=='name'}>
    <div className="welcome-card-turn">
     <div className="welcome-face welcome-card-back" aria-hidden="true"><img src="assets/menu/welcome-card-back-v1.png" alt=""/></div>
     <div className="welcome-face welcome-card-front">
-     {stage==='name'&&<div className="welcome-card-content" key={ready?'ready':'name'}><span className="welcome-card-kicker">你的第一张牌</span><h2>{ready?'你的牌，已就位。':'这张牌，属于你。'}</h2>{children}</div>}
+     {stage==='name'&&<div className="welcome-card-content" key={ready?'ready':'name'}><h2>{ready?'从哪开始？':'这张牌，属于你。'}</h2>{children}</div>}
     </div>
    </div>
   </section>

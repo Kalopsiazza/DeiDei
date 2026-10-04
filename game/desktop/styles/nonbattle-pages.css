@@ -42,7 +42,7 @@
 .app[data-page=result] .winner h2{margin:8px 0 2px;color:#fff;font-size:24px}.app[data-page=result] .winner p{margin-bottom:2px}.app[data-page=result] .roster{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px;margin:8px 0}.app[data-page=result] .roster li{padding:6px 10px;color:#dce5e8;border:1px solid #ffffff12;background:linear-gradient(90deg,#ffffff09,transparent)}.app[data-page=result] .roster span{color:#95e6ec}.app[data-page=result] .results>.primary{margin-top:3px}
 
 .app[data-page=manual]{height:100vh;overflow:hidden}.app[data-page=manual]>.topbar{position:relative;z-index:3}
-.manual{position:relative;z-index:1;width:min(1480px,calc(100vw - 70px));max-width:none;height:calc(100vh - 68px);margin:0 auto;padding:32px 0 46px;overflow:auto;scrollbar-width:thin;scrollbar-color:#8ceaf36b #07101952}
+.manual{position:relative;z-index:1;width:min(1480px,calc(100vw - 70px));max-width:none;height:calc(100vh - 68px);margin:0 auto;padding:32px 0 46px;overflow:auto;}
 .manual>header{display:flex;align-items:flex-start;justify-content:space-between;padding:0 8px 24px;border-bottom:1px solid #8ceaf337}
 .manual>header h1{margin:0;color:#fff;font-family:'Arial Narrow','PingFang SC',sans-serif;font-size:clamp(48px,6vw,86px);font-weight:900;line-height:.9;letter-spacing:-5px;text-shadow:0 8px 30px #000}.manual>header p{margin:14px 0 0;color:#aab9c0}.manual>header .eyebrow{color:var(--ui-cyan);font-size:10px;letter-spacing:3px}
 .manual>header>button,.manual-tools>button,.manual-categories button{color:#dce7e9;background:linear-gradient(125deg,#13232d91,#07101975);border:1px solid #ffffff2a;border-radius:0;box-shadow:inset 0 1px #ffffff12}
