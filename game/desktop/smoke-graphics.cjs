@@ -10,9 +10,11 @@ const root = path.resolve(__dirname, '../..');
 const mainRoot = path.resolve(root, execFileSync('git', ['rev-parse', '--git-common-dir'], {cwd: root, encoding: 'utf8'}).trim(), '..');
 const measuring = process.argv.includes('--measure');
 const settingsOnly = process.argv.includes('--settings-only');
-assert.ok(process.argv.slice(2).every(arg => ['--measure', '--settings-only', '--self-check'].includes(arg)), 'Use --measure [--settings-only] or --self-check');
+const archiveBackOnly = process.argv.includes('--archive-back-only');
+assert.ok(process.argv.slice(2).every(arg => ['--measure', '--settings-only', '--self-check', '--archive-back-only'].includes(arg)), 'Use --measure [--settings-only], --archive-back-only or --self-check');
 assert.ok(!settingsOnly || measuring, '--settings-only requires --measure');
-const mode = settingsOnly ? 'measure-settings-repeat' : measuring ? 'measure' : 'functional';
+assert.ok(!archiveBackOnly || !measuring, '--archive-back-only is a functional check');
+const mode = archiveBackOnly ? 'archive-back-only' : settingsOnly ? 'measure-settings-repeat' : measuring ? 'measure' : 'functional';
 const output = path.resolve(process.env.DEIDEI_GRAPHICS_OUTPUT || path.join(mainRoot, '.local-outputs/R04-T04-a', `${mode}-${Date.now()}`));
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const stopped = style => style.animationName === 'none' || style.animationPlayState === 'paused';
@@ -80,6 +82,34 @@ async function main() {
   }
   async function openSettings() {await page.getByRole('button', {name: '设置 S', exact: true}).click(); await page.getByRole('button', {name: '画面 GRAPHICS', exact: true}).click(); await select('画面预设').waitFor(); await page.waitForTimeout(950);}
   async function preset(id) {await select('画面预设').selectOption(id); await page.waitForTimeout(100); assert.deepEqual((await styles()).graphics, graphicsForPreset(id));}
+  async function archiveBack() {
+    const savePreset = async id => {
+      await openSettings(); await preset(id);
+      await page.locator(await page.locator('.settings-save').isEnabled() ? '.settings-save' : '.settings-back').click();
+      await page.locator('.menu-layout').waitFor();
+    };
+    const openArchive = async () => {
+      await page.getByRole('button', {name: '经典规则手册 R', exact: true}).click();
+      await page.locator('.archive-heading .settings-back').waitFor(); await page.waitForTimeout(950);
+      await page.mouse.move(0, 0); await page.waitForTimeout(300);
+    };
+    const back = () => page.locator('.archive-heading .settings-back');
+    await savePreset('high'); await openArchive(); const highIdle = (await styles()).back;
+    await back().hover(); await page.waitForTimeout(300); const highHover = (await styles()).back;
+    await back().click(); await page.locator('.menu-layout').waitFor();
+    await savePreset('smooth'); await openArchive(); const idle = await snapshot('archive-back-off-idle', true);
+    check(idle.back.background === 'rgb(16, 28, 39)' && idle.back.backdropFilter === 'none', 'glass off: archive back idle background alpha=1 and no backdrop', idle.back);
+    await back().hover(); await page.waitForTimeout(300); const hover = await snapshot('archive-back-off-hover', true);
+    check(hover.back.background === 'rgb(31, 55, 68)' && hover.back.backdropFilter === 'none', 'glass off: archive back hover background alpha=1 and no backdrop', hover.back);
+    await page.keyboard.press('Tab'); await back().focus();
+    const focusStyle = await back().evaluate(node => ({focused: node === document.activeElement, outline: getComputedStyle(node).outlineStyle}));
+    check(focusStyle.focused && focusStyle.outline === 'solid', 'archive back retains keyboard focus feedback', focusStyle);
+    await page.keyboard.press('Enter'); await page.locator('.menu-layout').waitFor(); check(true, 'archive back activates through keyboard');
+    await savePreset('high'); await openArchive(); assert.deepEqual((await styles()).back, highIdle);
+    await back().hover(); await page.waitForTimeout(300); assert.deepEqual((await styles()).back, highHover);
+    check(true, 'changing back to high restores original idle and hover cascade', {highIdle, highHover});
+    await back().click(); await page.locator('.menu-layout').waitFor(); check(true, 'archive back remains clickable at high');
+  }
   async function assertConsumers(id) {
     const state = await snapshot(`settings-${id}`, true); const motion = id === 'high' ? 'full' : id === 'balanced' ? 'reduced' : 'off';
     check(motion === 'off' ? stopped(state.environment) : !stopped(state.environment), `${id}: environment drift consumer`);
@@ -210,6 +240,7 @@ async function main() {
     const archiveModal = await styles(); check(offBackdrop(archiveModal.dialog.backdropFilter) && offBackdrop(archiveModal.backdrop.backdropFilter), 'archive rules Modal consumes saved off glass', {dialog: archiveModal.dialog, backdrop: archiveModal.backdrop}); await page.keyboard.press('Escape'); await page.locator('dialog').waitFor({state: 'detached'});
     check(await rules.evaluate(node => node === document.activeElement), 'archive Modal restores opener focus'); check(await page.locator('.archive-card-detail').getAttribute('data-entry') === 'Bi', 'archive selected detail survives Modal');
     const archive = await snapshot('archive-smooth', true); check([archive.environment, archive.atmosphere, archive.aura, archive.particles].every(stopped), 'archive four background loops remain paused');
+    await page.locator('.archive-heading .settings-back').click(); await page.locator('.menu-layout').waitFor(); await archiveBack();
   }
   async function measure() {
     await launch(); await focus(); await app.evaluate(({BrowserWindow}) => BrowserWindow.getAllWindows()[0].setContentSize(1920, 1080));
@@ -256,8 +287,11 @@ async function main() {
       const v1 = {profile_version: 1, local_id: '12345678-1234-4123-8123-123456789abc', nickname: '画面验收', avatar_id: 'leaf', settings: {music: 55, effects: 66, fullscreen: false}};
       const bytes = Buffer.from(JSON.stringify(v1, null, 2) + '\n'); await fs.mkdir(path.join(directory, 'local-profile')); await fs.writeFile(path.join(directory, 'local-profile/profile.json'), bytes);
       report.originalProfile = {version: 1, sha256: hash(bytes)};
-      const wrapper = path.join(output, 'controlled-main.cjs'); await fs.writeFile(wrapper, `const {ipcMain}=require('electron');\nglobal.__graphicsControl={delay:0,fail:false,calls:0};\nconst handle=ipcMain.handle.bind(ipcMain);\nipcMain.handle=(channel,fn)=>handle(channel,async(...args)=>{if(channel==='settings.apply'){const c=global.__graphicsControl;c.calls++;await new Promise(r=>setTimeout(r,c.delay));if(c.fail)return {ok:false,error:'SAVE_FAILED'};}return fn(...args);});\nrequire(${JSON.stringify(path.join(__dirname, 'main.cjs'))});\n`);
-      await functional(wrapper, bytes);
+      if (archiveBackOnly) {await launch(); await focus(); await enterStored('画面验收'); await archiveBack();}
+      else {
+        const wrapper = path.join(output, 'controlled-main.cjs'); await fs.writeFile(wrapper, `const {ipcMain}=require('electron');\nglobal.__graphicsControl={delay:0,fail:false,calls:0};\nconst handle=ipcMain.handle.bind(ipcMain);\nipcMain.handle=(channel,fn)=>handle(channel,async(...args)=>{if(channel==='settings.apply'){const c=global.__graphicsControl;c.calls++;await new Promise(r=>setTimeout(r,c.delay));if(c.fail)return {ok:false,error:'SAVE_FAILED'};}return fn(...args);});\nrequire(${JSON.stringify(path.join(__dirname, 'main.cjs'))});\n`);
+        await functional(wrapper, bytes);
+      }
     }
     check(report.rendererErrors.length === 0, 'no renderer page errors');
   } catch (error) {fail(error, 'scenario');}
