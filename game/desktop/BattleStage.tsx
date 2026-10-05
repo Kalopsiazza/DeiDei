@@ -14,7 +14,7 @@ const arenaPositions:Record<number,[number,number][]>= {
 const compactMoveName=(name:string)=>{
  const tags:string[]=[];let label=name;
  for(const prefix of ['炸药','雷电'])if(label.startsWith(`${prefix}·`)){tags.push(prefix);label=label.slice(prefix.length+1);}
- if(label.startsWith('曾义赠送·')){tags.push('赠送');label=label.slice(5);}
+ if(label.startsWith('曾义赠送·'))label=label.slice(5);
  for(const modifier of ['翻转','旋转'])if(label.startsWith(modifier)){tags.push(modifier);label=label.slice(modifier.length);}
  return {tags,label};
 };

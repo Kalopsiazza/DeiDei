@@ -30,3 +30,21 @@ node smoke-card-art.cjs /Users/zengchongtai/develop/DeiDei/.local-outputs/card-s
 根 Python 全量、900 秒网络长跑、不同设备／DPR和新安装包未运行：本轮改动限于卡牌显示及本机设置，已完成档案兼容／故障与桌面受影响检查。未合并 main、发布或部署。
 
 工作区与忽略证据保留，未归档；阶段提交另登记在主仓库 `开发入口.md`。独立本地预览使用 `preview-profile/` 合成档案，不写用户现有 userData；预览窗口的保存仍调用产品主进程。使用 VEW，Kimi 未调用。
+
+## 揭晓卡牌尺寸与重复文字修正｜2026-10-06
+
+用户截图指出完整牌面太小、外层透明大卡壳与“曾义休整”重复文字。上轮检查验证图片解码与风格切换，却没有断言席位牌面铺满，遗漏了旧双人／六人方形图标规则的较高 specificity。新的 `smoke-card-reveal.cjs` 在真实核心第二回合自动休整中复现，修正前断言失败；证据保留在主仓库 `.local-outputs/card-reveal-fix/before/`。
+
+修正限于 `card-art.css` 和手牌名称拆分：完整牌面按 3:4 铺满，去掉外层 padding、边框、背景、伪元素与阴影；双人揭晓放大，并按窗口高度限制上限，身份与倒计时保持间距。移除绘画牌面的休整覆盖字及手牌额外“赠送”标签。状态、可访问文字、规则账目和原版图标卡框保留；没有重绘或改名成品素材。
+
+实际运行（从任务树 `game/desktop`）：
+
+```sh
+npm run build
+node smoke-card-reveal.cjs /Users/zengchongtai/develop/DeiDei/.local-outputs/card-reveal-fix/fixed-2
+node smoke-card-art.cjs /Users/zengchongtai/develop/DeiDei/.local-outputs/card-reveal-fix/art-regression
+```
+
+类型／构建通过，定向 45 项及牌面回归 79 项通过，无 renderer 错误，全部测试窗口正常退出。定向检查使用真实 seeded worker 完成“曾义 → 下一回合自动休整”，保留核心账目和冻结前的正常揭晓截图；随后用既有画面冻结做 1000×650、1366×768、1366×900 原生连续缩放，断言图片／外框边界相同、比例、无外壳、隐藏重复文字、身份间距与倒计时无遮挡。冻结截图含产品原有模糊效果，不证明运行时时钟暂停。六人、赠送和休整组合采用独立 MOCK 公开快照，另验两种原生尺寸；原版再用真实单人回合验证旧图标、卡框和标题。`fixed-1/` 保留首次放大后身份间距不足的失败，最终按窗口高度与 14px 布局间距修正。
+
+本次未重复桌面全量、设置故障、Python／联机长测、异地／不同 DPR／安装包验收：没有修改对应链路。工作区、历史失败与输出保留待体验，未归档／推送／合并／发布。使用 VEW，Kimi 未调用。

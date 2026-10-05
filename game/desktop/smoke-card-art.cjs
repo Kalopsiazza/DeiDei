@@ -83,7 +83,7 @@ async function main(){
   await page.getByRole('textbox',{name:'搜索招式',exact:true}).fill('E32');await page.locator('.archive-card-detail[data-entry=ZengYi]').waitFor();
   await page.getByRole('button',{name:'第 2 拍',exact:true}).click();await page.getByRole('button',{name:'2 · 同时揭晓',exact:true}).click();
   const recovery=page.locator('.archive-card-face[data-recovery=true]>strong');
-  check(await recovery.innerText()==='系统休整'&&await recovery.evaluate(n=>getComputedStyle(n).clipPath==='none'),'recovery label overrides the static face title');await shot('archive-recovery');
+  check(await recovery.innerText()==='系统休整'&&await recovery.evaluate(n=>getComputedStyle(n).clipPath==='inset(50%)'),'recovery remains accessible without an extra face label');await shot('archive-recovery');
   await page.locator('.archive-heading .settings-back').click();await page.locator('.app[data-page=menu]').waitFor();
   await page.getByRole('button',{name:'开发预览',exact:true}).click();await page.getByRole('button',{name:'P09 · 唯一赢家',exact:true}).click();
   await page.locator('.match-outro').waitFor();await images('.result-move-art .full-card-face');await page.waitForTimeout(1600);await shot('result');
