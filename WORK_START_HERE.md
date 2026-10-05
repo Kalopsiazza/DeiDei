@@ -1,3 +1,11 @@
+# 前端统一起点｜2026-10-06
+
+本次整合 `card-art-redraw` 的新版牌面／原版切换与 `video-settings` 的未提交控件、设置滚动、图鉴动效增量；全部返回入口使用共享 `BackButton`。后续前端从最新 `main` 建独立任务分支，源码入口为 `game/desktop`。实际检查和截图见 [整合记录](docs/results/frontend-main-20261006/README.md)。
+
+整合工作区 `.worktrees/frontend-main-20261006`；原 `.worktrees/video-settings`、`.worktrees/card-art-redraw` 保留未归档，原始未提交文件另存 `.local-archive/20261006-frontend-main`。以下阶段记录保留历史语境，不再决定当前源码起点、合入状态或工作目录。
+
+---
+
 # R04-T05-a｜main 整合候选｜2026-10-05
 
 候选已交付，待最终源码确认；未合入 main 或发布。工作区为主仓库 `.worktrees/r04-main-integration`，分支 `integration/r04-main-20261005`，保留未归档。只接入固定 #38 的 4c8b4656d26fecbe5964a2ac18b51a723f456b14；实际产品 SHA 与检查见 [报告](docs/results/R04-T05-a/REPORT.md)，最终文档 head 见草稿 PR 正文。
@@ -9,6 +17,8 @@
 ---
 
 # R04-T04-a 画面设置｜2026-10-04
+
+二轮前端继续在本工作区：按Teddy要求将图鉴旧完整效果恢复为最高画面档，包含镜头、环境循环、景深、四边渐隐、玻璃与真实退场；较低档及系统偏好继续减负。当前改动未提交／推送，工作区保留未归档；其他页面进退未改。实际验证和性能限界见 `docs/results/frontend-round2/NOTES.md` 的“图鉴全效果恢复”。
 
 [Issue #37](https://github.com/Kalopsiazza/DeiDei/issues/37) 的A → B → C本机实现与定向验证完成，等待草稿PR审阅；PR base为`codex/frontend-round2-20261004`。
 
@@ -62,3 +72,7 @@ ChatGPT · 2026-09-29
 [当前进度](docs/production/STATUS.md)记录：#30 已收到，待测试工具小修；#31 的 wss 与旧测试问题已答复，最终实现仍待审阅。公网、跨电脑真人及安装信任未通过。旧视觉任务 R04-T01-a 已由 b 接续，不需要再按旧流程提交一份只含讨论的结果。
 
 本次发布任务与文档不表示已经启动了本地应用，也没有自动启动执行线程、合并 PR 或部署。
+
+- 2026-10-05 本地共享控件修正：保留 video-settings／codex/video-settings-20261004；反馈与只读调查见 docs/results/frontend-round2/CONTROLS-AUDIT.md。类型／构建、Node 20 项、Electron 30 项通过；未提交／推送／归档，Kimi 未调用。
+
+- 2026-10-05 后续授权已落实：返回样式共享（宽度保留）、首次菜单取消自动聚焦、设置右侧独立滚动与柔和边缘；共用全站滚动条。类型／构建、Node5、Electron29＋31通过，见 CONTROLS-AUDIT.md 最新节；本地保留未提交／推送／归档，Kimi 未调用。

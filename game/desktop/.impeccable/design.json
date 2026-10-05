@@ -1,0 +1,34 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-10-05T12:52:39Z",
+  "title": "DeiDei 桌面端设计标准",
+  "extensions": {
+    "motion": [
+      {
+        "name": "control-ease",
+        "value": "cubic-bezier(.16,.8,.2,1)",
+        "purpose": "时长光点、下拉菜单位移与复选框内块的状态插值。"
+      },
+      {
+        "name": "turn-time-slide",
+        "value": "320ms",
+        "purpose": "当前时长光点沿透明薄导轨移动。"
+      },
+      {
+        "name": "select-picker-opacity",
+        "value": "180ms",
+        "purpose": "原生顶层下拉菜单打开与关闭的透明度变化。"
+      },
+      {
+        "name": "select-picker-translate",
+        "value": "220ms",
+        "purpose": "原生顶层下拉菜单从上方6px回到原位。"
+      },
+      {
+        "name": "controls-reduced-motion",
+        "value": "none",
+        "purpose": "减少动态时停止时长、复选框、下拉菜单、箭头、选项与外层底线的transition，保留立即状态反馈。"
+      }
+    ]
+  }
+}

@@ -9,23 +9,23 @@ const oldSettings={music:23,effects:47,fullscreen:true};
 const v1={profile_version:1,local_id:'12345678-1234-4234-8234-123456789abc',...input,settings:oldSettings};
 const temporary=async fn=>{const dir=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-graphics-'));try{await fn(dir);}finally{await fs.rm(dir,{recursive:true,force:true});}};
 
-test('legal v1 reads as v2 high without changing the original bytes',()=>temporary(async dir=>{
+test('legal v1 reads as v3 high/classic without changing the original bytes',()=>temporary(async dir=>{
  const store=new ProfileStore(dir),bytes=JSON.stringify(v1,null,3)+'\n';
  await fs.writeFile(store.file,bytes);
  const profile=await store.read();
- assert.equal(profile.profile_version,2);
- assert.deepEqual(profile.settings,{...oldSettings,graphics:{ambientMotion:'full',glass:'full',decoration:'full'}});
+ assert.equal(profile.profile_version,3);
+ assert.deepEqual(profile.settings,{...oldSettings,graphics:{ambientMotion:'full',glass:'full',decoration:'full'},cardStyle:'classic'});
  assert.equal(profile.local_id,v1.local_id);assert.equal(profile.avatar_id,v1.avatar_id);
  assert.equal(await fs.readFile(store.file,'utf8'),bytes);
  profile.settings.graphics.glass='off';
  assert.equal((await store.read()).settings.graphics.glass,'full');
 }));
 
-test('first v1 update persists v2 while preserving identity, avatar, volume and high graphics',()=>temporary(async dir=>{
+test('first v1 update persists v3 while preserving identity, avatar, volume and high graphics',()=>temporary(async dir=>{
  const store=new ProfileStore(dir);await fs.writeFile(store.file,JSON.stringify(v1));
  const profile=await store.save('update',{...input,nickname:'新昵称'});
- assert.equal(profile.profile_version,2);assert.equal(profile.local_id,v1.local_id);assert.equal(profile.avatar_id,v1.avatar_id);
- assert.deepEqual(profile.settings,{...oldSettings,graphics:{ambientMotion:'full',glass:'full',decoration:'full'}});
+ assert.equal(profile.profile_version,3);assert.equal(profile.local_id,v1.local_id);assert.equal(profile.avatar_id,v1.avatar_id);
+ assert.deepEqual(profile.settings,{...oldSettings,graphics:{ambientMotion:'full',glass:'full',decoration:'full'},cardStyle:'classic'});
  assert.deepEqual(JSON.parse(await fs.readFile(store.file,'utf8')),profile);
 }));
 
@@ -48,16 +48,16 @@ test('presets and custom are recognized both ways and never share returned objec
  for(const invalid of [null,[],{}, {...valid,unknown:true},{...valid,ambientMotion:'light'},{...valid,glass:'reduced'},{...valid,decoration:'off'}])assert.throws(()=>validateGraphics(invalid));
 });
 
-test('new and confirmed recovered profiles use v2 balanced',()=>temporary(async dir=>{
+test('new and confirmed recovered profiles use v3 balanced/illustrated',()=>temporary(async dir=>{
  const store=new ProfileStore(dir),created=await store.save('create',input);
- assert.equal(created.profile_version,2);
- assert.deepEqual(created.settings,{music:60,effects:70,fullscreen:false,graphics:{ambientMotion:'reduced',glass:'light',decoration:'simple'}});
+ assert.equal(created.profile_version,3);
+ assert.deepEqual(created.settings,{music:60,effects:70,fullscreen:false,graphics:{ambientMotion:'reduced',glass:'light',decoration:'simple'},cardStyle:'illustrated'});
  await fs.writeFile(store.file,'broken');
  const recovered=await store.save('recover',{...input,confirmed:true});
- assert.equal(recovered.profile_version,2);assert.deepEqual(recovered.settings,created.settings);
+ assert.equal(recovered.profile_version,3);assert.deepEqual(recovered.settings,created.settings);
 }));
 
-test('v1 and v2 validation rejects missing, unknown or invalid fields and preserves disk',()=>temporary(async dir=>{
+test('v1, v2 and v3 validation rejects missing, unknown or invalid fields and preserves disk',()=>temporary(async dir=>{
  const store=new ProfileStore(dir),validGraphics={ambientMotion:'full',glass:'full',decoration:'full'};
  const v2={...v1,profile_version:2,settings:{...oldSettings,graphics:validGraphics}};
  for(const invalid of [
@@ -74,9 +74,9 @@ test('v1 and v2 validation rejects missing, unknown or invalid fields and preser
   assert.equal(await fs.readFile(store.file,'utf8'),bytes);
  }
  await fs.writeFile(store.file,JSON.stringify(v2));
- assert.deepEqual(await store.read(),v2);
+ assert.deepEqual(await store.read(),{...v2,profile_version:3,settings:{...v2.settings,cardStyle:'classic'}});
  const before=await fs.readFile(store.file);
- for(const settings of [oldSettings,{...v2.settings,graphics:{...validGraphics,glass:'unknown'}},{...v2.settings,unknown:true}]){
+ for(const settings of [oldSettings,{...v2.settings,cardStyle:'classic',graphics:{...validGraphics,glass:'unknown'}},{...v2.settings,cardStyle:'classic',unknown:true}]){
   await assert.rejects(store.save('settings',{...input,settings}));
   assert.deepEqual(await fs.readFile(store.file),before);
  }
@@ -85,7 +85,7 @@ test('v1 and v2 validation rejects missing, unknown or invalid fields and preser
 
 test('graphics settings save copies the input and write/rename failures preserve bytes and draft',()=>temporary(async dir=>{
  const store=new ProfileStore(dir);await store.save('create',input);
- const draft={...input,settings:{...oldSettings,graphics:{ambientMotion:'off',glass:'light',decoration:'full'}}};
+ const draft={...input,settings:{...oldSettings,graphics:{ambientMotion:'off',glass:'light',decoration:'full'},cardStyle:'classic'}};
  const expected=structuredClone(draft),before=await fs.readFile(store.file);
  for(const op of ['writeFile','rename']){
   const io={...fs,[op]:async()=>{const error=new Error('injected');error.code='EACCES';throw error;}};
@@ -97,4 +97,31 @@ test('graphics settings save copies the input and write/rename failures preserve
  assert.deepEqual(saved.settings,draft.settings);assert.notEqual(saved.settings,draft.settings);assert.notEqual(saved.settings.graphics,draft.settings.graphics);
  draft.settings.graphics.glass='off';assert.equal(saved.settings.graphics.glass,'light');
  assert.equal((await store.read()).settings.graphics.glass,'light');
+}));
+
+test('v2 read preserves bytes and graphics; either card style survives a fresh store',()=>temporary(async dir=>{
+ const store=new ProfileStore(dir),v2={...v1,profile_version:2,settings:{...oldSettings,graphics:{ambientMotion:'off',glass:'light',decoration:'full'}}};
+ const bytes=JSON.stringify(v2,null,3)+'\n';await fs.writeFile(store.file,bytes);
+ const migrated=await store.read();
+ assert.equal(migrated.settings.cardStyle,'classic');assert.deepEqual(migrated.settings.graphics,v2.settings.graphics);
+ assert.equal(await fs.readFile(store.file,'utf8'),bytes);
+ for(const cardStyle of ['illustrated','classic']){
+  const saved=await store.save('settings',{...input,settings:{...migrated.settings,cardStyle}});
+  assert.equal(saved.profile_version,3);assert.equal(saved.local_id,v1.local_id);
+  assert.deepEqual(await new ProfileStore(dir).read(),saved);
+  assert.deepEqual(saved.settings,{...v2.settings,cardStyle});
+ }
+}));
+
+test('invalid card styles and unknown v3 fields never overwrite the profile',()=>temporary(async dir=>{
+ const store=new ProfileStore(dir),profile=await store.save('create',input),before=await fs.readFile(store.file);
+ for(const cardStyle of [null,0,'unknown',{},['classic']]){
+  const settings={...profile.settings,cardStyle};
+  assert.throws(()=>validateSettings(settings));
+  await assert.rejects(store.save('settings',{...input,settings}));assert.deepEqual(await fs.readFile(store.file),before);
+ }
+ for(const invalid of [{...profile,profile_version:4},{...profile,settings:{...profile.settings,unknown:true}},{...profile,settings:{...profile.settings,cardStyle:'unknown'}}]){
+  const bytes=JSON.stringify(invalid);await fs.writeFile(store.file,bytes);
+  await assert.rejects(store.read(),/PROFILE_DAMAGED/);assert.equal(await fs.readFile(store.file,'utf8'),bytes);
+ }
 }));

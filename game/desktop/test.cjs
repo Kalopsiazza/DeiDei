@@ -14,14 +14,14 @@ test('nickname Unicode boundary, exact fields, avatars and settings validation',
  assert.equal([...validateInput({...input,nickname:'😀'.repeat(20)}).nickname].length,20);
  for(const nickname of ['', ' ', '😀'.repeat(21),'a\u0000','a\u007f','a\u0085','a\u202e','a\ud800'])assert.throws(()=>validateInput({...input,nickname}));
  for(const p of [{...input,local_id:'../../x'},{...input,avatar_id:'remote'},{...input,nickname:true}])assert.throws(()=>validateInput(p));
- for(const music of [-1,101,NaN,true,1.5])assert.throws(()=>validateSettings({music,effects:50,fullscreen:false,graphics:graphicsForPreset('balanced')}));
- assert.throws(()=>validateSettings({music:50,effects:50,fullscreen:0,graphics:graphicsForPreset('balanced')}));
+ for(const music of [-1,101,NaN,true,1.5])assert.throws(()=>validateSettings({music,effects:50,fullscreen:false,graphics:graphicsForPreset('balanced'),cardStyle:'illustrated'}));
+ assert.throws(()=>validateSettings({music:50,effects:50,fullscreen:0,graphics:graphicsForPreset('balanced'),cardStyle:'illustrated'}));
 });
 test('atomic profile creation, stable identity, settings and restart read',()=>temporary(async dir=>{
  const s=new ProfileStore(dir);assert.equal(await s.read(),null);const p=await s.save('create',input);
- assert.equal(p.profile_version,2);assert.match(p.local_id,/^[a-f0-9-]{36}$/);
+ assert.equal(p.profile_version,3);assert.match(p.local_id,/^[a-f0-9-]{36}$/);
  await assert.rejects(s.save('create',input),/PROFILE_EXISTS/);
- const changed=await s.save('settings',{...input,nickname:'新昵称',settings:{music:25,effects:40,fullscreen:false,graphics:graphicsForPreset('smooth')}});
+ const changed=await s.save('settings',{...input,nickname:'新昵称',settings:{music:25,effects:40,fullscreen:false,graphics:graphicsForPreset('smooth'),cardStyle:'classic'}});
  assert.equal(changed.local_id,p.local_id);assert.deepEqual(await new ProfileStore(dir).read(),changed);
  const renamed=await s.save('update',{...input,nickname:'更新'});assert.equal(renamed.settings.music,25);
 }));
@@ -68,7 +68,7 @@ test('keyboard assignment stable, unique 1–0, blocked input and grey card reje
  await assert.rejects(p.submit(v.view_id,'Shell'),/UNAVAILABLE_MOVE/);assert.equal((await p.getView()).submitted,false);
 });
 test('script states, duplicate/stale submission, privacy and immutable snapshots',async()=>{
- let now=0;const profile={...input,local_id:'local-test',profile_version:2,settings:{music:50,effects:50,fullscreen:false,graphics:graphicsForPreset('balanced')}};const p=new FixturePort(profile,()=>now);await assert.rejects(p.startSolo('wrong-id'),/INVALID_PROFILE/);const v=await p.startSolo('local-test');
+ let now=0;const profile={...input,local_id:'local-test',profile_version:3,settings:{music:50,effects:50,fullscreen:false,graphics:graphicsForPreset('balanced'),cardStyle:'illustrated'}};const p=new FixturePort(profile,()=>now);await assert.rejects(p.startSolo('wrong-id'),/INVALID_PROFILE/);const v=await p.startSolo('local-test');
  assert.equal(v.participants.length,2);assert.equal(v.timer.mode,'untimed');assert.equal(v.source,'fixture');assert.ok(p.isActive());
  assert.ok(v.participants.every(p=>!Object.hasOwn(p,'selected_entry_id')));
  const submitting=await p.submit(v.view_id,'Charge');assert.equal(submitting.phase,'submitting');

@@ -1,7 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import {MoveArt} from './CardArt';
 import content from '../../docs/results/R04-T01-b/manual-content/content.json';
 import type { Manual } from './types';
-import { TextInput } from './SharedUI';
+import { BackButton, TextInput } from './SharedUI';
 import { ddText } from './view-loop';
 
 const cards=content.cards;
@@ -15,7 +16,6 @@ const resourceNames:Record<string,string>=Object.fromEntries(content.resources.m
 const amounts=(values:{resource:string;amount:string}[])=>values.map(value=>`${value.amount} ${resourceNames[value.resource]}`).join(' + ')||'0';
 const aliases:Record<string,string[]>=content.presentation.search_aliases;
 const normalize=(text:string)=>text.toLocaleLowerCase().replace(/[\s·／/]/g,'');
-const icon=(id:string)=>`assets/moves/${id}.png`;
 
 function ExamplePlayer({example,scene=1}:{example:Example;scene?:number}) {
  const [round,setRound]=useState(0),[beat,setBeat]=useState(0),[playing,setPlaying]=useState(false),[replay,setReplay]=useState(0);
@@ -60,7 +60,7 @@ function ExamplePlayer({example,scene=1}:{example:Example;scene?:number}) {
     const eliminated=beat>=2&&step.expected.eliminated_ids.some(id=>id===pid);
     return <article key={pid} className="archive-demo-player" data-eliminated={eliminated}>
      <span>{example.players[pid]}</span>
-     <div className={`archive-demo-card ${move?.category||'skill'}`} data-revealed={beat>0}><div className="archive-card-back" aria-hidden="true">DD</div><div className="archive-card-face" aria-hidden={beat===0}><img src={icon(action.entry_id)} alt=""/><strong>{action.is_recovery?'系统休整':move?.name}</strong></div></div>
+     <div className={`archive-demo-card ${move?.category||'skill'}`} data-revealed={beat>0}><div className="archive-card-back" aria-hidden="true">DD</div><div className="archive-card-face" data-recovery={action.is_recovery} aria-hidden={beat===0}><MoveArt entryId={action.entry_id} full/><strong>{action.is_recovery?'系统休整':move?.name}</strong></div></div>
      <div className="archive-demo-resources"><b>{ddText(resource.dd6)} DD</b>{Number(resource.lightning)>0&&<span>雷电 {resource.lightning}</span>}{Number(resource.nx_charge)>0&&<span>充能 {resource.nx_charge}</span>}{Number(resource.mature_bombs)>0&&<span>成熟炸药 {resource.mature_bombs}</span>}{Number(resource.waiting_bombs)>0&&<span>待成熟炸药 {resource.waiting_bombs}</span>}{resource.zeng_state==='recovery'&&<span>下一拍休整</span>}{resource.zeng_state==='waiting'&&<span>等待奖励</span>}{resource.enhanced_xiao&&<span>有强化削资格</span>}{resource.zeng_state==='ready'&&<span>奖励已就绪</span>}</div>
      {beat>0&&action.entry_id!==action.actual_move&&<small className="archive-demo-actual">实际招式：{cardById[action.actual_move]?.name||action.actual_move}</small>}
      {beat>=2&&<small className="archive-demo-state">{eliminated?'本拍淘汰':'仍在场'}{action.branch&&` · ${cardById[action.branch]?.name||action.branch}`}</small>}
@@ -120,14 +120,16 @@ export function ManualArchive({manual,onBack,onTutorial,busy,Dialog}:{manual:Man
  const previousCard=()=>{const id=history[history.length-1];if(id){setHistory(history.slice(0,-1));setSearch('');setCategory('all');setSelected(id);setMode('card');}};
  const browse=(delta:number)=>{if(matches.length){selectCard(matches[Math.max(0,Math.min(matches.length-1,index+delta))].entry_id);}};
  const readRule=(id:string)=>{const chapter=content.chapters.find(chapter=>chapter.sections.some(section=>section.rule_ids.includes(id)));setChapterId(chapter?.id||'start');setRuleFocus(id);setMode('rules');};
- const leave=()=>{if(leaving)return;setLeaving(true);exitTimer.current=window.setTimeout(onBack,window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:380);};
+ const finishLeave=()=>{if(exitTimer.current===undefined)return;window.clearTimeout(exitTimer.current);exitTimer.current=undefined;onBack();};
+ // ponytail: wait for the rendered fade; a bounded fallback handles a missing transition event.
+ const leave=()=>{if(leaving)return;setLeaving(true);exitTimer.current=window.setTimeout(finishLeave,window.matchMedia('(prefers-reduced-motion: reduce)').matches?0:1200);};
  const activeExample=examples[card.beginner.example_ids.includes(exampleId)?exampleId:primaryExamples[0]];
  const chapter=content.chapters.find(chapter=>chapter.id===chapterId)||content.chapters[0];
  useEffect(()=>{if(mode==='rules'&&ruleFocus)guideRef.current?.querySelector<HTMLDetailsElement>(`[data-rule="${ruleFocus}"]`)?.scrollIntoView({block:'nearest'});},[mode,chapterId,ruleFocus]);
  useEffect(()=>{const node=sceneRef.current;if(!node)return;const wheel=(event:WheelEvent)=>{if(Math.abs(event.deltaY)>Math.abs(event.deltaX)&&node.scrollWidth>node.clientWidth){event.preventDefault();node.scrollLeft+=event.deltaY;}};node.addEventListener('wheel',wheel,{passive:false});return()=>node.removeEventListener('wheel',wheel);},[selected,precision,mode]);
  const intro=content.onboarding.steps[introStep];
- return <main className="archive-screen" data-leaving={leaving}>
-  <header className="archive-heading"><button className="settings-back" onClick={leave} disabled={leaving}><span>返回主菜单</span></button><div><span>CLASSIC 1.0.1 / ARCHIVE</span><h1>招式图鉴</h1><p>{content.creative_brief.entry_copy.subtitle}</p></div><nav aria-label="图鉴阅读入口"><button className="archive-tutorial-entry" disabled={busy||leaving} onClick={onTutorial}>新手实战</button><button aria-pressed={mode==='start'} onClick={()=>setMode(mode==='start'?'card':'start')}>先看三张牌</button><button aria-pressed={mode==='questions'} onClick={()=>setMode(mode==='questions'?'card':'questions')}>常见问题</button><button aria-pressed={mode==='rules'} onClick={()=>setMode(mode==='rules'?'card':'rules')}>完整规则</button></nav></header>
+ return <main className="archive-screen" data-leaving={leaving} onTransitionEnd={event=>{if(leaving&&event.target===event.currentTarget&&event.propertyName==='opacity')finishLeave();}}>
+  <header className="archive-heading"><BackButton className="settings-back" onClick={leave} disabled={leaving}>返回主菜单</BackButton><div><span>CLASSIC 1.0.1 / ARCHIVE</span><h1>招式图鉴</h1><p>{content.creative_brief.entry_copy.subtitle}</p></div><nav aria-label="图鉴阅读入口"><button className="archive-tutorial-entry" disabled={busy||leaving} onClick={onTutorial}>新手实战</button><button aria-pressed={mode==='start'} onClick={()=>setMode(mode==='start'?'card':'start')}>先看三张牌</button><button aria-pressed={mode==='questions'} onClick={()=>setMode(mode==='questions'?'card':'questions')}>常见问题</button><button aria-pressed={mode==='rules'} onClick={()=>setMode(mode==='rules'?'card':'rules')}>完整规则</button></nav></header>
   <div className="archive-workspace">
    <aside className="archive-browser" aria-label="招式选择">
     <div className="archive-search-tools"><label className="archive-search"><TextInput search aria-label="搜索招式" placeholder="搜索招式或编号" autoComplete="off" spellCheck={false} value={search} onChange={event=>{setSearch(event.target.value);setMode('card');}} onClear={search?()=>setSearch(''):undefined}/></label><button className="archive-view-toggle" aria-label={`切换为${listMode==='cards'?'图标':'卡牌'}显示`} onClick={()=>setListMode(listMode==='cards'?'icons':'cards')}><i aria-hidden="true" data-mode={listMode}/><span>{listMode==='cards'?'卡牌':'图标'}</span></button></div>
@@ -137,10 +139,12 @@ export function ManualArchive({manual,onBack,onTutorial,busy,Dialog}:{manual:Man
      {matches.map((item,position)=>{
       const offset=position*148-stackScroll,depth=Math.min(5,Math.max(0,offset/148));
       // ponytail: native sticky keeps the 33-card display stable between scroll and React frames.
-      const reach=Math.max(160,stackHeight-84),y=offset<0?offset:reach*(1-Math.exp(-offset/reach));
-      return <button className="archive-stack-item" key={item.entry_id} data-entry={item.entry_id} data-selected={item.entry_id===selected} aria-pressed={item.entry_id===selected} aria-label={`查看 ${item.name}`} style={{top:32+y,left:28+depth*7,width:`calc(100% - ${56+depth*14}px)`,height:128-depth*8,zIndex:matches.length-position,opacity:Math.min(1,Math.max(0,(offset+148)/48),Math.max(0,(740-offset)/148)),visibility:offset < -180||offset>740?'hidden':'visible','--depth':depth} as React.CSSProperties} onClick={()=>selectCard(item.entry_id)}><span className={`archive-stack-card ${item.category}`}><small>{item.doc_id} / {groupNames[item.category]}</small><img src={icon(item.entry_id)} alt=""/><strong>{item.name}</strong></span></button>;
+      const reach=Math.max(160,stackHeight-84),curve=Math.min(370,reach),bend=reach-curve,limit=Math.max(740,stackHeight*3),spread=offset<0?offset:offset*80/148;
+      // ponytail: 80px pitch overlaps even the shortest 88px card; the bottom fan compresses further.
+      const y=spread<bend?spread:bend+curve*(1-Math.exp(-(spread-bend)/curve));
+      return <button className="archive-stack-item" key={item.entry_id} data-entry={item.entry_id} data-selected={item.entry_id===selected} aria-pressed={item.entry_id===selected} aria-label={`查看 ${item.name}`} style={{top:32+y,left:28+depth*7,width:`calc(100% - ${56+depth*14}px)`,height:128-depth*8,zIndex:matches.length-position,opacity:Math.min(1,Math.max(0,(offset+148)/48),Math.max(0,(limit-offset)/148)),visibility:offset < -180||offset>limit?'hidden':'visible','--depth':depth} as React.CSSProperties} onClick={()=>selectCard(item.entry_id)}><span className={`archive-stack-card ${item.category}`}><small>{item.doc_id} / {groupNames[item.category]}</small><MoveArt entryId={item.entry_id} full/><strong>{item.name}</strong></span></button>;
      })}
-     </div></div>:matches.map(item=><button className={`archive-icon-tile ${item.category}`} key={item.entry_id} data-entry={item.entry_id} aria-pressed={item.entry_id===selected} aria-label={`查看 ${item.name}`} title={item.name} onClick={()=>selectCard(item.entry_id)}><img src={icon(item.entry_id)} alt=""/></button>)}
+     </div></div>:matches.map(item=><button className={`archive-icon-tile ${item.category}`} key={item.entry_id} data-entry={item.entry_id} aria-pressed={item.entry_id===selected} aria-label={`查看 ${item.name}`} title={item.name} onClick={()=>selectCard(item.entry_id)}><MoveArt entryId={item.entry_id}/></button>)}
      {!matches.length&&<div className="archive-no-match"><strong>没有找到这张牌</strong><p>试试牌名、编号，或清空搜索。</p><button onClick={()=>{setSearch('');setCategory('all');}}>显示全部招式</button></div>}
     </div>
 
@@ -149,8 +153,8 @@ export function ManualArchive({manual,onBack,onTutorial,busy,Dialog}:{manual:Man
     <div className="archive-detail-scroll" ref={detailRef}>
      {matches.length===0&&<div className="archive-guide"><h2>换一个关键词试试</h2><p>没有匹配的招式。清空搜索或切回全部即可继续浏览。</p></div>}
      {matches.length>0&&<article className="archive-card-detail" key={card.entry_id} data-entry={card.entry_id}>
-      {history.length>0&&<button className="archive-related-back" onClick={previousCard}>‹ 回到 {cardById[history[history.length-1]].name}</button>}
-      <header className={`archive-card-title ${card.category}`}><img src={icon(card.entry_id)} alt=""/><div><span>{card.doc_id} · {groupNames[card.category]}</span><h2>{card.name}</h2><p>{card.beginner.summary}</p></div></header>
+      {history.length>0&&<BackButton className="archive-related-back" onClick={previousCard}>{`回到 ${cardById[history[history.length-1]].name}`}</BackButton>}
+      <header className={`archive-card-title ${card.category}`}><MoveArt entryId={card.entry_id} full/><div><span>{card.doc_id} · {groupNames[card.category]}</span><h2>{card.name}</h2><p>{card.beginner.summary}</p></div></header>
       <section className="archive-costs" aria-label="费用与资格">{card.costs.map(cost=><article key={cost.when}><span>{cost.when}</span><dl><div><dt>需要持有</dt><dd>{amounts(cost.requires)}</dd></div><div><dt>实际扣除</dt><dd>{amounts(cost.spends)}</dd></div></dl>{'qualification' in cost&&cost.qualification&&<p>{cost.qualification}</p>}</article>)}</section>
       <p className="archive-warning"><span>留意</span>{card.beginner.watch_out}</p>
       <nav className="archive-card-tabs" role="tablist" aria-label="档案深度" onKeyDown={event=>{if(['ArrowLeft','ArrowRight','Home','End'].includes(event.key)){event.preventDefault();const next=event.key==='Home'?false:event.key==='End'?true:!precision;setPrecision(next);event.currentTarget.querySelectorAll<HTMLButtonElement>('button')[Number(next)].focus();}}}><button role="tab" aria-controls="archive-reading-panel" aria-selected={!precision} aria-pressed={!precision} onClick={()=>setPrecision(false)}>先看懂</button><button role="tab" aria-controls="archive-reading-panel" aria-selected={precision} aria-pressed={precision} onClick={()=>setPrecision(true)}>精确属性与完整限制</button></nav>
@@ -160,7 +164,7 @@ export function ManualArchive({manual,onBack,onTutorial,busy,Dialog}:{manual:Man
        <p className="archive-tip"><span>小提示</span>{card.tip.text}</p>
       </>}</div>
       {card.beginner.glossary_ids.length>0&&<section className="archive-terms"><h3>这张牌用到的词</h3>{card.beginner.glossary_ids.map(id=><details key={id}><summary>{terms[id].label}<small>{terms[id].short}</small></summary><p>{terms[id].detail}</p></details>)}</section>}
-      <section className="archive-relations"><h3>关联卡牌</h3>{card.relations.slice(0,3).map(relation=><button key={relation.entry_id} onClick={()=>selectCard(relation.entry_id,true)}><img src={icon(relation.entry_id)} alt=""/><span><strong>{cardById[relation.entry_id].name}</strong><small>{relation.label}</small><p>{relation.note}</p></span><i>›</i></button>)}{card.relations.length>3&&<details><summary>更多关联卡牌</summary><div className="archive-more-relations">{card.relations.slice(3).map(relation=><button key={relation.entry_id} onClick={()=>selectCard(relation.entry_id,true)}><img src={icon(relation.entry_id)} alt=""/><span><strong>{cardById[relation.entry_id].name}</strong><small>{relation.label}</small><p>{relation.note}</p></span><i>›</i></button>)}</div></details>}</section>
+      <section className="archive-relations"><h3>关联卡牌</h3>{card.relations.slice(0,3).map(relation=><button key={relation.entry_id} onClick={()=>selectCard(relation.entry_id,true)}><MoveArt entryId={relation.entry_id}/><span><strong>{cardById[relation.entry_id].name}</strong><small>{relation.label}</small><p>{relation.note}</p></span><i>›</i></button>)}{card.relations.length>3&&<details><summary>更多关联卡牌</summary><div className="archive-more-relations">{card.relations.slice(3).map(relation=><button key={relation.entry_id} onClick={()=>selectCard(relation.entry_id,true)}><MoveArt entryId={relation.entry_id}/><span><strong>{cardById[relation.entry_id].name}</strong><small>{relation.label}</small><p>{relation.note}</p></span><i>›</i></button>)}</div></details>}</section>
       <section className="archive-rule-links"><h3>关联规则</h3>{card.rule_ids.map(id=><button key={id} onClick={()=>readRule(id)}>{manual?.sections.find(section=>section.id===id)?.text.split('\n')[0].replace(/^#+\s*/,'')||id}</button>)}</section>
       <div className="archive-egg" data-open={eggOpen}><button aria-expanded={eggOpen} onClick={()=>setEggOpen(!eggOpen)}>课间便签</button><p>{card.easter_egg.text}</p></div>
      </article>}

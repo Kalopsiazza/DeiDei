@@ -12,6 +12,8 @@ const UI_ASSETS=Object.freeze({
   'assets/battle/battle-table-v1.webp':'image/webp',
   'assets/battle/battle-arena-approach-v1.webp':'image/webp',
   ...Object.fromEntries(MOVE_ASSETS.map(name=>[`assets/moves/${name}.png`,'image/png'])),
+  ...Object.fromEntries(MOVE_ASSETS.map(name=>[`assets/moves-classic/${name}.png`,'image/png'])),
+  ...Object.fromEntries(MOVE_ASSETS.map(name=>[`assets/cards/${name}.webp`,'image/webp'])),
 });
 
 const resolveUiAsset=name=>Object.hasOwn(UI_ASSETS,name)

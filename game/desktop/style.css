@@ -12,5 +12,7 @@
 @import "./styles/welcome-stage.css";
 @import "./styles/online.css";
 @import "./styles/controls.css";
+@import "./styles/card-art.css";
+@import "./styles/card-settings.css";
 @import "./styles/graphics.css";
 @import "./styles/preferences.css";

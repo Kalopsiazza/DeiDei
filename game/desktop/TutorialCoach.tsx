@@ -1,4 +1,5 @@
 import React, {useEffect, useState} from 'react';
+import { BackButton } from './SharedUI';
 import type {DesktopView} from './types';
 import {ddText} from './view-loop';
 const lessons=[
@@ -29,7 +30,7 @@ export function TutorialCoach({view,busy,suspended,error,onNext,onSolo,onExit}:{
   <nav aria-label="教程操作">
    {tutorial.stage==='challenge'&&!revealed&&view.phase==='selecting'&&<button disabled={suspended||busy} aria-pressed={hint} onClick={()=>setHint(v=>!v)}>{hint?'收起提示':'给点提示'}</button>}
    {revealed&&tutorial.stage!=='complete'&&<button className="primary" disabled={suspended||busy} onClick={onNext}>{tutorial.stage==='guided'?tutorial.step===2?'开始独立练习':'明白了，继续':tutorial.ended?tutorial.won?'完成教程':'重试独立练习':'继续下一拍'}</button>}
-   {tutorial.stage==='complete'&&<><button className="primary" disabled={busy||suspended} onClick={onSolo}>进入普通单人</button><button disabled={busy||suspended} onClick={onExit}>返回主菜单</button></>}
+   {tutorial.stage==='complete'&&<><button className="primary" disabled={busy||suspended} onClick={onSolo}>进入普通单人</button><BackButton disabled={busy||suspended} onClick={onExit}>返回主菜单</BackButton></>}
   </nav>
  </section>;
 }

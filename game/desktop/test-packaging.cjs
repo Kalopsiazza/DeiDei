@@ -69,12 +69,15 @@ test('R04 visual assets use an exact local allowlist',()=>{
  };
  const moves=['Charge','Bi','Def','Three','ThreeDef','BigBi','Reflect','SelfBi','Cloud','Bomb','Xiao','Pragon','PragonDef','Volvo','VolvoDef','RotateThree','XiaoBei','FlipVolvo','Shell','Absorb','NieXiang','NieXiangDef','JuYan','TianLiJun','ZhangXinWei','LiQiang','BombPragon','BombVolvo','BombFlipVolvo','FreeThree','FreeRotateThree','ZengYi','ZengRewardBigBi'];
  for(const name of moves)expected[`assets/moves/${name}.png`]='image/png';
+ for(const name of moves)expected[`assets/moves-classic/${name}.png`]='image/png';
+ // Approved complete card faces are exact local assets, alongside compact icons.
+ for(const name of moves)expected[`assets/cards/${name}.webp`]='image/webp';
  assert.deepEqual(Object.keys(UI_ASSETS).sort(),['index.html','renderer.js','style.css','welcome.css',...Object.keys(expected)].sort());
  for(const [relativePath,contentType] of Object.entries(expected)){
   assert.equal(UI_ASSETS[relativePath],contentType);
   assert.deepEqual(resolveUiAsset(relativePath),{relativePath,contentType});
  }
- for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png','assets/online/unknown.webp'])assert.equal(resolveUiAsset(name),null);
+ for(const name of ['../main.cjs','%2e%2e/main.cjs','assets/menu/unknown.png','assets/moves/unknown.png','assets/moves-classic/unknown.png','assets/cards/unknown.webp','assets/online/unknown.webp'])assert.equal(resolveUiAsset(name),null);
 });
 
 test('R04 built UI contains the bounded menu assets and opening video',()=>{
