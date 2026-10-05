@@ -1,3 +1,5 @@
+历史记录｜R01 技术试验，不作为现版启动指引。原 AI 已迁 legacy/rl；现版入口见根 README 与 game/desktop/README.md。
+
 # 第一轮验证架构
 
 编号 ARC-R01 · 版本 1.0 · 作者 ChatGPT · 2026-09-11  

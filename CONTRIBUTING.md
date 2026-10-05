@@ -6,7 +6,7 @@
 
 1. Fork `Kalopsiazza/DeiDei`，从上游最新 `main` 建立功能分支。
 2. 阅读 `AGENTS.md` 和相关说明，完成一项能单独检查的改动。
-3. 运行 `python scripts/check.py`，再实际验证本次功能。
+3. 运行 `python scripts/check.py` 与 `npm --prefix game/desktop test`（含类型检查、构建及 Node 测试），再实际验证本次功能。
 4. 向 `Kalopsiazza/DeiDei:main` 发起 PR，使用自动出现的模板。
 5. 根据审核意见继续向同一分支提交；合入后，新任务从最新 `main` 另开分支。
 
@@ -38,9 +38,9 @@ git push -u origin feat/your-idea
 
 ## 检查与文档
 
-运行 `python scripts/check.py`。当前只有标准库检查，不需要重训模型。不能运行时写明原因，不能把“AI 判断没问题”写成测试通过。
+运行 `python scripts/check.py`：标准库语法与根递归/core/runtime/规则样本/独立旧 AI 保全检查；桌面另跑 `npm --prefix game/desktop test`。不需要安装 ML 依赖或重训模型。不能运行时写明原因，不能把“AI 判断没问题”写成测试通过。
 
-测试报错应解释和修复；不要删除测试、添加跳过、改成预期失败来隐藏新问题。现有 `expectedFailure` 仅用于 [#1](https://github.com/Kalopsiazza/DeiDei/issues/1)，修复时去掉标记并保留测试。
+测试报错应解释和修复；不要删除测试、添加跳过、改成预期失败来隐藏新问题。现有 `expectedFailure` 仅用于 旧环境 [#1](https://github.com/Kalopsiazza/DeiDei/issues/1)（测试位于 legacy/rl/tests），修复时去掉标记并保留测试。
 
 行为、运行方式或依赖发生变化时，更新相关说明。只修错字或排版无需写设计文档。较大功能在 `docs/` 添加短说明：选择了什么、为何这样做、如何运行、如何验证、暂未包含什么。不要提交私人聊天全文、临时 AI 草稿、密钥、个人路径、虚拟环境或训练缓存。
 
@@ -48,6 +48,6 @@ git push -u origin feat/your-idea
 
 `main` 是正式共享版本。Teddy 保留合入权，其他同学通过 fork 贡献；未经邀请无需获得主仓库写入权限。维护者自己的工作也尽量通过 PR 留痕。
 
-每个 PR 默认采用 Squash and merge，主干保留一条有意义的提交，细节留在 PR。合入前检查最新上游变化、实际 CI 结果和未处理意见；不要由贡献者 AI 自行合入。
+普通 PR 的现有仓库选项只有 Squash and merge。本次 Issue #39 是维护者授权的独立整合：本地普通 merge 保留候选祖先，最终合入方式另行确认；不静默 squash/rebase，也不自行改管理设置。合入前检查最新上游变化、实际 CI 结果和未处理意见；不要由贡献者 AI 自行合入。
 
 `CHANGELOG.md` 由维护者在合入或发布时整理，普通贡献者不用每次编辑，减少同时改同一文件。代码历史保留 PR 编号；正式可分享版本再创建版本标签和发布说明。当前不要求每日记录、工时或里程碑。

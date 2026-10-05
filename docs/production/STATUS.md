@@ -1,3 +1,11 @@
+# 当前状态｜2026-10-05
+
+R04-T05-a / Issue #39：main 整合候选已交付，待最终源码确认。固定 #38 普通 merge、旧 AI 保全、现版入口／CI 与图鉴返回按钮小修分别提交；实际输入与检查见 [本轮报告](../results/R04-T05-a/REPORT.md)。未合入 main、改管理设置、关闭旧 PR、删除分支、打包或发布。后续前端试改在原目录与分支继续，未提交内容保留。
+
+以下为 2026-09-29 至 2026-10-04 历史记录，状态只适用于对应提交，不构成当前工作指令。
+
+---
+
 # R04-T03-a 本机执行／交付完成｜2026-10-04
 
 [Issue #35](https://github.com/Kalopsiazza/DeiDei/issues/35)；起点 `1f30a2449dddbe98144b7e98e0dc0a8e76b977ca`；最终产品 `dc38024a91818c3e2a2ca537675549409cfca620`。活动 worktree `.worktrees/r04-t03-a`／`work/r04-t03-a-frontend-completion`；[Draft #36](https://github.com/Kalopsiazza/DeiDei/pull/36) base `codex/r04-t02-e-real-rooms`，完整head在PR正文与交付回传。

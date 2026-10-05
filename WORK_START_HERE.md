@@ -1,3 +1,13 @@
+# R04-T05-a｜main 整合候选｜2026-10-05
+
+候选已交付，待最终源码确认；未合入 main 或发布。工作区为主仓库 `.worktrees/r04-main-integration`，分支 `integration/r04-main-20261005`，保留未归档。只接入固定 #38 的 4c8b4656d26fecbe5964a2ac18b51a723f456b14；实际产品 SHA 与检查见 [报告](docs/results/R04-T05-a/REPORT.md)，最终文档 head 见草稿 PR 正文。
+
+先读 AGENTS、[现版桌面入口](game/desktop/README.md)、DESIGN、[WORKFLOW](docs/production/WORKFLOW.md) 和联机连续镜头 PRD。旧 AI 仅在 legacy/rl 独立保全。前端后续试改仍在原 video-settings 工作目录，全部未提交内容和原窗口保留，不自动纳入候选。
+
+以下为 2026-09-29 至 2026-10-04 的历史记录，仅说明对应阶段；其中“当前”“下一步”和工作指令不再指挥本次整合。
+
+---
+
 # R04-T04-a 画面设置｜2026-10-04
 
 [Issue #37](https://github.com/Kalopsiazza/DeiDei/issues/37) 的A → B → C本机实现与定向验证完成，等待草稿PR审阅；PR base为`codex/frontend-round2-20261004`。

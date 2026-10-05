@@ -18,7 +18,7 @@ jobs:
   core-tests:
     name: core-tests
     runs-on: ubuntu-latest
-    timeout-minutes: 5
+    timeout-minutes: 15
     steps:
       - name: Check out source
         uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
@@ -30,3 +30,11 @@ jobs:
           python-version: '3.11'
       - name: Check syntax and run core tests
         run: python scripts/check.py
+      - name: Set up Node
+        uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.12.0
+      - name: Install locked desktop dependencies
+        run: npm --prefix game/desktop ci
+      - name: Check desktop types, build and tests
+        run: npm --prefix game/desktop test

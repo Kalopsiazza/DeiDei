@@ -1,35 +1,25 @@
-# 开发起点
+# 现版开发起点
 
-## 当前文件职责
+2026-10-05，R04 main 整合候选已交付，待最终源码确认；未合入或发布。历史报告只证明其各自版本，后续前端仍在原分支快速试改。
 
-| 文件 | 当前用途 |
+| 路径 | 职责 |
 | --- | --- |
-| `deidei_env.py` | 招式、玩家状态、回合计算、简单策略、局部近似博弈求解 |
-| `gui_deidei.py` | Tkinter 桌面窗口、中文招式名称与说明 |
-| `deidei_gym_env.py` | Gymnasium 环境、状态数字编码、合法动作掩码、奖励 |
-| `rl_ai.py` | 加载现有模型、推理、人工策略修正与回退 |
-| `rl_checkpoints/` | 已导入模型与对手池文件 |
+| `game/core/deidei_core` | classic-1.0.1 的 33 招规则，输入校验与确定性结算 |
+| `game/runtime/deidei_runtime` | 本机 worker、会话与 random-legal-v1 对手 |
+| `game/server/deidei_server` | rooms-1.1 服务端判定、去重、保密、时限和重连 |
+| `game/desktop` | React/Electron 前端、主进程、沙箱 IPC 与网络客户端 |
+| `legacy/rl` | 原机器学习 AI 的独立保全材料，不参与现版运行 |
 
-目前尚未形成网页端、联机服务或完整训练命令。不要在文档中把计划写成已经实现。
+启动见 [根 README](../README.md) 与 [桌面 README](../game/desktop/README.md)。worker 只用标准库，服务单独按锁安装，ML 依赖仅供旧 AI 研究。界面调用真实核心，不复制判定；保留 sandbox、contextIsolation、CSP、发送方校验、证书验证与精确资源白名单。
 
-## 编程方式
+## 检查
 
-继续使用 Python 现有写法，函数与类按用途选择。回合计算优先做到输入不变、结果可重复；窗口、房间会话、模型生命周期适合由对象管理。没有全项目函数式改写任务。
+根目录 `python3 scripts/check.py`：语法检查后以独立进程依次运行根 tests 递归发现（维护工具、规则/房间 harness 等）、game/core/tests、game/runtime/tests、独立规则驱动和 legacy/rl/check.py。各组按 os.pathsep 设置自己的 PYTHONPATH；旧模块不进入现版会话。输出组名、发现用例与结果，空组／导入失败／非零退出让总检查失败。独立样本中尚未支持的 session 项如实显示。
 
-核心规则应能在无窗口、无网络、无机器学习依赖的环境中测试。中文名称现在放在 GUI 中，RL 文件存在对 GUI 的反向引用；今后可在独立 PR 中改善，不与功能开发混做。
+`npm --prefix game/desktop test` 已含类型检查、构建、Node 桌面／联机及 stage 检查，不需重复 build。main PR/push/手动 CI 保留 job/check 名 `core-tests`，Node 24.12.0、Python 3.11 和已有 lock。
 
-如果新增网页界面，先写清本地启动步骤、如何复用 Python 规则、为何选择相应工具。不预先指定 React、Vue、游戏引擎、数据库或托管平台。任何新增服务都应提供不含凭据的示例配置；不把部署账号交给 fork 的自动检查。
+GUI 修改实际打开、用自建档案验证并附截图。网络变动补揭晓前保密、重复提交、断线案例；规则变动补具体局面。失败不得靠删断言、skip 或新增 expectedFailure 隐藏。旧 #1 的原 expectedFailure 仅属于 legacy。窗口、原生包、网络长测及 ML 不加入每次 CI；R02 专用打包工作流保持历史用途，不算现版 main CI 覆盖。
 
-## 联机提案需要说明的内容
+## 协作与交付
 
-玩家怎样进房间、怎样提交招式、什么时候揭晓、谁来判定结果；以及超时、断线、重复提交和过期消息如何处理。前端只能展示有权看到的内容；不能先把对手的招式发到浏览器，再仅靠界面隐藏。
-
-保持回合编号与可复查的动作记录。先做朋友之间的一局完整对战，账号与排名可以留待后续讨论。
-
-## 验收与测试
-
-本地与 CI 共用 `python scripts/check.py`。工具检查仓库中 Python 文件的语法，并运行 `tests/` 下的 unittest。未安装任何第三方依赖也能做基础检查。新模块需要第三方依赖时，另加合适的测试环境，不让仅检查规则的人被迫安装整套服务。
-
-目前测试覆盖基础资源、合法动作、部分胜负组合、炸药时序与简单 AI 的合法出招。它们用于记录原型行为，并未证明所有历史玩法都正确。完整 GUI 和模型仍需人工或专门环境验证。
-
-较大决定直接在 PR 记录；跨多个 PR 的决定再加一个短 `docs/decisions/日期-主题.md`，写明选择、理由和影响。现在不用建立完整 PRD 或任务排期。
+按 [WORKFLOW](production/WORKFLOW.md) 做影响范围检查与阶段提交。技术行为变化另作任务，不借视觉试改改玩法、安全、网络或发布。使用 PR 模板，实际执行与未测事项分开记录。现版规则见 [game-rules](game-rules.md)，AI 来源与兼容性见 [model-card](model-card.md)。main 合入、管理设置、关闭旧 PR、删除分支和发布需维护者明确授权。
