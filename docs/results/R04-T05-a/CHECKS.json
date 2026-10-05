@@ -1,0 +1,382 @@
+{
+  "tested_product": "c610eff67892bc2964230d5f717e0234f16eb0b6",
+  "local_environment": {
+    "python": "3.13.7",
+    "node": "24.12.0",
+    "npm": "11.6.2",
+    "server_dependencies": "requirements.lock installed with --require-hashes; websockets 17.0.1; no ML dependencies installed"
+  },
+  "effective_inputs_sha256": "3e4b6526c1c609204d16cda92ea79dec83c023c2cf6be8de791cec0505eb9c9c",
+  "built_inputs_sha256": {
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+    "build/ui/renderer.js": "286b0c418b9b1938a8022fb5b10887b0cefbb7042143235e8bd6f7d5c6df6b4a",
+    "build/ui/style.css": "855c87684ce1dd2025acc0e0e2e2d684ec9e49b3df4786b72000c50af88b4b85",
+    "build/ui/welcome.css": "b02fbbc5e6d0b98a6270d752c614ac6361b469a58f984bb7b64cb7c7dab0b9c7",
+    "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+    "smoke-entry.cjs": "e759431311a4addc8d6884da313878b2b5c1cd1ee59a0512f76123efbd1e9dbe",
+    "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+  },
+  "input_equivalence": {
+    "python_server_inputs_908ba5f_to_product_unchanged": true,
+    "desktop_build_node_inputs_908ba5f_to_product_unchanged": true,
+    "graphics_driver_f2ffa31_to_product_unchanged": true
+  },
+  "checks": [
+    {
+      "command": "python3 scripts/check.py",
+      "executed_at_sha": "908ba5fa12aee17fa356ed5c792160e72cf3bcaf",
+      "result": "PASS",
+      "groups": {
+        "root_recursive": 35,
+        "current_core": 174,
+        "current_runtime": 27,
+        "independent_samples": 192,
+        "legacy_rules": 25
+      },
+      "legacy_expected_failures": 1,
+      "session_not_run": [
+        "C074/room_state_preserved",
+        "C081/session_request_replay"
+      ]
+    },
+    {
+      "command": "npm --prefix game/desktop ci",
+      "result": "PASS",
+      "locked_dependencies_unchanged": true,
+      "note": "npm ci left Electron binary absent locally; node game/desktop/node_modules/electron/install.js supplied the pinned binary for GUI checks, without changing dependencies."
+    },
+    {
+      "command": "npm --prefix game/desktop test",
+      "executed_at_sha": "908ba5fa12aee17fa356ed5c792160e72cf3bcaf",
+      "result": "PASS",
+      "node_tests": 92,
+      "includes": [
+        "typecheck",
+        "build",
+        "graphics",
+        "resources",
+        "stage",
+        "online"
+      ]
+    },
+    {
+      "command": "PYTHONPATH=game/core:game/server <owned-server-python> -m unittest discover -s game/server/tests -v",
+      "executed_at_sha": "908ba5fa12aee17fa356ed5c792160e72cf3bcaf",
+      "result": "PASS",
+      "tests": 71,
+      "scope": "owned loopback/TLS and synthetic sessions; no external devices"
+    },
+    {
+      "command": "DEIDEI_GRAPHICS_OUTPUT=<fresh-evidence-dir> DEIDEI_PYTHON=<owned-server-python> node game/desktop/smoke-graphics.cjs",
+      "executed_at_sha": "f2ffa31f2c10222e40455de453f429377df8e40d",
+      "result": "PASS",
+      "checks": 128,
+      "native_size_limits": [
+        {
+          "requested": [
+            1920,
+            1080
+          ],
+          "actual": [
+            1920,
+            994
+          ],
+          "native": {
+            "pid": 44181,
+            "focused": true,
+            "visible": true,
+            "minimized": false,
+            "contentBounds": {
+              "x": 172,
+              "y": 70,
+              "width": 1920,
+              "height": 994
+            },
+            "display": {
+              "id": 1,
+              "bounds": {
+                "x": 0,
+                "y": 0,
+                "width": 1710,
+                "height": 1112
+              },
+              "scaleFactor": 2,
+              "displayFrequency": 60.00239944458008
+            }
+          },
+          "status": "NATIVE_SIZE_NOT_AVAILABLE",
+          "fallback": "CDP content simulation; not physical display or native resize acceptance"
+        }
+      ],
+      "driver_sha256": "abffd37a333d7dc98be6f31616887d953cbf7114a286dda2c355a56cdb814919",
+      "renderer_errors": [],
+      "cleanup_normal": true,
+      "temporary_profile_removed": true
+    },
+    {
+      "command": "DEIDEI_T05_OUTPUT=<fresh-evidence-dir> DEIDEI_PYTHON=<owned-server-python> node docs/results/R04-T05-a/smoke-current.cjs",
+      "executed_at_sha": "c610eff67892bc2964230d5f717e0234f16eb0b6",
+      "result": "PASS",
+      "checks": [
+        {
+          "name": "fresh welcome and familiar branch enters hall",
+          "evidence": {
+            "entry": "main.cjs"
+          }
+        },
+        {
+          "name": "ordinary main real worker submits and reveals",
+          "evidence": {
+            "phase": "revealed",
+            "turn": "1",
+            "source": "live"
+          }
+        },
+        {
+          "name": "solo exit returns to hall"
+        },
+        {
+          "name": "ordinary main unconfigured service is explicit"
+        },
+        {
+          "name": "fresh welcome and familiar branch enters hall",
+          "evidence": {
+            "entry": "tests-online/smoke-main.cjs"
+          }
+        },
+        {
+          "name": "dev no-address launcher explicitly labels MOCK"
+        },
+        {
+          "name": "fresh welcome and familiar branch enters hall",
+          "evidence": {
+            "entry": "main.cjs"
+          }
+        },
+        {
+          "name": "opponent snapshot before reveal contains no submitted move"
+        },
+        {
+          "name": "real loopback create join ready start submit reveal",
+          "evidence": {
+            "source": "online",
+            "actions": [
+              "Charge",
+              "Charge"
+            ]
+          }
+        },
+        {
+          "name": "real online exit returns to hall"
+        },
+        {
+          "name": "no renderer errors"
+        },
+        {
+          "name": "owned loopback server exits",
+          "evidence": {
+            "exit": 0
+          }
+        }
+      ],
+      "driver_sha256": "7f38a33d6d6777cc1e609d92887c75e0ba5c6014324ce8c6e38875936226a39a",
+      "renderer_errors": [],
+      "cleanup_normal": true,
+      "temporary_profiles_removed": true
+    },
+    {
+      "command": "temporary copy: remove latest.zip / append one source byte; check.py --discover empty / deliberate failed unittest",
+      "result": "PASS",
+      "all_negative_cases_rejected": true
+    },
+    {
+      "command": "git diff --check; full git ls-tree -r -l -z and bidirectional diff --name-status -M plus raw modes/blobs; original worktrees readback",
+      "result": "PASS",
+      "original_preservation": {
+        "entries": 33,
+        "uncommitted_files": 234,
+        "mismatches": []
+      }
+    }
+  ],
+  "retained_failed_attempts": [
+    {
+      "name": "C-red",
+      "result": "EXPECTED_FAIL",
+      "reason": "archive idle rgba(16,29,39,0.61); fixed with scoped CSS",
+      "checks": "glass off: archive back idle background alpha=1 and no backdrop"
+    },
+    {
+      "name": "final-graphics",
+      "result": "FAIL",
+      "reason": "OS limited native request 1920x1080 to 1920x994; driver now separates native limit from CDP fallback, layout unchanged"
+    },
+    {
+      "name": "final-routes",
+      "result": "FAIL",
+      "reason": "test expected an old combined MOCK phrase; actual current UI visibly says MOCK; locator corrected"
+    },
+    {
+      "name": "final-routes-2",
+      "result": "FAIL",
+      "reason": "test peer sent empty password; actual no-password protocol requires null; test corrected, product unchanged"
+    }
+  ],
+  "remote_ci": {
+    "conclusion": "success",
+    "headSha": "c610eff67892bc2964230d5f717e0234f16eb0b6",
+    "jobs": [
+      {
+        "completedAt": "2026-10-05T05:45:31Z",
+        "conclusion": "success",
+        "databaseId": 111632267554,
+        "name": "core-tests",
+        "startedAt": "2026-10-05T05:45:08Z",
+        "status": "completed",
+        "steps": [
+          {
+            "completedAt": "2026-10-05T05:45:09Z",
+            "conclusion": "success",
+            "name": "Set up job",
+            "number": 1,
+            "startedAt": "2026-10-05T05:45:08Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:12Z",
+            "conclusion": "success",
+            "name": "Check out source",
+            "number": 2,
+            "startedAt": "2026-10-05T05:45:09Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:12Z",
+            "conclusion": "success",
+            "name": "Set up Python",
+            "number": 3,
+            "startedAt": "2026-10-05T05:45:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:20Z",
+            "conclusion": "success",
+            "name": "Check syntax and run core tests",
+            "number": 4,
+            "startedAt": "2026-10-05T05:45:12Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:25Z",
+            "conclusion": "success",
+            "name": "Set up Node",
+            "number": 5,
+            "startedAt": "2026-10-05T05:45:20Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:27Z",
+            "conclusion": "success",
+            "name": "Install locked desktop dependencies",
+            "number": 6,
+            "startedAt": "2026-10-05T05:45:25Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:29Z",
+            "conclusion": "success",
+            "name": "Check desktop types, build and tests",
+            "number": 7,
+            "startedAt": "2026-10-05T05:45:27Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:29Z",
+            "conclusion": "success",
+            "name": "Post Set up Node",
+            "number": 12,
+            "startedAt": "2026-10-05T05:45:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:29Z",
+            "conclusion": "success",
+            "name": "Post Set up Python",
+            "number": 13,
+            "startedAt": "2026-10-05T05:45:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:29Z",
+            "conclusion": "success",
+            "name": "Post Check out source",
+            "number": 14,
+            "startedAt": "2026-10-05T05:45:29Z",
+            "status": "completed"
+          },
+          {
+            "completedAt": "2026-10-05T05:45:30Z",
+            "conclusion": "success",
+            "name": "Complete job",
+            "number": 15,
+            "startedAt": "2026-10-05T05:45:29Z",
+            "status": "completed"
+          }
+        ],
+        "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/37269163844/job/111632267554"
+      }
+    ],
+    "status": "completed",
+    "url": "https://github.com/Kalopsiazza/DeiDei/actions/runs/37269163844"
+  },
+  "repo_merge_settings": {
+    "allow_merge_commit": false,
+    "allow_rebase_merge": false,
+    "allow_squash_merge": true,
+    "default_branch": "main",
+    "delete_branch_on_merge": true
+  },
+  "main_protection": {
+    "required_linear_history": {
+      "enabled": true
+    },
+    "required_status_checks": {
+      "url": "https://api.github.com/repos/Kalopsiazza/DeiDei/branches/main/protection/required_status_checks",
+      "strict": true,
+      "contexts": [
+        "core-tests"
+      ],
+      "contexts_url": "https://api.github.com/repos/Kalopsiazza/DeiDei/branches/main/protection/required_status_checks/contexts",
+      "checks": [
+        {
+          "context": "core-tests",
+          "app_id": 15368
+        }
+      ]
+    },
+    "enforce_admins": {
+      "url": "https://api.github.com/repos/Kalopsiazza/DeiDei/branches/main/protection/enforce_admins",
+      "enabled": true
+    }
+  },
+  "final_head_note": "Final followup commit changes delivery docs/evidence only. Latest final-head CI is recorded and linked in PR body after push; this snapshot covers the existing tested product commit.",
+  "not_run": [
+    "ML loading/training/evaluation",
+    "external devices and cross DPI",
+    "Windows",
+    "new native package and packaged GUI",
+    "new performance investigation",
+    "full dynamic 10-route / 900-second long run"
+  ],
+  "remote_ci_log": {
+    "read": true,
+    "bytes": 97848,
+    "sha256": "92efbd944e1cee2a3eb6f0fdff516264cdc2bd27cedcc9dc0c1caea8b071cdde"
+  },
+  "source_refs_at_delivery": [
+    "4c8b4656d26fecbe5964a2ac18b51a723f456b14\trefs/heads/codex/video-settings-20261004",
+    "889162fc90000919004f498b27cffbd5fa4cbe45\trefs/heads/main"
+  ]
+}
