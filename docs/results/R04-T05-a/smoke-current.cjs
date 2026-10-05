@@ -60,7 +60,7 @@ async function main() {
     await page.getByText('联机服务尚未配置', {exact: false}).waitFor(); record('ordinary main unconfigured service is explicit'); await shot('online-unconfigured'); await close();
     await launch('tests-online/smoke-main.cjs');
     await page.getByRole('button', {name: '好友联机', exact: false}).click();
-    await page.getByText(/开发预览.*MOCK/).waitFor(); assert.equal((await online()).source, 'fixture'); record('dev no-address launcher explicitly labels MOCK'); await shot('online-mock'); await close();
+    await page.getByText('MOCK', {exact: true}).waitFor(); assert.equal((await online()).source, 'fixture'); record('dev no-address launcher explicitly labels MOCK'); await shot('online-mock'); await close();
     service = spawn(python, ['-u', '-m', 'deidei_server', '--port', '0'], {cwd: root, env, stdio: ['ignore', 'pipe', 'pipe']});
     let stdout = '', stderr = ''; service.stdout.on('data', b => stdout += b); service.stderr.on('data', b => stderr += b);
     const url = await until(() => stdout.match(/Listening: (ws:\/\/127\.0\.0\.1:\d+\/rooms-v1)/)?.[1], 'owned loopback server starts');
