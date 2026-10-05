@@ -70,7 +70,7 @@ async function main() {
     await page.getByRole('slider', {name: '每拍时间', exact: true}).focus(); await page.keyboard.press('End');
     await page.getByRole('button', {name: '创建并进入', exact: true}).click(); await page.locator('.online-lobby').waitFor();
     const created = (await online()).snapshot;
-    peer = await new Peer(url, '合成来宾').open(); await peer.ok('room.join', {room_code: created.view.room_code, password: '', role: 'player'});
+    peer = await new Peer(url, '合成来宾').open(); await peer.ok('room.join', {room_code: created.view.room_code, password: null, role: 'player'});
     await peer.ok('room.ready', {room_id: created.room_id, ready: true});
     await until(async () => (await online()).snapshot.view.members.length === 2, 'guest joins room');
     await page.getByRole('button', {name: '准备', exact: true}).click(); await page.getByRole('button', {name: '开始对局', exact: true}).click(); await enterArena(page);
