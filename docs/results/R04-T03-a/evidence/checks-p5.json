@@ -1,0 +1,118 @@
+{
+  "input": {
+    "sha": "dc38024a91818c3e2a2ca537675549409cfca620",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-performance.cjs\n M game/desktop/smoke-welcome-native.cjs\n?? game/desktop/smoke-control-states.cjs\n?? game/desktop/smoke-modal-contract.cjs"
+  },
+  "checks": [
+    {
+      "name": "build",
+      "command": [
+        "/usr/local/bin/npm",
+        "--prefix",
+        "game/desktop",
+        "run",
+        "build"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 4368,
+      "output": "build.log",
+      "sha256": "3a5f8dde300bba16f661acdd85b3907655c378eed560ef686845c558c11b0708"
+    },
+    {
+      "name": "node",
+      "command": [
+        "/usr/local/bin/node",
+        "--test",
+        "game/desktop/test.cjs",
+        "game/desktop/test-live.cjs",
+        "game/desktop/test-navigation.cjs",
+        "game/desktop/tests-online/test-main-lifecycle.cjs",
+        "game/desktop/tests-online/test-model.cjs",
+        "game/desktop/tests-online/test-network.cjs",
+        "game/desktop/tests-online/test-preload.cjs",
+        "game/desktop/tests-online/test-service-config.cjs",
+        "game/desktop/tests-online/test-session-recovery.cjs",
+        "game/desktop/tests-online/test-v11.cjs",
+        "game/desktop/tests-online/test-view-adapter.cjs"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 2794,
+      "output": "node.log",
+      "sha256": "5b8ac56d6f69fae7e84b487cac44f5c3c80bfef44189b1d8ff58f4e6a080cfdd"
+    },
+    {
+      "name": "python",
+      "command": [
+        "/Users/zengchongtai/develop/DeiDei/.venv/bin/python",
+        "scripts/check.py"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 15581,
+      "output": "python.log",
+      "sha256": "e53785154a44e9d668e54856a64d17e653e78d154508bd1c87fcd366642c332e"
+    },
+    {
+      "name": "style",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-style.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 192,
+      "output": "style.log",
+      "sha256": "c712d6df12421028019acb8dacafdac40378db5c01020eb1402cd947426cb3cf"
+    },
+    {
+      "name": "performance",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-performance.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 3126,
+      "output": "performance.log",
+      "sha256": "0506452978e75b9e65106811b10afcec6e1124452ccf0a58e1eb7689ec6b0901"
+    },
+    {
+      "name": "archive",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-archive-performance.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 242,
+      "output": "archive.log",
+      "sha256": "b224783f7eaa5606a63d5c2dca1a0583edd0d3f794fe89bc8580fcdd296b7248"
+    },
+    {
+      "name": "geometry",
+      "command": [
+        "/usr/local/bin/node",
+        "game/desktop/smoke-geometry.cjs",
+        "--self-check"
+      ],
+      "exitCode": 0,
+      "status": "PASS",
+      "durationMs": 164,
+      "output": "geometry.log",
+      "sha256": "696f7755876c08b598f50adf5f8dfe34befdb49541a68104a2c35419c4934a20"
+    }
+  ],
+  "compiled": {
+    "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+    "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+    "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+    "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+    "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+    "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81"
+  }
+}

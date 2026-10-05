@@ -1,0 +1,202 @@
+# DeiDei 本地桌面（R04）
+
+单人入口已连接本机 Python worker 与 classic-1.0.1 核心，对手标明为「临时随机对手」。33 张牌的资格、费用、胜负和曾义休整来自真实规则。开发预览仍为明确标注的 fixture 固定脚本；切换会结束当前场。
+
+## 从源码运行
+
+需要本机 Python 3.11+、Node/npm；推荐沿用已经验证的 Node 24.12.0 / npm 11.6.2。本节为源码启动；原生分发沿用 [packaging](../packaging/README.md)，成包与系统信任单独验证。先在仓库根目录准备环境：
+
+```sh
+python3 -m venv game/runtime/.venv
+npm --prefix game/desktop ci
+DEIDEI_PYTHON="$PWD/game/runtime/.venv/bin/python" npm --prefix game/desktop start
+```
+
+Python 包只用标准库，无需 pip 安装。已有 Python 可以直接指定其绝对路径：
+
+```sh
+DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop start
+```
+
+前端连续调整时使用开发监听：
+
+```sh
+DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop run dev
+```
+
+它沿用现有 esbuild 和 Electron，修改 renderer、样式、在线页面源码或 `assets/menu` 下的 PNG / WebP 后自动重新构建并刷新窗口。修改 `graphics.cjs` 的配置定义／校验、`fixture.ts`、`main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后完整构建并重新启动（fixture 在主进程加载，前端刷新不会替换已加载的端口）；关闭 Electron 窗口会同时结束监听进程。
+
+Windows 源码步骤（本包未实机验证）：
+
+```powershell
+py -3.11 -m venv game/runtime/.venv
+npm --prefix game/desktop ci
+$env:DEIDEI_PYTHON = (Resolve-Path game/runtime/.venv/Scripts/python.exe).Path
+npm --prefix game/desktop start
+```
+
+`DEIDEI_PYTHON` 仅由本机启动环境提供，renderer 不接收路径。未指定时尝试 PATH 中的 `python3`。缺运行时、超时或进程退出时显示「本场中断，可重新开始」，需自行退出本场并重开；不会恢复丢失的对局，也不会替换成演示数据。
+
+当前锁定依赖为 Electron 44.3.0、React 19.3.0、TypeScript 7.0.2、esbuild 0.28.2、@electron/packager 20.3.0、Playwright-core 1.63.0。R02 的 Forge／23 项告警属于旧交付记录；当前风险以本次实际 audit 为准，不执行 audit fix。源码检查、成包启动与系统信任分别记录。
+
+## 操作与验证
+
+先选牌，再点提交；数字键 1–0 选中，Enter 提交。选择时栅格竞技台虚化为背景，待选大卡居中，左侧保留最多八拍历史；本人五类资源以独立图标、名称和准确数量显示，和出牌时间、三行牌组、确认按钮共同组成操作区。提交后大卡旋转收进本人席位，整个操作区向下退场并景深虚化，竞技台扩大后恢复清晰，牌组不会向上补位。对手在本拍开始、接收玩家输入前固定出招。本地双方揭晓后真实保留 3 秒结算展示，顶栏同时显示进入下一回合的秒数；席位保留最近三拍正式卡面，再进入下一拍。顶部“局势”集中展示所有玩家资源、逐回合出招和淘汰状态；旧资源详情窗已移除。单人“暂停”和“冻结”停止前端轮询及操作，部分背景动画和过渡仍会继续，运行时时钟也继续；冻结不打开弹窗。多人菜单不暂停服务端牌局且冻结禁用；房主可调整之后每拍时限，当前拍截止时间及已提交动作保持不变。曾义休整无需点灰牌。档案和设置保存在 Electron userData 的 local-profile/profile.json，与 worker 生命周期独立。
+
+从仓库根目录：
+
+```sh
+npm --prefix game/desktop test                         # 类型检查、构建及当前桌面／联机单测
+node game/desktop/smoke-live.cjs                       # R02 历史脚本，旧定位需另核对
+PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -v
+```
+
+窗口测试用独立临时档案和专用启动器 `smoke-live-main.cjs`，固定 Random(2) 与独立分支 Random(999)，仍调用真实核心；保存实际 ledger 和截图至 `docs/results/R02-T04-a`。它会终止自己启动的测试 worker 验证中断，不修改网络或系统权限。`npm --prefix game/desktop run smoke` 仍指向这份 R02 脚本；它与旧 `smoke.cjs` 都含已变更的页面定位，不能直接作为 R04 通过证据。R04 定向脚本为 `smoke-r04-battle.cjs`、`smoke-manual.cjs`、`smoke-tutorial.cjs`、`smoke-entry.cjs` 与 `tests-online/smoke.cjs`；实际运行结果按本次精确输入记录。
+
+R02-T04-b 开场和场景切换期间，返回、标题等导航暂时禁用，成功或失败后恢复。专项窗口复测与原回归可从根目录运行：
+
+```sh
+node game/desktop/smoke-live-b.cjs
+DEIDEI_SMOKE_OUTPUT=docs/results/R02-T04-b/regression node game/desktop/smoke-live.cjs
+```
+
+专项脚本在独立临时档案中延迟开场成功/失败、验证返回与标题、重试重开及预览切换；用 Random(13) 产生真实攒/云账目。延迟与失败注入只在专用测试启动器中。截图和账目写入 `docs/results/R02-T04-b`；原回归用输出目录覆盖参数，避免改写 a 包结果。
+
+## 来源与边界
+
+输入集成 SHA `41029218df420985ec06c01f27d4620fd8f35a16`；桌面 tree 来自 `b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1`。新 `worker-bridge.cjs` 取自 `135b938fcfe0486895adfeea37fab73ee5f881dd:experiments/r01-t02-b/bridge.cjs`，改为 1MiB 帧并补 idle-exit 状态。署名仍归 DeiDei contributors，不新增许可证。
+
+renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。真实好友房由独立服务判定，主进程负责连接；renderer 没有任意联网、文件或进程能力。本地 worker 不加载旧模型或训练。当前 R04 演出与原生分发不改变这些安全边界；成包、签名和部署各自记录。
+
+手绘纸色与三类 18/9/6、三排十一列沿用已交付原型。1920×1080 证据为开发视口，非该尺寸物理显示器；物理断网和 Windows 仍需真人复测，步骤见本包 TEST-MATRIX。
+
+## R03-T02-b 好友房桌面客户端（rooms-1.1）
+
+主菜单的好友联机现已接入 `online/network-room-port.cjs` 的 `NetworkRoomPort`，通过主进程全局 WebSocket 连接开发服务。正式启动默认没有服务器地址；没有配置时显示「联机服务尚未配置」，原离线单人仍可用。连接只在进入好友房时建立，临时会话凭证仅留在主进程内存，退出不修改本机档案格式。
+
+热更新 `npm run dev` 在未配置 `DEIDEI_ROOM_URL` 时自动使用仓库已有的 scripted fake socket，可直接查看创建房间、加入房间、大厅和牌桌；界面会明确标记「开发预览 · MOCK · 脚本化 socket」。这只用于前端迭代，不代表真实联机。配置地址后，热更新会改走真实开发服务：
+
+```bash
+DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop run dev
+```
+
+正式界面路径为「L01 联机前厅 → L02 房间部署／L03 房间接入 → L04 房间大厅 → L05 多人入场 → L06 正式战局 → L07 联机结算」。多人战局复用本地正式 `.battle-table` 与共享 `BattleStage`，不再渲染旧 `.online-table`；房主可从结算返回大厅准备下一局，普通成员等待房主。无服务的 `npm run dev` 只提供这条路径的本机 UI 预览，真实房间仍须配置 `DEIDEI_ROOM_URL` 并单独验收。
+
+后续集成包准备好真实服务后，开发启动方式为：
+
+```sh
+DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
+```
+
+源码启动环境接受回环 `ws://127.0.0.1:<port>/rooms-v1` / `ws://[::1]:<port>/rooms-v1` 和证书有效的 `wss://<host>[:port]/rooms-v1`，拒绝远端明文 ws、用户名、查询和片段。成包由固定的 `resources/service-config.json` 指定 WSS；配置无效不会回退至环境变量，配置缺失只允许显式回环诊断。页面没有 URL 输入或凭证接口。CSP、沙箱、本地资源协议、IPC sender/frame 校验保持；原 worker 不处理网络消息。
+
+创建表单从服务 hello 读取默认和范围。房间选项及身份来自服务；33 项卡牌资格/费用来自 self.options，卡面文字来自本地 catalog。DD 使用整数分数字形，揭晓资源取 ledger，观众与淘汰者没有选牌区。准备、房主开始、满员后主动改观战、房主缺席提示、重连、结果/下一场和离房均有独立状态。
+
+每次只发一个待确认意图。断线后按 1/2/4/8 秒带抖动重连，resume 后保留原请求 ID/序号/内容重试；明确失败的操作不自动重发。收到旧连接或旧快照不会覆盖新状态。正常离房等确认后关闭连接；网络断开时主动离开会停止重连，原席位由服务的掉线策略处理。系统关窗确认后最多等待 3 秒发送/确认离房，网络无法确认时仍允许退出。
+
+```sh
+npm --prefix game/desktop test          # 当前桌面／联机单测，包含构建与类型检查
+npm --prefix game/desktop run test:online
+npm --prefix game/desktop run smoke:online
+```
+
+开发热更新和新窗口测试通过 `tests-online/smoke-main.cjs` 注入 scripted fake socket，界面标记「开发预览 · MOCK」，截图不代表真实联网。`smoke:online` 另外启动普通 main 验证无配置提示和真实离线 worker。结果见 `docs/results/R03-T02-b/`，没有接入任务01服务、改变打包路线或进行公网部署。
+
+本任务使用输入锁定的 React 19.3.0、Electron 44.3.0、TypeScript 7.0.2、esbuild 0.28.2、Playwright-core 1.63.0 和 @electron/packager 20.3.0，未改直接依赖或 package-lock。旧 R02-T04-a 的 Forge／23 项告警不能当作本次依赖现状。
+
+rooms-1.1 默认每拍 10 秒，可选 5/8/10/12/20/30 秒；旧版本 hello 显示明确不兼容。房主可在大厅、选择、揭晓、结果阶段调整之后每拍时限，自然淘汰后仍可调整。当前拍时限、截止时间与已交牌保留，只有新快照更新待生效设置。
+
+房主缺席不暂停牌局：页面分别显示连续缺席次数或恢复剩余秒数；pending_close 显示本拍关闭安排并隐藏受限操作。membership.ended 自动返回联机入口，保留本机档案与临时身份，丢弃旧房操作和迟到消息。
+
+`tests-online/room-results-v11.json` 是任务01 b 的实际 Room/core 输出（含完整 last_turn）；内含来源 HEAD、是否有未提交修改及源码 SHA256。使用合成时钟/会话容器，不代表 socket 联调。可在获准的服务 checkout 上重新生成：
+
+```sh
+python3 game/desktop/tests-online/capture-room-results.py /path/to/service-checkout > /tmp/room-results-v11.json
+```
+
+采集脚本只读外部源码，不替换本项目服务，也不修改解码字段。终局 `to_game_id` 必须是与 effective_state.game_id 相等的字符串；单元检查覆盖规则/退赛导致一人或无人存活，拒绝 null、错误游戏标识和私密字段。
+
+## 新手实战教程（本地）
+
+规则图鉴右上角「新手实战」进入同一真实牌桌与 Python 规则核心。第一场跟随界面指示，亲手完成攒 → 防 → bi 三拍；结算后手动点继续。第二场明确重开、双方资源归零，撤掉选牌指示，从三张牌里自行选择，赢下练习即完成；可请求提示，输了直接重试独立场。教学对手在玩家提交前固定合法出招，明确标注，普通单人的随机对手与 33 牌不变。
+
+教程不计出牌时间、不保存进度或新增档案字段，可用暂停菜单退出。进阶资源仍按真实核心变化，完整数据可从局势查看，但基础三牌教程只重点显示 DD。本次新增本地固定教学 IPC 与 worker 会话，未增加 renderer 权限、网络接口、规则判定或依赖。旧开发窗口需重启一次，随后 TutorialCoach/CSS 可热更新。
+
+```sh
+node game/desktop/smoke-tutorial.cjs
+PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -v
+```
+
+PRD/分镜及实际截图、核心账目在 `docs/results/R04-T01-b/tutorial/`。教程效果仍需新玩家试玩；未验收 Windows 或安装包。
+
+图鉴右上角的「先看三张牌／常见问题／完整规则」使用独立原生弹窗，关闭后保留档案与滚动位置；内部卡牌链接关闭弹窗并定位对应招式。
+
+开发预览新增 `P01 · 首次进入／欢迎建档`，复用真实初次建档页面；可以试填昵称、选头像，但不写档案，结束预览返回菜单。主菜单退出应用与牌桌退出本场都先确认，取消保留当前页面／选牌。
+
+
+欢迎流程已接入真实首次建档页面：DeiDei 标题与右侧牌背 → 点击进入牌厅，翻牌至中央 → 填写昵称／头像 → 新手实战或主菜单。已有档案从「开发预览 → P01」重播，预览不写档案。`WelcomeEntrance.tsx` 和 `welcome.css` 已加入 `npm run dev` 热更新监听，界面不增加依赖；6 秒 AI 片段生成包位于 `docs/results/R04-T01-b/opening-3d/combat-6s/BRIEF.md`，用户回传的 4:3 成片已上下各裁 180px，得到 1920×1080／6.584 秒，保留音轨并接入开场；自动静音播放，可开启声音／跳过，标题页可重播。播放结束淡入标题／牌背；减少动态直接到标题，媒体失败回退标题。视频仅由本地精确资产白名单与 media-src self 提供。
+
+开发热更新只刷新前端；改动 `main.cjs`、`preload.cjs` 或 `ui-assets.cjs` 后须退出旧窗口并重新运行 `npm run dev`，否则新增媒体白名单仍是旧版本，会出现开场重播立即回到标题。
+
+欢迎页现在每次启动都会播放开场，已有档案显示「以昵称身份进入牌厅」；按钮昵称超过6个字符省略显示，真实昵称与本机档案不变。建档／就位覆盖薄层毛玻璃，就位时共享大厅背景推进7%；进入菜单时卡牌旋转缩小下沉，背景恢复清晰，人物与菜单同步入场。欢迎与菜单保留同一front-stage，过渡期间菜单覆盖同一视口并暂时inert，结束恢复焦点。当前ProfileStore与IPC只支持单档案，多身份列表／切换及「登录其他身份」本轮未实现。
+
+
+## R04 前端阶段交付（2026-10-02）
+
+完整阶段成果、源码阅读顺序、验证边界与待规划技术债见 [阶段交接](../../docs/results/R04-T01-b/STAGE-HANDOFF-2026-10-02.md)。读取本阶段时以草稿 PR 正文的完整 head SHA 为准，不以默认 main 或早期测试计数代表本阶段。
+
+
+## R04-T02-a 分发输入
+
+原生 stage 由 `game/packaging/stage.cjs` 读取产品 `UI_ASSETS`，另列主进程运行模块；包括 `online/network-room-port.cjs`、`online/wire.cjs` 与 `catalog.json`，欢迎样式／视频／牌背与两张擂台图。缺文件或本地 require 未列入 stage 时，检查列出具体路径并失败。四张旧中庭图按现 PRD 保留源文件，不再进入正式白名单与分发。
+
+`ManualArchive.tsx` 引用的 `docs/results/R04-T01-b/manual-content/content.json` 属于真实编译输入：未提交时原生构建拒绝继续，其摘要进入 `build-info.json`。运行时使用编译后的 renderer，无需在包内携带 docs。原生验证和未测边界见 [任务 A 记录](../../docs/results/R04-T02-a/REPORT.md)。
+
+## R04-T03-a 定向复测
+
+从仓库根目录先构建，再运行；输出选择新的忽略目录，不覆盖旧失败证据。所有脚本使用临时档案，只关闭自己启动的进程。
+
+```sh
+npm --prefix game/desktop run build
+node game/desktop/smoke-completion.cjs              # 真实main四预览、Modal键盘/迟延/失败
+DEIDEI_PYTHON=/absolute/path/to/python3 node game/desktop/smoke-dynamic.cjs
+node game/desktop/smoke-style.cjs --self-check       # 五类无效样本拒绝
+node game/desktop/smoke-welcome-native.cjs           # dev入口重播/P01/实际刷新标记
+node game/desktop/smoke-welcome-native.cjs --native-only # 600秒观察窗，原生操作由操作者完成
+OUT=/absolute/new/ignored/directory node game/desktop/smoke-archive-performance.cjs
+```
+
+原生观察窗记录实际事件和显示器；操作者完成后在该输出目录创建 `native.done` 结束观察。自动 setContentSize、CDP 内容区／偏好样本和原生拖动证据分别记录，不能互相替代。Mac 需保持解锁；性能取样必须前台、焦点明确。
+
+真实服务需要额外的服务运行时依赖（worker 本身仍只用标准库）：
+
+```sh
+python3 -m venv game/server/.venv
+game/server/.venv/bin/python -m pip install -r game/server/requirements.lock
+PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m deidei_server --port 8765
+# 另一终端：普通main + 真实回环服务
+DEIDEI_PYTHON=/absolute/path/to/python3 DEIDEI_ROOM_URL=ws://127.0.0.1:8765/rooms-v1 npm --prefix game/desktop start
+# 有websockets依赖的Python；脚本自行启停真实回环服务和合成对手
+DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dynamic.cjs
+# 仅固定原窗口、同host按6/3/4/5/2复用的有界停顿调查（流程PASS不等于性能PASS）
+DEIDEI_PYTHON=/absolute/path/to/server-python node game/desktop/smoke-online-dynamic.cjs --steady-only
+```
+
+本包源码、实际输入、失败与未验条件见 [结果](../../docs/results/R04-T03-a/REPORT.md)，不复用旧检查总数作为本轮结论。
+
+## 画面设置（R04-T04-a）
+
+设置增加“画面 / GRAPHICS”：高质量、均衡、流畅预设，以及动态、玻璃、装饰三个细项。手动组合自动显示“自定义”，调回完整组合后恢复预设名称。编辑即时预览，切换分类继续保留；放弃关闭恢复已保存效果，保存失败保留草稿供重试，保存中阻止重复操作与离开。效果覆盖大厅、设置、图鉴及其共享弹窗；系统减少动态／透明度继续优先，设置值不随系统偏好改写。
+
+新建和确认恢复的档案保存 v2＋均衡。合法旧 v1 只在内存转为 v2＋高质量，首次读取不改文件，下一次正常保存才迁移。严格拒绝未知字段与非法画面值，沿用同目录临时写入及 rename；界面没有新增文件、进程或网络权限。`graphics.cjs` 为主进程与 renderer 共用的纯模块，修改定义／校验后需完整重启 Electron；面板及职责 CSS 可以热更新。
+
+```sh
+npm --prefix game/desktop run build
+node --test game/desktop/test.cjs game/desktop/test-graphics.cjs game/desktop/test-navigation.cjs
+node --test --test-name-pattern="R04 release stage derives" game/desktop/test-packaging.cjs
+node game/desktop/smoke-graphics.cjs
+node game/desktop/smoke-graphics.cjs --measure
+node game/desktop/smoke-graphics.cjs --measure --settings-only # 只复测设置差异
+```
+
+脚本使用自己启动的普通 main、隔离合成档案及既有退出清理工具。功能模式仅对保存通路注入写盘前失败／迟延；`--measure` 独立执行三档短对照，记录原生显示器、DPR、焦点、实际滚动及 rAF 间隔。输出默认位于主仓库 ignored `.local-outputs/R04-T04-a/` 的新目录，`DEIDEI_GRAPHICS_OUTPUT` 可指定新目录。rAF 间隔不代表实际呈现 FPS；此检查不替代安装包、跨设备或物理 4K 验收。实际结果见 [报告](../../docs/results/R04-T04-a/REPORT.md)。

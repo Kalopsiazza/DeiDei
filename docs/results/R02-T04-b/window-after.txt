@@ -1,0 +1,4 @@
+PASS Delayed success blocks native back/title clicks and restores navigation
+PASS Cancelled Charge/Cloud shows no gain and exact zero balance
+PASS Delayed failure unlocks back/title and allows retry and fresh start
+PASS Scene switching also blocks dialog/title navigation, then restores fixture controls

@@ -1,0 +1,399 @@
+[
+  {
+    "case_id": "C044",
+    "variant": "tian_reflect_selfbi",
+    "rules_version": "classic-1.0.1",
+    "scope": "core",
+    "input": {
+      "state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "game-1",
+        "game_index": "1",
+        "turn_index": "6",
+        "roster": [
+          "A",
+          "B",
+          "C"
+        ],
+        "active_ids": [
+          "A",
+          "B",
+          "C"
+        ],
+        "status": "playing",
+        "winner_id": null,
+        "players": {
+          "A": {
+            "dd6": "60",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "B": {
+            "dd6": "60",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "C": {
+            "dd6": "60",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "submissions": {
+        "A": "TianLiJun",
+        "B": "Reflect",
+        "C": "SelfBi"
+      },
+      "choice_tokens": {}
+    },
+    "expected": {
+      "ok": true,
+      "eliminated_ids": [
+        "A",
+        "B"
+      ],
+      "kills": {
+        "A": [],
+        "B": [
+          "A"
+        ],
+        "C": [
+          "B"
+        ]
+      },
+      "transition": {
+        "kind": "sole_survivor",
+        "from_game_id": "game-1",
+        "to_game_id": "game-1",
+        "winner_id": "C"
+      },
+      "actions": {
+        "A": {
+          "entry_id": "TianLiJun",
+          "actual_move": "TianLiJun",
+          "origin": "normal",
+          "branch": null,
+          "condition": null,
+          "is_recovery": false,
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "54",
+            "comparison": "le"
+          },
+          "defense_return": null,
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          }
+        },
+        "B": {
+          "entry_id": "Reflect",
+          "actual_move": "Reflect",
+          "origin": "normal",
+          "branch": null,
+          "condition": null,
+          "is_recovery": false,
+          "enhanced_xiao": false,
+          "attack6": "0",
+          "defense_primary": {
+            "kind": "finite",
+            "sixths": "600",
+            "comparison": "le"
+          },
+          "defense_return": null,
+          "spend": {
+            "dd6": "6",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          }
+        },
+        "C": {
+          "entry_id": "SelfBi",
+          "actual_move": "SelfBi",
+          "origin": "normal",
+          "branch": null,
+          "condition": "success",
+          "is_recovery": false,
+          "enhanced_xiao": false,
+          "attack6": "60000",
+          "defense_primary": {
+            "kind": "unbounded"
+          },
+          "defense_return": {
+            "kind": "unbounded"
+          },
+          "spend": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "reward_stock": "0"
+          },
+          "eligible_targets": [
+            "B"
+          ]
+        }
+      },
+      "post_turn_players": {
+        "A": {
+          "dd6": "60",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "pending_bombs": [],
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "1",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "last_actual_move": "TianLiJun",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "B": {
+          "dd6": "54",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "pending_bombs": [],
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "last_actual_move": "Reflect",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        },
+        "C": {
+          "dd6": "60",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "pending_bombs": [],
+          "bomb_placement_count": "0",
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "zhang_used": false,
+          "liq_used": false,
+          "enhanced_xiao": false,
+          "last_actual_move": "SelfBi",
+          "latest_copyable_move": null,
+          "zeng_state": "unused",
+          "reward_due_turn": null
+        }
+      },
+      "next_state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "game-1",
+        "game_index": "1",
+        "turn_index": "6",
+        "roster": [
+          "A",
+          "B",
+          "C"
+        ],
+        "active_ids": [
+          "C"
+        ],
+        "status": "finished",
+        "winner_id": "C",
+        "players": {
+          "A": {
+            "dd6": "60",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "1",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "TianLiJun",
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "B": {
+            "dd6": "54",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "Reflect",
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "C": {
+            "dd6": "60",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": "SelfBi",
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "required_events": [
+        {
+          "match": {
+            "kind": "direct_elimination",
+            "phase": "P2",
+            "actor_id": "B",
+            "target_id": "A",
+            "amount6": null,
+            "result": "applied"
+          },
+          "count": 1
+        }
+      ],
+      "forbidden_events": [
+        {
+          "kind": "return"
+        }
+      ],
+      "options": {
+        "A": {
+          "TianLiJun": {
+            "available": true,
+            "reason_code": null,
+            "forced": false,
+            "required": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            },
+            "spend": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            }
+          }
+        },
+        "B": {
+          "Reflect": {
+            "available": true,
+            "reason_code": null,
+            "forced": false,
+            "required": {
+              "dd6": "6",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            },
+            "spend": {
+              "dd6": "6",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            }
+          }
+        },
+        "C": {
+          "SelfBi": {
+            "available": true,
+            "reason_code": null,
+            "forced": false,
+            "required": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            },
+            "spend": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "reward_stock": "0"
+            }
+          }
+        }
+      }
+    },
+    "rule_ids": [
+      "R04",
+      "R05",
+      "R14",
+      "R22"
+    ],
+    "source_notes": "CASES.md#C044; RULEBOOK 1.0.1; authored balances in sixths."
+  }
+]

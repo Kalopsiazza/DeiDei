@@ -1,0 +1,98 @@
+{
+  "input": {
+    "sha": "dc38024a91818c3e2a2ca537675549409cfca620",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-performance.cjs\n M game/desktop/smoke-welcome-native.cjs\n?? game/desktop/smoke-control-states.cjs\n?? game/desktop/smoke-modal-contract.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T05:29:46.998Z",
+    "mainProcess": "fresh host and guest original main via test-only named IPC delay wrapper; independent actual setup rounds, no dynamic flight/timing claim"
+  },
+  "source": "ordinary main / real owned CLI service / synthetic socket peers",
+  "geometrySource": "continuous native setContentSize; not physical dragging or cross-display evidence",
+  "checks": [],
+  "geometry": [],
+  "targets": [],
+  "business": [],
+  "segments": [],
+  "screenshots": [],
+  "errors": [],
+  "cleanup": [
+    {
+      "kind": "app",
+      "name": "动态房主",
+      "pid": 97953,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T05:29:48.345Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T05:29:48.346Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T05:29:48.346Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T05:29:48.500Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T05:29:48.500Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    {
+      "kind": "service",
+      "pid": 97952,
+      "forced": false,
+      "exitCode": 0,
+      "signal": null
+    },
+    {
+      "kind": "profile",
+      "removed": true
+    }
+  ],
+  "mode": "isolated real online control-state setup, actual retry/capacity and documented IPC delays",
+  "displays": [],
+  "servicePid": 97952,
+  "serviceStderr": [],
+  "controlWrapper": {
+    "path": "/Users/zengchongtai/develop/DeiDei/.local-outputs/r04-t03-a/controls-online-nohold-v6/online-control-main.cjs",
+    "sha256": "c80a97886d568735d1231ed3cc36e29878c3b8ae40648c3af8ae4195d941102b",
+    "source": "Original main is required unchanged; only a named IPC handler is delayed; original sender/frame/argument guard and real protocol still run once. No synthetic error, payload, component or DOM attributes."
+  },
+  "status": "FAIL",
+  "failure": {
+    "message": "actual native focus required",
+    "stack": "AssertionError [ERR_ASSERTION]: actual native focus required\n    at focus (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:24:230)\n    at async launch (/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:70:225)\n    at async /Users/zengchongtai/develop/DeiDei/.worktrees/r04-t03-a/game/desktop/smoke-online-dynamic.cjs:247:8"
+  }
+}

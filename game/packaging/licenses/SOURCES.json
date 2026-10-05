@@ -1,0 +1,472 @@
+{
+  "darwin-arm64": {
+    "python": "3.11.16",
+    "archive": "cpython-3.11.16+20260901-aarch64-apple-darwin-pgo+lto-full.tar.zst",
+    "archive_sha256": "19b8d2af1719e3fe8cd4edfa2e5030dab776233c05044f4348dbe3c0af7d1b2f",
+    "source": "https://github.com/astral-sh/python-build-standalone/releases/tag/20260901",
+    "license_sha256": {
+      "LICENSE.bzip2.txt": "1f38bbc7caacafd65169276d759c0d88c991b753b643ce35d0e45ea1971dd441",
+      "LICENSE.cpython.txt": "86e61415828a8b5b06ec8d024e6f086ce155a8b85fd0c419c0ba4dc004e74fdd",
+      "LICENSE.expat.txt": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+      "LICENSE.libedit.txt": "29cea33c32bbc9785142386377915612a2fa786482c46843383384aded2e09b1",
+      "LICENSE.libffi.txt": "deaf3a42effb551a5b140fa9afefed183a27f1341c6d1bf430d106a5e6931fc0",
+      "LICENSE.liblzma.txt": "9a4062de0a2c388a98cf35a35d348b62fa97c838a71c3c28ee1a2d7d0a565b02",
+      "LICENSE.libuuid.txt": "122ee1f7e258f2c3c0e538a75c037684f420454bf3850ddc74ce750bbf5fe86b",
+      "LICENSE.mpdecimal.txt": "669512af7219f58be03a398766d7c9da11a3b3df9d3f05cb74c5ceca25c8da3b",
+      "LICENSE.ncurses.txt": "87a4c4442337b8968ef956031c406b74f9cb7149b7ba87311bdaba534816201c",
+      "LICENSE.openssl-1.1.txt": "9c04cce50c4989d5601dd8b07f6ab922c40388b66ac736c9007cb1ed9d9dd560",
+      "LICENSE.openssl-3.txt": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+      "LICENSE.sqlite.txt": "38bef3d28b24f145ea293bd3b6eb4b20396982abc8303128fb493986ea5bc719",
+      "LICENSE.tcl.txt": "c0a69a2bfd757361ec7e6143973b103c90409316b49e9c88db26ad6388e79f16",
+      "LICENSE.zlib.txt": "818922b2620f12801a12bf78e399644a30990e66824abd8ca8ec24d451d6f92c",
+      "LICENSE.bdb.txt": "3bdff06e69991c94664f2ef5c5f8096f60b7dbec071756ea6cc26b445e06ec5b",
+      "LICENSE.libX11.txt": "2daec087a88e7c9b8082557cdeebad5bbb8155a4137472f0b22e269cd99d0c1e",
+      "LICENSE.libXau.txt": "56abe29bb1d9806a9e04fa9f80fed2c0f18027594df3f098148d814aef6bddfa",
+      "LICENSE.libxcb.txt": "c5ffbfeaa501071ceeb97b7de2c0d703fdaa35de01c0fb6cbac1c28453a3e9fd",
+      "darwin-arm64-LICENSE.tix.txt": "3ac5cdd0bef6c43ce34c6a7ced452081d9e5a0bf94082b9f9147d23ec9e214f5"
+    },
+    "extensions": {
+      "_bz2": {
+        "paths": [
+          "licenses/LICENSE.bzip2.txt"
+        ],
+        "licenses": [
+          "bzip2-1.0.6"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "bz2",
+            "path_static": "build/lib/libbz2.a"
+          }
+        ]
+      },
+      "_ctypes": {
+        "paths": [
+          "licenses/LICENSE.libffi.txt"
+        ],
+        "licenses": [
+          "MIT"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "dl",
+            "system": true
+          },
+          {
+            "name": "ffi",
+            "path_static": "build/lib/libffi.a"
+          }
+        ]
+      },
+      "_curses": {
+        "paths": [
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "licenses": [
+          "X11"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "ncurses",
+            "system": true
+          }
+        ]
+      },
+      "_curses_panel": {
+        "paths": [
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "licenses": [
+          "X11"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "ncurses",
+            "system": true
+          },
+          {
+            "name": "panel",
+            "system": true
+          }
+        ]
+      },
+      "_decimal": {
+        "paths": [
+          "licenses/LICENSE.mpdecimal.txt"
+        ],
+        "licenses": [
+          "BSD-2-Clause"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "mpdec",
+            "path_static": "build/lib/libmpdec.a"
+          }
+        ]
+      },
+      "_elementtree": {
+        "paths": [
+          "licenses/LICENSE.expat.txt"
+        ],
+        "licenses": [
+          "MIT"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "expat",
+            "path_static": "build/lib/libexpat.a"
+          }
+        ]
+      },
+      "_hashlib": {
+        "paths": [
+          "licenses/LICENSE.openssl-1.1.txt",
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "licenses": [
+          "Apache-2.0",
+          "OpenSSL"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "crypto",
+            "path_static": "build/lib/libcrypto.a"
+          }
+        ]
+      },
+      "_lzma": {
+        "paths": [
+          "licenses/LICENSE.liblzma.txt"
+        ],
+        "licenses": [
+          "0BSD"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "lzma",
+            "path_static": "build/lib/liblzma.a"
+          }
+        ]
+      },
+      "_sqlite3": {
+        "paths": [
+          "licenses/LICENSE.sqlite.txt"
+        ],
+        "licenses": [],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "sqlite3",
+            "path_static": "build/lib/libsqlite3.a"
+          }
+        ]
+      },
+      "_ssl": {
+        "paths": [
+          "licenses/LICENSE.openssl-1.1.txt",
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "licenses": [
+          "Apache-2.0",
+          "OpenSSL"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "crypto",
+            "path_static": "build/lib/libcrypto.a"
+          },
+          {
+            "name": "ssl",
+            "path_static": "build/lib/libssl.a"
+          }
+        ]
+      },
+      "_tkinter": {
+        "paths": [
+          "licenses/LICENSE.tcl.txt"
+        ],
+        "licenses": [
+          "TCL"
+        ],
+        "in_core": false,
+        "shared_lib": "install/lib/python3.11/lib-dynload/_tkinter.cpython-311-darwin.so",
+        "links": [
+          {
+            "name": "tcl9.0",
+            "system": true
+          },
+          {
+            "name": "tcl9tk9.0",
+            "system": true
+          }
+        ]
+      },
+      "_uuid": {
+        "paths": [
+          "licenses/LICENSE.libuuid.txt"
+        ],
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "uuid",
+            "path_static": "build/lib/libuuid.a"
+          }
+        ]
+      },
+      "pyexpat": {
+        "paths": [
+          "licenses/LICENSE.expat.txt"
+        ],
+        "licenses": [
+          "MIT"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "expat",
+            "path_static": "build/lib/libexpat.a"
+          }
+        ]
+      },
+      "readline": {
+        "paths": [
+          "licenses/LICENSE.libedit.txt",
+          "licenses/LICENSE.ncurses.txt"
+        ],
+        "licenses": [
+          "BSD-3-Clause",
+          "X11"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "edit",
+            "system": true
+          },
+          {
+            "name": "ncurses",
+            "system": true
+          }
+        ]
+      },
+      "zlib": {
+        "paths": [
+          "licenses/LICENSE.zlib-ng.txt",
+          "licenses/LICENSE.zlib.txt"
+        ],
+        "licenses": [
+          "Zlib"
+        ],
+        "in_core": false,
+        "shared_lib": null,
+        "links": [
+          {
+            "name": "z",
+            "system": true
+          }
+        ]
+      }
+    },
+    "missing_metadata_paths": [
+      "licenses/LICENSE.zlib-ng.txt"
+    ],
+    "note": "Official full distribution notice set retained conservatively, including notices for optional libraries not linked into the frozen worker. This copies notices only, not extra dependencies. macOS metadata zlib-ng notice is absent from its upstream archive and not required by its system zlib link; Windows core includes classic zlib and its notice is retained."
+  },
+  "win32-x64": {
+    "python": "3.11.16",
+    "archive": "cpython-3.11.16+20260901-x86_64-pc-windows-msvc-pgo-full.tar.zst",
+    "archive_sha256": "836addb9b2f34b796d34dbd79194515f445317e24ea7accbd0694ab23fd164a8",
+    "source": "https://github.com/astral-sh/python-build-standalone/releases/tag/20260901",
+    "license_sha256": {
+      "win32-x64-LICENSE.bzip2.txt": "bd5628cc76fb0ebf9c657d1dd4d1a240a1a7b216c31663e7bbf1131c0b70a910",
+      "win32-x64-LICENSE.cpython.txt": "8fe98bf9822926d854f56ffd8d97877d8b942617aa44eb7ea77fd99e22f2537e",
+      "win32-x64-LICENSE.libffi.txt": "9afb8970cd29fc1031fa647278e4bef613399e2e3468a1e3a397f4d158c6101c",
+      "win32-x64-LICENSE.liblzma.txt": "d87d218dd908b3243ec4cbc72af400e5b7437513ea9d9229291d0812b8464fec",
+      "win32-x64-LICENSE.libuuid.txt": "cbccaa3efe07a9a602751375085be572d4410a250b996716fbe8c5255c7ec6f2",
+      "win32-x64-LICENSE.openssl-3.txt": "ed72ce2b51ee58f117e5a021e2e04af158857f40269fbc03491f0b2a99dbcc96",
+      "win32-x64-LICENSE.sqlite.txt": "d8eb9aba7ef6b5ed06cb3ec19a7242316af2e5933c638eb67fb781c13884e01d",
+      "win32-x64-LICENSE.tcl.txt": "41613eabfc08921a7da9c4bfd7f3ce5d5406f55214b253d89f392ed86eebeb8f",
+      "LICENSE.tix.txt": "8cdff3addb9e9eb108c78e2cf5e05f26b216c098304945733bbec382b2eaef66",
+      "win32-x64-LICENSE.bdb.txt": "8f2d533ab34899499d5b07f209854b101b17dba2c69f3251860aecf3e4005faa",
+      "win32-x64-LICENSE.expat.txt": "8a9cfe4b5924f4b25881aa0c9f5e4561c5f31065d0c4a13cdcdbcf917edf39aa",
+      "win32-x64-LICENSE.libX11.txt": "f353accfe2976df31ea297a77d1d454bd51ef6be8c3df39bd6aca95901579357",
+      "win32-x64-LICENSE.libXau.txt": "cec808cd2163fccdc8de4a91d526490777afbaeea060e1168c40a804694b7444",
+      "win32-x64-LICENSE.libedit.txt": "d9932ccdd42eccf6cdded7bcb35b088e64cfc7c24d355af2cc0d02edb6b637d3",
+      "win32-x64-LICENSE.libxcb.txt": "29a9539190e6de1af5fd06a9139c7103137cd1f9290b08c7b11bce89c01c14d2",
+      "win32-x64-LICENSE.mpdecimal.txt": "f094277cd46e1f6e4d87916cc4b51e22f613d45eb81f48231c3cb7caf8fc8a6a",
+      "win32-x64-LICENSE.ncurses.txt": "4f571cad3ea6c888bf0a7092e5b215dddb3142e9e3f1857fd5fac6cf13d345d7",
+      "win32-x64-LICENSE.openssl-1.1.txt": "ad89e3fed746413af1d34d5353978ee1520cedd361c853f8022e7bb210ac6b31",
+      "win32-x64-LICENSE.zlib.txt": "365e36720db366054863235aea5d6f440142ab968834bfaf81fa9d187c99b9b8"
+    },
+    "extensions": {
+      "_bz2": {
+        "paths": [
+          "licenses/LICENSE.bzip2.txt"
+        ],
+        "licenses": [
+          "bzip2-1.0.6"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_bz2.pyd",
+        "links": []
+      },
+      "_ctypes": {
+        "paths": [
+          "licenses/LICENSE.libffi.txt"
+        ],
+        "licenses": [
+          "MIT"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_ctypes.pyd",
+        "links": [
+          {
+            "name": "libffi-8",
+            "path_dynamic": "install/DLLs/libffi-8.dll"
+          }
+        ]
+      },
+      "_hashlib": {
+        "paths": [
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "licenses": [
+          "Apache-2.0"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_hashlib.pyd",
+        "links": [
+          {
+            "name": "ws2_32",
+            "system": true
+          },
+          {
+            "name": "libcrypto-1_1-x64",
+            "path_dynamic": "install/DLLs/libcrypto-1_1-x64.dll"
+          }
+        ]
+      },
+      "_lzma": {
+        "paths": [
+          "licenses/LICENSE.liblzma.txt"
+        ],
+        "licenses": [
+          "0BSD"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_lzma.pyd",
+        "links": []
+      },
+      "_sqlite3": {
+        "paths": [
+          "licenses/LICENSE.sqlite.txt"
+        ],
+        "licenses": [],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_sqlite3.pyd",
+        "links": [
+          {
+            "name": "sqlite3",
+            "path_dynamic": "install/DLLs/sqlite3.dll"
+          }
+        ]
+      },
+      "_ssl": {
+        "paths": [
+          "licenses/LICENSE.openssl-3.txt"
+        ],
+        "licenses": [
+          "Apache-2.0"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_ssl.pyd",
+        "links": [
+          {
+            "name": "crypt32",
+            "system": true
+          },
+          {
+            "name": "ws2_32",
+            "system": true
+          },
+          {
+            "name": "libcrypto-1_1-x64",
+            "path_dynamic": "install/DLLs/libcrypto-1_1-x64.dll"
+          },
+          {
+            "name": "libssl-1_1-x64",
+            "path_dynamic": "install/DLLs/libssl-1_1-x64.dll"
+          }
+        ]
+      },
+      "_tkinter": {
+        "paths": [
+          "licenses/LICENSE.tcl.txt",
+          "licenses/LICENSE.tix.txt"
+        ],
+        "licenses": [
+          "TCL"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_tkinter.pyd",
+        "links": [
+          {
+            "name": "$(tcltk",
+            "system": true
+          },
+          {
+            "name": "tcl86t",
+            "path_dynamic": "install/DLLs/tcl86t.dll"
+          },
+          {
+            "name": "tk86t",
+            "path_dynamic": "install/DLLs/tk86t.dll"
+          }
+        ]
+      },
+      "_uuid": {
+        "paths": [
+          "licenses/LICENSE.libuuid.txt"
+        ],
+        "licenses": [
+          "BSD-3-Clause"
+        ],
+        "in_core": false,
+        "shared_lib": "install/DLLs/_uuid.pyd",
+        "links": [
+          {
+            "name": "rpcrt4",
+            "system": true
+          }
+        ]
+      }
+    },
+    "missing_metadata_paths": [],
+    "note": "Official full distribution notice set retained conservatively, including notices for optional libraries not linked into the frozen worker. This copies notices only, not extra dependencies. macOS metadata zlib-ng notice is absent from its upstream archive and not required by its system zlib link; Windows core includes classic zlib and its notice is retained."
+  }
+}

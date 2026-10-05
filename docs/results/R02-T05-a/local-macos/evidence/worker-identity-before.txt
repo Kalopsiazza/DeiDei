@@ -1,0 +1,25 @@
+Executable=<WORKTREE>/game/packaging/build/darwin-arm64-xo0ewoko/frozen/worker/deidei-worker
+Identifier=deidei-worker-55554944c0e16ef62264ac98f7a85262176851e3
+Format=Mach-O thin (arm64)
+CodeDirectory v=20400 size=3727 flags=0x2(adhoc) hashes=110+2 location=embedded
+VersionPlatform=1
+VersionMin=720896
+VersionSDK=983040
+Hash type=sha256 size=32
+CandidateCDHash sha256=8b2dbdc1ff3dc1d06b371bfe9f7805a9fe7aa0b5
+CandidateCDHashFull sha256=8b2dbdc1ff3dc1d06b371bfe9f7805a9fe7aa0b5a44b585da1bad728e3bf1d7f
+Hash choices=sha256
+CMSDigest=8b2dbdc1ff3dc1d06b371bfe9f7805a9fe7aa0b5a44b585da1bad728e3bf1d7f
+CMSDigestType=2
+Executable Segment base=0
+Executable Segment limit=49152
+Executable Segment flags=0x1
+Page size=16384
+CDHash=8b2dbdc1ff3dc1d06b371bfe9f7805a9fe7aa0b5
+Signature=adhoc
+Info.plist=not bound
+TeamIdentifier=not set
+Sealed Resources=none
+Internal requirements count=0 size=12
+Total signatures=1
+Chosen signature=1

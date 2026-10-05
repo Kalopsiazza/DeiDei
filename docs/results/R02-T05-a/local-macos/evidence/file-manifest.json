@@ -1,0 +1,1589 @@
+{
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app/Contents/Info.plist": {
+    "sha256": "50a013db701b34c8d2fc47a6c810403d45d3a523360d074a7cb327776ccdda23",
+    "bytes": 1203,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app/Contents/MacOS/DeiDei R02 Helper (GPU)": {
+    "sha256": "114124d555fe87acb20d12afdf83f322f3ed1fa7d03f768c568f44bb29452bc8",
+    "bytes": 203008,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app/Contents/PkgInfo": {
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+    "bytes": 8,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (GPU).app/Contents/_CodeSignature/CodeResources": {
+    "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+    "bytes": 2200,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app/Contents/Info.plist": {
+    "sha256": "105c1f208d03de3701e5b472229a871f1d2ae0c6b059d7b915aa1cf33495b9b9",
+    "bytes": 1212,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app/Contents/MacOS/DeiDei R02 Helper (Plugin)": {
+    "sha256": "17dad13627ecbb6b867ed99a3f0b6906cfec8fc1f805002fa1379a92e0aab51c",
+    "bytes": 203296,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app/Contents/PkgInfo": {
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+    "bytes": 8,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Plugin).app/Contents/_CodeSignature/CodeResources": {
+    "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+    "bytes": 2200,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app/Contents/Info.plist": {
+    "sha256": "7b6bf8d4e31ceab87706981a09b9e5a7297469e3ef1e3b1c5db7f4340b44bc68",
+    "bytes": 1218,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app/Contents/MacOS/DeiDei R02 Helper (Renderer)": {
+    "sha256": "3670e0821309491e0f83b8ea99ce34c348251f474b336ff5c63355daf7e567de",
+    "bytes": 203008,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app/Contents/PkgInfo": {
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+    "bytes": 8,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper (Renderer).app/Contents/_CodeSignature/CodeResources": {
+    "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+    "bytes": 2200,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app/Contents/Info.plist": {
+    "sha256": "80114533b3504512608cec56f0354f1670f775f48cd6f66e5c395413e01042b9",
+    "bytes": 1178,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app/Contents/MacOS/DeiDei R02 Helper": {
+    "sha256": "c0d802cf614259a9a781696b5c5f55661e85177a85fb0eb40e07a09f25181fa8",
+    "bytes": 203792,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app/Contents/PkgInfo": {
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+    "bytes": 8,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/DeiDei R02 Helper.app/Contents/_CodeSignature/CodeResources": {
+    "sha256": "6686de10a28a2fe11b36cbb86dcbacc827cfc4ea116b4dabf1845e5aee629e9b",
+    "bytes": 2200,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Electron Framework": {
+    "symlink": "Versions/Current/Electron Framework"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Helpers": {
+    "symlink": "Versions/Current/Helpers"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Libraries": {
+    "symlink": "Versions/Current/Libraries"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Resources": {
+    "symlink": "Versions/Current/Resources"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Electron Framework": {
+    "sha256": "5d7b0d500efdfd363beceb3301674531492042c45f4bef843e2d8c13bcbd1070",
+    "bytes": 200424864,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Helpers/chrome_crashpad_handler": {
+    "sha256": "e7c461ff079e80e42d64c1317a9182835bcc972a554462507941190749cd6ea6",
+    "bytes": 1221904,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libffmpeg.dylib": {
+    "sha256": "13040c624445b5a0dc54558b1d21c68caa83c388d86d09910ae25fceb2239100",
+    "bytes": 2304640,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/libvk_swiftshader.dylib": {
+    "sha256": "60a62a33e12c43122fb274f441d74b8ff24d1fa1fa762c9c42023f78c8308586",
+    "bytes": 16510848,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Libraries/vk_swiftshader_icd.json": {
+    "sha256": "d717d915e31e7c27948b80b36ab34e2d897888114c5c7d0af835f93eb53e58f5",
+    "bytes": 110,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/Info.plist": {
+    "sha256": "6a5b5a7bf2b045433aa8b8e75e85fdb44a6f27b915d3711c87dd71b849f31437",
+    "bytes": 920,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/MainMenu.nib": {
+    "sha256": "4b2168de2d6d9a09b20faaa23139d5f25f73b2595671de25872d191b6939d819",
+    "bytes": 2005,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/af.lproj/locale.pak": {
+    "sha256": "1e3c85f3d53ac661e035e01166a2faafba821a60780fdf8f88dc497658d787a0",
+    "bytes": 632257,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/af_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/af_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/af_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/am.lproj/locale.pak": {
+    "sha256": "db080ebc3e8242316ad60ee8b655e9a773046cd9b0143512841a497bea3066e3",
+    "bytes": 1025252,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/am_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/am_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/am_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ar.lproj/locale.pak": {
+    "sha256": "3ccda607562222bfc3142fa502d68bd3703dd4814af33218d781222d421ac5d6",
+    "bytes": 1125960,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ar_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ar_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ar_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bg.lproj/locale.pak": {
+    "sha256": "d9d984338d9b4ae822a06dc06fe6b09affa7c2e263a76a04e2d06fa6c948d37d",
+    "bytes": 1171480,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bg_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bg_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bg_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bn.lproj/locale.pak": {
+    "sha256": "5f6c3672c073968a3cc68f51f1433b7cc3c4bf1888f55169121292809ced66dd",
+    "bytes": 1504862,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bn_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bn_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/bn_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ca.lproj/locale.pak": {
+    "sha256": "a2f0b2ee162ae98d08613307e6ccae6777cd7722ed47c241bfd7de16e1a21466",
+    "bytes": 712710,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ca_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ca_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ca_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/chrome_100_percent.pak": {
+    "sha256": "f50e6f15a39f086092c26abdb922b298780b63decc316b798b5f0ad7a5468a2e",
+    "bytes": 662674,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/chrome_200_percent.pak": {
+    "sha256": "d923367c81374695f88d6176aa6fe8d0c41b1a43f5188ef43c3f0a53dd06f96d",
+    "bytes": 1337098,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/cs.lproj/locale.pak": {
+    "sha256": "596bdb8f1051fcf37a5a2499f01ab16e833cf70b0f55f4ce6f4cda5b49b86a4b",
+    "bytes": 739491,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/cs_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/cs_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/cs_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/da.lproj/locale.pak": {
+    "sha256": "1643bc94bf19dcfd6d445be6150ddb3bca70efd55a89bd9a11c8502063dc9127",
+    "bytes": 662372,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/da_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/da_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/da_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/de.lproj/locale.pak": {
+    "sha256": "d85952b503088f991876928bad8dcc92f3af4ff8b1bd101194f086d2fca5f92f",
+    "bytes": 713179,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/de_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/de_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/de_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/el.lproj/locale.pak": {
+    "sha256": "d6ca1cd3ee52c19be6e32514f4b2f18e3a6fb2653b60227e1541c39630acef41",
+    "bytes": 1287465,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/el_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/el_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/el_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en.lproj/locale.pak": {
+    "sha256": "e647fca0c580bd485a4e40705ed4ad87f0a72bc7e03c4858720c30d2e4f1269d",
+    "bytes": 584413,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_GB.lproj/locale.pak": {
+    "sha256": "02ca61c11bd2afaf734e619468fb40442cbb6259c2161f9193543fc415c63c07",
+    "bytes": 577003,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_GB_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_GB_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_GB_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/en_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es.lproj/locale.pak": {
+    "sha256": "44876d4dd8b61ff298e4cdae6bacd8b5b97b130c328e65ad12baf48558b876e0",
+    "bytes": 699798,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_419.lproj/locale.pak": {
+    "sha256": "7d3e3f8a96d56f267d23ef78b105305d0f2bec048a73f41bec06bd02ad00636f",
+    "bytes": 703618,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_419_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_419_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_419_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/es_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/et.lproj/locale.pak": {
+    "sha256": "7fb797d3d74c9dfa4e669f55e3af4674f78d376cc0af45768f441a2d583d935a",
+    "bytes": 638956,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/et_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/et_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/et_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fa.lproj/locale.pak": {
+    "sha256": "a05dc9862d1f19426d0792b585711c0e9a32618d995de57ed3721a8ba9dc936e",
+    "bytes": 1057343,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fa_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fa_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fa_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fi.lproj/locale.pak": {
+    "sha256": "a1b18b17cc1106244f1dace48c3ba1a92c62490e4bce195fa208aecb0c8f71a4",
+    "bytes": 651794,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fi_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fi_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fi_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fil.lproj/locale.pak": {
+    "sha256": "ec90ae9b3e5e460ae1687db6ee5caa6e139183a657080b624b22fea6efe9ba3f",
+    "bytes": 738500,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fil_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fil_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fil_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fr.lproj/locale.pak": {
+    "sha256": "24b4c20fb985a00b3828af9b62df9ded8a41439e68c02ea526df2924eb557ed1",
+    "bytes": 758913,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fr_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fr_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/fr_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/gu.lproj/locale.pak": {
+    "sha256": "643d347eb6425b369f203ed707749c497dfac8d250e78ffbaca4a45b46247ed1",
+    "bytes": 1485480,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/gu_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/gu_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/gu_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/he.lproj/locale.pak": {
+    "sha256": "9d661c15c1103238ce353794b137424c99784e696227445eec4c7e44b2724199",
+    "bytes": 923406,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/he_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/he_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/he_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hi.lproj/locale.pak": {
+    "sha256": "25378564680ffcd749bdac3d5c763196e71e3000c00f1421eee28d9290913cc7",
+    "bytes": 1575298,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hi_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hi_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hi_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hr.lproj/locale.pak": {
+    "sha256": "4ba4b2c8a7841d5a3ed8e92674cae53c3df7b2af2bb3dd449f0fdf898956ed82",
+    "bytes": 711220,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hr_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hr_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hr_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hu.lproj/locale.pak": {
+    "sha256": "b4effdb0df85b386ba6f2be6b52aabcb45447dcdf826276c6950e7dde325d553",
+    "bytes": 761163,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hu_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hu_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/hu_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/icudtl.dat": {
+    "sha256": "9f48c7f9c7c94d516a14870707e910ab94d75ae640ff6842c4af53276cd26ebe",
+    "bytes": 10876560,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/id.lproj/locale.pak": {
+    "sha256": "96f11211f98e45d1f3feeea04950ffbfc6f53056b10c489af1565949782ac82f",
+    "bytes": 633143,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/id_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/id_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/id_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/it.lproj/locale.pak": {
+    "sha256": "56a777f80e9ec7b48d6f65ee2179b1c8abbfc3c15462bb9266350b9d9c197a6d",
+    "bytes": 689587,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/it_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/it_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/it_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ja.lproj/locale.pak": {
+    "sha256": "34e587fac4e7191be744ee6a4cf8ec071c41ea7ebc8f905af5ce810cb3a42899",
+    "bytes": 835921,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ja_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ja_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ja_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/kn.lproj/locale.pak": {
+    "sha256": "5275729cc054eb62f8377b69b45e84239a7e08a2230825496b2f1f6d4c367769",
+    "bytes": 1710175,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/kn_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/kn_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/kn_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ko.lproj/locale.pak": {
+    "sha256": "b2ab8c0c0397f9e7b4af3bd3a629daebe47febf4b8ce0768b744597c60074e4d",
+    "bytes": 713269,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ko_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ko_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ko_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lt.lproj/locale.pak": {
+    "sha256": "402fa83fb09dbb6d095fc08a0602b77e224d892345fb9b106ba194d5d03f67a3",
+    "bytes": 773841,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lt_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lt_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lt_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lv.lproj/locale.pak": {
+    "sha256": "328e3bc016b93987e7d4646bf63119ff3beb5ca20ad61f1cd9e4d72504271a4f",
+    "bytes": 771044,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lv_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lv_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/lv_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ml.lproj/locale.pak": {
+    "sha256": "46e532cbb9584d279a201a4b9f19c198c7bc80b82aa3d39d4af109f77019b72e",
+    "bytes": 1759838,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ml_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ml_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ml_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/mr.lproj/locale.pak": {
+    "sha256": "fe094e0d6d11111f949d78ee614f530567e6f583fa0cf2936e507906e6b6e41b",
+    "bytes": 1457577,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/mr_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/mr_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/mr_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ms.lproj/locale.pak": {
+    "sha256": "fb281323ea5bb88b353ea20472733563cb45d86e44af3b20657a9875b16fb240",
+    "bytes": 665961,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ms_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ms_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ms_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nb.lproj/locale.pak": {
+    "sha256": "29661ccfbb38a5cca1b226a1e9ff6e3aa3e2e88b2dc87922139412245ddd6ad5",
+    "bytes": 633754,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nb_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nb_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nb_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nl.lproj/locale.pak": {
+    "sha256": "abdacfd63a01ea5300cd961b60546f2ba7d8126d5cd57ac22eed1b5576e393c9",
+    "bytes": 660763,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nl_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nl_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/nl_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pl.lproj/locale.pak": {
+    "sha256": "5c8155ba0156efdf02ee2f47608f8f50df45fa271f12e8ac37a4ced965daeafc",
+    "bytes": 738298,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pl_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pl_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pl_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_BR.lproj/locale.pak": {
+    "sha256": "60af3cdd3d43cf3a989f2b4763f2b0d7ca254be846692fdc24287cc978ab743f",
+    "bytes": 693340,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_BR_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_BR_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_BR_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_PT.lproj/locale.pak": {
+    "sha256": "60c975b06a1528777db8a45aa216724c57302d9a38f4ff316cb8ed2c1427165e",
+    "bytes": 697151,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_PT_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_PT_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/pt_PT_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/resources.pak": {
+    "sha256": "5cf8fb2fd2e4c8cb3ce7fd8181bca067838325ea6593a62cb2dcfef3ff299c72",
+    "bytes": 12397264,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ro.lproj/locale.pak": {
+    "sha256": "6d0a723bd507172da42ca40088443be5dd1abc727ab04aafcf27812d5c401c83",
+    "bytes": 724159,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ro_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ro_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ro_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ru.lproj/locale.pak": {
+    "sha256": "80c57a15691966b8b6e5a4ee0c731d7e0774cf25143185b13846af4358eae012",
+    "bytes": 1194708,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ru_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ru_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ru_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sk.lproj/locale.pak": {
+    "sha256": "689ad5fc48b8424bd9d22377d8d04c3805414c9d87fb0980a525bf48a94135dd",
+    "bytes": 751676,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sk_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sk_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sk_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sl.lproj/locale.pak": {
+    "sha256": "18aa47b536e52cf3e60b0f4e3976c96fa2da26a03267b7163d10021231c3a5c0",
+    "bytes": 718890,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sl_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sl_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sl_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sr.lproj/locale.pak": {
+    "sha256": "72123ff8c837d9926265800c7ff5b0d442ae603261d1930ad2c852d0a914419c",
+    "bytes": 1106471,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sr_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sr_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sr_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sv.lproj/locale.pak": {
+    "sha256": "4f132fd4fb914e70ac4efe0ed3b970565a67dcd4e6e9f0061ef816331136bf2c",
+    "bytes": 642496,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sv_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sv_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sv_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sw.lproj/locale.pak": {
+    "sha256": "29b51685f56f9b9763d50ffe8f4abbe9bb3e137d170636d1b469f97f7a7d8210",
+    "bytes": 683598,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sw_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sw_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/sw_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ta.lproj/locale.pak": {
+    "sha256": "839e9a1d2e45821f44fb3b864a715bde0d35bc7dbda1742c20483dcebdbf9ea1",
+    "bytes": 1750171,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ta_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ta_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ta_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/te.lproj/locale.pak": {
+    "sha256": "4791af54ba16497bf01286b44d17ff7f2a53f4edf77f1b8c53024ef48e69ac71",
+    "bytes": 1620586,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/te_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/te_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/te_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/th.lproj/locale.pak": {
+    "sha256": "3789f3781d8da535db2533f04eed93dafe0555fb64418c3d34e68791754a6a9e",
+    "bytes": 1359671,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/th_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/th_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/th_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/tr.lproj/locale.pak": {
+    "sha256": "11df4610f15aa90a9460bbeb52fe0b30f3ac9fa7a53e7df49ef6024a407a12e7",
+    "bytes": 694597,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/tr_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/tr_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/tr_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/uk.lproj/locale.pak": {
+    "sha256": "b16ff6648108ca6fb9946d9ac12990c09499550461d4a5c43cac49515ac13b83",
+    "bytes": 1205889,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/uk_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/uk_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/uk_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ur.lproj/locale.pak": {
+    "sha256": "89e190404b9d2083a5dce37fa594c437f6000d2df6fb7ed76d417a8e2f8f1281",
+    "bytes": 1040891,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ur_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ur_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/ur_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/v8_context_snapshot.arm64.bin": {
+    "sha256": "cd29af76d5abcdec992f1e2011e17757465ffac84059fe1daa1aec6d2216c174",
+    "bytes": 742208,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/vi.lproj/locale.pak": {
+    "sha256": "721e754f2774b8430a3a3935d7265e47d56cee8d49a3373808f598a3e25d3b4b",
+    "bytes": 825453,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/vi_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/vi_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/vi_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_CN.lproj/locale.pak": {
+    "sha256": "401ff17c988879ebcc5bf23c6c9d3b1720cff04a7993c04815b11a1c06f49556",
+    "bytes": 589161,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_CN_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_CN_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_CN_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_TW.lproj/locale.pak": {
+    "sha256": "7f9f64c7a6bf0ba02682685ce439dff3de4f68f3416673cb4c3570efcb5c89f6",
+    "bytes": 580719,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_TW_FEMININE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_TW_MASCULINE.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/Resources/zh_TW_NEUTER.lproj/locale.pak": {
+    "sha256": "ca73097bd968b363b7145e86b64f3c595e533808b0763dc8863a27fc363cfa51",
+    "bytes": 18,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/A/_CodeSignature/CodeResources": {
+    "sha256": "c138176874421daf0cba1e7216b69c1f7067e51861babc0b57b1d79164b2d42c",
+    "bytes": 85266,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Electron Framework.framework/Versions/Current": {
+    "symlink": "A"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Mantle": {
+    "symlink": "Versions/Current/Mantle"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Resources": {
+    "symlink": "Versions/Current/Resources"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/A/Mantle": {
+    "sha256": "cbf6884ec3303eee15c1a2b043b60405a0db97741c0bd144e926e66f95cabbf1",
+    "bytes": 126064,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/A/Resources/Info.plist": {
+    "sha256": "e93f0b4aaebea9bc158392ffa0c1150c16a0f30aecf11501b7871ce485f1a823",
+    "bytes": 1020,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/A/_CodeSignature/CodeResources": {
+    "sha256": "41b27daab76e01def237a2fb452d86d6442b461fa28013fc3abfd1a86d89c743",
+    "bytes": 2442,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Mantle.framework/Versions/Current": {
+    "symlink": "A"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/ReactiveObjC": {
+    "symlink": "Versions/Current/ReactiveObjC"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Resources": {
+    "symlink": "Versions/Current/Resources"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/A/ReactiveObjC": {
+    "sha256": "2fd87478df202413d672d3d1c78965dcbb3998ba9b6559f3c0ee0a55b3be1a82",
+    "bytes": 350832,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/A/Resources/Info.plist": {
+    "sha256": "4ded0fe1f4647f5b1862a2a98998aa7c3ade9bd925d097258e24667c446e7496",
+    "bytes": 1138,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/A/_CodeSignature/CodeResources": {
+    "sha256": "95920ec9421fbb6d2efe69b0b33724d9e685b6c563f467ec8baa8c0a8df5444a",
+    "bytes": 2442,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/ReactiveObjC.framework/Versions/Current": {
+    "symlink": "A"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Resources": {
+    "symlink": "Versions/Current/Resources"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Squirrel": {
+    "symlink": "Versions/Current/Squirrel"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/A/Resources/Info.plist": {
+    "sha256": "f61ab349887360a2d84603ecff17ab6633cb7fe2e8e72861f4e38e9120f472bf",
+    "bytes": 1175,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/A/Resources/ShipIt": {
+    "sha256": "df80bd47ff4cf51c62c3f68c91ac6f98116165ca23b61429d7d6ced5bc838628",
+    "bytes": 126416,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/A/Squirrel": {
+    "sha256": "bd21f3dc950e4297350fc86825111120b4c13866fa3a6228c8bb234db8b2fb79",
+    "bytes": 127872,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/A/_CodeSignature/CodeResources": {
+    "sha256": "1d23bfdd2ec8d81c963926e05c2e7e828f2ae80cd0d167fc2aba98937e36c33e",
+    "bytes": 2660,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Frameworks/Squirrel.framework/Versions/Current": {
+    "symlink": "A"
+  },
+  "DeiDei R02.app/Contents/Info.plist": {
+    "sha256": "adb5a582b7e3b1d83e1e37e415ec8acb3a122cba979cbcbe65b123bc3a472f07",
+    "bytes": 2413,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/MacOS/DeiDeiR02": {
+    "sha256": "cf8b9693da3ebbe47c87e78d75ee674666d033caca8abe30426dfe4c4763fb48",
+    "bytes": 35168,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/PkgInfo": {
+    "sha256": "82502191c9484b04d685374f9879a0066069c49b8acae7a04b01d38d07e8eca0",
+    "bytes": 8,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/build/fixture.cjs": {
+    "sha256": "dfea2243b6866863ca938f7813b07b712b5f1760cff3755eb5b9a558ce33abc1",
+    "bytes": 81156,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/build/ui/index.html": {
+    "sha256": "d674acfc513eb74bc559ae1e4e9e5f272196c05aa6f0b4a31d6f873cb807ce7a",
+    "bytes": 490,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/build/ui/renderer.js": {
+    "sha256": "a6a2ea52a236b04563c2b3ec54c66167d10b831ed34c5d9e8e015029c88f0365",
+    "bytes": 255723,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/build/ui/style.css": {
+    "sha256": "e0f66cdff4c9847c8cb42bbaf3321692d124db2a4539c79e6ed7f06f6992be24",
+    "bytes": 12199,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/build-info.json": {
+    "sha256": "ffa168feccc09f3a4a9a9c2e572ebcca8192e09c4b0030b96db571325da8d024",
+    "bytes": 13056,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/main.cjs": {
+    "sha256": "67d0c6022737d50538db0eae691e6c5ba6a3ec7c231e8311562a8040a7ecdeea",
+    "bytes": 5561,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/package.json": {
+    "sha256": "0b7ee2dc201801f273d6bf9df447a0e326060845ee7bd434b57cd8270493182e",
+    "bytes": 145,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/preload.cjs": {
+    "sha256": "e98f6a2b520be5b648b3bfbb50411f40a57e3e5d659d2a439daef773acd3802b",
+    "bytes": 849,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/profile.cjs": {
+    "sha256": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2",
+    "bytes": 3928,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/worker-bridge.cjs": {
+    "sha256": "d11a61bbed6689705b6c0463b07bc4edec5c27bcf041b539c2caaba935dcfbd4",
+    "bytes": 4705,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/worker-launch.cjs": {
+    "sha256": "682d593e15021fa69d2bba8a1f4dd008ecc491d095546fb1a520b229c794b594",
+    "bytes": 1755,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/app/worker-port.cjs": {
+    "sha256": "76ef1ece6d91ce69f1d4d34d4482b1bb00202c2f4c74980d2f935e06d4767c50",
+    "bytes": 2529,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/electron.icns": {
+    "sha256": "5a9a78d54c157f55672afea37037464858a87fd5f276fc8206787f366ed684cf",
+    "bytes": 272259,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/worker/_internal/base_library.zip": {
+    "sha256": "3d69854d36100919133b89a936e66ceffa9972d2b36ffbbc8e1dd0034c2b7de2",
+    "bytes": 1443233,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/worker/_internal/deidei_runtime/data/catalog.json": {
+    "sha256": "bde2344b8798cfcce70f249aa0c5488508b83ba1b7051f68d7518300345aa6d4",
+    "bytes": 48460,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/worker/_internal/deidei_runtime/entry-map.json": {
+    "sha256": "326fee0497535b8451b92960705c135a2f50e1f82f277ee9eb13e5ad69ca547c",
+    "bytes": 5044,
+    "mode": "0o644"
+  },
+  "DeiDei R02.app/Contents/Resources/worker/_internal/libpython3.11.dylib": {
+    "sha256": "7870cc962c00ac19094d869c79d5cf4101f57288b7749946006b0b7487e56dc4",
+    "bytes": 17175520,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/Resources/worker/deidei-worker": {
+    "sha256": "755fd19347e23db2a2e6483395325db45b39b2121370ef6939b7468430d787cd",
+    "bytes": 1799952,
+    "mode": "0o755"
+  },
+  "DeiDei R02.app/Contents/_CodeSignature/CodeResources": {
+    "sha256": "577e68f30608684f5291bd0ab3847aa820d2800b4fe0709bbbcc2545e231e5fa",
+    "bytes": 8688,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Electron-LICENSE": {
+    "sha256": "5154e165bd6c2cc0cfbcd8916498c7abab0497923bafcd5cb07673fe8480087d",
+    "bytes": 1096,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Electron-LICENSES.chromium.html": {
+    "sha256": "a62dabd1c6ef1327365b2a3fdffb806222684a746dcb8f4afd1c1f690eba5535",
+    "bytes": 20111209,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/PyInstaller-COPYING.txt": {
+    "sha256": "0598064c7d2718e38d7914a7d08343b2fa008e3bea9ebba2aa7a6ffa5900dd64",
+    "bytes": 32604,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-LICENSE.txt": {
+    "sha256": "3b2f81fe21d181c499c59a256c8e1968455d6689d269aa85373bfb6af41da3bf",
+    "bytes": 13936,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.bdb.txt": {
+    "sha256": "3bdff06e69991c94664f2ef5c5f8096f60b7dbec071756ea6cc26b445e06ec5b",
+    "bytes": 7293,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.bzip2.txt": {
+    "sha256": "1f38bbc7caacafd65169276d759c0d88c991b753b643ce35d0e45ea1971dd441",
+    "bytes": 1743,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.cpython.txt": {
+    "sha256": "86e61415828a8b5b06ec8d024e6f086ce155a8b85fd0c419c0ba4dc004e74fdd",
+    "bytes": 36164,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.expat.txt": {
+    "sha256": "122f2c27000472a201d337b9b31f7eb2b52d091b02857061a8880371612d9534",
+    "bytes": 1144,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libX11.txt": {
+    "sha256": "2daec087a88e7c9b8082557cdeebad5bbb8155a4137472f0b22e269cd99d0c1e",
+    "bytes": 47018,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libXau.txt": {
+    "sha256": "56abe29bb1d9806a9e04fa9f80fed2c0f18027594df3f098148d814aef6bddfa",
+    "bytes": 1148,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libedit.txt": {
+    "sha256": "29cea33c32bbc9785142386377915612a2fa786482c46843383384aded2e09b1",
+    "bytes": 1614,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libffi.txt": {
+    "sha256": "deaf3a42effb551a5b140fa9afefed183a27f1341c6d1bf430d106a5e6931fc0",
+    "bytes": 1132,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.liblzma.txt": {
+    "sha256": "9a4062de0a2c388a98cf35a35d348b62fa97c838a71c3c28ee1a2d7d0a565b02",
+    "bytes": 660,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libuuid.txt": {
+    "sha256": "122ee1f7e258f2c3c0e538a75c037684f420454bf3850ddc74ce750bbf5fe86b",
+    "bytes": 1432,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.libxcb.txt": {
+    "sha256": "c5ffbfeaa501071ceeb97b7de2c0d703fdaa35de01c0fb6cbac1c28453a3e9fd",
+    "bytes": 1337,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.mpdecimal.txt": {
+    "sha256": "669512af7219f58be03a398766d7c9da11a3b3df9d3f05cb74c5ceca25c8da3b",
+    "bytes": 1284,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.ncurses.txt": {
+    "sha256": "87a4c4442337b8968ef956031c406b74f9cb7149b7ba87311bdaba534816201c",
+    "bytes": 1447,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.openssl-1.1.txt": {
+    "sha256": "9c04cce50c4989d5601dd8b07f6ab922c40388b66ac736c9007cb1ed9d9dd560",
+    "bytes": 6120,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.openssl-3.txt": {
+    "sha256": "7d5450cb2d142651b8afa315b5f238efc805dad827d91ba367d8516bc9d49e7a",
+    "bytes": 10175,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.sqlite.txt": {
+    "sha256": "38bef3d28b24f145ea293bd3b6eb4b20396982abc8303128fb493986ea5bc719",
+    "bytes": 1481,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.tcl.txt": {
+    "sha256": "c0a69a2bfd757361ec7e6143973b103c90409316b49e9c88db26ad6388e79f16",
+    "bytes": 2255,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-LICENSE.zlib.txt": {
+    "sha256": "818922b2620f12801a12bf78e399644a30990e66824abd8ca8ec24d451d6f92c",
+    "bytes": 995,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-SOURCES.json": {
+    "sha256": "ae9810e324e05fca4c3a175ab2162fcc8c316af0481227c0931d9a2f8157269b",
+    "bytes": 7686,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/Python-runtime-darwin-arm64-LICENSE.tix.txt": {
+    "sha256": "3ac5cdd0bef6c43ce34c6a7ced452081d9e5a0bf94082b9f9147d23ec9e214f5",
+    "bytes": 2826,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/react-LICENSE.txt": {
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "bytes": 1088,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/react-dom-LICENSE.txt": {
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "bytes": 1088,
+    "mode": "0o644"
+  },
+  "THIRD-PARTY/scheduler-LICENSE.txt": {
+    "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93",
+    "bytes": 1088,
+    "mode": "0o644"
+  },
+  "使用说明.txt": {
+    "sha256": "5513b00b271108033c653199a543209005e0f6276f991739310145ef51711dd7",
+    "bytes": 1844,
+    "mode": "0o644"
+  }
+}

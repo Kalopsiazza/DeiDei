@@ -1,0 +1,1 @@
+Packaging app for platform darwin arm64 using electron v44.3.0

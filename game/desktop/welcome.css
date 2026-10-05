@@ -1,0 +1,91 @@
+/* DeiDei welcome: one physical card is both the title anchor and identity form. */
+.app[data-page=profile]{height:100vh;min-height:0;overflow:hidden;background:#080f15;color:#fbf8f1}
+.welcome-scene{position:relative;isolation:isolate;width:100%;height:100vh;overflow:hidden;perspective:1500px}
+.welcome-tools{position:absolute;left:38px;right:38px;top:26px;display:flex;align-items:center;justify-content:flex-end;z-index:4}
+.welcome-tools nav{display:flex;gap:12px}.welcome-tools button{border:1px solid #8ceaf331;border-radius:0;background:linear-gradient(115deg,#25394666,#08131e44);padding:10px 16px;color:#bdd1db;font-size:12px;transition:color .2s,border-color .2s,background .2s}.welcome-tools button:hover{color:#fff;border-color:#8ceaf3a0;background:linear-gradient(115deg,#41626d77,#08131e44)}
+.welcome-title{position:absolute;left:12%;top:50%;width:42%;transform:translateY(-50%);transition:opacity .25s,transform .5s}
+.welcome-title>span{font-size:13px;letter-spacing:3px;color:#8ceaf3;font-weight:700}
+.welcome-title h1{font-family:'Arial Narrow','PingFang SC',sans-serif;font-weight:900;font-size:clamp(100px,12vw,180px);letter-spacing:-.085em;line-height:.9;margin:30px 0;color:#fbf8f1;text-shadow:0 4px 30px #0005}
+.welcome-title i{display:block;width:54px;height:2px;background:linear-gradient(90deg,#ef4d62,#ef4d6230);margin:32px 0 24px}.welcome-title p{font-size:20px;letter-spacing:2px;color:#c2d3db;margin:0 0 38px}
+.welcome-action{display:flex;align-items:center;justify-content:space-between;gap:32px;padding:15px 26px;min-height:53px;font-size:16px;font-weight:700;color:#fff;border:1px solid #d6879480;border-radius:0;background:linear-gradient(110deg,#ec4258,#aa243e 65%,#16333e);clip-path:polygon(0 0,95% 0,100% 24%,100% 100%,5% 100%,0 76%);transition:filter .2s,transform .2s}
+.welcome-action:hover:not(:disabled){background:linear-gradient(110deg,#f85367,#c1354c 65%,#214d58);border-color:#f8bac4;filter:brightness(1.08);transform:translateY(-2px)}.welcome-action:disabled{opacity:.55}.welcome-action b{color:#bce9ee;font-size:20px;font-weight:400}.welcome-scene button:focus-visible,.welcome-scene input:focus-visible{outline:2px solid #8ceaf3;outline-offset:4px}
+.welcome-card{position:absolute;left:74%;top:50%;width:clamp(310px,29vw,560px);height:76vh;margin:0;transform:translate(-50%,-50%) rotateY(-13deg) rotateZ(7deg);transform-style:preserve-3d;transition:left 1.4s cubic-bezier(.18,.75,.25,1),transform 1.4s cubic-bezier(.18,.75,.25,1);filter:drop-shadow(24px 26px 42px #0008)}
+.welcome-card-turn{position:absolute;inset:0;transform-style:preserve-3d;transition:transform 1.4s cubic-bezier(.2,.7,.2,1);transform:rotateY(0)}
+.welcome-face{position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;border-radius:0;border:1px solid #ba947188;box-shadow:inset 0 0 0 7px #09151e60}
+.welcome-card-back{transform:translateZ(.8px);background:#171821}.welcome-card-back img{width:100%;height:100%;object-fit:fill;display:block}.welcome-card-back::after{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(120deg,#b3e8f522,transparent 35%,#030b1920);box-shadow:inset 1px 1px #f9d8b690,inset -1px -1px #80b8c240}
+.welcome-card-front{display:flex;flex-direction:column;justify-content:center;padding:28px 30px;transform:rotateY(180deg) translateZ(.8px);background:linear-gradient(145deg,#24323fee,#08151df5 55%,#201526f2);color:#eaf3f5;text-align:left}
+.welcome-card-front::before,.welcome-card-front::after{content:'';position:absolute;width:18px;height:18px;pointer-events:none}.welcome-card-front::before{left:-1px;top:-1px;border-top:2px solid #ee5769;border-left:2px solid #ee5769}.welcome-card-front::after{right:0;bottom:0;border-bottom:2px solid #8ceaf3;border-right:2px solid #8ceaf3}
+.welcome-card-front h2{font-size:clamp(25px,2.6vw,36px);font-weight:700;letter-spacing:-1px;line-height:1.2;margin:18px 0 21px}.welcome-card-front p{font-size:13px;line-height:1.65;color:#a6bec9;margin:12px 0}
+.welcome-card-front fieldset{min-width:0;border:0;margin:0;padding:0}.welcome-card-front label{font-size:13px;margin:0 0 16px;color:#cfdee5}.welcome-card-front label small{font-size:11px;color:#90aeba;margin-top:8px}
+.welcome-card-front .label{font-size:12px;color:#afc5cf;margin:16px 0 10px}.welcome-card-front .avatars{display:flex;gap:12px;margin:0 0 25px}.welcome-card-front .avatars button{padding:3px;border:1px solid #86aaba44;border-radius:0;background:linear-gradient(135deg,#2e4b5855,#121d2c77);transition:transform .2s,border-color .2s,background .2s}.welcome-card-front .avatars button:hover{border-color:#8ceaf399;transform:translateY(-2px);background:#2e4b5888}.welcome-card-front .avatars button[aria-pressed=true]{border-color:#8ceaf3;background:linear-gradient(135deg,#38657388,#121d2c77);box-shadow:inset 0 -2px #8ceaf3,0 0 16px #8ceaf32a}.welcome-card-front .avatar{height:38px;width:38px;border-radius:0}.welcome-card-front .welcome-action{width:100%;font-size:14px;min-height:50px;padding:12px 20px}.welcome-identity{display:flex;align-items:center;gap:15px;margin:27px 0 32px}.welcome-identity strong{font-size:30px;line-height:1.4;overflow-wrap:anywhere}.welcome-identity .avatar{flex:none;height:48px;width:48px}
+.welcome-scene:not([data-stage=title]) .welcome-title{opacity:0;transform:translate(-30px,-50%);pointer-events:none}.welcome-scene:is([data-stage=flip],[data-stage=name],[data-stage=entering][data-from=name]) .welcome-card{left:50%;transform:translate(-50%,-50%) rotateY(4deg) rotateZ(-3deg)}.welcome-scene:is([data-stage=flip],[data-stage=name],[data-stage=entering][data-from=name]) .welcome-card-turn{transform:rotateY(180deg)}
+.welcome-scene.export-frame .welcome-title,.welcome-scene.export-frame .welcome-tools,.welcome-scene.export-frame .welcome-preview-note{visibility:hidden}
+@media(max-height:710px){.welcome-card-front{padding:23px 26px}.welcome-card-front h2{font-size:28px;margin:16px 0 18px}.welcome-card-front .avatars{margin-bottom:20px}.welcome-card-front label{margin-bottom:12px}.welcome-card-front .label{margin-top:12px}.welcome-card-front .welcome-action{min-height:46px}.welcome-card-front p{margin:10px 0}.welcome-card{height:78vh}.welcome-tools{top:20px}}
+@media(max-width:1100px){.welcome-title{left:9%;width:44%}.welcome-title h1{font-size:118px}.welcome-card{left:75%;width:310px}.welcome-title p{font-size:17px}.welcome-card-front{padding:24px}.welcome-card-front h2{font-size:27px}}
+
+.welcome-film{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:var(--welcome-focus);z-index:5;opacity:0;pointer-events:none;transition:opacity .4s ease-out}
+.welcome-scene[data-stage=opening] .welcome-film{opacity:1}.welcome-scene[data-stage=opening] .welcome-tools,.welcome-scene[data-stage=opening] .welcome-preview-note{visibility:hidden}
+.welcome-film-controls{position:absolute;right:38px;bottom:26px;z-index:6;display:flex;gap:10px}.welcome-film-controls button{border:1px solid #8ceaf34d;border-radius:0;background:linear-gradient(115deg,#253946bb,#08131ebb);color:#dceaf0;padding:10px 16px;font-size:13px;transition:border-color .2s,background .2s}.welcome-film-controls button:hover{border-color:#8ceaf3;background:linear-gradient(115deg,#41626dcc,#08131ecc)}
+
+/* Keep the hall mounted through welcome and menu, so its camera never resets. */
+.app[data-page=profile]{--menu-red:#f13f52;--menu-cyan:#8ceaf3;--menu-white:#faf7f1;--menu-muted:#a9b3bd}
+.front-stage-profile .menu-copy,.front-stage-profile .scene-character,.front-stage-profile .scene-atmosphere,.front-stage-profile .menu-aura,.front-stage-profile .menu-particles,.front-stage-profile .menu-grid{opacity:0;pointer-events:none}
+.front-stage-profile .scene-character{transform:translateY(24px)}
+/* Match the exported video reference's centered 2% overscan and lighting. */
+.front-stage-profile .scene-world{transform:scale(1.04);transform-origin:var(--welcome-focus)}
+.front-stage-profile .menu-environment,.app[data-welcome-entering=true] .front-stage-menu .menu-environment{animation:none}
+.welcome-scene::before{content:'';position:absolute;inset:-2%;z-index:-1;pointer-events:none;background:linear-gradient(90deg,#030a12a6,transparent 58%,#020a1160),linear-gradient(0deg,#04091277,transparent 30%);transition:opacity .95s}
+.welcome-scene[data-stage=entering]::before{opacity:0}
+.app[data-page=profile]:has(.welcome-scene:is([data-stage=flip],[data-stage=name])) .scene-world{transform:scale(1.1128);filter:blur(6px) saturate(.92)}
+.welcome-glass{position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(115deg,#d8eaf510,#19284018);opacity:0;transition:opacity .95s}
+.welcome-scene:is([data-stage=flip],[data-stage=name]) .welcome-glass{opacity:1}
+.welcome-title .welcome-action{width:fit-content;max-width:100%;gap:18px}.welcome-title .welcome-action>span{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.welcome-title .welcome-action>b{flex:none}
+.welcome-card-content{animation:welcome-content-in .5s cubic-bezier(.16,.78,.18,1) both}
+@keyframes welcome-content-in{from{opacity:0;transform:translateY(18px);filter:blur(5px)}to{opacity:1;transform:none;filter:none}}
+.welcome-scene[data-stage=entering] .welcome-card{animation:welcome-card-dock 1.3s cubic-bezier(.25,.7,.22,1) forwards}
+.welcome-scene[data-stage=entering] .welcome-tools{opacity:0;pointer-events:none;transition:opacity .2s}
+@keyframes welcome-card-dock{55%{left:50%;top:82%;transform:translate(-50%,-50%) rotateY(150deg) rotateZ(-18deg) scale(.24);opacity:1}100%{left:50%;top:105%;transform:translate(-50%,-50%) rotateY(350deg) rotateZ(-32deg) scale(.035);opacity:0}}
+.app[data-welcome-entering=true]>.menu-layout{position:absolute;inset:0}
+.welcome-menu-entry .menu-rail{animation:menu-rail-in .8s .12s cubic-bezier(.18,.82,.2,1) both}
+/* Keep the camera pivot and resume ambient motion from the settled frame. */
+.app[data-welcome-entering=true] .scene-world,.app[data-page=menu]:has(>.welcome-menu-entry) .scene-world{transform-origin:var(--welcome-focus)}
+.app[data-page=menu]:has(>.welcome-menu-entry) .menu-environment{animation-name:welcome-world-drift}
+@keyframes welcome-world-drift{from{transform:none}to{transform:scale(1.055) translate3d(.8%,-.7%,0)}}
+.welcome-menu-entry::before{animation:welcome-hall-veil .95s ease both}
+@keyframes welcome-hall-veil{from{opacity:0}to{opacity:1}}
+.app[data-welcome-entering=true] .front-stage-menu .scene-character{transition-delay:.1s}
+.app[data-welcome-entering=true] .front-stage-menu .menu-copy{transition-delay:.12s}
+.app[data-welcome-entering=true] .front-stage-menu .scene-atmosphere{transition-delay:.1s}
+
+/* Plain text actions never inherit the legacy button hover surface. */
+.welcome-card-front .welcome-text-action{display:inline-block;width:auto;min-height:0;margin-top:14px;padding:0;border:0;border-radius:0;background:none;box-shadow:none;clip-path:none;color:#9db8c4;font-size:13px;line-height:1.7;transition:color .18s,text-shadow .18s,transform .18s}
+.welcome-card-front .welcome-text-action:is(:hover,:active,:focus-visible){background:none;border:0;box-shadow:none;color:#dfffff;text-shadow:0 0 12px #8ceaf360;outline:none}
+.welcome-card-front .welcome-text-action:focus-visible{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:5px}
+.welcome-card-front .welcome-text-action:active:not(:disabled){transform:translateY(1px);color:#8ceaf3}
+.welcome-card-front .welcome-text-action:disabled{color:#78909c;text-shadow:none;transform:none;cursor:default}
+.welcome-card-front .welcome-guide{position:relative;min-height:88px;padding:22px 24px;font-size:clamp(19px,1.65vw,24px);overflow:hidden}
+.welcome-card-front .welcome-guide b{font-size:30px}
+.welcome-card-front .welcome-guide::before{content:'';position:absolute;inset:0;pointer-events:none;background:linear-gradient(110deg,transparent 25%,#fff2,transparent 65%);opacity:0;transform:translateX(-100%);transition:transform .5s,opacity .25s}
+.welcome-card-front .welcome-guide:hover:not(:disabled)::before{opacity:1;transform:translateX(100%)}
+.welcome-scene[data-ready=true] .welcome-identity{gap:10px;margin:0 0 24px}.welcome-scene[data-ready=true] .welcome-identity strong{font-size:18px}.welcome-scene[data-ready=true] .welcome-identity .avatar{width:32px;height:32px}
+.welcome-levels legend{margin-bottom:12px;font-size:12px;color:#a6bec9;letter-spacing:2px}
+.welcome-level-options{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.welcome-card-front .welcome-level{position:relative;margin:0;cursor:pointer}
+.welcome-level input{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;z-index:1;cursor:inherit}
+.welcome-level-face{position:relative;display:flex;flex-direction:column;align-items:center;gap:10px;padding:15px 4px 12px;min-height:144px;border:1px solid #8ceaf32b;background:linear-gradient(155deg,#36506033,#08131e66);transition:transform .22s,border-color .22s,background .22s,box-shadow .22s}
+.welcome-level-face img{width:76px;max-width:100%;height:76px;object-fit:contain;transition:transform .25s;pointer-events:none}.welcome-level-face strong{font-size:15px;letter-spacing:2px;color:#b6c7d0}
+.welcome-level-face i{width:16px;height:2px;background:#8ceaf333;transition:width .22s,background .22s}
+.welcome-level:hover .welcome-level-face{border-color:#8ceaf380;transform:translateY(-3px)}.welcome-level:hover img{transform:translateY(-3px)}
+.welcome-level input:checked+.welcome-level-face{border-color:#8ceaf3;background:linear-gradient(155deg,#3d78864d,#10202d88);box-shadow:inset 0 -2px #8ceaf3,0 8px 20px #0003;transform:translateY(-4px)}.welcome-level input:checked+.welcome-level-face strong{color:#efffff}.welcome-level input:checked+.welcome-level-face i{width:30px;background:#8ceaf3}
+.welcome-level input:focus-visible+.welcome-level-face{outline:2px solid #8ceaf3;outline-offset:3px}.welcome-levels:disabled .welcome-level{cursor:default;opacity:.55}
+.welcome-card-front .welcome-level-note{margin:16px 0 22px;font-size:12px;color:#a6bec9;min-height:20px}
+.welcome-card-front label .identity-error{color:#ffc5cb;font-size:12px;line-height:1.6;background:none;border:0;padding:0}
+@media(max-height:710px){.welcome-card-front .welcome-guide{min-height:76px;padding:18px 20px}}
+
+/* Keep welcome preferences after its ordinary states. */
+@media(prefers-reduced-motion:reduce){.welcome-glass,.welcome-title,.welcome-card,.welcome-card-turn,.welcome-scene button,.welcome-scene input{transition:none!important}}
+@media(prefers-reduced-motion:reduce){.welcome-film{transition:none}}
+@media(prefers-reduced-motion:reduce){.app[data-page=menu]:has(>.welcome-menu-entry) .menu-environment{animation:none}.welcome-card-content,.welcome-menu-entry::before,.welcome-menu-entry .menu-rail,.welcome-scene[data-stage=entering] .welcome-card{animation:none!important}.welcome-glass,.welcome-scene::before{transition:none!important}.app[data-welcome-entering=true] .scene-plane,.app[data-welcome-entering=true] .menu-copy{transition-delay:0s}}
+
+@media(prefers-reduced-motion:reduce){.welcome-guide::before,.welcome-text-action{transition:none!important}.welcome-guide::before{display:none}}
+@media(prefers-reduced-motion:reduce){.welcome-level-face,.welcome-level-face img,.welcome-level-face i{transition:none}}

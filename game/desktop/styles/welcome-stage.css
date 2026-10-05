@@ -1,0 +1,5 @@
+/* The welcome scene uses the shared safe edge; short forms scroll inside the card. */
+.welcome-scene .welcome-tools{left:var(--page-safe-compact-x);right:var(--page-safe-compact-x)}
+.welcome-scene .welcome-film-controls{right:var(--page-safe-compact-x)}
+.welcome-scene .welcome-card-front{justify-content:safe center;overflow-y:auto;overscroll-behavior:contain}
+@media(max-height:600px){.welcome-scene .welcome-card{height:calc(100vh - 72px)}}

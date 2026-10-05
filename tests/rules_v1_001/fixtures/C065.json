@@ -1,0 +1,1807 @@
+[
+  {
+    "case_id": "C065",
+    "variant": "natural_reward_then_copy",
+    "rules_version": "classic-1.0.1",
+    "scope": "sequence",
+    "input": {
+      "state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "fixture:g1",
+        "game_index": "1",
+        "turn_index": "1",
+        "roster": [
+          "A",
+          "B"
+        ],
+        "active_ids": [
+          "A",
+          "B"
+        ],
+        "status": "playing",
+        "winner_id": null,
+        "players": {
+          "A": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "B": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "steps": [
+        {
+          "submissions": {
+            "A": "ZengYi",
+            "B": "Charge"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "B": "Charge"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "A": "Charge",
+            "B": "Charge"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "A": "Charge",
+            "B": "Charge"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "A": "Charge",
+            "B": "Charge"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "A": "ZengRewardBigBi",
+            "B": "Def"
+          },
+          "choice_tokens": {}
+        },
+        {
+          "submissions": {
+            "A": "ZhangXinWei",
+            "B": "Def"
+          },
+          "choice_tokens": {}
+        }
+      ],
+      "new_match": {
+        "player_ids": [
+          "A",
+          "B"
+        ],
+        "match_id": "fixture"
+      }
+    },
+    "expected": {
+      "initial_state": {
+        "schema_version": 1,
+        "rules_version": "classic-1.0.1",
+        "match_id": "fixture",
+        "game_id": "fixture:g1",
+        "game_index": "1",
+        "turn_index": "1",
+        "roster": [
+          "A",
+          "B"
+        ],
+        "active_ids": [
+          "A",
+          "B"
+        ],
+        "status": "playing",
+        "winner_id": null,
+        "players": {
+          "A": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          },
+          "B": {
+            "dd6": "0",
+            "lightning": "0",
+            "nx_charge": "0",
+            "mature_bombs": "0",
+            "pending_bombs": [],
+            "bomb_placement_count": "0",
+            "cloud_uses": "0",
+            "tian_uses": "0",
+            "zhang_used": false,
+            "liq_used": false,
+            "enhanced_xiao": false,
+            "last_actual_move": null,
+            "latest_copyable_move": null,
+            "zeng_state": "unused",
+            "reward_due_turn": null
+          }
+        }
+      },
+      "steps": [
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "ZengYi",
+              "actual_move": "ZengYi",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "unbounded"
+              },
+              "defense_return": {
+                "kind": "unbounded"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "ZengYi",
+              "latest_copyable_move": null,
+              "zeng_state": "recovery",
+              "reward_due_turn": null
+            },
+            "B": {
+              "dd6": "6",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "2",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "ZengYi",
+                "latest_copyable_move": null,
+                "zeng_state": "recovery",
+                "reward_due_turn": null
+              },
+              "B": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [],
+          "options": {
+            "A": {
+              "ZengYi": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            },
+            "B": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "ZengYi",
+              "actual_move": "ZengYi",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": true,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "unbounded"
+              },
+              "defense_return": {
+                "kind": "unbounded"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "0",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "ZengYi",
+              "latest_copyable_move": null,
+              "zeng_state": "waiting",
+              "reward_due_turn": "5"
+            },
+            "B": {
+              "dd6": "12",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "3",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "ZengYi",
+                "latest_copyable_move": null,
+                "zeng_state": "waiting",
+                "reward_due_turn": "5"
+              },
+              "B": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [],
+          "options": {
+            "A": {
+              "Charge": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Bi": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Def": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Three": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "ThreeDef": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "BigBi": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Reflect": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "SelfBi": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Cloud": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Bomb": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Xiao": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Pragon": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "PragonDef": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Volvo": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "VolvoDef": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "RotateThree": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "XiaoBei": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "FlipVolvo": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Shell": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "Absorb": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "NieXiang": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "NieXiangDef": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "JuYan": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "TianLiJun": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "ZhangXinWei": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "LiQiang": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "BombPragon": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "BombVolvo": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "BombFlipVolvo": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "FreeThree": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "FreeRotateThree": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "ZengYi": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              },
+              "ZengRewardBigBi": {
+                "available": false,
+                "reason_code": "FORCED_RECOVERY",
+                "forced": true
+              }
+            },
+            "B": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "6",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "waiting",
+              "reward_due_turn": "5"
+            },
+            "B": {
+              "dd6": "18",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "4",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "waiting",
+                "reward_due_turn": "5"
+              },
+              "B": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [
+            {
+              "kind": "reward_granted"
+            }
+          ],
+          "options": {
+            "A": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              },
+              "ZengRewardBigBi": {
+                "available": false,
+                "reason_code": "NO_REWARD",
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                }
+              }
+            },
+            "B": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "12",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "waiting",
+              "reward_due_turn": "5"
+            },
+            "B": {
+              "dd6": "24",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "5",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "waiting",
+                "reward_due_turn": "5"
+              },
+              "B": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [
+            {
+              "kind": "reward_granted"
+            }
+          ],
+          "options": {
+            "A": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              },
+              "ZengRewardBigBi": {
+                "available": false,
+                "reason_code": "NO_REWARD",
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                }
+              }
+            },
+            "B": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Charge",
+              "actual_move": "Charge",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "18",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "ready",
+              "reward_due_turn": null
+            },
+            "B": {
+              "dd6": "30",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Charge",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "6",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "ready",
+                "reward_due_turn": null
+              },
+              "B": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [
+            {
+              "match": {
+                "kind": "reward_granted",
+                "phase": "P4"
+              },
+              "count": 1
+            }
+          ],
+          "forbidden_events": [],
+          "options": {
+            "A": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              },
+              "ZengRewardBigBi": {
+                "available": false,
+                "reason_code": "NO_REWARD",
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                }
+              }
+            },
+            "B": {
+              "Charge": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "ZengRewardBigBi",
+              "actual_move": "BigBi",
+              "origin": "zeng_reward",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "30",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "30",
+                "comparison": "le"
+              },
+              "defense_return": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              }
+            },
+            "B": {
+              "entry_id": "Def",
+              "actual_move": "Def",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "6",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "18",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "BigBi",
+              "latest_copyable_move": "BigBi",
+              "zeng_state": "spent",
+              "reward_due_turn": null
+            },
+            "B": {
+              "dd6": "30",
+              "lightning": "0",
+              "nx_charge": "2",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Def",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "7",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "BigBi",
+                "latest_copyable_move": "BigBi",
+                "zeng_state": "spent",
+                "reward_due_turn": null
+              },
+              "B": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "2",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Def",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [
+            {
+              "kind": "reward_granted"
+            }
+          ],
+          "options": {
+            "A": {
+              "ZengRewardBigBi": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "1"
+                }
+              }
+            },
+            "B": {
+              "Def": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        },
+        {
+          "ok": true,
+          "eliminated_ids": [],
+          "kills": {
+            "A": [],
+            "B": []
+          },
+          "transition": {
+            "kind": "continue_game",
+            "from_game_id": "fixture:g1",
+            "to_game_id": "fixture:g1",
+            "winner_id": null
+          },
+          "actions": {
+            "A": {
+              "entry_id": "ZhangXinWei",
+              "actual_move": "BigBi",
+              "origin": "zhang",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "30",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "30",
+                "comparison": "le"
+              },
+              "defense_return": {
+                "kind": "finite",
+                "sixths": "0",
+                "comparison": "le"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            },
+            "B": {
+              "entry_id": "Def",
+              "actual_move": "Def",
+              "origin": "normal",
+              "branch": null,
+              "condition": null,
+              "is_recovery": false,
+              "enhanced_xiao": false,
+              "attack6": "0",
+              "defense_primary": {
+                "kind": "finite",
+                "sixths": "6",
+                "comparison": "le"
+              },
+              "defense_return": null,
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              }
+            }
+          },
+          "post_turn_players": {
+            "A": {
+              "dd6": "18",
+              "lightning": "0",
+              "nx_charge": "0",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": true,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "BigBi",
+              "latest_copyable_move": "BigBi",
+              "zeng_state": "spent",
+              "reward_due_turn": null
+            },
+            "B": {
+              "dd6": "30",
+              "lightning": "0",
+              "nx_charge": "4",
+              "mature_bombs": "0",
+              "pending_bombs": [],
+              "bomb_placement_count": "0",
+              "cloud_uses": "0",
+              "tian_uses": "0",
+              "zhang_used": false,
+              "liq_used": false,
+              "enhanced_xiao": false,
+              "last_actual_move": "Def",
+              "latest_copyable_move": null,
+              "zeng_state": "unused",
+              "reward_due_turn": null
+            }
+          },
+          "next_state": {
+            "schema_version": 1,
+            "rules_version": "classic-1.0.1",
+            "match_id": "fixture",
+            "game_id": "fixture:g1",
+            "game_index": "1",
+            "turn_index": "8",
+            "roster": [
+              "A",
+              "B"
+            ],
+            "active_ids": [
+              "A",
+              "B"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": true,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "BigBi",
+                "latest_copyable_move": "BigBi",
+                "zeng_state": "spent",
+                "reward_due_turn": null
+              },
+              "B": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "pending_bombs": [],
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Def",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null
+              }
+            }
+          },
+          "required_events": [],
+          "forbidden_events": [
+            {
+              "kind": "reward_granted"
+            }
+          ],
+          "options": {
+            "A": {
+              "ZhangXinWei": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            },
+            "B": {
+              "Def": {
+                "available": true,
+                "reason_code": null,
+                "forced": false,
+                "required": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                },
+                "spend": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "reward_stock": "0"
+                }
+              }
+            }
+          }
+        }
+      ]
+    },
+    "rule_ids": [
+      "R09",
+      "R17",
+      "R20",
+      "R25"
+    ],
+    "source_notes": "CASES.md#C065; linked steps."
+  }
+]

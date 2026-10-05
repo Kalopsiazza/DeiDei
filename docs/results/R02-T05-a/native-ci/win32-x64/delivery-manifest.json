@@ -1,0 +1,19 @@
+{
+  "task_id": "R02-T05-a",
+  "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "platform": "win32-x64",
+  "filename": "DeiDei-R02-T05-a-Windows-x64-45dbf9c.zip",
+  "bytes": 168641592,
+  "sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+  "build_info": "DeiDei R02-win32-x64/resources/app/build-info.json",
+  "build_info_sha256": "3071c64d7862fbbcd85cf0a2f18dbe9cbd4ae298fc75c5303febecdf84536599",
+  "signature": "unsigned",
+  "levels": {
+    "source": "PASS",
+    "built": "PASS",
+    "frozen_worker": "PASS",
+    "packaged_automation": "PASS",
+    "human": "NOT_RUN",
+    "physical_offline": "NOT_RUN"
+  }
+}

@@ -1,0 +1,112 @@
+{
+  "checkedAt": "2026-10-04T05:36:48.306734+00:00",
+  "preservedCount": 21,
+  "sameHeadAndStatus": true,
+  "worktrees": [
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei",
+      "head": "c9b79e2e2e5b22071feb7d10a64634806b67aeb0",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r01-t03-b",
+      "head": "3a81daf0f42416ccb73a5a69748655145e6f2f0c",
+      "status": "?? docs/results/\n"
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t01-a",
+      "head": "0f114284492417ec61634895c485d73417ff1b49",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t01-b",
+      "head": "b40996e833297e24817b9c24b7830ed2941d9c3d",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t02-a",
+      "head": "72266fbc63e4982738ae83eee99e9001a6872d6f",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t02-b",
+      "head": "1dbe1e4f8de28410dc42946efddffc011966cc3a",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t03-a",
+      "head": "378ab28b814cdbc0d798bd7dff22a7fdad5fdf90",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t03-b",
+      "head": "8711e75a5710a92f5dcd2eb005b20c1de8da9ce0",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t03-c",
+      "head": "baeff0bf476e1efd91358e9c3bb6350208d8a647",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t03-d",
+      "head": "4e5c37e4417be80fe0130ffcab24eb75cf6bee7e",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t04-a",
+      "head": "db51a442d0f6640ce499ffbf4320c7098044cb92",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t05-a",
+      "head": "e3cd49439eb3e4319ed0c4f9d3cc20a36deff2bf",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r03-t06-a",
+      "head": "4df3287e793223f776208f72dbd07c8a32062e33",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t01-b",
+      "head": "88185af2c9372b2f1d88707218cafee590b94018",
+      "status": "?? docs/results/R03-T02-b/mock-create-1000x650.png\n?? docs/results/R03-T02-b/mock-create-1366x768.png\n?? docs/results/R03-T02-b/mock-create-1920x1080.png\n?? docs/results/R03-T02-b/mock-create.png\n?? docs/results/R03-T02-b/mock-eliminated-host-setting.png\n?? docs/results/R03-T02-b/mock-front-1000x650.png\n?? docs/results/R03-T02-b/mock-front-1366x768.png\n?? docs/results/R03-T02-b/mock-front-1920x1080.png\n?? docs/results/R03-T02-b/mock-front.png\n?? docs/results/R03-T02-b/mock-full-room.png\n?? docs/results/R03-T02-b/mock-host-continues.png\n?? docs/results/R03-T02-b/mock-host-grace-continues.png\n?? docs/results/R03-T02-b/mock-host-leave.png\n?? docs/results/R03-T02-b/mock-intro-2-1000x650.png\n?? docs/results/R03-T02-b/mock-intro-2-1366x768.png\n?? docs/results/R03-T02-b/mock-intro-2-1920x1080.png\n?? docs/results/R03-T02-b/mock-intro-2.png\n?? docs/results/R03-T02-b/mock-intro-6-1000x650.png\n?? docs/results/R03-T02-b/mock-intro-6-1366x768.png\n?? docs/results/R03-T02-b/mock-intro-6-1920x1080.png\n?? docs/results/R03-T02-b/mock-intro-6.png\n?? docs/results/R03-T02-b/mock-join-1000x650.png\n?? docs/results/R03-T02-b/mock-join-1366x768.png\n?? docs/results/R03-T02-b/mock-join-1920x1080.png\n?? docs/results/R03-T02-b/mock-limit-before.png\n?? docs/results/R03-T02-b/mock-limit-dialog.png\n?? docs/results/R03-T02-b/mock-limit-next30.png\n?? docs/results/R03-T02-b/mock-limit-next5.png\n?? docs/results/R03-T02-b/mock-lobby-1000x650.png\n?? docs/results/R03-T02-b/mock-lobby-1366x768.png\n?? docs/results/R03-T02-b/mock-lobby-1920x1080.png\n?? docs/results/R03-T02-b/mock-membership-ended.png\n?? docs/results/R03-T02-b/mock-new-room-old-event.png\n?? docs/results/R03-T02-b/mock-pending-close.png\n?? docs/results/R03-T02-b/mock-reconnecting.png\n?? docs/results/R03-T02-b/mock-result-1000x650.png\n?? docs/results/R03-T02-b/mock-result-1366x768.png\n?? docs/results/R03-T02-b/mock-result-1920x1080.png\n?? docs/results/R03-T02-b/mock-result.png\n?? docs/results/R03-T02-b/mock-revealing-1000x650.png\n?? docs/results/R03-T02-b/mock-revealing-1366x768.png\n?? docs/results/R03-T02-b/mock-revealing-1920x1080.png\n?? docs/results/R03-T02-b/mock-revealing.png\n?? docs/results/R03-T02-b/mock-smoke-failure.png\n?? docs/results/R03-T02-b/mock-spectating.png\n?? docs/results/R03-T02-b/mock-spectator-lobby.png\n?? docs/results/R03-T02-b/mock-submitted.png\n?? docs/results/R03-T02-b/mock-table-1000x650.png\n?? docs/results/R03-T02-b/mock-table-1366x768.png\n?? docs/results/R03-T02-b/mock-table-1920x1080.png\n?? docs/results/R03-T02-b/mock-wrong-room.png\n?? docs/results/R03-T02-b/unconfigured-real-main.png\n?? docs/results/R04-T01-b/entry-ui/first-entry.png\n?? docs/results/R04-T01-b/entry-ui/quit-confirmation.png\n?? docs/results/R04-T01-b/entry-ui/welcome-opening.png\n?? docs/results/R04-T01-b/entry-ui/welcome-preview-1000.png\n?? docs/results/R04-T01-b/entry-ui/welcome-preview-1366.png\n?? docs/results/R04-T01-b/entry-ui/welcome-preview-1920.png\n?? docs/results/R04-T01-b/entry-ui/welcome-ready.png\n?? docs/results/R04-T01-b/entry-ui/welcome-returning.png\n?? docs/results/R04-T01-b/manual-ui/archive-1000.png\n?? docs/results/R04-T01-b/manual-ui/archive-1920.png\n?? docs/results/R04-T01-b/manual-ui/archive-icons-1000.png\n?? docs/results/R04-T01-b/manual-ui/archive-icons-1366.png\n?? docs/results/R04-T01-b/manual-ui/archive-icons-1920.png\n?? docs/results/R04-T01-b/manual-ui/archive-icons.png\n?? docs/results/R04-T01-b/manual-ui/archive-playback.png\n?? docs/results/R04-T01-b/manual-ui/archive-reflection.png\n?? docs/results/R04-T01-b/manual-ui/archive-relations.png\n?? docs/results/R04-T01-b/manual-ui/archive-scenarios.png\n?? docs/results/R04-T01-b/manual-ui/archive-stack-scrolling.png\n?? docs/results/R04-T01-b/manual-ui/archive-stack.png\n?? docs/results/R04-T01-b/manual-ui/intro-dialog.png\n?? docs/results/R04-T01-b/manual-ui/questions-dialog.png\n?? docs/results/R04-T01-b/manual-ui/rules-dialog.png\n?? docs/results/R04-T01-b/manual-ui/scroll-after.json\n?? docs/results/R04-T01-b/manual-ui/scroll-before.json\n?? docs/results/R04-T01-b/manual-ui/search-focused.png\n?? docs/results/R04-T01-b/manual-ui/search-hover.png\n?? docs/results/R04-T01-b/manual-ui/search-normal.png\n?? docs/results/R04-T01-b/online-continuity/continuity-arena-result-glass.png\n?? docs/results/R04-T01-b/online-continuity/continuity-create-camera.png\n?? docs/results/R04-T01-b/online-continuity/continuity-lobby-arena-glass.png\n?? docs/results/R04-T01-b/online-continuity/continuity-result-lobby-return.png\n?? docs/results/R04-T01-b/online-continuity/mock-create-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-create-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-eliminated-host-setting.png\n?? docs/results/R04-T01-b/online-continuity/mock-front-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-front-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-full-room.png\n?? docs/results/R04-T01-b/online-continuity/mock-host-continues.png\n?? docs/results/R04-T01-b/online-continuity/mock-host-grace-continues.png\n?? docs/results/R04-T01-b/online-continuity/mock-host-leave.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-2-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-2-1366x768.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-2-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-6-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-6-1366x768.png\n?? docs/results/R04-T01-b/online-continuity/mock-intro-6-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-join-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-join-1366x768.png\n?? docs/results/R04-T01-b/online-continuity/mock-join-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-limit-before.png\n?? docs/results/R04-T01-b/online-continuity/mock-limit-dialog.png\n?? docs/results/R04-T01-b/online-continuity/mock-limit-next30.png\n?? docs/results/R04-T01-b/online-continuity/mock-limit-next5.png\n?? docs/results/R04-T01-b/online-continuity/mock-lobby-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-lobby-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-membership-ended.png\n?? docs/results/R04-T01-b/online-continuity/mock-new-room-old-event.png\n?? docs/results/R04-T01-b/online-continuity/mock-pending-close.png\n?? docs/results/R04-T01-b/online-continuity/mock-reconnecting.png\n?? docs/results/R04-T01-b/online-continuity/mock-result-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-result-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-revealing-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-revealing-1366x768.png\n?? docs/results/R04-T01-b/online-continuity/mock-revealing-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-smoke-failure.png\n?? docs/results/R04-T01-b/online-continuity/mock-spectating.png\n?? docs/results/R04-T01-b/online-continuity/mock-spectator-lobby.png\n?? docs/results/R04-T01-b/online-continuity/mock-submitted.png\n?? docs/results/R04-T01-b/online-continuity/mock-table-1000x650.png\n?? docs/results/R04-T01-b/online-continuity/mock-table-1920x1080.png\n?? docs/results/R04-T01-b/online-continuity/mock-wrong-room.png\n?? docs/results/R04-T01-b/online-continuity/solo-alignment-diagnostic.png\n?? docs/results/R04-T01-b/online-continuity/unconfigured-real-main.png\n?? docs/results/R04-T01-b/opening-3d/HALL-README.md\n?? docs/results/R04-T01-b/opening-3d/HALL-STORYBOARD.md\n?? docs/results/R04-T01-b/opening-3d/README.md\n?? docs/results/R04-T01-b/opening-3d/build.cjs\n?? docs/results/R04-T01-b/opening-3d/capture.cjs\n?? docs/results/R04-T01-b/opening-3d/check.cjs\n?? docs/results/R04-T01-b/opening-3d/combat-6s/crop-4x3/\n?? docs/results/R04-T01-b/opening-3d/create_sound.py\n?? docs/results/R04-T01-b/opening-3d/create_title.py\n?? docs/results/R04-T01-b/opening-3d/hall-check.cjs\n?? docs/results/R04-T01-b/opening-3d/hall-preview.cjs\n?? docs/results/R04-T01-b/opening-3d/hall-viewer.js\n?? docs/results/R04-T01-b/opening-3d/hall.html\n?? docs/results/R04-T01-b/opening-3d/index.html\n?? docs/results/R04-T01-b/opening-3d/preview.cjs\n?? docs/results/R04-T01-b/opening-3d/viewer.js\n?? docs/results/R04-T01-b/prepare-layout/prepare-1000.png\n?? docs/results/R04-T01-b/prepare-layout/prepare-1366.png\n?? docs/results/R04-T01-b/tutorial/challenge.png\n?? docs/results/R04-T01-b/tutorial/charge-revealed.png\n?? docs/results/R04-T01-b/tutorial/complete.png\n?? docs/results/R04-T01-b/tutorial/corrected-1000.json\n?? docs/results/R04-T01-b/tutorial/corrected-1000.png\n?? docs/results/R04-T01-b/tutorial/corrected-1366.json\n?? docs/results/R04-T01-b/tutorial/corrected-1366.png\n?? docs/results/R04-T01-b/tutorial/corrected-1920.json\n?? docs/results/R04-T01-b/tutorial/corrected-1920.png\n?? docs/results/R04-T01-b/tutorial/failure.png\n?? docs/results/R04-T01-b/tutorial/geometry-1000.json\n?? docs/results/R04-T01-b/tutorial/geometry-1366.json\n?? docs/results/R04-T01-b/tutorial/geometry-1920.json\n?? docs/results/R04-T01-b/tutorial/guided-1000.png\n?? docs/results/R04-T01-b/tutorial/guided-1920.png\n?? docs/results/R04-T01-b/tutorial/retry.png\n?? docs/results/R04-T01-b/tutorial/reveal-1000.png\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1000.json\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1000.png\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1366.json\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1366.png\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1920.json\n?? docs/results/R04-T01-b/tutorial/wrong-confirmed-1920.png\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1000.json\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1000.png\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1366.json\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1366.png\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1920.json\n?? docs/results/R04-T01-b/tutorial/wrong-selected-1920.png\n"
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-a",
+      "head": "0a95a96f3142055efd2e89c53c91f9fbe7ec13ae",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-b",
+      "head": "f8d47797678bd24497f2007ad0717c579d7517b8",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-c",
+      "head": "3e26191e50c711c300614cdd04e533a19727dbf5",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-d",
+      "head": "2154b1980ffb80b4cb59efab49dcb7578d040f10",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-e",
+      "head": "1f30a2449dddbe98144b7e98e0dc0a8e76b977ca",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-t02-f",
+      "head": "7f66b0d032aae1f42ecc2d368139d6d48c13a232",
+      "status": ""
+    },
+    {
+      "path": "/Users/zengchongtai/develop/DeiDei/.worktrees/r04-visual",
+      "head": "0d25a82c5d90e9851f95dd85e5bcf40471840913",
+      "status": "?? docs/results/R04-T01-a/\n"
+    }
+  ]
+}

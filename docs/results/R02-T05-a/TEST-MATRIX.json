@@ -1,0 +1,765 @@
+{
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "rows": [
+    {
+      "id": "P01",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "git diff input_sha tested_code_sha; allowed-path comparison",
+      "exit_code": 0,
+      "evidence": [
+        "scope-check.json"
+      ],
+      "detail": "固定产品输入与独立 worktree，禁止路径没有增量。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P02",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "npm audit --json; npm ls --all --json; uv pip check",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/commands.json"
+      ],
+      "detail": "完整前后审计及上游公告适用性见 DEPENDENCIES；当前 npm 高/严重项为零，非全二进制安全扫描。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P03",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "<DEDICATED_PYTHON> game/packaging/build.py",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/build-info.json"
+      ],
+      "detail": "原生干净工具环境；每次创建本包新输出，不清理其他工作。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P04",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "core/runtime unittest; independent acceptance; tool tests; python scripts/check.py; npm test",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/commands.json"
+      ],
+      "detail": "原 174/21/192/8/22/39+1 保留，新增 runtime 2 与 desktop 3；两个 Session 占位仍 NOT_RUN。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P05",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "node game/packaging/check-worker.cjs <BUNDLED_RESOURCES>",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/unpacked-worker.txt"
+      ],
+      "detail": "六种既有 JSONL 指令，OS-only PATH/无效开发变量/不同 cwd；stdout 无协议外输出。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P06",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "build byte assertions; node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/file-manifest.json"
+      ],
+      "detail": "catalog/entry-map 与固定 Git blob 及包内资源逐字节核对；手册 33 招；无旧模型。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P07",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-automation.json"
+      ],
+      "detail": "来自最终 ZIP，isPackaged=true，主进程实际 PID 的 worker 在 resources 内。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P08",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-automation.json"
+      ],
+      "detail": "仅临时 CI 源树不可达；非法 Python 变量、隔离 PATH、中文空格路径、不同 cwd 仍可玩；不是干净机。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P09",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-missing-worker.png"
+      ],
+      "detail": "损坏测试副本分别缺 worker/catalog，显示 PACKAGE_INCOMPLETE，无开发后台回退；原 ZIP 哈希未变。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P10",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-automation.json"
+      ],
+      "detail": "Mac 非特权 uid 501 只读 app/正常 userData 通过；两端中文路径通过。Windows CI 权限不能证明普通用户只读安装验收。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P11",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-automation.json"
+      ],
+      "detail": "10 次 open/start/leave/exit，观察到的自有 worker 均回收。Windows 不弹控制台的真人观察另列 NOT_RUN。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P12",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-automation.json"
+      ],
+      "detail": "5 场真实随机对局与再开；分数 DD、曾义自动休整、实际中止 worker 后错误与重开均观察到。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P13",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "用户在常规流程（含第6步物理断网冷启动）后整体确认 macOS 验收通过；没有逐局日志。可选新档案离线首启另列。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P14",
+      "platform": "darwin-arm64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "没有无 Python/Node/Git 的干净机器或独立真人系统账户；CI PATH 隔离不能替代。",
+      "not_run_reason": "没有无 Python/Node/Git 的干净机器或独立真人系统账户；CI PATH 隔离不能替代。"
+    },
+    {
+      "id": "P15",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/packaged-1366x768.png"
+      ],
+      "detail": "真实 Electron renderer 的 1366×768 与 1920×1080 视口；33 牌、三排、中文可读；昵称设置跨重启保留。非物理屏幕/真人输入证明。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P16",
+      "platform": "darwin-arm64",
+      "status": "FAIL",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "codesign --verify --deep --strict; spctl --assess",
+      "exit_code": 3,
+      "evidence": [
+        "native-ci/darwin-arm64/evidence/gatekeeper.txt"
+      ],
+      "detail": "Mac ad-hoc 完整性退出 0，但 Gatekeeper 退出 3 拒绝；没有公证或关闭防护。Windows 未签名，实际发布者/Defender 提示未人工复测。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P17",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "gh api artifact/zip; SHA256 outer/inner ZIP and build-info; compare every internal file",
+      "exit_code": 0,
+      "evidence": [
+        "download-verification.json"
+      ],
+      "detail": "实际下载外层 artifact digest、内部 ZIP、大小和文件清单核对；稳定链接/到期时间记录。普通操作见包内说明。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P18",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "macOS-15.7.9-arm64-arm-64bit / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "git diff input_sha tested_code_sha; inspect stage whitelist and ZIP members",
+      "exit_code": 0,
+      "evidence": [
+        "scope-check.json"
+      ],
+      "detail": "无新增生产测试后门、任意 exec、种子或 set_state；无字体/私有档案/旧模型/无关依赖；不改规则，不声明联网或正式发行。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P13-new-profile",
+      "platform": "darwin-arm64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "human machine unavailable",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "该项在人工流程中为可选补测；用户未单独确认，不从整体反馈推定执行。",
+      "not_run_reason": "该项在人工流程中为可选补测；用户未单独确认，不从整体反馈推定执行。"
+    },
+    {
+      "id": "P15-physical-display",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "用户本人确认 Mac 流程无问题；未提供屏幕参数或新截图，不把既有 CI 图片改称人工截图。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P16-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; OS version, chip and display scaling not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "用户确认 Mac 人工验收通过；没有回传安全提示过程，不能推断 Gatekeeper 评估或公证通过。CI P16 拒绝记录仍保留。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P01",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "git diff input_sha tested_code_sha; allowed-path comparison",
+      "exit_code": 0,
+      "evidence": [
+        "scope-check.json"
+      ],
+      "detail": "固定产品输入与独立 worktree，禁止路径没有增量。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P02",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "npm audit --json; npm ls --all --json; uv pip check",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/commands.json"
+      ],
+      "detail": "完整前后审计及上游公告适用性见 DEPENDENCIES；当前 npm 高/严重项为零，非全二进制安全扫描。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P03",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "<DEDICATED_PYTHON> game/packaging/build.py",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/build-info.json"
+      ],
+      "detail": "原生干净工具环境；每次创建本包新输出，不清理其他工作。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P04",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "core/runtime unittest; independent acceptance; tool tests; python scripts/check.py; npm test",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/commands.json"
+      ],
+      "detail": "原 174/21/192/8/22/39+1 保留，新增 runtime 2 与 desktop 3；两个 Session 占位仍 NOT_RUN。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P05",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "node game/packaging/check-worker.cjs <BUNDLED_RESOURCES>",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/unpacked-worker.txt"
+      ],
+      "detail": "六种既有 JSONL 指令，OS-only PATH/无效开发变量/不同 cwd；stdout 无协议外输出。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P06",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "build byte assertions; node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/file-manifest.json"
+      ],
+      "detail": "catalog/entry-map 与固定 Git blob 及包内资源逐字节核对；手册 33 招；无旧模型。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P07",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-automation.json"
+      ],
+      "detail": "来自最终 ZIP，isPackaged=true，主进程实际 PID 的 worker 在 resources 内。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P08",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-automation.json"
+      ],
+      "detail": "仅临时 CI 源树不可达；非法 Python 变量、隔离 PATH、中文空格路径、不同 cwd 仍可玩；不是干净机。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P09",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-missing-worker.png"
+      ],
+      "detail": "损坏测试副本分别缺 worker/catalog，显示 PACKAGE_INCOMPLETE，无开发后台回退；原 ZIP 哈希未变。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P10",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": null,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-automation.json"
+      ],
+      "detail": "Mac 非特权 uid 501 只读 app/正常 userData 通过；两端中文路径通过。Windows CI 权限不能证明普通用户只读安装验收。",
+      "not_run_reason": "Mac 非特权 uid 501 只读 app/正常 userData 通过；两端中文路径通过。Windows CI 权限不能证明普通用户只读安装验收。"
+    },
+    {
+      "id": "P11",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-automation.json"
+      ],
+      "detail": "10 次 open/start/leave/exit，观察到的自有 worker 均回收。Windows 不弹控制台的真人观察另列 NOT_RUN。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P12",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-automation.json"
+      ],
+      "detail": "5 场真实随机对局与再开；分数 DD、曾义自动休整、实际中止 worker 后错误与重开均观察到。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P13",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "没有由本人断网；已有档案断网三场及新档案离线首启均未测。",
+      "not_run_reason": "没有由本人断网；已有档案断网三场及新档案离线首启均未测。"
+    },
+    {
+      "id": "P14",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "没有无 Python/Node/Git 的干净机器或独立真人系统账户；CI PATH 隔离不能替代。",
+      "not_run_reason": "没有无 Python/Node/Git 的干净机器或独立真人系统账户；CI PATH 隔离不能替代。"
+    },
+    {
+      "id": "P15",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "packaged_automation",
+      "command": "node game/packaging/check-package.cjs",
+      "exit_code": 0,
+      "evidence": [
+        "native-ci/win32-x64/evidence/packaged-1366x768.png"
+      ],
+      "detail": "真实 Electron renderer 的 1366×768 与 1920×1080 视口；33 牌、三排、中文可读；昵称设置跨重启保留。非物理屏幕/真人输入证明。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P16",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "Mac ad-hoc 完整性退出 0，但 Gatekeeper 退出 3 拒绝；没有公证或关闭防护。Windows 未签名，实际发布者/Defender 提示未人工复测。",
+      "not_run_reason": "Mac ad-hoc 完整性退出 0，但 Gatekeeper 退出 3 拒绝；没有公证或关闭防护。Windows 未签名，实际发布者/Defender 提示未人工复测。"
+    },
+    {
+      "id": "P17",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "native_ci",
+      "command": "gh api artifact/zip; SHA256 outer/inner ZIP and build-info; compare every internal file",
+      "exit_code": 0,
+      "evidence": [
+        "download-verification.json"
+      ],
+      "detail": "实际下载外层 artifact digest、内部 ZIP、大小和文件清单核对；稳定链接/到期时间记录。普通操作见包内说明。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P18",
+      "platform": "win32-x64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "Windows-10-10.0.20348-SP0 / disposable GitHub-hosted account",
+      "evidence_kind": "source_test",
+      "command": "git diff input_sha tested_code_sha; inspect stage whitelist and ZIP members",
+      "exit_code": 0,
+      "evidence": [
+        "scope-check.json"
+      ],
+      "detail": "无新增生产测试后门、任意 exec、种子或 set_state；无字体/私有档案/旧模型/无关依赖；不改规则，不声明联网或正式发行。",
+      "not_run_reason": null
+    },
+    {
+      "id": "P11-console-human",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "human machine unavailable",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "没有真人双击并观察 Windows 控制台窗口；进程检查不替代人工。",
+      "not_run_reason": "没有真人双击并观察 Windows 控制台窗口；进程检查不替代人工。"
+    },
+    {
+      "id": "P13-new-profile",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "human machine unavailable",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "新档案物理离线首启没有由本人执行。",
+      "not_run_reason": "新档案物理离线首启没有由本人执行。"
+    },
+    {
+      "id": "P15-physical-display",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "human machine unavailable",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "CI 渲染视口不证明真人物理屏幕、缩放和输入体验。",
+      "not_run_reason": "CI 渲染视口不证明真人物理屏幕、缩放和输入体验。"
+    },
+    {
+      "id": "P16-human",
+      "platform": "win32-x64",
+      "status": "NOT_RUN",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+      "environment": "human machine unavailable",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "OFFLINE-CHECKLIST.txt"
+      ],
+      "detail": "没有在独立真人电脑检查首次下载后的系统安全提示。",
+      "not_run_reason": "没有在独立真人电脑检查首次下载后的系统安全提示。"
+    },
+    {
+      "id": "P07-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "首次启动：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P11-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "退出重开与保存：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    },
+    {
+      "id": "P12-human",
+      "platform": "darwin-arm64",
+      "status": "PASS",
+      "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+      "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+      "environment": "User macOS device; details not supplied",
+      "evidence_kind": "human",
+      "command": null,
+      "exit_code": null,
+      "evidence": [
+        "HUMAN-ACCEPTANCE.md"
+      ],
+      "detail": "真实单人对局：依据用户对常规人工流程的整体确认，未补造次数或逐步日志。",
+      "not_run_reason": null,
+      "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied"
+    }
+  ],
+  "human_acceptance": {
+    "recorded_at": "2026-09-13T17:59:26.729261+00:00",
+    "platform": "darwin-arm64",
+    "status": "PASS",
+    "evidence_kind": "human",
+    "evidence_source": "User confirmation in this task after the supplied macOS manual test workflow",
+    "quote": "都没问题， macOS验收通过",
+    "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+    "package_sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+    "artifact_identity_basis": "Candidate linked in the preceding manual test workflow; no new checksum supplied by the user",
+    "confirmation_scope": "Overall confirmation of the regular manual workflow, including the physical-offline step; no per-step logs, counts, screenshots or machine details supplied",
+    "command": null,
+    "exit_code": null,
+    "optional_new_profile_offline": "NOT_RUN; optional step not separately confirmed",
+    "clean_machine": "NOT_RUN; no assertion that Python/Node/Git are absent",
+    "windows_human": "NOT_RUN; user currently has no Windows device",
+    "gatekeeper_scope": "Prior CI spctl rejection remains unchanged; user acceptance does not establish notarization or system trust"
+  }
+}

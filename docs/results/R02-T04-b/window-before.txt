@@ -1,0 +1,2 @@
+PASS Baseline reproduces prepare → menu → table late-start navigation
+PASS Baseline confirms cancelled charge is falsely shown as DD gain

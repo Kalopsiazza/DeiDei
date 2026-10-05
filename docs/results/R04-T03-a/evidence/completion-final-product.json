@@ -1,0 +1,271 @@
+{
+  "evidenceNote": "P2 final product runtime;14 actual functional checks PASS; dirty QA/docs recorded. Not native motion/performance acceptance.",
+  "originalPath": "completion-final-product/checks.json",
+  "originalSha256": "9d8665fb29bd109657b38884b8b76e410f444c607916ac246a7582bb6dd9c7a8",
+  "input": {
+    "sha": "edbb85a664bde73bc74160f00bb38e15d5634908",
+    "dirty": "M WORK_START_HERE.md\n M docs/production/STATUS.md\n M docs/results/R04-T03-a/REMAINDERS.md\n M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n?? docs/results/R04-T03-a/CONTROL-STATES.md\n?? docs/results/R04-T03-a/REPORT.md\n?? docs/results/R04-T03-a/evidence/",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "5ec2546dddebb8589a3f86ef7f65259c6d1bcd1c37eddfb129f939f477632ed9",
+      "build/ui/welcome.css": "530cd5bebdb0a86dcb07eeb756b654c9d5b3604c1f50ccf1e7980aa505b2b921",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "e190ffe650f6018df6d8dac5b935eea84c9e2f0573e96cd7ff1125aac54b8578"
+    },
+    "startedAt": "2026-10-03T18:58:09.437Z",
+    "mainProcess": "fresh launch; no old hot-update process reused"
+  },
+  "source": "ordinary main / fixture preview and real worker / test-only IPC delay",
+  "consumerOverride": null,
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "preview-winner",
+      "id": "demo:4",
+      "actions": {
+        "player_1": {
+          "entry_id": "Pragon",
+          "actual_move": "Pragon",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_2": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        }
+      },
+      "moves": "最后一拍\n第 6 回合\n你 · 玩家 01\nPragon\n玩家 02\n攒／DeiDei",
+      "history": "回合记录\n\n第 1—5 拍记录未收到。\n\n第 6 回合\n玩家 01\nPragon\n玩家 02\n攒／DeiDei"
+    },
+    {
+      "name": "preview-defeat",
+      "id": "demo:8",
+      "actions": {
+        "player_1": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_2": {
+          "entry_id": "Pragon",
+          "actual_move": "Pragon",
+          "branch": null,
+          "is_recovery": false
+        }
+      },
+      "moves": "最后一拍\n第 6 回合\n你 · 玩家 01\n攒／DeiDei\n玩家 02\nPragon",
+      "history": "回合记录\n\n第 1—5 拍记录未收到。\n\n第 6 回合\n玩家 01\n攒／DeiDei\n玩家 02\nPragon"
+    },
+    {
+      "name": "preview-draw",
+      "id": "demo:12",
+      "actions": {
+        "player_1": {
+          "entry_id": "Pragon",
+          "actual_move": "Pragon",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_2": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_3": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_4": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_5": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_6": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        }
+      },
+      "moves": "最后一拍\n第 6 回合\n你 · 玩家 01\nPragon\n玩家 02\n攒／DeiDei\n玩家 03\n攒／DeiDei\n玩家 04\n攒／DeiDei\n玩家 05\n攒／DeiDei\n玩家 06\n攒／DeiDei",
+      "history": "回合记录\n\n第 1—5 拍记录未收到。\n\n第 6 回合\n玩家 01\nPragon\n玩家 02\n攒／DeiDei\n玩家 03\n攒／DeiDei\n玩家 04\n攒／DeiDei\n玩家 05\n攒／DeiDei\n玩家 06\n攒／DeiDei"
+    },
+    {
+      "name": "preview-winner",
+      "id": "demo:16",
+      "actions": {
+        "player_1": {
+          "entry_id": "Pragon",
+          "actual_move": "Pragon",
+          "branch": null,
+          "is_recovery": false
+        },
+        "player_2": {
+          "entry_id": "Charge",
+          "actual_move": "Charge",
+          "branch": null,
+          "is_recovery": false
+        }
+      },
+      "moves": "最后一拍\n第 6 回合\n你 · 玩家 01\nPragon\n玩家 02\n攒／DeiDei",
+      "history": "回合记录\n\n第 1—5 拍记录未收到。\n\n第 6 回合\n玩家 01\nPragon\n玩家 02\n攒／DeiDei"
+    },
+    {
+      "name": "native-close-key-sequence",
+      "keys": [
+        {
+          "key": "Escape",
+          "t": 24682.5,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false"
+        },
+        {
+          "key": "Enter",
+          "t": 24703.100000023842,
+          "trusted": true,
+          "target": "BODY",
+          "closing": "true"
+        }
+      ]
+    },
+    {
+      "name": "preview-close-enter-false",
+      "count": 0,
+      "current": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "开发预览"
+      }
+    },
+    {
+      "name": "preview-delayed-action-false",
+      "count": 1,
+      "current": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "单人对局本机实算 · 练习模式01"
+      }
+    },
+    {
+      "name": "native-close-key-sequence",
+      "keys": [
+        {
+          "key": "Escape",
+          "t": 28452.400000035763,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false"
+        },
+        {
+          "key": "Enter",
+          "t": 28459.400000035763,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "true"
+        }
+      ]
+    },
+    {
+      "name": "preview-close-enter-true",
+      "count": 0,
+      "current": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "开发预览"
+      }
+    },
+    {
+      "name": "preview-delayed-action-true",
+      "count": 1,
+      "current": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "开发预览"
+      }
+    },
+    {
+      "name": "native-close-key-sequence",
+      "keys": [
+        {
+          "key": "Escape",
+          "t": 32717.30000001192,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false"
+        },
+        {
+          "key": "Enter",
+          "t": 32726.900000035763,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "true"
+        }
+      ]
+    },
+    {
+      "name": "settings-delayed-false",
+      "calls": 1,
+      "state": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "单人对局本机实算 · 练习模式01"
+      }
+    },
+    {
+      "name": "native-close-key-sequence",
+      "keys": [
+        {
+          "key": "Escape",
+          "t": 36445.69999998808,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "false"
+        },
+        {
+          "key": "Enter",
+          "t": 36456.10000002384,
+          "trusted": true,
+          "target": "BUTTON",
+          "closing": "true"
+        }
+      ]
+    },
+    {
+      "name": "settings-delayed-true",
+      "calls": 1,
+      "state": {
+        "page": "menu",
+        "dialog": false,
+        "focus": "单人对局本机实算 · 练习模式01"
+      }
+    }
+  ],
+  "errors": [],
+  "cleanup": {
+    "pid": 44392,
+    "normalExit": true,
+    "forced": false,
+    "errors": [],
+    "exitCode": 0,
+    "signal": null,
+    "exited": true
+  }
+}

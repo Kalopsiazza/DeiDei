@@ -1,0 +1,765 @@
+{
+  "purpose": "viewable sanitized excerpts; original raw records stay unchanged in ignored output",
+  "product": "dc38024a91818c3e2a2ca537675549409cfca620",
+  "milestones": {
+    "one": "complete",
+    "two": "complete-local",
+    "three": "complete-local-delivery"
+  },
+  "files": [
+    {
+      "name": "completion-product.json",
+      "source": "completion-product/checks.json",
+      "originalSha256": "d19e76c7a532dd29e229dd5c2def6e8dd3f2bc0572bdd4781a3a763dfe034cfc",
+      "publishedSha256": "b6045fa550b1ac5369239fc13e401e86a581c200514d19a2fdbeae09c0a19d7e",
+      "note": "Historical clean P1 actual-main interaction14PASS. SharedUI/fixture interaction unchanged; later CSS product changes and final GUI limits inREPORT."
+    },
+    {
+      "name": "welcome-product.json",
+      "source": "welcome-product/welcome-native.json",
+      "originalSha256": "e724321db6da09d76c0eacf01ed8e8fc2c2087867fe6c6b6b6a12fc9e990ee55",
+      "publishedSha256": "e869107876f80ad6eb44b2dbd61e17f09037614aa87a0172ca178e4513c2c5a7",
+      "note": "Historical clean product 1b2b7a1; true dev watcher reload with explicit MOCK socket. 37 functional checks; not native focus performance or network acceptance."
+    },
+    {
+      "name": "archive-before.json",
+      "source": "archive-focused-before/evidence.json",
+      "originalSha256": "3f4ed15bf9c311371ce367a7883bdf3ddb9678febdad925b87c2414d5b811daa",
+      "publishedSha256": "f89b0822bb160363d7e7f7d7039828d7e4ba9f23e6d639afabe4cb9a633454cc",
+      "note": "Controlled historical CSS override restoring exact start archive.css; native focus true. Not a final product acceptance."
+    },
+    {
+      "name": "archive-after.json",
+      "source": "archive-static-backdrop/evidence.json",
+      "originalSha256": "e134de8c23a5ea99f4ab1a03b5ead5cd8846e08eae1e3d2f50f35d3ec1850f0e",
+      "publishedSha256": "b8933370e87629a30c43fb5864a1176d1224819f6523393f5fb96954248224d3",
+      "note": "Historical archive local fix with native focus true. Full CSS differs from final product; final strict repeat pending."
+    },
+    {
+      "name": "online-baseline.json",
+      "source": "online-steady-product-v2/checks.json",
+      "originalSha256": "5e5f5c78e6790d6f551e8ade07b1e785c00133f9e9be1a7d2aa1c77bf7e24fe6",
+      "publishedSha256": "43c78701700e5af796f9d178c8c69dc90608a344abd83a3fbe8cd6f41f447ddd",
+      "note": "Flow15 PASS; performance INCOMPLETE (p95117.6/max200.6). Fixed reused host. Native focused false/docfocus true."
+    },
+    {
+      "name": "online-ambient-ab.json",
+      "source": "online-ambient-ab/checks.json",
+      "originalSha256": "9a4be539c2b0f017719cc7c7b70f324de54dbd12f81be336e2efa7685e5842ed",
+      "publishedSha256": "088ce11735b2f0ab5cacf013c909fb7379c7f74901de7a85d494507e275a69b7",
+      "note": "Compiled-only four ambient loop pause, not retained. Flow15 PASS; performance INCOMPLETE."
+    },
+    {
+      "name": "online-backdrop-ab.json",
+      "source": "online-backdrop-ab/checks.json",
+      "originalSha256": "1b5e611910509c3a0d92db9456ed09e2a73e3999767b51d250368cdccf5e3684",
+      "publishedSha256": "7e9c675166c22fb8f6d81eb4b94fbdf02e68bc6d08cda4bb870329f3619f3688",
+      "note": "Historical isolated compiled-only online backdrop removal; P2 edbb85a664bde73bc74160f00bb38e15d5634908 had byte-identical CSS. Flow15PASS, nativefocusedfalse; P5 laterCSS differs, short unlocked reused-host investigation is separate."
+    },
+    {
+      "name": "online-dynamic-failure.json",
+      "source": "online-v7/checks.json",
+      "originalSha256": "00ea4d7589e84fbb0b6846b9caba631627f076556f526d72d2f108aaec421ca3",
+      "publishedSha256": "5ea986b4d02e470ca4b7a0a3996dd42bb0a371504aa8a4b181253916f3d495ad",
+      "note": "Whole run FAIL (Charge reveal timeout). Partial six-player glyph/timing/viewer evidence only; not all counts dynamic acceptance."
+    },
+    {
+      "name": "dynamic-product-failure.json",
+      "source": "dynamic-product/dynamic.json",
+      "originalSha256": "e4d838c4e3a6abbfc9fb4943436eb2c7dd74594106bdfe962c4281a06d5adbb6",
+      "publishedSha256": "57182bc945087c7081e5df3eb9e2f87707f84808ce2625f83f7ff0b38076bf36",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "dynamic-product-v2-failure.json",
+      "source": "dynamic-product-v2/dynamic.json",
+      "originalSha256": "1354ddb44cde068483c9b11653b0824a9e9b765cc20a36e2332fb0f910f817d7",
+      "publishedSha256": "92930464c29eeed809ab1f048773247042ab3779354a2dd93b762e7aff74f4e7",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "dynamic-final-product-failure.json",
+      "source": "dynamic-final-product/dynamic.json",
+      "originalSha256": "ed2f55b89448fe210de9e83667b8b76f9f7b846e0b72d4cf4ae5d800eb80b5d2",
+      "publishedSha256": "bf28014cd2664b26acb718ef4c568d395862e262c613ecce93b4c58c44f287bc",
+      "note": "Whole original run remains FAIL. See REPORT for actual partial coverage and later reruns; do not relabel older results."
+    },
+    {
+      "name": "preview-defeat.png",
+      "source": "completion-product/preview-defeat.png",
+      "originalSha256": "97c070d9b74c300b7d38bc8c3b60200e913fdc339755c73488e79af0382f231c",
+      "publishedSha256": "97c070d9b74c300b7d38bc8c3b60200e913fdc339755c73488e79af0382f231c",
+      "note": "P1 fixture defeat during result handoff. Result/ledger correctness is in corresponding 14-check JSON."
+    },
+    {
+      "name": "welcome-menu.png",
+      "source": "welcome-product/returning-menu.png",
+      "originalSha256": "1217e96d11db8b2bdeb8c02e5eef3545d5737f60243f90732ee08446bda10442",
+      "publishedSha256": "1217e96d11db8b2bdeb8c02e5eef3545d5737f60243f90732ee08446bda10442",
+      "note": "P1 stable existing-profile menu after same-process reload; no user profile, only synthetic test data."
+    },
+    {
+      "name": "six-player-minimum.png",
+      "source": "online-v7/selecting-6.png",
+      "originalSha256": "97632925dc49de6bf6a2f2d14423d1db072adb4eb3c51ffe055c875ba1fcebe1",
+      "publishedSha256": "97632925dc49de6bf6a2f2d14423d1db072adb4eb3c51ffe055c875ba1fcebe1",
+      "note": "P1 compiled output, real service at1000x650. Whole online run failed later. Seat identities hidden in selection by existing rules; glyph validation in JSON."
+    },
+    {
+      "name": "archive-candidate.png",
+      "source": "archive-static-backdrop/final.png",
+      "originalSha256": "cb3ee7ecad380504ca677c9f55d9fce9677de45d9d0a3f599be939eabcb27d8f",
+      "publishedSha256": "cb3ee7ecad380504ca677c9f55d9fce9677de45d9d0a3f599be939eabcb27d8f",
+      "note": "Historical strict archive local-fix screenshot at1920x1080,DPR2; not final-product acceptance."
+    },
+    {
+      "name": "product-input.json",
+      "source": "product-input.json",
+      "originalSha256": "c7cf838ce5c0d28054240d2b8eae0e4c0d48c41e67c43eb49af85fbb6b4cd0a3",
+      "publishedSha256": "c7cf838ce5c0d28054240d2b8eae0e4c0d48c41e67c43eb49af85fbb6b4cd0a3",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "product-final-input.json",
+      "source": "product-final-input.json",
+      "originalSha256": "ddd9cd053f71b19cc34a384ac4018a217495480a8b3bba8c0d6abf1ea621a813",
+      "publishedSha256": "ddd9cd053f71b19cc34a384ac4018a217495480a8b3bba8c0d6abf1ea621a813",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "online-ambient-variant.json",
+      "source": "online-ambient-variant.json",
+      "originalSha256": "36d740b984aaea8b5e8a711fd4d7899e3eed276b79d4963e6bbd0350643973d6",
+      "publishedSha256": "dd1bdffedb30880418ec76daac597390d5aea28aa21d5bc7fe10074b88a6601a",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "online-backdrop-variant.json",
+      "source": "online-backdrop-variant.json",
+      "originalSha256": "77d8b8d5e5b2884a7e055529b8879ae00567e128e65331565de90c8f4dc530b1",
+      "publishedSha256": "665436bb2fda2dbada55608385001848c8a3b84cf9c7821d219cf10319734744",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "dynamic-product-v2-input.json",
+      "source": "dynamic-product-v2-input.json",
+      "originalSha256": "0b0f5cd866c6ae89c3a0065d3e2624d0d0dd0defdc8ecce3027d70b225e154b6",
+      "publishedSha256": "0b0f5cd866c6ae89c3a0065d3e2624d0d0dd0defdc8ecce3027d70b225e154b6",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "name": "steady-run-source.json",
+      "source": "steady-run-source.json",
+      "originalSha256": "0c60fffce0dbd14cc4ac8361ee2d08472ddd8155dd0dd1a4bc3fdfc49ba3bdaf",
+      "publishedSha256": "0c60fffce0dbd14cc4ac8361ee2d08472ddd8155dd0dd1a4bc3fdfc49ba3bdaf",
+      "note": "Input/hash manifest, not standalone acceptance."
+    },
+    {
+      "source": "archive-focused-before/manual-detail-scroll-cpu-profile.json",
+      "originalSha256": "1f18cbd3322118d0a6c901f14f2e2bf986da99420173e526db74099c2b4ea0e2",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-detail-scroll-trace.json",
+      "originalSha256": "0f89da5e9eefc87457ac369394785aba50c4ad93cbff6645404a089efb89b157",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-stack-scroll-cpu-profile.json",
+      "originalSha256": "6ccf4179505cf1a68b2a23ed64469d65e162ccab4568b90c872fd8f19f57b1fb",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-focused-before/manual-stack-scroll-trace.json",
+      "originalSha256": "e9ff9f2197e8916720e77988a5b304233dbd72cc2a443c408c03fa41556e44c4",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-detail-scroll-cpu-profile.json",
+      "originalSha256": "0dc42ded595e2d6180db733017be7d66b1998bca24cfb3c8f058024f52162528",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-detail-scroll-trace.json",
+      "originalSha256": "e089f289134d5daaa12a99c3721ae95c05a1ce54608eac2d340f21ffdde2b0f3",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-stack-scroll-cpu-profile.json",
+      "originalSha256": "235ef3ee247c0dc2cc487bd4361c95b7ed17c4136af02468f49da4caa4daca97",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "archive-static-backdrop/manual-stack-scroll-trace.json",
+      "originalSha256": "cae58636ae00744def29d7cc959f330cf28a2273a6b80e227941280a85e81498",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-steady-product-v2/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "297147c0cea7d2f0a8457072cd3de5c17f8d2da5cf234d18165bed25b8a27fc7",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-steady-product-v2/two-player-reused-steady-trace.json",
+      "originalSha256": "2769daecb204098c5ccc3d8ef65bb1cd8e271ffd7d902ceca911c0afcb5c4bd9",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-ambient-ab/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "188e84906e3c6a3b657ca4b95c35d5de8b873fbecb07cbf3f23768dcb5b40a55",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-ambient-ab/two-player-reused-steady-trace.json",
+      "originalSha256": "d9e7488915f1c0537dc87fb1f794caac2cef40c07cddb431adcbb90e72104d53",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-backdrop-ab/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "e59de17d082a48f3380fce7ba1bcae1a4163f433761ab8b71e8f9e8a30ddca6e",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "source": "online-backdrop-ab/two-player-reused-steady-trace.json",
+      "originalSha256": "e15e7cae68be59be743b57ed080520b2094aabd7685b53bad1a20a84f651df8d",
+      "published": false,
+      "note": "Large raw trace/profile retained locally; source hash here."
+    },
+    {
+      "name": "dynamic-final-product-v2.json",
+      "source": "dynamic-final-product-v2/dynamic.json",
+      "originalSha256": "9892fe2d927591f68d93341bc99801d971e7c14a1cd0c8e6f062af165f38829b",
+      "publishedSha256": "f07ad95c9786916e75a2770824e020c8676ddbd2f3a5927edfbe6cc47d49567d",
+      "note": "P2 product output. Full automatic10routes189recordsPASS; native motion evidence and intermittent earlier settings offset still incomplete."
+    },
+    {
+      "name": "online-final-product-failure.json",
+      "source": "online-final-product/checks.json",
+      "originalSha256": "4e253c44c11420976f77975b61e77a6c4072636940f6f1e8bf8b62fc2ad601f7",
+      "publishedSha256": "a2ac0022f1d7fc17111f9f993734c0c433429d4e8b30b7210eb972eeeb9013c6",
+      "note": "P2 full route FAIL; card targets sampled during revealed after real deadline advanced. Not product selecting clipping evidence."
+    },
+    {
+      "name": "online-final-product-v2-failure.json",
+      "source": "online-final-product-v2/checks.json",
+      "originalSha256": "842c2f7ba96a548b9ee4006c79b2afd9b70510f3d3c25e684a3474ef67da66fa",
+      "publishedSha256": "c5bbda963e4134642e2a37ed363649a02ea2f84745a5a53191e849e4bf357d63",
+      "note": "P2 full route FAIL; bounded flight geometry did not reach stable completion. Preserve raw records; no tolerance reduced."
+    },
+    {
+      "name": "final-qa-input.json",
+      "source": "final-qa-input.json",
+      "originalSha256": "3352076894b73ce5f1956a24db56f017fb7451a0634c4ea7dc820abcabcef09a",
+      "publishedSha256": "3352076894b73ce5f1956a24db56f017fb7451a0634c4ea7dc820abcabcef09a",
+      "note": "Driver/source map; per-run dirty retained."
+    },
+    {
+      "name": "completion-final-product.json",
+      "source": "completion-final-product/checks.json",
+      "originalSha256": "9d8665fb29bd109657b38884b8b76e410f444c607916ac246a7582bb6dd9c7a8",
+      "publishedSha256": "e9a6e2e507fd0a6ac64fdbaa6059f4f461ee361834fcad97887b8e071a58f015",
+      "note": "P2 final product runtime;14 actual functional checks PASS; dirty QA/docs recorded. Not native motion/performance acceptance."
+    },
+    {
+      "name": "solo-minimum-final.png",
+      "source": "dynamic-final-product-v2/solo-select-minimum.png",
+      "originalSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
+      "publishedSha256": "b6e0ab47bde13334f77467310e4e117c44f57b5b55092dc7c231a85b1670d745",
+      "note": "Current P2 runtime, real worker, 1000x650, selected Charge;10-route driverPASS."
+    },
+    {
+      "name": "controls-front.json",
+      "source": "controls-front-unlocked-v2/checks.json",
+      "originalSha256": "054d90a6d286693ba8401f45ff422c8a24cf1686936d1e5e064e114f104b91bc",
+      "publishedSha256": "054d90a6d286693ba8401f45ff422c8a24cf1686936d1e5e064e114f104b91bc",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-settings.json",
+      "source": "controls-settings-unlocked-v2/checks.json",
+      "originalSha256": "20599a8f35eda1363b0cb477cd07a477b620e98a03ddc0bab5aeba7f8ca2f410",
+      "publishedSha256": "20599a8f35eda1363b0cb477cd07a477b620e98a03ddc0bab5aeba7f8ca2f410",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-recover.json",
+      "source": "controls-recover-unlocked-v1/checks.json",
+      "originalSha256": "bab96493f547f3a3f0b9f48491d5e4241e3d19f47005ca27916dac88795fb0eb",
+      "publishedSha256": "bab96493f547f3a3f0b9f48491d5e4241e3d19f47005ca27916dac88795fb0eb",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-local.json",
+      "source": "controls-local-unlocked-v2/checks.json",
+      "originalSha256": "12f651b3e131b64658c90f3fb657a5b60569994328f72a1a1313957389bcf6da",
+      "publishedSha256": "12f651b3e131b64658c90f3fb657a5b60569994328f72a1a1313957389bcf6da",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-archive.json",
+      "source": "controls-archive-unlocked-v2/checks.json",
+      "originalSha256": "3380899a0af58bee2a5371c1008b65d1026a7a41532b8a6a21e88ace4c505c0d",
+      "publishedSha256": "3380899a0af58bee2a5371c1008b65d1026a7a41532b8a6a21e88ace4c505c0d",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "controls-tutorial.json",
+      "source": "controls-tutorial-unlocked-v1/checks.json",
+      "originalSha256": "548492bccd85b2e7a24e296a77601076f93e5a0b467108bb1ffbc1a748c00d8b",
+      "publishedSha256": "548492bccd85b2e7a24e296a77601076f93e5a0b467108bb1ffbc1a748c00d8b",
+      "note": "Actual App batch PASS; exact dirty source, collector fingerprint, runtime input and owned cleanup in record; not all native/performance acceptance."
+    },
+    {
+      "name": "modal-contract.json",
+      "source": "modal-contract-unlocked-v1/checks.json",
+      "originalSha256": "731d44201e86522f903e9a9afd8ffac3243c3ebc35c346d8b8adba1ba685c75f",
+      "publishedSha256": "731d44201e86522f903e9a9afd8ffac3243c3ebc35c346d8b8adba1ba685c75f",
+      "note": "Two actual SharedUI prop-change cases PASS, ordinary main/CSP/preload and test-only parent; SharedUI unchanged in current product."
+    },
+    {
+      "name": "settings-unlocked.json",
+      "source": "settings-unlocked-after-v1/dynamic.json",
+      "originalSha256": "97d1f7c51b2411284d36312ff1074ff537f02cd705f47e49e08921cde2efd5c5",
+      "publishedSha256": "ae49f1e6f334cd44e9810f071cad198ecd9dc5f8808beac7260aff5cf3208c9e",
+      "note": "Actual keyboard/continuous resize after overflow clip, PASS; runtime stage change not yet committed at collection."
+    },
+    {
+      "name": "online-unlocked.json",
+      "source": "online-unlocked-bottom-auto-v1/checks.json",
+      "originalSha256": "ebcc3127b2bd87946805410c470c57627399568163cf0c1dff217cb1c5b31ffa",
+      "publishedSha256": "e83f6e738dfbebf42d77e9d2b4aa0f4125cef9d0374c92094495a0622bb0aef2",
+      "note": "Full real local service N=6/3/4/5/2 and six-player viewer PASS17. Native-focused short reused-two investigation did not reproduce old severe late reveal stalls; 7 restoration long intervals remain; exact P3+dirty autoheight input recorded."
+    },
+    {
+      "name": "archive-unlocked-p2.json",
+      "source": "archive-unlocked-6eb652d-v1/evidence.json",
+      "originalSha256": "fca87c1f5246d6ceafb6b3ff4b479661b9b21e808a7ce6d91059706d60828d21",
+      "publishedSha256": "fca87c1f5246d6ceafb6b3ff4b479661b9b21e808a7ce6d91059706d60828d21",
+      "note": "P2 unlocked strict 1920/DPR2 protocol PASS; final P5 repeat still pending. Separate focus RAF first list sample unpaired; not asserted every-RAF proof."
+    },
+    {
+      "name": "native-explicit-p5.json",
+      "source": "native-explicit-p5-v1/welcome-native.json",
+      "originalSha256": "d24cf60ecd44fb2a1f0ed6900e7fa816d7820a761545a10903ae81cb6ed3da67",
+      "publishedSha256": "d24cf60ecd44fb2a1f0ed6900e7fa816d7820a761545a10903ae81cb6ed3da67",
+      "note": "Current P5 ordinary main PASS7, real CUA fullscreen/display2→1→2/selected focus, explicit recorder stop38.600s then normal close1.190s/exit0; attempted border drags did not reach minimum here."
+    },
+    {
+      "name": "checks-p5.json",
+      "source": "checks-p5-unlocked-v1/checks.json",
+      "originalSha256": "2e714bb74851112ee715b540916ec30ef0633461831ab74889bd40a4fada8f69",
+      "publishedSha256": "2e714bb74851112ee715b540916ec30ef0633461831ab74889bd40a4fada8f69",
+      "note": "P5 final build, Node76/Python59 unchanged expected failure1 and four guards exit0; exact commands and output hashes. GUI not part of these commands."
+    },
+    {
+      "name": "controls-online-v5-failure.json",
+      "source": "controls-online-unlocked-v5/checks.json",
+      "originalSha256": "431142c76f1d34d5e2fda6ad3fdac4fb1a3c046f4670090d644687ddce3d1111",
+      "publishedSha256": "431142c76f1d34d5e2fda6ad3fdac4fb1a3c046f4670090d644687ddce3d1111",
+      "note": "Overall FAIL native popup continuation180s timeout due Mac locked before Return. First35 actual controls and capacity evidence partial only; later controls not run."
+    },
+    {
+      "name": "controls-online-v6-failure.json",
+      "source": "controls-online-nohold-v6/checks.json",
+      "originalSha256": "860a6d986b73db30c310e355664ae76fbba0bc7f7400b0de9444185d54833f28",
+      "publishedSha256": "860a6d986b73db30c310e355664ae76fbba0bc7f7400b0de9444185d54833f28",
+      "note": "Overall FAIL at original native focus gate under locked Mac; zero controls; no lowered focus assertions; owned cleanup recorded."
+    },
+    {
+      "name": "native-p4-failure.json",
+      "source": "native-unlocked-p4-v1/welcome-native.json",
+      "originalSha256": "e8c96583a6e862073aeff34843f38e8ff0b3161e9a3278564cb4bcaead5631f3",
+      "publishedSha256": "e8c96583a6e862073aeff34843f38e8ff0b3161e9a3278564cb4bcaead5631f3",
+      "note": "Overall FAIL automatic recording finalization/app.close6500ms exceeded; actual CUA1000x650 and fullscreen/display events remain partial native evidence; not normal-quit PASS."
+    },
+    {
+      "name": "native-p4-minimum.png",
+      "source": "native-unlocked-p4-v1/native-builtin-selected.png",
+      "originalSha256": "18f559ae56145648412f09c7de10bdc7022863924484dca43d74c42c31c41489",
+      "publishedSha256": "18f559ae56145648412f09c7de10bdc7022863924484dca43d74c42c31c41489",
+      "note": "Actual native1000x650/DPR2; P4 runtime main/renderer/style same asP5, welcome.css earlier. Overall source runFAIL retained."
+    },
+    {
+      "name": "native-p5-returned.png",
+      "source": "native-explicit-p5-v1/native-hold-final.png",
+      "originalSha256": "de72f3c98de9cfdada45973472670426bddc80b5d62d3b3fa91c8f95243c1ddd",
+      "publishedSha256": "de72f3c98de9cfdada45973472670426bddc80b5d62d3b3fa91c8f95243c1ddd",
+      "note": "P5 actual native1366x768/DPR2 after CUA fullscreen and cross-display return, selected Cloud; static frame must be paired with events."
+    },
+    {
+      "name": "native-fullscreen-entry.renderer.mp4",
+      "source": "native-unlocked-p4-v1/short-clips/native-fullscreen-entry.renderer.mp4",
+      "originalSha256": "2c8236d0b6a2759fb2c6505aa9dcee0c5c612a61e37e475b04049b6fa86305ac",
+      "publishedSha256": "2c8236d0b6a2759fb2c6505aa9dcee0c5c612a61e37e475b04049b6fa86305ac",
+      "note": "P4 source overallFAIL retained. Renderer-only continuous nominal source41–56s, 15.000s H2641920x1080/25fps; pair native events/CUA; frame/border not recorded."
+    },
+    {
+      "name": "native-size-display-selection.renderer.montage.mp4",
+      "source": "native-unlocked-p4-v1/short-clips/native-size-display-selection.renderer.montage.mp4",
+      "originalSha256": "ec6fa9eadf9cb46e7dc1e86e11f8f9ea7026cef0ae1cb065f0000122a279df56",
+      "publishedSha256": "ec6fa9eadf9cb46e7dc1e86e11f8f9ea7026cef0ae1cb065f0000122a279df56",
+      "note": "P4 source overallFAIL retained. Renderer-only THREE-CUT nominal60–64.5/214.5–219/246.5–262.5s, actual25.040s H2641920x1080/25fps; Charge selected visible, Cloud focus not Cloud selected; physical geometry from original native samples."
+    },
+    {
+      "name": "completion-cleanup-self-check.json",
+      "source": "completion-cleanup-self-check-v1.json",
+      "originalSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175",
+      "publishedSha256": "c39aff13b05ac456b2a81e85bc3ff33df539d0a40d5e0bdb3a372ed1b111e175",
+      "note": "No GUI, actual finally body write EACCES first/both; closes once and removes owned profile once; original failure retained."
+    },
+    {
+      "name": "worktrees-preservation-resumed.json",
+      "source": "worktrees-resumed-preservation-v1.json",
+      "originalSha256": "49427b8af65eac1019f4a848205872d8b490e15316e4861e0c04777f87e9ef1a",
+      "publishedSha256": "49427b8af65eac1019f4a848205872d8b490e15316e4861e0c04777f87e9ef1a",
+      "note": "Original21worktrees sameHEAD and fullstatus; main unchanged; task worktree remains active."
+    },
+    {
+      "source": "native-explicit-p5-v1/native-content.webm",
+      "originalSha256": "116824269d75efaf97731720ea994f3c62cbeec9a7f5ea63d07f9204ce8eda97",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "native-unlocked-p4-v1/native-content.webm",
+      "originalSha256": "dad38356e4ae2ffdd120a7e5e29cce5e95178b76eb2c0f56ae61e34bb23180c5",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "online-unlocked-bottom-auto-v1/two-player-reused-steady-cpu-profile.json",
+      "originalSha256": "55b881f829647f492d046575e022f442f424e446d34c485f7c98218db8cff78f",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "source": "online-unlocked-bottom-auto-v1/two-player-reused-steady-trace.json",
+      "originalSha256": "72c61ead614067c0f2bde9d98b8a5f58240b9308039a2c8b3fdfc8aad3e4d807",
+      "published": false,
+      "note": "Large raw original retained unchanged in ignored local output; viewable report/selected artifacts are separate."
+    },
+    {
+      "name": "controls-archive-extra-final.json",
+      "source": "controls-archive-extra-final-v5/checks.json",
+      "originalSha256": "48433e3da0c55561004d5679b76d4119cb7ec5a96759f8d3eda737c6f9f79bc3",
+      "publishedSha256": "48433e3da0c55561004d5679b76d4119cb7ec5a96759f8d3eda737c6f9f79bc3",
+      "note": "PASS88 controls/1business; P5 runtime, historical head with QA dirty; discrete native focus snapshots only."
+    },
+    {
+      "name": "controls-loading-final.json",
+      "source": "controls-loading-final-v2/checks.json",
+      "originalSha256": "2e5fc5775202a96b8d4c09395b4f0d58c8755a4f8930c3652e7e63dd60585514",
+      "publishedSha256": "2e5fc5775202a96b8d4c09395b4f0d58c8755a4f8930c3652e7e63dd60585514",
+      "note": "PASS7/1 actual delayed original profile.read and loading brand; P5 runtime, QA dirty; no continuous native focus proof."
+    },
+    {
+      "name": "controls-online-final.json",
+      "source": "controls-online-final-v13/checks.json",
+      "originalSha256": "0b76e1c9ddd99efc72d57a462dbe63e71ef9663d1e19dc55dc44713373412222",
+      "publishedSha256": "0b76e1c9ddd99efc72d57a462dbe63e71ef9663d1e19dc55dc44713373412222",
+      "note": "Clean63496395b59af71998a47a1e183e509c8472865b PASS66 verified and796 natural; all11 busy predicates, result/return/leave. Native select acceptance is separately inherited N7; raw controlStatesComplete=false preserved."
+    },
+    {
+      "name": "native-select-accepted.json",
+      "source": "controls-online-final-v7/native-cua.json",
+      "originalSha256": "f87647dec03cef130a71777cf257782c6b1b6a03af3ad4a907fadbf4c23f55f6",
+      "publishedSha256": "f87647dec03cef130a71777cf257782c6b1b6a03af3ad4a907fadbf4c23f55f6",
+      "note": "Actual CUA Up→Return accepts20 and closes popup while dialog remains; continuation marker only resumes. Parent v7 whole FAIL remains."
+    },
+    {
+      "name": "controls-online-v7-failure.json",
+      "source": "controls-online-final-v7/checks.json",
+      "originalSha256": "a5dbf8d467713de3f7202781dc202be0c367ffe2a420f6ccce0dc182f2ebc1dc",
+      "publishedSha256": "a5dbf8d467713de3f7202781dc202be0c367ffe2a420f6ccce0dc182f2ebc1dc",
+      "note": "WholeFAIL59 states at stale post-result battle button; native popup continuation accepted20000 independently. Do not call this whole run PASS."
+    },
+    {
+      "name": "controls-online-v11-failure.json",
+      "source": "controls-online-final-v11/checks.json",
+      "originalSha256": "f3a1a318c66f43c526c4b3e334c90a69ec7559b931498924dfd45ac6e0fbed51",
+      "publishedSha256": "f3a1a318c66f43c526c4b3e334c90a69ec7559b931498924dfd45ac6e0fbed51",
+      "note": "WholeFAIL on hover at animated close target; raw default/hover boxes preserved; subsequent collector uses actionability-aware locator.hover."
+    },
+    {
+      "name": "controls-online-v12-failure.json",
+      "source": "controls-online-final-v12/checks.json",
+      "originalSha256": "098aa1642318adbdd8dc48990e103657bf210bb6487055ac611d97bfb033bdc6",
+      "publishedSha256": "098aa1642318adbdd8dc48990e103657bf210bb6487055ac611d97bfb033bdc6",
+      "note": "WholeFAIL58; real guest submit busy recorded, late disabled assertion fails. v13 checks same next turn and original public Charge/human ledger instead."
+    },
+    {
+      "name": "welcome-final-p5.json",
+      "source": "welcome-final-p5-v1/welcome-native.json",
+      "originalSha256": "400680a03cf103c2df56020d45e11f5ac7bb0792477a19f7af9f8874b89f4a33",
+      "publishedSha256": "400680a03cf103c2df56020d45e11f5ac7bb0792477a19f7af9f8874b89f4a33",
+      "note": "Clean2c5b0b896a31331d12627b471647a70d9223c8c0 PASS37/11 segments; fresh/samePID/P01/realwatcherreload, P5 fingerprints and normal cleanup. Discrete focus and welcome long frames retained."
+    },
+    {
+      "name": "archive-final-p5.json",
+      "source": "archive-final-p5-v4/evidence.json",
+      "originalSha256": "9335c4d4dec15bd15669c1b2c3e749218e97311b17fedaf09d0d185116780249",
+      "publishedSha256": "9335c4d4dec15bd15669c1b2c3e749218e97311b17fedaf09d0d185116780249",
+      "note": "P5 strict native1920x1080/DPR2, 2x8wheel, paired201 focus frames,0>50ms and normal cleanup. Input2c5 with two QA dirty; negative CPUdelta and detail trace discarded16 retained."
+    },
+    {
+      "name": "archive-final-p5-v2-failure.json",
+      "source": "archive-final-p5-v2/evidence.json",
+      "originalSha256": "c6b3be4b4c49a2171796dc87aaf64bce7af6c49f126bebc7a18b204acaeb8ca4",
+      "publishedSha256": "c6b3be4b4c49a2171796dc87aaf64bce7af6c49f126bebc7a18b204acaeb8ca4",
+      "note": "WholeFAIL hold timeout,0segments; close6500ms forced main/one child. Do not conflate this with v4 normal exit."
+    },
+    {
+      "name": "archive-final-p5-v3-failure.json",
+      "source": "archive-final-p5-v3/evidence.json",
+      "originalSha256": "c14ca6b8d8b87472e863b9fe3393f78e6257f7d8c3f7dbea11d78dceceb8af5b",
+      "publishedSha256": "c14ca6b8d8b87472e863b9fe3393f78e6257f7d8c3f7dbea11d78dceceb8af5b",
+      "note": "WholeFAIL native focus lost after actual CUA Raise; partial list max317.4ms not valid strict final performance acceptance."
+    },
+    {
+      "name": "dynamic-final-p5-v1-failure.json",
+      "source": "dynamic-final-p5-v1/dynamic.json",
+      "originalSha256": "918e2e9913073d23a4d6c18f4f03225172395e40ad178e2b831fcefa0bb5d042",
+      "publishedSha256": "3226b10c100491f79e7b8099a64ee564f4d76aeb467fa62161fb1e631f689994",
+      "note": "WholeFAIL136 controls/8routes at exact archive1248→1314; most early native focus false. Cause not identified; no product scroll reset or tolerance."
+    },
+    {
+      "name": "dynamic-final-p5.json",
+      "source": "dynamic-final-p5-v2/dynamic.json",
+      "originalSha256": "c23f39792d8e70026171451f36b93fad73e2ffb35abc9ee6e225feb275b11136",
+      "publishedSha256": "52f10abb4491197aa7ac22efb9d23eda79075c1eed304e7b80d8ca95d9ad1864",
+      "note": "Clean63496395b59af71998a47a1e183e509c8472865b PASS10routes/189controls,50 focused visible stop snapshots,500ms stable archive baseline/exact1248 retention, three-family preferences and short-space simulation."
+    },
+    {
+      "name": "archive-scroll-diagnose.json",
+      "source": "archive-scroll-diagnose-v1/checks.json",
+      "originalSha256": "d2da1ea29ff14f10f702a76f087ee6821f86af26c098df2ab1ff26433c5bd026",
+      "publishedSha256": "d2da1ea29ff14f10f702a76f087ee6821f86af26c098df2ab1ff26433c5bd026",
+      "note": "Read-only normal-size mount diagnosis;124 records/220events, stable1248 through9continuous legs, normal cleanup. Does not establish old66px cause."
+    },
+    {
+      "name": "archive-scroll-diagnose-minimum.json",
+      "source": "archive-scroll-diagnose-minimum-v1/checks.json",
+      "originalSha256": "3564f62679fd1982f85bb53de0c7367193149c259fe6b86d119d6dd018be9931",
+      "publishedSha256": "3564f62679fd1982f85bb53de0c7367193149c259fe6b86d119d6dd018be9931",
+      "note": "Read-only minimum-size mount diagnosis;124records/218events,1000x650→nine legs→1366x768 retains1248. No scroll reset, tolerance, or old-cause claim."
+    },
+    {
+      "name": "checks-final-qa.json",
+      "source": "checks-final-6349639-v1/checks.json",
+      "originalSha256": "5ce82b3dda892cd400f182c85224f30d5a3829c9f47e1d0aa415bffaf10a471e",
+      "publishedSha256": "5ce82b3dda892cd400f182c85224f30d5a3829c9f47e1d0aa415bffaf10a471e",
+      "note": "Clean63496395b59af71998a47a1e183e509c8472865b build and five actual guard self-checks all0; compiled P5 bytes unchanged. Node76/Python59 inherit exact P5 prior record."
+    },
+    {
+      "name": "final-solo-minimum.png",
+      "source": "dynamic-final-p5-v2/solo-select-minimum.png",
+      "originalSha256": "14afe332bdc143366fbb214ceb7a7183dde1337e6f1f95dda6b720e878a7b4f9",
+      "publishedSha256": "14afe332bdc143366fbb214ceb7a7183dde1337e6f1f95dda6b720e878a7b4f9",
+      "note": "Actual native1000x650 CSS content / real worker / P5; selectedCharge."
+    },
+    {
+      "name": "final-welcome-name-minimum.png",
+      "source": "dynamic-final-p5-v2/welcome-name-minimum.png",
+      "originalSha256": "2b6dcf9948f992b03eb82cd4b819806f00da01a29c9900dc25f50838118b29d3",
+      "publishedSha256": "2b6dcf9948f992b03eb82cd4b819806f00da01a29c9900dc25f50838118b29d3",
+      "note": "Actual native1000x650 welcome identity stop, P5."
+    },
+    {
+      "name": "final-tutorial-minimum.png",
+      "source": "dynamic-final-p5-v2/tutorial-minimum.png",
+      "originalSha256": "ffb6707128dcf9e9eb1189998139908ff7541d3267207ad0775a4cdc4893aa74",
+      "publishedSha256": "ffb6707128dcf9e9eb1189998139908ff7541d3267207ad0775a4cdc4893aa74",
+      "note": "Actual native1000x650 tutorial-coach stop, P5."
+    },
+    {
+      "name": "final-local-result-minimum.png",
+      "source": "dynamic-final-p5-v2/local-result-minimum.png",
+      "originalSha256": "43a0f05f68320ac393a15752a4d175734cfcaeb2a71a12cec4a3aa84f7f88218",
+      "publishedSha256": "43a0f05f68320ac393a15752a4d175734cfcaeb2a71a12cec4a3aa84f7f88218",
+      "note": "Actual native1000x650 P09 public fixture result, P5; source is fixture, not worker result."
+    },
+    {
+      "name": "final-online-guest-waiting.png",
+      "source": "controls-online-final-v13/controls-guest-waiting.png",
+      "originalSha256": "4d1341b5b04d5862d38f9747a701b02ad4b8a2c1454b3670706efeaff365b7b4",
+      "publishedSha256": "4d1341b5b04d5862d38f9747a701b02ad4b8a2c1454b3670706efeaff365b7b4",
+      "note": "Real owned local service guest WAITING disabled after actual human SelfBi result, P5."
+    },
+    {
+      "name": "final-archive.png",
+      "source": "archive-final-p5-v4/final.png",
+      "originalSha256": "aaaa85ba4a0233a126e090d0e4b0f419a9086a3aa3d539f4bcebd2f235531ffa",
+      "publishedSha256": "aaaa85ba4a0233a126e090d0e4b0f419a9086a3aa3d539f4bcebd2f235531ffa",
+      "note": "Actual strict protocol native1920x1080 CSS/DPR2 screenshot; not physical4K."
+    },
+    {
+      "name": "final-native-select-accepted.png",
+      "source": "controls-online-final-v7/native-popup-accepted-20.png",
+      "originalSha256": "b80817df569d5a2dc6250c2fd71470b0f0db3531d0ade6a7fe65c6bfae4d3c09",
+      "publishedSha256": "b80817df569d5a2dc6250c2fd71470b0f0db3531d0ade6a7fe65c6bfae4d3c09",
+      "note": "CUA accepted20 and popupclosed/dialogopen; v7 wholeFAIL, distinct valid native action."
+    },
+    {
+      "name": "final-welcome-title.png",
+      "source": "welcome-final-p5-v1/fresh-title.png",
+      "originalSha256": "d0f1fa6976a59882eb12babec69474b0c63c02d6677fec6ee187b43dd716b580",
+      "publishedSha256": "d0f1fa6976a59882eb12babec69474b0c63c02d6677fec6ee187b43dd716b580",
+      "note": "Fresh ordinary main natural video/title transition, P5."
+    },
+    {
+      "name": "final-p01-docking.png",
+      "source": "welcome-final-p5-v1/p01-docking.png",
+      "originalSha256": "b11acf7d073778d8d409a53fd3253180183b1050b320cc9cd8b5f58a78279149",
+      "publishedSha256": "b11acf7d073778d8d409a53fd3253180183b1050b320cc9cd8b5f58a78279149",
+      "note": "Sameprocess real P01 docking, preview did not overwrite profile; P5."
+    },
+    {
+      "name": "archive-scroll-diagnose-v1.collector.cjs",
+      "source": "archive-scroll-diagnose-v1/collector.cjs",
+      "originalSha256": "618011db3ac47f406531e05eb25b1fde9c60f66fd8873efca47f4badf03ac1d4",
+      "publishedSha256": "618011db3ac47f406531e05eb25b1fde9c60f66fd8873efca47f4badf03ac1d4",
+      "note": "Exact frozen temporary read-only collector; SHA256 equals run driver.sha256; optional originalFullFailure lookup absent and not claimed."
+    },
+    {
+      "name": "archive-scroll-diagnose-minimum-v1.collector.cjs",
+      "source": "archive-scroll-diagnose-minimum-v1/collector.cjs",
+      "originalSha256": "1e494355ddbf6223917835bba26b386df5c826b3100e67c6d67876e461bd0a93",
+      "publishedSha256": "1e494355ddbf6223917835bba26b386df5c826b3100e67c6d67876e461bd0a93",
+      "note": "Exact frozen temporary read-only collector; SHA256 equals run driver.sha256; optional originalFullFailure lookup absent and not claimed."
+    },
+    {
+      "source": "archive-final-p5-v1/evidence.json",
+      "originalSha256": "8fb27ad5cc788373cd3911a46061ecb481cc9692b21d2ef23bd56551be9eec68",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "archive-final-p5-v4/manual-detail-scroll-cpu-profile.json",
+      "originalSha256": "9a5a33253f96fb5826f811d74aa86644e98aa911a5b654f0a4672b060fb1139c",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "archive-final-p5-v4/manual-detail-scroll-trace.json",
+      "originalSha256": "1f8303093d6fccb318956c989a9c8024ef030b9df03c2fa7bddb07c80c9a107e",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "archive-final-p5-v4/manual-stack-scroll-cpu-profile.json",
+      "originalSha256": "6eedda1ec448161c4d3634d717d5ac4503c01dd4bba8d5c97782fb62105392e0",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "archive-final-p5-v4/manual-stack-scroll-trace.json",
+      "originalSha256": "25fd730b3686863c9f675ae056971c64561169679e7b854dd39cda71f911531a",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-archive-extra-final-v1/checks.json",
+      "originalSha256": "4912147b7d5fe922945cebd8e2532f225cddd38918634a4a19d4654091e4c048",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-archive-extra-final-v2/checks.json",
+      "originalSha256": "62f0b0af864a27123fa9f4f38cc94b0dd459dd0f0d9214aa73a870ad2b48a2cc",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-archive-extra-final-v3/checks.json",
+      "originalSha256": "56fff35b1e81d41c51aa25e9ac37df438bb7e12831abd4b0b173e15129adf8a5",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-archive-extra-final-v4/checks.json",
+      "originalSha256": "67d50d0ef4205d89f3163dc16381e2028272cd7646610ed6d1e40cc24fac8060",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-loading-final-v1/checks.json",
+      "originalSha256": "983f14abbf84c8f1c9457f173c792c8cc8f265f50b45f2858f14a1ce01726e06",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-online-final-v10/checks.json",
+      "originalSha256": "047035f339fb865c197cb1301c7c4837f738d62ac55a5ddd9b34ce43dfe6e74d",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-online-final-v8/checks.json",
+      "originalSha256": "9614fd3f59e3e52776afad282dd4ea0ff616f9e3c32c3cef62ce2e551fa68676",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "source": "controls-online-final-v9/checks.json",
+      "originalSha256": "86fa020688ceceb1383a8d4d0b5909908b38618aeb48891be00ea89c82677b6f",
+      "published": false,
+      "note": "Raw original retained unchanged in ignored output; no remote-file claim. Selected final/failure records are published separately."
+    },
+    {
+      "name": "native-select-popup-30.png",
+      "source": "controls-online-final-v7/native-popup-30.png",
+      "originalSha256": "fae1a8aafdacfd7a96a3ab697f17b28134d13686a677a5923a6250149cefe25d",
+      "publishedSha256": "fae1a8aafdacfd7a96a3ab697f17b28134d13686a677a5923a6250149cefe25d",
+      "note": "Actual native popup30 before CUA Up."
+    },
+    {
+      "name": "native-select-popup-highlight-20.png",
+      "source": "controls-online-final-v7/native-popup-highlight-20.png",
+      "originalSha256": "970948aa6b5ad59bdef3bc0a3fc54392187df5c2520cd2cc7f058edde6c4fb1d",
+      "publishedSha256": "970948aa6b5ad59bdef3bc0a3fc54392187df5c2520cd2cc7f058edde6c4fb1d",
+      "note": "Actual CUA Up highlights20 before Return; highlight alone is not acceptance."
+    },
+    {
+      "name": "controls-online-v8-failure.json",
+      "source": "controls-online-final-v8/checks.json",
+      "originalSha256": "9614fd3f59e3e52776afad282dd4ea0ff616f9e3c32c3cef62ce2e551fa68676",
+      "publishedSha256": "9614fd3f59e3e52776afad282dd4ea0ff616f9e3c32c3cef62ce2e551fa68676",
+      "note": "WholeFAIL preserved; newly introduced same-frame submitting assertion unsupported; natural busy data retained."
+    },
+    {
+      "name": "controls-online-v9-failure.json",
+      "source": "controls-online-final-v9/checks.json",
+      "originalSha256": "86fa020688ceceb1383a8d4d0b5909908b38618aeb48891be00ea89c82677b6f",
+      "publishedSha256": "86fa020688ceceb1383a8d4d0b5909908b38618aeb48891be00ea89c82677b6f",
+      "note": "WholeFAIL preserved at immediate native activation check; v13 bounded actual native focus preserves assertion."
+    },
+    {
+      "name": "controls-online-v10-failure.json",
+      "source": "controls-online-final-v10/checks.json",
+      "originalSha256": "047035f339fb865c197cb1301c7c4837f738d62ac55a5ddd9b34ce43dfe6e74d",
+      "publishedSha256": "047035f339fb865c197cb1301c7c4837f738d62ac55a5ddd9b34ce43dfe6e74d",
+      "note": "WholeFAIL3 state records; pointer active miss on moving target."
+    },
+    {
+      "name": "worktrees-completed-preservation.json",
+      "source": "worktrees-completed-preservation-v1.json",
+      "originalSha256": "c76aa6057997b280b09a15fe77a08c1515afb5fe6c88fa0163c7afd933b42ac9",
+      "publishedSha256": "c76aa6057997b280b09a15fe77a08c1515afb5fe6c88fa0163c7afd933b42ac9",
+      "note": "Original21 complete HEAD/raw porcelain unchanged; task active, historical archive unchanged."
+    }
+  ],
+  "status": "LOCAL_EXECUTION_COMPLETE_REVIEW_PENDING"
+}

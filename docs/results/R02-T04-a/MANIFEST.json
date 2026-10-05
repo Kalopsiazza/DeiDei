@@ -1,0 +1,269 @@
+{
+  "task_id": "R02-T04-a",
+  "status": "LOCAL_SOURCE_PASS",
+  "input_sha": "41029218df420985ec06c01f27d4620fd8f35a16",
+  "tested_code_sha": "e340a2a20fa8d8274c995b3a17759abf3ade92b6",
+  "branch": "codex/r02-t04-a-live",
+  "target_pr_base": "integration/r02",
+  "remote_submission": "PUSHED_PR_CREATED",
+  "sources": [
+    {
+      "path": "game/core",
+      "commit": "529d9b5369d03998355df079095f8b1a317be0ee",
+      "tree": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+      "review": "ACCEPTED_CORE"
+    },
+    {
+      "path": "tests/rules_v1_001",
+      "commit": "3817472f5b199151128a6631bd64cee1d2ed0649",
+      "tree": "237a573d53b6182c6d15da2411e0aca33fa9ca85",
+      "review": "ACCEPTED_TEST_SUITE_SESSION_NOT_RUN"
+    },
+    {
+      "path": "game/desktop",
+      "commit": "b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1",
+      "tree": "2dae52d4905cc054402dba7c6ec650ed47aac082",
+      "review": "PARTIAL_FIXES_REQUIRED"
+    }
+  ],
+  "handoff_sha256": "5cca3a3eb1bc12bba1851c51fd9eac37fadc574583b4a71305e41dcd1008031b",
+  "original_r02_input_sha256": "f5e97fe4395f6f3d5552c30b1fe0052563e75c7d7e5d07c97bb78b960fa554b1",
+  "original_plan_manifest_verified": true,
+  "handoff_manifest_verified": true,
+  "fixture_hash_method": "SHA256 of sorted repository-relative *.json fixture path, NUL, file bytes",
+  "fixtures_sha256": "0116b62a33696cf315f32566ffbc4d9756fee00b6d24f06f0bcb266f46449789",
+  "core_tree_unchanged": "628afbee9bd9d2c512c2b6d424a385f597025ebc",
+  "fixtures_tree_unchanged": "237a573d53b6182c6d15da2411e0aca33fa9ca85",
+  "package_lock_sha256": "e566dac76acc0c7c4a065671ddbad10531ac9fd980b5ce9abc028891c7adf39e",
+  "new_code_trees": {
+    "game/runtime": "540cf0cf5494b8927de9d0053046ab4bf61e3ce1",
+    "game/desktop": "9bccfcd047774aa4b4766fee6e968273dfe5057d"
+  },
+  "dependency_versions_unchanged": true,
+  "inherited_audit": {
+    "source_sha": "b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1",
+    "total": 23,
+    "low": 3,
+    "high": 19,
+    "critical": 1,
+    "new_audit_run": false
+  },
+  "not_run": [
+    "C074/room_state_preserved independent driver",
+    "C081/session_request_replay independent driver",
+    "physical network disconnection",
+    "Windows",
+    "user manual acceptance",
+    "Python 3.11 separate runtime",
+    "models",
+    "distribution/signing/Forge"
+  ],
+  "files": [
+    {
+      "path": "INITIAL-FAILURE.md",
+      "bytes": 999,
+      "sha256": "a183c94aacdb5837ef64a65f49334935c4e15615a67c7a8edad22f5035e92e21",
+      "scope": "pre-final development failure"
+    },
+    {
+      "path": "PR-BODY.md",
+      "bytes": 2667,
+      "sha256": "a6066266d30f8a1cd0a40f955c227267e7beb883ff1bc2c5baf12c72dfae0350",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "PR-SUBMISSION.json",
+      "bytes": 446,
+      "sha256": "b965fd450ed751251de5650bc1246ad903c808b9c6586bc4e1beac751b4039c7",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "REPORT.md",
+      "bytes": 6097,
+      "sha256": "1a21cd97ff4e73bbcb279ffbc3117dd7807470410256dcccc2a8c452eb8c2c19",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "TEST-MATRIX.md",
+      "bytes": 3628,
+      "sha256": "0a9b78913bee179810b0c17370e12bb6f6a0736d3ed68e4286488704f5e0ca1e",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "baseline-independent.txt",
+      "bytes": 249,
+      "sha256": "6419402f46b1a72f6ef297571f9faca8c26fa6f2389635d3d1153f0e1a0a88f8",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "core-self-tests.txt",
+      "bytes": 15048,
+      "sha256": "312518d56d2b10c8805b91567b3d84a6f8ff964c651c279eb60126bbe8a13027",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "dependency-audit-inherited.json",
+      "bytes": 19741,
+      "sha256": "900acf683903b6016a10aa3957486c43de77420417bc07e3e8a81a56bf7785bb",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "desktop-live-tests.txt",
+      "bytes": 980,
+      "sha256": "4205b59f838c26547121a71380ccda57cb871eb8652d3244b57914438cd6994a",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "desktop-original-tests.txt",
+      "bytes": 1163,
+      "sha256": "3956f0002d9cbab8034aa5f45f6f00d779952c5e1e4560f95fbc39ea1ab383dd",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "fixture-retained.png",
+      "bytes": 208393,
+      "sha256": "b60bc731cf0a6161bc837014098fd12dbd06e6b0e8edf2d90f97c98e5f5a2172",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "fixture-validation.txt",
+      "bytes": 222,
+      "sha256": "e2ea98f2021635bff51c4735cf3e73b75b201d182d0954ef52eccafb6e1bce7c",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "harness-self-tests.txt",
+      "bytes": 1190,
+      "sha256": "83d2fb27f71252b82a4faa98d502c0bdf5a2e3a5d1121b320eb7907ae665059f",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "independent-acceptance.txt",
+      "bytes": 249,
+      "sha256": "6419402f46b1a72f6ef297571f9faca8c26fa6f2389635d3d1153f0e1a0a88f8",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-again.png",
+      "bytes": 199791,
+      "sha256": "3c91a92f4b3ea8dbb1ed99363b4dc1c821c4f4d8f349b15cb8ca74a549574d59",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-auto-recovery.png",
+      "bytes": 177456,
+      "sha256": "249c140924d45b456ac613f0c4d51140fcc38df33745fb297246562a74937d2b",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-bi-defense-revealed.png",
+      "bytes": 211816,
+      "sha256": "08960c4894bad7c9a2a2758cd9f6c90e74c96f67e812b52bdcb2e09e103000ea",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-charge-revealed.png",
+      "bytes": 202341,
+      "sha256": "96a3f00e8fe5b27145366694a5eb9580020e4ba8a79541d1d4891914c4e1f567",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-prepare.png",
+      "bytes": 54260,
+      "sha256": "d31e2b93c820da528ebe018b8cd2d1e7e8c4dff6cab10d76e2c596c6a8718a69",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-public-resources.png",
+      "bytes": 204317,
+      "sha256": "eab750b6c299a730c08e11f190ba236942687f6661aec56dec1da5820d6d6108",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-read-failure.png",
+      "bytes": 197520,
+      "sha256": "25f0e448a47854511e988536308941d3040dfc597c227cb522b5fa8e0075eaa6",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-result.png",
+      "bytes": 47401,
+      "sha256": "6ebc5f5c5a8dc7e689eeb0e6d85c1c6c4ef89a6942fd34ae2a729570d356cb61",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-second-result.png",
+      "bytes": 47401,
+      "sha256": "6ebc5f5c5a8dc7e689eeb0e6d85c1c6c4ef89a6942fd34ae2a729570d356cb61",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-smoke-failure.png",
+      "bytes": 197885,
+      "sha256": "da859085176ed8a23150ba18c8c52c424abb89a1f34de8e0d1d70463fc7c14c8",
+      "scope": "pre-final development failure"
+    },
+    {
+      "path": "live-smoke.json",
+      "bytes": 13886,
+      "sha256": "91d4cb9182c7ed44bc189f0977c078bd2d91abeb4ab7a302fdb3fc41f5d35534",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-smoke.txt",
+      "bytes": 633,
+      "sha256": "d5fcb83d582a1887a21d7404b44e4531c4ec34227a1be4e456a25c36c274610d",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-table-1366x768.png",
+      "bytes": 199789,
+      "sha256": "a9f24de4a133428e6ae2ce9f9ddb3c3a62229ad7dc5107980e7a03851ebf81b2",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-table-1920x1080.png",
+      "bytes": 232284,
+      "sha256": "4fbf827b983154879ec18d62d0a4a2049e51485219ab82a6606f5621fff346bd",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-window-ledger.jsonl",
+      "bytes": 65751,
+      "sha256": "eae05336b56cff55d4b5dc2afe447a4fdb4bfbf50b7ed8e7f868a5534cd49066",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "live-worker-interrupted.png",
+      "bytes": 196304,
+      "sha256": "6911e5f25bbcb7396dec52577aab8c4ce49b06590cbe94cd3aabf54aec4c0d67",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "root-check.txt",
+      "bytes": 5078,
+      "sha256": "06bf8879e906c2d2604d9e48e5dd17aa52814ed5444aa2b03cb8caf1c4c5d66e",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "runtime-tests.txt",
+      "bytes": 1962,
+      "sha256": "6ccf5a4498aad9641db57f8679b4c992cc88fc8011dad85025f473530eb1ee96",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "validate.py",
+      "bytes": 2507,
+      "sha256": "fe9705574a63576680254253dd4fb523c2028a7bbc2f84569b60bd574411ad97",
+      "scope": "delivery evidence"
+    },
+    {
+      "path": "validation.json",
+      "bytes": 2306,
+      "sha256": "d20269e94fb795f5b51c1ecdbd75c522eb77719638e77a72a00b13a0a2bd81d3",
+      "scope": "delivery evidence"
+    }
+  ],
+  "pr_url": "https://github.com/Kalopsiazza/DeiDei/pull/16",
+  "pr_number": 16
+}

@@ -1,0 +1,428 @@
+{
+  "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "package_sha256": "6439fe9d2de06bc76641747bc9acbd51b1a933130f271031bbb8351e5aefd1f1",
+  "evidence_kind": "packaged_automation",
+  "environment": {
+    "platform": "win32",
+    "arch": "x64",
+    "os": "10.0.20348",
+    "account": "disposable GitHub-hosted CI account"
+  },
+  "checks": [
+    {
+      "id": "P06",
+      "status": "PASS",
+      "text": "live options contain all 33 entries; packaged manual read succeeds"
+    },
+    {
+      "id": "P07",
+      "status": "PASS",
+      "text": "final archive application isPackaged=true, real worker child belongs to bundled resources"
+    },
+    {
+      "id": "P08",
+      "status": "PASS",
+      "text": "invalid developer variables, OS-only PATH, Chinese space path, different cwd, isolated CI source tree hidden"
+    },
+    {
+      "id": "P10",
+      "status": "NOT_RUN",
+      "text": "Windows CI account privileges do not establish ordinary-user read-only install acceptance"
+    },
+    {
+      "id": "P12",
+      "status": "PASS",
+      "text": "5 real random-legal-v1 matches completed; each restart has fresh match and resources"
+    },
+    {
+      "id": "P12-auto-recovery",
+      "status": "PASS",
+      "text": "observed automatic recovery in actual package"
+    },
+    {
+      "id": "P12-fraction",
+      "status": "PASS",
+      "text": "non-integer DD observed in actual package"
+    },
+    {
+      "id": "P12-error",
+      "status": "PASS",
+      "text": "actual bundled worker termination shows interruption and explicit restart succeeds"
+    },
+    {
+      "id": "P11",
+      "status": "PASS",
+      "text": "ten application open/start/leave/exit cycles; every observed own worker reaped"
+    },
+    {
+      "id": "P15",
+      "status": "PASS",
+      "text": "both renderer viewports verified; name/default userData unchanged; nickname and settings survive restart"
+    },
+    {
+      "id": "P09",
+      "status": "PASS",
+      "text": "damaged bundle copies show PACKAGE_INCOMPLETE; no Python/worker fallback spawned"
+    }
+  ],
+  "games": [
+    {
+      "match_id": "eeeb7275-d061-4548-9a14-b7071adac8fb",
+      "turns": [
+        {
+          "turn": "1",
+          "entry": "ZengYi"
+        }
+      ],
+      "outcome": {
+        "winner_id": "372aeb98-5c06-4ca3-8d3f-cf87078f0745",
+        "reason": "唯一存活者"
+      },
+      "summary": [
+        "成包验收：曾义（原招：曾义）；实付 0 DD。",
+        "临时随机对手：自 bi（原招：自 bi · 失败）；实付 0 DD。",
+        "唯一存活者",
+        "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 休整",
+        "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+      ]
+    },
+    {
+      "match_id": "6e7b0c0b-ac6a-42ac-962f-e7a90a34a287",
+      "turns": [
+        {
+          "turn": "1",
+          "entry": "ZengYi"
+        },
+        {
+          "turn": "3",
+          "entry": "Charge"
+        }
+      ],
+      "outcome": {
+        "winner_id": "bot_local",
+        "reason": "唯一存活者"
+      },
+      "summary": [
+        "成包验收：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。",
+        "临时随机对手：削（原招：削）；实付 1/3 DD。",
+        "成包验收：获得 +1 DD。",
+        "临时随机对手：消耗 -1/3 DD。",
+        "唯一存活者",
+        "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）",
+        "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强已用 · 曾义 未用"
+      ]
+    },
+    {
+      "match_id": "bc59ae92-7a4e-4857-8f21-fdc205b8219b",
+      "turns": [
+        {
+          "turn": "1",
+          "entry": "ZengYi"
+        },
+        {
+          "turn": "3",
+          "entry": "Charge"
+        },
+        {
+          "turn": "4",
+          "entry": "Xiao"
+        }
+      ],
+      "outcome": {
+        "winner_id": "372aeb98-5c06-4ca3-8d3f-cf87078f0745",
+        "reason": "唯一存活者"
+      },
+      "summary": [
+        "成包验收：削（原招：削）；实付 1/3 DD。",
+        "临时随机对手：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。",
+        "临时随机对手：获得 +1 DD。",
+        "成包验收：消耗 -1/3 DD。",
+        "唯一存活者",
+        "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）",
+        "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）"
+      ]
+    },
+    {
+      "match_id": "cb22f6bf-3bbf-4889-b284-bbbc87178d27",
+      "turns": [
+        {
+          "turn": "1",
+          "entry": "ZengYi"
+        },
+        {
+          "turn": "3",
+          "entry": "Charge"
+        },
+        {
+          "turn": "4",
+          "entry": "Charge"
+        },
+        {
+          "turn": "5",
+          "entry": "Xiao"
+        }
+      ],
+      "outcome": {
+        "winner_id": "372aeb98-5c06-4ca3-8d3f-cf87078f0745",
+        "reason": "唯一存活者"
+      },
+      "summary": [
+        "成包验收：削（原招：削）；实付 1/3 DD。",
+        "临时随机对手：自 bi（原招：自 bi · 失败）；实付 0 DD。",
+        "成包验收：消耗 -1/3 DD。",
+        "成包验收：奖励发放 +1 奖励。",
+        "唯一存活者",
+        "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 奖励可用",
+        "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 1 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+      ]
+    },
+    {
+      "match_id": "685647a9-859e-4922-ac3d-56092b5c9371",
+      "turns": [
+        {
+          "turn": "1",
+          "entry": "ZengYi"
+        },
+        {
+          "turn": "3",
+          "entry": "Charge"
+        },
+        {
+          "turn": "4",
+          "entry": "Xiao"
+        }
+      ],
+      "outcome": {
+        "winner_id": "372aeb98-5c06-4ca3-8d3f-cf87078f0745",
+        "reason": "唯一存活者"
+      },
+      "summary": [
+        "成包验收：削（原招：削）；实付 1/3 DD。",
+        "临时随机对手：历强（原招：历强 · 失败）；实付 0 DD。",
+        "临时随机对手：获得 +1 DD。",
+        "成包验收：消耗 -1/3 DD。",
+        "唯一存活者",
+        "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）",
+        "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 1 次 · 张新伟未用，记录 无 · 历强已用 · 曾义 未用"
+      ]
+    }
+  ],
+  "screenshots": [
+    {
+      "name": "packaged-1366x768.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-1920x1080.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1920,
+        "height": 1080,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-result-1.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-result-2.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-fraction.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-result-3.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-result-4.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-result-5.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-worker-interrupted.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1366,
+        "height": 768,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-missing-worker.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1008,
+        "height": 689,
+        "dpr": 1
+      }
+    },
+    {
+      "name": "packaged-missing-catalog.png",
+      "kind": "real packaged Electron renderer screenshot",
+      "viewport": {
+        "width": 1008,
+        "height": 689,
+        "dpr": 1
+      }
+    }
+  ],
+  "workers": [
+    5904,
+    868,
+    6180,
+    1080,
+    3952,
+    6940,
+    5828,
+    7224,
+    3976,
+    7076,
+    8056,
+    7844,
+    3444,
+    4800,
+    7984,
+    796
+  ],
+  "progress": "launch real packaged executable",
+  "sourceContext": {
+    "name": "DeiDei R02",
+    "userData": "<CI_USER_DATA>/DeiDei R02",
+    "isPackaged": false
+  },
+  "packagedContext": {
+    "pid": 6648,
+    "isPackaged": true,
+    "name": "DeiDei R02",
+    "userData": "<CI_USER_DATA>/DeiDei R02",
+    "resourcesPath": "<UNPACKED_APPLICATION>/resources",
+    "versions": {
+      "node": "24.20.0",
+      "acorn": "8.18.0",
+      "ada": "4.0.0",
+      "amaro": "1.1.11",
+      "ares": "1.34.8",
+      "brotli": "1.2.0",
+      "cldr": "48.0",
+      "icu": "78.2",
+      "llhttp": "9.4.3",
+      "merve": "1.2.2",
+      "modules": "149",
+      "napi": "10",
+      "nbytes": "0.1.4",
+      "ncrypto": "0.0.1",
+      "nghttp2": "1.70.0",
+      "nghttp3": "",
+      "ngtcp2": "",
+      "openssl": "0.0.0",
+      "simdjson": "4.6.6",
+      "simdutf": "7.7.0",
+      "sqlite": "3.53.4",
+      "tz": "2025c",
+      "undici": "7.29.0",
+      "unicode": "17.0",
+      "uv": "1.52.1",
+      "uvwasi": "0.0.23",
+      "v8": "15.2.124.19-electron.0",
+      "zlib": "1.3.2.1-motley",
+      "zstd": "1.6.0",
+      "electron": "44.3.0",
+      "chrome": "152.0.7977.78"
+    }
+  },
+  "manual_entries": 33,
+  "fraction_view": {
+    "phase": "revealed",
+    "participants": [
+      {
+        "player_id": "372aeb98-5c06-4ca3-8d3f-cf87078f0745",
+        "nickname": "成包验收",
+        "avatar_id": "leaf",
+        "alive": true,
+        "resources": {
+          "dd6": "4",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "enhanced_xiao": false,
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "bomb_placement_count": "0",
+          "reward_stock": "0"
+        },
+        "submission_state": "submitted"
+      },
+      {
+        "player_id": "bot_local",
+        "nickname": "临时随机对手",
+        "avatar_id": "sun",
+        "alive": false,
+        "resources": {
+          "dd6": "6",
+          "lightning": "0",
+          "nx_charge": "0",
+          "mature_bombs": "0",
+          "enhanced_xiao": true,
+          "cloud_uses": "0",
+          "tian_uses": "0",
+          "bomb_placement_count": "0",
+          "reward_stock": "0"
+        },
+        "submission_state": "out"
+      }
+    ],
+    "summary": [
+      "成包验收：削（原招：削）；实付 1/3 DD。",
+      "临时随机对手：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。",
+      "临时随机对手：获得 +1 DD。",
+      "成包验收：消耗 -1/3 DD。",
+      "唯一存活者",
+      "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）",
+      "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 等待奖励（第 5 拍末到期）"
+    ]
+  },
+  "status": "PASS",
+  "driver_exit_code": 0
+}

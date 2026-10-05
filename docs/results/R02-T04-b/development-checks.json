@@ -1,0 +1,40 @@
+{
+  "note": "Development-stage logs are separate from final committed-code acceptance. Final commands and exit codes are in validation.json.",
+  "checks": [
+    {
+      "command": "npm --prefix game/desktop run build",
+      "exit_code": 0,
+      "stage": "baseline input_sha build"
+    },
+    {
+      "command": "node game/desktop/smoke-live-b.cjs --before",
+      "exit_code": 0,
+      "stage": "input_sha product; untracked dedicated probe only",
+      "log": "window-before.txt"
+    },
+    {
+      "command": "PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -p test_summary.py",
+      "exit_code": 1,
+      "stage": "initial test draft before F01 fix; 7 methods / 9 failed assertions including subtests",
+      "log": "summary-before.txt",
+      "resolution": "Applied F01 fix; completed new case inputs from actual core behavior (Tian clears Charge; ZengYi supplies half/large clear). Final 8 summary tests pass, no original test weakened."
+    },
+    {
+      "command": "PYTHONPATH=game/core:game/runtime python3 -m unittest discover -s game/runtime/tests -p test_summary.py",
+      "exit_code": 0,
+      "stage": "after fix, before code commit; 8 methods"
+    },
+    {
+      "command": "npm --prefix game/desktop test",
+      "exit_code": 0,
+      "stage": "working changes before code commit; 22 tests",
+      "log": "desktop-development.txt"
+    },
+    {
+      "command": "node game/desktop/smoke-live-b.cjs",
+      "exit_code": 0,
+      "stage": "working changes before code commit; final run adds failure-message and distinct-match assertions",
+      "log": "window-development.txt"
+    }
+  ]
+}
