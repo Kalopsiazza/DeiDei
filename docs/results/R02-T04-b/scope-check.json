@@ -1,0 +1,46 @@
+{
+  "input_sha": "980a019d9a1410bf3ee72263d90397023696f32b",
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "allowed_incremental_code_files": [
+    "game/desktop/README.md",
+    "game/desktop/package.json",
+    "game/desktop/renderer.tsx",
+    "game/desktop/smoke-live-b-main.cjs",
+    "game/desktop/smoke-live-b.cjs",
+    "game/desktop/smoke-live.cjs",
+    "game/desktop/test-navigation.cjs",
+    "game/runtime/README.md",
+    "game/runtime/deidei_runtime/view.py",
+    "game/runtime/tests/summary_worker.py",
+    "game/runtime/tests/test_summary.py"
+  ],
+  "protected_paths_unchanged": [
+    "game/core",
+    "tests/rules_v1_001",
+    "game/runtime/deidei_runtime/session.py",
+    "game/runtime/deidei_runtime/solo.py",
+    "game/runtime/deidei_runtime/opponent.py",
+    "game/runtime/deidei_runtime/worker.py",
+    "game/desktop/worker-bridge.cjs",
+    "game/desktop/worker-port.cjs",
+    "game/desktop/main.cjs",
+    "game/desktop/preload.cjs",
+    "game/desktop/package-lock.json",
+    "game/desktop/build.cjs",
+    ".github",
+    "docs/results/R02-T04-a"
+  ],
+  "package_json_only_test_script_changed": true,
+  "old_test_script": "npm run build && node --test test.cjs",
+  "new_test_script": "npm run build && node --test test.cjs test-live.cjs test-navigation.cjs",
+  "original_worktree_readback": {
+    "path": "/Users/zengchongtai/develop/DeiDei",
+    "branch": "codex/github-maintainer-results",
+    "status": "clean"
+  },
+  "remote_observed_before_push": {
+    "integration/r02": "20312a2244ff0447593f22fde41b9b8bb960da9a",
+    "main": "889162fc90000919004f498b27cffbd5fa4cbe45",
+    "PR16": "OPEN at input_sha"
+  }
+}

@@ -1,0 +1,20 @@
+[
+  {
+    "ghsa_id": "GHSA-34h3-8mw4-qw57",
+    "html_url": "https://github.com/electron/packager/security/advisories/GHSA-34h3-8mw4-qw57",
+    "severity": "critical",
+    "published_at": "2024-03-28T16:43:04Z",
+    "updated_at": "2024-03-29T14:08:01Z",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "npm",
+          "name": "@electron/packager"
+        },
+        "vulnerable_version_range": "18.3.0",
+        "patched_versions": "18.3.1",
+        "vulnerable_functions": []
+      }
+    ]
+  }
+]

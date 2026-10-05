@@ -1,0 +1,11 @@
+{
+  "baseRefName": "integration/r02",
+  "baseRefOid": "41029218df420985ec06c01f27d4620fd8f35a16",
+  "headRefName": "codex/r02-t04-a-live",
+  "headRefOid": "0156b914791dd83ef1d2ac572819fc7c517c03ed",
+  "isDraft": false,
+  "number": 16,
+  "state": "OPEN",
+  "url": "https://github.com/Kalopsiazza/DeiDei/pull/16",
+  "observation": "Verified immediately after PR creation; headRefOid records that point in time, before this documentation update."
+}

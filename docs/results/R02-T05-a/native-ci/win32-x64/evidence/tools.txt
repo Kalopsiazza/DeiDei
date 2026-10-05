@@ -1,0 +1,13 @@
+test_complete_authored_suite_and_reproducibility (test_harness.HarnessTests.test_complete_authored_suite_and_reproducibility) ... ok
+test_corrupt_fixtures_are_rejected (test_harness.HarnessTests.test_corrupt_fixtures_are_rejected) ... ok
+test_event_counts_and_false_success_are_rejected (test_harness.HarnessTests.test_event_counts_and_false_success_are_rejected) ... ok
+test_input_mutation_and_cross_player_aliases_fail (test_harness.HarnessTests.test_input_mutation_and_cross_player_aliases_fail) ... ok
+test_missing_broken_and_session_paths_do_not_claim_pass (test_harness.HarnessTests.test_missing_broken_and_session_paths_do_not_claim_pass) ... ok
+test_mutations_use_exact_context_and_stay_inside_copy (test_harness.HarnessTests.test_mutations_use_exact_context_and_stay_inside_copy) ... ok
+test_return_links_and_duplicate_reward_events (test_harness.HarnessTests.test_return_links_and_duplicate_reward_events) ... ok
+test_transport_double_passes_only_harness_and_missing_outputs_fail (test_harness.HarnessTests.test_transport_double_passes_only_harness_and_missing_outputs_fail) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 1.647s
+
+OK

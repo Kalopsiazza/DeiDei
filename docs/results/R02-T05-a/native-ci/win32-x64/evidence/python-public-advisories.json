@@ -1,0 +1,44 @@
+[
+  {
+    "name": "pyinstaller",
+    "version": "6.22.3",
+    "source": "https://pypi.org/pypi/pyinstaller/6.22.3/json",
+    "public_advisories": []
+  },
+  {
+    "name": "pyinstaller-hooks-contrib",
+    "version": "2026.7",
+    "source": "https://pypi.org/pypi/pyinstaller-hooks-contrib/2026.7/json",
+    "public_advisories": []
+  },
+  {
+    "name": "altgraph",
+    "version": "0.17.5",
+    "source": "https://pypi.org/pypi/altgraph/0.17.5/json",
+    "public_advisories": []
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "source": "https://pypi.org/pypi/packaging/26.3/json",
+    "public_advisories": []
+  },
+  {
+    "name": "setuptools",
+    "version": "84.0.0",
+    "source": "https://pypi.org/pypi/setuptools/84.0.0/json",
+    "public_advisories": []
+  },
+  {
+    "name": "pefile",
+    "version": "2024.8.26",
+    "source": "https://pypi.org/pypi/pefile/2024.8.26/json",
+    "public_advisories": []
+  },
+  {
+    "name": "pywin32-ctypes",
+    "version": "0.2.3",
+    "source": "https://pypi.org/pypi/pywin32-ctypes/0.2.3/json",
+    "public_advisories": []
+  }
+]

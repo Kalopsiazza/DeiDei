@@ -1,0 +1,12 @@
+Using Python 3.11.16 environment at: game/packaging/.venv
+Resolved 6 packages in 4ms
+Downloading pyinstaller (1.0MiB)
+ Downloaded pyinstaller
+Prepared 6 packages in 2.18s
+Installed 6 packages in 24ms
+ + altgraph==0.17.5
+ + macholib==1.16.4
+ + packaging==26.3
+ + pyinstaller==6.22.3
+ + pyinstaller-hooks-contrib==2026.7
+ + setuptools==84.0.0

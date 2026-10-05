@@ -1,0 +1,162 @@
+[
+  {
+    "name": "@electron-internal/extract-zip",
+    "version": "1.0.5",
+    "location": "node_modules/@electron-internal/extract-zip",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "@electron-internal/extract-zip",
+        "spec": "^1.0.1",
+        "from": {
+          "name": "@electron/packager",
+          "version": "20.3.0",
+          "location": "node_modules/@electron/packager",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "dev",
+              "name": "@electron/packager",
+              "spec": "20.3.0",
+              "from": {
+                "location": "<WORKTREE>/game/desktop"
+              }
+            }
+          ],
+          "dev": true,
+          "optional": false,
+          "devOptional": true,
+          "peer": false,
+          "bundled": false,
+          "overridden": false
+        }
+      },
+      {
+        "type": "prod",
+        "name": "@electron-internal/extract-zip",
+        "spec": "^1.0.1",
+        "from": {
+          "name": "electron",
+          "version": "44.3.0",
+          "location": "node_modules/electron",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "dev",
+              "name": "electron",
+              "spec": "44.3.0",
+              "from": {
+                "location": "<WORKTREE>/game/desktop"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "dev": true,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  },
+  {
+    "name": "@electron/get",
+    "version": "5.1.0",
+    "location": "node_modules/@electron/packager/node_modules/@electron/get",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "@electron/get",
+        "spec": "^5.0.0",
+        "from": {
+          "name": "@electron/packager",
+          "version": "20.3.0",
+          "location": "node_modules/@electron/packager",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "dev",
+              "name": "@electron/packager",
+              "spec": "20.3.0",
+              "from": {
+                "location": "<WORKTREE>/game/desktop"
+              }
+            }
+          ],
+          "dev": true,
+          "optional": false,
+          "devOptional": true,
+          "peer": false,
+          "bundled": false,
+          "overridden": false
+        }
+      }
+    ],
+    "dev": true,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  },
+  {
+    "name": "@electron/get",
+    "version": "5.1.0",
+    "location": "node_modules/electron/node_modules/@electron/get",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "prod",
+        "name": "@electron/get",
+        "spec": "^5.0.0",
+        "from": {
+          "name": "electron",
+          "version": "44.3.0",
+          "location": "node_modules/electron",
+          "isWorkspace": false,
+          "dependents": [
+            {
+              "type": "dev",
+              "name": "electron",
+              "spec": "44.3.0",
+              "from": {
+                "location": "<WORKTREE>/game/desktop"
+              }
+            }
+          ]
+        }
+      }
+    ],
+    "dev": true,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  },
+  {
+    "name": "@electron/packager",
+    "version": "20.3.0",
+    "location": "node_modules/@electron/packager",
+    "isWorkspace": false,
+    "dependents": [
+      {
+        "type": "dev",
+        "name": "@electron/packager",
+        "spec": "20.3.0",
+        "from": {
+          "location": "<WORKTREE>/game/desktop"
+        }
+      }
+    ],
+    "dev": true,
+    "optional": false,
+    "devOptional": true,
+    "peer": false,
+    "bundled": false,
+    "overridden": false
+  }
+]

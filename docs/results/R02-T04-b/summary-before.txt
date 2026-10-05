@@ -1,0 +1,106 @@
+FFFFFFFFF
+======================================================================
+FAIL: test_bomb_exchange_absorb_has_no_dd_gain (test_summary.SummaryTests.test_bomb_exchange_absorb_has_no_dd_gain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 51, in test_bomb_exchange_absorb_has_no_dd_gain
+    lines = self.summary(self.round({'A': 'BombPragon', 'B': 'Absorb'},
+                                   {'A': {'mature_bombs': '1'}, 'B': {'dd6': '6'}}))
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: 'resource_spend' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：炸药·Pragon（炸药兑换：Pragon）；实付 1 成熟层。\n玩家B：吸收（原招：吸收）；实付 1 DD。\n双方仍在场，继续下一拍。\n玩家A：成熟层 -1 · resource_spend。\n玩家B：DD -6（六分之一单位） · resource_spend。'
+
+======================================================================
+FAIL: test_cancelled_charge_cloud_and_absorb (test_summary.SummaryTests.test_cancelled_charge_cloud_and_absorb) (opponent='Cloud')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 37, in test_cancelled_charge_cloud_and_absorb
+    lines = self.summary(resolution)
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: '六分之一单位' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。\n玩家B：云（原招：云）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家A：DD 6（六分之一单位） · resource_gain。\n玩家B：雷电 1 · resource_gain。'
+
+======================================================================
+FAIL: test_cancelled_charge_cloud_and_absorb (test_summary.SummaryTests.test_cancelled_charge_cloud_and_absorb) (opponent='Absorb')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 37, in test_cancelled_charge_cloud_and_absorb
+    lines = self.summary(resolution)
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: '六分之一单位' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。\n玩家B：吸收（原招：吸收）；实付 1 DD。\n双方仍在场，继续下一拍。\n玩家A：DD 6（六分之一单位） · resource_gain。\n玩家B：DD 6（六分之一单位） · resource_gain。\n玩家B：DD -6（六分之一单位） · resource_spend。'
+
+======================================================================
+FAIL: test_charge_and_xiao_exact_signed_player_units (test_summary.SummaryTests.test_charge_and_xiao_exact_signed_player_units)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 46, in test_charge_and_xiao_exact_signed_player_units
+    self.assertIn('玩家A：获得 +1 DD。', self.summary(self.round({'A': 'Charge', 'B': 'Charge'})))
+                                         ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: '六分之一单位' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。\n玩家B：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家A：DD 6（六分之一单位） · resource_gain。\n玩家B：DD 6（六分之一单位） · resource_gain。'
+
+======================================================================
+FAIL: test_half_and_large_clear_never_use_float_or_decimal_rounding (test_summary.SummaryTests.test_half_and_large_clear_never_use_float_or_decimal_rounding) (digits=1)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 66, in test_half_and_large_clear_never_use_float_or_decimal_rounding
+    lines = self.summary(self.round({'A': 'Def', 'B': 'TianLiJun'}, {'A': {'dd6': amount}}))
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: 'resource_gain' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：普通防御（原招：普通防御）；实付 0 DD。\n玩家B：田利军（原招：田利军）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家A：充能 1 · resource_gain。'
+
+======================================================================
+FAIL: test_half_and_large_clear_never_use_float_or_decimal_rounding (test_summary.SummaryTests.test_half_and_large_clear_never_use_float_or_decimal_rounding) (digits=5000)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 66, in test_half_and_large_clear_never_use_float_or_decimal_rounding
+    lines = self.summary(self.round({'A': 'Def', 'B': 'TianLiJun'}, {'A': {'dd6': amount}}))
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: 'resource_gain' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：普通防御（原招：普通防御）；实付 0 DD。\n玩家B：田利军（原招：田利军）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家A：充能 1 · resource_gain。'
+
+======================================================================
+FAIL: test_non_dd_resources_maturity_and_reward_have_chinese_names (test_summary.SummaryTests.test_non_dd_resources_maturity_and_reward_have_chinese_names)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 70, in test_non_dd_resources_maturity_and_reward_have_chinese_names
+    bomb = self.summary(self.round({'A': 'Bomb', 'B': 'Def'}, {'A': {'dd6': '6'}}))
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: 'resource_gain' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：炸药（原招：炸药）；实付 1 DD。\n玩家B：普通防御（原招：普通防御）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家B：充能 1 · resource_gain。\n玩家A：pending_bombs 1 · resource_gain。\n玩家A：DD -6（六分之一单位） · resource_spend。'
+
+======================================================================
+FAIL: test_restart_uses_pre_reset_ledger_then_explains_reset (test_summary.SummaryTests.test_restart_uses_pre_reset_ledger_then_explains_reset)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 88, in test_restart_uses_pre_reset_ledger_then_explains_reset
+    lines = self.summary(resolution)
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: 'resource_gain' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：三雷（原招：三雷）；实付 3 DD。\n玩家B：三雷（原招：三雷）；实付 3 DD。\n玩家C：bi（原招：bi）；实付 1 DD。\n玩家D：普通防御（原招：普通防御）；实付 0 DD。\n存活者进入新局，资源归零。\n玩家D：充能 1 · resource_gain。\n玩家D：充能 1 · resource_gain。\n玩家A：成熟层 1 · bomb_mature。\n玩家A：DD -18（六分之一单位） · resource_spend。\n玩家B：成熟层 1 · bomb_mature。\n玩家B：DD -18（六分之一单位） · resource_spend。\n玩家C：DD -6（六分之一单位） · resource_spend。'
+
+======================================================================
+FAIL: test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain (test_summary.SummaryTests.test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 58, in test_tian_clear_keeps_gain_then_clear_and_zero_is_not_a_gain
+    lines = self.summary(self.round({'A': 'Charge', 'B': 'TianLiJun'}, {'A': {'dd6': '7'}}))
+  File "/Users/zengchongtai/develop/DeiDei-r02-t04-b/game/runtime/tests/test_summary.py", line 24, in summary
+    self.assertNotRegex('\n'.join(result), r'六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao')
+    ~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: Regex matched: '六分之一单位' matches '六分之一单位|resource_gain|resource_spend|resource_clear|bomb_mature|reward_granted|pending_bombs|bomb_placement_count|enhanced_xiao' in '玩家A：攒／DeiDei（原招：攒／DeiDei）；实付 0 DD。\n玩家B：田利军（原招：田利军）；实付 0 DD。\n双方仍在场，继续下一拍。\n玩家A：DD 6（六分之一单位） · resource_gain。\n玩家A：DD -13（六分之一单位） · resource_clear。'
+
+----------------------------------------------------------------------
+Ran 7 tests in 0.012s
+
+FAILED (failures=9)

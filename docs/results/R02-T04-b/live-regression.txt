@@ -1,0 +1,6 @@
+PASS 33 real-core cards, categories and three rows visible at both target viewports
+PASS Two complete actual matches: Charge → Bi/Def → result → fresh match, with ledger evidence
+PASS Visible read failure disables submission and supports explicit re-read of the same match
+PASS Real worker termination interrupts current match; retry never silently restarts; profile preserved
+PASS ZengYi round 2 automatically submits and reveals recovery, then round 3 becomes selectable
+PASS Explicit fixture and spectator previews retained, correctly labeled, no selection shortcuts

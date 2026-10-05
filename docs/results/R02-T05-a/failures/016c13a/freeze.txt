@@ -1,0 +1,69 @@
+35 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.7
+35 INFO: Python: 3.11.16
+43 INFO: Platform: macOS-27.0-arm64-arm-64bit
+43 INFO: Python environment: <WORKTREE>/game/packaging/.venv
+45 INFO: Removing temporary files and cleaning cache in <USER_HOME>/Library/Application Support/pyinstaller
+47 INFO: Module search paths (PYTHONPATH):
+['<WORKTREE>',
+ '<USER_HOME>/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python311.zip',
+ '<USER_HOME>/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11',
+ '<USER_HOME>/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/python3.11/lib-dynload',
+ '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages',
+ '<WORKTREE>/game/packaging',
+ '<WORKTREE>/game/core',
+ '<WORKTREE>/game/runtime']
+122 INFO: Appending 'datas' from .spec
+122 INFO: checking Analysis
+122 INFO: Building Analysis because Analysis-00.toc is non existent
+122 INFO: Looking for Python shared library...
+130 INFO: Using Python shared library: <USER_HOME>/.local/share/uv/python/cpython-3.11.16-macos-aarch64-none/lib/libpython3.11.dylib
+130 INFO: Running Analysis Analysis-00.toc
+130 INFO: Target bytecode optimization level: 0
+131 INFO: Initializing module dependency graph...
+131 INFO: Initializing module graph hook caches...
+135 INFO: Analyzing modules for base_library.zip ...
+449 INFO: Processing standard module hook 'hook-heapq.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+498 INFO: Processing standard module hook 'hook-encodings.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+1143 INFO: Processing standard module hook 'hook-math.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+1195 INFO: Processing standard module hook 'hook-pickle.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+2036 INFO: Caching module dependency graph...
+2055 INFO: Analyzing <WORKTREE>/game/packaging/worker_entry.py
+2098 INFO: Processing standard module hook 'hook-platform.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+2112 INFO: Processing standard module hook 'hook-xml.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks'
+2136 INFO: Processing module hooks (post-graph stage)...
+2294 INFO: Performing binary vs. data reclassification (3 entries)
+2301 INFO: Looking for ctypes DLLs
+2306 INFO: Analyzing run-time hooks ...
+2306 INFO: Including run-time hook 'pyi_rth_inspect.py' from '<WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/hooks/rthooks'
+2308 INFO: Creating base_library.zip...
+2318 INFO: Looking for dynamic libraries
+2325 INFO: Warnings written to <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/pyinstaller/worker/warn-worker.txt
+2331 INFO: Graph cross-reference written to <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/pyinstaller/worker/xref-worker.html
+2340 INFO: checking PYZ
+2340 INFO: Building PYZ because PYZ-00.toc is non existent
+2340 INFO: Building PYZ (ZlibArchive) <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/pyinstaller/worker/PYZ-00.pyz
+2457 INFO: Building PYZ (ZlibArchive) <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/pyinstaller/worker/PYZ-00.pyz completed successfully.
+2459 INFO: EXE target arch: arm64
+2459 INFO: Code signing identity: None
+2465 INFO: checking PKG
+2465 INFO: Building PKG because PKG-00.toc is non existent
+2465 INFO: Building PKG (CArchive) deidei-worker.pkg
+2471 INFO: Building PKG (CArchive) deidei-worker.pkg completed successfully.
+2472 INFO: Bootloader <WORKTREE>/game/packaging/.venv/lib/python3.11/site-packages/PyInstaller/bootloader/Darwin-64bit/run
+2472 INFO: checking EXE
+2472 INFO: Building EXE because EXE-00.toc is non existent
+2472 INFO: Building EXE from EXE-00.toc
+2472 INFO: Copying bootloader EXE to <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/pyinstaller/worker/deidei-worker
+2473 INFO: Converting EXE to target arch (arm64)
+2490 INFO: Removing signature(s) from EXE
+2503 INFO: Modifying Mach-O image UUID(s) in EXE
+2506 INFO: Appending PKG archive to EXE
+2506 INFO: Fixing EXE headers for code signing
+2511 INFO: Rewriting the executable's macOS SDK version (26.2.0) to match the SDK version of the Python library (15.0.0) in order to avoid inconsistent behavior and potential UI issues in the frozen application.
+2512 INFO: Re-signing the EXE
+2531 INFO: Building EXE from EXE-00.toc completed successfully.
+2531 INFO: checking COLLECT
+2531 INFO: Building COLLECT because COLLECT-00.toc is non existent
+2531 INFO: Building COLLECT COLLECT-00.toc
+2664 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+2664 INFO: Build complete! The results are available in: <WORKTREE>/game/packaging/build/darwin-arm64-dpdn1ob1/frozen

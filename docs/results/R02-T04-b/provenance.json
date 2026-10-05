@@ -1,0 +1,30 @@
+{
+  "plan_sha": "20312a2244ff0447593f22fde41b9b8bb960da9a",
+  "input_sha": "980a019d9a1410bf3ee72263d90397023696f32b",
+  "tested_code_sha": "9e8ab22cb19b59a4edb52194206d280119eeb960",
+  "attachment_sha256": "f99b2be491c2a067d774d787288185e19e4919e9ab14236583d3526191acc849",
+  "attachment_manifest_files_verified": 25,
+  "planning_read_only": [
+    {
+      "path": "docs/reviews/R02-T04-a.md",
+      "sha256": "e8ee59e83c7d82d99c8b8899d01b1f93af2ff3209eca6a922a134802b18bd998",
+      "matches_fixed_planning_commit": true
+    },
+    {
+      "path": "docs/prd/R02-T04-b-PRD.md",
+      "sha256": "8bb9e7454fa8013fcb4124e6b37d0e011d3831c458b048c6c5e3c1c2ef3bf334",
+      "matches_fixed_planning_commit": true
+    },
+    {
+      "path": "docs/architecture/R02-T04-b-ARCHITECTURE.md",
+      "sha256": "4fd7f68a083f7febc9b617eb2c45342b552d700ad40964c26dfdf62aebc837e3",
+      "matches_fixed_planning_commit": true
+    },
+    {
+      "path": "docs/tasks/R02/R02-T04-b.md",
+      "sha256": "f985cd9243c85c51eac242eb0e006024dca9c4b99a4b08a37a3823a3e15de79c",
+      "matches_fixed_planning_commit": true
+    }
+  ],
+  "attachment_review_evidence": "Read-only planner evidence; not counted as this package tests. No planning files copied into the result."
+}

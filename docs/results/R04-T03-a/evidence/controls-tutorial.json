@@ -1,0 +1,3815 @@
+{
+  "batch": "tutorial",
+  "input": {
+    "sha": "dc38024a91818c3e2a2ca537675549409cfca620",
+    "dirty": "M game/desktop/smoke-dynamic.cjs\n M game/desktop/smoke-online-dynamic.cjs\n M game/desktop/smoke-performance.cjs\n M game/desktop/smoke-welcome-native.cjs\n?? game/desktop/smoke-control-states.cjs\n?? game/desktop/smoke-modal-contract.cjs",
+    "sha256": {
+      "main.cjs": "94187a52867b60b5c13639e7363231b5cabca0bd269023a1bcc7f01f4afa3a52",
+      "preload.cjs": "09498fbb8acf44c7ae05750784e90f53d0ba8c3a4a002ac0ae5e0252bf9c1458",
+      "ui-assets.cjs": "1336ad8ef4da81460a7a45ad41e33ee25393b6049ca9a026ce5c49f0fd372a81",
+      "build/ui/renderer.js": "02623dff22676f84615e686a19e19a5bfd1e55fcb457cc853e2fc6ceb0581a90",
+      "build/ui/style.css": "f116daceded31ae25d74546026e62d63c5157d4f47c3f94ffc6907cd442f9911",
+      "build/ui/welcome.css": "5bc9062eb8b3b51f20f151b0210e206fc40d188625671dbefc7cdbfbae0b2dce",
+      "build/ui/assets/menu/welcome-opening-v1.mp4": "903aac82723b9974887c2cc8603017cd44f11481907d43ab8f832133c393730f",
+      "smoke-entry.cjs": "037b4b001b4bb8f353ce54a1dee6509faf3f30e6e5538a30586eb85e4e3399bd",
+      "smoke-performance.cjs": "121df35613d6fffad84905a61a2f629224a90cb4276bbb5be62b3f636b8a30c0"
+    },
+    "startedAt": "2026-10-04T05:07:16.206Z",
+    "mainProcess": "fresh launch; no old hot-update process reused"
+  },
+  "source": "ordinary main / original renderer and SharedUI / isolated real profile and worker / test-only legal IPC delay or explicit failure",
+  "fingerprints": {
+    "driver": "6e95a1638b48aed303db25bf2d8523639f274cdafd07b5fa8c664cabe4c520c1",
+    "wrapper": "8bcc0d8f0dca510dc43aa235ee663b6320999bcdb4a11c4614d431e86c670a99",
+    "SharedUI.tsx": "5b067b7a989e454a904be9419ea2e1e66d71d298b54f7a2aebec6ffb6afc2d4d",
+    "renderer.tsx": "f9782c32dc2e40087106dadfac71a8b261298d12be9aef15a8064c88934065eb",
+    "WelcomeEntrance.tsx": "765dd7742e152ac5b7de7dcaef439dc376a3e7aba49bb2872ff052c08a4495e4",
+    "BattleStage.tsx": "4a888abdea4754c960537f84b98b2e82cac55335339042924d73d7eb24a6a0bc",
+    "ManualArchive.tsx": "67b59e4d8c8934f3db21d4c0361f03747c48143f71ecaaa42f34d99ea1f942c6",
+    "TutorialCoach.tsx": "f945418699ef9f71975db3046ae6dcd05262cbf22d498933585a5c041f642c66",
+    "profile.cjs": "2b5d258c6e4a1c989ba0272a2e09ef2ec8851ac37c79a34deace3a53912916f2"
+  },
+  "controls": [
+    {
+      "name": "archive-start-tutorial/entry",
+      "state": "busy-disabled",
+      "t": 5458.199999988079,
+      "page": "manual",
+      "text": "新手实战",
+      "tag": "BUTTON",
+      "box": {
+        "x": 943.3671875,
+        "y": 79.0078125,
+        "w": 90,
+        "h": 44,
+        "right": 1033.3671875,
+        "bottom": 123.0078125
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.48)",
+        "background": "linear-gradient(120deg, rgba(54, 105, 120, 0.61), rgba(17, 43, 60, 0.79))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(234, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "geometry",
+      "raw": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 10253.599999964237,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "default",
+      "t": 10500.300000011921,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "hover",
+      "t": 10556.899999976158,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "active",
+      "t": 10659,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 10734.300000011921,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "focus-visible",
+      "t": 10967.300000011921,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial/guided-next",
+      "state": "suspended-disabled",
+      "t": 11011.800000011921,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.5",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial-next/next",
+      "state": "busy-disabled",
+      "t": 11091.899999976158,
+      "page": "table",
+      "text": "明白了，继续",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.5",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history",
+      "state": "geometry",
+      "raw": {
+        "x": 509,
+        "y": 266.2265625,
+        "width": 82,
+        "height": 108
+      },
+      "explicitScroll": true,
+      "t": 13752.5,
+      "page": "table",
+      "text": "攒／DeiDeiR01",
+      "tag": "SPAN",
+      "box": {
+        "x": 509,
+        "y": 262.875,
+        "w": 82,
+        "h": 108,
+        "right": 591,
+        "bottom": 370.875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": null,
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(0, 0, 0, 0.667) 0px 13px 25px 0px",
+        "border": "rgba(255, 255, 255, 0.19)",
+        "background": "radial-gradient(circle at 67% 20%, rgba(140, 234, 243, 0.157), rgba(0, 0, 0, 0) 30%), linear-gradient(145deg, rgba(26, 43, 53, 0.93), rgba(7, 16, 24, 0.93))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(238, 247, 248)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "blur(0px) saturate(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history",
+      "state": "default",
+      "t": 14036.699999988079,
+      "page": "table",
+      "text": "攒／DeiDeiR01",
+      "tag": "SPAN",
+      "box": {
+        "x": 509,
+        "y": 262.875,
+        "w": 82,
+        "h": 108,
+        "right": 591,
+        "bottom": 370.875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": null,
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "rgba(0, 0, 0, 0.667) 0px 13px 25px 0px",
+        "border": "rgba(255, 255, 255, 0.19)",
+        "background": "radial-gradient(circle at 67% 20%, rgba(140, 234, 243, 0.157), rgba(0, 0, 0, 0) 30%), linear-gradient(145deg, rgba(26, 43, 53, 0.93), rgba(7, 16, 24, 0.93))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(238, 247, 248)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "blur(0px) saturate(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history",
+      "state": "hover",
+      "t": 14143.800000011921,
+      "page": "table",
+      "text": "攒／DeiDeiR01",
+      "tag": "SPAN",
+      "box": {
+        "x": 509,
+        "y": 262.875,
+        "w": 82,
+        "h": 108,
+        "right": 591,
+        "bottom": 370.875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": null,
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "1px",
+        "shadow": "rgba(0, 0, 0, 0.667) 0px 13px 25px 0px",
+        "border": "rgba(255, 255, 255, 0.19)",
+        "background": "radial-gradient(circle at 67% 20%, rgba(140, 234, 243, 0.157), rgba(0, 0, 0, 0) 30%), linear-gradient(145deg, rgba(26, 43, 53, 0.93), rgba(7, 16, 24, 0.93))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(238, 247, 248)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "blur(0px) saturate(1) brightness(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 509,
+        "y": 262.875,
+        "width": 82,
+        "height": 108
+      },
+      "explicitScroll": true,
+      "t": 14244.699999988079,
+      "page": "table",
+      "text": "攒／DeiDeiR01",
+      "tag": "SPAN",
+      "box": {
+        "x": 509,
+        "y": 262.875,
+        "w": 82,
+        "h": 108,
+        "right": 591,
+        "bottom": 370.875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": null,
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "1px",
+        "shadow": "rgba(0, 0, 0, 0.667) 0px 13px 25px 0px",
+        "border": "rgba(255, 255, 255, 0.19)",
+        "background": "radial-gradient(circle at 67% 20%, rgba(140, 234, 243, 0.157), rgba(0, 0, 0, 0) 30%), linear-gradient(145deg, rgba(26, 43, 53, 0.93), rgba(7, 16, 24, 0.93))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(238, 247, 248)",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "blur(0px) saturate(1) brightness(1)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history",
+      "state": "focus-visible",
+      "t": 14476.599999964237,
+      "page": "table",
+      "text": "攒／DeiDeiR01",
+      "tag": "SPAN",
+      "box": {
+        "x": 509,
+        "y": 257.8895263671875,
+        "w": 82,
+        "h": 108,
+        "right": 591,
+        "bottom": 365.8895263671875
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": null,
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "1px",
+        "shadow": "rgba(0, 0, 0, 0.667) 0px 13px 25px 0px",
+        "border": "rgba(255, 255, 255, 0.19)",
+        "background": "radial-gradient(circle at 67% 20%, rgba(140, 234, 243, 0.157), rgba(0, 0, 0, 0) 30%), linear-gradient(145deg, rgba(26, 43, 53, 0.93), rgba(7, 16, 24, 0.93))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(238, 247, 248)",
+        "transform": "matrix(1, 0, 0, 1, 0, -4.98546)",
+        "filter": "blur(0px) saturate(1.07985) brightness(1.07985)",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "battle/history",
+      "state": "focus-visible-descendants",
+      "before": [
+        {
+          "className": "",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "shadow": "none"
+        }
+      ],
+      "after": [
+        {
+          "className": "",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "shadow": "none"
+        }
+      ],
+      "source": "actual Tab; existing avatar and tooltip CSS"
+    },
+    {
+      "name": "battle/history",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "geometry",
+      "raw": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "width": 90,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 20742.80000001192,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "default",
+      "t": 21062.899999976158,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "hover",
+      "t": 21340.80000001192,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "active",
+      "t": 21450.5,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "width": 90,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 21872.19999998808,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "focus-visible",
+      "t": 22109.399999976158,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial/hint",
+      "state": "selected",
+      "t": 22217.399999976158,
+      "page": "table",
+      "text": "收起提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": "true",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "rgb(73, 108, 94) 0px 0px 0px 1px inset",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial-hint-submit/hint",
+      "state": "busy-disabled",
+      "t": 22603.599999964237,
+      "page": "table",
+      "text": "给点提示",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1220.21875,
+        "y": 109.5,
+        "w": 90,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": "false",
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial-hint-submit/confirm",
+      "state": "busy-disabled",
+      "t": 22641.80000001192,
+      "page": "table",
+      "text": "确认出招",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1163.21875,
+        "y": 716.5,
+        "w": 170,
+        "h": 41,
+        "right": 1333.21875,
+        "bottom": 757.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(255, 255, 255, 0.106)",
+        "background": "linear-gradient(105deg, rgb(32, 43, 51), rgb(16, 23, 29))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(115, 131, 138)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.5",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "geometry",
+      "raw": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 29759.5,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "default",
+      "t": 30067.5,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "hover",
+      "t": 30243.80000001192,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "active",
+      "t": 30357.80000001192,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 30727.5,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "focus-visible",
+      "t": 30967.19999998808,
+      "page": "table",
+      "text": "重试独立练习",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1190.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/retry",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "geometry",
+      "raw": {
+        "x": 1077.21875,
+        "y": 109.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 40961.59999996424,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "default",
+      "t": 41253,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "hover",
+      "t": 41428,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "active",
+      "t": 41579.19999998808,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 109.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 153.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1077.21875,
+        "y": 85.5,
+        "width": 120,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 41908,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "focus-visible",
+      "t": 42152.39999997616,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-solo",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "geometry",
+      "raw": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "width": 105,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 42279.80000001192,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "default",
+      "t": 42560.09999996424,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "hover",
+      "t": 42685.5,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "active",
+      "t": 42806.69999998808,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": true,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(184, 246, 255)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.22), rgb(35, 49, 66))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back keyboard",
+      "state": "geometry",
+      "raw": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "width": 105,
+        "height": 44
+      },
+      "explicitScroll": true,
+      "t": 43155.80000001192,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "focus-visible",
+      "t": 43399.09999996424,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": true,
+      "disabled": false,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "solid",
+        "width": "2px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial/complete-back",
+      "state": "native-focus-check",
+      "native": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "",
+          "delay": 0,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 0,
+          "events": []
+        }
+      }
+    },
+    {
+      "name": "tutorial-complete-solo/solo",
+      "state": "busy-disabled",
+      "t": 43503.30000001192,
+      "page": "table",
+      "text": "进入普通单人",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1077.21875,
+        "y": 85.5,
+        "w": 120,
+        "h": 44,
+        "right": 1197.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": true,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgb(255, 148, 162)",
+        "background": "linear-gradient(115deg, rgb(239, 66, 86), rgb(155, 32, 57))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(255, 255, 255)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "0.5",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    },
+    {
+      "name": "tutorial-complete-solo/back",
+      "state": "busy-disabled",
+      "t": 43524.80000001192,
+      "page": "table",
+      "text": "返回主菜单",
+      "tag": "BUTTON",
+      "box": {
+        "x": 1205.21875,
+        "y": 85.5,
+        "w": 105,
+        "h": 44,
+        "right": 1310.21875,
+        "bottom": 129.5
+      },
+      "viewport": [
+        1366,
+        768
+      ],
+      "hit": true,
+      "active": false,
+      "hover": false,
+      "focusVisible": false,
+      "disabled": true,
+      "selected": null,
+      "ariaSelected": null,
+      "expanded": null,
+      "checked": null,
+      "value": "",
+      "busy": null,
+      "focusOwner": null,
+      "style": {
+        "outline": "none",
+        "width": "3px",
+        "shadow": "none",
+        "border": "rgba(140, 234, 243, 0.36)",
+        "background": "linear-gradient(115deg, rgba(140, 234, 243, 0.106), rgb(22, 33, 45))",
+        "backgroundColor": "rgba(0, 0, 0, 0)",
+        "color": "rgb(230, 245, 248)",
+        "transform": "none",
+        "filter": "none",
+        "opacity": "1",
+        "visibility": "visible"
+      },
+      "documentFocus": true,
+      "visibility": "visible"
+    }
+  ],
+  "business": [
+    {
+      "name": "archive-start-tutorial",
+      "controlled": {
+        "channel": "port.startTutorial",
+        "delay": 1800,
+        "fail": false,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startTutorial",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startTutorial",
+              "kind": "start",
+              "t": 1791090442318
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startTutorial",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startTutorial",
+              "kind": "start",
+              "t": 1791090442318
+            },
+            {
+              "channel": "port.startTutorial",
+              "kind": "result",
+              "t": 1791090444214,
+              "ok": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "tutorial-next",
+      "controlled": {
+        "channel": "port.tutorialNext",
+        "delay": 1800,
+        "fail": false,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.tutorialNext",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.tutorialNext",
+              "kind": "start",
+              "t": 1791090447969
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.tutorialNext",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.tutorialNext",
+              "kind": "start",
+              "t": 1791090447969
+            },
+            {
+              "channel": "port.tutorialNext",
+              "kind": "result",
+              "t": 1791090449773,
+              "ok": true
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "tutorial-hint-submit",
+      "controlled": {
+        "channel": "port.submit",
+        "delay": 1800,
+        "fail": true,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.submit",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.submit",
+              "kind": "start",
+              "t": 1791090459405
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.submit",
+          "delay": 1800,
+          "fail": true,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.submit",
+              "kind": "start",
+              "t": 1791090459405
+            },
+            {
+              "channel": "port.submit",
+              "kind": "controlled-error",
+              "t": 1791090461208,
+              "error": "SAVE_FAILED"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "tutorial-complete-solo",
+      "controlled": {
+        "channel": "port.startSolo",
+        "delay": 1800,
+        "fail": false,
+        "error": "SAVE_FAILED"
+      },
+      "during": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startSolo",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startSolo",
+              "kind": "start",
+              "t": 1791090480368
+            }
+          ]
+        }
+      },
+      "done": {
+        "pid": 95142,
+        "focused": true,
+        "visible": true,
+        "bounds": {
+          "x": 469,
+          "y": 384,
+          "width": 1366,
+          "height": 800
+        },
+        "content": {
+          "x": 469,
+          "y": 416,
+          "width": 1366,
+          "height": 768
+        },
+        "fullscreen": false,
+        "display": {
+          "id": 2,
+          "scaleFactor": 2
+        },
+        "control": {
+          "channel": "port.startSolo",
+          "delay": 1800,
+          "fail": false,
+          "error": "SAVE_FAILED",
+          "calls": 1,
+          "events": [
+            {
+              "channel": "port.startSolo",
+              "kind": "start",
+              "t": 1791090480368
+            },
+            {
+              "channel": "port.startSolo",
+              "kind": "result",
+              "t": 1791090482420,
+              "ok": true
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "notes": [
+    {
+      "name": "battle/history",
+      "state": "active",
+      "status": "NA",
+      "reason": "Focusable read-only element has no click/action handler"
+    },
+    {
+      "scope": "Seven-state applicability is source-defined; this batch proves only named observations. No selected/disabled/busy state was synthesized; online is outside this driver."
+    }
+  ],
+  "errors": [],
+  "initial": {
+    "native": {
+      "pid": 95142,
+      "focused": true,
+      "visible": true,
+      "bounds": {
+        "x": 469,
+        "y": 384,
+        "width": 1366,
+        "height": 800
+      },
+      "content": {
+        "x": 469,
+        "y": 416,
+        "width": 1366,
+        "height": 768
+      },
+      "fullscreen": false,
+      "display": {
+        "id": 2,
+        "scaleFactor": 2
+      },
+      "control": {
+        "channel": "",
+        "delay": 0,
+        "fail": false,
+        "error": "SAVE_FAILED",
+        "calls": 0,
+        "events": []
+      }
+    },
+    "renderer": {
+      "at": 247.80000001192093,
+      "route": "profile",
+      "stage": "opening",
+      "url": "app://desktop/index.html",
+      "viewport": [
+        1366,
+        768
+      ],
+      "dpr": 2,
+      "visibility": "visible",
+      "styles": [
+        {
+          "selector": "app",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "app",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "saturate(0.960002)",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "ui-world-breathe",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        },
+        {
+          "selector": "app",
+          "pseudo": "::after",
+          "opacity": "0.3",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "\"\""
+        },
+        {
+          "selector": "front-stage front-stage-profile",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "front-stage front-stage-profile",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "front-stage front-stage-profile",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "scene-plane scene-world",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "matrix(1.04, 0, 0, 1.04, 0, 0)",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+          "content": "normal"
+        },
+        {
+          "selector": "scene-plane scene-world",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "scene-plane scene-world",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "menu-layer menu-environment",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "menu-layer menu-environment",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "menu-layer menu-environment",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "scene-plane scene-character",
+          "pseudo": null,
+          "opacity": "0",
+          "transform": "matrix(1, 0, 0, 1, 0, 24)",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+          "content": "normal"
+        },
+        {
+          "selector": "scene-plane scene-character",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "scene-plane scene-character",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "welcome-scene",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "normal"
+        },
+        {
+          "selector": "welcome-scene",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "opacity 0.95s",
+          "content": "\"\""
+        },
+        {
+          "selector": "welcome-scene",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "welcome-card",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "matrix3d(0.967107, 0.121869, 0.223274, 0, -0.118746, 0.992546, -0.0274146, 0, -0.224951, 0, 0.97437, 0, -198.066, -291.84, 0, 1)",
+          "filter": "drop-shadow(rgba(0, 0, 0, 0.533) 24px 26px 42px)",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "left 1.4s cubic-bezier(0.18, 0.75, 0.25, 1), transform 1.4s cubic-bezier(0.18, 0.75, 0.25, 1)",
+          "content": "normal"
+        },
+        {
+          "selector": "welcome-card",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "welcome-card",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "welcome-card-turn",
+          "pseudo": null,
+          "opacity": "1",
+          "transform": "matrix(1, 0, 0, 1, 0, 0)",
+          "filter": "none",
+          "display": "block",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "transform 1.4s cubic-bezier(0.2, 0.7, 0.2, 1)",
+          "content": "normal"
+        },
+        {
+          "selector": "welcome-card-turn",
+          "pseudo": "::before",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        },
+        {
+          "selector": "welcome-card-turn",
+          "pseudo": "::after",
+          "opacity": "1",
+          "transform": "none",
+          "filter": "none",
+          "display": "inline",
+          "visibility": "visible",
+          "animationName": "none",
+          "animationPlayState": "running",
+          "transition": "all",
+          "content": "none"
+        }
+      ],
+      "animations": [
+        {
+          "type": "CSSAnimation",
+          "name": "ui-world-breathe",
+          "currentTime": 49.99800000000001,
+          "playState": "running",
+          "target": "app",
+          "pseudo": "::before"
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "menu-aura-drift",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "menu-aura",
+          "pseudo": null
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "menu-particle-drift",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "menu-particles",
+          "pseudo": null
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "menu-atmosphere-drift",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "menu-layer menu-atmosphere",
+          "pseudo": null
+        },
+        {
+          "type": "CSSAnimation",
+          "name": "menu-character-in",
+          "currentTime": 0,
+          "playState": "running",
+          "target": "menu-layer menu-character",
+          "pseudo": null
+        }
+      ],
+      "media": [
+        {
+          "src": "app://desktop/assets/menu/welcome-opening-v1.mp4",
+          "currentTime": 0,
+          "readyState": 0,
+          "networkState": 2,
+          "paused": false,
+          "ended": false,
+          "muted": true,
+          "width": 0,
+          "height": 0,
+          "error": null,
+          "quality": {
+            "totalVideoFrames": 0,
+            "droppedVideoFrames": 0
+          }
+        }
+      ]
+    }
+  },
+  "finalNative": {
+    "pid": 95142,
+    "focused": true,
+    "visible": true,
+    "bounds": {
+      "x": 469,
+      "y": 384,
+      "width": 1366,
+      "height": 800
+    },
+    "content": {
+      "x": 469,
+      "y": 416,
+      "width": 1366,
+      "height": 768
+    },
+    "fullscreen": false,
+    "display": {
+      "id": 2,
+      "scaleFactor": 2
+    },
+    "control": {
+      "channel": "",
+      "delay": 0,
+      "fail": false,
+      "error": "SAVE_FAILED",
+      "calls": 0,
+      "events": []
+    }
+  },
+  "keys": [
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 5460.699999988079,
+      "target": "BODY"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 10669,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 10675.899999976158,
+      "target": "LI"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 10683.199999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 10688.199999988079,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 10692.800000011921,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 11093.300000011921,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 14170.099999964237,
+      "target": "BODY"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21570.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21587.899999976158,
+      "target": "LI"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21605.30000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21622.80000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21644.399999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21663,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 21695.80000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 22646.80000001192,
+      "target": "BODY"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 30396.099999964237,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 30418.5,
+      "target": "LI"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 30446.19999998808,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 30464.69999998808,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 30516.899999976158,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41628.80000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41656,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41708.5,
+      "target": "LI"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41727.09999996424,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41750.30000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 41769.39999997616,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42864.69999998808,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42895.89999997616,
+      "target": "LI"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42925.80000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42948.30000001192,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42972.59999996424,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Tab",
+      "trusted": true,
+      "t": 42993.5,
+      "target": "BUTTON"
+    },
+    {
+      "key": "Enter",
+      "trusted": true,
+      "t": 43527.80000001192,
+      "target": "BODY"
+    }
+  ],
+  "final": {
+    "at": 47389.59999996424,
+    "route": "menu",
+    "url": "app://desktop/index.html",
+    "viewport": [
+      1366,
+      768
+    ],
+    "dpr": 2,
+    "visibility": "visible",
+    "styles": [
+      {
+        "selector": "app",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "app",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "front-stage front-stage-menu",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix3d(1.38868, 0, -0.0606309, 0, 0, 1.39, 0, 0, 0.0436194, 0, 0.999048, 0, -177.58, -53.76, 130, 1)",
+        "filter": "blur(3px) brightness(0.38) saturate(0.9) contrast(1.12)",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-world",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": null,
+        "opacity": "1",
+        "transform": "matrix(1, 0, 0, 1, 0, 0)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "welcome-world-drift",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-layer menu-environment",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": null,
+        "opacity": "0",
+        "transform": "matrix3d(1.42, 0, 0, 0, 0, 1.42, 0, 0, 0, 0, 1, 0, -355.16, 15.36, 170, 1)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "transform 0.95s cubic-bezier(0.16, 0.78, 0.18, 1), filter 0.95s, opacity 0.6s",
+        "content": "normal"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "scene-plane scene-character",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": null,
+        "opacity": "0",
+        "transform": "matrix(1, 0, 0, 1, 20, 0)",
+        "filter": "none",
+        "display": "block",
+        "visibility": "visible",
+        "animationName": "menu-rail-in",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "normal"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": "::before",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      },
+      {
+        "selector": "menu-rail",
+        "pseudo": "::after",
+        "opacity": "1",
+        "transform": "none",
+        "filter": "none",
+        "display": "inline",
+        "visibility": "visible",
+        "animationName": "none",
+        "animationPlayState": "running",
+        "transition": "all",
+        "content": "none"
+      }
+    ],
+    "animations": [
+      {
+        "type": "CSSTransition",
+        "name": "filter",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-world",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-world",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "menu-copy",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "opacity",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-character",
+        "pseudo": null
+      },
+      {
+        "type": "CSSTransition",
+        "name": "transform",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "scene-plane scene-character",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "welcome-world-drift",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "menu-layer menu-environment",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-aura-drift",
+        "currentTime": 1585.550000023595,
+        "playState": "running",
+        "target": "menu-aura",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-particle-drift",
+        "currentTime": 1585.550000023595,
+        "playState": "running",
+        "target": "menu-particles",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-atmosphere-drift",
+        "currentTime": 1585.550000023595,
+        "playState": "running",
+        "target": "menu-layer menu-atmosphere",
+        "pseudo": null
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "welcome-hall-veil",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "menu-layout welcome-menu-entry",
+        "pseudo": "::before"
+      },
+      {
+        "type": "CSSAnimation",
+        "name": "menu-rail-in",
+        "currentTime": 0,
+        "playState": "running",
+        "target": "menu-rail",
+        "pseudo": null
+      }
+    ],
+    "media": []
+  },
+  "cleanup": {
+    "profile": {
+      "path": "/var/folders/vb/5gpv1btj68qcc3ddh47116j00000gn/T/deidei-controls-profile-5wk93t",
+      "removed": true
+    },
+    "application": {
+      "pid": 95142,
+      "normalExit": true,
+      "forced": false,
+      "errors": [],
+      "stages": [
+        {
+          "name": "confirmation-handler-start",
+          "at": "2026-10-04T05:08:06.128Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "confirmation-handler-done",
+          "at": "2026-10-04T05:08:06.133Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-start",
+          "at": "2026-10-04T05:08:06.133Z",
+          "exitCode": null,
+          "signal": null
+        },
+        {
+          "name": "application-close-done",
+          "at": "2026-10-04T05:08:06.985Z",
+          "exitCode": 0,
+          "signal": null
+        },
+        {
+          "name": "process-exited",
+          "at": "2026-10-04T05:08:06.985Z",
+          "exitCode": 0,
+          "signal": null
+        }
+      ],
+      "exitCode": 0,
+      "signal": null,
+      "exited": true
+    },
+    "children": [
+      {
+        "pid": 95143,
+        "ppid": 95142,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 95144,
+        "ppid": 95142,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 95145,
+        "ppid": 95142,
+        "forced": false,
+        "alive": false
+      },
+      {
+        "pid": 95149,
+        "ppid": 95142,
+        "forced": false,
+        "alive": false
+      }
+    ]
+  },
+  "finishedAt": "2026-10-04T05:08:07.049Z",
+  "status": "PASS",
+  "readBack": {
+    "controls": 50,
+    "statusMatches": true
+  }
+}

@@ -10,7 +10,8 @@
 
 <!-- 写实际执行的命令、环境和结果。没运行就写原因。界面附截图或短视频；规则附对局；模型附评测。 -->
 
-- 基础检查：`python scripts/check.py` ——
+- Python 检查（根递归/core/runtime/规则样本/旧 AI 保全）：`python scripts/check.py` ——
+- 桌面类型、构建与单测：`npm --prefix game/desktop test` ——
 - 本次功能验证：
 - 未验证内容与原因：
 

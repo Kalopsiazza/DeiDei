@@ -1,0 +1,7 @@
+{
+  "source": "compiled A/B override only; source files unchanged",
+  "product": "1b2b7a182e53e7f61b563638f58622893c5fa4b1",
+  "rule": "\n/* Diagnostic A/B: only online table ambient loops. */\n.front-stage-online[data-online-camera=table] :is(.menu-environment,.menu-atmosphere,.menu-aura,.menu-particles){animation-play-state:paused}\n",
+  "sourceBattleHash": "e2c7dcb5f783fc64eb120a4c326e45b47c6a6aada9b1d20d87a35596cf799234",
+  "compiledStyleHash": "6488067cc976d5030a49dd7da7b184bcf7c8592d991d8455cd4d8a875f0ba7d8"
+}

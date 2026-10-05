@@ -1,0 +1,68 @@
+328 INFO: PyInstaller: 6.22.3, contrib hooks: 2026.7
+328 INFO: Python: 3.11.16
+328 INFO: Platform: Windows-10-10.0.20348-SP0
+328 INFO: Python environment: <WORKTREE>\game\packaging\.venv
+343 INFO: Removing temporary files and cleaning cache in <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller-cache\pyinstaller
+343 INFO: Module search paths (PYTHONPATH):
+['D:\\a\\DeiDei\\DeiDei',
+ 'C:\\Users\\runneradmin\\AppData\\Roaming\\uv\\python\\cpython-3.11.16-windows-x86_64-none\\python311.zip',
+ 'C:\\Users\\runneradmin\\AppData\\Roaming\\uv\\python\\cpython-3.11.16-windows-x86_64-none\\DLLs',
+ 'C:\\Users\\runneradmin\\AppData\\Roaming\\uv\\python\\cpython-3.11.16-windows-x86_64-none\\Lib',
+ 'C:\\Users\\runneradmin\\AppData\\Roaming\\uv\\python\\cpython-3.11.16-windows-x86_64-none',
+ 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv',
+ 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages',
+ 'D:\\a\\DeiDei\\DeiDei\\game\\packaging',
+ 'D:\\a\\DeiDei\\DeiDei\\game\\core',
+ 'D:\\a\\DeiDei\\DeiDei\\game\\runtime']
+531 INFO: Appending 'datas' from .spec
+531 INFO: checking Analysis
+531 INFO: Building Analysis because Analysis-00.toc is non existent
+531 INFO: Looking for Python shared library...
+531 INFO: Using Python shared library: <USER_HOME>\AppData\Roaming\uv\python\cpython-3.11.16-windows-x86_64-none\python311.dll
+531 INFO: Running Analysis Analysis-00.toc
+531 INFO: Target bytecode optimization level: 0
+531 INFO: Initializing module dependency graph...
+531 INFO: Initializing module graph hook caches...
+553 INFO: Analyzing modules for base_library.zip ...
+1266 INFO: Processing standard module hook 'hook-heapq.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+1328 INFO: Processing standard module hook 'hook-encodings.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+2642 INFO: Processing standard module hook 'hook-math.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+2751 INFO: Processing standard module hook 'hook-pickle.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4158 INFO: Caching module dependency graph...
+4205 INFO: Analyzing <WORKTREE>\game\packaging\worker_entry.py
+4267 INFO: Processing standard module hook 'hook-platform.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks'
+4314 INFO: Processing module hooks (post-graph stage)...
+4330 INFO: Performing binary vs. data reclassification (3 entries)
+4330 INFO: Looking for ctypes DLLs
+4345 INFO: Analyzing run-time hooks ...
+4345 INFO: Including run-time hook 'pyi_rth_inspect.py' from 'D:\\a\\DeiDei\\DeiDei\\game\\packaging\\.venv\\Lib\\site-packages\\PyInstaller\\hooks\\rthooks'
+4345 INFO: Creating base_library.zip...
+4361 INFO: Looking for dynamic libraries
+4455 INFO: Extra DLL search directories (AddDllDirectory): []
+4455 INFO: Extra DLL search directories (PATH): []
+4963 INFO: Warnings written to <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller\worker\warn-worker.txt
+4971 INFO: Graph cross-reference written to <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller\worker\xref-worker.html
+4987 INFO: checking PYZ
+4987 INFO: Building PYZ because PYZ-00.toc is non existent
+4987 INFO: Building PYZ (ZlibArchive) <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller\worker\PYZ-00.pyz
+5143 INFO: Building PYZ (ZlibArchive) <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller\worker\PYZ-00.pyz completed successfully.
+5159 INFO: checking PKG
+5159 INFO: Building PKG because PKG-00.toc is non existent
+5159 INFO: Building PKG (CArchive) deidei-worker.pkg
+5174 INFO: Building PKG (CArchive) deidei-worker.pkg completed successfully.
+5174 INFO: Bootloader <WORKTREE>\game\packaging\.venv\Lib\site-packages\PyInstaller\bootloader\Windows-64bit-intel\run.exe
+5174 INFO: checking EXE
+5174 INFO: Building EXE because EXE-00.toc is non existent
+5174 INFO: Building EXE from EXE-00.toc
+5174 INFO: Copying bootloader EXE to <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\pyinstaller\worker\deidei-worker.exe
+5174 INFO: Copying icon to EXE
+5174 INFO: Copying 0 resources to EXE
+5174 INFO: Embedding manifest in EXE
+5174 INFO: Appending PKG archive to EXE
+5174 INFO: Fixing EXE headers
+5237 INFO: Building EXE from EXE-00.toc completed successfully.
+5252 INFO: checking COLLECT
+5252 INFO: Building COLLECT because COLLECT-00.toc is non existent
+5252 INFO: Building COLLECT COLLECT-00.toc
+5299 INFO: Building COLLECT COLLECT-00.toc completed successfully.
+5299 INFO: Build complete! The results are available in: <WORKTREE>\game\packaging\build\win32-x64-u39br1ux\frozen

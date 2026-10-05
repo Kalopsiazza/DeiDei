@@ -1,0 +1,8 @@
+legacy/rl/deidei_env.py -text
+legacy/rl/deidei_gym_env.py -text
+legacy/rl/rl_ai.py -text
+legacy/rl/requirements_rl.txt -text
+legacy/rl/rl_checkpoints/latest.zip -text
+legacy/rl/rl_checkpoints/opponent_pool.pkl -text
+legacy/rl/tests/test_core.py -text
+legacy/rl/tests/test_known_regressions.py -text

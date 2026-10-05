@@ -1,0 +1,2 @@
+<WORKTREE>/game/packaging/build/darwin-arm64-xo0ewoko/delivery/DeiDei R02.app: accepted
+override=security disabled

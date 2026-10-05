@@ -1,0 +1,60 @@
+/* Graphics only changes these pages' decoration; high keeps the existing cascade. */
+.graphics-panel>label{display:grid;grid-template-columns:minmax(0,1fr) minmax(120px,.8fr);align-items:center;gap:4px 20px;margin:12px 0}
+.graphics-panel label>small{grid-column:1/-1;font-size:12px;line-height:1.45}
+.graphics-panel select{width:100%;min-width:0;min-height:34px;padding:5px 10px;color:#edf3f4;background:#0b1924;border:1px solid #ffffff38;border-radius:0;font:inherit}
+.graphics-panel select:focus-visible{outline:2px solid var(--menu-cyan);outline-offset:3px}
+.graphics-panel select:disabled{color:#a9b3bd;opacity:1}
+.graphics-panel option{background:#0b1924;color:#edf3f4}
+.graphics-system-status,.graphics-system-status>span{display:none}
+
+:where(.app:is([data-page=menu],[data-page=settings])[data-graphics-motion=reduced],.app:is([data-page=menu],[data-page=settings])[data-graphics-motion=off]) :is(.menu-atmosphere,.menu-aura,.menu-particles){animation-play-state:paused}
+:where(.app:is([data-page=menu],[data-page=settings])[data-graphics-motion=off]) .menu-environment{animation-play-state:paused}
+:where(.app[data-page=settings]:not([data-graphics-motion=full])) .settings-layout::after{animation:none}
+:where(.app[data-page=settings]:not([data-graphics-motion=full])) .settings-content::after{animation:none;opacity:0}
+:where(.app[data-page=manual]:not([data-graphics-motion=full])) .archive-stack-item[data-selected=true]:not(:hover) .archive-stack-card::after{animation:none;opacity:0}
+
+:where(.app[data-page=settings][data-graphics-glass=light]) .settings-layout::before,
+:where(.app[data-page=settings][data-graphics-glass=light]) .settings-content{backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%)}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual]):not([data-graphics-glass=full])) .settings-back,
+:where(.app[data-page=settings]:not([data-graphics-glass=full])) .settings-layout>nav button,
+:where(.app[data-page=settings]:not([data-graphics-glass=full])) .settings-content .checkbox,
+:where(.app[data-page=settings]:not([data-graphics-glass=full])) :is(.settings-content,.online-deploy) input:not([type=range]):not([type=checkbox]):not([type=radio]),
+:where(.app[data-page=settings]:not([data-graphics-glass=full])) .settings-content .avatars button,
+:where(.app[data-page=settings]:not([data-graphics-glass=full])) .settings-action{backdrop-filter:none;-webkit-backdrop-filter:none}
+:where(.app[data-page=settings][data-graphics-glass=off]) .settings-layout::before{background:linear-gradient(90deg,transparent 0 30%,#081019 58%,#081019 100%);backdrop-filter:none;-webkit-backdrop-filter:none}
+:where(.app[data-page=settings][data-graphics-glass=off]) .settings-content{background:#0b141d;backdrop-filter:none;-webkit-backdrop-filter:none}
+:where(.app[data-page=settings][data-graphics-glass=off]) :is(.settings-back,.settings-layout>nav button,.settings-content .checkbox,.settings-content .avatars button,.settings-action:not(.primary)){background:#101c27}
+:where(.app[data-page=settings][data-graphics-glass=off]) :is(.settings-content,.online-deploy) input:not([type=range]):not([type=checkbox]):not([type=radio]){background:#0b1924}
+:where(.app[data-page=manual][data-graphics-glass=off]) .archive-heading .settings-back{background:#101c27}
+:where(.app[data-page=manual][data-graphics-glass=off]) .archive-heading .settings-back:hover:not(:disabled){background:#1f3744}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-glass=light]) dialog.tech-dialog{backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%)}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-glass=light]) dialog.tech-dialog::backdrop{backdrop-filter:blur(4px);-webkit-backdrop-filter:blur(4px)}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-glass=off]) dialog.tech-dialog{background:#0c1925;backdrop-filter:none;-webkit-backdrop-filter:none}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-glass=off]) dialog.tech-dialog::backdrop{background:#02070be8;backdrop-filter:none;-webkit-backdrop-filter:none}
+
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-decoration=simple]) .menu-aura{filter:none}
+:where(.app:is([data-page=menu],[data-page=settings],[data-page=manual])[data-graphics-decoration=simple]) .menu-character,
+:where(.app[data-page=menu][data-graphics-decoration=simple]) .front-stage-menu .menu-character:hover{filter:none}
+:where(.app[data-page=menu][data-graphics-decoration=simple]) .menu-rail header::before{box-shadow:none}
+:where(.app[data-page=menu][data-graphics-decoration=simple]) .menu-option-primary{box-shadow:0 2px 6px #02060a55,inset 0 1px #ffffff45}
+:where(.app[data-page=menu][data-graphics-decoration=simple]) .menu-option:not(.menu-option-minor):hover:not(:disabled):not(:focus-visible){box-shadow:0 2px 6px #02060a55,inset 0 1px #ffffff26}
+:where(.app[data-page=menu][data-graphics-decoration=simple]) .menu-option:not(.menu-option-minor):not(:disabled):focus-visible{box-shadow:inset 0 0 0 2px var(--menu-cyan),0 0 0 2px #071019}
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content{box-shadow:0 2px 6px #02060a55,inset 0 1px #ffffff1c}
+:where(.app:is([data-page=settings],[data-page=manual])[data-graphics-decoration=simple]) .settings-back,
+:where(.app:is([data-page=settings],[data-page=manual])[data-graphics-decoration=simple]) .settings-back:hover:not(:disabled),
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-action,
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-action:hover:not(:disabled),
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .checkbox,
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .checkbox:hover,
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .avatars button,
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .avatars button:hover:not(:disabled){box-shadow:0 2px 6px #02060a55,inset 0 1px #ffffff20}
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .avatars button[aria-pressed=true],
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-content .avatars button[aria-pressed=true]:hover:not(:disabled){box-shadow:inset 0 0 0 1px var(--menu-cyan),inset 0 1px #fff6,0 2px 6px #02060a55}
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-layout>nav button[aria-pressed=true]{box-shadow:inset 3px 0 #f13f52,inset 0 1px #ffffff24}
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-save.primary,
+:where(.app[data-page=settings][data-graphics-decoration=simple]) .settings-save.primary:hover:not(:disabled){box-shadow:inset 0 1px #ffffff4a,inset 0 -7px 14px #670d2336,0 2px 6px #02060a55}
+:where(.app[data-page=manual][data-graphics-decoration=simple]) .archive-stack-card{box-shadow:0 2px 6px #02060a55,inset 0 1px #e4faff1c,inset 0 -1px #8ceaf30b}
+:where(.app[data-page=manual][data-graphics-decoration=simple]) .archive-stack-item[data-selected=true] .archive-stack-card{box-shadow:0 2px 6px #02060a55,inset 0 1px #d9faff38,inset 0 -2px #8ceaf344}
+:where(.app[data-page=manual][data-graphics-decoration=simple]) .archive-stack-item:hover .archive-stack-card{box-shadow:0 2px 6px #02060a55,inset 0 0 30px #8ceaf31a}
+:where(.app[data-page=manual][data-graphics-decoration=simple]) :is(.archive-stack-card img,.archive-icon-tile img,.archive-card-title>img){filter:none}
+:where(.app[data-page=manual][data-graphics-decoration=simple]) .archive-dossier{box-shadow:0 2px 6px #02060a55}

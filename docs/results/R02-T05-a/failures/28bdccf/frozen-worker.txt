@@ -1,0 +1,3135 @@
+{
+  "status": "PASS",
+  "executable": "deidei-worker",
+  "cwd": "temporary directory outside source",
+  "developer_environment": "invalid Python variables; OS-only PATH",
+  "stdout_lines": 6,
+  "exit_code": 0,
+  "transcript": [
+    {
+      "op": "health",
+      "response": {
+        "v": 1,
+        "id": "smoke-1",
+        "ok": true,
+        "data": {
+          "runtime": "r02-t04-a",
+          "rules_version": "classic-1.0.1",
+          "opponent": "random-legal-v1"
+        }
+      }
+    },
+    {
+      "op": "start_solo",
+      "response": {
+        "v": 1,
+        "id": "smoke-2",
+        "ok": true,
+        "data": {
+          "source": "live",
+          "view_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:1:1",
+          "match_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9",
+          "game_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:g1",
+          "turn_index": "1",
+          "phase": "selecting",
+          "participants": [
+            {
+              "player_id": "bot_local",
+              "nickname": "临时随机对手",
+              "avatar_id": "sun",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "thinking"
+            },
+            {
+              "player_id": "package-smoke",
+              "nickname": "成包烟测",
+              "avatar_id": "leaf",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "thinking"
+            }
+          ],
+          "self_id": "package-smoke",
+          "options": [
+            {
+              "entry_id": "Charge",
+              "doc_id": "E01",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "攒／DeiDei",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R01",
+                "R12",
+                "R13",
+                "R22",
+                "R23"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bi",
+              "doc_id": "E02",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Def",
+              "doc_id": "E03",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "普通防御",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08",
+                "R20"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Three",
+              "doc_id": "E04",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "3 DD",
+              "requirement_text": "持有 3 DD"
+            },
+            {
+              "entry_id": "ThreeDef",
+              "doc_id": "E05",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BigBi",
+              "doc_id": "E06",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24"
+              ],
+              "cost_text": "5 DD",
+              "requirement_text": "持有 5 DD"
+            },
+            {
+              "entry_id": "Reflect",
+              "doc_id": "E07",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "反弹",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R10",
+                "R11"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "SelfBi",
+              "doc_id": "E08",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "自 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R14"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Cloud",
+              "doc_id": "E09",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "云",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R13"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bomb",
+              "doc_id": "E10",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R19"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Xiao",
+              "doc_id": "E11",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "削",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R07",
+                "R21"
+              ],
+              "cost_text": "1/3 DD",
+              "requirement_text": "持有 1/3 DD"
+            },
+            {
+              "entry_id": "Pragon",
+              "doc_id": "E12",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "2 DD",
+              "requirement_text": "持有 2 DD"
+            },
+            {
+              "entry_id": "PragonDef",
+              "doc_id": "E13",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon 防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Volvo",
+              "doc_id": "E14",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06",
+                "R12"
+              ],
+              "cost_text": "4 DD",
+              "requirement_text": "持有 4 DD"
+            },
+            {
+              "entry_id": "VolvoDef",
+              "doc_id": "E15",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "RotateThree",
+              "doc_id": "E16",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "6 DD",
+              "requirement_text": "持有 6 DD"
+            },
+            {
+              "entry_id": "XiaoBei",
+              "doc_id": "E17",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "小贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "7 DD",
+              "requirement_text": "持有 7 DD"
+            },
+            {
+              "entry_id": "FlipVolvo",
+              "doc_id": "E18",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "8 DD",
+              "requirement_text": "持有 8 DD"
+            },
+            {
+              "entry_id": "Shell",
+              "doc_id": "E19",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "扇贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "10 DD",
+              "requirement_text": "持有 10 DD"
+            },
+            {
+              "entry_id": "Absorb",
+              "doc_id": "E20",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "吸收",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R12"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "NieXiang",
+              "doc_id": "E21",
+              "available": false,
+              "reason_code": "INSUFFICIENT_CHARGE",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R20"
+              ],
+              "cost_text": "4 充能",
+              "requirement_text": "持有 4 充能"
+            },
+            {
+              "entry_id": "NieXiangDef",
+              "doc_id": "E22",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "JuYan",
+              "doc_id": "E23",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "距喦",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R21"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "TianLiJun",
+              "doc_id": "E24",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "田利军",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R22"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZhangXinWei",
+              "doc_id": "E25",
+              "available": false,
+              "reason_code": "NO_COPY_RECORD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "张新伟",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R16",
+                "R17"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "LiQiang",
+              "doc_id": "E26",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "历强",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R15"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BombPragon",
+              "doc_id": "E27",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "1 成熟层",
+              "requirement_text": "持有 1 成熟层"
+            },
+            {
+              "entry_id": "BombVolvo",
+              "doc_id": "E28",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "2 成熟层",
+              "requirement_text": "持有 2 成熟层"
+            },
+            {
+              "entry_id": "BombFlipVolvo",
+              "doc_id": "E29",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18",
+                "R19"
+              ],
+              "cost_text": "4 成熟层",
+              "requirement_text": "持有 4 成熟层"
+            },
+            {
+              "entry_id": "FreeThree",
+              "doc_id": "E30",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R13"
+              ],
+              "cost_text": "3 雷电",
+              "requirement_text": "持有 3 雷电"
+            },
+            {
+              "entry_id": "FreeRotateThree",
+              "doc_id": "E31",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R13",
+                "R18"
+              ],
+              "cost_text": "6 雷电",
+              "requirement_text": "持有 6 雷电"
+            },
+            {
+              "entry_id": "ZengYi",
+              "doc_id": "E32",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "曾义",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R25"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZengRewardBigBi",
+              "doc_id": "E33",
+              "available": false,
+              "reason_code": "NO_REWARD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "forced": false,
+              "name": "曾义赠送·大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24",
+                "R25"
+              ],
+              "cost_text": "1 奖励",
+              "requirement_text": "持有 1 奖励"
+            }
+          ],
+          "selected_entry_id": null,
+          "submitted": false,
+          "timer": {
+            "mode": "untimed",
+            "remaining_ms": null,
+            "total_ms": null
+          },
+          "summary": [
+            "选择一张可用牌，再提交。对手本拍已预先选定。",
+            "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用",
+            "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+          ],
+          "outcome": null
+        }
+      }
+    },
+    {
+      "op": "submit",
+      "response": {
+        "v": 1,
+        "id": "smoke-3",
+        "ok": true,
+        "data": {
+          "source": "live",
+          "view_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:1:1",
+          "match_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9",
+          "game_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:g1",
+          "turn_index": "1",
+          "phase": "submitting",
+          "participants": [
+            {
+              "player_id": "bot_local",
+              "nickname": "临时随机对手",
+              "avatar_id": "sun",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            },
+            {
+              "player_id": "package-smoke",
+              "nickname": "成包烟测",
+              "avatar_id": "leaf",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            }
+          ],
+          "self_id": "package-smoke",
+          "options": [
+            {
+              "entry_id": "Charge",
+              "doc_id": "E01",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "攒／DeiDei",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R01",
+                "R12",
+                "R13",
+                "R22",
+                "R23"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bi",
+              "doc_id": "E02",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Def",
+              "doc_id": "E03",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "普通防御",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08",
+                "R20"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Three",
+              "doc_id": "E04",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "3 DD",
+              "requirement_text": "持有 3 DD"
+            },
+            {
+              "entry_id": "ThreeDef",
+              "doc_id": "E05",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BigBi",
+              "doc_id": "E06",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24"
+              ],
+              "cost_text": "5 DD",
+              "requirement_text": "持有 5 DD"
+            },
+            {
+              "entry_id": "Reflect",
+              "doc_id": "E07",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "反弹",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R10",
+                "R11"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "SelfBi",
+              "doc_id": "E08",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "自 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R14"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Cloud",
+              "doc_id": "E09",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "云",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R13"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bomb",
+              "doc_id": "E10",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R19"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Xiao",
+              "doc_id": "E11",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "削",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R07",
+                "R21"
+              ],
+              "cost_text": "1/3 DD",
+              "requirement_text": "持有 1/3 DD"
+            },
+            {
+              "entry_id": "Pragon",
+              "doc_id": "E12",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "2 DD",
+              "requirement_text": "持有 2 DD"
+            },
+            {
+              "entry_id": "PragonDef",
+              "doc_id": "E13",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon 防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Volvo",
+              "doc_id": "E14",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06",
+                "R12"
+              ],
+              "cost_text": "4 DD",
+              "requirement_text": "持有 4 DD"
+            },
+            {
+              "entry_id": "VolvoDef",
+              "doc_id": "E15",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "RotateThree",
+              "doc_id": "E16",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "6 DD",
+              "requirement_text": "持有 6 DD"
+            },
+            {
+              "entry_id": "XiaoBei",
+              "doc_id": "E17",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "小贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "7 DD",
+              "requirement_text": "持有 7 DD"
+            },
+            {
+              "entry_id": "FlipVolvo",
+              "doc_id": "E18",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "8 DD",
+              "requirement_text": "持有 8 DD"
+            },
+            {
+              "entry_id": "Shell",
+              "doc_id": "E19",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "扇贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "10 DD",
+              "requirement_text": "持有 10 DD"
+            },
+            {
+              "entry_id": "Absorb",
+              "doc_id": "E20",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "吸收",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R12"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "NieXiang",
+              "doc_id": "E21",
+              "available": false,
+              "reason_code": "INSUFFICIENT_CHARGE",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R20"
+              ],
+              "cost_text": "4 充能",
+              "requirement_text": "持有 4 充能"
+            },
+            {
+              "entry_id": "NieXiangDef",
+              "doc_id": "E22",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "JuYan",
+              "doc_id": "E23",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "距喦",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R21"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "TianLiJun",
+              "doc_id": "E24",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "田利军",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R22"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZhangXinWei",
+              "doc_id": "E25",
+              "available": false,
+              "reason_code": "NO_COPY_RECORD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "张新伟",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R16",
+                "R17"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "LiQiang",
+              "doc_id": "E26",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "历强",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R15"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BombPragon",
+              "doc_id": "E27",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "1 成熟层",
+              "requirement_text": "持有 1 成熟层"
+            },
+            {
+              "entry_id": "BombVolvo",
+              "doc_id": "E28",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "2 成熟层",
+              "requirement_text": "持有 2 成熟层"
+            },
+            {
+              "entry_id": "BombFlipVolvo",
+              "doc_id": "E29",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18",
+                "R19"
+              ],
+              "cost_text": "4 成熟层",
+              "requirement_text": "持有 4 成熟层"
+            },
+            {
+              "entry_id": "FreeThree",
+              "doc_id": "E30",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R13"
+              ],
+              "cost_text": "3 雷电",
+              "requirement_text": "持有 3 雷电"
+            },
+            {
+              "entry_id": "FreeRotateThree",
+              "doc_id": "E31",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R13",
+                "R18"
+              ],
+              "cost_text": "6 雷电",
+              "requirement_text": "持有 6 雷电"
+            },
+            {
+              "entry_id": "ZengYi",
+              "doc_id": "E32",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "曾义",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R25"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZengRewardBigBi",
+              "doc_id": "E33",
+              "available": false,
+              "reason_code": "NO_REWARD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "forced": false,
+              "name": "曾义赠送·大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24",
+                "R25"
+              ],
+              "cost_text": "1 奖励",
+              "requirement_text": "持有 1 奖励"
+            }
+          ],
+          "selected_entry_id": "Charge",
+          "submitted": true,
+          "timer": {
+            "mode": "untimed",
+            "remaining_ms": null,
+            "total_ms": null
+          },
+          "summary": [
+            "已提交，等待共同揭晓。",
+            "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用",
+            "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+          ],
+          "outcome": null
+        }
+      }
+    },
+    {
+      "op": "get_view",
+      "response": {
+        "v": 1,
+        "id": "smoke-4",
+        "ok": true,
+        "data": {
+          "source": "live",
+          "view_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:1:1",
+          "match_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9",
+          "game_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:g1",
+          "turn_index": "1",
+          "phase": "submitting",
+          "participants": [
+            {
+              "player_id": "bot_local",
+              "nickname": "临时随机对手",
+              "avatar_id": "sun",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            },
+            {
+              "player_id": "package-smoke",
+              "nickname": "成包烟测",
+              "avatar_id": "leaf",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            }
+          ],
+          "self_id": "package-smoke",
+          "options": [
+            {
+              "entry_id": "Charge",
+              "doc_id": "E01",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "攒／DeiDei",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R01",
+                "R12",
+                "R13",
+                "R22",
+                "R23"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bi",
+              "doc_id": "E02",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Def",
+              "doc_id": "E03",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "普通防御",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08",
+                "R20"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Three",
+              "doc_id": "E04",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "18",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "3 DD",
+              "requirement_text": "持有 3 DD"
+            },
+            {
+              "entry_id": "ThreeDef",
+              "doc_id": "E05",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "三雷防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BigBi",
+              "doc_id": "E06",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "30",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24"
+              ],
+              "cost_text": "5 DD",
+              "requirement_text": "持有 5 DD"
+            },
+            {
+              "entry_id": "Reflect",
+              "doc_id": "E07",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "反弹",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R10",
+                "R11"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "SelfBi",
+              "doc_id": "E08",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "自 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R14"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Cloud",
+              "doc_id": "E09",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "云",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R13"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Bomb",
+              "doc_id": "E10",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R19"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "Xiao",
+              "doc_id": "E11",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "2",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "削",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R07",
+                "R21"
+              ],
+              "cost_text": "1/3 DD",
+              "requirement_text": "持有 1/3 DD"
+            },
+            {
+              "entry_id": "Pragon",
+              "doc_id": "E12",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06"
+              ],
+              "cost_text": "2 DD",
+              "requirement_text": "持有 2 DD"
+            },
+            {
+              "entry_id": "PragonDef",
+              "doc_id": "E13",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "Pragon 防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "Volvo",
+              "doc_id": "E14",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "24",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R06",
+                "R12"
+              ],
+              "cost_text": "4 DD",
+              "requirement_text": "持有 4 DD"
+            },
+            {
+              "entry_id": "VolvoDef",
+              "doc_id": "E15",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "沃尔沃防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "RotateThree",
+              "doc_id": "E16",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "36",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "6 DD",
+              "requirement_text": "持有 6 DD"
+            },
+            {
+              "entry_id": "XiaoBei",
+              "doc_id": "E17",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "42",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "小贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "7 DD",
+              "requirement_text": "持有 7 DD"
+            },
+            {
+              "entry_id": "FlipVolvo",
+              "doc_id": "E18",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "48",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18"
+              ],
+              "cost_text": "8 DD",
+              "requirement_text": "持有 8 DD"
+            },
+            {
+              "entry_id": "Shell",
+              "doc_id": "E19",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "60",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "扇贝",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R23"
+              ],
+              "cost_text": "10 DD",
+              "requirement_text": "持有 10 DD"
+            },
+            {
+              "entry_id": "Absorb",
+              "doc_id": "E20",
+              "available": false,
+              "reason_code": "INSUFFICIENT_DD",
+              "required": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "吸收",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R12"
+              ],
+              "cost_text": "1 DD",
+              "requirement_text": "持有 1 DD"
+            },
+            {
+              "entry_id": "NieXiang",
+              "doc_id": "E21",
+              "available": false,
+              "reason_code": "INSUFFICIENT_CHARGE",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "4",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R20"
+              ],
+              "cost_text": "4 充能",
+              "requirement_text": "持有 4 充能"
+            },
+            {
+              "entry_id": "NieXiangDef",
+              "doc_id": "E22",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "聂湘防",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R08"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "JuYan",
+              "doc_id": "E23",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "距喦",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R21"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "TianLiJun",
+              "doc_id": "E24",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "田利军",
+              "ui_group": "defense",
+              "detail_rule_ids": [
+                "R22"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZhangXinWei",
+              "doc_id": "E25",
+              "available": false,
+              "reason_code": "NO_COPY_RECORD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "张新伟",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R16",
+                "R17"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "LiQiang",
+              "doc_id": "E26",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "历强",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R15"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "BombPragon",
+              "doc_id": "E27",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "1",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·Pragon",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "1 成熟层",
+              "requirement_text": "持有 1 成熟层"
+            },
+            {
+              "entry_id": "BombVolvo",
+              "doc_id": "E28",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "2",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R19"
+              ],
+              "cost_text": "2 成熟层",
+              "requirement_text": "持有 2 成熟层"
+            },
+            {
+              "entry_id": "BombFlipVolvo",
+              "doc_id": "E29",
+              "available": false,
+              "reason_code": "INSUFFICIENT_BOMBS",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "4",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "炸药·翻转沃尔沃",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R18",
+                "R19"
+              ],
+              "cost_text": "4 成熟层",
+              "requirement_text": "持有 4 成熟层"
+            },
+            {
+              "entry_id": "FreeThree",
+              "doc_id": "E30",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "3",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R09",
+                "R12",
+                "R13"
+              ],
+              "cost_text": "3 雷电",
+              "requirement_text": "持有 3 雷电"
+            },
+            {
+              "entry_id": "FreeRotateThree",
+              "doc_id": "E31",
+              "available": false,
+              "reason_code": "INSUFFICIENT_LIGHTNING",
+              "required": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "6",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "雷电·旋转三雷",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R13",
+                "R18"
+              ],
+              "cost_text": "6 雷电",
+              "requirement_text": "持有 6 雷电"
+            },
+            {
+              "entry_id": "ZengYi",
+              "doc_id": "E32",
+              "available": true,
+              "reason_code": null,
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "0"
+              },
+              "forced": false,
+              "name": "曾义",
+              "ui_group": "skill",
+              "detail_rule_ids": [
+                "R25"
+              ],
+              "cost_text": "0 DD",
+              "requirement_text": "持有 0 DD"
+            },
+            {
+              "entry_id": "ZengRewardBigBi",
+              "doc_id": "E33",
+              "available": false,
+              "reason_code": "NO_REWARD",
+              "required": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "spend": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "reward_stock": "1"
+              },
+              "forced": false,
+              "name": "曾义赠送·大 bi",
+              "ui_group": "attack",
+              "detail_rule_ids": [
+                "R24",
+                "R25"
+              ],
+              "cost_text": "1 奖励",
+              "requirement_text": "持有 1 奖励"
+            }
+          ],
+          "selected_entry_id": "Charge",
+          "submitted": true,
+          "timer": {
+            "mode": "untimed",
+            "remaining_ms": null,
+            "total_ms": null
+          },
+          "summary": [
+            "已提交，等待共同揭晓。",
+            "临时随机对手进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用",
+            "本人进度：待成熟 0 · 炸药放置 0 次 · 云 0 次 / 田利军 0 次 · 张新伟未用，记录 无 · 历强未用 · 曾义 未用"
+          ],
+          "outcome": null
+        }
+      }
+    },
+    {
+      "op": "leave",
+      "response": {
+        "v": 1,
+        "id": "smoke-5",
+        "ok": true,
+        "data": {
+          "source": "live",
+          "view_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:1:1",
+          "match_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9",
+          "game_id": "fda6b767-ca52-41fe-ab1b-cfd210b02ef9:g1",
+          "turn_index": "1",
+          "phase": "error",
+          "participants": [
+            {
+              "player_id": "bot_local",
+              "nickname": "临时随机对手",
+              "avatar_id": "sun",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            },
+            {
+              "player_id": "package-smoke",
+              "nickname": "成包烟测",
+              "avatar_id": "leaf",
+              "alive": true,
+              "resources": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "enhanced_xiao": false,
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "bomb_placement_count": "0",
+                "reward_stock": "0"
+              },
+              "submission_state": "submitted"
+            }
+          ],
+          "self_id": "package-smoke",
+          "options": [],
+          "selected_entry_id": "Charge",
+          "submitted": true,
+          "timer": {
+            "mode": "untimed",
+            "remaining_ms": null,
+            "total_ms": null
+          },
+          "summary": [
+            "本场已结束。"
+          ],
+          "outcome": null
+        }
+      }
+    },
+    {
+      "op": "shutdown",
+      "response": {
+        "v": 1,
+        "id": "smoke-6",
+        "ok": true,
+        "data": null
+      }
+    }
+  ]
+}

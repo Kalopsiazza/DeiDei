@@ -1,0 +1,1 @@
+{"status":"PASS","guiRun":false,"cases":["first write denied","both writes denied"],"scope":"actual finally block; owned close and profile removal survive evidence write errors"}

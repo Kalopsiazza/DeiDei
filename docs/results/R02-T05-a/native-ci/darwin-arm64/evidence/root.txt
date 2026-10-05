@@ -1,0 +1,49 @@
+Syntax checked: 39 Python files.
+test_complete_authored_suite_and_reproducibility (rules_v1_001.test_harness.HarnessTests.test_complete_authored_suite_and_reproducibility) ... ok
+test_corrupt_fixtures_are_rejected (rules_v1_001.test_harness.HarnessTests.test_corrupt_fixtures_are_rejected) ... ok
+test_event_counts_and_false_success_are_rejected (rules_v1_001.test_harness.HarnessTests.test_event_counts_and_false_success_are_rejected) ... ok
+test_input_mutation_and_cross_player_aliases_fail (rules_v1_001.test_harness.HarnessTests.test_input_mutation_and_cross_player_aliases_fail) ... ok
+test_missing_broken_and_session_paths_do_not_claim_pass (rules_v1_001.test_harness.HarnessTests.test_missing_broken_and_session_paths_do_not_claim_pass) ... ok
+test_mutations_use_exact_context_and_stay_inside_copy (rules_v1_001.test_harness.HarnessTests.test_mutations_use_exact_context_and_stay_inside_copy) ... ok
+test_return_links_and_duplicate_reward_events (rules_v1_001.test_harness.HarnessTests.test_return_links_and_duplicate_reward_events) ... ok
+test_transport_double_passes_only_harness_and_missing_outputs_fail (rules_v1_001.test_harness.HarnessTests.test_transport_double_passes_only_harness_and_missing_outputs_fail) ... ok
+test_easy_ai_does_not_change_inputs (test_core.EasyAITests.test_easy_ai_does_not_change_inputs) ... ok
+test_seeded_ai_is_repeatable (test_core.EasyAITests.test_seeded_ai_is_repeatable) ... ok
+test_seeded_ai_only_selects_legal_moves (test_core.EasyAITests.test_seeded_ai_only_selects_legal_moves) ... ok
+test_bi_requires_one_dd (test_core.ResourceTests.test_bi_requires_one_dd) ... ok
+test_charge_is_available_at_start (test_core.ResourceTests.test_charge_is_available_at_start) ... ok
+test_dd_uses_six_integer_units (test_core.ResourceTests.test_dd_uses_six_integer_units) ... ok
+test_liqiang_is_single_use (test_core.ResourceTests.test_liqiang_is_single_use) ... ok
+test_move_catalog_has_no_duplicates (test_core.ResourceTests.test_move_catalog_has_no_duplicates) ... ok
+test_new_players_have_independent_bomb_lists (test_core.ResourceTests.test_new_players_have_independent_bomb_lists) ... ok
+test_special_resources_control_moves (test_core.ResourceTests.test_special_resources_control_moves) ... ok
+test_attack_beats_charge (test_core.TurnTests.test_attack_beats_charge) ... ok
+test_bomb_becomes_usable_after_following_turn (test_core.TurnTests.test_bomb_becomes_usable_after_following_turn) ... ok
+test_both_charge (test_core.TurnTests.test_both_charge) ... ok
+test_both_suicide_draw (test_core.TurnTests.test_both_suicide_draw) ... ok
+test_equal_attacks_continue_and_spend_resources (test_core.TurnTests.test_equal_attacks_continue_and_spend_resources) ... ok
+test_illegal_attack_does_not_advance_fresh_state (test_core.TurnTests.test_illegal_attack_does_not_advance_fresh_state) ... ok
+test_normal_defense_blocks_bi_and_gains_nx_charge (test_core.TurnTests.test_normal_defense_blocks_bi_and_gains_nx_charge) ... ok
+test_normal_defense_does_not_block_pragon (test_core.TurnTests.test_normal_defense_does_not_block_pragon) ... ok
+test_reflect_beats_bi (test_core.TurnTests.test_reflect_beats_bi) ... ok
+test_special_defense_blocks_its_attack (test_core.TurnTests.test_special_defense_blocks_its_attack) ... ok
+test_special_defenses_do_not_block_bi (test_core.TurnTests.test_special_defenses_do_not_block_bi) ... ok
+test_suicide_beats_reflect (test_core.TurnTests.test_suicide_beats_reflect) ... ok
+test_swapping_sides_swaps_winner_for_basic_attacks (test_core.TurnTests.test_swapping_sides_swaps_winner_for_basic_attacks) ... ok
+test_tianlijun_loses_to_cloud (test_core.TurnTests.test_tianlijun_loses_to_cloud) ... ok
+test_simulation_does_not_mutate_input_bomb_lists (test_known_regressions.KnownRegressionTests.test_simulation_does_not_mutate_input_bomb_lists)
+Issue #1: remove expectedFailure when state copying is fixed. ... expected failure
+test_admins_are_protected_and_force_push_is_disabled (test_maintainer_setup.ConfigurationTests.test_admins_are_protected_and_force_push_is_disabled) ... ok
+test_existing_protection_stops_before_any_write (test_maintainer_setup.ConfigurationTests.test_existing_protection_stops_before_any_write) ... ok
+test_preview_performs_reads_only (test_maintainer_setup.ConfigurationTests.test_preview_performs_reads_only) ... ok
+test_readback_accepts_expected_settings (test_maintainer_setup.ConfigurationTests.test_readback_accepts_expected_settings) ... ok
+test_readback_rejects_different_app (test_maintainer_setup.ConfigurationTests.test_readback_rejects_different_app) ... ok
+test_readback_rejects_missing_pr_requirement (test_maintainer_setup.ConfigurationTests.test_readback_rejects_missing_pr_requirement) ... ok
+test_single_maintainer_does_not_need_another_approver (test_maintainer_setup.ConfigurationTests.test_single_maintainer_does_not_need_another_approver) ... ok
+
+----------------------------------------------------------------------
+Ran 40 tests in 0.892s
+
+OK (expected failures=1)
+Tests run: 40; known expected failures: 1.
+GUI, model inference and online play are NOT covered by this check.

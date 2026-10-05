@@ -1,0 +1,1 @@
+{"case_groups": 82, "engine_passed": 0, "engine_run": "NOT_RUN", "entries": 33, "fixtures": 194, "round_expectations": 205, "scopes": {"core": 109, "property": 78, "sequence": 5, "session": 2}, "status": "FIXTURES_VALID"}

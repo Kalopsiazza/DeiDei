@@ -2,6 +2,8 @@
 from __future__ import annotations
 
 import ast
+import argparse
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -19,11 +21,29 @@ def source_files() -> list[Path]:
         paths = {ROOT / p.decode("utf-8") for p in proc.stdout.split(b"\0") if p}
         return sorted(p for p in paths if p.suffix == ".py" and p.is_file())
     except (OSError, subprocess.CalledProcessError):
-        excluded = {".git", ".venv", "venv", "node_modules", "build", "dist", "__pycache__"}
+        excluded = {".git", ".venv", "venv", "node_modules", "build", "dist", "__pycache__", ".worktrees", ".local-archive", ".local-outputs"}
         return sorted(p for p in ROOT.rglob("*.py") if not excluded.intersection(p.relative_to(ROOT).parts))
 
 
+def discover(directory: Path) -> int:
+    import unittest
+    suite = unittest.defaultTestLoader.discover(str(directory.resolve()))
+    count = suite.countTestCases()
+    print(f"Discovered {count} tests in {directory}.", flush=True)
+    if not count:
+        print("ERROR: no tests discovered.", file=sys.stderr)
+        return 1
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    print(f"Tests run: {result.testsRun}; known expected failures: {len(result.expectedFailures)}.")
+    return 0 if result.wasSuccessful() else 1
+
+
 def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--discover", type=Path, help="run one isolated discovery group")
+    args = parser.parse_args()
+    if args.discover is not None:
+        return discover(args.discover)
     files = source_files()
     if not files:
         print("ERROR: no Python files found.", file=sys.stderr)
@@ -36,16 +56,22 @@ def main() -> int:
             return 1
     print(f"Syntax checked: {len(files)} Python files.", flush=True)
 
-    sys.path.insert(0, str(ROOT))
-    import unittest
-    suite = unittest.defaultTestLoader.discover(str(ROOT / "tests"))
-    if suite.countTestCases() == 0:
-        print("ERROR: no tests discovered.", file=sys.stderr)
-        return 1
-    result = unittest.TextTestRunner(verbosity=2).run(suite)
-    print(f"Tests run: {result.testsRun}; known expected failures: {len(result.expectedFailures)}.")
-    print("GUI, model inference and online play are NOT covered by this check.")
-    return 0 if result.wasSuccessful() else 1
+    groups = [
+        ("root recursive tests", [str(Path(__file__).resolve()), "--discover", "tests"], [ROOT]),
+        ("current core tests", [str(Path(__file__).resolve()), "--discover", "game/core/tests"], [ROOT / "game/core"]),
+        ("current runtime tests", [str(Path(__file__).resolve()), "--discover", "game/runtime/tests"], [ROOT / "game/core", ROOT / "game/runtime"]),
+        ("independent rule samples", ["tests/rules_v1_001/run_acceptance.py", "--core", "game/core"], [ROOT]),
+        ("legacy AI preservation and rules", ["legacy/rl/check.py"], []),
+    ]
+    failed = False
+    for name, command, paths in groups:
+        print(f"\nCHECK: {name}", flush=True)
+        env = dict(os.environ, PYTHONPATH=os.pathsep.join(map(str, paths)))
+        result = subprocess.run([sys.executable, *command], cwd=ROOT, env=env)
+        print(f"RESULT: {name}: {'PASS' if result.returncode == 0 else 'FAIL'} (exit {result.returncode})", flush=True)
+        failed |= result.returncode != 0
+    print("Desktop GUI, model inference and socket play are NOT covered by this Python check.")
+    return 1 if failed else 0
 
 
 if __name__ == "__main__":

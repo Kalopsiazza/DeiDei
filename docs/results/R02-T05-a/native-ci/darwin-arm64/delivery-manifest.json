@@ -1,0 +1,19 @@
+{
+  "task_id": "R02-T05-a",
+  "code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "platform": "darwin-arm64",
+  "filename": "DeiDei-R02-T05-a-macOS-arm64-45dbf9c.zip",
+  "bytes": 139460469,
+  "sha256": "00cf51f3571ac8d562d6d0409c6c2f6f28b308eedf77ccbfc925a969af873c64",
+  "build_info": "DeiDei R02.app/Contents/Resources/app/build-info.json",
+  "build_info_sha256": "73c4a060bcbc5d196da6b433a1f6e0d808622810e28a73899314fe8f7d804c11",
+  "signature": "ad-hoc; not notarized",
+  "levels": {
+    "source": "PASS",
+    "built": "PASS",
+    "frozen_worker": "PASS",
+    "packaged_automation": "PASS",
+    "human": "NOT_RUN",
+    "physical_offline": "NOT_RUN"
+  }
+}

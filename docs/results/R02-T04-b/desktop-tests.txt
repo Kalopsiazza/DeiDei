@@ -1,0 +1,42 @@
+
+> deidei-r02-desktop@0.1.0 test
+> npm run build && node --test test.cjs test-live.cjs test-navigation.cjs
+
+
+> deidei-r02-desktop@0.1.0 build
+> npm run typecheck && node build.cjs
+
+
+> deidei-r02-desktop@0.1.0 typecheck
+> tsc --noEmit
+
+✔ S09 old exit/stdout cannot settle or fail new process requests; stop waits close (14.26075ms)
+✔ transport frame bounds, pending cap, malformed UTF8 and timeout reject all pending (13.251375ms)
+✔ WorkerPort marks dead match interrupted, no implicit respawn; restart is explicit (0.354125ms)
+✔ S10 late response after leave/new scene cannot restore old active match (0.193833ms)
+✔ S10 renderer polls selecting and stops on rejected/failed getView with retry possible (34.970667ms)
+✔ S10 single in-flight read spans disposed and new scene; late data is discarded (32.516417ms)
+✔ BigInt sixths formatting covers fractions and integers beyond Number precision (0.337542ms)
+✔ real subprocess protocol starts live UUID match, retries once and leaves cleanly (41.447708ms)
+✔ idle real worker exit is detected before any read can respawn it (29.315166ms)
+✔ F02 synchronous flag blocks navigation and duplicate start before React rerenders (1.695334ms)
+✔ F02 delayed failure keeps original page, unlocks navigation and allows a fresh start (0.977417ms)
+✔ F02 scene preview and synchronous action failure both release the flag (0.416209ms)
+✔ F02 existing generation protection discards stale success and error (0.653417ms)
+✔ nickname Unicode boundary, exact fields, avatars and settings validation (1.065625ms)
+✔ atomic profile creation, stable identity, settings and restart read (6.147666ms)
+✔ write/rename failures preserve old bytes, input and remove temporary file (2.069042ms)
+✔ corruption never overwritten automatically, recovery backs up original only with confirmation (2.217ms)
+✔ oversized and symbolic-link profiles rejected; concurrent writes cannot race (2.092459ms)
+✔ 33 unique static cards, categories 18/9/6, initial 12 and midgame 26 available (1.226958ms)
+✔ keyboard assignment stable, unique 1–0, blocked input and grey card rejection (9.918167ms)
+✔ script states, duplicate/stale submission, privacy and immutable snapshots (1.352333ms)
+✔ error preserves selection, retry works, draw and spectating keep real roster (1.085166ms)
+ℹ tests 22
+ℹ suites 0
+ℹ pass 22
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 206.268291

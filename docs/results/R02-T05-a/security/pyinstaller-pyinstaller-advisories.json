@@ -1,0 +1,74 @@
+[
+  {
+    "ghsa_id": "GHSA-9fxf-4qw3-ghmr",
+    "html_url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-9fxf-4qw3-ghmr",
+    "severity": "high",
+    "published_at": "2026-08-15T15:13:38Z",
+    "updated_at": "2026-08-15T15:13:38Z",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "pyinstaller"
+        },
+        "vulnerable_version_range": "< 6.22.1",
+        "patched_versions": "6.22.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-p2xp-xx3r-mffc",
+    "html_url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-p2xp-xx3r-mffc",
+    "severity": "high",
+    "published_at": "2025-09-09T16:00:54Z",
+    "updated_at": "2025-09-11T15:37:05Z",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "PyInstaller"
+        },
+        "vulnerable_version_range": "< 6.0.0",
+        "patched_versions": "6.0.0",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-9w2p-rh8c-v9g5",
+    "html_url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-9w2p-rh8c-v9g5",
+    "severity": "high",
+    "published_at": "2023-12-09T00:28:08Z",
+    "updated_at": "2023-12-09T00:28:08Z",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "pip",
+          "name": "pyinstaller"
+        },
+        "vulnerable_version_range": "<5.13.1",
+        "patched_versions": "5.13.1",
+        "vulnerable_functions": []
+      }
+    ]
+  },
+  {
+    "ghsa_id": "GHSA-7fcj-pq9j-wh2r",
+    "html_url": "https://github.com/pyinstaller/pyinstaller/security/advisories/GHSA-7fcj-pq9j-wh2r",
+    "severity": "high",
+    "published_at": "2020-01-11T11:32:40Z",
+    "updated_at": "2020-01-11T11:32:40Z",
+    "vulnerabilities": [
+      {
+        "package": {
+          "ecosystem": "windows",
+          "name": "PyInstaller"
+        },
+        "vulnerable_version_range": "< 3.6",
+        "patched_versions": "3.6",
+        "vulnerable_functions": []
+      }
+    ]
+  }
+]

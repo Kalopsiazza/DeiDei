@@ -1,0 +1,39 @@
+{
+  "snapshot_phase": "after evidence push, body update and ready-for-review; this readback is saved by the following docs-only audit commit",
+  "captured_at": "2026-09-13T17:47:16.200916+00:00",
+  "readback": {
+    "baseRefName": "integration/r02",
+    "headRefName": "codex/r02-t05-a-packaging",
+    "headRefOid": "23cc91bba379fc327b583ee4d7aa7e18404e7f9e",
+    "isDraft": false,
+    "state": "OPEN",
+    "title": "[R02-T05-a] 免开发环境单人测试版｜提交验收",
+    "url": "https://github.com/Kalopsiazza/DeiDei/pull/19"
+  },
+  "tested_code_sha": "45dbf9c4e13e693b01736a79cb97652f760f8bad",
+  "native_ci_run": 34771885020,
+  "product_delta_since_tested_code_sha": [],
+  "commands": [
+    {
+      "command": "git push origin codex/r02-t05-a-packaging",
+      "exit_code": 0,
+      "pushed_evidence_head_sha": "23cc91bba379fc327b583ee4d7aa7e18404e7f9e"
+    },
+    {
+      "command": "gh pr edit 19 --repo Kalopsiazza/DeiDei --body-file docs/results/R02-T05-a/PR-BODY.md",
+      "exit_code": 0
+    },
+    {
+      "command": "gh pr ready 19 --repo Kalopsiazza/DeiDei",
+      "exit_code": 0
+    },
+    {
+      "command": "gh pr view 19 --repo Kalopsiazza/DeiDei --json url,title,baseRefName,headRefName,headRefOid,state,isDraft",
+      "exit_code": 0
+    }
+  ],
+  "final_audit_commit": "Only this submission snapshot and EVIDENCE-FILES.json follow the observed head; final remote head is independently read back in the task after pushing. The snapshot does not claim to contain its own future commit SHA.",
+  "merged": false,
+  "release_created": false,
+  "player_distribution": false
+}

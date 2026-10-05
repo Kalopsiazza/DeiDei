@@ -1,0 +1,50 @@
+[
+  {
+    "args": [
+      "npm",
+      "ls",
+      "--all",
+      "--json"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "log": "npm-tree-after.json"
+  },
+  {
+    "args": [
+      "npm",
+      "audit",
+      "--json"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "log": "npm-audit-after.json"
+  },
+  {
+    "args": [
+      "npm",
+      "audit",
+      "--omit=dev",
+      "--json"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "log": "npm-runtime-audit-after.json"
+  },
+  {
+    "args": [
+      "npm",
+      "explain",
+      "tar",
+      "tmp",
+      "extract-zip",
+      "@electron-internal/extract-zip",
+      "@electron/get",
+      "@electron/packager",
+      "--json"
+    ],
+    "cwd": "game/desktop",
+    "exit_code": 0,
+    "log": "npm-explain-archives.json"
+  }
+]

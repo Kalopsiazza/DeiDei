@@ -1,0 +1,16 @@
+/* Source order preserves the established scene cascade; build.cjs bundles one stylesheet. */
+@import "./styles/foundation.css";
+@import "./styles/stage.css";
+@import "./styles/nonbattle-pages.css";
+@import "./styles/prepare.css";
+@import "./styles/battle.css";
+@import "./styles/type.css";
+@import "./styles/battle-identity.css";
+@import "./styles/archive.css";
+@import "./styles/tutorial.css";
+@import "./styles/archive-dialogs.css";
+@import "./styles/welcome-stage.css";
+@import "./styles/online.css";
+@import "./styles/controls.css";
+@import "./styles/graphics.css";
+@import "./styles/preferences.css";
