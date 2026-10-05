@@ -24,7 +24,7 @@ DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop start
 DEIDEI_PYTHON=/absolute/path/to/python3 npm --prefix game/desktop run dev
 ```
 
-它沿用现有 esbuild 和 Electron，修改 renderer、样式、在线页面源码或 `assets/menu` 下的 PNG / WebP 后自动重新构建并刷新窗口。修改 `graphics.cjs` 的配置定义／校验、`fixture.ts`、`main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后完整构建并重新启动（fixture 在主进程加载，前端刷新不会替换已加载的端口）；关闭 Electron 窗口会同时结束监听进程。
+它沿用现有 esbuild 和 Electron，修改 renderer、`CardArt.tsx`、样式、在线页面源码或 `assets/menu`、`assets/battle`、`assets/cards`、`assets/moves`、`assets/moves-classic` 下的 PNG / WebP / MP4 后自动重新构建并刷新窗口。修改 `graphics.cjs` 的配置定义／校验、`fixture.ts`、`main.cjs`、`preload.cjs`、worker 或规则代码时仍需退出后完整构建并重新启动（fixture 在主进程加载，前端刷新不会替换已加载的端口）；关闭 Electron 窗口会同时结束监听进程。
 
 Windows 源码步骤（本包未实机验证）：
 

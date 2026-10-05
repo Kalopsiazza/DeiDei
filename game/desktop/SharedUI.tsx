@@ -1,4 +1,23 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useId, useRef, useState } from 'react';
+
+export function BackButton({children,className='',style,...props}:Omit<React.ComponentProps<'button'>,'children'>&{children:string}) {
+ return <button type="button" aria-label={children} {...props} className={`ui-back ${className}`.trim()} style={{...style,'--back-label-length':Array.from(children).length} as React.CSSProperties}><span>{children}</span></button>;
+}
+
+export function Select({options,...props}:React.ComponentProps<'select'>&{options:readonly {value:string;label:string;icon?:React.ReactNode;disabled?:boolean}[]}) {
+ // ponytail: Electron's customizable select keeps native keyboard, focus and top-layer behavior.
+ const selected=options.find(option=>option.value===String(props.value));
+ return <span className="ui-select-field" data-has-icon={!!selected?.icon}><select {...props} className={`ui-select ${props.className||''}`.trim()}>{options.map(option=><option key={option.value} value={option.value} disabled={option.disabled}>{option.icon&&<span className="ui-option-icon" aria-hidden="true">{option.icon}</span>}<span>{option.label}</span></option>)}</select>{selected?.icon&&<span className="ui-select-current-icon ui-option-icon" aria-hidden="true">{selected.icon}</span>}</span>;
+}
+export function TurnTimeSelector({label,value,options,onChange,disabled=false,disabledValues=[]}:{label:string;value:number;options:readonly number[];onChange:(ms:number)=>void;disabled?:boolean;disabledValues?:readonly number[]}) {
+ const name=useId(),index=Math.max(0,options.indexOf(value));
+ return <fieldset className="ui-time" disabled={disabled}><legend>{label}</legend><div className="ui-time-stops" style={{'--time-position':`${(index+.5)/options.length*100}%`,gridTemplateColumns:`repeat(${options.length},minmax(0,1fr))`} as React.CSSProperties}>
+  <i className="ui-time-marker" aria-hidden="true"/>{options.map(ms=><label key={ms} className="ui-time-stop"><input type="radio" name={name} aria-label={ms===0?'不限时':`${ms/1000} 秒`} checked={ms===value} disabled={disabledValues.includes(ms)} onChange={()=>onChange(ms)}/><span><strong>{ms===0?'∞':ms/1000}</strong>{ms!==0&&<small>秒</small>}</span><i aria-hidden="true"/></label>)}
+ </div></fieldset>;
+}
+export function RuleButton({disabled=false}:{disabled?:boolean}) {
+ return <div className="ui-rule"><span className="ui-control-label">规则选择</span><button type="button" className="rule-choice" disabled={disabled} aria-label="选择规则：经典规则 1.0.1" aria-disabled="true" title="规则选择界面待加入，当前使用经典规则 1.0.1"><span><strong>经典规则</strong><small>CLASSIC</small></span><em>1.0.1</em></button></div>;
+}
 
 const avatarName={leaf:'叶子',sun:'太阳',moon:'月亮',star:'星星'};
 export function Avatar({id='leaf'}:{id?:string}) {return <span className={`avatar ${id}`} aria-label={avatarName[id as keyof typeof avatarName]||'占位头像'}><svg viewBox="0 0 48 48" aria-hidden="true"><path d="M10 35 Q4 12 24 8 Q45 12 38 35 Q24 44 10 35Z"/><path d={id==='sun'?'M18 6 L17 1 M32 7 L35 2 M41 17 L47 15':id==='leaf'?'M24 9 Q13 0 12 9 Q13 15 24 9':id==='moon'?'M32 9 Q22 19 36 23':'M22 2 L24 7 L30 7 L26 11'}/><path d="M15 24 L17 24 M30 24 L32 24 M20 31 Q24 34 28 30"/></svg></span>;}

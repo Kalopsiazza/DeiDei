@@ -54,7 +54,7 @@ async function main(){
   await page.getByRole('button',{name:'切换为图标显示',exact:true}).click();await images('.archive-icon-tile img',theme==='classic'?'moves-classic':'moves');check(await page.locator('.archive-icon-tile').count()===33,'manual retains all 33 moves');
   await page.locator('.archive-heading .settings-back').click();await page.locator('.app[data-page=menu]').waitFor();
   await page.getByRole('button',{name:'开发预览',exact:true}).click();await page.getByRole('button',{name:'P09 · 唯一赢家',exact:true}).click();await page.locator('.match-outro').waitFor();await images('.result-move-art img',kind);await page.waitForTimeout(1600);await shot(`result-${theme}`);
-  await page.getByRole('button',{name:'返回主菜单 EXIT',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
+  await page.getByRole('button',{name:'返回主菜单',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
  }
  try{
   directory=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-card-style-'));const file=path.join(directory,'local-profile/profile.json');await fs.mkdir(path.dirname(file));

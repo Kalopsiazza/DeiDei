@@ -1,5 +1,6 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import type { DesktopView, Manual } from '../types';
+import { BackButton, TextInput, TurnTimeSelector, RuleButton } from '../SharedUI';
 import type { Role } from './types';
 import { useOnlineSession } from './useOnlineSession';
 import { canSelect, canSetTurnLimit, hostRecoveryText, describeError, onlineBattleView, optionsFor, startReason } from './model';
@@ -82,10 +83,9 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
  if(!activeRoom){
   const allowed=state.hello?.capabilities.allowed_turn_ms||[turnMs],scene=form==='entry'?'front':form;
   const status=({idle:'尚未连接',connecting:'连接中…',connected:'已连接',reconnecting:'网络暂断 · 重连中…',unavailable:'服务不可用'})[state.status];
-  const nearestTurn=(value:number)=>allowed.reduce((best,next)=>Math.abs(next-value)<Math.abs(best-value)?next:best,allowed[0]);
   return <main className="online online-portal" data-online-scene={scene} data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
    <nav className="online-portal-nav" aria-label="联机导航">
-    <button type="button" className="settings-back" aria-label={form==='entry'?'返回主菜单':'返回联机前厅'} disabled={exitBlocked} onClick={()=>form==='entry'?leave():(setForm('entry'),setError(''))}><span>{form==='entry'?'返回主菜单':'返回联机前厅'}</span></button>
+    <BackButton type="button" className="settings-back" aria-label={form==='entry'?'返回主菜单':'返回联机前厅'} disabled={exitBlocked} onClick={()=>form==='entry'?leave():(setForm('entry'),setError(''))}>{form==='entry'?'返回主菜单':'返回联机前厅'}</BackButton>
     <div><span className="online-signal" aria-hidden="true"/><span role="status">{status}{state.pending?' · 操作确认中…':''}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
    </nav>
    <section className="online-portal-copy">
@@ -102,14 +102,15 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
    </section>:<form className={`online-deploy online-deploy-${form}`} onSubmit={e=>{e.preventDefault();if(blocked)return;if(form==='join')join(role);else void run(()=>api.create({password:password||null,options:{turn_ms:turnMs,early_reveal:early,spectator_cap:cap}}));}}>
     <fieldset disabled={blocked}>
      {form==='create'?<>
-      <label className="online-control online-turn settings-range"><span>每拍时间</span><b>{turnMs/1000} 秒</b><input type="range" aria-label="每拍时间" min={allowed[0]} max={allowed.at(-1)} step="1000" list="online-turn-values" value={turnMs} onChange={e=>setTurnMs(nearestTurn(Number(e.target.value)))}/><datalist id="online-turn-values">{allowed.map(ms=><option key={ms} value={ms}/>)}</datalist><small>{allowed.map(ms=>`${ms/1000}s`).join(' · ')}</small></label>
+      <RuleButton disabled={blocked}/>
+      <TurnTimeSelector label="每拍时间" value={turnMs} options={allowed} onChange={setTurnMs} disabled={blocked}/>
       <label className="online-switch"><input type="checkbox" checked={early} onChange={e=>setEarly(e.target.checked)}/><span>全员提交后提前揭晓</span></label>
       <label className="online-control settings-range"><span>观战容量</span><b>{cap} 人</b><input type="range" aria-label="观众容量" min="0" max={state.hello?.capabilities.spectator_max||0} value={cap} onChange={e=>setCap(Number(e.target.value))}/></label>
      </>:<>
-      <label className="online-control online-code"><span>房间号</span><input aria-label="房间号" value={code} maxLength={16} onChange={e=>setCode(e.target.value)} autoComplete="off" placeholder="ABCD2345" required/></label>
+      <label className="online-control online-code"><span>房间号</span><TextInput aria-label="房间号" value={code} maxLength={16} onChange={e=>setCode(e.target.value)} autoComplete="off" placeholder="ABCD2345" required/></label>
       <fieldset className="online-role"><legend>加入身份</legend><label><input type="radio" name="online-role" value="player" checked={role==='player'} onChange={()=>setRole('player')}/><span>参战</span></label><label><input type="radio" name="online-role" value="spectator" checked={role==='spectator'} onChange={()=>setRole('spectator')}/><span>观战</span></label></fieldset>
      </>}
-     <label className="online-control online-password"><span>房间密码 <small>可选</small></span><input type="password" aria-label="房间密码" value={password} maxLength={64} onChange={e=>setPassword(e.target.value)} autoComplete="off"/></label>
+     <label className="online-control online-password"><span>房间密码 <small>可选</small></span><TextInput type="password" aria-label="房间密码" value={password} maxLength={64} onChange={e=>setPassword(e.target.value)} autoComplete="off"/></label>
      {form==='join'&&['ROOM_FULL','MATCH_IN_PROGRESS'].includes(state.error?.code||'')&&<button type="button" className="settings-action online-spectate" aria-label="以观众身份尝试加入" onClick={()=>join('spectator')}>以观众身份尝试加入</button>}
      <button type="submit" className="primary prepare-start online-deploy-submit" aria-label={state.pending?'确认中…':form==='create'?'创建并进入':'加入房间'}><span>{state.pending?'确认中…':form==='create'?'创建并进入':'加入房间'}</span><small>{form==='create'?'CREATE ROOM':'JOIN ROOM'}</small></button>
     </fieldset>
@@ -121,7 +122,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
   const spectators=v.members.filter(member=>member.role==='spectator'),reason=startReason(snapshot);
   return <main className="online online-room" data-phase="lobby" data-source={state.source} data-pending={busy||state.pending?'true':'false'}>
    <nav className="online-room-nav" aria-label="房间操作">
-    <button type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button>
+    <BackButton type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}>退出房间</BackButton>
     <div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'房间已连接'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div>
    </nav>
    <section className="online-lobby" data-player-count={roster.filter(Boolean).length} aria-label="六人参战席位">
@@ -138,7 +139,7 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
     {!host&&<button type="button" className="settings-action" aria-label={me.role==='player'?'转为观众':'申请参战'} disabled={blocked||(me.role==='spectator'?roster.filter(Boolean).length>=6:spectators.length>=v.policy.spectator_cap)} onClick={()=>void run(()=>api.changeRole({room_id:snapshot.room_id,role:me.role==='player'?'spectator':'player'}))}>{me.role==='player'?'转为观众':'申请参战'}</button>}
     {host&&!v.pending_close&&<><button type="button" className="primary prepare-start" aria-label="开始对局" disabled={blocked||!!reason} onClick={()=>void run(()=>api.start({room_id:snapshot.room_id}))}><span>开始对局</span><small>ENTER MATCH</small></button><span>{reason||'全员就绪，可以开局。'}</span></>}
    </footer>
-   {limitOpen&&canSetTurnLimit(state)&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
+   {limitOpen&&canSetTurnLimit(state)&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><TurnTimeSelector label="之后每拍时限" value={limitMs} options={state.hello?.capabilities.allowed_turn_ms||[limitMs]} onChange={setLimitMs} disabled={blocked}/>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
    {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
   </main>;
  }
@@ -154,12 +155,12 @@ export function OnlineRoom({manual,onExit,onScene,Avatar,Modal}:Props) {
    {(onlineError||recoveryText||closingText||futureText)&&<p className={onlineError?'online-match-notice is-error':'online-match-notice'} role={onlineError?'alert':'status'}>{onlineError||closingText||recoveryText} {futureText}</p>}
    {matchMenu&&<Modal className="battle-dialog pause-dialog" title="对局菜单" onClose={()=>setMatchMenu(false)}><section className="pause-state"><span>ONLINE MENU</span><h3>牌局仍在继续</h3><p>多人模式打开菜单不会暂停牌局，返回后以服务端当前状态为准。</p></section><div className="pause-actions"><button className="primary" onClick={()=>setMatchMenu(false)}>继续游戏<small>RESUME</small></button><button disabled={!canAdjust} onClick={()=>{setMatchMenu(false);setLimitMs(v.policy.turn_ms);setLimitRevision(v.policy_revision);setLimitOpen(true);}}>房间游戏设置<small>ROOM SETTINGS</small></button><button className="danger" onClick={()=>{setMatchMenu(false);setLeaveConfirm(true);}}>退出游戏<small>LEAVE MATCH</small></button></div></Modal>}
    {situationOpen&&<SituationDialog view={battleView} manual={manual} moveHistory={moveHistory} gaps={historyGaps(history,battleView)} Modal={Modal} Avatar={Avatar} onClose={()=>setSituationOpen(false)}/>}
-   {limitOpen&&canAdjust&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><p>{futureText||'从下一次选择阶段开始生效，本拍截止时间和已交牌保持不变。'}</p><label>之后每拍时限<select aria-label="之后每拍时限" value={limitMs} onChange={e=>setLimitMs(Number(e.target.value))}>{state.hello?.capabilities.allowed_turn_ms.map(ms=><option key={ms} value={ms}>{ms/1000} 秒</option>)}</select></label>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
+   {limitOpen&&canAdjust&&<Modal title="调整之后每拍时限" onClose={()=>setLimitOpen(false)} closeDisabled={busy}><p>{futureText||'从下一次选择阶段开始生效，本拍截止时间和已交牌保持不变。'}</p><TurnTimeSelector label="之后每拍时限" value={limitMs} options={state.hello?.capabilities.allowed_turn_ms||[limitMs]} onChange={setLimitMs} disabled={blocked}/>{error&&<p role="alert">{error}</p>}<button disabled={blocked} className="primary" onClick={()=>void run(async()=>{const result=await api.setTurnLimit({room_id:snapshot.room_id,turn_ms:limitMs,expected_policy_revision:limitRevision});if(result.ok)setLimitOpen(false);return result;})}>应用到之后每拍</button></Modal>}
    {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将按服务策略在当前拍后或立即结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
   </div>;
  }
  return <main className="online online-room" data-phase="syncing" data-source={state.source}>
-  <nav className="online-room-nav" aria-label="房间操作"><button type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}><span>退出房间</span></button><div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'同步房间状态…'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div></nav>
+  <nav className="online-room-nav" aria-label="房间操作"><BackButton type="button" className="settings-back" aria-label="退出房间" disabled={exitBlocked} onClick={()=>setLeaveConfirm(true)}>退出房间</BackButton><div><span className="online-signal" aria-hidden="true"/><span role="status">{state.status==='reconnecting'?'网络暂断 · 重连中…':'同步房间状态…'}</span>{state.source==='fixture'&&<b>MOCK</b>}</div></nav>
   <p className="online-room-message is-error" role="alert">{onlineError||'房间状态尚未就绪，正在等待服务端同步。'}</p>
   {leaveConfirm&&<Modal title={host?'结束整个房间？':'退出房间？'} onClose={()=>setLeaveConfirm(false)} closeDisabled={busy&&connected}><p>{host?'退出将按服务策略结束房间，并让所有人离开。':'离开后将结束本次参战或观战；本机档案保留。'}{!connected?' 当前网络已断开，离开将停止重连；服务按掉线策略处理原席位。':''}</p><button onClick={()=>setLeaveConfirm(false)}>留在房间</button><button className="primary" disabled={exitBlocked} onClick={confirmLeave}>{host?'确认结束房间':'确认退出房间'}</button></Modal>}
  </main>;

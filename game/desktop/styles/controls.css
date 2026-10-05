@@ -2,7 +2,7 @@
 .ui-input-field{position:relative;display:flex;align-items:center;height:52px;min-width:0;margin-top:10px;border:1px solid #8ceaf34b;border-radius:0;background:linear-gradient(105deg,#8ceaf312,transparent 45%,#ec697d0c),linear-gradient(120deg,#101f2bea,#19313edb 52%,#0d1b28ed);box-shadow:inset 0 1px 0 #e4faff13,inset 0 -1px 0 #8ceaf31a,0 6px 18px #020b1233;transition:border-color .2s,box-shadow .2s}
 .ui-input-field::after{content:"";position:absolute;inset:0;pointer-events:none;border-bottom:2px solid #a6f2fa;transform:scaleX(0);transform-origin:left;opacity:0;transition:transform .3s cubic-bezier(.16,.8,.2,1),opacity .2s}
 .ui-input-field:hover{border-color:#8ceaf39c;box-shadow:inset 0 1px 0 #e4faff29,inset 0 0 24px #8ceaf30b,0 8px 22px #020b1244}
-.ui-input-field:focus-within{border-color:#a6f2fa;box-shadow:inset 0 0 28px #8ceaf312,0 0 0 2px #8ceaf31c,0 8px 24px #020b1244}
+.ui-input-field:focus-within{border-color:#a6f2fa;box-shadow:inset 0 0 28px #8ceaf312,0 8px 24px #020b1244}
 .ui-input-field:focus-within::after{transform:scaleX(1);opacity:1}
 .ui-input-field>i{position:absolute;left:17px;width:13px;height:13px;border:1.5px solid #9db9c8;border-radius:50%;pointer-events:none;transition:border-color .2s}
 .ui-input-field>i::after{content:"";position:absolute;width:6px;height:1.5px;background:currentColor;color:#9db9c8;right:-5px;bottom:-3px;transform:rotate(45deg)}
@@ -30,3 +30,85 @@
 *::-webkit-scrollbar-thumb:hover{background-color:#8ceaf3c7}
 *::-webkit-scrollbar-thumb:active{background-color:#c5faff}
 @media(forced-colors:active){*::-webkit-scrollbar-thumb{background-color:ButtonText}}
+
+/* Shared duration stops; values remain the caller's service capabilities. */
+.ui-time{min-width:0;margin:0;padding:0;border:0}
+.ui-time legend,.ui-control-label{display:block;height:24px;padding:0;margin:0;color:#8ceaf3;font-size:13px;font-weight:600;line-height:24px;letter-spacing:1px}
+.ui-time-stops{position:relative;display:grid;height:54px;border:0}
+.ui-time-stops::before{content:"";position:absolute;left:0;right:0;bottom:8px;height:1px;background:linear-gradient(90deg,transparent,#8ceaf347 10% 90%,transparent)}
+.ui-time-stop{position:relative;display:flex;align-items:flex-start;justify-content:center;margin:0;padding:8px 0 15px;cursor:pointer}
+.app .ui-time-stop>input[type=radio]{position:absolute;inset:0;width:100%;height:100%;margin:0;opacity:0;cursor:inherit}
+.ui-time-stop>span{display:flex;align-items:baseline;gap:3px;color:#abc2cb;transition:color .2s,transform .24s cubic-bezier(.16,.8,.2,1),text-shadow .2s}
+.ui-time-stop strong{font-size:18px;font-weight:600;line-height:1;font-variant-numeric:tabular-nums}.ui-time-stop:has(input[aria-label="不限时"]) strong{font-size:27px;line-height:.8}
+.ui-time-stop small{display:inline;margin:0;color:inherit;font-size:10px}
+.ui-time-stop>i{position:absolute;left:50%;bottom:6px;width:1px;height:4px;background:#8ceaf32b;pointer-events:none}
+.ui-time-marker{position:absolute;z-index:1;left:var(--time-position);bottom:-2px;width:52px;height:21px;border:0;background:radial-gradient(ellipse,#8ceaf340,transparent 70%);transform:translateX(-50%);pointer-events:none;transition:left .32s cubic-bezier(.16,.8,.2,1)}
+.ui-time-marker::after{content:"";position:absolute;left:50%;top:50%;width:5px;height:5px;border-radius:50%;background:#9ef4ff;transform:translate(-50%,-50%);box-shadow:0 0 9px #8ceaf3,0 0 18px #8ceaf380}
+.ui-time-stop:hover:has(input:not(:disabled))>span{color:#e5faff;transform:translateY(-2px)}
+.ui-time-stop:has(input:checked)>span{color:#f4feff;text-shadow:0 0 12px #8ceaf36e;transform:translateY(-2px)}
+.ui-time-stop:has(input:disabled){cursor:not-allowed}.ui-time-stop:has(input:disabled)>span{color:#627078;transform:none;text-shadow:none}
+.ui-time-stop:has(input:disabled)>i{background:#4f5b62}
+.ui-time-stop:has(input:focus-visible){outline:1px solid #8ceaf3;outline-offset:2px}
+.ui-time:disabled .ui-time-marker{opacity:.4}
+.ui-rule .rule-choice{height:54px;min-height:54px;border:0;border-left:2px solid #8ceaf3;border-radius:0;cursor:default}
+.ui-rule .rule-choice:hover:not(:disabled){color:#f4feff;background:linear-gradient(90deg,#8ceaf329,transparent);border-left-color:#b8f6ff}.ui-rule .rule-choice:focus-visible{outline:1px solid #8ceaf3;outline-offset:3px}
+.online-control>.ui-input-field{grid-column:1/-1;margin:0}.online-code .ui-input-field>input.ui-text-input{font-size:20px;letter-spacing:3px}
+
+/* Native customizable selects: top-layer menus never clip inside a panel/dialog. */
+.app select.ui-select,.ui-select::picker(select){appearance:base-select;color:#edf7fa;background:linear-gradient(105deg,#8ceaf312,transparent 45%,#ec697d0c),linear-gradient(120deg,#101f2bea,#19313edb 52%,#0d1b28ed);border:1px solid #8ceaf34f;border-radius:0;font:inherit}
+.app select.ui-select{width:100%;min-width:0;min-height:44px;padding:9px 12px;align-items:center;gap:10px;box-shadow:inset 0 1px #edfbff12;transition:border-color .18s,background .18s}
+.app select.ui-select:hover:not(:disabled){border-color:#8ceaf399;background:linear-gradient(105deg,#8ceaf321,transparent 55%,#ec697d12),linear-gradient(120deg,#152c3a,#18313e 52%,#0d1b28)}.app select.ui-select:focus-visible{outline:2px solid #8ceaf3;outline-offset:3px}
+.app select.ui-select:disabled{color:#6e848e;cursor:not-allowed;border-color:#62778350}
+.ui-select::picker-icon{content:"";width:8px;height:8px;border:solid #a5d5df;border-width:0 1.5px 1.5px 0;rotate:45deg;margin-right:4px;transition:rotate .2s}.ui-select:open::picker-icon{rotate:225deg}
+.ui-select::picker(select){padding:5px;max-height:min(320px,65vh);overflow:auto;background:linear-gradient(110deg,#16313e,#0b1924 68%,#171c2a);box-shadow:0 12px 28px #02070bb3;opacity:0;translate:0 -6px;transition:opacity .18s,translate .22s cubic-bezier(.16,.8,.2,1),display .22s allow-discrete,overlay .22s allow-discrete}
+.ui-select::picker(select):popover-open{opacity:1;translate:0 0}
+@starting-style{.ui-select::picker(select):popover-open{opacity:0;translate:0 -6px}}
+.app .ui-select option{display:flex;align-items:center;gap:10px;min-height:44px;padding:10px 12px;margin:0;border:0;border-radius:0;color:#c6dce5;background:transparent;transition:color .16s,background .16s}
+.app .ui-select option:is(:hover,:focus){color:#f4feff;background:#8ceaf319;outline:none}
+.app .ui-select option:checked{color:#e8fdff;background:#8ceaf32b;box-shadow:inset 0 -1px #8ceaf3b3}
+.app .ui-select option:disabled{color:#687e88;background:transparent;box-shadow:none}
+.ui-select option::checkmark{content:"";order:3;margin-left:auto;width:6px;height:6px;background:#8ceaf3;box-shadow:0 0 8px #8ceaf366}
+.ui-option-icon{display:inline-flex;width:20px;height:20px;flex:none;align-items:center;justify-content:center;color:#8ceaf3}.ui-option-icon svg,.ui-option-icon img{width:100%;height:100%;object-fit:contain}
+
+/* Native choice semantics, one visual language for form choices. */
+.app input[type=checkbox]{appearance:none;position:relative;flex:none;width:22px;height:22px;margin:0;border:1px solid #8ceaf366;border-radius:0;background:transparent;cursor:pointer;transition:border-color .18s,box-shadow .18s,transform .18s}
+.app input[type=checkbox]::after{content:"";position:absolute;inset:5px;background:#8ceaf3;box-shadow:0 0 10px #8ceaf36b;transform:scale(.4);opacity:0;transition:transform .22s cubic-bezier(.16,.8,.2,1),opacity .18s}
+.app input[type=checkbox]:hover:not(:disabled){border-color:#b7f5fb;box-shadow:inset 0 0 12px #8ceaf312}
+.app input[type=checkbox]:checked{border:2px solid #b5f6ff;box-shadow:0 0 10px #8ceaf326,inset 0 0 12px #8ceaf315}
+.app input[type=checkbox]:checked::after{opacity:1;transform:scale(1)}
+.app input[type=checkbox]:checked:hover:not(:disabled){border-color:#efffff;box-shadow:0 0 14px #8ceaf345,inset 0 0 12px #8ceaf321}.app input[type=checkbox]:active:not(:disabled){transform:scale(.92)}
+.app input[type=checkbox]:focus-visible{outline:1px solid #baf7ff;outline-offset:4px}.app input[type=checkbox]:disabled{cursor:not-allowed;opacity:.45}
+.online-role label{margin:0;flex:1;min-width:0}.online-role input{inset:0;width:100%;height:100%;margin:0;cursor:pointer}.online-role span{display:flex;align-items:center;justify-content:center;gap:12px;min-width:0;transition:background .2s,border-color .2s,color .2s}
+.online-role span::before{content:"";width:16px;height:16px;border:1px solid #8aa7b4;border-radius:50%;background:#0b1924;box-shadow:inset 0 0 0 4px #0b1924;transition:background .18s,border-color .18s,transform .18s}
+.online-role label:hover:has(input:not(:disabled)) span{background:#8ceaf316;border-color:#8ceaf399;color:#e8fbff}.online-role input:checked+span{border-color:#8ceaf3;background:#8ceaf321;box-shadow:inset 0 -1px #8ceaf3}.online-role input:checked+span::before{border-color:#d2faff;background:#8ceaf3}.online-role input:disabled+span{opacity:.45}
+.welcome-level-face i{height:18px;width:18px;border:1px solid #8caab6;border-radius:50%;background:#0b1924;box-shadow:inset 0 0 0 4px #0b1924;transition:background .2s,border-color .2s}
+.welcome-level input:checked+.welcome-level-face i{width:18px;border-color:#d2faff;background:#8ceaf3}
+.app .avatars button{position:relative;border-radius:0;transition:border-color .18s,background .18s,transform .2s}
+.app .avatars button::after{content:"";position:absolute;right:-3px;bottom:-3px;width:9px;height:9px;background:#8ceaf3;transform:scale(0);transition:transform .2s cubic-bezier(.16,.8,.2,1)}
+.app .avatars button[aria-pressed=true]::after{transform:scale(1)}
+@media(prefers-reduced-motion:reduce){.ui-time-marker,.ui-time-stop>span,.ui-select,.ui-select::picker(select),.ui-select::picker-icon,.ui-select option,.ui-select-field::after,.app input[type=checkbox],.app input[type=checkbox]::after,.online-role span,.online-role span::before,.welcome-level-face i,.app .avatars button,.app .avatars button::after{transition:none!important}}
+
+/* Preserve the settings form geometry; open menu rows keep their full hit area. */
+.ui-select-field{position:relative;display:block;width:100%;min-width:0}
+.ui-select-current-icon{position:absolute;left:13px;top:50%;transform:translateY(-50%);pointer-events:none}
+.ui-select-field[data-has-icon=true] select.ui-select{padding-left:42px}
+.ui-select-field::after{content:"";position:absolute;bottom:0;left:12px;right:12px;height:1px;opacity:0;background:linear-gradient(90deg,#8ceaf3,transparent);transform:scaleX(.3);transform-origin:left;pointer-events:none;transition:transform .22s,opacity .2s}
+.ui-select-field:is(:focus-within,:has(select:open))::after{opacity:1;transform:scaleX(1)}
+.graphics-panel select.ui-select{min-height:34px;padding-block:5px}
+
+/* Shared return geometry; pages only place the button. */
+.app button.ui-back{position:relative;isolation:isolate;overflow:hidden;display:inline-flex;align-items:center;justify-content:flex-start;gap:10px;width:calc(75px + var(--back-label-length)*15px);min-width:0;max-width:100%;height:48px;min-height:48px;flex:none;justify-self:start;padding:9px 25px;color:#d2e0e6;background:#101d279c;border:1px solid #8ceaf32b;border-radius:0;clip-path:none;box-shadow:none;text-align:left;font-family:'PingFang SC','Microsoft YaHei',sans-serif;font-size:15px;font-weight:700;font-style:normal;letter-spacing:0;white-space:nowrap;line-height:1.4;backdrop-filter:blur(12px) saturate(135%);-webkit-backdrop-filter:blur(12px) saturate(135%);transition:transform .18s,opacity .18s}
+.app button.ui-back>span{position:relative;z-index:2}
+.app button.ui-back::before{content:"‹";position:relative;z-index:2;flex:none;width:13px;margin:0;text-align:center;color:#8ceaf3;font-size:20px;vertical-align:-1px;text-shadow:0 0 12px #8ceaf370}
+.app button.ui-back::after{content:"";position:absolute;z-index:1;inset:-40% 58% -40% -28%;opacity:0;background:linear-gradient(110deg,transparent,#ffffff2f,transparent);transform:translate3d(-70%,0,0) skewX(-14deg);transition:transform .42s cubic-bezier(.2,.75,.25,1),opacity .16s}
+.app button.ui-back:hover:not(:disabled){color:#fff;background:#1f37449c;border-color:#8ceaf382;box-shadow:none;transform:translate3d(-3px,-1px,0)}
+.app button.ui-back:hover:not(:disabled)::after{opacity:.8;transform:translate3d(185%,0,0) skewX(-14deg)}
+.app button.ui-back:active:not(:disabled){transform:translate3d(-1px,0,0)}
+.app button.ui-back:focus-visible{outline:2px solid #8ceaf3;outline-offset:3px}
+.app button.ui-back:disabled{opacity:.35;cursor:default}
+.app[data-graphics-glass=light] button.ui-back{backdrop-filter:blur(6px) saturate(110%);-webkit-backdrop-filter:blur(6px) saturate(110%)}
+.app[data-graphics-glass=off] button.ui-back{background:#101c27;backdrop-filter:none;-webkit-backdrop-filter:none}
+.app[data-graphics-glass=off] button.ui-back:hover:not(:disabled){background:#1c303d}
+.app[data-graphics-decoration=simple] button.ui-back,.app[data-graphics-decoration=simple] button.ui-back:hover:not(:disabled){box-shadow:none}
+@media(prefers-reduced-transparency:reduce){.app[data-graphics-glass] button.ui-back{background:#101c27;backdrop-filter:none;-webkit-backdrop-filter:none}.app[data-graphics-glass] button.ui-back:hover:not(:disabled){background:#1c303d}}
+@media(prefers-reduced-motion:reduce){.app button.ui-back,.app button.ui-back::after{transition:none}.app button.ui-back:hover:not(:disabled){transform:none}.app button.ui-back::after{display:none}}

@@ -92,7 +92,7 @@ async function main(){
    const faces=await page.locator('.result-last-turn>div>article').evaluateAll(nodes=>nodes.map(n=>({parent:n.getBoundingClientRect().toJSON(),image:n.querySelector('.full-card-face').getBoundingClientRect().toJSON()})));
    check(faces.every(n=>n.image.bottom<=n.parent.bottom+1&&n.image.left>=n.parent.left&&n.image.right<=n.parent.right),'complete result faces fit their containers',faces);await shot(`result-${size.join('x')}`);
   }
-  await page.getByRole('button',{name:'返回主菜单 EXIT',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
+  await page.getByRole('button',{name:'返回主菜单',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
   await page.getByRole('button',{name:/^单人对局/}).click();await page.getByRole('button',{name:/^开始对局/}).click();
   await page.locator('.battle-table[data-ready=true]').waitFor();
   await page.locator('[data-entry="Charge"] .card-pick').click();await page.getByRole('button',{name:'确认出招',exact:true}).click();
@@ -103,7 +103,7 @@ async function main(){
    await images('.selection-history .full-card-face');await shot('real-worker-history');await leave();
   }else{
    await images('.result-move-art .full-card-face');await page.waitForTimeout(1600);await shot('real-worker-result');
-   await page.getByRole('button',{name:'返回主菜单 EXIT',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
+   await page.getByRole('button',{name:'返回主菜单',exact:true}).click();await page.locator('.app[data-page=menu]').waitFor();
   }
   check(report.rendererErrors.length===0,'no renderer errors');report.status='PASS';
  }catch(error){report.status='FAIL';report.failure=String(error);if(page&&!page.isClosed())await shot('failure').catch(()=>{});process.exitCode=1;}

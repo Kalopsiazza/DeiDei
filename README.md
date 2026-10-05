@@ -4,7 +4,7 @@
 
 当前是 React/Electron 桌面游戏：本机 Python worker 调用独立 classic-1.0.1 的 33 招核心；好友房已有 rooms-1.1 客户端与独立判定服务。单人对手为「临时随机对手」`random-legal-v1`，没有使用旧机器学习模型。
 
-2026-10-05：main 阶段整合候选已交付，待最终源码确认。Issue #39 只接入固定 #38 提交；后续前端试改继续留在原分支与工作目录。尚未合入 main 或正式发布。
+2026-10-06：前端统一起点接入新版牌面／原版切换、画面设置与图鉴后续迭代，所有返回入口使用共享组件。后续从最新 main 继续开发；实际验证见 [整合记录](docs/results/frontend-main-20261006/README.md)。本次不是正式版本发布。
 
 ## 从源码运行
 
@@ -40,7 +40,7 @@ npm --prefix game/desktop test
 
 Python 入口保留语法检查，分别在独立进程运行根 tests 递归发现、新 core、新 runtime、独立规则样本及旧 AI 保全。零用例或子检查失败均失败；session 未覆盖项目保持原输出。`core-tests` CI 在同一 job 中执行两条命令，桌面 test 已含类型检查与构建。窗口、网络长测、安装包及模型不在每次 CI 中。
 
-贡献可直接 fork，从最新 main 建独立分支，一次 PR 一项事情；详见 [贡献说明](CONTRIBUTING.md)、[AGENTS](AGENTS.md) 和 [开发说明](docs/development.md)。维护者主导的本次整合保留候选祖先，最终合入方式另行确认，不自动合入。
+贡献可直接 fork，从最新 main 建独立分支，一次 PR 一项事情；详见 [贡献说明](CONTRIBUTING.md)、[AGENTS](AGENTS.md) 和 [开发说明](docs/development.md)。维护者授权的本次整合按现有 main 保护规则走 PR 与 squash，不变更仓库设置。
 
 ## 规则、旧 AI 与当前边界
 
@@ -48,4 +48,4 @@ Python 入口保留语法检查，分别在独立进程运行根 tests 递归发
 
 旧环境为 31 动作、双人 156 维截断观测，不能直接替代现版 33 招核心。仓库没有完整训练入口、训练记录或可复查评测；本轮没有加载或训练模型，见 [模型说明](docs/model-card.md) 和 [来源署名](CREDITS.md)。
 
-单人难度／时限尚未下传；跨设备、跨 DPI、Windows 和新安装包未验；欢迎历史长帧、图鉴景深／退场、完整页面进出及写盘后 setFullScreen 异常仍保留。当前状态见 [WORK_START_HERE](WORK_START_HERE.md)、[已知问题](docs/known-issues.md) 与 [本轮报告](docs/results/R04-T05-a/REPORT.md)。
+单人难度／时限尚未下传；跨设备、跨 DPI、Windows 和新安装包未验；欢迎历史长帧、完整页面进出及写盘后 setFullScreen 异常仍保留；图鉴景深／退场与高窗口适配已纳入本次前端整合。当前状态见 [WORK_START_HERE](WORK_START_HERE.md)、[已知问题](docs/known-issues.md) 与 [本轮报告](docs/results/frontend-main-20261006/README.md)。

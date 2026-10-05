@@ -1,8 +1,8 @@
 # 给编码 AI 的说明
 
-## 当前入口｜2026-10-05
+## 当前入口｜2026-10-06
 
-Issue #39 的 main 整合候选已交付，待最终源码确认；未合入或发布。现版入口为 `game/desktop`，核心、worker 与服务分别位于 `game/core`、`game/runtime`、`game/server`。旧 AI 只在 `legacy/rl` 独立保全，旧 Tkinter 产品与启动脚本退出，不把旧模块注入现版进程。后续前端试改继续留在原分支及目录，保留全部未提交内容。下段日期对应此前合作方式，日常前端授权继续有效。
+前端统一起点为最新 `main`，接入两份本地迭代及共享返回按钮；范围和验证见 [整合记录](docs/results/frontend-main-20261006/README.md)。现版入口为 `game/desktop`，核心、worker 与服务分别位于 `game/core`、`game/runtime`、`game/server`。旧 AI 只在 `legacy/rl` 独立保全。原前端工作区和恢复档保留，不再把旧目录当作后续迭代起点。日常前端授权继续有效。
 
 技术整合／合入前运行 `python scripts/check.py`（语法、根递归/core/runtime/规则样本/旧 AI 保全）与 `npm --prefix game/desktop test`（已含类型检查与构建）。空组、导入失败和子检查非零退出必须失败；旧 #1 的 expectedFailure 仅属于 legacy 环境，不新增跳过或降低断言。窗口、模型、网络长测与安装包分别验证，不把基础绿色当作全部通过。
 
