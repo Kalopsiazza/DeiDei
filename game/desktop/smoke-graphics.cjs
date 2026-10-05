@@ -150,7 +150,7 @@ async function main() {
   }
   async function functional(wrapper, originalBytes) {
     await launch(wrapper);
-    const first = await readProfile(); check(first.profile_version === 2, 'old v1 is normalized to usable v2 in memory'); assert.deepEqual(first.settings.graphics, graphicsForPreset('high'));
+    const first = await readProfile(); check(first.profile_version === 3, 'old v1 is normalized to usable v3 in memory'); assert.deepEqual(first.settings.graphics, graphicsForPreset('high'));
     check((await fs.readFile(path.join(directory, 'local-profile/profile.json'))).equals(originalBytes), 'v1 first read leaves original disk bytes unchanged');
     await enterStored(first.nickname); await openSettings();
     for (const id of ['high', 'balanced', 'smooth']) {await preset(id); await assertConsumers(id);}
@@ -208,7 +208,7 @@ async function main() {
     check((await fs.readFile(path.join(directory, 'local-profile/profile.json'))).equals(originalBytes), 'failure injected before write preserves old disk bytes');
     check(await app.evaluate(() => global.__graphicsControl.calls) === 1, 'delayed failing save called once'); await snapshot('save-failure', true);
     await control(false); await dialog.getByRole('button', {name: '保存关闭', exact: true}).click(); await page.locator('.app[data-page=menu]').waitFor(); const saved = await readProfile();
-    check(saved.profile_version === 2 && saved.local_id === first.local_id && saved.nickname === first.nickname && saved.avatar_id === first.avatar_id, 'successful retry writes v2 preserving identity');
+    check(saved.profile_version === 3 && saved.local_id === first.local_id && saved.nickname === first.nickname && saved.avatar_id === first.avatar_id, 'successful retry writes v3 preserving identity');
     assert.deepEqual(saved.settings, {...first.settings, graphics: graphicsForPreset('smooth')});
     await close(); await launch(); dialog = page.getByRole('dialog', {name: '还有未保存的修改', exact: true});
     await enterStored(saved.nickname); assert.deepEqual(await readProfile(), saved); assert.deepEqual((await styles()).graphics, saved.settings.graphics); check(true, 'full process restart retains saved graphics');
