@@ -169,7 +169,14 @@ async function main() {
     assert.deepEqual((await readProfile()).settings.graphics, first.settings.graphics);
     await select('动态效果').focus();
     for (const [width, height] of [[1366, 768], [1000, 650], [1920, 1080], [1366, 768]]) {
+      await cdp.send('Emulation.clearDeviceMetricsOverride');
       await app.evaluate(({BrowserWindow}, size) => BrowserWindow.getAllWindows()[0].setContentSize(size.width, size.height), {width, height}); await page.waitForTimeout(350);
+      const native = await nativeState(), actual = await page.evaluate(() => [innerWidth, innerHeight]);
+      if (actual[0] !== width || actual[1] !== height) {
+        assert.deepEqual(actual, [native.contentBounds.width, native.contentBounds.height], 'viewport must match actual native content before emulation');
+        (report.nativeSizeLimits ??= []).push({requested: [width, height], actual, native, status: 'NATIVE_SIZE_NOT_AVAILABLE', fallback: 'CDP content simulation; not physical display or native resize acceptance'});
+        await cdp.send('Emulation.setDeviceMetricsOverride', {width, height, deviceScaleFactor: native.display.scaleFactor, mobile: false}); await page.waitForTimeout(350);
+      }
       check(await select('画面预设').inputValue() === 'balanced', `${width}: draft survives continuous settings resize`);
       const geometry = await page.evaluate(() => ({viewport: [innerWidth, innerHeight], horizontalOverflow: document.documentElement.scrollWidth > innerWidth,
         focus: document.activeElement?.getAttribute('aria-label'), save: document.querySelector('.settings-save')?.getBoundingClientRect().toJSON(), scrollTop: document.querySelector('.app')?.scrollTop}));
@@ -177,6 +184,7 @@ async function main() {
       check(geometry.focus === '动态效果', `${width}: current control retains focus`); await page.locator('.settings-save').scrollIntoViewIfNeeded(); check(await page.locator('.settings-save').isVisible(), `${width}: save remains reachable`);
       await snapshot(`resize-${width}`, width !== 1366);
     }
+    await cdp.send('Emulation.clearDeviceMetricsOverride');
     const control = (failSave, delay = 700) => app.evaluate((_electron, value) => {global.__graphicsControl = {...value, calls: 0};}, {fail: failSave, delay});
     await control(false); await page.locator('.settings-layout .settings-back').click();
     let dialog = page.getByRole('dialog', {name: '还有未保存的修改', exact: true}); await dialog.waitFor();
