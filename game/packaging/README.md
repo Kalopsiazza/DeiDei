@@ -33,6 +33,8 @@ Mac 将全部冻结 Mach-O 路径显式交给 builder 嵌套签名，再签外 a
 
 每次输出至忽略的 `build/<platform>-<random>/`，失败日志保留；latest.json 只指向最后成功候选。release-manifest 分开记录源码、资源、冻结 worker、原生安装、生产信任及真人跨设备状态。`check-package.cjs` 的 GUI 自动化仅在临时 CI OS 账户运行，不能碰私人默认 profile，也不会放宽成包对 DEIDEI_TEST_DATA_DIR 的隔离。
 
+发布清单只纳入当前版本/平台/架构的安装包、对应 blockmap 与已知 stable/beta feed；builder-debug.yml 留在构建目录，不进入清单或候选上传。`python3 game/packaging/check-input-guard.py` 和 `python3 game/packaging/check-artifact-whitelist.py` 可重跑源快照及实际文件白名单的小范围自检。
+
 ## 更新传输与原生安装
 
 ```sh
@@ -83,3 +85,5 @@ node game/packaging/check-frozen-ui.cjs --from <fixture-N-output> --out .local-o
 ```
 
 该外部 runner 验证独立 appId/名字与全新默认合成 userData，在中文空格只读安装副本、不同 cwd、无开发 Python/Node 的 PATH 下，用普通 main 真实选择旧模型、预热并完成对局；核对 model_turns/fallback_turns 和固定两 worker 子进程，另验缺 AI 路径拒绝。它会显示/操作一个窗口。结束后只删除本次标记的新合成 userData，以便随后完整 updater 夹具重新使用这份 N；不读取或清理正式 R02 数据。fixture npm name 由独立名字摘要生成，使 updater cache 也独立，manifest 记录 package_name。已成包 fixture 使用 builder 生成的 app-update.yml；只有独立非成包字节传输夹具使用 dev-app-update.yml。
+
+中断构建的 app 诊断必须显式加 `--diagnostic --application <该构建的 packaged/mac-arm64/DeiDeiR02.app>`，从实际 app metadata 读取身份，报告标为 partial interrupted build，完整工件与原生安装均为 NOT_RUN；默认路线仍要求完整 release-manifest。

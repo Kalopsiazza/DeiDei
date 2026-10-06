@@ -77,6 +77,18 @@ def locked_versions(*files):
             for name, version in re.findall(r'^([A-Za-z0-9_.-]+)==([^\s\\]+)', Path(file).read_text(), re.M)}
 
 
+def release_artifacts(directory, version, target_platform, arch):
+    directory = Path(directory)
+    stem = f'DeiDei-{version}-{"mac" if target_platform == "darwin" else "win"}-{arch}'
+    required = {stem + extension for extension in (('.dmg', '.zip') if target_platform == 'darwin' else ('.exe',))}
+    feeds = {'latest-mac.yml', 'beta-mac.yml'} if target_platform == 'darwin' else {'latest.yml', 'beta.yml'}
+    allowed = required | {name + '.blockmap' for name in required} | feeds
+    files = {file.name: file for file in directory.iterdir() if file.is_file() and file.name in allowed}
+    if not required.issubset(files) or not feeds.intersection(files):
+        raise RuntimeError('UPDATE_ARTIFACT_SET_INCOMPLETE')
+    return [{'filename': name, 'bytes': file.stat().st_size, 'sha256': sha(file), 'version': version} for name, file in sorted(files.items())]
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--mode', choices=['production', 'local-test', 'fixture'], default='production')
@@ -241,19 +253,16 @@ def main():
             run('gatekeeper', ['spctl', '--assess', '--type', 'execute', '--verbose=4', application])
         for index, binary in enumerate(macho_files(resources_path / 'worker') + macho_files(resources_path / 'ai-worker')):
             run(f'nested-signature-{index}', ['codesign', '--verify', '--strict', '--verbose=2', binary])
-    records = []
-    for file in sorted((out / 'packaged').iterdir()):
-        if file.is_file() and file.suffix in ('.dmg', '.zip', '.exe', '.yml', '.blockmap'):
-            records.append({'filename': file.name, 'bytes': file.stat().st_size, 'sha256': sha(file), 'version': package['version']})
-    expected_ext = {'.dmg', '.zip', '.yml'} if sys.platform == 'darwin' else {'.exe', '.yml'}
-    if not expected_ext.issubset({Path(record['filename']).suffix for record in records}):
-        raise RuntimeError('UPDATE_ARTIFACT_SET_INCOMPLETE')
-    for feed in (out / 'packaged').glob('*.yml'):
+    records = release_artifacts(out / 'packaged', package['version'], sys.platform, target_arch)
+    for record in records:
+        if not record['filename'].endswith('.yml'):
+            continue
+        feed = out / 'packaged' / record['filename']
         if 'stagingPercentage:' in feed.read_text():
             raise RuntimeError('STAGED_ROLLOUT_FORBIDDEN')
     unpacked_application = application
     if sys.platform == 'darwin':
-        archive = next(file for file in (out / 'packaged').glob('*.zip'))
+        archive = out / 'packaged' / next(record['filename'] for record in records if record['filename'].endswith('.zip'))
         unpacked = out / '中文 空格 解压'
         unpacked.mkdir()
         run('unpack-update-zip', ['ditto', '-x', '-k', archive, unpacked])

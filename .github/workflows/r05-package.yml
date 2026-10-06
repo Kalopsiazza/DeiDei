@@ -72,7 +72,10 @@ jobs:
           name: R05-${{ inputs.mode }}-${{ matrix.platform }}-${{ github.sha }}
           path: |
             game/packaging/build/*/packaged/DeiDei-*
-            game/packaging/build/*/packaged/*.yml
+            game/packaging/build/*/packaged/latest-mac.yml
+            game/packaging/build/*/packaged/beta-mac.yml
+            game/packaging/build/*/packaged/latest.yml
+            game/packaging/build/*/packaged/beta.yml
             game/packaging/build/*/delivery-manifest.json
             game/packaging/build/*/release-manifest.json
           if-no-files-found: error
