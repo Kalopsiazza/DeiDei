@@ -1,0 +1,33 @@
+{
+  "api_version": "deidei.rules-pack.v1",
+  "kind": "declarative",
+  "id": "test.certain-luck",
+  "version": "0.1.0",
+  "name": "必定变招（测试）",
+  "author": "示例作者",
+  "base_rules_version": "classic-1.0.1",
+  "presets": [
+    {
+      "id": "certain-luck",
+      "name": "必定变招（测试）",
+      "description": "适用攻击必定提升一级，仍按原入口支付；仅用于复现测试。",
+      "skill_defaults": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "6",
+        "opening_dd6": "0",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 10000,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      }
+    }
+  ]
+}
