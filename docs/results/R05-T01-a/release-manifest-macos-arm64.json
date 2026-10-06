@@ -1,0 +1,61 @@
+{
+  "task_id": "R05-T01-a",
+  "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+  "version": "0.5.0",
+  "platform": "darwin",
+  "arch": "arm64",
+  "distribution": "local-test",
+  "appId": "cn.kalopsia.deidei.r02",
+  "appName": "DeiDei R02",
+  "package_name": "deidei-r02-desktop",
+  "artifacts": [
+    {
+      "filename": "DeiDei-0.5.0-mac-arm64.dmg",
+      "bytes": 304600968,
+      "sha256": "03307bbf58cac9c53986a3ef22bc857888694b8703aee6e19af774206dcffe94",
+      "version": "0.5.0"
+    },
+    {
+      "filename": "DeiDei-0.5.0-mac-arm64.dmg.blockmap",
+      "bytes": 317496,
+      "sha256": "edf3c5d6964e95c97a0c7ae76e1d7f551cebf24900a848c9da42b1e8997239bd",
+      "version": "0.5.0"
+    },
+    {
+      "filename": "DeiDei-0.5.0-mac-arm64.zip",
+      "bytes": 298845801,
+      "sha256": "6c8daaf3b2ad7f282db7a9e1b14aff4b87227b096b3e56f2d3aaf86496a78409",
+      "version": "0.5.0"
+    },
+    {
+      "filename": "DeiDei-0.5.0-mac-arm64.zip.blockmap",
+      "bytes": 309711,
+      "sha256": "892d823f8e3e3ab5cc41a810e0f1a1e9048e949a3d3473062016b4c03c2fb031",
+      "version": "0.5.0"
+    },
+    {
+      "filename": "latest-mac.yml",
+      "bytes": 506,
+      "sha256": "b1470550375e242f53e30c49d143220cb0b418047d23493d5f99f45a0c4dec61",
+      "version": "0.5.0"
+    }
+  ],
+  "build_info_sha256": "1535c23da4b06c15efbdadae858730c59003b63b74238985deb362aa58fd9077",
+  "lock_sha256": {
+    "npm": "9f44fcf1d801689dea6cdf7516678ae8d46d1201dd77ac97391b7673a1240cad",
+    "packaging": "12d8471df394aee503afa3c6e48fad5f6db9544d5b4a61bb193c7c17d8013473",
+    "ai": "fa21ab7291ea174830b7bc2078c571760afb7e064fcb9634c1a56713c434a405"
+  },
+  "rules_schema": 1,
+  "ai_schema": 1,
+  "signature": "ad-hoc, not notarized",
+  "levels": {
+    "source": "PASS",
+    "package_contents": "PASS",
+    "frozen_core": "PASS",
+    "frozen_ai": "PASS",
+    "native_install": "NOT_RUN",
+    "production_trust": "NOT_RUN",
+    "human_cross_device": "NOT_RUN"
+  }
+}

@@ -1,37 +1,39 @@
 # R05-T01-a · Issue #42
 
-完整正文保存于 [任务原文](../../tasks/R05/R05-T01-a.md)。从指定main `01f6bc0cfa4c371c81d042a8cdac614909453f4c` 开始，执行工作树 `/Users/zengchongtai/develop/DeiDei/.worktrees/r05-major-update`，分支 `codex/r05-major-update`。原工作树/未提交内容保留；本任务保留未归档，不合并或发布。
+完整正文保存于 [任务原文](../../tasks/R05/R05-T01-a.md)。指定 main 基线 `01f6bc0cfa4c371c81d042a8cdac614909453f4c`；分支 `codex/r05-major-update`，工作树 `/Users/zengchongtai/develop/DeiDei/.worktrees/r05-major-update`。原工作树、暂存和未提交内容保留，本任务保留未归档。只交一个对 main 的草稿 PR，不合并、发版或部署公网。
 
-| 步骤 | 实际状态 | 保存与验收 |
+| 步骤 | 实际状态 | 阶段保存与证据 |
 | --- | --- | --- |
-| 0 基线/可行性 | PASS | d61a508保存正文/基线；b6b134a保存原checkpoint真实CPU可行性与两平台hash lock。旧八项完整保全；Mac200真实请求，Windows仅精确wheel核验。 |
-| 1 规则核心 | PASS | ebbedc5；同一P1–P4引擎、v1/v2经典等价、192项含256组合、独立黄金192条/469次resolve。 |
-| 2 完整游玩链 | PASS（本机） | 51f7d55 / 3f7f2c3；rooms-1.2真实双普通main6组、规则权限/版本/断线/终局/包；实际系统picker导入/冷启保留/单人1→3DD和100%幸运原价。 |
-| 3 原模型 | PASS（本机） | 0de6e0e / c4ce0c4；真实156/31投影/CPU模型、有限回退与父lease。普通main模型拍/受控crash回退拍分开，取消冷预热/main SIGKILL自有子树回收。冻结完整包另列。 |
-| 4 设置/隐私/后台 | PASS（本机） | 3582b11 / 3f7f2c3；设置27项＋cleanup、真实全屏16项、真实collector普通main30项；后台7组、隐私/硬件13组。 |
-| 5 更新/完整包 | BUILD_PENDING | b6f88da / 6ac3978；真实传输17项、成包fixture配置/缓存隔离、退出协作、完整闭包/两worker脚本。当前从6ac3978重新构建普通0.5.0及完整N/N+1；native安装/正式信任缺身份，NOT_RUN。 |
-| 6 综合交付 | BUILD_PENDING | 最终desktop126项、server80项、根Python/保全通过；当前等待同SHA完整包与真实打包ML/完整下载结果，随后一个草稿PR。 |
+| 0 基线/可行性 | PASS；Windows native 未运行 | d61a508 / b6b134a：完整正文、基线、旧八项保全；原 checkpoint 真 CPU 加载/200请求；两平台精确 hash lock。 |
+| 1 规则核心 | PASS | ebbedc5：同一 P1–P4 引擎、v1/v2经典等价、八开关/256组合、192核心测试、黄金192条/469次resolve。 |
+| 2 完整游玩链 | PASS（本机） | 51f7d55 / 3f7f2c3：rooms-1.2双普通main真实6组；原生导入/冷启保留、单人1→3DD及100%幸运原价。 |
+| 3 原模型 | PASS（本机及冻结包） | 0de6e0e / c4ce0c4：原156/31投影、模型/有限回退分开、取消和父lease回收；最终冻结包真模型整局2拍、零回退。 |
+| 4 设置/隐私/后台 | PASS（本机） | 3582b11 / 3f7f2c3：设置27项、原生全屏16项、普通main真实collector30项；真HTTP/SQLite/admin/CSV7组，隐私/硬件13组。 |
+| 5 更新/完整包 | PASS：源码、内容、传输；native安装/生产信任 NOT_RUN | b6f88da / 6ac3978 / 7854ebe：三份完整DMG/ZIP/feed；固定core/AI/闭包/签名完整性；真实完整N→N+1下载、缓存复核、普通退出重开仍N。31fba74仅修外部验收runner。 |
+| 6 综合交付 | 本地完成；草稿PR与自动CI以远端回读为准 | desktop126、server80、Python97文件/root35/core192/runtime48/legacy25通过；最终同产品截图/真实输入补验，候选、manifest与本交付文档已保存。最终head登记于PR正文。 |
 
-阶段小提交按任务顺序保存。最新产品源码 `6ac3978caa618d9863e6724635483185876c27fc`；最终文档head仅在PR中记录，避免自引用。命令/退出码/失败和未运行详见 [CHECKS](CHECKS.md)，末端条件见 [EXTERNAL-SETUP](EXTERNAL-SETUP.md)。
+候选构建/最终截图的产品 SHA 为 `7854ebeae9814b796f5bfaa4925fd834ff957f73`。之后的 `31fba74` 仅修未进入应用的 `check-native-update.cjs`；三包各431项仓库输入仅此一项变化，实际应用stage132文件及其余430项（含图鉴JSON、core/AI输入）一致，见 [输入比较](build-input-equivalence.json)。不把仓库全快照写成完全相同。
 
 ## 玩家行为与玩法决定
 
-- 经典、火力（一次攒2/5DD）、贷款（每game开局1DD，无偿还）、幸运（单次25%固定Bi→Pragon→Three→Volvo→BigBi链）共用现有引擎与八技能开关；教程仍经典全开。所有随机由runtime/server私有预留，core不读随机。RulesRequest/Snapshot、configured-1.0.0/base classic-1.0.1、规则schema1/core schema2保留明确边界。
-- 单人/建房共用规则工作台和本机预设；跨模式草稿可恢复，取消不改已应用值，重置回经典全开。小型声明式包有内容hash/边界检查；加入方无需本机安装，活动场使用冻结快照。揭晓、历史、局势和终局保留原入口、实际招式、来源、升级与原价，仍使用两套现有卡面。
-- 好友房由服务端判定。真实改规则清准备并递增revision；旧ready/start明确拒绝，同hash不清准备。旧客户端拒绝rooms-1.2，未揭晓入口/token/模型概率不公开，续拍/重开/重连保留规则。
-- “旧版AI（试验）”加载保全原权重，无训练/重新下载/魔改模型。当前合法mask在原31槽上约束；缺少ZengYi特征明示。750ms热拍预算、可取消30秒预热；有限合法回退会准确标记来源/计数，不计为模型通过。
-- 体验草稿跨设置分类保留，保存后全屏系统效果失败不推翻已保存档案；已保存/实际/pending分开。隐私和更新偏好即时独立保存。本机推荐与2+8秒短测无上传也可用，custom保留，未测high不外推。
-- 统计默认仅本机、上传默认关闭。分scope同意、epoch/revision、同日累计、有限队列、停止门/删除能力、真实safeStorage与本机保留期均接入；aiohttp/SQLite/admin/CSV独立服务，不由桌面启动。统计是自愿上传安装的选择/使用口径。
-- 更新服务单实例，公开固定GitHub provider无PAT，逐跳去staging安装header；默认不自动下载、不随普通退出自动安装。下载重新核对真实字节/hash/size；渠道拒绝降级/同版本异hash；一次安装计划与nonce、脏稿/活动房间/保存/AI回收/隐私写盘屏障协作。未配置时显示不支持；损坏optional更新状态保留原字节并关闭更新功能，游戏仍开窗。
+- 经典、火力（一次攒2/5DD）、贷款（每game开局1DD，无偿还）、幸运（25%单次固定升级链）共用现有引擎和八技能开关；教程仍经典全开。随机由runtime/server私有预留，core不读随机。DD单位、编号与经典费用/胜负保留。
+- 单人/建房共用规则工作台：跨模式草稿、取消/重置、命名预设与原生声明式包导入；加入者无需安装包，活动场使用冻结快照。揭晓、历史、局势和终局显示原入口、实际招式、升级/AI来源和原价，两套既有卡面均保留。
+- 好友房仍由服务端判定。真实规则改变清准备并递增revision；同hash不清准备，旧ready/start和旧客户端明确拒绝。未揭晓入口/token/模型概率不公开，续拍/重开/重连沿用规则。
+- “旧版AI（试验）”用保全原权重，没有训练/重新下载/修改模型。原31槽应用当前合法mask，明示缺少ZengYi特征；750ms热拍预算、可取消30秒预热。有限回退按真实来源计数，不充当模型通过；缺固定成包AI文件返回PACKAGE_INCOMPLETE，禁止开发Python回退。
+- 设置草稿跨分类保留；写盘后全屏效果失败不推翻已保存档案，已保存/实际/pending分开。隐私和更新偏好即时独立保存。本机推荐/2+8秒短测无需上传，保留custom，未测high不外推。
+- 统计默认仅本机、上传默认关闭。scope/epoch/revision、有限队列、即时停止门、删除能力、真实safeStorage与保留期接通；独立aiohttp/SQLite/admin/CSV服务不由桌面启动。人口分母是自愿上传安装，不代表全体玩家或满意度。
+- 更新服务单实例、固定公开GitHub provider，无PAT；逐跳去staging安装header。默认不自动下载或随普通退出安装，真实hash/size/渠道/版本校验；一次nonce计划协调脏稿、房间、保存、AI回收与隐私写盘。未配置时不支持；损坏optional更新状态保留原字节、关闭更新而允许游戏开窗。
 
-## 真实失败与剩余边界
+## 候选与真实边界
 
-原模型初配NumPy不兼容、初期协议fixture/大厅布局、冻结stdin开管退出、main回收任务结束未自动继续安装准备、损坏optional更新状态，以及v26 publisherName schema曾失败；已作局部修复并保留原失败日志。自动化picker焦点/异步等待/selector失败另列，失焦短测按无效处理。缺固定AI路径延迟至实际请求返回PACKAGE_INCOMPLETE，禁止开发Python回退；从新提交实测负例。
+最终普通0.5.0候选在忽略目录 `game/packaging/build/darwin-arm64-l6hjznjj/packaged/`，DMG、ZIP、blockmap及latest-mac.yml均存在；[发行清单](release-manifest-macos-arm64.json) 记录实际大小/hash/schema/lock/签名级别。[完整构建输入](build-info-macos-arm64.json) 保存被测SHA。完整独立fixture N=0.5.0在 `darwin-arm64-m7qvggi2`，N+1=0.5.1在 `darwin-arm64-kgi0jt88`，二者不具备公开发布资格。
 
-首轮完整构建实际exit1且期间发生源修正，旧轮不交付。构建现抓初始输入SHA，并在stage前与manifest/latest写入前复核HEAD/clean/全部输入；实际改文件或HEAD的最小自检均拒绝。当前运行期间不再改产品或HEAD。
+完整包的只读中文空格路径、不同cwd、OS-only PATH、开发AI环境移除，真实冻结core→AI→原模型整局及缺AI负例均通过。N→N+1完整ZIP真实下载/复核通过；普通退出重开仍0.5.0，档案/规则/隐私保留，未调用native安装。自有main/worker/feed结束，仅本轮合成默认档案已清理。
 
-未验：native N→N+1真实替换/坏签名后N+2恢复、正式签名/公证/首次系统信任、Windows native、真人跨电脑/显示器/DPI、公网collector TLS/运营恢复/旧目的地删除和替换后删除能力。缺身份不阻止本机候选、真实模型和完整下载验收；不宣称这些层已通过。
+真实失败保留：初配NumPy不兼容、初期协议fixture/布局、冻结stdin退出、main回收任务后准备停滞、optional更新损坏、builder v26 publisherName位置，以及debug YAML误收发行清单。冻结UI早期诊断的断言时机/只读副本复制、picker焦点、异步等待和补拍标签/平滑滚动等待为harness失败，修正后分别重验；没有删有效断言或新增skip。最终完整传输首轮因evaluate中require失败、尚无feed请求，修外部runner后第2轮exit0；第一轮FAIL仍保留。
 
-原36条登记与233个未跟踪文件摘要逐项一致，旧legacy/rl整个目录相对基线无差异。任务输出在忽略的 `.local-outputs/R05-T01-a/` 与 `game/packaging/build/`；不移动、删除或归档原工作树。Kimi未调用。
+未运行：有效签名下native N→N+1替换/坏签名后N+2恢复、正式签名/公证/首次系统信任、Windows native、真人跨电脑/显示器/DPI、远端WSS、公网collector TLS/运营恢复/旧目的地删除及替换后删除能力。production默认入口实际exit1拒绝缺身份；ad-hoc完整性通过不表示生产信任。黄金入口C074/C081仍SESSION_NOT_RUN，另有runtime/server真实检查。
 
-正式发布dry-run发现builder-debug.yml误收进工件清单；只放行精确平台/版本的installer、ZIP、blockmap与四个已知feed，文件/hash/缺件自检通过。被中断fixture app仅用于诊断：只读中文空格/受限PATH真实模型整局4拍、零回退，缺AI明确拒绝，两次普通退出及自有子树回收通过；完整installer/native仍NOT_RUN。下一命令从本阶段小提交重新构建最终三份工件。
+原36条登记36/36一致，233个未跟踪文件摘要无差异；整个legacy/rl相对基线不变。输出和失败日志留在 `.local-outputs/R05-T01-a/` 与 `game/packaging/build/`，原恢复档未改。Kimi未调用。
+
+命令、退出码、截图与失败索引见 [CHECKS](CHECKS.md)。下一步仅按 [EXTERNAL-SETUP](EXTERNAL-SETUP.md) 集中补身份、远端服务和设备条件；具备条件后执行其中production/fixture命令，仍不自动publish。

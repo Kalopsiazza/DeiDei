@@ -1,0 +1,105 @@
+[
+  {
+    "file": "screenshots/final-rules-short.png",
+    "source": "ordinary Electron main, real worker and preserved model",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "viewport": {
+      "width": 1000,
+      "height": 650,
+      "dpr": 2
+    },
+    "card_style": "illustrated",
+    "graphics_motion": "reduced",
+    "pixel_size": [
+      2000,
+      1300
+    ],
+    "sha256": "aecd4b89c3f054e05857fa9a6c50539b4db09c95b0dc01ff1fe560eee8ea7cd4"
+  },
+  {
+    "file": "screenshots/native-lucky-reveal.png",
+    "source": "ordinary Electron main, real worker and preserved model",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 2
+    },
+    "card_style": "illustrated",
+    "graphics_motion": "reduced",
+    "pixel_size": [
+      2732,
+      1536
+    ],
+    "sha256": "5ac57e3ad4136be5849cd4f09e615f38c021a41198a26d8b5ff23a33cc490057"
+  },
+  {
+    "file": "screenshots/final-settings-short.png",
+    "source": "ordinary Electron main, real worker and preserved model",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "viewport": {
+      "width": 1000,
+      "height": 650,
+      "dpr": 2
+    },
+    "card_style": "illustrated",
+    "graphics_motion": "reduced",
+    "pixel_size": [
+      2000,
+      1300
+    ],
+    "sha256": "15d9180c0f3e4a2f22f1f46fd06e57ab54b4934d52136ee0a28c252d19b57056"
+  },
+  {
+    "file": "screenshots/final-table-classic.png",
+    "source": "ordinary main -> real core worker",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "viewport": {
+      "width": 1000,
+      "height": 650,
+      "dpr": 2
+    },
+    "card_style": "classic",
+    "graphics_motion": "reduced",
+    "pixel_size": [
+      2000,
+      1300
+    ],
+    "sha256": "4eaf58cae3cae50277791ea7912172d2dc38d3aed6bf015fad13824d727c70a1"
+  },
+  {
+    "file": "screenshots/final-table-illustrated.png",
+    "source": "ordinary main -> real core worker",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "viewport": {
+      "width": 1000,
+      "height": 650,
+      "dpr": 2
+    },
+    "card_style": "illustrated",
+    "graphics_motion": "reduced",
+    "pixel_size": [
+      2000,
+      1300
+    ],
+    "sha256": "332a0bdffe42964a16b675fa5cae8862a4679f9e62eafb24a431fbc0b1c7c269"
+  },
+  {
+    "file": "screenshots/frozen-model-real-turn.png",
+    "source": "ordinary packaged UI -> bundled core -> bundled AI -> preserved model",
+    "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+    "version": "0.5.0",
+    "viewport": {
+      "width": 1366,
+      "height": 768,
+      "dpr": 2
+    },
+    "card_style": "illustrated",
+    "graphics_motion": "NOT_CAPTURED",
+    "pixel_size": [
+      2732,
+      1536
+    ],
+    "sha256": "90f3979534587750888550b5fcebf3acd4652ded75e7e71bff08e059257b0f81"
+  }
+]

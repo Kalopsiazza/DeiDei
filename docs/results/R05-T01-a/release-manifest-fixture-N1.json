@@ -1,0 +1,67 @@
+{
+  "task_id": "R05-T01-a",
+  "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+  "version": "0.5.1",
+  "platform": "darwin",
+  "arch": "arm64",
+  "distribution": "fixture",
+  "appId": "cn.kalopsia.deidei.update-fixture",
+  "appName": "DeiDei Update Fixture R05-20261006-7854ebe-f18bda29",
+  "package_name": "deidei-update-fixture-01a193b7aaf6c3e5",
+  "artifacts": [
+    {
+      "filename": "DeiDei-0.5.1-mac-arm64.dmg",
+      "bytes": 304598134,
+      "sha256": "8e2ee4c1a2c4ab9ba34648f5d2b639c44090bb1670144acae890c501f534723b",
+      "version": "0.5.1"
+    },
+    {
+      "filename": "DeiDei-0.5.1-mac-arm64.dmg.blockmap",
+      "bytes": 317480,
+      "sha256": "78fd2c7aa299e77bfd536b3e0424728d238a37d62a01c8ae4522a66c00b7b83c",
+      "version": "0.5.1"
+    },
+    {
+      "filename": "DeiDei-0.5.1-mac-arm64.zip",
+      "bytes": 298847044,
+      "sha256": "7c20eece3f4f12f4c1076d316b1cfc70c03a6fa14087198ee8dc8b10b52d0ed7",
+      "version": "0.5.1"
+    },
+    {
+      "filename": "DeiDei-0.5.1-mac-arm64.zip.blockmap",
+      "bytes": 309829,
+      "sha256": "2bd11f6e8143f039d044610e93de8e5cb69ca51267cc787379fcbb07e94934c6",
+      "version": "0.5.1"
+    },
+    {
+      "filename": "beta-mac.yml",
+      "bytes": 820,
+      "sha256": "9b44f20bbcaaa2cb6f3569194bdd8c8ba42d399c08c59ffcc90454b232deb8a3",
+      "version": "0.5.1"
+    },
+    {
+      "filename": "latest-mac.yml",
+      "bytes": 820,
+      "sha256": "9b44f20bbcaaa2cb6f3569194bdd8c8ba42d399c08c59ffcc90454b232deb8a3",
+      "version": "0.5.1"
+    }
+  ],
+  "build_info_sha256": "94b7ff7f849262178546e5bded68054cc2eaa3dead6cb52fa1bcf83fa438c644",
+  "lock_sha256": {
+    "npm": "9f44fcf1d801689dea6cdf7516678ae8d46d1201dd77ac97391b7673a1240cad",
+    "packaging": "12d8471df394aee503afa3c6e48fad5f6db9544d5b4a61bb193c7c17d8013473",
+    "ai": "fa21ab7291ea174830b7bc2078c571760afb7e064fcb9634c1a56713c434a405"
+  },
+  "rules_schema": 1,
+  "ai_schema": 1,
+  "signature": "ad-hoc, not notarized",
+  "levels": {
+    "source": "PASS",
+    "package_contents": "PASS",
+    "frozen_core": "PASS",
+    "frozen_ai": "PASS",
+    "native_install": "NOT_RUN",
+    "production_trust": "NOT_RUN",
+    "human_cross_device": "NOT_RUN"
+  }
+}

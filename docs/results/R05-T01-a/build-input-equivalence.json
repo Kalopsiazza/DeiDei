@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "tested_product_commit": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+  "comparison_commit": "31fba7427af03c72877b68801f772346a7e68ed5",
+  "changes_after_build": [
+    "game/packaging/check-native-update.cjs"
+  ],
+  "reason": "Only the external update acceptance runner changed; it is excluded from application stage and frozen workers. Application inputs and bytes are unchanged; the full 431-file repository snapshot is not claimed identical.",
+  "builds": [
+    {
+      "build_directory": "darwin-arm64-l6hjznjj",
+      "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+      "tracked_input_count": 431,
+      "unchanged_tracked_inputs": 430,
+      "changed_external_runner": [
+        {
+          "file": "game/packaging/check-native-update.cjs",
+          "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
+          "current_sha256": "d7956c9281813af6191322822bdac2b176199d3fad8aa066f1ce647189834845"
+        }
+      ],
+      "unchanged_application_stage_files": 132,
+      "stage_differences": [],
+      "manual_content_unchanged": true
+    },
+    {
+      "build_directory": "darwin-arm64-m7qvggi2",
+      "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+      "tracked_input_count": 431,
+      "unchanged_tracked_inputs": 430,
+      "changed_external_runner": [
+        {
+          "file": "game/packaging/check-native-update.cjs",
+          "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
+          "current_sha256": "d7956c9281813af6191322822bdac2b176199d3fad8aa066f1ce647189834845"
+        }
+      ],
+      "unchanged_application_stage_files": 132,
+      "stage_differences": [],
+      "manual_content_unchanged": true
+    },
+    {
+      "build_directory": "darwin-arm64-kgi0jt88",
+      "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
+      "tracked_input_count": 431,
+      "unchanged_tracked_inputs": 430,
+      "changed_external_runner": [
+        {
+          "file": "game/packaging/check-native-update.cjs",
+          "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
+          "current_sha256": "d7956c9281813af6191322822bdac2b176199d3fad8aa066f1ce647189834845"
+        }
+      ],
+      "unchanged_application_stage_files": 132,
+      "stage_differences": [],
+      "manual_content_unchanged": true
+    }
+  ]
+}
