@@ -1,0 +1,5 @@
+{
+  "schema_version": 1,
+  "id": "legacy-action-map-v1",
+  "entries": ["Charge", "Bi", "Def", "Three", "ThreeDef", "BigBi", "Reflect", "SelfBi", "Cloud", "Bomb", "Xiao", "Pragon", "PragonDef", "Volvo", "VolvoDef", "RotateThree", "XiaoBei", "FlipVolvo", "Shell", "Absorb", "NieXiang", "NieXiangDef", "JuYan", "TianLiJun", "ZhangXinWei", "LiQiang", "BombPragon", "BombVolvo", "BombFlipVolvo", "FreeThree", "FreeRotateThree"]
+}

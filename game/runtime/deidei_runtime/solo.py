@@ -6,7 +6,8 @@ import time
 from uuid import uuid4
 
 from deidei_core.api import list_options, new_match, required_tokens
-from .opponent import choose_entry, OPPONENT_NAME
+from .opponent import OPPONENT_NAME
+from .legacy_model import RandomLegalProvider, LegacyModelProvider, MODEL_ID
 from .session import MatchSession, expected_turn
 from .view import options_view, participants_view, ledger_summary, progress, public_round, rules_view, pack_view, TRANSITIONS
 
@@ -16,6 +17,7 @@ class SoloGame:
                  rng: Random | None = None, token_rng: Random | None = None,
                  lucky_rng: Random | None = None, rules_snapshot: dict | None = None,
                  rule_pack_manifests: list | None = None,
+                 opponent_provider=None,
                  clock=time.monotonic, submit_delay: float = 0.9, reveal_delay: float = 3.0):
         self.self_id = profile["profile_id"]
         self.profiles = {self.self_id: {k: profile[k] for k in ("nickname", "avatar_id")},
@@ -26,6 +28,13 @@ class SoloGame:
         self.rng = rng if rng is not None else SystemRandom()
         self.token_rng = token_rng if token_rng is not None else SystemRandom()
         self.lucky_rng = lucky_rng if lucky_rng is not None else SystemRandom()
+        self.opponent = opponent_provider if opponent_provider is not None else RandomLegalProvider()
+        if isinstance(self.opponent, LegacyModelProvider) and (self.session.schema_version != 2 or self.opponent.status()["state"] != "ready"):
+            raise ValueError("AI_NOT_READY")
+        self.opponent.state = "active"
+        if self.opponent.requested_id == MODEL_ID:
+            self.profiles["bot_local"]["nickname"] = "旧版模型对手"
+        self.declarations, self.declaration_game_id = {}, self.session.snapshot()["game_id"]
         self.clock, self.submit_delay, self.reveal_delay = clock, submit_delay, reveal_delay
         self.closed = False
         self.accepted = OrderedDict()
@@ -34,6 +43,9 @@ class SoloGame:
 
     def _prepare(self) -> None:
         self.state = self.session.snapshot()
+        if self.declaration_game_id != self.state["game_id"]:
+            self.declarations = {}
+            self.declaration_game_id = self.state["game_id"]
         self.expected = expected_turn(self.state)
         self.view_id = f"{self.state['match_id']}:{self.state['game_index']}:{self.state['turn_index']}"
         self.options = options_view(self.state, self.self_id)
@@ -41,7 +53,8 @@ class SoloGame:
         self.resolution = None
         self.phase = "selecting"
         # Choose before accepting user input. Neither function receives the user's selection.
-        self.bot_entry = choose_entry(list_options(self.state, "bot_local"), self.rng)
+        self.bot_options = list_options(self.state, "bot_local")
+        self.bot_entry = self.opponent.choose(self.state, "bot_local", self.bot_options, self.declarations, self.rng)
         self.tokens = {pid: self.token_rng.randrange(2) for pid in self.state["active_ids"]}
         self.lucky_tokens = ({pid: self.lucky_rng.randrange(10000) for pid in self.state["active_ids"]}
                              if self.state["schema_version"] == 2 else {})
@@ -54,13 +67,32 @@ class SoloGame:
             submissions["bot_local"] = self.bot_entry
         if entry_id is not None:
             submissions[self.self_id] = entry_id
-        consumers = required_tokens(self.state, submissions)
-        tokens = {pid: self.tokens[pid] for pid in consumers["choice"]}
-        lucky = {pid: self.lucky_tokens[pid] for pid in consumers["lucky"]}
-        result = self.session.apply_round(self.view_id, self.expected, submissions, tokens,
-                                         lucky if self.state["schema_version"] == 2 else None)
+        def apply():
+            try:
+                consumers = required_tokens(self.state, submissions)
+            except ValueError as error:
+                return {"ok": False, "error": getattr(error, "error", {"code": "INVALID_STATE", "player_id": None})}
+            tokens = {pid: self.tokens[pid] for pid in consumers["choice"]}
+            lucky = {pid: self.lucky_tokens[pid] for pid in consumers["lucky"]}
+            return self.session.apply_round(self.view_id, self.expected, submissions, tokens,
+                                            lucky if self.state["schema_version"] == 2 else None)
+        result = apply()
+        error = result.get("error", {})
+        if (not result["ok"] and isinstance(self.opponent, LegacyModelProvider)
+                and error.get("player_id") == "bot_local"
+                and error.get("code") in ("UNAVAILABLE_MOVE", "RULE_DISABLED", "INVALID_SUBMISSION")):
+            self.bot_entry = self.opponent.rejected_candidate(self.bot_options, self.rng)
+            if self.bot_entry is None:
+                submissions.pop("bot_local", None)
+            else:
+                submissions["bot_local"] = self.bot_entry
+            result = apply()
         if not result["ok"]:
             raise ValueError(result["error"]["code"])
+        self.opponent.applied()
+        self.decision_source = self.opponent.source
+        self.declarations = {pid: "forced_recovery" if action["is_recovery"] else action["entry_id"]
+                             for pid, action in result["ledger"]["actions"].items()}
         self.resolution = result
         self.resolutions.append(deepcopy(result))
         self.accepted[self.view_id] = entry_id
@@ -128,11 +160,13 @@ class SoloGame:
                          "submitted": submitted, "timer": timer,
                          "summary": summary, "outcome": outcome}
         if self.rules_snapshot is not None:
-            view.update(rules_snapshot=rules_view(self.rules_snapshot), rule_pack_manifests=[pack_view(m) for m in self.rule_pack_manifests])
+            view.update(rules_snapshot=rules_view(self.rules_snapshot), rule_pack_manifests=[pack_view(m) for m in self.rule_pack_manifests],
+                        opponent_status=self.opponent.status(), decision_source=self.decision_source if revealed else None)
         return deepcopy(view)
 
     def leave(self) -> dict:
         view = self._view()
         self.session.close()
+        self.opponent.close()
         self.closed = True
         return {**view, "phase": "error", "public_round": None, "options": [], "summary": ["本场已结束。"], "outcome": None}

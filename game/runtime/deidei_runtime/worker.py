@@ -3,11 +3,16 @@ import json
 import re
 import sys
 import unicodedata
+import os
+import queue
+import threading
 from copy import deepcopy
 
 from .solo import SoloGame
 from .tutorial import TutorialGame
 from .opponent import ENTRY_MAP, OPPONENT_ID
+from .legacy_model import IDS, MODEL_ID, RandomLegalProvider, LegacyModelProvider
+from .worker_json import strict_object
 from deidei_core.rules import (compile_rules, descriptors, default_request, parse_pack, pack_ref,
                                validate_pack, RULES_VERSION, MAX_PACK_BYTES)
 
@@ -16,6 +21,7 @@ FIELDS = {"health": set(), "start_solo": {"profile_id", "nickname", "avatar_id"}
           "start_tutorial": {"profile_id", "nickname", "avatar_id"}, "tutorial_next": {"view_id"},
           "submit": {"view_id", "entry_id"}, "get_view": set(), "leave": set(), "shutdown": set()}
 V2_FIELDS = {**FIELDS, "start_solo": FIELDS["start_solo"] | {"rules_request", "rule_pack_manifests"},
+             "prepare_solo": {"opponent_id"}, "solo_status": set(), "cancel_solo_prepare": set(),
              "rules.describe": set(), "rules.compile": {"rules_request", "rule_pack_manifests"},
              "rules.validate_pack": {"pack_json"}}
 CAPABILITIES = {"wire_versions": [1, 2], "rules_schema": 1, "core_state_schema": 2,
@@ -31,6 +37,28 @@ class Worker:
     def __init__(self, solo_factory=SoloGame):
         self.solo_factory, self.solo, self.stopping = solo_factory, None, False
         self.session_version = None
+        self.prepared = None
+        self.parent_closed = False
+
+    def close_models(self):
+        for provider in (self.prepared, self.solo.opponent if self.solo else None):
+            if isinstance(provider, LegacyModelProvider):
+                provider.close()
+
+    def close(self):
+        if self.prepared:
+            self.prepared.close()
+            self.prepared = None
+        if self.solo and not self.solo.closed:
+            self.solo.leave()
+
+    def opponent_status(self):
+        if self.solo and not self.solo.closed:
+            return self.solo.opponent.status()
+        if self.prepared:
+            return self.prepared.status()
+        return {"requested_id": None, "active_id": None, "state": "idle", "compatibility": {"missing_features": []},
+                "model_turns": 0, "fallback_turns": 0}
 
     def handle(self, request: object) -> dict:
         request_id = request.get("id") if isinstance(request, dict) else None
@@ -45,7 +73,11 @@ class Worker:
                 raise ValueError("INVALID_REQUEST")
             op, payload = request["op"], request["payload"]
             fields = FIELDS if version == 1 else V2_FIELDS
-            if op not in fields or not isinstance(payload, dict) or set(payload) != fields[op]:
+            actual_fields = set(payload) if isinstance(payload, dict) else None
+            allowed = fields.get(op)
+            if op == "start_solo" and version == 2 and actual_fields is not None:
+                actual_fields = actual_fields - {"opponent_id"}
+            if op not in fields or actual_fields != allowed:
                 raise ValueError("INVALID_REQUEST")
             if self.stopping:
                 raise ValueError("SESSION_CLOSED")
@@ -63,6 +95,25 @@ class Worker:
                     raise ValueError("INVALID_RULE_PACK") from None
             elif op == "rules.compile":
                 data = configured_rules(payload)
+            elif op == "prepare_solo":
+                if payload["opponent_id"] not in IDS:
+                    raise ValueError("INVALID_OPPONENT")
+                if self.solo and not self.solo.closed:
+                    raise ValueError("SESSION_ACTIVE")
+                if self.prepared:
+                    self.prepared.close()
+                self.prepared = LegacyModelProvider() if payload["opponent_id"] == MODEL_ID else RandomLegalProvider()
+                if self.parent_closed:
+                    self.prepared.close()
+                data = self.prepared.status()
+            elif op == "solo_status":
+                data = self.opponent_status()
+            elif op == "cancel_solo_prepare":
+                if self.prepared:
+                    self.prepared.close()
+                    data, self.prepared = self.prepared.status(), None
+                else:
+                    data = self.opponent_status()
             elif op in ("start_solo", "start_tutorial"):
                 if (not isinstance(payload["profile_id"], str)
                         or not re.fullmatch(r"[A-Za-z0-9_-]{1,64}", payload["profile_id"])
@@ -72,15 +123,37 @@ class Worker:
                 profile = {key: payload[key] for key in FIELDS["start_solo"]}
                 configuration = (configured_rules(payload) if op == "start_solo" else
                                  {"rules_snapshot": compile_rules(default_request()), "rule_pack_manifests": []}) if version == 2 else {}
-                new = TutorialGame(profile, **configuration) if op == "start_tutorial" else self.solo_factory(profile, **configuration)
+                provider = None
+                if version == 2 and op == "start_solo":
+                    opponent_id = payload.get("opponent_id", OPPONENT_ID)
+                    if opponent_id not in IDS:
+                        raise ValueError("INVALID_OPPONENT")
+                    if opponent_id == MODEL_ID:
+                        if not self.prepared or self.prepared.requested_id != opponent_id or self.prepared.status()["state"] != "ready":
+                            raise ValueError("AI_NOT_READY")
+                        provider = self.prepared
+                    elif self.prepared and self.prepared.requested_id == opponent_id:
+                        provider = self.prepared
+                    if provider:
+                        configuration["opponent_provider"] = provider
+                try:
+                    new = TutorialGame(profile, **configuration) if op == "start_tutorial" else self.solo_factory(profile, **configuration)
+                except Exception:
+                    if provider:
+                        provider.close()
+                        self.prepared = None
+                    raise
+                if self.prepared:
+                    if self.prepared is not provider:
+                        self.prepared.close()
+                    self.prepared = None
                 if self.solo:
                     self.solo.leave()
                 self.solo = new
                 self.session_version = version
                 data = new.get_view()
             elif op == "shutdown":
-                if self.solo:
-                    self.solo.leave()
+                self.close()
                 self.solo, self.stopping, data = None, True, None
             else:
                 if self.solo is None:
@@ -99,6 +172,9 @@ class Worker:
                 elif op == "get_view":
                     data = self.solo.get_view()
                 else:
+                    if self.prepared:
+                        self.prepared.close()
+                        self.prepared = None
                     data, self.solo = self.solo.leave(), None
                     self.session_version = None
             return {"v": reply_version, "id": request_id, "ok": True, "data": data}
@@ -116,19 +192,27 @@ def configured_rules(payload: dict) -> dict:
         raise ValueError("INVALID_RULES") from None
 
 
-def strict_object(pairs: list) -> dict:
-    result = {}
-    for key, value in pairs:
-        if key in result:
-            raise ValueError("INVALID_REQUEST")
-        result[key] = value
-    return result
-
-
 def serve(reader, writer, worker: Worker | None = None) -> None:
     worker = worker if worker is not None else Worker()
+    incoming = None
+    if reader is sys.stdin.buffer:
+        incoming = queue.Queue(maxsize=8)
+        def lease():
+            while True:
+                line = reader.readline(LIMIT + 1)
+                if not line:
+                    worker.parent_closed = True
+                    worker.close_models()
+                    incoming.put(None)
+                    return
+                try:
+                    incoming.put_nowait(line)
+                except queue.Full:
+                    worker.close_models()
+                    os._exit(2)
+        threading.Thread(target=lease, daemon=True, name="runtime-parent-eof-lease").start()
     while not worker.stopping:
-        line = reader.readline(LIMIT + 1)
+        line = incoming.get() if incoming is not None else reader.readline(LIMIT + 1)
         if not line:
             break
         if len(line) > LIMIT or not line.endswith(b"\n"):
@@ -149,8 +233,7 @@ def serve(reader, writer, worker: Worker | None = None) -> None:
             worker.stopping = True
         writer.write(encoded)
         writer.flush()
-    if worker.solo and not worker.solo.closed:
-        worker.solo.leave()
+    worker.close()
 
 
 if __name__ == "__main__":

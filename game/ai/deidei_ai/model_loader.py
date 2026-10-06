@@ -4,12 +4,15 @@ import hashlib
 import json
 import math
 from pathlib import Path
+import sys
 
 
 def load_model():
     root = Path(__file__).resolve().parents[3]
-    manifest = json.loads((root / "game/ai/model-manifest.json").read_text())
-    checkpoint = root / "legacy/rl/rl_checkpoints/latest.zip"
+    bundle = Path(sys._MEIPASS) if getattr(sys, "frozen", False) else None
+    manifest = json.loads(((bundle / "model-manifest.json") if bundle else
+                           (root / "game/ai/model-manifest.json")).read_text())
+    checkpoint = bundle / "model/latest.zip" if bundle else root / "legacy/rl/rl_checkpoints/latest.zip"
     data = checkpoint.read_bytes()
     if len(data) != manifest["bytes"] or hashlib.sha256(data).hexdigest() != manifest["sha256"]:
         raise ValueError("Preserved model identity mismatch")

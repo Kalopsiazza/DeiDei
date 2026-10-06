@@ -49,6 +49,27 @@ figures establish execution feasibility, not model strength or installed app
 acceptance. Projection, current-core legality/settlement, supervisor lifecycle,
 desktop matches and native packaging are separate integration checks.
 
+The production entry is `worker-entry.py` (frozen name `deidei-ai-worker`). It
+loads the same verified manifest and original checkpoint; frozen loading uses
+`sys._MEIPASS/model-manifest.json` and `model/latest.zip`. An independent stdin
+reader treats EOF as the parent lease ending, including during model loading or
+a blocked forward. Only correlated, bounded 156/31 inference data cross this
+boundary. No legacy training source or opponent pool is imported.
+
+Run the source integration diagnostic with the verified AI Python:
+
+```sh
+game/ai/.venv/bin/python -I game/ai/runtime_probe.py --output .local-outputs/R05-T01-a/runtime-ai-probe.json
+```
+
+It checks original-model default/cloud-off/human-ZengYi current-core rounds,
+200 correlated requests, a loaded-child crash with a successful legal fallback,
+cancel during cold loading, direct runtime death, and a controlled parent EOF
+lease death. Eight preserved Git blob identities are compared with the issue's
+fixed main baseline. Native Windows and killing the actual Electron main are
+explicitly NOT_RUN in this source diagnostic; the parent harness is not an
+Electron acceptance claim.
+
 Primary dependency references checked during the probe:
 
 - [MaskablePPO loading and policy distribution](https://sb3-contrib.readthedocs.io/en/master/modules/ppo_mask.html)
