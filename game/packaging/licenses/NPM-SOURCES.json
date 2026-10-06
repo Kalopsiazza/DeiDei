@@ -1,0 +1,10 @@
+{
+  "lazy-val": {
+    "version": "1.0.5",
+    "license": "MIT",
+    "file": "lazy-val-1.0.5-NOTICE.txt",
+    "sha256": "4fb9940a44e1dedf3b9fc60d7032c7b30ffd5186270cbf60ee0c289c3392edb5",
+    "source": "https://github.com/develar/lazy-val",
+    "notice_kind": "published MIT declaration and author; canonical MIT terms, no invented copyright year"
+  }
+}

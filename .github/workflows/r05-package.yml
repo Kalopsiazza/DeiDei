@@ -1,0 +1,87 @@
+name: R05 manual native candidates
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Production requires configured signing and public update feed; local-test is an explicit untrusted candidate'
+        type: choice
+        required: true
+        default: production
+        options: [production, local-test]
+
+permissions:
+  contents: read
+
+jobs:
+  package:
+    strategy:
+      fail-fast: false
+      max-parallel: 2
+      matrix:
+        include:
+          - os: macos-15
+            arch: arm64
+            platform: darwin-arm64
+          - os: windows-2022
+            arch: x64
+            platform: win32-x64
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 90
+    env:
+      PYTHONUTF8: '1'
+    steps:
+      - name: Preserve committed resource bytes
+        shell: bash
+        run: git config --global core.autocrlf false
+      - uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803
+        with:
+          ref: ${{ github.sha }}
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
+        with:
+          node-version: 24.12.0
+          architecture: ${{ matrix.arch }}
+      - uses: astral-sh/setup-uv@d0d8abe699bfb85fec6de9f7adb5ae17292296ff
+        with:
+          version: 0.11.13
+          enable-cache: false
+      - name: Prepare independent exact native environments and build without publication
+        shell: bash
+        env:
+          TASK_TARGET_PLATFORM: ${{ matrix.platform }}
+          TASK_BUILD_MODE: ${{ inputs.mode }}
+        run: |
+          set -euo pipefail
+          uv python install --no-bin --python-downloads-json-url game/packaging/python-downloads.json 3.11.16
+          uv venv --python 3.11.16 game/packaging/.venv
+          if [[ "$RUNNER_OS" == Windows ]]; then
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging/.venv/Scripts/python.exe"
+          else
+            TASK_PYTHON="$GITHUB_WORKSPACE/game/packaging/.venv/bin/python"
+          fi
+          uv pip sync --python "$TASK_PYTHON" --require-hashes --only-binary=:all: "game/packaging/requirements-$TASK_TARGET_PLATFORM.lock"
+          "$TASK_PYTHON" game/packaging/prepare-ai-env.py
+          npm --prefix game/desktop ci
+          "$TASK_PYTHON" game/packaging/build.py --mode "$TASK_BUILD_MODE"
+      - name: Candidate artifacts and separate acceptance layers
+        if: success()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R05-${{ inputs.mode }}-${{ matrix.platform }}-${{ github.sha }}
+          path: |
+            game/packaging/build/*/packaged/DeiDei-*
+            game/packaging/build/*/packaged/*.yml
+            game/packaging/build/*/delivery-manifest.json
+            game/packaging/build/*/release-manifest.json
+          if-no-files-found: error
+          retention-days: 30
+      - name: Preserve actual commands, failures and evidence
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02
+        with:
+          name: R05-evidence-${{ inputs.mode }}-${{ matrix.platform }}-${{ github.sha }}
+          path: game/packaging/build/*/evidence/
+          if-no-files-found: warn
+          retention-days: 30

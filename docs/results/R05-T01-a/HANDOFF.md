@@ -17,3 +17,5 @@
 原36条worktree登记（27个存在、5个有未提交内容）和暂存/未暂存diff及非ignored新文件摘要已取样，证据为 `.local-outputs/R05-T01-a/initial-worktrees.json`；未操作旧工作树、恢复档或窗口。此记录不授权合并、Release、公网部署或仓库设置修改。Kimi未调用。
 
 历史未验：真人跨电脑、不同DPI/Windows、新安装信任与未定位性能事项仍独立保留。失败与未运行分层记录于CHECKS；外部配置末端集中写EXTERNAL-SETUP。
+
+桌面整合保存为 `3f7f2c3cf6621a9bd6cc38d13faa11c99501890e`；最终桌面125项通过（增加成包fixture配置门禁回归），真实传输17项再次通过。打包阶段下一命令：从本阶段提交 SHA 连续构建 local-test 0.5.0、独立fixture 0.5.0/0.5.1，再执行冻结包真实ML/缺AI负例与完整工件下载。

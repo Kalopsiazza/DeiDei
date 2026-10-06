@@ -103,3 +103,16 @@ test('damaged optional update files preserve bytes and block updates without fai
   }finally {await service?.close();await fs.rm(directory,{recursive:true,force:true});}
  }
 });
+
+test('fixture uses development update config only in the unpackaged transport app',async()=>{
+ const {EventEmitter}=require('node:events');
+ for(const isPackaged of [false,true]){
+  const directory=await fs.mkdtemp(path.join(os.tmpdir(),'deidei-fixture-mode-'));let service;
+  try {
+   const updater=new EventEmitter();updater.forceDevUpdateConfig=false;updater.netSession={webRequest:{onBeforeRequest(){},onBeforeSendHeaders(){}}};
+   const app={isPackaged,getVersion:()=> '0.5.0',getPath:()=>directory};
+   service=await new UpdateService({app,config:fixtureConfig('http://127.0.0.1:18742/'),updater}).start({schedule:false});
+   assert.equal(updater.forceDevUpdateConfig,!isPackaged);assert.equal(service.read().status,'idle');
+  }finally {await service?.close();await fs.rm(directory,{recursive:true,force:true});}
+ }
+});

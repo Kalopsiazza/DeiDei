@@ -7,6 +7,7 @@ const {execFileSync}=require('node:child_process');
 const {_electron:electron}=require('../desktop/node_modules/playwright-core');
 const {createHash}=require('node:crypto');
 const {verifyStage}=require('./stage.cjs');
+const {enterHall}=require('../integration/gui-actions.cjs');
 const root=path.resolve(__dirname,'../..');
 const pause=ms=>new Promise(resolve=>setTimeout(resolve,ms));
 const hash=file=>createHash('sha256').update(fs.readFileSync(file)).digest('hex');
@@ -21,7 +22,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const output=path.join(latest.out,'evidence');
  const report={code_sha:manifest.code_sha,package_sha256:manifest.sha256,evidence_kind:'packaged_automation',
   environment:{platform:process.platform,arch:process.arch,os:os.release(),account:'disposable GitHub-hosted CI account'},checks:[],games:[],screenshots:[],workers:[]};
- let app,page,mainPid,hidden=false;
+ let app,page,mainPid;const hidden=[];
  const scratch=fs.mkdtempSync(path.join(os.tmpdir(),'叠叠 成包 测试 '));
  const application=path.join(scratch,path.basename(latest.unpacked_application));
  const pass=(id,text)=>{report.checks.push({id,status:'PASS',text});console.log(id,text);};
@@ -32,7 +33,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  const resources=base=>path.join(base,process.platform==='darwin'?'Contents/Resources':'resources');
  const workerPath=path.join(resources(application),'worker',process.platform==='darwin'?'deidei-worker':'deidei-worker.exe');
  const env={...process.env,DEIDEI_PYTHON:'/nonexistent/python',PYTHONHOME:'/nonexistent/python',PYTHONPATH:'/nonexistent/source',
-  DEIDEI_TEST_DATA_DIR:path.join(scratch,'must-be-ignored'),
+  DEIDEI_TEST_DATA_DIR:path.join(scratch,'must-be-ignored'),DEIDEI_AI_PYTHON:'/nonexistent/ai-python',DEIDEI_AI_WORKER:'/nonexistent/ai-worker',
   PATH:process.platform==='win32'?path.join(process.env.SystemRoot,'System32'):'/usr/bin:/bin'};
  delete env.ELECTRON_RUN_AS_NODE;delete env.DEIDEI_ROOM_URL;
  function copyApplication(source,target) {
@@ -114,18 +115,12 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   copyApplication(latest.unpacked_application,application);
   verifyStage(path.join(resources(application),'app'));
   // Only the disposable CI checkout is hidden, never the user's working trees.
-  for(const part of ['core','runtime'])fs.renameSync(path.join(root,'game',part),path.join(root,'game',part+'.t05-hidden'));
-  hidden=true;
+  for(const part of ['core','runtime','ai']){fs.renameSync(path.join(root,'game',part),path.join(root,'game',part+'.t05-hidden'));hidden.push(part);}
   if(process.platform==='darwin')execFileSync('chmod',['-R','a-w',application]);
   report.progress='launch real packaged executable';save();
   await launch();
   await page.waitForFunction(()=>{const film=document.querySelector('.welcome-film');return film&&film.readyState>=2&&film.currentTime>0;});
-  await welcome();
-  await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
-  await page.getByRole('textbox',{name:'昵称',exact:true}).fill('成包验收');
-  await page.getByRole('button',{name:'确认名字',exact:true}).click();
-  await page.getByRole('button',{name:'进入主菜单',exact:true}).click();
-  await page.locator('.app[data-page=menu]').waitFor();
+  await enterHall(page,'成包验收');
   await page.getByRole('button',{name:/^设置(?:\s+S)?$/}).click();
   await page.getByRole('slider',{name:'音乐音量'}).fill('25');
   await page.getByRole('button',{name:'保存并关闭',exact:true}).click();
@@ -222,16 +217,16 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
   fs.unlinkSync(path.join(resources(damagedMedia),'app/build/ui/assets/menu/welcome-opening-v1.mp4'));
   assert.throws(()=>verifyStage(path.join(resources(damagedMedia),'app')),/welcome-opening-v1\.mp4/);
   pass('P09-media','missing welcome video fails the exact stage integrity check');
-  for(const missing of ['worker','catalog']){
+  for(const missing of ['worker','catalog','ai-worker']){
    const damaged=path.join(scratch,missing,path.basename(application));fs.mkdirSync(path.dirname(damaged));
    copyApplication(application,damaged);
    if(process.platform==='darwin')execFileSync('chmod',['-R','u+w',damaged]);
-   const missingPath=path.join(resources(damaged),'worker',missing==='worker'?(process.platform==='darwin'?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json');
+   const missingPath=missing==='ai-worker'?path.join(resources(damaged),'ai-worker',process.platform==='darwin'?'deidei-ai-worker':'deidei-ai-worker.exe'):path.join(resources(damaged),'worker',missing==='worker'?(process.platform==='darwin'?'deidei-worker':'deidei-worker.exe'):'_internal/deidei_runtime/data/catalog.json');
    fs.renameSync(missingPath,missingPath+'.removed');
    await launch(damaged);await enterExisting();
    await page.getByRole('button',{name:/^单人对局/}).click();await page.locator('.app[data-page=prepare]').getByRole('button',{name:/^开始对局/}).click();
    await page.getByText('游戏文件不完整，请重新取得完整测试包',{exact:false}).first().waitFor();await shot('packaged-missing-'+missing);
-   assert.ok(!children(mainPid).some(p=>/deidei-worker|python/i.test(p.executable)));
+   assert.ok(!children(mainPid).some(p=>/deidei-(?:ai-)?worker|python/i.test(p.executable)));
    await close();
   }
   pass('P09','damaged bundle copies show PACKAGE_INCOMPLETE; no Python/worker fallback spawned');
@@ -242,7 +237,7 @@ const samePath=(a,b)=>fs.existsSync(a)&&fs.existsSync(b)&&fs.realpathSync(a)===f
  }catch(error){report.status='FAIL';report.error=String(error);throw error;}
  finally{
   if(app){await close().catch(async()=>{await app.close().catch(()=>{});});}
-  if(hidden)for(const part of ['core','runtime'])fs.renameSync(path.join(root,'game',part+'.t05-hidden'),path.join(root,'game',part));
+  for(const part of hidden.reverse())fs.renameSync(path.join(root,'game',part+'.t05-hidden'),path.join(root,'game',part));
   if(report.sourceContext)report.sourceContext.userData='<CI_USER_DATA>/'+path.basename(report.sourceContext.userData);
   save();
   // Preserve screenshots and reports; only disposable copied apps are cleaned.

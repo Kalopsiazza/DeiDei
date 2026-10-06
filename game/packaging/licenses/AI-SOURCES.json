@@ -1,0 +1,9 @@
+{
+  "cloudpickle": {
+    "version": "3.1.1",
+    "file": "cloudpickle-3.1.1-LICENSE.txt",
+    "sha256": "e0d70ec8ede656fa00d01e466b90e2641cf848de3e3285e4d1c2a0b1e8a863f7",
+    "source": "https://raw.githubusercontent.com/cloudpipe/cloudpickle/v3.1.1/LICENSE",
+    "retrieval": "official browser source; curl TLS failure retained in probe record"
+  }
+}

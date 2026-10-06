@@ -43,7 +43,7 @@ class UpdateService {
     }
     const updater=this.updater;
     updater.autoDownload=false;updater.autoInstallOnAppQuit=false;updater.disableWebInstaller=true;updater.disableDifferentialDownload=true;updater.logger=null;
-    if(isFixture(this.config))updater.forceDevUpdateConfig=true;
+    if(isFixture(this.config)&&!this.app.isPackaged)updater.forceDevUpdateConfig=true;
     this.configureChannel();
     const network=updater.netSession;
     network.webRequest.onBeforeRequest((details,callback)=>callback({cancel:!allowedURL(details.url,this.config)}));
