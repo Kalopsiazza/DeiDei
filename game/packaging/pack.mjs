@@ -37,7 +37,7 @@ const configuration={
   extraResources:[...plan.resources.map(item=>({from:path.join(out,item.from),to:item.to,filter:['**/*']})),...['update-config.json','telemetry-config.json','PLAYER-README.txt'].map(name=>({from:path.join(out,name),to:name}))],
   artifactName:'DeiDei-${version}-${os}-${arch}.${ext}',publish,generateUpdatesFilesForAllChannels:true,
   mac:{target:['dmg','zip'],identity:production?undefined:plan.fixtureSigningIdentity||'-',hardenedRuntime:production||Boolean(plan.fixtureSigningIdentity),notarize:production,strictVerify:true,preAutoEntitlements:false,binaries:plan.macBinaries||[]},
-  win:{target:['nsis'],publisherName:plan.publisherName||undefined},nsis:{oneClick:false,perMachine:false,allowToChangeInstallationDirectory:true,differentialPackage:false},
+  win:{target:['nsis'],...(plan.publisherName?{signtoolOptions:{publisherName:plan.publisherName}}:{})},nsis:{oneClick:false,perMachine:false,allowToChangeInstallationDirectory:true,differentialPackage:false},
 };
 const target=process.platform==='darwin'?Platform.MAC:Platform.WINDOWS;
 await build({projectDir:fileURLToPath(new URL('../desktop',import.meta.url)),targets:target.createTarget(undefined,process.arch==='arm64'?Arch.arm64:Arch.x64),config:configuration,publish:'never'});

@@ -42,10 +42,10 @@ async function main(options={}){
   './privacy/telemetry-service.cjs':{TelemetryService:class{constructor(){this.ready=Promise.resolve();this.store={filename:'/unused'};}recordSettings(){return options.usageFailure?Promise.reject(Error('synthetic usage failure')):Promise.resolve({warning:null});}recordSession(){return Promise.resolve();}restartSuspended(){}setIdle(){}dispose(){}read(){return {warning:null};}persistenceBarrier(){return Promise.resolve();}}},
   './hardware/service.cjs':{HardwareService:class{checkContext(){}}},
   './updates/service.cjs':{UpdateService:class{constructor(){this.listeners=new Set();this.state={status:options.updatesReady?'ready':'not_supported',installPlan:null,generation:1};}async start(){}read(){return {...this.state};}onChange(fn){this.listeners.add(fn);}install(mode){this.state.installPlan={mode,generation:1};this.listeners.forEach(fn=>fn(this.read()));return this.read();}cancelInstallPlan(){this.state.installPlan=null;this.listeners.forEach(fn=>fn(this.read()));return this.read();}async close(){}}},
-  './worker-port.cjs':{WorkerPort:Fixture,localBridge:()=>({request:async()=>({presets:[]}),stop:async()=>{}})},'./online/network-room-port.cjs':{NetworkRoomPort:ControlledNetwork},
+  './worker-port.cjs':{WorkerPort:Fixture,localBridge:()=>{if(options.bridgeFailure)throw Error('PACKAGE_INCOMPLETE');return {request:async()=>({presets:[]}),stop:async()=>{}};}},'./online/network-room-port.cjs':{NetworkRoomPort:ControlledNetwork},
   './online/service-config.cjs':{loadServiceConfig:()=>({url:'ws://127.0.0.1:8765/rooms-v1',error:null})},
   './profile.cjs':{fields,ProfileStore:class {read(){return reads.length?reads.shift():Promise.resolve(savedProfile);}async save(_mode,input){if(options.saveFailure)throw Error('SAVE_FAILED');savedProfile={...savedProfile,...input};return savedProfile;}}},
-  './rules/library.cjs':{RulesLibrary:class{async compile(){return {rules_snapshot:require('./fake.cjs').samples.state.rules_snapshot,rule_pack_manifests:[]};}async read(){return {descriptors:{presets:[{id:'classic',request:classicRequest()}]}};}}},
+  './rules/library.cjs':{RulesLibrary:class{constructor(_directory,compiler){this.compiler=compiler;}async compile(){return {rules_snapshot:require('./fake.cjs').samples.state.rules_snapshot,rule_pack_manifests:[]};}async read(){if(options.bridgeFailure)await this.compiler('rules.describe');return {descriptors:{presets:[{id:'classic',request:classicRequest()}]}};}}},
   './build/fixture.cjs':{FixturePort:Fixture,manual:{},scenes:['sample']}};
  vm.runInNewContext(mainSource,{require:name=>name in modules?modules[name]:requireMain(name),__dirname:path.resolve(__dirname,'..'),
   process:{env:{},platform:process.platform},Buffer,URL,Response,setTimeout:time.schedule,clearTimeout:time.cancel},
@@ -163,4 +163,11 @@ test('main: confirmed close retains the 3-second bound for a pending room comman
  current.confirmClose(1);current.window.close();await flush();current.time.advance(2999);await flush();
  assert.equal(current.online.running,true);assert.equal(current.window.isDestroyed(),false);
  current.time.advance(1);await flush();assert.equal(current.window.isDestroyed(),true);assert.equal(socket.closed,true);stopped(current,1);
+});
+
+test('main: an incomplete packaged worker opens the shell and reports the fixed error on use',async()=>{
+ const current=await main({bridgeFailure:true});assert.ok(current.window);
+ assert.equal((await current.invoke('profile.read')).ok,true);
+ const rules=await current.invoke('rules.read');assert.equal(rules.ok,false);assert.equal(rules.error,'PACKAGE_INCOMPLETE');
+ current.window.close();await flush();
 });

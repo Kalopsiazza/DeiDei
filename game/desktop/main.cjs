@@ -42,8 +42,8 @@ app.whenReady().then(async()=>{
   if(!ownsProfile)return;
   const store=new ProfileStore(path.join(app.getPath('userData'),'local-profile'));
   const workerContext={isPackaged:app.isPackaged,resourcesPath:process.resourcesPath,platform:process.platform,wireVersion:2,aiPython:path.resolve(__dirname,'../ai/.venv/bin/python')};
-  const rulesBridge=localBridge(workerContext);
-  const ruleLibrary=new RulesLibrary(path.join(app.getPath('userData'),'rules'),(op,payload={})=>rulesBridge.request(op,payload,2));
+  let rulesBridge=null;
+  const ruleLibrary=new RulesLibrary(path.join(app.getPath('userData'),'rules'),(op,payload={})=>{rulesBridge??=localBridge(workerContext);return rulesBridge.request(op,payload,2);});
   let committedProfile=null,windowPreference=null;
   const windowState=()=>({requested:windowPreference,actual:window?.isFullScreen()||false,pending:windowPreference!==null&&windowPreference!==window.isFullScreen()});
   let collectorOrigin='',collectorFixture=false;
@@ -115,7 +115,7 @@ app.whenReady().then(async()=>{
   for(const method of ['create','setRules'])expose(`online.${method}`,async p=>{fields(p,method==='create'?['password','options','rules_request']:['room_id','rules_request','expected_rules_revision','expected_rules_hash']);const configured=await ruleLibrary.compile(p.rules_request);return online[method]({...p,rule_pack_manifests:configured.rule_pack_manifests});},true);
   expose('online.read',()=>online.read());
   expose('online.leave',()=>{++onlineLifecycle;return online.leave();});
-  shutdownCleanup=async(native=false)=>{if(!native)coordinator?.invalidate(true);await privacy.persistenceBarrier();await cancelCandidate();await Promise.all(retiringCandidates);await port.close?.();online.close();await rulesBridge.stop();};
+  shutdownCleanup=async(native=false)=>{if(!native)coordinator?.invalidate(true);await privacy.persistenceBarrier();await cancelCandidate();await Promise.all(retiringCandidates);await port.close?.();online.close();await rulesBridge?.stop();};
   coordinator=new ShutdownCoordinator({updates,privacy,canPrepare:()=>!switching&&!startingSolo&&!store.busy&&!ruleLibrary.busy&&!candidatePort&&!soloPrepareWork&&!retiringCandidates.size&&!port.isActive()&&!online.isActive()&&!(port.bridge?.current?.pending.size),sendPrepare:request=>window.webContents.send('lifecycle.prepareRestart',request),onGate:value=>{restartGate=value;},cleanup:()=>shutdownCleanup(true),backup:async()=>{const base=path.join(app.getPath('userData'),'restart-backup');await fs.mkdir(base,{recursive:true,mode:0o700});for(const [name,filename] of [['profile.json',store.file],['rules-library.json',ruleLibrary.file],['privacy-state.json',privacy.store.filename]]){try{await fs.copyFile(filename,path.join(base,name));}catch(error){if(error.code!=='ENOENT')throw error;}}}});
   expose('lifecycle.reportContext',p=>{fields(p,['page','experienceDirty','ruleEditing','modal','transitioning']);if(!['loading','profile','menu','prepare','intro','table','result','settings','manual','online'].includes(p.page)||['experienceDirty','ruleEditing','modal','transitioning'].some(k=>typeof p[k]!=='boolean'))throw Error('INVALID_INPUT');coordinator.report(p);return null;},true);
   expose('lifecycle.replyRestart',async p=>{fields(p,['nonce','generation','ready']);if(typeof p.nonce!=='string'||!Number.isSafeInteger(p.generation)||typeof p.ready!=='boolean')throw Error('INVALID_INPUT');await coordinator.reply(p);return null;},true);
@@ -142,7 +142,7 @@ app.whenReady().then(async()=>{
     dialog.showMessageBox(window,{type:'question',buttons:['继续对局','退出'],defaultId:0,cancelId:0,message:online.isActive()?'退出好友房？':'退出当前对局？',detail:online.isActive()?(online.snapshot?.view.host_id===online.snapshot?.view.self.player_id?'你是房主，退出将结束房间。':'退出后原席位由服务处理，本机档案保留。'):'本次对局进度不会保存，本机档案和已保存的设置仍保留。'}).then(async r=>{if(r.response===1){await exitOnline();allowClose=true;window.close();}}).finally(()=>{closePending=false;});
   });
   await window.loadURL('app://desktop/index.html');
-  window.once('closed',()=>{coordinator.close();privacy.dispose();void updates.close();void rulesBridge.stop();void cancelCandidate().catch(()=>{});});
+  window.once('closed',()=>{coordinator.close();privacy.dispose();void updates.close();void rulesBridge?.stop();void cancelCandidate().catch(()=>{});});
   if (!app.isPackaged && process.env.DEIDEI_DEV_RELOAD === '1') {
     let reloadTimer;
     const watcher = fsNative.watch(path.join(__dirname, 'build/ui'), { recursive:true }, (_event, filename) => {

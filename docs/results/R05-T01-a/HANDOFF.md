@@ -19,3 +19,5 @@
 历史未验：真人跨电脑、不同DPI/Windows、新安装信任与未定位性能事项仍独立保留。失败与未运行分层记录于CHECKS；外部配置末端集中写EXTERNAL-SETUP。
 
 桌面整合保存为 `3f7f2c3cf6621a9bd6cc38d13faa11c99501890e`；最终桌面125项通过（增加成包fixture配置门禁回归），真实传输17项再次通过。打包阶段下一命令：从本阶段提交 SHA 连续构建 local-test 0.5.0、独立fixture 0.5.0/0.5.1，再执行冻结包真实ML/缺AI负例与完整工件下载。
+
+冻结成包缺AI负例审查发现规则bridge在开窗前验证整包而抛错；已延至首次request，损坏包仍打开界面并返回PACKAGE_INCOMPLETE，126项desktop通过。首轮完整build的v26 publisherName schema错误已修，旧轮不交付；下一命令从本次小修提交重新构建三份完整工件。

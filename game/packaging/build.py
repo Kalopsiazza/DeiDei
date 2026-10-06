@@ -36,6 +36,18 @@ def check_clean_inputs(root):
         raise RuntimeError('commit build inputs before building:\n' + dirty)
 
 
+def input_snapshot(root):
+    paths = subprocess.check_output(['git', 'ls-files', '-z', 'game', '.github', *COMPILATION_INPUTS], cwd=root).decode().split('\0')
+    return {name: sha(Path(root) / name) for name in paths if name and (Path(root) / name).is_file()}
+
+
+def verify_build_inputs(root, head, snapshot):
+    actual_head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
+    if actual_head != head or input_snapshot(root) != snapshot:
+        raise RuntimeError('BUILD_INPUTS_CHANGED_DURING_BUILD')
+    check_clean_inputs(root)
+
+
 def signing_ready(mode):
     if mode != 'production':
         return
@@ -90,6 +102,7 @@ def main():
         raise RuntimeError('FROZEN_AI_INPUT_REQUIRED')
     check_clean_inputs(ROOT)
     head = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=ROOT, text=True).strip()
+    initial_inputs = input_snapshot(ROOT)
     subprocess.run(['git', 'merge-base', '--is-ancestor', BASELINE, head], cwd=ROOT, check=True)
     node, npm = shutil.which('node'), shutil.which('npm')
     if not node or not npm:
@@ -170,6 +183,7 @@ def main():
     if not ai_worker.is_dir():
         raise RuntimeError('AI_WORKER_OUTPUT_MISSING')
     run('frozen-ai', [node, HERE / 'check-ai.cjs', out / 'frozen'], out)
+    verify_build_inputs(ROOT, head, initial_inputs)
     stage_files = json.loads(run('stage-list', [node, HERE / 'stage.cjs', '--list']))
     run('stage-source', [node, HERE / 'stage.cjs', DESKTOP])
     stage = out / 'stage'
@@ -191,11 +205,10 @@ def main():
     run('stage-installed', [node, HERE / 'stage.cjs', stage])
     run('runtime-licenses', [args.ai_python, HERE / 'notices.py', out / 'THIRD-PARTY', stage])
     shutil.copy2(HERE / 'PLAYER-README.txt', out / 'PLAYER-README.txt')
-    inputs = subprocess.check_output(['git', 'ls-files', 'game', *COMPILATION_INPUTS], cwd=ROOT, text=True).splitlines()
     build_info = {'task_id': 'R05-T01-a', 'baseline_sha': BASELINE, 'code_sha': head, 'version': package['version'], 'distribution': args.mode, 'package_name': package['name'],
                   'rules_version': 'configured-1.0.0', 'rules_schema': 1, 'ai_schema': 1, 'platform': sys.platform, 'arch': target_arch,
                   'python': platform.python_version(), 'electron': package['devDependencies']['electron'], 'compilation_inputs': COMPILATION_INPUTS,
-                  'input_files_sha256': {name: sha(ROOT / name) for name in inputs if (ROOT / name).is_file()},
+                  'input_files_sha256': initial_inputs,
                   'lock_sha256': {'npm': sha(DESKTOP / 'package-lock.json'), 'packaging': sha(packaging_lock), 'ai': sha(ai_lock)}}
     write_json(stage / 'build-info.json', build_info)
     write_json(out / 'update-config.json', update_config)
@@ -259,6 +272,7 @@ def main():
         for record in records:
             if record['filename'].endswith('.exe'):
                 run('installer-signature', [Path(os.environ['SystemRoot']) / 'System32/WindowsPowerShell/v1.0/powershell.exe', '-NoProfile', '-Command', "$s=Get-AuthenticodeSignature -LiteralPath $args[0]; if($s.Status -ne 'Valid' -or $s.SignerCertificate.GetNameInfo([Security.Cryptography.X509Certificates.X509NameType]::SimpleName,$false) -ne $args[1]){exit 1}", out / 'packaged' / record['filename'], args.publisher_name])
+    verify_build_inputs(ROOT, head, initial_inputs)
     manifest = {'task_id': 'R05-T01-a', 'code_sha': head, 'version': package['version'], 'platform': sys.platform, 'arch': target_arch, 'distribution': args.mode,
                 'appId': 'cn.kalopsia.deidei.update-fixture' if args.mode == 'fixture' else 'cn.kalopsia.deidei.r02', 'appName': package['productName'], 'package_name': package['name'], 'artifacts': records,
                 'build_info_sha256': sha(stage / 'build-info.json'), 'lock_sha256': build_info['lock_sha256'], 'rules_schema': 1, 'ai_schema': 1,
