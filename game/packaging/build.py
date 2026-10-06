@@ -187,6 +187,12 @@ def main():
         if audit['metadata']['vulnerabilities']['high'] or audit['metadata']['vulnerabilities']['critical']:
             raise RuntimeError('DEPENDENCY_HIGH_CRITICAL_REVIEW_REQUIRED')
     run('source-checks', [sys.executable, ROOT / 'scripts/check.py'], env={**os.environ, 'DEIDEI_AI_PYTHON': str(args.ai_python)})
+    telemetry_environment = ROOT / 'game/telemetry/.venv'
+    telemetry_python = telemetry_environment / ('Scripts/python.exe' if sys.platform == 'win32' else 'bin/python')
+    if not telemetry_python.is_file():
+        run('telemetry-test-environment', ['uv', 'venv', '--python', sys.executable, telemetry_environment])
+    run('telemetry-test-dependencies', ['uv', 'pip', 'sync', '--python', telemetry_python, '--require-hashes', '--only-binary=:all:', ROOT / 'game/telemetry/requirements.lock'])
+    run('telemetry-test-check', ['uv', 'pip', 'check', '--python', telemetry_python])
     run('desktop-tests-and-build', npm_command + ['test'], DESKTOP, env={**os.environ, 'DEIDEI_PYTHON': sys.executable, 'DEIDEI_AI_PYTHON': str(args.ai_python)})
     run('freeze-core', [sys.executable, '-m', 'PyInstaller', '--noconfirm', '--clean', '--distpath', out / 'frozen', '--workpath', out / 'pyinstaller-core', HERE / 'worker.spec'])
     run('freeze-ai', [args.ai_python, '-m', 'PyInstaller', '--noconfirm', '--clean', '--distpath', out / 'frozen', '--workpath', out / 'pyinstaller-ai', HERE / 'ai-worker.spec'])

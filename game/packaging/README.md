@@ -16,6 +16,8 @@ npm --prefix game/desktop ci
 
 `prepare-ai-env.py` 将 AI 与冻结工具的两份 hash lock 合入 `game/packaging/ai-build/.venv`，不会修改 `game/ai/.venv`。Windows 使用对应 win32-x64 lock 和 Scripts/python.exe。Python 官方下载来源/摘要仍由 python-downloads.json 固定，uv 0.11.13 需要显式该下载表。
 
+`build.py` 在桌面测试前独立准备 `game/telemetry/.venv`，以 telemetry 的完整 hash lock 同步测试收集器依赖；本机和 R05 手动打包工作流使用同一入口，不要求已有该环境。Windows 测试收集器使用 `Scripts/python.exe`。此环境只用于真实 HTTP 测试，不打入客户端。独立运行 `npm --prefix game/desktop test` 前需按 [telemetry README](../telemetry/README.md) 准备该环境；普通 PR CI 自动准备。
+
 所有 game、CI 及图鉴编译输入 `docs/results/R04-T01-b/manual-content/content.json` 必须先保存为提交。构建验证指定 main 基线为祖先，记录实际 HEAD、输入逐文件摘要、平台/架构与 lock 摘要。默认是 production；没有 Developer ID/公证或 Windows 签名与 publisher 时明确失败。未配置 provider 的源码与 local-test 候选显示更新不支持。
 
 ```sh

@@ -30,6 +30,10 @@ jobs:
           python-version: '3.11'
       - name: Check syntax and run core tests
         run: python scripts/check.py
+      - name: Install locked telemetry dependencies
+        run: |
+          python -m venv game/telemetry/.venv
+          game/telemetry/.venv/bin/python -m pip install --require-hashes --only-binary=:all: -r game/telemetry/requirements.lock
       - name: Set up Node
         uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020
         with:

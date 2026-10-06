@@ -24,7 +24,7 @@ async function collector(t) {
   const directory = await fs.mkdtemp(path.join(os.tmpdir(), 'deidei-collector-'));
   const token = 'a'.repeat(64); const tokenFile = path.join(directory,'admin.token'); await fs.writeFile(tokenFile,token,{mode:0o600});
   const root = path.resolve(__dirname, '..', '..');
-  const python = path.join(root,'game/telemetry/.venv/bin/python');
+  const python = path.join(root,'game/telemetry/.venv',process.platform==='win32'?'Scripts/python.exe':'bin/python');
   const proc = spawn(python,['-m','deidei_stats','--database',path.join(directory,'stats.sqlite3'),'--admin-token-file',tokenFile],{env:{...process.env,PYTHONPATH:path.join(root,'game/telemetry')},stdio:['ignore','pipe','pipe']});
   let raw=''; let stderr='';proc.stderr.on('data', data=> {stderr+=data;});
   const ready = await new Promise((resolve,reject)=> { const timeout=setTimeout(()=>reject(new Error('COLLECTOR_START_TIMEOUT '+stderr)),10000);proc.stdout.on('data',data=>{raw+=data;const line=raw.split('\n')[0];try{ const r=JSON.parse(line);clearTimeout(timeout);resolve(r);}catch{}});proc.on('error',reject);proc.on('exit',code=>{if(code!==null)reject(new Error('COLLECTOR_EXIT '+code+' '+stderr));}); });
