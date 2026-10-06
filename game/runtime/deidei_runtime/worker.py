@@ -198,18 +198,37 @@ def serve(reader, writer, worker: Worker | None = None) -> None:
     if reader is sys.stdin.buffer:
         incoming = queue.Queue(maxsize=8)
         def lease():
-            while True:
-                line = reader.readline(LIMIT + 1)
-                if not line:
-                    worker.parent_closed = True
-                    worker.close_models()
-                    incoming.put(None)
-                    return
+            # A daemon must not hold stdin's BufferedReader lock during normal
+            # interpreter shutdown when the parent's pipe is still open.
+            buffer = bytearray()
+            def enqueue(line):
                 try:
                     incoming.put_nowait(line)
                 except queue.Full:
                     worker.close_models()
                     os._exit(2)
+            while True:
+                chunk = os.read(reader.fileno(), 65536)
+                if not chunk:
+                    if buffer:
+                        enqueue(bytes(buffer))
+                    worker.parent_closed = True
+                    worker.close_models()
+                    incoming.put(None)
+                    return
+                buffer.extend(chunk)
+                while True:
+                    end = buffer.find(b"\n")
+                    if end < 0:
+                        if len(buffer) > LIMIT:
+                            enqueue(bytes(buffer))
+                            return
+                        break
+                    line = bytes(buffer[:end + 1])
+                    del buffer[:end + 1]
+                    enqueue(line)
+                    if len(line) > LIMIT:
+                        return
         threading.Thread(target=lease, daemon=True, name="runtime-parent-eof-lease").start()
     while not worker.stopping:
         line = incoming.get() if incoming is not None else reader.readline(LIMIT + 1)

@@ -207,6 +207,37 @@ class ConfiguredRuntime(unittest.TestCase):
         self.assertTrue(all(p["resources"]["dd6"] == "6" for p in replies[3]["data"]["participants"]))
         self.assertEqual(replies[3]["data"], replies[5]["data"])
 
+    def test_shutdown_replies_and_exits_while_parent_stdin_stays_open(self):
+        env = dict(os.environ, PYTHONPATH=os.pathsep.join(str(ROOT / path) for path in ("game/core", "game/runtime")))
+        for version in (1, 2):
+            process = subprocess.Popen([sys.executable, "-u", "-m", "deidei_runtime.worker"], cwd=ROOT, env=env,
+                                       stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)
+            try:
+                profile = {**PROFILE, **({"rules_request": default_request(), "rule_pack_manifests": []} if version == 2 else {})}
+                frames = [("health", {}), ("start_solo", profile)]
+                replies = []
+                for op, payload in frames:
+                    process.stdin.write(json.dumps({"v": version, "id": op, "op": op, "payload": payload}) + "\n")
+                    process.stdin.flush()
+                    reply = json.loads(process.stdout.readline()); self.assertTrue(reply["ok"], reply)
+                    replies.append(reply)
+                view = replies[-1]["data"]
+                for op, payload in (("submit", {"view_id": view["view_id"], "entry_id": "Charge"}),
+                                    ("get_view", {}), ("leave", {}), ("shutdown", {})):
+                    process.stdin.write(json.dumps({"v": version, "id": op, "op": op, "payload": payload}) + "\n")
+                    process.stdin.flush()
+                    reply = json.loads(process.stdout.readline()); self.assertTrue(reply["ok"], reply)
+                    self.assertEqual((reply["v"], reply["id"]), (version, op))
+                self.assertFalse(process.stdin.closed)
+                self.assertEqual(process.wait(timeout=5), 0)
+                self.assertEqual(process.stderr.read(), "")
+                self.assertEqual(process.stdout.read(), "")
+            finally:
+                if process.poll() is None:
+                    process.kill(); process.wait(timeout=5)
+                for stream in (process.stdin, process.stdout, process.stderr):
+                    stream.close()
+
 
 if __name__ == "__main__":
     unittest.main()

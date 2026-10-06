@@ -68,4 +68,3 @@ def compatibility(state=None, declarations=None):
         if value in ("ZengYi", "ZengRewardBigBi", "forced_recovery"):
             missing.add(value)
     return {"missing_features": sorted(missing)}
-
