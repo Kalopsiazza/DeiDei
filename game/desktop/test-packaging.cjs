@@ -16,28 +16,36 @@ function bundle(platform) {
  fs.writeFileSync(executable,platform==='win32'?Buffer.from('MZ\0\0'):Buffer.from('cffaedfe','hex'),{mode:0o755});
  fs.writeFileSync(path.join(data,'catalog.json'),'{}');
  fs.writeFileSync(path.join(data,'../entry-map.json'),'{}');
- return {resourcesPath,executable,data,isPackaged:true,platform};
+ fs.writeFileSync(path.join(data,'../legacy-action-map-v1.json'),'{}');
+ const aiExecutable=path.join(resourcesPath,'ai-worker',platform==='win32'?'deidei-ai-worker.exe':'deidei-ai-worker');
+ fs.mkdirSync(path.dirname(aiExecutable),{recursive:true});
+ fs.writeFileSync(aiExecutable,platform==='win32'?Buffer.from('MZ\0\0'):Buffer.from('cffaedfe','hex'),{mode:0o755});
+ fs.mkdirSync(path.join(resourcesPath,'ai-worker/_internal/model'),{recursive:true});
+ fs.copyFileSync(path.join(__dirname,'../ai/model-manifest.json'),path.join(resourcesPath,'ai-worker/_internal/model-manifest.json'));
+ fs.copyFileSync(path.join(__dirname,'../../legacy/rl/rl_checkpoints/latest.zip'),path.join(resourcesPath,'ai-worker/_internal/model/latest.zip'));
+ return {resourcesPath,executable,aiExecutable,data,isPackaged:true,platform};
 }
 
 test('P08 packaged launch ignores developer variables and preserves OS environment',()=>{
  for(const platform of ['darwin','win32']) {
   const context=bundle(platform);
   try {
-   const inherited={DEIDEI_PYTHON:'/missing/python',PYTHONHOME:'/missing',PYTHONPATH:'/source',PYTHONSTARTUP:'/bad',_PYI_APPLICATION_HOME_DIR:'/bad',PYINSTALLER_RESET_ENVIRONMENT:'1',VIRTUAL_ENV:'/venv',CONDA_PREFIX:'/conda',CONDA_EXE:'/bad',PYENV_ROOT:'/bad',UV_PYTHON:'/bad',SystemRoot:'C:\\Windows',TEMP:'/tmp',HOME:'/profile',LANG:'zh_CN.UTF-8',PATH:'/os'};
+   const inherited={DEIDEI_AI_PYTHON:'/arbitrary/python',DEIDEI_AI_WORKER:'/arbitrary/worker',DEIDEI_AI_PATH:'/arbitrary/model',DEIDEI_PYTHON:'/missing/python',PYTHONHOME:'/missing',PYTHONPATH:'/source',PYTHONSTARTUP:'/bad',_PYI_APPLICATION_HOME_DIR:'/bad',PYINSTALLER_RESET_ENVIRONMENT:'1',VIRTUAL_ENV:'/venv',CONDA_PREFIX:'/conda',CONDA_EXE:'/bad',PYENV_ROOT:'/bad',UV_PYTHON:'/bad',SystemRoot:'C:\\Windows',TEMP:'/tmp',HOME:'/profile',LANG:'zh_CN.UTF-8',PATH:'/os'};
    const before={...inherited};const launch=workerLaunch(context,inherited);
    assert.equal(launch.executable,context.executable);assert.deepEqual(launch.args,[]);
-   assert.deepEqual(launch.env,{SystemRoot:'C:\\Windows',TEMP:'/tmp',HOME:'/profile',LANG:'zh_CN.UTF-8',PATH:'/os'});
+   assert.deepEqual(launch.env,{DEIDEI_AI_WORKER:context.aiExecutable,SystemRoot:'C:\\Windows',TEMP:'/tmp',HOME:'/profile',LANG:'zh_CN.UTF-8',PATH:'/os'});
    assert.deepEqual(inherited,before);
    const bridge=localBridge(context);assert.equal(bridge.executable,context.executable);assert.deepEqual(bridge.args,[]);
   }finally{fs.rmSync(context.resourcesPath,{recursive:true,force:true});}
  }
 });
 
-test('P09 missing worker/catalog/map, wrong binary or no executable bit never falls back',()=>{
- for(const broken of ['worker','catalog','entry-map','binary','permission']) {
+test('P09 missing core or AI worker/catalog/map, wrong binary or no executable bit never falls back',()=>{
+ for(const broken of ['worker','ai-worker','catalog','entry-map','binary','permission']) {
   const c=bundle('darwin');
   try {
    if(broken==='worker')fs.unlinkSync(c.executable);
+   if(broken==='ai-worker')fs.unlinkSync(c.aiExecutable);
    if(broken==='catalog')fs.unlinkSync(path.join(c.data,'catalog.json'));
    if(broken==='entry-map')fs.unlinkSync(path.join(c.data,'../entry-map.json'));
    if(broken==='binary')fs.writeFileSync(c.executable,'not executable');
@@ -52,6 +60,8 @@ test('P04 source launch retains module arguments and explicit developer Python',
  assert.equal(launch.executable,'/developer/python');assert.deepEqual(launch.args,['-u','-m','deidei_runtime.worker']);
  assert.equal(launch.env.PYTHONPATH,[path.resolve(__dirname,'../core'),path.resolve(__dirname,'../runtime')].join(path.delimiter));
  assert.equal(workerLaunch({},{}).executable,'python3');
+ const controlled=workerLaunch({aiPython:'/controlled/ai/python'},{DEIDEI_AI_PYTHON:'/arbitrary/python',DEIDEI_AI_WORKER:'/arbitrary/worker',HOME:'/profile'});
+ assert.equal(controlled.env.DEIDEI_AI_PYTHON,'/controlled/ai/python');assert.equal(controlled.env.DEIDEI_AI_WORKER,undefined);
 });
 
 test('R04 visual assets use an exact local allowlist',()=>{
@@ -158,4 +168,34 @@ test('R04 manual compilation input must be committed before native build',()=>{
   assert.notEqual(result.status,0);assert.match(result.stderr,/commit build inputs before building/);
   assert.ok(result.stderr.includes(relative));
  }finally{fs.rmSync(directory,{recursive:true,force:true});}
+});
+
+test('R05 contents verifier allows locked production modules and declared Python initialization, rejects added or changed resources',()=>{
+ const directory=fs.mkdtempSync(path.join(os.tmpdir(),'deidei-contents-'));
+ const stage=path.join(directory,'stage'),resources=path.join(directory,'resources'),app=path.join(resources,'app');
+ const put=(relative,value)=>{const file=path.join(directory,relative);fs.mkdirSync(path.dirname(file),{recursive:true});fs.writeFileSync(file,value);};
+ const run=()=>spawnSync(process.env.DEIDEI_PYTHON||'python3',[path.resolve(__dirname,'../packaging/verify-contents.py'),directory,resources],{encoding:'utf8'});
+ try{
+  put('stage/main.cjs',"module.exports=require('semver');\n");put('stage/package.json',JSON.stringify({name:'synthetic-package',version:'0.5.0',main:'main.cjs',dependencies:{semver:'7.8.5'}}));
+  const lock=require('./package-lock.json');put('stage/package-lock.json',JSON.stringify({packages:{'node_modules/semver':lock.packages['node_modules/semver']}}));
+  fs.cpSync(path.join(__dirname,'node_modules/semver'),path.join(stage,'node_modules/semver'),{recursive:true});
+  put('stage/build-info.json','{"version":"0.5.0"}');put('update-config.json','{"configured":false}');put('telemetry-config.json','{"schema_version":1,"origin":null}');put('PLAYER-README.txt','synthetic unit resource');
+  put('frozen/worker/_internal/base_library.zip','synthetic stdlib');put('frozen/ai-worker/_internal/trusted-init.pth','# declared Python initialization\n');
+  put('THIRD-PARTY/NOTICE.txt','synthetic unit license');
+  fs.mkdirSync(path.join(directory,'frozen/ai-worker/_internal/model'),{recursive:true});
+  fs.copyFileSync(path.resolve(__dirname,'../ai/model-manifest.json'),path.join(directory,'frozen/ai-worker/_internal/model-manifest.json'));
+  fs.copyFileSync(path.resolve(__dirname,'../../legacy/rl/rl_checkpoints/latest.zip'),path.join(directory,'frozen/ai-worker/_internal/model/latest.zip'));
+  put('package-plan.json',JSON.stringify({resources:[{from:'frozen/worker',to:'worker'},{from:'frozen/ai-worker',to:'ai-worker'},{from:'THIRD-PARTY',to:'THIRD-PARTY'}],macBinaries:[]}));
+  fs.cpSync(stage,app,{recursive:true});fs.unlinkSync(path.join(app,'package-lock.json'));
+  for(const name of ['worker','ai-worker'])fs.cpSync(path.join(directory,'frozen',name),path.join(resources,name),{recursive:true});
+  fs.cpSync(path.join(directory,'THIRD-PARTY'),path.join(resources,'THIRD-PARTY'),{recursive:true});
+  for(const name of ['update-config.json','telemetry-config.json','PLAYER-README.txt'])fs.copyFileSync(path.join(directory,name),path.join(resources,name));
+  fs.mkdirSync(path.join(directory,'evidence'));
+  let result=run();assert.equal(result.status,0,result.stderr);assert.equal(JSON.parse(result.stdout).production_packages,1);
+  assert.equal(require(path.join(app,'main.cjs')).valid('0.5.0'),'0.5.0','real locked semver module resolves from packaged app');
+  put('resources/ai-worker/_internal/rogue.pth','unlisted');result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/RESOURCE_WHITELIST_MISMATCH/);fs.unlinkSync(path.join(resources,'ai-worker/_internal/rogue.pth'));
+  put('resources/app/node_modules/rogue/package.json','{"name":"rogue","version":"1.0.0"}');result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/UNLOCKED_PRODUCTION_FILE/);fs.rmSync(path.join(app,'node_modules/rogue'),{recursive:true});
+  const packageFile=path.join(app,'node_modules/semver/package.json'),before=fs.readFileSync(packageFile),changed=JSON.parse(before);changed.version='0.0.0';fs.writeFileSync(packageFile,JSON.stringify(changed));result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/PRODUCTION_DEPENDENCY_MISMATCH/);fs.writeFileSync(packageFile,before);
+  put('frozen/ai-worker/_internal/rogue-model.pkl','unlisted model');put('resources/ai-worker/_internal/rogue-model.pkl','unlisted model');result=run();assert.notEqual(result.status,0);assert.match(result.stderr,/UNLISTED_MODEL_RESOURCE/);
+ }finally {fs.rmSync(directory,{recursive:true,force:true});}
 });

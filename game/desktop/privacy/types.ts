@@ -1,0 +1,5 @@
+import type {Reply} from '../types';
+export type PrivacyScope='preferences'|'performance';
+export type PrivacyState={recordLocal:boolean;persistedScopes:Record<PrivacyScope,boolean>;effectiveScopes:Record<PrivacyScope,boolean>;revision:number;stateToken:string;policyId:string;collectorOrigin:string|null;configured:boolean;secureStorageAvailable:boolean;status:string;warning:string|null;pendingReports:number;pendingDeletion:boolean;oldDestinations:string[];localDays:number;conflict?:boolean};
+export type PrivacyPreview=PrivacyState&{reports:unknown[];local:{version:number;days:unknown[]}};
+export type PrivacyBridge={read():Promise<Reply<PrivacyState>>;setScope(scope:PrivacyScope,value:boolean,expectedRevision:number,expectedStateToken:string):Promise<Reply<PrivacyState>>;stop():Promise<Reply<PrivacyState>>;preview():Promise<Reply<PrivacyPreview>>;setLocalRecording(value:boolean):Promise<Reply<PrivacyState>>;clearLocal():Promise<Reply<PrivacyState>>;deleteUploaded():Promise<Reply<PrivacyState>>};

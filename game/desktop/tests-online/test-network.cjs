@@ -1,3 +1,5 @@
+const classicRequest=()=>({schema_version:1,preset_id:'classic',skill_flags:Object.fromEntries(require('../rules/validation.cjs').SKILLS.map(k=>[k,true])),preset_params:{},pack_refs:[]});
+const expectedRules=()=>({expected_rules_revision:'1',expected_rules_hash:require('./fake.cjs').samples.state.rules_hash});
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {NetworkRoomPort}=require('../online/network-room-port.cjs');
@@ -12,7 +14,7 @@ function client(){
  return {port,time,sockets,socket,emitted};
 }
 function inRoom(phase='lobby'){
- const c=client();c.port.create({password:null,options:hello().policy_defaults && {turn_ms:12000,early_reveal:true,spectator_cap:6}});
+ const c=client();c.port.create({rules_request:classicRequest(),rule_pack_manifests:[],password:null,options:hello().policy_defaults && {turn_ms:12000,early_reveal:true,spectator_cap:6}});
  c.socket.ack(c.socket.sent.at(-1),{room_id:'room1',room_code:'ABCD2345'});c.socket.message(snapshot(phase));return c;
 }
 test('endpoint accepts loopback ws and valid wss; rejects remote plaintext and URL credentials',()=>{
@@ -29,14 +31,14 @@ test('credentials and local_id never enter any renderer state or broadcast',()=>
 });
 test('hello defaults drive client data, commands serialize, extra fields rejected',()=>{
  const c=client();assert.deepEqual(c.port.read().hello.policy_defaults,hello().policy_defaults);
- assert.throws(()=>c.port.create({password:null,options:{turn_ms:12000,early_reveal:true,spectator_cap:6},local_id:'x'}));
+ assert.throws(()=>c.port.create({rules_request:classicRequest(),rule_pack_manifests:[],password:null,options:{turn_ms:12000,early_reveal:true,spectator_cap:6},local_id:'x'}));
  c.port.join({room_code:'ABCD2345',password:'  keep  ',role:'player'});assert.equal(c.socket.sent.at(-1).payload.password,'  keep  ');
  assert.throws(()=>c.port.join({room_code:'ABCD2345',password:null,role:'spectator'}),/COMMAND_PENDING/);
  c.socket.fail(c.socket.sent.at(-1),'ROOM_FULL');assert.equal(c.port.read().pending,false);assert.equal(c.port.read().error.code,'ROOM_FULL');
  c.port.join({room_code:'ABCD2345',password:null,role:'spectator'});assert.equal(c.socket.sent.at(-1).command_seq,'2');
 });
 test('snapshot before create ack buffered, old sequence and unrelated room ignored',()=>{
- const c=client();c.port.create({password:null,options:{turn_ms:12000,early_reveal:true,spectator_cap:6}});
+ const c=client();c.port.create({rules_request:classicRequest(),rule_pack_manifests:[],password:null,options:{turn_ms:12000,early_reveal:true,spectator_cap:6}});
  c.socket.message(snapshot('lobby','9007199254740994'));assert.equal(c.port.read().snapshot,null);
  c.socket.ack(c.socket.sent.at(-1),{room_id:'room1',room_code:'ABCD2345'});assert.equal(c.port.read().snapshot.seq,'9007199254740994');
  c.socket.message(snapshot('selecting','9007199254740993'));assert.equal(c.port.read().snapshot.view.phase,'lobby');
@@ -50,22 +52,22 @@ test('late submit ack does not restore an old turn; same turn ack confirms only 
  assert.equal(d.port.read().confirmed.entry_id,'Charge');assert.throws(()=>d.port.submit(cmd.payload),/ALREADY_SUBMITTED/);
 });
 test('disconnect retries exact pending intent after resume and ignores the old generation',()=>{
- const c=inRoom();c.port.ready({room_id:'room1',ready:true});const command=c.socket.sent.at(-1);
+ const c=inRoom();c.port.ready({...expectedRules(),room_id:'room1',ready:true});const command=c.socket.sent.at(-1);
  c.socket.emit('close',{code:1006});assert.equal(c.port.read().status,'reconnecting');c.time.advance(1000);
  const socket=c.sockets[1];socket.message(hello());const resume=socket.sent[0];assert.equal(resume.op,'session.resume');
  const {resume_token,...data}=identity;socket.ack(resume,{...data,last_command_seq:'8'});assert.deepEqual(socket.sent.at(-1),command);
  c.socket.fail(command,'NOT_HOST');c.socket.message(snapshot('selecting','999'));c.socket.emit('close',{code:1006});assert.equal(c.port.read().status,'connected');assert.equal(c.port.read().snapshot.seq,'1');
- socket.ack(command,{room_id:'room1',ready:true});c.port.ready({room_id:'room1',ready:false});assert.equal(socket.sent.at(-1).command_seq,'9');
+ socket.ack(command,{room_id:'room1',ready:true,ready_rules_hash:require('./fake.cjs').samples.state.rules_hash});c.port.ready({...expectedRules(),room_id:'room1',ready:false});assert.equal(socket.sent.at(-1).command_seq,'9');
 });
 test('ack timeout reconnects; sync serializes after resume and failed commands never auto retry',()=>{
- const c=inRoom();c.port.ready({room_id:'room1',ready:true});c.socket.fail(c.socket.sent.at(-1),'SERVER_BUSY');const count=c.socket.sent.length;
+ const c=inRoom();c.port.ready({...expectedRules(),room_id:'room1',ready:true});c.socket.fail(c.socket.sent.at(-1),'SERVER_BUSY');const count=c.socket.sent.length;
  c.time.advance(5000);assert.equal(c.socket.sent.length,count);
  c.socket.emit('close',{code:1006});c.time.advance(1000);const s=c.sockets[1];s.message(hello());const {resume_token,...data}=identity;s.ack(s.sent.at(-1),{...data,last_command_seq:'2'});
- assert.equal(s.sent.at(-1).op,'room.sync');assert.throws(()=>c.port.ready({room_id:'room1',ready:true}),/COMMAND_PENDING/);
+ assert.equal(s.sent.at(-1).op,'room.sync');assert.throws(()=>c.port.ready({...expectedRules(),room_id:'room1',ready:true}),/COMMAND_PENDING/);
  c.time.advance(5000);assert.equal(c.port.read().status,'reconnecting');
 });
 test('explicit disconnected leave cancels pending, timers and late snapshots',()=>{
- const c=inRoom();c.port.ready({room_id:'room1',ready:true});c.socket.emit('close',{code:1006});c.port.leave();c.time.advance(10000);
+ const c=inRoom();c.port.ready({...expectedRules(),room_id:'room1',ready:true});c.socket.emit('close',{code:1006});c.port.leave();c.time.advance(10000);
  c.socket.message(snapshot('selecting','99'));assert.equal(c.sockets.length,1);assert.equal(c.port.read().snapshot,null);assert.equal(c.time.timers.size,0);
 });
 test('room leave ack revokes receiving old room; session replacement and server reboot terminate',()=>{

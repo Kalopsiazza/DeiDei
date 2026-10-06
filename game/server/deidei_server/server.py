@@ -17,7 +17,8 @@ from uuid import uuid4
 from websockets.asyncio.server import serve
 from websockets.exceptions import ConnectionClosed
 from deidei_core.api import new_match
-from .protocol import Rejected, ack, dumps, parse, policy as load_policy, require, validate, TURN_TIMES, request_uuid
+from .protocol import Rejected, ack, dumps, parse, policy as load_policy, require, validate, TURN_TIMES, request_uuid, rules_config
+from deidei_core.rules import RULES_VERSION, MAX_PACK_BYTES
 from .room import Room
 from .transport_tls import validate_bind
 
@@ -142,6 +143,7 @@ class RoomServer:
         self.new_match_factory = new_match_factory or new_match
         self.rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
         self.token_rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
+        self.lucky_rng = Random(rng.getrandbits(256)) if rng is not None else SystemRandom()
         self.timeout_chooser = timeout_chooser or (lambda state, options: self.rng.choice(options)['entry_id'])
         self.boot_id = str(uuid4())
         self.sessions, self.by_player, self.rooms, self.codes = {}, {}, {}, {}
@@ -308,13 +310,14 @@ class RoomServer:
         if op in ('room.create', 'room.join'):
             require(s.room_id is None, 'ALREADY_IN_ROOM')
             if op == 'room.create':
+                snapshot, manifests = rules_config(p['rules_request'], p['rule_pack_manifests'])
                 require(sum(r.phase != 'closed' for r in self.rooms.values()) < 64, 'SERVER_BUSY')
                 require(p['options']['spectator_cap'] <= self.policy['spectator_cap'], 'INVALID_MESSAGE', 'spectator_cap')
                 alphabet = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
                 code = ''.join(secrets.choice(alphabet) for _ in range(8))
                 while code in self.used_codes:
                     code = ''.join(secrets.choice(alphabet) for _ in range(8))
-                room = Room(self, s, code, self.policy | p['options'], checked)
+                room = Room(self, s, code, self.policy | p['options'], checked, snapshot, manifests)
                 self.rooms[room.id], self.codes[code] = room, room.id
                 self.used_codes.add(code)
                 return dict(room_id=room.id, room_code=code)
@@ -396,9 +399,10 @@ class RoomServer:
         self.connections.add(c)
         writer = asyncio.create_task(c.writer())
         c.put(dict(v=1, type='hello', boot_id=self.boot_id, connection_id=c.id,
-            protocol='rooms-1.1', rules_version='classic-1.0.1', server_time_ms=self.to_public(self.clock.now_ms()),
+            protocol='rooms-1.2', rules_version=RULES_VERSION, server_time_ms=self.to_public(self.clock.now_ms()),
             policy_defaults=dict(self.policy), capabilities=dict(max_players=6, allowed_turn_ms=TURN_TIMES,
-                                                                spectator_max=self.policy['spectator_cap'])))
+                                                                spectator_max=self.policy['spectator_cap'],
+                rules_schema=1, core_state_schema=2, rules_pack_api='deidei.rules-pack.v1', max_pack_bytes=MAX_PACK_BYTES)))
         auth_deadline = time.monotonic() + 5
         try:
             while True:

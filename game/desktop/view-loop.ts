@@ -33,7 +33,7 @@ export function ddText(raw: string): string {
 }
 
 
-export type PlayedMove={matchId:string;gameId:string;turnId:string;turn:string;name:string;entryId:string;actualMove:string;branch:string|null;isRecovery:boolean};
+export type PlayedMove={matchId:string;gameId:string;turnId:string;turn:string;name:string;entryId:string;actualMove:string;branch:string|null;isRecovery:boolean;decisionSource?:string;baseMove?:string;origin?:string;upgrade?:import('./types').PublicRound['actions'][string]['upgrade'];spend?:import('./types').Resources};
 export type PublicHistory={match_id:string;game_id:string;moves:Record<string,PlayedMove[]>;turns:string[];next_game_id:string|null;previous_game_missing:boolean};
 export const emptyHistory:PublicHistory={match_id:'',game_id:'',moves:{},turns:[],next_game_id:null,previous_game_missing:false};
 
@@ -45,8 +45,10 @@ export function recordPublicRound(previous:PublicHistory,view:DesktopView,manual
  if(!round||history.turns.includes(round.turn_index))return history;
  const moves={...history.moves};
  for(const [pid,action] of Object.entries(round.actions)){
-  const name=action.is_recovery?'曾义休整':manual.entries.find(entry=>entry.entry_id===action.entry_id)?.name||action.entry_id;
-  moves[pid]=[...(moves[pid]||[]),{matchId:round.match_id,gameId:round.game_id,turnId:round.turn_id,turn:round.turn_index,name,entryId:action.entry_id,actualMove:action.actual_move,branch:action.branch,isRecovery:action.is_recovery}];
+  const declared=manual.entries.find(entry=>entry.entry_id===action.entry_id)?.name||action.entry_id;
+  const actual=manual.entries.find(entry=>entry.entry_id===action.actual_move)?.name||action.actual_move;
+  const name=action.is_recovery?'曾义休整':action.upgrade?`${declared} → ${actual} · 幸运`:declared;
+  moves[pid]=[...(moves[pid]||[]),{matchId:round.match_id,gameId:round.game_id,turnId:round.turn_id,turn:round.turn_index,name,entryId:action.entry_id,actualMove:action.actual_move,branch:action.branch,isRecovery:action.is_recovery,decisionSource:pid===view.self_id?'human':view.decision_source||undefined,baseMove:action.base_move,origin:action.origin,upgrade:action.upgrade,spend:action.spend}];
  }
  // ponytail: keep every received public round in this game; display caps belong to the seats/sidebar.
  return {...history,moves,turns:[...history.turns,round.turn_index],next_game_id:round.next_game_id};

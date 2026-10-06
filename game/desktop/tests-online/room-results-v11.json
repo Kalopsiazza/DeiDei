@@ -1,25 +1,28 @@
 {
   "source": "real Room + real core; synthetic clock/session container; no socket",
-  "service_head": "0f114284492417ec61634895c485d73417ff1b49",
-  "service_dirty": true,
+  "service_head": "51f7d55bb294b169ef5528a5e69e2c7ae818c3c9",
+  "service_dirty": false,
+  "capture_sha256": "ffae25ffe528b06837ecc717ac060aa3bd4f8a294a552012c0413299f54c52dc",
   "source_sha256": {
     "game/server/deidei_server/__init__.py": "3e37e37e633d31ac8afad5970c7d57cf076583c0994997ec031b270a3e9bb32f",
-    "game/server/deidei_server/__main__.py": "f91c681d82c171bb104b120458d9e4e352d92b0cd218b8de6363ccb7773762d3",
-    "game/server/deidei_server/protocol.py": "a604a984c135903f39e72d9bc83e414a78d9592bc280ac0e9ca2f9a7cb2f0fc8",
-    "game/server/deidei_server/room.py": "90396c19ee497822ce4edf44db28d6393a8152f66a33f80dd9cbc12b08f88cb6",
-    "game/server/deidei_server/server.py": "97c77e1ce7604b8d6014719d75fa242cba0a16ab372851926bf58a6292d52f72",
+    "game/server/deidei_server/__main__.py": "b425a41e9bcd8b315557322a44217f6555919d13d56287c1fddde834603717ac",
+    "game/server/deidei_server/protocol.py": "3a80854bf51431af66c52a79ce554c8018354ef088a125063408a17eff383511",
+    "game/server/deidei_server/room.py": "115ad195d1138ad3d379d0c42bb47aa2f1a2e796c9895067c8792d6beae7d0ab",
+    "game/server/deidei_server/server.py": "ea08ab3bada3406459a80db4e6236982ecc5d4946a82058cf5d5145ab8864b91",
     "game/server/deidei_server/testing.py": "3a2e015dc5984c7ffcd3e7e82dd16150e67749c613ff4ef352ff7971434cb354",
+    "game/server/deidei_server/transport_tls.py": "e7b1e6c98c79c7b1ea73376043a9e2640cd2c6b27dcaa318a1ee00a146f9f22e",
     "game/core/deidei_core/__init__.py": "4de766565b2189aeda70810daf68619f590963c3c4c70ec1ac5175c9abf4ae88",
-    "game/core/deidei_core/api.py": "190a6741f91c7cbfa775ea40edc0604997425cebbd888dbb91f2237fc10b3691",
-    "game/core/deidei_core/engine.py": "1d63b6a07350a1c047ac0a3fa6662fefaea265e7272e4eeb34fe345be9b26fd2",
-    "game/core/deidei_core/entries.py": "478f1dd6e38746ff2241eccb7729653635f171c16206511ec3e9537099e51295",
-    "game/core/deidei_core/wire.py": "e2b29078ddf198144ba0332ca977a4ea4af59df8ae12fd2fb73a4e750a212959"
+    "game/core/deidei_core/api.py": "4cac46a6146e5d61714e0def900c8b91e1f419dcc30ccf5bb4e23e5679e4f561",
+    "game/core/deidei_core/engine.py": "67cb242ed28f13fa6b695d125b2a48beefe25ce52a1e994d6ee096103f3302ed",
+    "game/core/deidei_core/entries.py": "1397c2641d8f407c5d50eda4d978035652a825bdf770a486388e14e1aec48f5c",
+    "game/core/deidei_core/rules.py": "f4f40ddd91324b9265ce96e09c2f72f29f56711c810a64a1518f1852b27650a5",
+    "game/core/deidei_core/wire.py": "b89edd30745d190a36f2347e02f8df77e6f8e3e21acf9b7ab59d9f1380327e17"
   },
   "frames": {
     "ordinary_reveal": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "bbafc278-f19e-418e-a5d8-5a12140516bd",
+      "room_id": "bc33c9f9-3ff1-435a-875c-cbf89d4491cb",
       "seq": "9",
       "server_time_ms": 1800000000300,
       "view": {
@@ -33,7 +36,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -45,6 +48,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -57,6 +61,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -69,20 +74,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
+          "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
           "mode_at_start": "duel",
-          "turn_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1:t1",
+          "turn_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-            "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+            "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -130,7 +136,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -147,12 +180,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1:t1",
+            "turn_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-                "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+                "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -206,6 +239,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -231,6 +266,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -249,7 +286,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "A",
@@ -265,7 +302,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -281,7 +318,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -298,7 +335,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -317,10 +354,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-                "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+                "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "game_index": "1",
                 "turn_index": "2",
                 "roster": [
@@ -368,27 +405,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "continue_game",
-                "from_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
-                "to_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "from_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
+                "to_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "winner_id": null
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "continue_game",
-              "from_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
-              "to_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+              "from_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
+              "to_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-              "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+              "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
               "game_index": "1",
               "turn_index": "2",
               "roster": [
@@ -436,7 +500,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -445,6 +536,34 @@
           },
           "effective_outcome": null
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -458,8 +577,8 @@
         },
         "timer": {
           "kind": "reveal",
-          "deadline_at_ms": 1800000001800,
-          "remaining_ms": 1500
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
         },
         "pause": null,
         "close_reason": null
@@ -468,9 +587,9 @@
     "ordinary_next": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "bbafc278-f19e-418e-a5d8-5a12140516bd",
+      "room_id": "bc33c9f9-3ff1-435a-875c-cbf89d4491cb",
       "seq": "10",
-      "server_time_ms": 1800000001800,
+      "server_time_ms": 1800000005300,
       "view": {
         "source": "online",
         "room_code": "ABCD1234",
@@ -482,7 +601,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -494,6 +613,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "thinking",
             "absence_count": 0
@@ -506,6 +626,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "thinking",
             "absence_count": 0
@@ -518,20 +639,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
+          "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
           "mode_at_start": "duel",
-          "turn_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1:t2",
+          "turn_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1:t2",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-            "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+            "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
             "game_index": "1",
             "turn_index": "2",
             "roster": [
@@ -579,7 +701,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -596,12 +745,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1:t1",
+            "turn_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-                "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+                "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -655,6 +804,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -680,6 +831,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -698,7 +851,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "A",
@@ -714,7 +867,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -730,7 +883,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -747,7 +900,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"b8791669-a8fb-429c-922c-cbc877a8c59b\",\"b8791669-a8fb-429c-922c-cbc877a8c59b:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"ff57ef4c-0f0c-481c-8158-9138242ed40f\",\"ff57ef4c-0f0c-481c-8158-9138242ed40f:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -766,10 +919,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-                "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+                "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "game_index": "1",
                 "turn_index": "2",
                 "roster": [
@@ -817,27 +970,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "continue_game",
-                "from_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
-                "to_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+                "from_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
+                "to_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
                 "winner_id": null
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "continue_game",
-              "from_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
-              "to_game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+              "from_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
+              "to_game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "b8791669-a8fb-429c-922c-cbc877a8c59b",
-              "game_id": "b8791669-a8fb-429c-922c-cbc877a8c59b:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f",
+              "game_id": "ff57ef4c-0f0c-481c-8158-9138242ed40f:g1",
               "game_index": "1",
               "turn_index": "2",
               "roster": [
@@ -885,7 +1065,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -894,6 +1101,34 @@
           },
           "effective_outcome": null
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -907,7 +1142,7 @@
         },
         "timer": {
           "kind": "select",
-          "deadline_at_ms": 1800000011800,
+          "deadline_at_ms": 1800000015300,
           "remaining_ms": 10000
         },
         "pause": null,
@@ -917,7 +1152,7 @@
     "rules_winner_reveal": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "15aa8919-16bc-4dee-93d8-80fc09952155",
+      "room_id": "ea76cd09-6922-452e-a307-ebec8740e9d1",
       "seq": "9",
       "server_time_ms": 1800000000300,
       "view": {
@@ -931,7 +1166,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -943,6 +1178,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -955,6 +1191,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -967,20 +1204,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
+          "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
           "mode_at_start": "duel",
-          "turn_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1:t1",
+          "turn_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-            "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+            "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -1028,7 +1266,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -1045,12 +1310,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1:t1",
+            "turn_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-                "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+                "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [
@@ -1108,6 +1373,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "6",
+                    "base_move": "Bi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "6",
                       "lightning": "0",
@@ -1138,6 +1405,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -1156,7 +1425,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "attack",
                     "actor_id": "A",
@@ -1173,7 +1442,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -1189,7 +1458,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -1206,7 +1475,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
                     "phase": "P4",
                     "kind": "resource_spend",
                     "actor_id": "A",
@@ -1222,7 +1491,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -1241,10 +1510,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-                "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+                "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -1291,27 +1560,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "sole_survivor",
-                "from_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
-                "to_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "from_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
+                "to_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "winner_id": "A"
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "sole_survivor",
-              "from_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
-              "to_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+              "from_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
+              "to_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
               "winner_id": "A"
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-              "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+              "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -1358,7 +1654,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -1371,6 +1694,34 @@
             "reason": "rules"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -1384,8 +1735,8 @@
         },
         "timer": {
           "kind": "reveal",
-          "deadline_at_ms": 1800000001800,
-          "remaining_ms": 1500
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
         },
         "pause": null,
         "close_reason": null
@@ -1394,9 +1745,9 @@
     "rules_winner_next": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "15aa8919-16bc-4dee-93d8-80fc09952155",
+      "room_id": "ea76cd09-6922-452e-a307-ebec8740e9d1",
       "seq": "10",
-      "server_time_ms": 1800000001800,
+      "server_time_ms": 1800000005300,
       "view": {
         "source": "online",
         "room_code": "ABCD1234",
@@ -1408,7 +1759,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -1420,6 +1771,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -1432,6 +1784,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -1444,20 +1797,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
+          "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
           "mode_at_start": "duel",
-          "turn_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1:t1",
+          "turn_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-            "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+            "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -1504,7 +1858,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -1521,12 +1902,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1:t1",
+            "turn_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-                "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+                "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [
@@ -1584,6 +1965,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "6",
+                    "base_move": "Bi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "6",
                       "lightning": "0",
@@ -1614,6 +1997,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -1632,7 +2017,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "attack",
                     "actor_id": "A",
@@ -1649,7 +2034,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -1665,7 +2050,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -1682,7 +2067,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
                     "phase": "P4",
                     "kind": "resource_spend",
                     "actor_id": "A",
@@ -1698,7 +2083,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6\",\"873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1\",\"e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -1717,10 +2102,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-                "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+                "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -1767,27 +2152,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "sole_survivor",
-                "from_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
-                "to_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+                "from_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
+                "to_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
                 "winner_id": "A"
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "sole_survivor",
-              "from_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
-              "to_game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+              "from_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
+              "to_game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
               "winner_id": "A"
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6",
-              "game_id": "873cf822-28f0-43ae-b5a8-0d3a53b5d5e6:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1",
+              "game_id": "e1dc7cec-16c1-438e-ad3c-daf212d21ab1:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -1834,7 +2246,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -1847,6 +2286,34 @@
             "reason": "rules"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": null,
         "host_recovery": null,
@@ -1870,7 +2337,7 @@
     "rules_nobody_reveal": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "6574f9b1-1b14-4d69-87f1-70bf46f7b72f",
+      "room_id": "6f363e04-4a98-4f01-ad3e-802963258548",
       "seq": "9",
       "server_time_ms": 1800000000300,
       "view": {
@@ -1884,7 +2351,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -1896,6 +2363,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -1908,6 +2376,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -1920,20 +2389,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
+          "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
           "mode_at_start": "duel",
-          "turn_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1:t1",
+          "turn_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-            "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+            "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -1981,7 +2451,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -1998,12 +2495,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1:t1",
+            "turn_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-                "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+                "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -2060,6 +2557,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -2090,6 +2589,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -2113,7 +2614,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "A",
@@ -2129,7 +2630,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P2\",\"self_elimination\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P2\",\"self_elimination\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "B",
@@ -2145,7 +2646,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -2162,7 +2663,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -2181,10 +2682,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-                "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+                "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -2229,27 +2730,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "nobody_survives",
-                "from_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
-                "to_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "from_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
+                "to_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "winner_id": null
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "nobody_survives",
-              "from_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
-              "to_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+              "from_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
+              "to_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-              "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+              "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -2294,7 +2822,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -2307,6 +2862,34 @@
             "reason": "rules"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -2320,8 +2903,8 @@
         },
         "timer": {
           "kind": "reveal",
-          "deadline_at_ms": 1800000001800,
-          "remaining_ms": 1500
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
         },
         "pause": null,
         "close_reason": null
@@ -2330,9 +2913,9 @@
     "rules_nobody_next": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "6574f9b1-1b14-4d69-87f1-70bf46f7b72f",
+      "room_id": "6f363e04-4a98-4f01-ad3e-802963258548",
       "seq": "10",
-      "server_time_ms": 1800000001800,
+      "server_time_ms": 1800000005300,
       "view": {
         "source": "online",
         "room_code": "ABCD1234",
@@ -2344,7 +2927,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -2356,6 +2939,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -2368,6 +2952,7 @@
             "seat": 1,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -2380,20 +2965,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
+          "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
           "mode_at_start": "duel",
-          "turn_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1:t1",
+          "turn_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-            "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+            "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -2438,7 +3024,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -2455,12 +3068,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1:t1",
+            "turn_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-                "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+                "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -2517,6 +3130,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -2547,6 +3162,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -2570,7 +3187,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "A",
@@ -2586,7 +3203,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P2\",\"self_elimination\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P2\",\"self_elimination\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "B",
@@ -2602,7 +3219,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -2619,7 +3236,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf\",\"a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf\",\"cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -2638,10 +3255,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-                "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+                "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -2686,27 +3303,54 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "nobody_survives",
-                "from_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
-                "to_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+                "from_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
+                "to_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
                 "winner_id": null
               }
             },
             "room_forfeits": [],
             "effective_transition": {
               "kind": "nobody_survives",
-              "from_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
-              "to_game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+              "from_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
+              "to_game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf",
-              "game_id": "a1f24036-cfab-4c3e-950b-9bc1c22dceaf:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf",
+              "game_id": "cf5a941d-1a3e-4018-9ca3-74aa2abf4ddf:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -2751,7 +3395,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -2764,6 +3435,34 @@
             "reason": "rules"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": null,
         "host_recovery": null,
@@ -2787,7 +3486,7 @@
     "forfeit_winner_reveal": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "a16ba0e6-f6f3-434c-ac39-bd6d4cf70f03",
+      "room_id": "bcb701f5-47dd-4550-9a2e-bf38a6cdff62",
       "seq": "10",
       "server_time_ms": 1800000000300,
       "view": {
@@ -2801,7 +3500,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -2813,6 +3512,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -2825,20 +3525,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
+          "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
           "mode_at_start": "duel",
-          "turn_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1:t1",
+          "turn_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-            "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+            "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -2886,7 +3587,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -2903,12 +3631,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1:t1",
+            "turn_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-                "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+                "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -2962,6 +3690,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -2987,6 +3717,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -3005,7 +3737,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "A",
@@ -3021,7 +3753,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -3037,7 +3769,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -3054,7 +3786,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -3073,10 +3805,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-                "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+                "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "game_index": "1",
                 "turn_index": "2",
                 "roster": [
@@ -3124,12 +3856,39 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "continue_game",
-                "from_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
-                "to_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "from_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
+                "to_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "winner_id": null
               }
             },
@@ -3141,15 +3900,15 @@
             ],
             "effective_transition": {
               "kind": "sole_survivor",
-              "from_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
-              "to_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+              "from_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
+              "to_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
               "winner_id": "A"
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-              "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+              "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -3196,7 +3955,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -3209,6 +3995,34 @@
             "reason": "room_forfeit"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -3222,8 +4036,8 @@
         },
         "timer": {
           "kind": "reveal",
-          "deadline_at_ms": 1800000001800,
-          "remaining_ms": 1500
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
         },
         "pause": null,
         "close_reason": null
@@ -3232,9 +4046,9 @@
     "forfeit_winner_next": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "a16ba0e6-f6f3-434c-ac39-bd6d4cf70f03",
+      "room_id": "bcb701f5-47dd-4550-9a2e-bf38a6cdff62",
       "seq": "11",
-      "server_time_ms": 1800000001800,
+      "server_time_ms": 1800000005300,
       "view": {
         "source": "online",
         "room_code": "ABCD1234",
@@ -3246,7 +4060,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -3258,6 +4072,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "active",
             "submission_state": "submitted",
             "absence_count": 0
@@ -3270,20 +4085,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
+          "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
           "mode_at_start": "duel",
-          "turn_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1:t1",
+          "turn_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-            "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+            "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -3330,7 +4146,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -3347,12 +4190,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1:t1",
+            "turn_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-                "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+                "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -3406,6 +4249,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -3431,6 +4276,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -3449,7 +4296,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P2\",\"resource_gain\",\"A\",\"A\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "A",
@@ -3465,7 +4312,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -3481,7 +4328,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -3498,7 +4345,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"3950a292-1460-4050-b781-e6b5fbaec6c0\",\"3950a292-1460-4050-b781-e6b5fbaec6c0:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"f898762b-11e0-4d27-8007-329b7a84f265\",\"f898762b-11e0-4d27-8007-329b7a84f265:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -3517,10 +4364,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-                "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+                "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "game_index": "1",
                 "turn_index": "2",
                 "roster": [
@@ -3568,12 +4415,39 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "continue_game",
-                "from_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
-                "to_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+                "from_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
+                "to_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
                 "winner_id": null
               }
             },
@@ -3585,15 +4459,15 @@
             ],
             "effective_transition": {
               "kind": "sole_survivor",
-              "from_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
-              "to_game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+              "from_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
+              "to_game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
               "winner_id": "A"
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "3950a292-1460-4050-b781-e6b5fbaec6c0",
-              "game_id": "3950a292-1460-4050-b781-e6b5fbaec6c0:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "f898762b-11e0-4d27-8007-329b7a84f265",
+              "game_id": "f898762b-11e0-4d27-8007-329b7a84f265:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -3640,7 +4514,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -3653,6 +4554,34 @@
             "reason": "room_forfeit"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": null,
         "host_recovery": null,
@@ -3676,7 +4605,7 @@
     "forfeit_nobody_reveal": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "9a063131-cf6c-43f5-a1a6-f7f958deebf0",
+      "room_id": "4987a6d7-a4a3-474b-aa63-6933636a4444",
       "seq": "10",
       "server_time_ms": 1800000000300,
       "view": {
@@ -3690,7 +4619,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -3702,6 +4631,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -3714,20 +4644,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
+          "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
           "mode_at_start": "duel",
-          "turn_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1:t1",
+          "turn_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-            "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+            "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -3775,7 +4706,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -3792,12 +4750,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1:t1",
+            "turn_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-                "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+                "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -3853,6 +4811,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -3883,6 +4843,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -3901,7 +4863,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "A",
@@ -3917,7 +4879,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -3933,7 +4895,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -3950,7 +4912,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -3969,10 +4931,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-                "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+                "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -4019,12 +4981,39 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "sole_survivor",
-                "from_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
-                "to_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "from_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
+                "to_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "winner_id": "B"
               }
             },
@@ -4036,15 +5025,15 @@
             ],
             "effective_transition": {
               "kind": "nobody_survives",
-              "from_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
-              "to_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+              "from_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
+              "to_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-              "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+              "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -4089,7 +5078,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -4102,6 +5118,34 @@
             "reason": "room_forfeit"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": 10000,
         "host_recovery": null,
@@ -4115,8 +5159,8 @@
         },
         "timer": {
           "kind": "reveal",
-          "deadline_at_ms": 1800000001800,
-          "remaining_ms": 1500
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
         },
         "pause": null,
         "close_reason": null
@@ -4125,9 +5169,9 @@
     "forfeit_nobody_next": {
       "v": 1,
       "type": "snapshot",
-      "room_id": "9a063131-cf6c-43f5-a1a6-f7f958deebf0",
+      "room_id": "4987a6d7-a4a3-474b-aa63-6933636a4444",
       "seq": "11",
-      "server_time_ms": 1800000001800,
+      "server_time_ms": 1800000005300,
       "view": {
         "source": "online",
         "room_code": "ABCD1234",
@@ -4139,7 +5183,7 @@
           "early_reveal": true,
           "spectator_cap": 6,
           "host_disconnect_grace_ms": 30000,
-          "reveal_ms": 1500,
+          "reveal_ms": 5000,
           "min_select_ms": 300
         },
         "members": [
@@ -4151,6 +5195,7 @@
             "seat": 0,
             "connected": true,
             "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
             "participation": "eliminated",
             "submission_state": "submitted",
             "absence_count": 0
@@ -4163,20 +5208,21 @@
             "seat": null,
             "connected": true,
             "ready": false,
+            "ready_rules_hash": null,
             "participation": "spectating",
             "submission_state": "out",
             "absence_count": 0
           }
         ],
         "match": {
-          "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
+          "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
           "mode_at_start": "duel",
-          "turn_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1:t1",
+          "turn_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1:t1",
           "public_state": {
-            "schema_version": 1,
-            "rules_version": "classic-1.0.1",
-            "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-            "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+            "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
             "game_index": "1",
             "turn_index": "1",
             "roster": [
@@ -4221,7 +5267,34 @@
                 "reward_due_turn": null,
                 "pending_bombs": []
               }
-            }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
           },
           "roster_profiles": [
             {
@@ -4238,12 +5311,12 @@
             }
           ],
           "last_turn": {
-            "turn_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1:t1",
+            "turn_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1:t1",
             "core_resolution": {
               "ok": true,
               "ledger": {
-                "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-                "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+                "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "turn_index": "1",
                 "kills": {
                   "A": [],
@@ -4299,6 +5372,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "SelfBi",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -4329,6 +5404,8 @@
                     "eligible_targets": [],
                     "enhanced_xiao": false,
                     "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
                     "spend": {
                       "dd6": "0",
                       "lightning": "0",
@@ -4347,7 +5424,7 @@
                 },
                 "events": [
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P2\",\"self_elimination\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P2",
                     "kind": "self_elimination",
                     "actor_id": "A",
@@ -4363,7 +5440,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
                     "phase": "P2",
                     "kind": "resource_gain",
                     "actor_id": "B",
@@ -4379,7 +5456,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "A",
@@ -4396,7 +5473,7 @@
                     "reason_code": null
                   },
                   {
-                    "event_id": "[\"770329c5-8571-475f-ae15-b0a031e20c12\",\"770329c5-8571-475f-ae15-b0a031e20c12:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "event_id": "[\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924\",\"5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
                     "phase": "P4",
                     "kind": "history_updated",
                     "actor_id": "B",
@@ -4415,10 +5492,10 @@
                 ]
               },
               "next_state": {
-                "schema_version": 1,
-                "rules_version": "classic-1.0.1",
-                "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-                "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+                "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "game_index": "1",
                 "turn_index": "1",
                 "roster": [
@@ -4465,12 +5542,39 @@
                     "reward_due_turn": null,
                     "pending_bombs": []
                   }
-                }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
               },
               "transition": {
                 "kind": "sole_survivor",
-                "from_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
-                "to_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+                "from_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
+                "to_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
                 "winner_id": "B"
               }
             },
@@ -4482,15 +5586,15 @@
             ],
             "effective_transition": {
               "kind": "nobody_survives",
-              "from_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
-              "to_game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+              "from_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
+              "to_game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
               "winner_id": null
             },
             "effective_state": {
-              "schema_version": 1,
-              "rules_version": "classic-1.0.1",
-              "match_id": "770329c5-8571-475f-ae15-b0a031e20c12",
-              "game_id": "770329c5-8571-475f-ae15-b0a031e20c12:g1",
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924",
+              "game_id": "5678aa29-20be-4c57-b1a0-f7ed5d0e5924:g1",
               "game_index": "1",
               "turn_index": "1",
               "roster": [
@@ -4535,7 +5639,34 @@
                   "reward_due_turn": null,
                   "pending_bombs": []
                 }
-              }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
             },
             "action_sources": {
               "A": "human",
@@ -4548,6 +5679,34 @@
             "reason": "room_forfeit"
           }
         },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
         "policy_revision": "1",
         "current_turn_ms": null,
         "host_recovery": null,
@@ -4563,6 +5722,1559 @@
           "kind": "none",
           "deadline_at_ms": null,
           "remaining_ms": null
+        },
+        "pause": null,
+        "close_reason": null
+      }
+    },
+    "restart_survivors_reveal": {
+      "v": 1,
+      "type": "snapshot",
+      "room_id": "0467694b-7626-416f-8bc8-133d064e4b19",
+      "seq": "12",
+      "server_time_ms": 1800000000300,
+      "view": {
+        "source": "online",
+        "room_code": "ABCD1234",
+        "host_id": "A",
+        "phase": "revealing",
+        "has_password": false,
+        "policy": {
+          "turn_ms": 10000,
+          "early_reveal": true,
+          "spectator_cap": 6,
+          "host_disconnect_grace_ms": 30000,
+          "reveal_ms": 5000,
+          "min_select_ms": 300
+        },
+        "members": [
+          {
+            "player_id": "A",
+            "nickname": "A",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 0,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "active",
+            "submission_state": "submitted",
+            "absence_count": 0
+          },
+          {
+            "player_id": "B",
+            "nickname": "B",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 1,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "eliminated",
+            "submission_state": "submitted",
+            "absence_count": 0
+          },
+          {
+            "player_id": "C",
+            "nickname": "C",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 2,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "active",
+            "submission_state": "submitted",
+            "absence_count": 0
+          },
+          {
+            "player_id": "Z",
+            "nickname": "Z",
+            "avatar_id": "leaf",
+            "role": "spectator",
+            "seat": null,
+            "connected": true,
+            "ready": false,
+            "ready_rules_hash": null,
+            "participation": "spectating",
+            "submission_state": "out",
+            "absence_count": 0
+          }
+        ],
+        "match": {
+          "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+          "mode_at_start": "multiplayer",
+          "turn_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1:t1",
+          "public_state": {
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+            "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+            "game_index": "1",
+            "turn_index": "1",
+            "roster": [
+              "A",
+              "B",
+              "C"
+            ],
+            "active_ids": [
+              "A",
+              "B",
+              "C"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": null,
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              },
+              "B": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": null,
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              },
+              "C": {
+                "dd6": "6",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": null,
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+          },
+          "roster_profiles": [
+            {
+              "player_id": "A",
+              "nickname": "A",
+              "avatar_id": "leaf",
+              "seat": 0
+            },
+            {
+              "player_id": "B",
+              "nickname": "B",
+              "avatar_id": "leaf",
+              "seat": 1
+            },
+            {
+              "player_id": "C",
+              "nickname": "C",
+              "avatar_id": "leaf",
+              "seat": 2
+            }
+          ],
+          "last_turn": {
+            "turn_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1:t1",
+            "core_resolution": {
+              "ok": true,
+              "ledger": {
+                "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+                "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+                "turn_index": "1",
+                "kills": {
+                  "A": [
+                    "B"
+                  ],
+                  "B": [],
+                  "C": []
+                },
+                "eliminated_ids": [
+                  "B"
+                ],
+                "post_turn_players": {
+                  "A": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Bi",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "B": {
+                    "dd6": "12",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Charge",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "C": {
+                    "dd6": "6",
+                    "lightning": "0",
+                    "nx_charge": "2",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Def",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  }
+                },
+                "actions": {
+                  "A": {
+                    "entry_id": "Bi",
+                    "actual_move": "Bi",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "6",
+                    "base_move": "Bi",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "6",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "6",
+                      "comparison": "le",
+                      "match_rule": "R06"
+                    },
+                    "defense_return": {
+                      "kind": "finite",
+                      "sixths": "0",
+                      "comparison": "le",
+                      "match_rule": "R06"
+                    }
+                  },
+                  "B": {
+                    "entry_id": "Charge",
+                    "actual_move": "Charge",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "0",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "0",
+                      "comparison": "le",
+                      "match_rule": "R12"
+                    },
+                    "defense_return": null
+                  },
+                  "C": {
+                    "entry_id": "Def",
+                    "actual_move": "Def",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "0",
+                    "base_move": "Def",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "0",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "6",
+                      "comparison": "le",
+                      "match_rule": "R08"
+                    },
+                    "defense_return": null
+                  }
+                },
+                "events": [
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
+                    "phase": "P2",
+                    "kind": "attack",
+                    "actor_id": "A",
+                    "target_id": "B",
+                    "amount6": "6",
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R06",
+                      "R12"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"C\",null,null,\"\"]",
+                    "phase": "P2",
+                    "kind": "attack",
+                    "actor_id": "A",
+                    "target_id": "C",
+                    "amount6": "6",
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R06",
+                      "R08"
+                    ],
+                    "result": "blocked",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "B",
+                    "target_id": "B",
+                    "amount6": null,
+                    "resource": "dd6",
+                    "resource_delta": "6",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R12"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"C\",\"C\",\"nx_charge\",\"[\\\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\\\",\\\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\\\",\\\"1\\\",\\\"P2\\\",\\\"attack\\\",\\\"A\\\",\\\"C\\\",null,null,\\\"\\\"]\",\"\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": "nx_charge",
+                    "resource_delta": "1",
+                    "source_event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"C\",null,null,\"\"]",
+                    "rule_ids": [
+                      "R20"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"C\",\"C\",\"nx_charge\",null,\"base\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": "nx_charge",
+                    "resource_delta": "1",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R20"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "A",
+                    "target_id": "A",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
+                    "phase": "P4",
+                    "kind": "resource_spend",
+                    "actor_id": "A",
+                    "target_id": "A",
+                    "amount6": null,
+                    "resource": "dd6",
+                    "resource_delta": "-6",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R09"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "B",
+                    "target_id": "B",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"C\",\"C\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  }
+                ]
+              },
+              "next_state": {
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+                "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+                "game_index": "2",
+                "turn_index": "1",
+                "roster": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "active_ids": [
+                  "A",
+                  "C"
+                ],
+                "status": "playing",
+                "winner_id": null,
+                "players": {
+                  "A": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": null,
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "B": {
+                    "dd6": "12",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Charge",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "C": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": null,
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+              },
+              "transition": {
+                "kind": "restart_survivors",
+                "from_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+                "to_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+                "winner_id": null
+              }
+            },
+            "room_forfeits": [],
+            "effective_transition": {
+              "kind": "restart_survivors",
+              "from_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+              "to_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+              "winner_id": null
+            },
+            "effective_state": {
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+              "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+              "game_index": "2",
+              "turn_index": "1",
+              "roster": [
+                "A",
+                "B",
+                "C"
+              ],
+              "active_ids": [
+                "A",
+                "C"
+              ],
+              "status": "playing",
+              "winner_id": null,
+              "players": {
+                "A": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": null,
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                },
+                "B": {
+                  "dd6": "12",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": "Charge",
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                },
+                "C": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": null,
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+            },
+            "action_sources": {
+              "A": "human",
+              "B": "human",
+              "C": "human"
+            }
+          },
+          "effective_outcome": null
+        },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
+        "policy_revision": "1",
+        "current_turn_ms": 10000,
+        "host_recovery": null,
+        "pending_close": null,
+        "self": {
+          "player_id": "Z",
+          "role": "spectator",
+          "seat": null,
+          "options": [],
+          "accepted_entry_id": null
+        },
+        "timer": {
+          "kind": "reveal",
+          "deadline_at_ms": 1800000005300,
+          "remaining_ms": 5000
+        },
+        "pause": null,
+        "close_reason": null
+      }
+    },
+    "restart_survivors_next": {
+      "v": 1,
+      "type": "snapshot",
+      "room_id": "0467694b-7626-416f-8bc8-133d064e4b19",
+      "seq": "13",
+      "server_time_ms": 1800000005300,
+      "view": {
+        "source": "online",
+        "room_code": "ABCD1234",
+        "host_id": "A",
+        "phase": "selecting",
+        "has_password": false,
+        "policy": {
+          "turn_ms": 10000,
+          "early_reveal": true,
+          "spectator_cap": 6,
+          "host_disconnect_grace_ms": 30000,
+          "reveal_ms": 5000,
+          "min_select_ms": 300
+        },
+        "members": [
+          {
+            "player_id": "A",
+            "nickname": "A",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 0,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "active",
+            "submission_state": "thinking",
+            "absence_count": 0
+          },
+          {
+            "player_id": "B",
+            "nickname": "B",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 1,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "eliminated",
+            "submission_state": "out",
+            "absence_count": 0
+          },
+          {
+            "player_id": "C",
+            "nickname": "C",
+            "avatar_id": "leaf",
+            "role": "player",
+            "seat": 2,
+            "connected": true,
+            "ready": true,
+            "ready_rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+            "participation": "active",
+            "submission_state": "thinking",
+            "absence_count": 0
+          },
+          {
+            "player_id": "Z",
+            "nickname": "Z",
+            "avatar_id": "leaf",
+            "role": "spectator",
+            "seat": null,
+            "connected": true,
+            "ready": false,
+            "ready_rules_hash": null,
+            "participation": "spectating",
+            "submission_state": "out",
+            "absence_count": 0
+          }
+        ],
+        "match": {
+          "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+          "mode_at_start": "multiplayer",
+          "turn_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2:t1",
+          "public_state": {
+            "schema_version": 2,
+            "rules_version": "configured-1.0.0",
+            "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+            "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+            "game_index": "2",
+            "turn_index": "1",
+            "roster": [
+              "A",
+              "B",
+              "C"
+            ],
+            "active_ids": [
+              "A",
+              "C"
+            ],
+            "status": "playing",
+            "winner_id": null,
+            "players": {
+              "A": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": null,
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              },
+              "B": {
+                "dd6": "12",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": "Charge",
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              },
+              "C": {
+                "dd6": "0",
+                "lightning": "0",
+                "nx_charge": "0",
+                "mature_bombs": "0",
+                "bomb_placement_count": "0",
+                "cloud_uses": "0",
+                "tian_uses": "0",
+                "zhang_used": false,
+                "liq_used": false,
+                "enhanced_xiao": false,
+                "last_actual_move": null,
+                "latest_copyable_move": null,
+                "zeng_state": "unused",
+                "reward_due_turn": null,
+                "pending_bombs": []
+              }
+            },
+            "rules_snapshot": {
+              "schema_version": 1,
+              "rules_version": "configured-1.0.0",
+              "base_rules_version": "classic-1.0.1",
+              "preset_id": "classic",
+              "preset_version": "1.0.0",
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+              "skill_flags": {
+                "ZengYi": true,
+                "ZhangXinWei": true,
+                "NieXiang": true,
+                "JuYan": true,
+                "LiQiang": true,
+                "Bomb": true,
+                "Cloud": true,
+                "TianLiJun": true
+              },
+              "parameters": {
+                "charge_gain_dd6": "6",
+                "lucky_probability_bps": 0,
+                "lucky_upgrade_table": "basic-attacks-v1",
+                "opening_dd6": "0",
+                "opening_scope": "each_game"
+              },
+              "packs": []
+            },
+            "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+          },
+          "roster_profiles": [
+            {
+              "player_id": "A",
+              "nickname": "A",
+              "avatar_id": "leaf",
+              "seat": 0
+            },
+            {
+              "player_id": "B",
+              "nickname": "B",
+              "avatar_id": "leaf",
+              "seat": 1
+            },
+            {
+              "player_id": "C",
+              "nickname": "C",
+              "avatar_id": "leaf",
+              "seat": 2
+            }
+          ],
+          "last_turn": {
+            "turn_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1:t1",
+            "core_resolution": {
+              "ok": true,
+              "ledger": {
+                "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+                "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+                "turn_index": "1",
+                "kills": {
+                  "A": [
+                    "B"
+                  ],
+                  "B": [],
+                  "C": []
+                },
+                "eliminated_ids": [
+                  "B"
+                ],
+                "post_turn_players": {
+                  "A": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Bi",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "B": {
+                    "dd6": "12",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Charge",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "C": {
+                    "dd6": "6",
+                    "lightning": "0",
+                    "nx_charge": "2",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Def",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  }
+                },
+                "actions": {
+                  "A": {
+                    "entry_id": "Bi",
+                    "actual_move": "Bi",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "6",
+                    "base_move": "Bi",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "6",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "6",
+                      "comparison": "le",
+                      "match_rule": "R06"
+                    },
+                    "defense_return": {
+                      "kind": "finite",
+                      "sixths": "0",
+                      "comparison": "le",
+                      "match_rule": "R06"
+                    }
+                  },
+                  "B": {
+                    "entry_id": "Charge",
+                    "actual_move": "Charge",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "0",
+                    "base_move": "Charge",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "0",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "0",
+                      "comparison": "le",
+                      "match_rule": "R12"
+                    },
+                    "defense_return": null
+                  },
+                  "C": {
+                    "entry_id": "Def",
+                    "actual_move": "Def",
+                    "origin": "normal",
+                    "is_recovery": false,
+                    "branch": null,
+                    "condition": null,
+                    "eligible_targets": [],
+                    "enhanced_xiao": false,
+                    "attack6": "0",
+                    "base_move": "Def",
+                    "upgrade": null,
+                    "spend": {
+                      "dd6": "0",
+                      "lightning": "0",
+                      "nx_charge": "0",
+                      "mature_bombs": "0",
+                      "reward_stock": "0"
+                    },
+                    "defense_primary": {
+                      "kind": "finite",
+                      "sixths": "6",
+                      "comparison": "le",
+                      "match_rule": "R08"
+                    },
+                    "defense_return": null
+                  }
+                },
+                "events": [
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"B\",null,null,\"\"]",
+                    "phase": "P2",
+                    "kind": "attack",
+                    "actor_id": "A",
+                    "target_id": "B",
+                    "amount6": "6",
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R06",
+                      "R12"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"C\",null,null,\"\"]",
+                    "phase": "P2",
+                    "kind": "attack",
+                    "actor_id": "A",
+                    "target_id": "C",
+                    "amount6": "6",
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R06",
+                      "R08"
+                    ],
+                    "result": "blocked",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"B\",\"B\",\"dd6\",null,\"charge\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "B",
+                    "target_id": "B",
+                    "amount6": null,
+                    "resource": "dd6",
+                    "resource_delta": "6",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R12"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"C\",\"C\",\"nx_charge\",\"[\\\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\\\",\\\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\\\",\\\"1\\\",\\\"P2\\\",\\\"attack\\\",\\\"A\\\",\\\"C\\\",null,null,\\\"\\\"]\",\"\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": "nx_charge",
+                    "resource_delta": "1",
+                    "source_event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"attack\",\"A\",\"C\",null,null,\"\"]",
+                    "rule_ids": [
+                      "R20"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P2\",\"resource_gain\",\"C\",\"C\",\"nx_charge\",null,\"base\"]",
+                    "phase": "P2",
+                    "kind": "resource_gain",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": "nx_charge",
+                    "resource_delta": "1",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R20"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"A\",\"A\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "A",
+                    "target_id": "A",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"resource_spend\",\"A\",\"A\",\"dd6\",null,\"\"]",
+                    "phase": "P4",
+                    "kind": "resource_spend",
+                    "actor_id": "A",
+                    "target_id": "A",
+                    "amount6": null,
+                    "resource": "dd6",
+                    "resource_delta": "-6",
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R09"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"B\",\"B\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "B",
+                    "target_id": "B",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  },
+                  {
+                    "event_id": "[\"9e63a5fb-94bb-43a7-a081-4c411ce2708a\",\"9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1\",\"1\",\"P4\",\"history_updated\",\"C\",\"C\",null,null,\"\"]",
+                    "phase": "P4",
+                    "kind": "history_updated",
+                    "actor_id": "C",
+                    "target_id": "C",
+                    "amount6": null,
+                    "resource": null,
+                    "resource_delta": null,
+                    "source_event_id": null,
+                    "rule_ids": [
+                      "R16",
+                      "R17"
+                    ],
+                    "result": "applied",
+                    "reason_code": null
+                  }
+                ]
+              },
+              "next_state": {
+                "schema_version": 2,
+                "rules_version": "configured-1.0.0",
+                "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+                "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+                "game_index": "2",
+                "turn_index": "1",
+                "roster": [
+                  "A",
+                  "B",
+                  "C"
+                ],
+                "active_ids": [
+                  "A",
+                  "C"
+                ],
+                "status": "playing",
+                "winner_id": null,
+                "players": {
+                  "A": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": null,
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "B": {
+                    "dd6": "12",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": "Charge",
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  },
+                  "C": {
+                    "dd6": "0",
+                    "lightning": "0",
+                    "nx_charge": "0",
+                    "mature_bombs": "0",
+                    "bomb_placement_count": "0",
+                    "cloud_uses": "0",
+                    "tian_uses": "0",
+                    "zhang_used": false,
+                    "liq_used": false,
+                    "enhanced_xiao": false,
+                    "last_actual_move": null,
+                    "latest_copyable_move": null,
+                    "zeng_state": "unused",
+                    "reward_due_turn": null,
+                    "pending_bombs": []
+                  }
+                },
+                "rules_snapshot": {
+                  "schema_version": 1,
+                  "rules_version": "configured-1.0.0",
+                  "base_rules_version": "classic-1.0.1",
+                  "preset_id": "classic",
+                  "preset_version": "1.0.0",
+                  "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                  "skill_flags": {
+                    "ZengYi": true,
+                    "ZhangXinWei": true,
+                    "NieXiang": true,
+                    "JuYan": true,
+                    "LiQiang": true,
+                    "Bomb": true,
+                    "Cloud": true,
+                    "TianLiJun": true
+                  },
+                  "parameters": {
+                    "charge_gain_dd6": "6",
+                    "lucky_probability_bps": 0,
+                    "lucky_upgrade_table": "basic-attacks-v1",
+                    "opening_dd6": "0",
+                    "opening_scope": "each_game"
+                  },
+                  "packs": []
+                },
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+              },
+              "transition": {
+                "kind": "restart_survivors",
+                "from_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+                "to_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+                "winner_id": null
+              }
+            },
+            "room_forfeits": [],
+            "effective_transition": {
+              "kind": "restart_survivors",
+              "from_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g1",
+              "to_game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+              "winner_id": null
+            },
+            "effective_state": {
+              "schema_version": 2,
+              "rules_version": "configured-1.0.0",
+              "match_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a",
+              "game_id": "9e63a5fb-94bb-43a7-a081-4c411ce2708a:g2",
+              "game_index": "2",
+              "turn_index": "1",
+              "roster": [
+                "A",
+                "B",
+                "C"
+              ],
+              "active_ids": [
+                "A",
+                "C"
+              ],
+              "status": "playing",
+              "winner_id": null,
+              "players": {
+                "A": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": null,
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                },
+                "B": {
+                  "dd6": "12",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": "Charge",
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                },
+                "C": {
+                  "dd6": "0",
+                  "lightning": "0",
+                  "nx_charge": "0",
+                  "mature_bombs": "0",
+                  "bomb_placement_count": "0",
+                  "cloud_uses": "0",
+                  "tian_uses": "0",
+                  "zhang_used": false,
+                  "liq_used": false,
+                  "enhanced_xiao": false,
+                  "last_actual_move": null,
+                  "latest_copyable_move": null,
+                  "zeng_state": "unused",
+                  "reward_due_turn": null,
+                  "pending_bombs": []
+                }
+              },
+              "rules_snapshot": {
+                "schema_version": 1,
+                "rules_version": "configured-1.0.0",
+                "base_rules_version": "classic-1.0.1",
+                "preset_id": "classic",
+                "preset_version": "1.0.0",
+                "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+                "skill_flags": {
+                  "ZengYi": true,
+                  "ZhangXinWei": true,
+                  "NieXiang": true,
+                  "JuYan": true,
+                  "LiQiang": true,
+                  "Bomb": true,
+                  "Cloud": true,
+                  "TianLiJun": true
+                },
+                "parameters": {
+                  "charge_gain_dd6": "6",
+                  "lucky_probability_bps": 0,
+                  "lucky_upgrade_table": "basic-attacks-v1",
+                  "opening_dd6": "0",
+                  "opening_scope": "each_game"
+                },
+                "packs": []
+              },
+              "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+            },
+            "action_sources": {
+              "A": "human",
+              "B": "human",
+              "C": "human"
+            }
+          },
+          "effective_outcome": null
+        },
+        "rules_snapshot": {
+          "schema_version": 1,
+          "rules_version": "configured-1.0.0",
+          "base_rules_version": "classic-1.0.1",
+          "preset_id": "classic",
+          "preset_version": "1.0.0",
+          "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23",
+          "skill_flags": {
+            "ZengYi": true,
+            "ZhangXinWei": true,
+            "NieXiang": true,
+            "JuYan": true,
+            "LiQiang": true,
+            "Bomb": true,
+            "Cloud": true,
+            "TianLiJun": true
+          },
+          "parameters": {
+            "charge_gain_dd6": "6",
+            "lucky_probability_bps": 0,
+            "lucky_upgrade_table": "basic-attacks-v1",
+            "opening_dd6": "0",
+            "opening_scope": "each_game"
+          },
+          "packs": []
+        },
+        "rules_revision": "1",
+        "rule_pack_manifests": [],
+        "policy_revision": "1",
+        "current_turn_ms": 10000,
+        "host_recovery": null,
+        "pending_close": null,
+        "self": {
+          "player_id": "Z",
+          "role": "spectator",
+          "seat": null,
+          "options": [],
+          "accepted_entry_id": null
+        },
+        "timer": {
+          "kind": "select",
+          "deadline_at_ms": 1800000015300,
+          "remaining_ms": 10000
         },
         "pause": null,
         "close_reason": null

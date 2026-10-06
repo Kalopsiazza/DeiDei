@@ -4,6 +4,7 @@ import json
 
 from .entries import ATTACKS, BRANCHES, COPYABLE_MOVES, RESOURCES
 from .wire import decimal_string, encode_player, encode_resources, encode_state, initial_player
+from .rules import charge_gain
 
 COUNTERS = frozenset({"Reflect", "Absorb", "Cloud"})
 SHELLS = frozenset({"XiaoBei", "Shell"})
@@ -140,6 +141,9 @@ class Effects:
 def evaluate(state: dict, actions: dict) -> Effects:
     """P2 and P3 only. A one-person branch view still evaluates failed SelfBi."""
     effects = Effects(state, actions)
+    snapshot = state.get("rules_snapshot")
+    nx_enabled = snapshot is None or snapshot["skill_flags"]["NieXiang"]
+    charge_amount = charge_gain(snapshot)
     returns = []
     for actor in sorted(actions):
         a = actions[actor]
@@ -147,7 +151,7 @@ def evaluate(state: dict, actions: dict) -> Effects:
         if kind == "SelfBi" and a["condition"] == "failure":
             effects.event("P2", "self_elimination", actor, actor, ["R14"])
             effects.eliminated.add(actor)
-        if kind == "Def":
+        if kind == "Def" and nx_enabled:
             effects.gain(actor, "nx_charge", 1, ["R20"], detail="base")
         if kind == "Cloud":
             effects.gain(actor, "lightning", 1, ["R13"], detail="cast")
@@ -184,7 +188,7 @@ def evaluate(state: dict, actions: dict) -> Effects:
                 returns.append((target, actor, a["attack6"], source))
             elif target_kind == "Absorb" and a["origin"] != "bomb" and not a["enhanced_xiao"]:
                 effects.gain(target, "dd6", a["attack6"], ["R12"], source, actor)
-            elif target_kind == "Def" and kind in {"Bi", "Xiao", "BigBi"}:
+            elif target_kind == "Def" and kind in {"Bi", "Xiao", "BigBi"} and nx_enabled:
                 effects.gain(target, "nx_charge", 1, ["R20"], source)
     for pid, a in sorted(actions.items()):
         if not a["charge"]:
@@ -192,14 +196,14 @@ def evaluate(state: dict, actions: dict) -> Effects:
         blockers = [other for other, b in sorted(actions.items())
                     if other != pid and b["actual_move"] in {"Absorb", "Cloud"}]
         # R12 cancels one growth; multiple absorbers never subtract the old balance.
-        effects.event("P2", "resource_gain", pid, pid, ["R12"], resource="dd6", delta=6,
+        effects.event("P2", "resource_gain", pid, pid, ["R12"], resource="dd6", delta=charge_amount,
                       result="suppressed" if blockers else "applied",
                       reason="CHARGE_CANCELLED" if blockers else None, detail="charge")
         if not blockers:
-            effects.gains[pid]["dd6"] += 6
+            effects.gains[pid]["dd6"] += charge_amount
         for blocker in blockers:
             if actions[blocker]["actual_move"] == "Absorb":
-                effects.gain(blocker, "dd6", 6, ["R12"], actor=pid, detail="charge_absorbed")
+                effects.gain(blocker, "dd6", charge_amount, ["R12"], actor=pid, detail="charge_absorbed")
     for actor, target, strength, source in returns:
         defense = actions[target]["defense_return"]
         # R28: enumerate this invariant in tests; never invent a missing P3 shield.
@@ -231,6 +235,8 @@ def select_branches(state: dict, raw: dict, tokens: dict) -> dict:
 def settle(state: dict, actions: dict, effects: Effects) -> dict:
     """P4: pay once, preserve the full ledger, then advance the match."""
     players = deepcopy(state["players"])
+    snapshot = state.get("rules_snapshot")
+    copy_enabled = snapshot is None or snapshot["skill_flags"]["ZhangXinWei"]
     turn = state["turn_index"]
     for pid, a in sorted(actions.items()):
         p = players[pid]
@@ -264,7 +270,7 @@ def settle(state: dict, actions: dict, effects: Effects) -> dict:
                 effects.event("P4", "resource_gain", pid, pid, ["R21"], resource="enhanced_xiao", delta=1)
             p["enhanced_xiao"] = True
         p["last_actual_move"] = move
-        if move in COPYABLE_MOVES and a["attack6"] >= 12:
+        if copy_enabled and move in COPYABLE_MOVES and a["attack6"] >= 12:
             p["latest_copyable_move"] = move
         effects.event("P4", "history_updated", pid, pid, ["R16", "R17"])
         if move == "Bomb":
@@ -323,7 +329,7 @@ def settle(state: dict, actions: dict, effects: Effects) -> dict:
         next_state["game_id"] = state["match_id"] + ":g" + decimal_string(next_state["game_index"])
         next_state["turn_index"] = 1
         for pid in survivors:
-            next_state["players"][pid] = initial_player()
+            next_state["players"][pid] = initial_player(snapshot)
     else:
         kind = "sole_survivor" if survivors else "nobody_survives"
         winner = survivors[0] if survivors else None

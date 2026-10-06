@@ -1,0 +1,20 @@
+export const SKILLS=['ZengYi','ZhangXinWei','NieXiang','JuYan','LiQiang','Bomb','Cloud','TianLiJun'] as const;
+export type Skill=typeof SKILLS[number];
+export type SkillFlags=Record<Skill,boolean>;
+export type PackRef={id:string;version:string;content_hash:string};
+export type RulesRequest={schema_version:1;preset_id:string;skill_flags:SkillFlags;preset_params:{firepower_charge_dd6?:'12'|'30'};pack_refs:PackRef[]};
+export type RuleParameters={charge_gain_dd6:'6'|'12'|'30';opening_dd6:'0'|'6';opening_scope:'each_game';lucky_probability_bps:number;lucky_upgrade_table:'basic-attacks-v1'};
+export type RulesSnapshot={schema_version:1;rules_version:'configured-1.0.0';base_rules_version:'classic-1.0.1';preset_id:string;preset_version:string;skill_flags:SkillFlags;parameters:RuleParameters;packs:PackRef[];rules_hash:string};
+export type PackManifest={api_version:'deidei.rules-pack.v1';kind:'declarative';id:string;version:string;name:string;author:string;base_rules_version:'classic-1.0.1';presets:{id:string;name:string;description:string;skill_defaults:SkillFlags;parameters:RuleParameters}[]};
+export type RulesLibrary={schema_version:1;packs:{manifest:PackManifest;pack_ref:PackRef}[];presets:{id:string;name:string;rules_request:RulesRequest}[];descriptors:{presets:{id:string;name:string;request:RulesRequest;snapshot:RulesSnapshot}[]}};
+export const classicRequest=():RulesRequest=>({schema_version:1,preset_id:'classic',skill_flags:Object.fromEntries(SKILLS.map(key=>[key,true])) as SkillFlags,preset_params:{},pack_refs:[]});
+export const presetNames:Record<string,string>={classic:'经典',firepower:'火力',loan:'贷款',lucky:'幸运'};
+export const skillNames:Record<Skill,string>={ZengYi:'曾义',ZhangXinWei:'张新伟',NieXiang:'聂湘',JuYan:'距喦',LiQiang:'历强',Bomb:'炸药',Cloud:'云',TianLiJun:'田利军'};
+export const modeLabel=(request:RulesRequest,library?:RulesLibrary|null)=>{
+ const builtin=presetNames[request.preset_id];
+ const pack=library?.packs.find(p=>p.pack_ref.content_hash===request.pack_refs[0]?.content_hash);
+ const preset=pack?.manifest.presets.find(p=>`pack:${pack.manifest.id}:${p.id}`===request.preset_id);
+ const defaults=preset?.skill_defaults||classicRequest().skill_flags;
+ const custom=SKILLS.some(skill=>request.skill_flags[skill]!==defaults[skill])||(request.preset_id==='firepower'&&request.preset_params.firepower_charge_dd6==='30');
+ return (builtin||preset?.name||'扩展包')+(custom?'·自定义':'');
+};

@@ -1,0 +1,382 @@
+[
+  {
+    "name": "classic",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "classic",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": []
+    },
+    "manifests": [],
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "classic",
+      "preset_version": "1.0.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "6",
+        "opening_dd6": "0",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 0,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [],
+      "rules_hash": "sha256:62ec121e4bfc18e64d526eb3c47a50a884a563229e3a1c19f69033d9c0f7aa23"
+    }
+  },
+  {
+    "name": "firepower",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "firepower",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": []
+    },
+    "manifests": [],
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "firepower",
+      "preset_version": "1.0.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "12",
+        "opening_dd6": "0",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 0,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [],
+      "rules_hash": "sha256:de2d6f24880c114446fbd56f50a8c47b0de92a1f06d48d153f4bebbafc90e6c6"
+    }
+  },
+  {
+    "name": "loan",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "loan",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": []
+    },
+    "manifests": [],
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "loan",
+      "preset_version": "1.0.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "6",
+        "opening_dd6": "6",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 0,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [],
+      "rules_hash": "sha256:8e327b8a5a5128c59247f2fd393a51b4738f3e5c6225cb40b9814bb092d63636"
+    }
+  },
+  {
+    "name": "lucky",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "lucky",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": []
+    },
+    "manifests": [],
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "lucky",
+      "preset_version": "1.0.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "6",
+        "opening_dd6": "0",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 2500,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [],
+      "rules_hash": "sha256:8f62ac81f0054462d85701854f87170bf240612ea82072708890100af1c0286b"
+    }
+  },
+  {
+    "name": "test.certain-luck",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "pack:test.certain-luck:certain-luck",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": [
+        {
+          "id": "test.certain-luck",
+          "version": "0.1.0",
+          "content_hash": "sha256:8af398f0095b0b71be5564315de9d1dfcab710fe69ff43fa5281363d6f95267d"
+        }
+      ]
+    },
+    "manifests": [
+      {
+        "api_version": "deidei.rules-pack.v1",
+        "kind": "declarative",
+        "id": "test.certain-luck",
+        "version": "0.1.0",
+        "name": "必定变招（测试）",
+        "author": "示例作者",
+        "base_rules_version": "classic-1.0.1",
+        "presets": [
+          {
+            "id": "certain-luck",
+            "name": "必定变招（测试）",
+            "description": "适用攻击必定提升一级，仍按原入口支付；仅用于复现测试。",
+            "skill_defaults": {
+              "ZengYi": true,
+              "ZhangXinWei": true,
+              "NieXiang": true,
+              "JuYan": true,
+              "LiQiang": true,
+              "Bomb": true,
+              "Cloud": true,
+              "TianLiJun": true
+            },
+            "parameters": {
+              "charge_gain_dd6": "6",
+              "opening_dd6": "0",
+              "opening_scope": "each_game",
+              "lucky_probability_bps": 10000,
+              "lucky_upgrade_table": "basic-attacks-v1"
+            }
+          }
+        ]
+      }
+    ],
+    "pack_ref": {
+      "id": "test.certain-luck",
+      "version": "0.1.0",
+      "content_hash": "sha256:8af398f0095b0b71be5564315de9d1dfcab710fe69ff43fa5281363d6f95267d"
+    },
+    "canonical_manifest": "{\"api_version\":\"deidei.rules-pack.v1\",\"author\":\"示例作者\",\"base_rules_version\":\"classic-1.0.1\",\"id\":\"test.certain-luck\",\"kind\":\"declarative\",\"name\":\"必定变招（测试）\",\"presets\":[{\"description\":\"适用攻击必定提升一级，仍按原入口支付；仅用于复现测试。\",\"id\":\"certain-luck\",\"name\":\"必定变招（测试）\",\"parameters\":{\"charge_gain_dd6\":\"6\",\"lucky_probability_bps\":10000,\"lucky_upgrade_table\":\"basic-attacks-v1\",\"opening_dd6\":\"0\",\"opening_scope\":\"each_game\"},\"skill_defaults\":{\"Bomb\":true,\"Cloud\":true,\"JuYan\":true,\"LiQiang\":true,\"NieXiang\":true,\"TianLiJun\":true,\"ZengYi\":true,\"ZhangXinWei\":true}}],\"version\":\"0.1.0\"}",
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "pack:test.certain-luck:certain-luck",
+      "preset_version": "0.1.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "6",
+        "opening_dd6": "0",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 10000,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [
+        {
+          "id": "test.certain-luck",
+          "version": "0.1.0",
+          "content_hash": "sha256:8af398f0095b0b71be5564315de9d1dfcab710fe69ff43fa5281363d6f95267d"
+        }
+      ],
+      "rules_hash": "sha256:7d0c74d1dfd2bc858a80715bfa4cfba84a66f3860ab11bde52860f93ce749fb9"
+    }
+  },
+  {
+    "name": "community.fast-opening",
+    "request": {
+      "schema_version": 1,
+      "preset_id": "pack:community.fast-opening:fast-opening",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "preset_params": {},
+      "pack_refs": [
+        {
+          "id": "community.fast-opening",
+          "version": "0.1.0",
+          "content_hash": "sha256:267ed0c73ea16202ee909a7b665ead880214ee92450bf171bf117fafc0b06f0f"
+        }
+      ]
+    },
+    "manifests": [
+      {
+        "api_version": "deidei.rules-pack.v1",
+        "kind": "declarative",
+        "id": "community.fast-opening",
+        "version": "0.1.0",
+        "name": "一拍起手",
+        "author": "示例作者",
+        "base_rules_version": "classic-1.0.1",
+        "presets": [
+          {
+            "id": "fast-opening",
+            "name": "一拍起手",
+            "description": "每局以1 DD开始；一次攒2 DD；无需还款。",
+            "skill_defaults": {
+              "ZengYi": true,
+              "ZhangXinWei": true,
+              "NieXiang": true,
+              "JuYan": true,
+              "LiQiang": true,
+              "Bomb": true,
+              "Cloud": true,
+              "TianLiJun": true
+            },
+            "parameters": {
+              "charge_gain_dd6": "12",
+              "opening_dd6": "6",
+              "opening_scope": "each_game",
+              "lucky_probability_bps": 0,
+              "lucky_upgrade_table": "basic-attacks-v1"
+            }
+          }
+        ]
+      }
+    ],
+    "pack_ref": {
+      "id": "community.fast-opening",
+      "version": "0.1.0",
+      "content_hash": "sha256:267ed0c73ea16202ee909a7b665ead880214ee92450bf171bf117fafc0b06f0f"
+    },
+    "canonical_manifest": "{\"api_version\":\"deidei.rules-pack.v1\",\"author\":\"示例作者\",\"base_rules_version\":\"classic-1.0.1\",\"id\":\"community.fast-opening\",\"kind\":\"declarative\",\"name\":\"一拍起手\",\"presets\":[{\"description\":\"每局以1 DD开始；一次攒2 DD；无需还款。\",\"id\":\"fast-opening\",\"name\":\"一拍起手\",\"parameters\":{\"charge_gain_dd6\":\"12\",\"lucky_probability_bps\":0,\"lucky_upgrade_table\":\"basic-attacks-v1\",\"opening_dd6\":\"6\",\"opening_scope\":\"each_game\"},\"skill_defaults\":{\"Bomb\":true,\"Cloud\":true,\"JuYan\":true,\"LiQiang\":true,\"NieXiang\":true,\"TianLiJun\":true,\"ZengYi\":true,\"ZhangXinWei\":true}}],\"version\":\"0.1.0\"}",
+    "snapshot": {
+      "schema_version": 1,
+      "rules_version": "configured-1.0.0",
+      "base_rules_version": "classic-1.0.1",
+      "preset_id": "pack:community.fast-opening:fast-opening",
+      "preset_version": "0.1.0",
+      "skill_flags": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "12",
+        "opening_dd6": "6",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 0,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      },
+      "packs": [
+        {
+          "id": "community.fast-opening",
+          "version": "0.1.0",
+          "content_hash": "sha256:267ed0c73ea16202ee909a7b665ead880214ee92450bf171bf117fafc0b06f0f"
+        }
+      ],
+      "rules_hash": "sha256:e96d0fc6803899392ce53903471f7a307f8c41628944fd32a5600338c260fe54"
+    }
+  }
+]

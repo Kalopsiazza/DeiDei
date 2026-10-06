@@ -5,7 +5,8 @@ a = Analysis(
     [str(Path(SPECPATH) / 'worker_entry.py')],
     pathex=[str(root / 'core'), str(root / 'runtime')],
     datas=[(str(root / 'desktop/catalog.json'), 'deidei_runtime/data'),
-           (str(root / 'runtime/deidei_runtime/entry-map.json'), 'deidei_runtime')],
+           (str(root / 'runtime/deidei_runtime/entry-map.json'), 'deidei_runtime'),
+           (str(root / 'runtime/deidei_runtime/legacy-action-map-v1.json'), 'deidei_runtime')],
     hiddenimports=[], hookspath=[], excludes=[], noarchive=False,
 )
 pyz = PYZ(a.pure)

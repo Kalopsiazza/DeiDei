@@ -1,0 +1,20 @@
+[Unit]
+Description=DeiDei opt-in aggregate collector
+After=network.target
+[Service]
+User=deidei-stats
+Group=deidei-stats
+WorkingDirectory=/opt/deidei/game/telemetry
+Environment=PYTHONPATH=/opt/deidei/game/telemetry
+ExecStart=/opt/deidei/game/telemetry/.venv/bin/python -m deidei_stats --port 8767 --database /var/lib/deidei-stats/stats.sqlite3 --admin-token-file /etc/deidei-stats/admin.token
+Restart=on-failure
+UMask=0077
+NoNewPrivileges=true
+ProtectSystem=strict
+ProtectHome=true
+ReadWritePaths=/var/lib/deidei-stats
+# CLI prints only ready/port. No application access or exception logs.
+StandardOutput=null
+StandardError=null
+[Install]
+WantedBy=multi-user.target

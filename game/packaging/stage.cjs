@@ -3,9 +3,16 @@ const fs=require('node:fs');
 const path=require('node:path');
 const {createRequire}=require('node:module');
 const {UI_ASSETS}=require('../desktop/ui-assets.cjs');
+const desktop=path.resolve(__dirname,'../desktop');
+// Only these first-party runtime directories are extensible; diagnostics and tests stay outside the app.
+const serviceFiles=['rules','privacy','updates','hardware','lifecycle'].flatMap(directory=>{
+ const folder=path.join(desktop,directory);
+ return fs.existsSync(folder)?fs.readdirSync(folder).filter(name=>name.endsWith('.cjs')&&!/^(?:test|smoke|fixture)(?:[.-]|$)/.test(name)).map(name=>directory+'/'+name):[];
+});
 const RUNTIME_FILES=Object.freeze(['main.cjs','ui-assets.cjs','preload.cjs','profile.cjs','graphics.cjs',
  'worker-port.cjs','worker-bridge.cjs','worker-launch.cjs','online/network-room-port.cjs',
- 'online/wire.cjs','online/service-config.cjs','catalog.json','build/fixture.cjs']);
+ 'online/wire.cjs','online/service-config.cjs','catalog.json','build/fixture.cjs',
+ ...serviceFiles]);
 const STAGE_FILES=Object.freeze([...RUNTIME_FILES,...Object.keys(UI_ASSETS).map(name=>'build/ui/'+name)]);
 function verifyStage(directory) {
  directory=fs.realpathSync(directory);

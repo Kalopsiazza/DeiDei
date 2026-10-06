@@ -4,6 +4,7 @@ from decimal import Decimal
 import re
 
 from .entries import ACTUAL_MOVES, COPYABLE_MOVES, RULES_VERSION
+from .rules import initial_resources, validate_snapshot, RULES_VERSION as CONFIGURED_VERSION
 
 COUNTS = (
     "dd6", "lightning", "nx_charge", "mature_bombs", "bomb_placement_count",
@@ -42,11 +43,12 @@ def valid_id(value: object) -> bool:
     return isinstance(value, str) and re.fullmatch(r"[A-Za-z0-9_-]{1,64}", value) is not None
 
 
-def initial_player() -> dict:
+def initial_player(rules_snapshot: dict | None = None) -> dict:
     return {
         **dict.fromkeys(COUNTS, 0), **dict.fromkeys(FLAGS, False), "pending_bombs": [],
         "last_actual_move": None, "latest_copyable_move": None,
         "zeng_state": "unused", "reward_due_turn": None,
+        "dd6": initial_resources(rules_snapshot),
     }
 
 
@@ -56,11 +58,19 @@ def exact_fields(value: object, fields: set, field: str, player_id: str | None =
 
 
 def decode_state(state: object) -> dict:
-    exact_fields(state, STATE_FIELDS, "state")
-    if state["rules_version"] != RULES_VERSION:
-        raise RuleError("UNSUPPORTED_RULES_VERSION", field="rules_version")
-    if type(state["schema_version"]) is not int or state["schema_version"] != 1:
+    if not isinstance(state, dict) or type(state.get("schema_version")) is not int or state["schema_version"] not in (1, 2):
         raise RuleError("INVALID_STATE", field="schema_version")
+    configured = state["schema_version"] == 2
+    exact_fields(state, STATE_FIELDS | ({"rules_snapshot", "rules_hash"} if configured else set()), "state")
+    if state["rules_version"] != (CONFIGURED_VERSION if configured else RULES_VERSION):
+        raise RuleError("UNSUPPORTED_RULES_VERSION", field="rules_version")
+    if configured:
+        try:
+            snapshot = validate_snapshot(state["rules_snapshot"])
+        except (ValueError, TypeError, UnicodeError) as exc:
+            raise RuleError("INVALID_STATE", field="rules_snapshot") from exc
+        if state["rules_hash"] != snapshot["rules_hash"]:
+            raise RuleError("INVALID_STATE", field="rules_hash")
     for field in ("match_id", "game_id"):
         if not isinstance(state[field], str) or not state[field]:
             raise RuleError("INVALID_STATE", field=field)
@@ -138,6 +148,23 @@ def decode_state(state: object) -> dict:
                 raise RuleError("INVALID_STATE", pid, "zeng_state")
             if zeng in {"ready", "spent"} and turn < 6:
                 raise RuleError("INVALID_STATE", pid, "zeng_state")
+        if configured:
+            flags = snapshot["skill_flags"]
+            disabled = {
+                "Cloud": ("lightning", "cloud_uses"),
+                "Bomb": ("mature_bombs", "bomb_placement_count", "pending_bombs"),
+                "NieXiang": ("nx_charge",), "JuYan": ("enhanced_xiao",),
+                "LiQiang": ("liq_used",), "TianLiJun": ("tian_uses",),
+                "ZhangXinWei": ("zhang_used", "latest_copyable_move"),
+            }
+            for skill, fields in disabled.items():
+                for field in fields:
+                    if not flags[skill] and p[field]:
+                        raise RuleError("INVALID_STATE", pid, field)
+            if not flags["ZengYi"] and (zeng != "unused" or due is not None):
+                raise RuleError("INVALID_STATE", pid, "zeng_state")
+            if not flags["NieXiang"] and p["latest_copyable_move"] == "NieXiang":
+                raise RuleError("INVALID_STATE", pid, "latest_copyable_move")
     return decoded
 
 

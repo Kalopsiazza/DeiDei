@@ -4,6 +4,7 @@ from decimal import Decimal
 from math import gcd
 
 from deidei_core.api import list_options
+from deidei_core.rules import SKILLS, PARAMETER_FIELDS
 from .resource_paths import catalog_path
 
 CATALOG = {e["entry_id"]: e for e in json.loads(
@@ -16,6 +17,26 @@ EVENT_NAMES = {"resource_gain": "获得", "resource_spend": "消耗", "resource_
                "bomb_mature": "炸药成熟", "reward_granted": "奖励发放"}
 TRANSITIONS = {"continue_game": "双方仍在场，继续下一拍。", "restart_survivors": "存活者进入新局，资源归零。",
                "sole_survivor": "唯一存活者", "nobody_survives": "全员淘汰，无人获胜"}
+
+
+def rules_view(snapshot: dict) -> dict:
+    result = {key: snapshot[key] for key in ("schema_version", "rules_version", "base_rules_version",
+              "preset_id", "preset_version", "rules_hash")}
+    result["skill_flags"] = {key: snapshot["skill_flags"][key] for key in SKILLS}
+    result["parameters"] = {key: snapshot["parameters"][key] for key in PARAMETER_FIELDS}
+    result["packs"] = [{key: ref[key] for key in ("id", "version", "content_hash")} for ref in snapshot["packs"]]
+    return result
+
+
+def pack_view(manifest: dict) -> dict:
+    result = {key: manifest[key] for key in ("api_version", "kind", "id", "version", "name", "author", "base_rules_version")}
+    result["presets"] = []
+    for preset in manifest["presets"]:
+        public = {key: preset[key] for key in ("id", "name", "description")}
+        public["skill_defaults"] = {key: preset["skill_defaults"][key] for key in SKILLS}
+        public["parameters"] = {key: preset["parameters"][key] for key in PARAMETER_FIELDS}
+        result["presets"].append(public)
+    return result
 
 
 def dd_text(value: str) -> str:
@@ -80,6 +101,9 @@ def ledger_summary(resolution: dict, profiles: dict) -> list[str]:
         condition = {"success": " · 成功", "failure": " · 失败", None: ""}[action["condition"]]
         summary.append(f"{name}：{'曾义自动休整' if action['is_recovery'] else entry}"
                        f"（{origins[action['origin']]}：{actual}{branch}{condition}）；实付 {resource_text(action['spend'])}。")
+        if action.get("upgrade"):
+            upgrade = action["upgrade"]
+            summary.append(f"{name}：幸运变招 {CATALOG[upgrade['from']]['name']} → {actual}；按原入口支付，不追加费用。")
     for event in ledger["events"]:
         if event["resource_delta"] is not None:
             pid = event["target_id"] or event["actor_id"]
@@ -97,17 +121,28 @@ def ledger_summary(resolution: dict, profiles: dict) -> list[str]:
             amount = dd_text(absolute) if event['resource'] == 'dd6' else absolute
             summary.append(f"{name}：{EVENT_NAMES.get(event['kind'], '资源变动')} {sign}{amount} "
                            f"{EVENT_RESOURCE_NAMES.get(event['resource'], '资源')}。")
-    summary.append(TRANSITIONS[resolution["transition"]["kind"]])
+    transition = TRANSITIONS[resolution["transition"]["kind"]]
+    snapshot = resolution["next_state"].get("rules_snapshot")
+    if resolution["transition"]["kind"] == "restart_survivors" and snapshot is not None:
+        transition = f"存活者进入新局，开局 {dd_text(snapshot['parameters']['opening_dd6'])} DD，其他资源重置。"
+    summary.append(transition)
     return summary
 
 
 def public_round(resolution: dict, turn_id: str) -> dict:
     """Copy only the already revealed action/identity fields from the ledger."""
     ledger = resolution["ledger"]
+    names = ("entry_id", "actual_move", "branch", "is_recovery")
+    if resolution["next_state"]["schema_version"] == 2:
+        names += ("base_move", "origin", "upgrade", "spend")
+    actions = {pid: {key: action[key] for key in names} for pid, action in ledger["actions"].items()}
+    if resolution["next_state"]["schema_version"] == 2:
+        for action in actions.values():
+            action["spend"] = {key: action["spend"][key] for key in RESOURCE_NAMES}
+            if action["upgrade"] is not None:
+                action["upgrade"] = {key: action["upgrade"][key] for key in ("kind", "from", "to", "probability_bps")}
     return {**{key: ledger[key] for key in ("match_id", "game_id", "turn_index")},
             "turn_id": turn_id,
-            "actions": {pid: {key: action[key] for key in
-                         ("entry_id", "actual_move", "branch", "is_recovery")}
-                        for pid, action in ledger["actions"].items()},
+            "actions": actions,
             "next_game_id": resolution["next_state"]["game_id"],
             "next_turn_index": resolution["next_state"]["turn_index"]}

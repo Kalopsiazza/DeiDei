@@ -1,0 +1,33 @@
+{
+  "api_version": "deidei.rules-pack.v1",
+  "kind": "declarative",
+  "id": "community.fast-opening",
+  "version": "0.1.0",
+  "name": "一拍起手",
+  "author": "示例作者",
+  "base_rules_version": "classic-1.0.1",
+  "presets": [
+    {
+      "id": "fast-opening",
+      "name": "一拍起手",
+      "description": "每局以1 DD开始；一次攒2 DD；无需还款。",
+      "skill_defaults": {
+        "ZengYi": true,
+        "ZhangXinWei": true,
+        "NieXiang": true,
+        "JuYan": true,
+        "LiQiang": true,
+        "Bomb": true,
+        "Cloud": true,
+        "TianLiJun": true
+      },
+      "parameters": {
+        "charge_gain_dd6": "12",
+        "opening_dd6": "6",
+        "opening_scope": "each_game",
+        "lucky_probability_bps": 0,
+        "lucky_upgrade_table": "basic-attacks-v1"
+      }
+    }
+  ]
+}

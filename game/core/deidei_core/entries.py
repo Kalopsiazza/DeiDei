@@ -1,4 +1,5 @@
 """The fixed R02 entry map and start-of-round qualifications (R02/R09)."""
+from .rules import skill_allowed
 
 RULES_VERSION = "classic-1.0.1"
 NORMAL_MOVES = (
@@ -38,7 +39,7 @@ DD_COSTS = {
 RESOURCES = ("dd6", "lightning", "nx_charge", "mature_bombs", "reward_stock")
 
 
-def options_for(player: dict, active: bool = True) -> list[dict]:
+def options_for(player: dict, active: bool = True, rules_snapshot: dict | None = None) -> list[dict]:
     """Return integer-valued options; the public API encodes the quantities."""
     options = []
     for index, (entry, move, origin) in enumerate(ENTRY_SPECS, 1):
@@ -78,6 +79,9 @@ def options_for(player: dict, active: bool = True) -> list[dict]:
             if reason is None and stock < required[resource]:
                 reason = code
         forced = active and player["zeng_state"] == "recovery"
+        resolved = player["latest_copyable_move"] if origin == "zhang" else move
+        if not skill_allowed(rules_snapshot, entry, resolved):
+            reason = "RULE_DISABLED"
         if not active:
             reason = "NOT_ACTIVE"
         elif forced:

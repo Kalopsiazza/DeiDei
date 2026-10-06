@@ -2,6 +2,10 @@
 
 实现交接包的 classic-1.0.1、CONTRACT-R02 1.0 和 RULE-ENGINE-v1.0，支持 2—6 人。仅用 Python 3.11+ 标准库，独立于旧规则、GUI、模型和网络。`pyproject.toml` 仅记录局部包信息；直接用 `PYTHONPATH` 导入，不需要安装依赖。
 
+R05配置：`rules.compile_rules(RulesRequest, pack_manifests=[])`严格编译四预设/八技能和声明式包，`new_match(ids, match_id, rules_snapshot=...)`使用schema2 / configured-1.0.0。旧调用不传快照仍精确schema1经典输出。同一P1–P4结算，不修改全局费用或另写四套引擎。`required_tokens(state, submissions)`纯函数返回精确choice/lucky消费集合；v2调用`resolve_round(state, submissions, choice_tokens, lucky_tokens)`，幸运整数0..9999，原资格/费用验证后只转换一次。v1不接受额外lucky集合。
+
+参数、包示例、黄金摘要及固定原生hook见[规则包说明](../../docs/rules/packs/README.md)。新局（含存活者重开）统一通过`initial_player(snapshot)`初始化；贷款每game发放一次。禁用机制的伪库存/强化/待领奖状态拒绝，仍保留全部33入口次序和原状态字段。
+
 从仓库根目录执行（`python` 可替换成 `python3` 或本机 Python 3.11 路径）：
 
 ```sh

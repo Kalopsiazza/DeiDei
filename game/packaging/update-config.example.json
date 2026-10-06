@@ -1,0 +1,10 @@
+{
+  "schema_version": 1,
+  "configured": false,
+  "mode": "production",
+  "provider": "github",
+  "owner": "Kalopsiazza",
+  "repo": "DeiDei-releases",
+  "platform": "darwin",
+  "arch": "arm64"
+}

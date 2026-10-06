@@ -5,10 +5,14 @@ async function enterHall(page,name){
  await page.locator('.welcome-scene').waitFor();
  const skip=page.getByRole('button',{name:'跳过开场',exact:false});
  if(await skip.count())await skip.click({noWaitAfter:true});
- await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
- await page.getByRole('textbox',{name:'昵称',exact:true}).fill(name);
- await page.getByRole('button',{name:'确认名字',exact:true}).click();
- await page.getByRole('button',{name:'进入主菜单',exact:true}).click();
+ const existing=page.getByRole('button',{name:/^以.*身份进入牌厅$/});
+ if(await existing.count())await existing.click();else{
+  await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
+  await page.getByRole('textbox',{name:'昵称',exact:true}).fill(name);
+  await page.getByRole('button',{name:'确认名字',exact:true}).click();
+  await page.getByRole('radio',{name:'熟悉',exact:false}).check();
+  await page.getByRole('button',{name:'进入牌厅',exact:true}).click();
+ }
  await page.locator('.menu-layout').waitFor();
 }
 async function enterArena(page){

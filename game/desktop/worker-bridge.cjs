@@ -32,7 +32,7 @@ class WorkerBridge {
         try {
           if (line.length > LIMIT) throw new Error();
           const r = JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(line));
-          if (!r || typeof r !== 'object' || Array.isArray(r) || Object.keys(r).sort().join(',') !== (r.ok ? 'data,id,ok,v' : 'error,id,ok,v') || r.v !== 1 || typeof r.ok !== 'boolean' || !g.pending.has(r.id) ||
+          if (!r || typeof r !== 'object' || Array.isArray(r) || Object.keys(r).sort().join(',') !== (r.ok ? 'data,id,ok,v' : 'error,id,ok,v') || r.v !== g.pending.get(r.id)?.version || typeof r.ok !== 'boolean' || !g.pending.has(r.id) ||
               (r.ok ? !Object.hasOwn(r, 'data') : typeof r.error?.code !== 'string')) throw new Error();
           const p = g.pending.get(r.id); clearTimeout(p.timer); g.pending.delete(r.id);
           r.ok ? p.resolve(r.data) : p.reject(new Error(r.error.code));
@@ -62,10 +62,11 @@ class WorkerBridge {
     g.timers.push(setTimeout(() => kill('SIGKILL'), 2000));
     return g.done;
   }
-  request(op, payload = {}) {
+  request(op, payload = {}, version = 1, timeout = this.timeout) {
     let frame;
     const id = `req-${++this.serial}`;
-    try { frame = JSON.stringify({ v: 1, id, op, payload }) + '\n'; }
+    if(![1,2].includes(version)||!Number.isInteger(timeout)||timeout<1||timeout>30000)return Promise.reject(new Error('BAD_REQUEST'));
+    try { frame = JSON.stringify({ v: version, id, op, payload }) + '\n'; }
     catch { return Promise.reject(new Error('BAD_REQUEST')); }
     if (Buffer.byteLength(frame) > LIMIT) return Promise.reject(new Error('FRAME_TOO_LARGE'));
     if (this.stopping) return Promise.reject(new Error('WORKER_STOPPING'));
@@ -75,8 +76,8 @@ class WorkerBridge {
     let g;
     try { g = this.start(); } catch { return Promise.reject(new Error('WORKER_START_FAILED')); }
     return new Promise((resolve, reject) => {
-      const timer = setTimeout(() => this.fail(g, 'WORKER_TIMEOUT'), this.timeout);
-      g.pending.set(id, { resolve, reject, timer });
+      const timer = setTimeout(() => this.fail(g, 'WORKER_TIMEOUT'), timeout);
+      g.pending.set(id, { resolve, reject, timer, version });
       try { g.child.stdin.write(frame); } catch { this.fail(g, 'WORKER_PIPE_FAILED'); }
     });
   }

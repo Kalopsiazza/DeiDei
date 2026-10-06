@@ -63,7 +63,7 @@ class TutorialGame(SoloGame):
         elif ended:
             self.stage, self.step = 'challenge', 0
             self.session.close()
-            self.session = MatchSession(new_match(list(self.profiles), str(uuid4())))
+            self.session = MatchSession(new_match(list(self.profiles), str(uuid4()), self.rules_snapshot))
             self.accepted.clear()
             self._prepare()
         else:

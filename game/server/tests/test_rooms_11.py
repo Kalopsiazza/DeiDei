@@ -32,7 +32,8 @@ class Rooms11(SocketCase):
         s=await self.server()
         players,_,rid,_=await self.room(s)
         hello=players[0].hello
-        self.assertEqual(hello['protocol'],'rooms-1.1')
+        # Protocol-only update for the configured rules contract; original timeline assertions remain.
+        self.assertEqual(hello['protocol'],'rooms-1.2')
         self.assertEqual(hello['policy_defaults']['turn_ms'],10000)
         self.assertEqual(hello['capabilities']['allowed_turn_ms'],[5000,8000,10000,12000,20000,30000])
         v=await self.start(players,rid)
@@ -178,8 +179,8 @@ class Rooms11(SocketCase):
             self.assertTrue(end['match']['last_turn']['core_resolution']['ledger']['actions'][host_id]['is_recovery'])
             self.assertEqual(next(m for m in end['members'] if m['player_id']==host_id)['absence_count'],int(offline))
         # Inject only via the documented test new_match factory; no network state command exists.
-        def recovery(ids,mid):
-            state=new_match(ids,mid); state['turn_index']='2'
+        def recovery(ids,mid,rules_snapshot=None):
+            state=new_match(ids,mid,rules_snapshot); state['turn_index']='2'
             for p in state['players'].values():p.update(zeng_state='recovery',last_actual_move='ZengYi')
             return state
         s=await self.server(new_match_factory=recovery)

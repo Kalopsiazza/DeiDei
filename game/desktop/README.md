@@ -1,6 +1,27 @@
-# DeiDei 本地桌面（R04）
+# DeiDei 本地桌面（R05）
 
-单人入口已连接本机 Python worker 与 classic-1.0.1 核心，对手标明为「临时随机对手」。33 张牌的资格、费用、胜负和曾义休整来自真实规则。开发预览仍为明确标注的 fixture 固定脚本；切换会结束当前场。
+单人使用同一 core 的 configured-1.0.0 规则快照，可选经典、火力、贷款、幸运、八项技能及声明式扩展包。默认临时随机对手；准备页可选择「旧版 AI（试验）」并等待真实 CPU 模型预热。33 张牌的资格、费用、胜负和曾义休整来自真实规则。开发预览仍为明确标注的 fixture 固定脚本；切换会结束当前场。
+
+## R05 当前入口
+
+产品版本 0.5.0 保留原 DeiDei R02 / `cn.kalopsia.deidei.r02` 身份与 userData。好友房当前只接受 `rooms-1.2`，外层 v:1、`/rooms-v1` 和 subprotocol 名称保留；协议见 [server README](../server/README.md)。房主仅在大厅更改玩法，实际规则变更清空准备；准备与开始带所见 revision/hash，旧操作被拒绝。教程固定经典全开。
+
+原模型环境按 [AI README](../ai/README.md) 单独准备，main 固定使用 `game/ai/.venv/bin/python`（Windows 对应 Scripts）；普通 Python worker 与 AI CPU 锁分开。缺少环境或预热失败会明确报错；真实模型拍、合法回退和强制休整分别显示来源。揭晓保留原入口、幸运实际招式与原价。规则包写法和样例见 [规则文档](../../docs/rules/packs/README.md)。
+
+设置体验草稿跨分类保留，只有正常保存才提交。隐私/更新偏好立即保存；“不保存关闭”不回滚停传。未配置统计服务时仅本机记录，两项上传默认关闭且不开启网络探测。收集服务及管理 CLI 见 [telemetry](../telemetry/README.md)。硬件推荐保守选均衡/流畅，rAF 短测仅说明当前场景；未测高质量不外推。
+
+从根目录构建后，真实有界路线入口为：
+
+```sh
+npm --prefix game/desktop run build
+node game/integration/smoke-major-update.cjs
+node game/integration/smoke-rooms-major.cjs
+node game/integration/smoke-settings-major.cjs
+node game/integration/smoke-telemetry-major.cjs
+node game/packaging/check-update.cjs
+```
+
+脚本使用合成档案与自有进程；设置/采样与双窗口脚本应串行运行，保持窗口前台。参数、实际退出码、失败与未运行以 [本包 CHECKS](../../docs/results/R05-T01-a/CHECKS.md) 为准。安装包必须另验冻结 worker、模型、生产依赖和资源；正式信任不能由未签名 local-test 包替代。
 
 ## 从源码运行
 
@@ -37,7 +58,7 @@ npm --prefix game/desktop start
 
 `DEIDEI_PYTHON` 仅由本机启动环境提供，renderer 不接收路径。未指定时尝试 PATH 中的 `python3`。缺运行时、超时或进程退出时显示「本场中断，可重新开始」，需自行退出本场并重开；不会恢复丢失的对局，也不会替换成演示数据。
 
-当前锁定依赖为 Electron 44.3.0、React 19.3.0、TypeScript 7.0.2、esbuild 0.28.2、@electron/packager 20.3.0、Playwright-core 1.63.0。R02 的 Forge／23 项告警属于旧交付记录；当前风险以本次实际 audit 为准，不执行 audit fix。源码检查、成包启动与系统信任分别记录。
+当前锁定依赖为 Electron 44.3.0、React 19.3.0、TypeScript 7.0.2、esbuild 0.28.2、Playwright-core 1.63.0；分发迁移到 electron-builder 26.17.0 / electron-updater 6.8.10，并直接声明 semver 7.8.5 / @electron/get 5.1.0。R02 的 Forge／23 项告警属于旧交付记录；当前风险以本次实际 audit 为准，不执行 audit fix。源码检查、成包启动与系统信任分别记录。
 
 ## 操作与验证
 
@@ -66,11 +87,11 @@ DEIDEI_SMOKE_OUTPUT=docs/results/R02-T04-b/regression node game/desktop/smoke-li
 
 输入集成 SHA `41029218df420985ec06c01f27d4620fd8f35a16`；桌面 tree 来自 `b65842a8e2fcaebf0ddef74c4f3cf4ca5aa366d1`。新 `worker-bridge.cjs` 取自 `135b938fcfe0486895adfeea37fab73ee5f881dd:experiments/r01-t02-b/bridge.cjs`，改为 1MiB 帧并补 idle-exit 状态。署名仍归 DeiDei contributors，不新增许可证。
 
-renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。真实好友房由独立服务判定，主进程负责连接；renderer 没有任意联网、文件或进程能力。本地 worker 不加载旧模型或训练。当前 R04 演出与原生分发不改变这些安全边界；成包、签名和部署各自记录。
+renderer 保持沙箱与隔离，IPC 只开放固定操作；只有 app:// 的本地资源可以加载。worker 使用 shell:false，最多 16 个待答请求、10 秒超时，按进程隔离请求并等待 close 回收。真实好友房由独立服务判定，主进程负责连接；renderer 没有任意联网、文件或进程能力。core/runtime 不导入 ML 依赖；独立受监督 AI worker 只加载 PRESERVE 核验的原权重。成包、原生安装、正式签名与部署各自记录。
 
 手绘纸色与三类 18/9/6、三排十一列沿用已交付原型。1920×1080 证据为开发视口，非该尺寸物理显示器；物理断网和 Windows 仍需真人复测，步骤见本包 TEST-MATRIX。
 
-## R03-T02-b 好友房桌面客户端（rooms-1.1）
+## R03-T02-b 好友房桌面客户端（历史 rooms-1.1 说明）
 
 主菜单的好友联机现已接入 `online/network-room-port.cjs` 的 `NetworkRoomPort`，通过主进程全局 WebSocket 连接开发服务。正式启动默认没有服务器地址；没有配置时显示「联机服务尚未配置」，原离线单人仍可用。连接只在进入好友房时建立，临时会话凭证仅留在主进程内存，退出不修改本机档案格式。
 

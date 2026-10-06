@@ -1,17 +1,19 @@
-"""Strict rooms-1.1 input and policy validation; no game state enters commands."""
+"""Strict rooms-1.2 commands; rule manifests are bounded declarative data."""
 import json
 import re
 import unicodedata
 from uuid import UUID
+from deidei_core.rules import compile_rules, validate_pack
 
 DEFAULT_POLICY = dict(turn_ms=10000, early_reveal=True, spectator_cap=6,
                       host_disconnect_grace_ms=30000, reveal_ms=5000, min_select_ms=300)
 TURN_TIMES = [5000, 8000, 10000, 12000, 20000, 30000]
 FIELDS = {
     'session.open': {'profile'}, 'session.resume': {'session_id', 'resume_token'},
-    'room.create': {'password', 'options'}, 'room.join': {'room_code', 'password', 'role'},
-    'room.ready': {'room_id', 'ready'}, 'room.role': {'room_id', 'role'},
-    'room.start': {'room_id'}, 'room.submit': {'room_id', 'match_id', 'turn_id', 'entry_id'},
+    'room.create': {'password', 'options', 'rules_request', 'rule_pack_manifests'}, 'room.join': {'room_code', 'password', 'role'},
+    'room.ready': {'room_id', 'ready', 'expected_rules_revision', 'expected_rules_hash'}, 'room.role': {'room_id', 'role'},
+    'room.start': {'room_id', 'expected_rules_revision', 'expected_rules_hash'}, 'room.submit': {'room_id', 'match_id', 'turn_id', 'entry_id'},
+    'room.set_rules': {'room_id', 'rules_request', 'rule_pack_manifests', 'expected_rules_revision', 'expected_rules_hash'},
     'room.set_turn_limit': {'room_id', 'turn_ms', 'expected_policy_revision'},
     'room.sync': {'room_id'}, 'room.return_lobby': {'room_id'}, 'room.leave': {'room_id'},
 }
@@ -110,6 +112,13 @@ def validate(msg: dict) -> dict:
         require(p['role'] in ('player', 'spectator'), field='role')
     if 'ready' in p:
         require(type(p['ready']) is bool, field='ready')
+    if 'expected_rules_revision' in p:
+        require(isinstance(p['expected_rules_revision'], str) and
+                re.fullmatch(r'[1-9][0-9]{0,19}', p['expected_rules_revision']) is not None,
+                field='expected_rules_revision')
+        require(isinstance(p['expected_rules_hash'], str) and
+                re.fullmatch(r'sha256:[0-9a-f]{64}', p['expected_rules_hash']) is not None,
+                field='expected_rules_hash')
     if op == 'room.set_turn_limit':
         require(type(p['turn_ms']) is int and p['turn_ms'] in TURN_TIMES, field='turn_ms')
         revision = p['expected_policy_revision']
@@ -119,6 +128,15 @@ def validate(msg: dict) -> dict:
         exact(p['options'], {'turn_ms', 'early_reveal', 'spectator_cap'})
         policy(p['options'])
     return msg
+
+
+def rules_config(request: object, manifests: object) -> tuple[dict, list]:
+    """Compile before any room mutation; never trust a caller's content hash."""
+    try:
+        snapshot = compile_rules(request, manifests)
+        return snapshot, [validate_pack(m) for m in manifests]
+    except (ValueError, TypeError, UnicodeError, RecursionError):
+        raise Rejected('INVALID_RULES', 'rules_request') from None
 
 
 def policy(overrides: dict | None = None) -> dict:
