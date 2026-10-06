@@ -21,7 +21,7 @@ test('spectator, eliminated, forced, disconnected, revealing, pending and accept
  assert.equal(canSelect(s,0),false);assert.equal(remainingAt(s,100,500),11600);assert.equal(remainingAt(s,100,100000),0);
 });
 test('start requires two ready connected players and summary reports actual source, gains and outcomes',()=>{
- const s=snapshot();assert.equal(startReason(s),'有人未准备');s.view.members[0].ready=true;assert.equal(startReason(s),'');s.view.members[2].connected=false;assert.equal(startReason(s),'有人掉线');s.view.members=s.view.members.slice(0,1);assert.equal(startReason(s),'至少两位玩家');
+ const s=snapshot();assert.equal(startReason(s),'有人未准备');s.view.members[0].ready=true;s.view.members[0].ready_rules_hash=s.view.rules_snapshot.rules_hash;assert.equal(startReason(s),'');s.view.members[2].connected=false;assert.equal(startReason(s),'有人掉线');s.view.members=s.view.members.slice(0,1);assert.equal(startReason(s),'至少两位玩家');
  const r=snapshot('revealing');r.view.match.last_turn.action_sources.p2='timeout_auto';r.view.match.last_turn.room_forfeits=[{player_id:'p3',reason:'three_absences'}];
  const summary=turnSummary(r,manual).join('\n');assert.match(summary,/超时代理/);assert.match(summary,/\+1 DD/);assert.match(summary,/连续三拍缺席/);assert.match(summary,/继续下一拍/);
 });

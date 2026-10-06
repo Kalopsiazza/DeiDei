@@ -1,0 +1,21 @@
+.settings-layout>nav{min-height:0;overflow-x:hidden;overflow-y:auto;overscroll-behavior:contain}
+.settings-content>.settings-scroll .settings-experience{border:0;margin:0;padding:0;min-width:0}
+.settings-content .settings-control-row{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0}
+.settings-content .settings-control-row button{min-height:42px;white-space:normal;line-height:1.35;padding:10px 14px}
+.settings-content .privacy-panel,.settings-content .updates-panel,.settings-content .hardware-panel{line-height:1.65;overflow-wrap:anywhere}
+.settings-content .hardware-panel{border-top:1px solid #8ceaf337;margin-top:22px;padding-top:18px}
+.settings-content .hardware-panel h3{font-size:18px;margin:0 0 12px}
+.settings-content .privacy-panel .checkbox,.settings-content .updates-panel .checkbox{align-items:flex-start;min-height:58px;margin:12px 0}
+.settings-content .checkbox small{display:block;color:#a8bbc3;font-size:13px;line-height:1.6}
+.settings-content .settings-channel{display:grid;grid-template-columns:1fr 170px;align-items:center;gap:14px;margin:14px 0}
+.settings-inline-error{color:#ffc2c9!important;font-size:13px;line-height:1.5}
+.settings-content .settings-json{max-height:320px;overflow:auto;font-size:12px;white-space:pre-wrap;word-break:break-word;padding:12px;background:#06101999;border:1px solid #8ceaf32f}
+.settings-content .settings-scroll .settings-experience:disabled{opacity:.6}
+.settings-content progress{width:min(100%,320px);accent-color:#8ceaf3;margin-right:12px}
+@media(max-width:1050px){.settings-content>.settings-scroll .settings-control-row button{flex:1 1 160px}.settings-content .settings-channel{grid-template-columns:1fr}}
+.settings-content .settings-control-row button{color:#e5eef2;background:linear-gradient(125deg,#203440b3,#08121dc4);border:1px solid #8ceaf34f;border-radius:0}
+.settings-content .settings-control-row button:hover:not(:disabled){background:linear-gradient(125deg,#294a59d4,#132937d9);border-color:#b5f6fb}
+.settings-content .settings-control-row button:focus-visible{outline:2px solid #8ceaf3;outline-offset:3px}
+.settings-content .settings-control-row button:disabled{color:#8c9da6;background:#10202c99;border-color:#8ceaf327;opacity:.65}
+.settings-content .settings-control-row .danger{color:#ffd6db;border-color:#f13f5270;background:#4f192b99}
+@media(prefers-reduced-transparency:reduce){.settings-content .settings-control-row button{background:#10202c}.settings-content .settings-control-row .danger{background:#4f192b}}

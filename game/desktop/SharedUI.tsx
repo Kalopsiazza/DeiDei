@@ -15,8 +15,8 @@ export function TurnTimeSelector({label,value,options,onChange,disabled=false,di
   <i className="ui-time-marker" aria-hidden="true"/>{options.map(ms=><label key={ms} className="ui-time-stop"><input type="radio" name={name} aria-label={ms===0?'不限时':`${ms/1000} 秒`} checked={ms===value} disabled={disabledValues.includes(ms)} onChange={()=>onChange(ms)}/><span><strong>{ms===0?'∞':ms/1000}</strong>{ms!==0&&<small>秒</small>}</span><i aria-hidden="true"/></label>)}
  </div></fieldset>;
 }
-export function RuleButton({disabled=false}:{disabled?:boolean}) {
- return <div className="ui-rule"><span className="ui-control-label">规则选择</span><button type="button" className="rule-choice" disabled={disabled} aria-label="选择规则：经典规则 1.0.1" aria-disabled="true" title="规则选择界面待加入，当前使用经典规则 1.0.1"><span><strong>经典规则</strong><small>CLASSIC</small></span><em>1.0.1</em></button></div>;
+export function RuleButton({disabled=false,label='经典',onClick}:{disabled?:boolean;label?:string;onClick?:()=>void}) {
+ return <div className="ui-rule"><span className="ui-control-label">规则选择</span><button type="button" className="rule-choice" disabled={disabled} aria-label={`选择规则：${label}`} onClick={onClick}><span><strong>{label}</strong><small>RULES</small></span><em>查看 / 选择</em></button></div>;
 }
 
 const avatarName={leaf:'叶子',sun:'太阳',moon:'月亮',star:'星星'};

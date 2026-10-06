@@ -3,7 +3,7 @@ const { spawn, spawnSync } = require('node:child_process');
 const path = require('node:path');
 
 const root = __dirname;
-const uiSource = /^(index\.html|style\.css|welcome\.css|WelcomeEntrance\.tsx|renderer\.tsx|GraphicsSettingsPanel\.tsx|CardArt\.tsx|graphics\.(?:cjs|d\.cts)|BattleStage\.tsx|ManualArchive\.tsx|TutorialCoach\.tsx|SharedUI\.tsx|useSoloSession\.ts|interaction\.ts|view-loop\.ts|types\.ts|online\/.*\.(?:ts|tsx)|styles\/.*\.css|assets\/(?:menu|battle|cards|moves|moves-classic)\/.*\.(?:png|webp|mp4))$/;
+const uiSource = /^(index\.html|style\.css|welcome\.css|WelcomeEntrance\.tsx|renderer\.tsx|SettingsScreen\.tsx|useSettingsDraft\.ts|SoloPrepare\.tsx|GraphicsSettingsPanel\.tsx|CardArt\.tsx|graphics\.(?:cjs|d\.cts)|BattleStage\.tsx|ManualArchive\.tsx|TutorialCoach\.tsx|SharedUI\.tsx|useSoloSession\.ts|interaction\.ts|view-loop\.ts|types\.ts|(?:online|rules|privacy|hardware|updates)\/.*\.(?:ts|tsx)|styles\/.*\.css|assets\/(?:menu|battle|cards|moves|moves-classic)\/.*\.(?:png|webp|mp4))$/;
 const build = () => {
   const ok = spawnSync(process.execPath, ['build.cjs'], { cwd: root, stdio: 'inherit' }).status === 0;
   if (ok) fs.writeFileSync(path.join(root, 'build/ui/.reload'), String(Date.now()));

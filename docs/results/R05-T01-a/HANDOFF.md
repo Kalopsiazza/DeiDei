@@ -5,12 +5,12 @@
 | 步骤 | 状态 | 实际结果 / 下一命令 |
 | --- | --- | --- |
 | 0 基线与可行性 | PASS | `d61a508`保存完整任务/基线；`b6b134ae89822ef8383f9487786449d2556da107`保存真实CPU loader和两平台15包hash lock。Mac真实200次forward；Windows仅wheel核验/dry-run。原生身份/正式v26依赖已核实，当前无有效签名身份。 |
-| 1 规则核心 | PASS | 同一引擎、192项（含全部旧经典案例v2等价、256技能组合）、独立黄金192条/469次结算通过；本步代码提交见随后阶段记录。 |
-| 2 完整游玩链 | RUNNING | runtime/server按既定DTO接通；桌面规则库/面板开始实现。 |
-| 3 原模型接入 | NOT_RUN | 真实loader探查已提前执行，产品会话尚未接入。 |
-| 4 本机与后台 | NOT_RUN | 后续实现。 |
-| 5 原生更新 | NOT_RUN | 正式v26能力与原生身份调查中；当前无正式签名身份。 |
-| 6 综合交付 | NOT_RUN | 最终完整检查、候选工件、草稿PR。 |
+| 1 规则核心 | PASS | 同一引擎、192项（含全部旧经典案例v2等价、256技能组合）、独立黄金192条/469次结算通过；`ebbedc51c5ea610af691d2621ac6fa6dd0fa001b`。 |
+| 2 完整游玩链 | PASS | `51f7d55`保存runtime/server规则与rooms-1.2；真实双普通main好友房6组通过，原生文件选择器导入两个包、冷重启后保留，单人1→3 DD与100%幸运原价结算通过。 |
+| 3 原模型接入 | PASS（Mac源码） | `0de6e0eeac61aad8774f8fd03e5eeb95be67a22d`保存独立监督、156投影/31映射、可取消预热与有限回退；runtime47项和真实probe通过。普通main原模型1拍/受控crash回退1拍分开记录；冷预热取消与主进程SIGKILL自有core/AI回收通过。冻结成包与Windows另验。 |
+| 4 本机与后台 | PASS（Mac本地） | 设置28项、全屏16项、main生命周期10项通过；真实HTTP/SQLite后台7组、普通main collector 30项通过。默认零请求、自然ACK、停传/删除与冷重启分别核对。 |
+| 5 原生更新 | RUNNING | 精确v26依赖、UpdateService及真实传输17项已通过；版本0.5.0保留原app身份；冻结core/AI独立探查通过。下一步从保存的产品SHA构建完整候选与N/N+1 fixture。当前无有效正式签名，native安装/信任仍NOT_RUN。 |
+| 6 综合交付 | RUNNING | 根Python、server80与桌面124项最终检查通过，最后ordinary main模型/回收8项通过；正在保存产品提交，下一命令为完整三份构建与冻结包GUI/下载验收，随后草稿PR。 |
 
 沿用任务字段，不另起命名：RulesRequest / RulesSnapshot，configured-1.0.0、CoreState schema2；经典v1投影保留。火力2/5 DD、贷款每game开局1 DD且无需还款、幸运单次25%固定链、八开关全完成；教程经典全开。core `required_tokens` 返回本拍精确 `choice/lucky` 玩家集合。所有随机在runtime/server预留，core不读随机或外部状态。
 

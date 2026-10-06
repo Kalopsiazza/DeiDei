@@ -20,6 +20,7 @@ sys.path[:0] = [str(root / 'game/server'), str(root / 'game/core')]
 from deidei_server.room import Room, turn_id
 from deidei_server.protocol import DEFAULT_POLICY
 from deidei_core.api import new_match
+from deidei_core.rules import compile_rules, default_request
 
 
 class Clock:
@@ -32,8 +33,8 @@ class Clock:
         return 1800000000000 + self.t
 
 
-def funded(ids: list[str], match_id: str) -> dict:
-    state = new_match(ids, match_id)
+def funded(ids: list[str], match_id: str, rules_snapshot=None) -> dict:
+    state = new_match(ids, match_id, rules_snapshot)
     for p in state['players'].values():
         p['dd6'] = '6'
     return state
@@ -50,17 +51,17 @@ for name, moves, leave in [('ordinary', ['Charge', 'Charge'], False),
     sessions = {pid: SimpleNamespace(player_id=pid, profile={'nickname': pid, 'avatar_id': 'leaf'},
                 room_id=None, closed_room=None, touched=0, disconnected_at=None, connection=None)
                 for pid in ['A', 'B', 'C', 'Z']}
-    service = SimpleNamespace(clock=clock, to_public=lambda mono_ms: 1800000000000 + mono_ms, dirty=set(), by_player=sessions, token_rng=Random(100),
+    service = SimpleNamespace(clock=clock, to_public=lambda mono_ms: 1800000000000 + mono_ms, dirty=set(), by_player=sessions, token_rng=Random(100), lucky_rng=Random(101),
                 new_match_factory=funded, timeout_chooser=lambda state, options: 'Charge', host_leave_timing='after_turn')
-    room = Room(service, sessions['A'], 'ABCD1234', DEFAULT_POLICY, None)
+    room = Room(service, sessions['A'], 'ABCD1234', DEFAULT_POLICY, None, compile_rules(default_request()), [])
     room.add(sessions['B'], 'player')
     ids = ['A', 'B', 'C'][:len(moves)]
     if 'C' in ids:
         room.add(sessions['C'], 'player')
     room.add(sessions['Z'], 'spectator')
     for pid in ids:
-        room.command(sessions[pid], 'room.ready', {'room_id': room.id, 'ready': True}, 0)
-    room.command(sessions['A'], 'room.start', {'room_id': room.id}, 0)
+        room.command(sessions[pid], 'room.ready', {'room_id': room.id, 'ready': True, 'expected_rules_revision':str(room.rules_revision),'expected_rules_hash':room.rules_snapshot['rules_hash']}, 0)
+    room.command(sessions['A'], 'room.start', {'room_id': room.id,'expected_rules_revision':str(room.rules_revision),'expected_rules_hash':room.rules_snapshot['rules_hash']}, 0)
     for pid, entry in zip(ids, moves):
         room.command(sessions[pid], 'room.submit', dict(room_id=room.id, match_id=room.state['match_id'], turn_id=turn_id(room.state), entry_id=entry), 0)
     if leave:

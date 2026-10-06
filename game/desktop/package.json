@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "react": "19.3.0",
-    "react-dom": "19.3.0"
+    "react-dom": "19.3.0",
+    "electron-updater": "6.8.10",
+    "semver": "7.8.5"
   },
   "devDependencies": {
     "@types/react": "19.3.0",
@@ -10,13 +12,14 @@
     "esbuild": "0.28.2",
     "playwright-core": "1.63.0",
     "typescript": "7.0.2",
-    "@electron/packager": "20.3.0"
+    "electron-builder": "26.17.0",
+    "@electron/get": "5.1.0"
   },
   "name": "deidei-r02-desktop",
   "productName": "DeiDei R02",
-  "version": "0.1.0",
+  "version": "0.5.0",
   "private": true,
-  "description": "R04 local desktop playtest with optional rooms-1.1",
+  "description": "R05 native desktop game with rules, CPU model and controlled updates",
   "author": "DeiDei contributors",
   "main": "main.cjs",
   "scripts": {
@@ -24,11 +27,13 @@
     "build": "npm run typecheck && node build.cjs",
     "dev": "node dev.cjs",
     "start": "npm run build && electron .",
-    "test": "npm run build && node --test test.cjs test-graphics.cjs test-live.cjs test-navigation.cjs test-packaging.cjs tests-online/test-*.cjs",
+    "test": "npm run build && node --test test.cjs test-graphics.cjs test-live.cjs test-navigation.cjs test-rules.cjs test-privacy.cjs hardware/test.cjs lifecycle/test.cjs test-packaging.cjs updates/test.cjs tests-online/test-*.cjs",
     "smoke": "node smoke-live.cjs",
     "test:online": "npm run build && node --test tests-online/test-*.cjs",
     "smoke:online": "npm run build && node tests-online/smoke.cjs",
     "package": "python ../packaging/build.py",
-    "smoke:live-online": "npm run build && node ../integration/gui.cjs"
+    "smoke:live-online": "npm run build && node ../integration/gui.cjs",
+    "test:updates": "node --test updates/test.cjs",
+    "smoke:updates": "node ../packaging/check-update.cjs"
   }
 }

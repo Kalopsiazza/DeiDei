@@ -1,3 +1,5 @@
+const classicRequest=()=>({schema_version:1,preset_id:'classic',skill_flags:Object.fromEntries(require('../rules/validation.cjs').SKILLS.map(k=>[k,true])),preset_params:{},pack_refs:[]});
+const expectedRules=()=>({expected_rules_revision:'1',expected_rules_hash:require('./fake.cjs').samples.state.rules_hash});
 const {test}=require('node:test');
 const assert=require('node:assert/strict');
 const {randomUUID}=require('node:crypto');
@@ -8,7 +10,7 @@ function room(phase='selecting'){
  const time=clock(),sockets=[];
  const port=new NetworkRoomPort({url:'ws://127.0.0.1:8765/rooms-v1',socketFactory:()=>{const s=new FakeSocket();sockets.push(s);return s;},...time,random:()=>0.5});
  port.openLobby({nickname:'测试',avatar_id:'leaf'});const s=sockets[0];s.message(hello());s.ack(s.sent[0],identity);
- port.create({password:null,options:{turn_ms:10000,early_reveal:true,spectator_cap:6}});s.ack(s.sent.at(-1),{room_id:'room1',room_code:'ABCD2345'});s.message(snapshot(phase));
+ port.create({rules_request:classicRequest(),rule_pack_manifests:[],password:null,options:{turn_ms:10000,early_reveal:true,spectator_cap:6}});s.ack(s.sent.at(-1),{room_id:'room1',room_code:'ABCD2345'});s.message(snapshot(phase));
  return {port,s,time,sockets};
 }
 const ended=(extra={})=>({v:1,type:'membership.ended',event_id:randomUUID(),room_id:'room1',player_id:'p1',seq:'2',server_time_ms:100000,reason:'three_absences',...extra});
@@ -46,7 +48,7 @@ test('W11 removal cancels only old intent, preserves session, deduplicates and p
  const c=room();c.port.submit({room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',entry_id:'Charge'});const old=c.s.sent.at(-1);const event=ended();c.s.message(event);
  assert.equal(c.port.read().snapshot,null);assert.equal(c.port.read().pending,false);assert.equal(c.port.read().membership_end.room_code,'ABCD2345');assert.equal(c.port.identity.session_id,identity.session_id);assert.equal(c.port.read().status,'connected');
  const revision=c.port.read().revision;c.s.message(event);assert.equal(c.port.read().revision,revision);
- c.port.create({password:null,options:{turn_ms:10000,early_reveal:true,spectator_cap:6}});const create=c.s.sent.at(-1);
+ c.port.create({rules_request:classicRequest(),rule_pack_manifests:[],password:null,options:{turn_ms:10000,early_reveal:true,spectator_cap:6}});const create=c.s.sent.at(-1);
  c.s.message(ended());c.s.ack(old,{room_id:'room1',match_id:'match1',turn_id:'match1:g1:t6',accepted_entry_id:'Charge'});assert.equal(c.port.pending.request_id,create.request_id);
  const fresh=snapshot('lobby');fresh.room_id='room2';fresh.view.room_code='EFGH2345';c.s.message(fresh);
  c.s.message(snapshot('selecting','99')); // A late old-room frame must not displace the new room's pre-ack snapshot.
@@ -82,7 +84,8 @@ test('W14 real Room/core reveal and full result DTOs decode without dropping las
   const turn=decoded.view.match.last_turn;
   assert.ok(turn.core_resolution.ledger.actions.A,name);
   assert.equal(turn.effective_transition.to_game_id,turn.effective_state.game_id,name);
-  if(name.endsWith('_next')&&!name.startsWith('ordinary'))assert.equal(decoded.view.phase,'result');
+  if(name.endsWith('_next')&&!name.startsWith('ordinary')&&!name.startsWith('restart_survivors'))assert.equal(decoded.view.phase,'result');
+  if(name==='restart_survivors_next'){assert.equal(decoded.view.phase,'selecting');assert.equal(decoded.view.match.public_state.game_index,'2');}
   const bad=structuredClone(frame);bad.view.match.last_turn.effective_transition.to_game_id=null;
   assert.throws(()=>readMessage(JSON.stringify(bad)),/INVALID_MESSAGE/,name);
   bad.view.match.last_turn.effective_transition.to_game_id='wrong-game';assert.throws(()=>readMessage(JSON.stringify(bad)),/INVALID_MESSAGE/);

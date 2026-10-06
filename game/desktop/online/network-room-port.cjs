@@ -158,11 +158,15 @@ class NetworkRoomPort {
     if(op==='room.create'||op==='room.join'){if(this.room)throw new Error('ALREADY_IN_ROOM');}
     else if(!this.room||payload.room_id!==this.room)throw new Error('ROOM_NOT_MEMBER');
     const v=this.snapshot?.view;
-    if(v?.pending_close&&['room.join','room.set_turn_limit','room.start','room.return_lobby'].includes(op))throw new Error('ROOM_CLOSING');
+    if(v?.pending_close&&['room.join','room.set_turn_limit','room.set_rules','room.start','room.return_lobby'].includes(op))throw new Error('ROOM_CLOSING');
     if(op==='room.set_turn_limit') {
       const me=v?.members.find(p=>p.player_id===v.self.player_id);
       if(!v||v.host_id!==v.self.player_id||!me?.connected)throw new Error('NOT_HOST');
       if(!['lobby','selecting','revealing','result'].includes(v.phase))throw new Error('WRONG_PHASE');
+    }
+    if(['room.set_rules','room.ready','room.start'].includes(op)){
+      if(!v||payload.expected_rules_revision!==v.rules_revision||payload.expected_rules_hash!==v.rules_snapshot.rules_hash)throw new Error('RULES_STALE');
+      if(op==='room.set_rules'&&(v.host_id!==v.self.player_id||v.phase!=='lobby'))throw new Error(v.host_id!==v.self.player_id?'NOT_HOST':'RULES_IN_MATCH');
     }
     if(op==='room.submit') {
       const v=this.snapshot?.view;
@@ -180,6 +184,7 @@ class NetworkRoomPort {
   join(p){return this.command('room.join',p);}
   ready(p){return this.command('room.ready',p);}
   start(p){return this.command('room.start',p);}
+  setRules(p){return this.command('room.set_rules',p);}
   setTurnLimit(p){return this.command('room.set_turn_limit',p);}
   changeRole(p){return this.command('room.role',p);}
   submit(p){return this.command('room.submit',p);}
