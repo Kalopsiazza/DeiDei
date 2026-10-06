@@ -1,6 +1,6 @@
 # R03 好友房服务（R03-T01-b）
 
-Python 3.11+，经典规则 `classic-1.0.1`，默认仅监听 `127.0.0.1:8765`。
+Python 3.11+，协议 `rooms-1.2`、规则 `configured-1.0.0`（基础 `classic-1.0.1`），默认仅监听 `127.0.0.1:8765`。
 服务直接调用 `game/core` 的公开 API，独立于桌面、旧模型和离线 runtime。
 不提供公网部署、数据库、账号或安装包。
 
@@ -32,12 +32,29 @@ after_turn 与 early_reveal=true 已由用户确认；10 秒和局中改时限�
 
 每连接先读 `hello`，再 `session.open`；保存其返回的临时身份后才能创建或加入房间。
 重连使用原 `session_id/resume_token`，随后按 `last_command_seq` 发新意图；丢失确认则重试原请求。
-房间/出牌命令字段遵循附件 NET-R03 1.1。服务只接受入口名称，不接受玩家状态、余额或随机种子。
+出牌命令仍只接受入口名称，不接受玩家状态、余额或随机种子。规则命令新增有界声明式 request/manifest，字段见下方 1.2；原 NET-R03 1.1 文档用于未改变的传输、期限和重连行为。
 服务日志只记录事件与错误代码，不开启 WebSocket 帧/请求日志。
 
-## 1.1 行为
+## 1.2 规则与准备
 
-hello 的 protocol 为 `rooms-1.1`；端点及子协议不变。默认每拍 10 秒，可选 5/8/10/12/20/30 秒。
+hello 的 protocol 为 `rooms-1.2`、rules_version 为 `configured-1.0.0`；capabilities 另声明 rules_schema=1、core_state_schema=2、rules_pack_api=`deidei.rules-pack.v1`、max_pack_bytes=8192。外层 `v:1`、端点和子协议不变；旧客户端须明确拒绝新 hello，不维护双套服务。
+
+| 命令 | 新增的精确字段 |
+| --- | --- |
+| `room.create` | `rules_request`、`rule_pack_manifests=[]或[完整manifest]`。 |
+| `room.set_rules` | `room_id/rules_request/rule_pack_manifests/expected_rules_revision/expected_rules_hash`。 |
+| `room.ready` | 在原 room_id/ready 外带 expected_rules_revision/expected_rules_hash，包括取消准备。 |
+| `room.start` | 在原 room_id 外带 expected_rules_revision/expected_rules_hash。 |
+
+服务独立编译并核验快照/包身份；unknown 能力、篡改内容和不完整引用拒绝。只有已连接房主在 lobby 可改规则；先验证后替换。同 hash 是无操作；真实改变才增加 rules_revision 并清 ready/ready_rules_hash。迟到旧 ready/start 返回 RULES_STALE；开场再确认所有参赛者准备的 hash，不能只靠清准备通过。room.set_rules ACK 是 room_id/rules_revision/rules_hash；ready ACK 增加 nullable ready_rules_hash。客户端只用新 snapshot 更新显示，旧 ACK 不能覆盖新规则。
+
+view 包含 rules_snapshot/rules_revision/完整 rule_pack_manifests，成员包含 ready_rules_hash。开始后规则固定整场；回大厅保留规则、清准备。普通续拍、核心存活者重开、弃权重建以及公开 effective_state 回写都保留快照/hash。贷款每个新 game 只发一次开局 DD；读取/重试/重连不发放。mode_at_start 的 duel/multiplayer 与玩法 preset 分开，时限 policy_revision 也不进入 rules_hash。
+
+公开 v2 账目 whitelist 增加 base_move/upgrade，保留原入口、实际招式、来源与支出；不发未来 token、seed、暗牌或模型分布。私有 Room.replay_inputs 记录冻结规则、match/game/turn、实际提交/消费 token 与弃权，不出现在 snapshot。每拍选择前在三条独立流中分别固定代选、分支和幸运；实际消费集合由 core `required_tokens` 决定。
+
+## 延续的时间与连接行为
+
+默认每拍 10 秒，可选 5/8/10/12/20/30 秒。
 房主用 `room.set_turn_limit` 携带 `room_id / turn_ms / expected_policy_revision` 修改下一选择阶段时限；
 版本从字符串 `"1"` 起，真实变更才递增。同值新请求仅 ACK，原请求重试返回原 ACK 和当前视图。
 当拍截止、选牌、随机令牌与准备状态保持原值，截止时刻先处理计时再处理命令。
@@ -65,9 +82,9 @@ game/server/.venv/bin/python scripts/check.py
 timeout_chooser=None, rng=None, host_leave_timing='after_turn')` 返回异步上下文管理器。进入后有 `url`，并支持异步
 `advance_ms(ms)`、`drain()`、`close()`。底层是同一真实 loopback 服务。
 `clock` 约定同步 `now_ms()/wall_ms()/advance_ms(ms)`；无注入时使用真实时钟，不能 advance。
-`new_match_factory(ids, match_id)` 默认核心 `new_match`，替换值仍经核心公开 API 验证。
+`new_match_factory(ids, match_id, rules_snapshot)` 默认核心 `new_match`，替换值必须保留 v2 快照/hash，仍经核心公开 API 验证。
 `timeout_chooser(start_state, legal_options)` 只收到开始状态及合法选项，返回入口字符串。
-`rng` 支持标准库 `Random`，分出独立代理和分支流；默认两者均为 `SystemRandom`。
+`rng` 支持标准库 `Random`，分出独立代理、分支和幸运流；默认三者均为 `SystemRandom`。
 这些注入仅供 Python 导入，CLI 和网络协议没有状态/随机/执行后门。
 
 ## 实现边界
@@ -80,6 +97,8 @@ timeout_chooser=None, rng=None, host_leave_timing='after_turn')` 返回异步上
 自测包含真实 socket；慢消费者使用真实 socket 加阻塞 writer 注入，可复现队列上限和隔离，
 不宣称实体网络故障或吞吐压测。独立 T03、桌面集成、跨电脑、Windows 和真人验收尚未运行。
 完整命令、退出码、版本、覆盖和限制见本任务结果目录。
+
+`tests/test_rules_12.py` 使用真实 loopback socket 验证规则权限/原子替换、旧 ready/start 两种到达次序、旧 ACK、两条贷款重开、重连/回大厅、包资源与 100% 幸运、观察者保密及多房配置隔离。既有 1.1 行为测试只更新协议/配置输入，不降低结果、期限或保密断言；这层不代表普通 Electron、公网或真人跨设备完成。
 
 ## 可选 TLS（R03-T06-a）
 

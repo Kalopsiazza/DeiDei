@@ -5,22 +5,27 @@ from random import Random, SystemRandom
 import time
 from uuid import uuid4
 
-from deidei_core.api import list_options, new_match
-from .opponent import choose_entry, needs_token, OPPONENT_NAME
+from deidei_core.api import list_options, new_match, required_tokens
+from .opponent import choose_entry, OPPONENT_NAME
 from .session import MatchSession, expected_turn
-from .view import options_view, participants_view, ledger_summary, progress, public_round, TRANSITIONS
+from .view import options_view, participants_view, ledger_summary, progress, public_round, rules_view, pack_view, TRANSITIONS
 
 
 class SoloGame:
     def __init__(self, profile: dict, *, session: MatchSession | None = None,
                  rng: Random | None = None, token_rng: Random | None = None,
+                 lucky_rng: Random | None = None, rules_snapshot: dict | None = None,
+                 rule_pack_manifests: list | None = None,
                  clock=time.monotonic, submit_delay: float = 0.9, reveal_delay: float = 3.0):
         self.self_id = profile["profile_id"]
         self.profiles = {self.self_id: {k: profile[k] for k in ("nickname", "avatar_id")},
                          "bot_local": {"nickname": OPPONENT_NAME, "avatar_id": "sun"}}
-        self.session = session if session is not None else MatchSession(new_match(list(self.profiles), str(uuid4())))
+        self.session = session if session is not None else MatchSession(new_match(list(self.profiles), str(uuid4()), rules_snapshot))
+        self.rules_snapshot = self.session.snapshot().get("rules_snapshot")
+        self.rule_pack_manifests = deepcopy(rule_pack_manifests or [])
         self.rng = rng if rng is not None else SystemRandom()
         self.token_rng = token_rng if token_rng is not None else SystemRandom()
+        self.lucky_rng = lucky_rng if lucky_rng is not None else SystemRandom()
         self.clock, self.submit_delay, self.reveal_delay = clock, submit_delay, reveal_delay
         self.closed = False
         self.accepted = OrderedDict()
@@ -38,6 +43,8 @@ class SoloGame:
         # Choose before accepting user input. Neither function receives the user's selection.
         self.bot_entry = choose_entry(list_options(self.state, "bot_local"), self.rng)
         self.tokens = {pid: self.token_rng.randrange(2) for pid in self.state["active_ids"]}
+        self.lucky_tokens = ({pid: self.lucky_rng.randrange(10000) for pid in self.state["active_ids"]}
+                             if self.state["schema_version"] == 2 else {})
         if self.options[0]["forced"]:
             self._apply(None)
 
@@ -47,9 +54,11 @@ class SoloGame:
             submissions["bot_local"] = self.bot_entry
         if entry_id is not None:
             submissions[self.self_id] = entry_id
-        tokens = {pid: self.tokens[pid] for pid, entry in submissions.items()
-                  if needs_token(entry, self.state["players"][pid])}
-        result = self.session.apply_round(self.view_id, self.expected, submissions, tokens)
+        consumers = required_tokens(self.state, submissions)
+        tokens = {pid: self.tokens[pid] for pid in consumers["choice"]}
+        lucky = {pid: self.lucky_tokens[pid] for pid in consumers["lucky"]}
+        result = self.session.apply_round(self.view_id, self.expected, submissions, tokens,
+                                         lucky if self.state["schema_version"] == 2 else None)
         if not result["ok"]:
             raise ValueError(result["error"]["code"])
         self.resolution = result
@@ -110,14 +119,17 @@ class SoloGame:
             timer = {"mode": "reveal",
                      "remaining_ms": max(0, total_ms - round((self.clock() - self.phase_at) * 1000)),
                      "total_ms": total_ms}
-        return deepcopy({"mode": "solo", "self_role": "player",
+        view = {"mode": "solo", "self_role": "player",
                          "self_participation": "active" if self.self_id in (resolution["next_state"]["active_ids"] if resolution else self.state["active_ids"]) else "eliminated",
                          "public_round": public_round(resolution, self.view_id) if resolution else None,
                          "source": "live", "game_index": self.state["game_index"], "view_id": self.view_id, **self.expected, "phase": self.phase,
                          "participants": participants_view(self.state, self.profiles, submitted, resolution),
                          "self_id": self.self_id, "options": self.options, "selected_entry_id": self.selected,
                          "submitted": submitted, "timer": timer,
-                         "summary": summary, "outcome": outcome})
+                         "summary": summary, "outcome": outcome}
+        if self.rules_snapshot is not None:
+            view.update(rules_snapshot=rules_view(self.rules_snapshot), rule_pack_manifests=[pack_view(m) for m in self.rule_pack_manifests])
+        return deepcopy(view)
 
     def leave(self) -> dict:
         view = self._view()

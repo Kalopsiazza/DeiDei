@@ -9,6 +9,7 @@ from uuid import uuid4
 from websockets.asyncio.client import connect
 from websockets.exceptions import ConnectionClosed, InvalidStatus
 from deidei_core.api import new_match
+from deidei_core.rules import compile_rules, default_request
 from deidei_server.testing import create_test_server
 from deidei_server.protocol import DEFAULT_POLICY, Rejected, parse, policy, validate
 
@@ -27,8 +28,8 @@ class ManualClock:
         self.value += ms
 
 
-def funded(ids, match_id):
-    s = new_match(ids, match_id)
+def funded(ids, match_id, rules_snapshot=None):
+    s = new_match(ids, match_id, rules_snapshot)
     for p in s['players'].values():
         p['dd6'] = '120'
     return s
@@ -55,6 +56,15 @@ class Client:
         return c, response
 
     def intent(self, op, payload):
+        # rooms-1.2 makes the existing classic scenarios explicit; race tests pass their own seen revision/hash.
+        payload = deepcopy(payload)
+        if op == 'room.create':
+            payload.setdefault('rules_request', default_request())
+            payload.setdefault('rule_pack_manifests', [])
+        if op in ('room.ready', 'room.start'):
+            view = self.view['view'] if self.view and self.view['room_id'] == payload.get('room_id') else None
+            payload.setdefault('expected_rules_revision', view['rules_revision'] if view else '1')
+            payload.setdefault('expected_rules_hash', view['rules_snapshot']['rules_hash'] if view else compile_rules(default_request())['rules_hash'])
         if not op.startswith('session.'):
             self.seq += 1
         return dict(v=1, type='command', request_id=str(uuid4()),

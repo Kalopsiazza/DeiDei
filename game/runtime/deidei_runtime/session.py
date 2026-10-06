@@ -11,7 +11,8 @@ def rejected(code: str, field: str | None = None) -> dict:
 
 
 def expected_turn(state: dict) -> dict:
-    return {key: state[key] for key in ("match_id", "game_id", "turn_index")}
+    keys = ("match_id", "game_id", "turn_index") + (("rules_hash",) if state["schema_version"] == 2 else ())
+    return {key: state[key] for key in keys}
 
 
 class MatchSession:
@@ -23,6 +24,7 @@ class MatchSession:
         if type(max_cached) is not int or max_cached < 1:
             raise ValueError("max_cached must be a positive integer")
         self._state = deepcopy(initial_state)
+        self.schema_version = initial_state["schema_version"]
         self._context = deepcopy(context) if context is not None else {
             "mode_at_start": "duel" if len(initial_state["roster"]) == 2 else "multiplayer",
             "absence_counts": dict.fromkeys(initial_state["roster"], 0),
@@ -30,6 +32,7 @@ class MatchSession:
         self._cache = OrderedDict()
         self._max_cached = max_cached
         self._closed = False
+        self._replay_inputs = []
 
     def snapshot(self) -> dict:
         return deepcopy(self._state)
@@ -37,29 +40,43 @@ class MatchSession:
     def context_snapshot(self) -> dict:
         return deepcopy(self._context)
 
-    def apply_round(self, request_id: str, expected: dict, submissions: dict, choice_tokens: dict) -> dict:
+    def replay_inputs(self) -> list[dict]:
+        """Private replay material; never used as a public view DTO."""
+        return deepcopy(self._replay_inputs)
+
+    def apply_round(self, request_id: str, expected: dict, submissions: dict, choice_tokens: dict,
+                    lucky_tokens: dict | None = None) -> dict:
         if self._closed:
             return rejected("SESSION_CLOSED")
         if not isinstance(request_id, str) or not 1 <= len(request_id) <= 128:
             return rejected("INVALID_REQUEST", "request_id")
         if any(isinstance(value, dict) and any(not isinstance(key, str) for key in value)
-               for value in (expected, submissions, choice_tokens)):
+               for value in (expected, submissions, choice_tokens, lucky_tokens)):
             return rejected("INVALID_REQUEST")
         try:
-            fingerprint = json.dumps([expected, submissions, choice_tokens], sort_keys=True,
+            inputs = [expected, submissions, choice_tokens]
+            if self.schema_version == 2 or lucky_tokens is not None:
+                inputs.append(lucky_tokens)
+            fingerprint = json.dumps(inputs, sort_keys=True,
                                      separators=(",", ":"), allow_nan=False)
         except (TypeError, ValueError, RecursionError):
             return rejected("INVALID_REQUEST")
         if request_id in self._cache:
             original, result = self._cache[request_id]
             return deepcopy(result) if fingerprint == original else rejected("REQUEST_CONFLICT")
-        if (not isinstance(expected, dict) or set(expected) != {"match_id", "game_id", "turn_index"}
+        if (not isinstance(expected, dict) or set(expected) != set(expected_turn(self._state))
                 or any(not isinstance(v, str) for v in expected.values())):
             return rejected("INVALID_REQUEST", "expected")
         if expected != expected_turn(self._state):
             return rejected("STALE_TURN")
-        result = resolve_round(self._state, submissions, choice_tokens)
+        result = (resolve_round(self._state, submissions, choice_tokens) if lucky_tokens is None and self.schema_version == 1
+                  else resolve_round(self._state, submissions, choice_tokens, lucky_tokens))
         if result["ok"]:
+            replay = {"request_id": request_id, "expected": deepcopy(expected),
+                      "submissions": deepcopy(submissions), "choice_tokens": deepcopy(choice_tokens)}
+            if self.schema_version == 2:
+                replay.update(rules_snapshot=deepcopy(self._state["rules_snapshot"]), lucky_tokens=deepcopy(lucky_tokens))
+            self._replay_inputs.append(replay)
             self._state = deepcopy(result["next_state"])
             self._cache[request_id] = (fingerprint, deepcopy(result))
             if len(self._cache) > self._max_cached:

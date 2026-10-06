@@ -2,9 +2,9 @@
 from copy import deepcopy
 from uuid import uuid4
 
-from deidei_core.api import list_options, new_match, resolve_round
-from deidei_core.entries import ENTRY_MAP, BRANCHES
-from .protocol import require
+from deidei_core.api import list_options, new_match, resolve_round, required_tokens
+from deidei_core.rules import SKILLS, PARAMETER_FIELDS
+from .protocol import require, rules_config
 
 
 def turn_id(state: dict) -> str:
@@ -12,7 +12,8 @@ def turn_id(state: dict) -> str:
 
 
 class Room:
-    def __init__(self, service, host, code: str, policy: dict, password: tuple | None):
+    def __init__(self, service, host, code: str, policy: dict, password: tuple | None,
+                 rules_snapshot: dict, rule_pack_manifests: list):
         self.service, self.id, self.code = service, str(uuid4()), code
         self.host_id, self.policy, self.password = host.player_id, dict(policy), password
         self._had_password = password is not None
@@ -24,6 +25,10 @@ class Room:
         self.closed_at = None
         self.policy_revision, self.current_turn_ms = 1, None
         self.pending_close = self.host_grace_deadline = None
+        self.rules_snapshot, self.rule_pack_manifests = deepcopy(rules_snapshot), deepcopy(rule_pack_manifests)
+        self.rules_revision = 1
+        self.lucky_tokens = {}
+        self.replay_inputs = []
         self.add(host, 'player')
 
     def add(self, session, role: str) -> None:
@@ -39,7 +44,7 @@ class Room:
         occupied = {m['seat'] for m in self.members.values()}
         seat = next(i for i in range(6) if i not in occupied) if role == 'player' else None
         self.members[session.player_id] = dict(player_id=session.player_id, **session.profile,
-            role=role, seat=seat, connected=True, ready=False,
+            role=role, seat=seat, connected=True, ready=False, ready_rules_hash=None,
             participation='lobby' if role == 'player' else 'spectating',
             submission_state='none', absence_count=0)
         session.room_id, session.closed_room, session.last_membership_end = self.id, None, None
@@ -54,6 +59,7 @@ class Room:
     def clear_ready(self) -> None:
         for m in self.members.values():
             m['ready'] = False
+            m['ready_rules_hash'] = None
 
     def active(self, pid: str) -> bool:
         return self.state is not None and pid in self.state['active_ids']
@@ -67,6 +73,7 @@ class Room:
         self.phase, self.deadline, self.select_started = 'selecting', now + self.current_turn_ms, now
         self.pending = {}
         self.tokens = {pid: self.service.token_rng.randrange(2) for pid in self.state['active_ids']}
+        self.lucky_tokens = {pid: self.service.lucky_rng.randrange(10000) for pid in self.state['active_ids']}
         for pid, m in self.members.items():
             m['submission_state'] = ('forced' if self.state['players'][pid]['zeng_state'] == 'recovery'
                 else 'thinking') if self.active(pid) else 'out'
@@ -111,9 +118,22 @@ class Room:
             session.room_id = session.closed_room = None
             session.touched = now
             return dict(room_id=self.id, left=True)
-        if op in ('room.set_turn_limit', 'room.start', 'room.return_lobby'):
+        if op in ('room.set_turn_limit', 'room.set_rules', 'room.start', 'room.return_lobby'):
             require(pid == self.host_id, 'NOT_HOST')
             require(self.pending_close is None, 'ROOM_CLOSING')
+        if op in ('room.set_rules', 'room.ready', 'room.start'):
+            require(p['expected_rules_revision'] == str(self.rules_revision) and
+                    p['expected_rules_hash'] == self.rules_snapshot['rules_hash'], 'RULES_STALE')
+        if op == 'room.set_rules':
+            require(m['connected'], 'NOT_HOST')
+            require(self.phase == 'lobby', 'WRONG_PHASE')
+            snapshot, manifests = rules_config(p['rules_request'], p['rule_pack_manifests'])
+            if snapshot['rules_hash'] != self.rules_snapshot['rules_hash']:
+                self.rules_snapshot, self.rule_pack_manifests = snapshot, manifests
+                self.rules_revision += 1
+                self.clear_ready()
+                self.changed()
+            return dict(room_id=self.id, rules_revision=str(self.rules_revision), rules_hash=self.rules_snapshot['rules_hash'])
         if op == 'room.set_turn_limit':
             require(p['expected_policy_revision'] == str(self.policy_revision), 'POLICY_STALE')
             if self.policy['turn_ms'] != p['turn_ms']:
@@ -127,8 +147,9 @@ class Room:
             require(self.phase == 'lobby', 'WRONG_PHASE')
             if m['ready'] != p['ready']:
                 m['ready'] = p['ready']
+                m['ready_rules_hash'] = self.rules_snapshot['rules_hash'] if p['ready'] else None
                 self.changed()
-            return dict(room_id=self.id, ready=m['ready'])
+            return dict(room_id=self.id, ready=m['ready'], ready_rules_hash=m['ready_rules_hash'])
         if op == 'room.role':
             require(pid != self.host_id, 'HOST_ROLE_FIXED')
             require(self.phase == 'lobby', 'WRONG_PHASE')
@@ -146,16 +167,21 @@ class Room:
             require(self.phase == 'lobby', 'WRONG_PHASE')
             players = [v for v in self.members.values() if v['role'] == 'player']
             require(2 <= len(players) <= 6 and all(v['ready'] and v['connected'] for v in players), 'NOT_READY')
+            require(m['connected'], 'NOT_HOST')
+            require(all(v['ready_rules_hash'] == self.rules_snapshot['rules_hash'] for v in players), 'RULES_STALE')
             match_id = str(uuid4())
-            self.state = deepcopy(self.service.new_match_factory([v['player_id'] for v in players], match_id))
+            self.state = deepcopy(self.service.new_match_factory([v['player_id'] for v in players], match_id, deepcopy(self.rules_snapshot)))
             require(self.state['match_id'] == match_id and
-                    set(self.state['active_ids']) == {v['player_id'] for v in players}, 'INTERNAL_ERROR')
+                    set(self.state['active_ids']) == {v['player_id'] for v in players} and
+                    self.state.get('rules_snapshot') == self.rules_snapshot and
+                    self.state.get('rules_hash') == self.rules_snapshot['rules_hash'], 'INTERNAL_ERROR')
             for v in players:
                 list_options(self.state, v['player_id'])
                 v.update(participation='active', absence_count=0)
             self.mode = 'duel' if len(players) == 2 else 'multiplayer'
             self.profiles = [{k: v[k] for k in ('player_id', 'nickname', 'avatar_id', 'seat')} for v in players]
             self.last_turn = self.outcome = None
+            self.replay_inputs = []
             self.departing.clear()
             self.prepare(now)
             self.changed()
@@ -177,7 +203,7 @@ class Room:
             require(pid == self.host_id, 'NOT_HOST')
             require(self.phase == 'result', 'WRONG_PHASE')
             self.phase, self.state, self.last_turn, self.outcome = 'lobby', None, None, None
-            self.pending, self.tokens, self.profiles = {}, {}, []
+            self.pending, self.tokens, self.lucky_tokens, self.profiles = {}, {}, {}, []
             self.clear_ready()
             for v in self.members.values():
                 v.update(participation='lobby' if v['role'] == 'player' else 'spectating',
@@ -209,6 +235,7 @@ class Room:
         self.phase, self.close_reason, self.closed_at = 'closed', reason, now
         self.deadline = self.pause = self.host_grace_deadline = None
         self.pending, self.tokens, self.departing = {}, {}, set()
+        self.lucky_tokens = {}
         for pid in self.members:
             s = self.service.by_player[pid]
             if s.room_id == self.id:
@@ -264,15 +291,14 @@ class Room:
                 submissions[pid] = ('Charge' if pid == self.host_id or self.mode == 'multiplayer' else
                     self.service.timeout_chooser(deepcopy(self.state), deepcopy(legal)))
                 require(any(o['entry_id'] == submissions[pid] for o in legal), 'INTERNAL_ERROR')
-        tokens = {}
-        for pid, entry in submissions.items():
-            move, origin = ENTRY_MAP[entry]
-            if origin == 'zhang':
-                move = self.state['players'][pid]['latest_copyable_move']
-            if move in BRANCHES:
-                tokens[pid] = self.tokens[pid]
-        result = resolve_round(self.state, submissions, tokens)
+        consumers = required_tokens(self.state, submissions)
+        tokens = {pid: self.tokens[pid] for pid in consumers['choice']}
+        lucky = {pid: self.lucky_tokens[pid] for pid in consumers['lucky']}
+        result = resolve_round(self.state, submissions, tokens, lucky)
         require(result['ok'], 'INTERNAL_ERROR')
+        self.replay_inputs.append(dict(rules_snapshot=deepcopy(self.rules_snapshot),
+            expected={key: self.state[key] for key in ('match_id', 'game_id', 'turn_index', 'rules_hash')},
+            submissions=deepcopy(submissions), choice_tokens=tokens, lucky_tokens=lucky, room_forfeits=deepcopy(forfeits)))
         effective, transition = deepcopy(result['next_state']), deepcopy(result['transition'])
         removed = {f['player_id'] for f in forfeits}
         survivors = sorted(set(effective['active_ids']) - removed)
@@ -280,7 +306,7 @@ class Room:
         if changed:
             players = deepcopy(self.state['players']) | deepcopy(result['ledger']['post_turn_players'])
             if len(survivors) >= 2:
-                fresh = new_match(survivors, self.state['match_id'])
+                fresh = new_match(survivors, self.state['match_id'], self.rules_snapshot)
                 index = str(int(self.state['game_index']) + 1)
                 gid = self.state['match_id'] + ':g' + index
                 effective = {**fresh, 'game_id': gid, 'game_index': index,
@@ -331,7 +357,7 @@ class Room:
                 self.state = deepcopy(self.last_turn['effective_state'])
                 if self.state['status'] == 'finished':
                     self.phase, self.deadline = 'result', None
-                    self.pending, self.tokens = {}, {}
+                    self.pending, self.tokens, self.lucky_tokens = {}, {}, {}
                 else:
                     self.prepare(at)
                 self.update_host_grace(at)
@@ -373,6 +399,8 @@ class Room:
         return dict(v=1, type='snapshot', room_id=self.id, seq=str(self.seq), server_time_ms=self.service.to_public(now),
             view=dict(source='online', room_code=self.code, host_id=self.host_id, phase=self.phase,
                 has_password=self.has_password, policy=dict(self.policy), members=members, match=match,
+                rules_snapshot=public_rules(self.rules_snapshot), rules_revision=str(self.rules_revision),
+                rule_pack_manifests=[public_pack(m) for m in self.rule_pack_manifests],
                 policy_revision=str(self.policy_revision),
                 current_turn_ms=self.current_turn_ms if self.phase in ('selecting', 'revealing') else None,
                 host_recovery=recovery, pending_close=deepcopy(self.pending_close),
@@ -397,10 +425,31 @@ def public_player(player: dict) -> dict:
     return p
 
 
+def public_rules(snapshot: dict) -> dict:
+    result = fields(snapshot, 'schema_version rules_version base_rules_version preset_id preset_version rules_hash')
+    result['skill_flags'] = {key: snapshot['skill_flags'][key] for key in SKILLS}
+    result['parameters'] = fields(snapshot['parameters'], ' '.join(sorted(PARAMETER_FIELDS)))
+    result['packs'] = [fields(ref, 'id version content_hash') for ref in snapshot['packs']]
+    return result
+
+
+def public_pack(manifest: dict) -> dict:
+    result = fields(manifest, 'api_version kind id version name author base_rules_version')
+    result['presets'] = []
+    for preset in manifest['presets']:
+        public = fields(preset, 'id name description')
+        public['skill_defaults'] = {key: preset['skill_defaults'][key] for key in SKILLS}
+        public['parameters'] = fields(preset['parameters'], ' '.join(sorted(PARAMETER_FIELDS)))
+        result['presets'].append(public)
+    return result
+
+
 def public_state(state: dict) -> dict:
     result = fields(state, 'schema_version rules_version match_id game_id game_index turn_index '
                     'roster active_ids status winner_id')
     result['players'] = {pid: public_player(p) for pid, p in state['players'].items()}
+    if state['schema_version'] == 2:
+        result.update(rules_snapshot=public_rules(state['rules_snapshot']), rules_hash=state['rules_hash'])
     return result
 
 
@@ -410,6 +459,10 @@ def public_resolution(result: dict) -> dict:
     ledger['actions'] = {}
     for pid, action in result['ledger']['actions'].items():
         a = fields(action, 'entry_id actual_move origin is_recovery branch condition eligible_targets enhanced_xiao attack6')
+        if result['next_state']['schema_version'] == 2:
+            a['base_move'] = action['base_move']
+            upgrade = action['upgrade']
+            a['upgrade'] = None if upgrade is None else fields(upgrade, 'kind from to probability_bps')
         a['spend'] = fields(action['spend'], 'dd6 lightning nx_charge mature_bombs reward_stock')
         for key in ('defense_primary', 'defense_return'):
             defense = action[key]

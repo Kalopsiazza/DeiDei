@@ -3,6 +3,7 @@ from copy import deepcopy
 import hashlib
 import json
 import re
+import unicodedata
 
 SCHEMA_VERSION = 1
 RULES_VERSION = "configured-1.0.0"
@@ -70,7 +71,7 @@ def _version(value: object) -> bool:
 
 def _text(value: object, limit: int) -> str:
     if (not isinstance(value, str) or not 1 <= len(value) <= limit
-            or any(ord(c) < 32 or 127 <= ord(c) <= 159 or 0xD800 <= ord(c) <= 0xDFFF for c in value)
+            or any(unicodedata.category(c) in {"Cc", "Cf", "Cs"} for c in value)
             or re.search(r"(?:https?|file|javascript|data):|[/\\]{2}|(?:^|[/\\])\.\.(?:[/\\]|$)", value, re.I)):
         raise ValueError("pack text: invalid length, control character, URL or path")
     return value

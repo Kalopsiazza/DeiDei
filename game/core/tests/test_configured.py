@@ -257,7 +257,7 @@ class ConfiguredRules(unittest.TestCase):
                '['*9+'0'+']'*9, ' '*8193]
         base = json.loads(raw)
         for mutation in ({"script": "x"}, {"name": "https://bad.test"}, {"author": "bad\ntext"},
-                         {"name": "x"*41}, {"version": "01.0.0"}, {"presets": []}):
+                         {"author": "bad\u200btext"}, {"name": "x"*41}, {"version": "01.0.0"}, {"presets": []}):
             bad.append(json.dumps({**base, **mutation}))
         changed = deepcopy(base)
         changed["presets"][0]["parameters"]["lucky_probability_bps"] = True
