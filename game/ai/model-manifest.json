@@ -1,0 +1,16 @@
+{
+  "schema_version": 1,
+  "model_id": "legacy-maskable-ppo-v1",
+  "path": "legacy/rl/rl_checkpoints/latest.zip",
+  "bytes": 2676022,
+  "git_blob": "a7dbf0ddfb1507c2c123dae1c22531b103b5c235",
+  "sha256": "9b2dc0d0eaf09c38d0ec448f52b145d2a5455a53b22771ff919867d57689f97c",
+  "algorithm": "MaskablePPO",
+  "saved_sb3_version": "2.9.0",
+  "observation_dimensions": 156,
+  "action_dimensions": 31,
+  "policy_net_arch": [256, 256],
+  "device": "cpu",
+  "threads": 1,
+  "custom_objects": []
+}
