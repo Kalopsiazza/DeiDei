@@ -9,7 +9,7 @@
 | source/unit 基线 | `python3 scripts/check.py`、`npm --prefix game/desktop ci` / `test`、server unittest均exit0；desktop94项 | baseline-python.log / baseline-npm-ci.log / baseline-desktop.log / baseline-server.log |
 | source/unit 最终 | `python3 scripts/check.py` exit0：语法97文件、root35/core192/runtime48、黄金192条/469次resolve、legacy25（原expectedFailure1）；旧AI八项字节保全 | 早期final-python.log为95文件；最终三包的evidence/source-checks.txt均从7854ebe运行同一入口，97文件 |
 | source/unit 最终server | `PYTHONPATH=game/core:game/server game/server/.venv/bin/python -m unittest discover -s game/server/tests -v` exit0，80项 | final-server.log；真实socket、规则/准备版本、期限、重开、保密 |
-| source/unit 最终desktop | `npm --prefix game/desktop test` exit0，typecheck/build＋126项，fail/cancel/skip/todo均0 | final-desktop-5.log；最终三包evidence/desktop-tests-and-build.txt亦126项exit0 |
+| source/unit 最终desktop | `npm --prefix game/desktop test` exit0，typecheck/build＋127项，fail/cancel/skip/todo均0 | final-desktop-ci-fix.log；修正前final-desktop-5.log及三包evidence/desktop-tests-and-build.txt为126项exit0 |
 | real_model 源码 | `game/ai/.venv/bin/python -I game/ai/runtime_probe.py --output <本轮json>` exit0：三真实模型会话各3次forward、200IPC请求0timeout、crash/取消/runtime死亡/父EOF清理；本轮负载p95 1.724ms/max16.802ms | runtime-ai-probe-shutdownfix.json / .log；早期独立基准见model-probe/benchmark.json |
 | real_worker / model UI | `DEIDEI_INTEGRATION_OUTPUT=<新目录> node game/integration/smoke-major-update.cjs` exit0，8项：草稿/取消、火力2DD禁云、经典重置、原模型1拍、受控AI SIGKILL合法回退1拍、冷预热取消、实际Electron main SIGKILL子树回收 | major-smoke-third.log / major-ui-3/checks.json |
 | real_worker_room | `node game/integration/smoke-rooms-major.cjs` exit0，6组/6次双方公开结算：改规则清准备、旧ready/start拒绝、真实断线恢复/回大厅、包1→3DD、100%幸运原价、guest无本机包可读、两套卡面 | rooms-major.log / rooms-major/checks.json；两个main及server正常退出 |
@@ -27,11 +27,14 @@
 | production_trust | NOT_RUN | 无正式身份/公证/生产feed；production入口拒绝缺项，候选签名完整性另验 |
 | human_cross_device | NOT_RUN | Windows native、跨电脑/显示器/DPI、真人体验、首次系统信任、公网collector TLS和旧目的地迁移未验 |
 
-早期major-ui-3明确记录c4ce0c4＋dirty；native-import-2为3582b11＋dirty；rooms-major未记HEAD/dirty，写UNKNOWN；fullscreen-major-3仅有main/UI文件摘要。最终补验截图与三包明确7854ebe/产品clean，不混用早期版本。31fba74仅修外部runner，基础core/runtime/server和实际应用字节未变，输入比较另附。
+早期major-ui-3明确记录c4ce0c4＋dirty；native-import-2为3582b11＋dirty；rooms-major未记HEAD/dirty，写UNKNOWN；fullscreen-major-3仅有main/UI文件摘要。最终补验截图与三包明确7854ebe/产品clean，不混用早期版本。31fba74修外部runner，db66f09修CI/测试环境与目标平台单测；基础core/runtime/server和实际应用字节未变，输入比较另附。
 
 统计GUI仅通过固定lifecycle夹具暂停首次空闲batch，准备真实操作后由普通菜单放行；未改时钟/限频/网络实现或注入报告。统计只代表自愿上传安装的选择/使用，不代表所有玩家或满意度。
 
 ## 失败、修复与未运行
+
+- 草稿PR首轮自动CI [37413657135](https://github.com/Kalopsiazza/DeiDei/actions/runs/37413657135) 实际FAIL：root/source检查通过，desktop114通过/12失败。9项缺 `game/telemetry/.venv/bin/python`，3项更新单测依赖Linux host而误判目标。db66f09在CI和同一打包入口安装原完整hash lock测试环境，Windows测试解释器路径修正；更新单测显式覆盖Mac/Windows并新增Linux拒绝检查，原断言保留。最终本地desktop127/127通过；ci-first-failed.log / ci-first-summary.json保留。修正后远端CI以PR检查实际状态为准，未手动重跑或关闭检查。
+- 新建Mac Python3.11环境严格hash/binary安装及pip check、7组真HTTP/SQLite/admin/CSV均exit0；实际build.py bootstrap AST在新建独立同布局环境运行create/sync/check后，同字节privacy10/10通过。Linux/Windows各10官方wheel的版本/hash匹配原lock；更新单测Mac9/9和Linux分支模拟9/9通过。以上见ci-telemetry/HANDOFF.md与ci-updates-fix/，wheel解析和Linux分支模拟不冒充native平台运行；未为非产品修正重复三份完整打包。
 
 - 原模型初配NumPy1.26.4加载失败 `numpy._core.numeric`；仅换精确兼容环境至2.3.5后原权重实际加载成功。未改checkpoint/旧八项：model-probe/raw-load.log / preserve.json。
 - 初期server分支、旧ready/fixture输入、规则大厅遮挡与radio样式曾失败；保留原行为/保密断言后最终80项和双main/短窗通过。server-2-initial.log、desktop-rooms-12-first/second/third.log、rooms-major-first/second/均保留。
@@ -71,7 +74,7 @@
 
 每份架构、生产依赖/资源闭包、冻结core/AI、外app与30个嵌套Mach-O完整性、ZIP中文空格解压后签名/core/AI均exit0；实际资源与所有UI/docs数据随包。开发AI环境移除/无源码cwd/受限PATH的运行另由最终冻结UI证明；没有物理卸载系统Python或断开系统网络。
 
-[构建输入](build-info-macos-arm64.json)含431项原始仓库摘要；[交付前比较](build-input-equivalence.json)如实记录三包各430项一致，仅外部验收runner在31fba74变更，132个实际stage文件全部一致，图鉴JSON一致。该runner不在应用或冻结worker内，修正后重跑受影响的真实传输；不重编未变的运行字节。
+[构建输入](build-info-macos-arm64.json)含431项原始仓库摘要；[交付前比较](build-input-equivalence.json)如实记录三包各425项一致、6项非运行输入变化：CI、两份单测、打包入口的测试环境准备、README与外部更新验收runner；132个实际stage文件全部一致，图鉴JSON/core/AI/lock一致。runner和测试环境不在应用或冻结worker内，受影响的真实传输和新建环境检查已重跑；不重编未变的运行字节。
 
 完整传输首轮exit1 `ReferenceError: require is not defined`，尚未请求feed，native未运行；两处evaluate改为注入的safeStorage后第2轮exit0。两次普通main退出0/forced=false，自有main/worker/helper均消失，feed端口释放，精确ownership标识下本轮合成默认档案清理；旧R02档案不读取。`full-artifact-transport.log`和第2轮记录均保留。
 
@@ -79,8 +82,8 @@ npm runtime audit exit0；包含builder开发工具的audit实际exit1（low/mod
 
 ## 保全与交付
 
-原36条worktree登记36/36一致：27现存/9原缺失，branch/HEAD/status、staged/unstaged diff SHA256及233个非ignored untracked摘要无差异；只新增本任务。initial-worktrees.json / preserved-worktrees-final.json。整个legacy/rl相对指定main无差异。
+原36条worktree登记36/36一致：27现存/9原缺失，branch/HEAD/status、staged/unstaged diff SHA256及233个非ignored untracked摘要无差异；只新增本任务。initial-worktrees.json / preserved-worktrees-final.json / preserved-worktrees-at-delivery.json。整个legacy/rl相对指定main无差异。
 
-工作树 `<主仓库>/.worktrees/r05-major-update` 保留未归档；恢复档未改。31fba74仅保存外部runner修正；最后文档提交只改交付记录、manifest与必要截图。三包实际产品输入比较通过后推送一个草稿PR，远端head/base/draft与自动CI在本次对话回读，不手改状态或重复触发。Kimi未调用。
+工作树 `<主仓库>/.worktrees/r05-major-update` 保留未归档；恢复档未改。31fba74保存外部runner修正，db66f09保存CI/测试准备及平台单测修正；交付文档提交只改记录、manifest与必要截图。三包实际产品输入比较通过后推送一个草稿PR，远端head/base/draft与自动CI在本次对话回读，不手改状态或重复触发。Kimi未调用。
 
 打包中间失败另保留：6ac普通完整build exit0，但发布dry-run因builder-debug误收exit1；fixture N在尚未成完整installer时中断exit143。它的真实成包app诊断第三轮exit0（模型4拍/零回退、缺AI负例、两个普通main退出0/自有workers消失）；前两轮为揭晓断言时机与复制只读副本symlink的harness失败。该诊断full-artifact/native明记NOT_RUN，不替代最终候选。

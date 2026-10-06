@@ -10,9 +10,9 @@
 | 3 原模型 | PASS（本机及冻结包） | 0de6e0e / c4ce0c4：原156/31投影、模型/有限回退分开、取消和父lease回收；最终冻结包真模型整局2拍、零回退。 |
 | 4 设置/隐私/后台 | PASS（本机） | 3582b11 / 3f7f2c3：设置27项、原生全屏16项、普通main真实collector30项；真HTTP/SQLite/admin/CSV7组，隐私/硬件13组。 |
 | 5 更新/完整包 | PASS：源码、内容、传输；native安装/生产信任 NOT_RUN | b6f88da / 6ac3978 / 7854ebe：三份完整DMG/ZIP/feed；固定core/AI/闭包/签名完整性；真实完整N→N+1下载、缓存复核、普通退出重开仍N。31fba74仅修外部验收runner。 |
-| 6 综合交付 | 本地完成；草稿PR与自动CI以远端回读为准 | desktop126、server80、Python97文件/root35/core192/runtime48/legacy25通过；最终同产品截图/真实输入补验，候选、manifest与本交付文档已保存。最终head登记于PR正文。 |
+| 6 综合交付 | 本地完成；草稿PR与自动CI以远端回读为准 | 最终desktop127、三包构建时desktop126、server80、Python97文件/root35/core192/runtime48/legacy25通过；最终同产品截图/真实输入补验，候选、manifest与本交付文档已保存。最终head登记于PR正文。 |
 
-候选构建/最终截图的产品 SHA 为 `7854ebeae9814b796f5bfaa4925fd834ff957f73`。之后的 `31fba74` 仅修未进入应用的 `check-native-update.cjs`；三包各431项仓库输入仅此一项变化，实际应用stage132文件及其余430项（含图鉴JSON、core/AI输入）一致，见 [输入比较](build-input-equivalence.json)。不把仓库全快照写成完全相同。
+候选构建/最终截图的产品 SHA 为 `7854ebeae9814b796f5bfaa4925fd834ff957f73`。之后的 `31fba74` 修未进入应用的外部更新验收runner，`db66f09` 修 CI/打包测试环境与跨平台单测；三包各431项仓库输入中6项非运行输入变化，实际应用stage132文件及其余425项（含图鉴JSON、core/AI输入与锁文件）一致，见 [输入比较](build-input-equivalence.json)。不把仓库全快照写成完全相同。
 
 ## 玩家行为与玩法决定
 
@@ -30,7 +30,7 @@
 
 完整包的只读中文空格路径、不同cwd、OS-only PATH、开发AI环境移除，真实冻结core→AI→原模型整局及缺AI负例均通过。N→N+1完整ZIP真实下载/复核通过；普通退出重开仍0.5.0，档案/规则/隐私保留，未调用native安装。自有main/worker/feed结束，仅本轮合成默认档案已清理。
 
-真实失败保留：初配NumPy不兼容、初期协议fixture/布局、冻结stdin退出、main回收任务后准备停滞、optional更新损坏、builder v26 publisherName位置，以及debug YAML误收发行清单。冻结UI早期诊断的断言时机/只读副本复制、picker焦点、异步等待和补拍标签/平滑滚动等待为harness失败，修正后分别重验；没有删有效断言或新增skip。最终完整传输首轮因evaluate中require失败、尚无feed请求，修外部runner后第2轮exit0；第一轮FAIL仍保留。
+真实失败保留：初配NumPy不兼容、初期协议fixture/布局、冻结stdin退出、main回收任务后准备停滞、optional更新损坏、builder v26 publisherName位置，以及debug YAML误收发行清单。冻结UI早期诊断的断言时机/只读副本复制、picker焦点、异步等待和补拍标签/平滑滚动等待为harness失败，修正后分别重验；没有删有效断言或新增skip。最终完整传输首轮因evaluate中require失败、尚无feed请求，修外部runner后第2轮exit0；第一轮FAIL仍保留。草稿PR首轮自动CI实际114通过/12失败：9项缺独立collector环境、3项单测误依赖host平台；db66f09补严格hash环境并显式测试Mac/Windows目标及Linux拒绝，本地127项通过，失败日志保留。
 
 未运行：有效签名下native N→N+1替换/坏签名后N+2恢复、正式签名/公证/首次系统信任、Windows native、真人跨电脑/显示器/DPI、远端WSS、公网collector TLS/运营恢复/旧目的地删除及替换后删除能力。production默认入口实际exit1拒绝缺身份；ad-hoc完整性通过不表示生产信任。黄金入口C074/C081仍SESSION_NOT_RUN，另有runtime/server真实检查。
 

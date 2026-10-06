@@ -1,18 +1,49 @@
 {
   "status": "PASS",
   "tested_product_commit": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
-  "comparison_commit": "31fba7427af03c72877b68801f772346a7e68ed5",
-  "changes_after_build": [
+  "comparison_commit": "db66f09d561e9681638dfb5e760f30c8de4e0902",
+  "changed_non_runtime_inputs": [
+    ".github/workflows/ci.yml",
+    "game/desktop/test-privacy.cjs",
+    "game/desktop/updates/test.cjs",
+    "game/packaging/README.md",
+    "game/packaging/build.py",
     "game/packaging/check-native-update.cjs"
   ],
-  "reason": "Only the external update acceptance runner changed; it is excluded from application stage and frozen workers. Application inputs and bytes are unchanged; the full 431-file repository snapshot is not claimed identical.",
+  "additional_committed_evidence_directory": "docs/results/R05-T01-a/",
+  "reason": "Changes after the full builds are limited to the external update acceptance runner, CI/test environment bootstrap, platform-independent tests, packaging README and delivery evidence. No application stage, core/AI runtime input, lock or manual content bytes changed. The full 431-file repository snapshot is not claimed identical.",
   "builds": [
     {
       "build_directory": "darwin-arm64-l6hjznjj",
       "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
       "tracked_input_count": 431,
-      "unchanged_tracked_inputs": 430,
-      "changed_external_runner": [
+      "unchanged_tracked_inputs": 425,
+      "changed_non_runtime_inputs": [
+        {
+          "file": ".github/workflows/ci.yml",
+          "built_sha256": "7bd444e1f3526a4d4a003aa23eae0551d1353d90ff3d7da28ddbf6e168f8110e",
+          "current_sha256": "aa6b895428ff8292a2f0c413213a2be35747ee329ce2c508a5512c2e26983a8f"
+        },
+        {
+          "file": "game/desktop/test-privacy.cjs",
+          "built_sha256": "eb7bd305b264bf445686e85fa4c7e6abc2bb9199e790d4d3c5c2fbd4ed23ddbb",
+          "current_sha256": "fe843974f7c072d09214a054f060af3af8019917c2bcac40b49c5ecb81a72e27"
+        },
+        {
+          "file": "game/desktop/updates/test.cjs",
+          "built_sha256": "0a5fc388c4c83efb4112204143e055cf5f6cfe6d000136557c51cbc9fdf8f2c4",
+          "current_sha256": "dcc0635b1111e1d56d0e3ba24a1d01ebea2f770083d55e72ca3378e240b2a020"
+        },
+        {
+          "file": "game/packaging/README.md",
+          "built_sha256": "fb3df31239d6b50915033b5d405df14fff8dc032428d18d49b65d16cfb32b8a6",
+          "current_sha256": "515d5dea4ebd44f20d96a9928e4f5a32d2453f278b60f20302fa407795dde24d"
+        },
+        {
+          "file": "game/packaging/build.py",
+          "built_sha256": "058c4e036bb5d001dcb6fffd50f24bc943dd96b1eb2561ef6b685ad98aacd170",
+          "current_sha256": "08870cbdebbb19bb836c2147fc720c4a586cd0063ec7d2a7d8eedaeac91e7d5f"
+        },
         {
           "file": "game/packaging/check-native-update.cjs",
           "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
@@ -27,8 +58,33 @@
       "build_directory": "darwin-arm64-m7qvggi2",
       "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
       "tracked_input_count": 431,
-      "unchanged_tracked_inputs": 430,
-      "changed_external_runner": [
+      "unchanged_tracked_inputs": 425,
+      "changed_non_runtime_inputs": [
+        {
+          "file": ".github/workflows/ci.yml",
+          "built_sha256": "7bd444e1f3526a4d4a003aa23eae0551d1353d90ff3d7da28ddbf6e168f8110e",
+          "current_sha256": "aa6b895428ff8292a2f0c413213a2be35747ee329ce2c508a5512c2e26983a8f"
+        },
+        {
+          "file": "game/desktop/test-privacy.cjs",
+          "built_sha256": "eb7bd305b264bf445686e85fa4c7e6abc2bb9199e790d4d3c5c2fbd4ed23ddbb",
+          "current_sha256": "fe843974f7c072d09214a054f060af3af8019917c2bcac40b49c5ecb81a72e27"
+        },
+        {
+          "file": "game/desktop/updates/test.cjs",
+          "built_sha256": "0a5fc388c4c83efb4112204143e055cf5f6cfe6d000136557c51cbc9fdf8f2c4",
+          "current_sha256": "dcc0635b1111e1d56d0e3ba24a1d01ebea2f770083d55e72ca3378e240b2a020"
+        },
+        {
+          "file": "game/packaging/README.md",
+          "built_sha256": "fb3df31239d6b50915033b5d405df14fff8dc032428d18d49b65d16cfb32b8a6",
+          "current_sha256": "515d5dea4ebd44f20d96a9928e4f5a32d2453f278b60f20302fa407795dde24d"
+        },
+        {
+          "file": "game/packaging/build.py",
+          "built_sha256": "058c4e036bb5d001dcb6fffd50f24bc943dd96b1eb2561ef6b685ad98aacd170",
+          "current_sha256": "08870cbdebbb19bb836c2147fc720c4a586cd0063ec7d2a7d8eedaeac91e7d5f"
+        },
         {
           "file": "game/packaging/check-native-update.cjs",
           "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
@@ -43,8 +99,33 @@
       "build_directory": "darwin-arm64-kgi0jt88",
       "code_sha": "7854ebeae9814b796f5bfaa4925fd834ff957f73",
       "tracked_input_count": 431,
-      "unchanged_tracked_inputs": 430,
-      "changed_external_runner": [
+      "unchanged_tracked_inputs": 425,
+      "changed_non_runtime_inputs": [
+        {
+          "file": ".github/workflows/ci.yml",
+          "built_sha256": "7bd444e1f3526a4d4a003aa23eae0551d1353d90ff3d7da28ddbf6e168f8110e",
+          "current_sha256": "aa6b895428ff8292a2f0c413213a2be35747ee329ce2c508a5512c2e26983a8f"
+        },
+        {
+          "file": "game/desktop/test-privacy.cjs",
+          "built_sha256": "eb7bd305b264bf445686e85fa4c7e6abc2bb9199e790d4d3c5c2fbd4ed23ddbb",
+          "current_sha256": "fe843974f7c072d09214a054f060af3af8019917c2bcac40b49c5ecb81a72e27"
+        },
+        {
+          "file": "game/desktop/updates/test.cjs",
+          "built_sha256": "0a5fc388c4c83efb4112204143e055cf5f6cfe6d000136557c51cbc9fdf8f2c4",
+          "current_sha256": "dcc0635b1111e1d56d0e3ba24a1d01ebea2f770083d55e72ca3378e240b2a020"
+        },
+        {
+          "file": "game/packaging/README.md",
+          "built_sha256": "fb3df31239d6b50915033b5d405df14fff8dc032428d18d49b65d16cfb32b8a6",
+          "current_sha256": "515d5dea4ebd44f20d96a9928e4f5a32d2453f278b60f20302fa407795dde24d"
+        },
+        {
+          "file": "game/packaging/build.py",
+          "built_sha256": "058c4e036bb5d001dcb6fffd50f24bc943dd96b1eb2561ef6b685ad98aacd170",
+          "current_sha256": "08870cbdebbb19bb836c2147fc720c4a586cd0063ec7d2a7d8eedaeac91e7d5f"
+        },
         {
           "file": "game/packaging/check-native-update.cjs",
           "built_sha256": "134a4ec7b9f6dd8853d597f76922ad846b5eda25c33d3fb33ee9822298b383c3",
